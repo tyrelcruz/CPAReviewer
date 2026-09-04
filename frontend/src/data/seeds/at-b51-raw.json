@@ -1,0 +1,1862 @@
+[
+  {
+    "id": "at-b51-001",
+    "prompt": "May a first-time CPALE candidate who has an average of 74 still earn conditional credit?",
+    "choices": [
+      { "id": "a", "text": "Yes – for those subjects with a grade of at least 65" },
+      { "id": "b", "text": "Yes – for those four (4) subjects with a grade of at least 75" },
+      { "id": "c", "text": "Yes – for those two (2) subjects with a grade of at least 75" },
+      { "id": "d", "text": "It depends" }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-002",
+    "prompt": "CPA results are usually submitted to the PRC for approval and release:",
+    "choices": [
+      { "id": "a", "text": "Within ten (10) working days after the examination." },
+      { "id": "b", "text": "Within ten (10) calendar days after the examination." },
+      { "id": "c", "text": "Within fifteen (15) working days after the examination." },
+      { "id": "d", "text": "Within fifteen (15) calendar days after the examination." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-003",
+    "prompt": "The following sectors have a representative in Financial and Sustainability Reporting Standards Council (FSRSC), except:",
+    "choices": [
+      { "id": "a", "text": "Securities and Exchange Commission" },
+      { "id": "b", "text": "Insurance Commission" },
+      { "id": "c", "text": "Bureau of Customs" },
+      { "id": "d", "text": "Bureau of Internal Revenue" }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-004",
+    "prompt": "Allan is an audit partner in an accounting firm and at the same time a department head in a local accounting school. Which of the following statements is correct?",
+    "choices": [
+      { "id": "a", "text": "Allan is more of a CPA in public practice." },
+      { "id": "b", "text": "Allan is both a CPA in public practice and education." },
+      { "id": "c", "text": "Allan is more of a CPA in education." },
+      { "id": "d", "text": "Allan is in violation of RA 9298." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-005",
+    "prompt": "In compliance with the SEC, which accreditation can perform FS audit services to universal banks registered as underwriters of securities?",
+    "choices": [
+      { "id": "a", "text": "Group A only" },
+      { "id": "b", "text": "Group B only" },
+      { "id": "c", "text": "Both Groups A and B only" },
+      { "id": "d", "text": "All Groups A, B, and C" }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-006",
+    "prompt": "Per PRC Resolution 1520 Series of 2022, which of the following statements is incorrect?",
+    "choices": [
+      { "id": "a", "text": "For face-to-face programs with 1001 and above participants, registration fee for a three-day conference in hotel can be ₱3,400." },
+      { "id": "b", "text": "For face-to-face programs with 101 and above participants, registration fee for a two-day seminar in a venue other than hotel can be ₱2,700." },
+      { "id": "c", "text": "For online programs with 1001 and above participants, registration fee for a two-day conference can be ₱700." },
+      { "id": "d", "text": "For online programs with 1001 and above participants, registration fee for a three-day conference can be ₱1,000." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-007",
+    "prompt": "Which of the following combination of CPD program and competence area is incorrect?",
+    "choices": [
+      { "id": "a", "text": "Marketing Techniques for Professional Accountants – Competence Area A" },
+      { "id": "b", "text": "Corporate Financial Statements and IAS 1 Changes – Competence Area A" },
+      { "id": "c", "text": "An Introduction to PFRS 18, Presentation and Disclosure in Financial Statements – Competence Area A" },
+      { "id": "d", "text": "Auditor's Responsibilities on Fraud – Competence Area C" }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-008",
+    "prompt": "A CPA in commerce and industry was convicted of falsifying accounting records and concealing them with ghost receipts. Which of the following possible penalties for his action is in violation of RA 9298?",
+    "choices": [
+      { "id": "a", "text": "Fine of P100,000 and imprisonment of 18 months" },
+      { "id": "b", "text": "Revocation of CPA license" },
+      { "id": "c", "text": "Imprisonment of two (2) years and revocation of CPA license" },
+      { "id": "d", "text": "Fine of P40,000 and imprisonment of 12 months" }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-009",
+    "prompt": "Which of the following statements is not true about the elements of assurance engagement?",
+    "choices": [
+      { "id": "a", "text": "A subjective matter may be historical or prospective." },
+      { "id": "b", "text": "An appropriate subject matter is one that is identifiable." },
+      { "id": "c", "text": "Criteria are the benchmarks used to measure or evaluate the underlying subject matter." },
+      { "id": "d", "text": "Criteria can be formal or may be the applicable law, regulation or contract." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-010",
+    "prompt": "Which of the following statements about review engagement is incorrect?",
+    "choices": [
+      { "id": "a", "text": "The practitioner's objectives in a review of financial statements is to obtain limited assurance, primarily about whether the financial statements as a whole are free from material misstatement." },
+      { "id": "b", "text": "The practitioner performs primarily inquiry and analytical procedures to obtain sufficient appropriate evidence as the basis for a conclusion on the financial statements as a whole." },
+      { "id": "c", "text": "The practitioner may opt to obtain an understanding of the entity and its environment, and the applicable financial reporting framework to provide a basis for designing procedures." },
+      { "id": "d", "text": "In all cases when limited assurance cannot be obtained and a qualified conclusion in the practitioner's report is insufficient in the circumstances, the practitioner shall either disclaim a conclusion in the report or, where appropriate, withdraw from the engagement." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-011",
+    "prompt": "S1: The subject matter of agreed-upon procedures may be financial or non-financial in nature. S2: The IESBA Code of Ethics does not contain independence requirements for agreed-upon engagements.",
+    "choices": [
+      { "id": "a", "text": "False, True" },
+      { "id": "b", "text": "False, False" },
+      { "id": "c", "text": "True, True" },
+      { "id": "d", "text": "True, False" }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-012",
+    "prompt": "Which of the following factors most likely would lead a CPA to conclude that a potential audit engagement should not be accepted?",
+    "choices": [
+      { "id": "a", "text": "Management continues to employ an inefficient system of information technology to record financial transactions." },
+      { "id": "b", "text": "It is unlikely that sufficient appropriate evidence is available to support an opinion on the financial statements." },
+      { "id": "c", "text": "There are significant related-party transactions that management claims occurred in the ordinary course of business." },
+      { "id": "d", "text": "Internal control activities requiring the segregation of duties are subject to management override." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-013",
+    "prompt": "Which of the following matters is generally included in an auditor's engagement letter?",
+    "choices": [
+      { "id": "a", "text": "The factors to be considered in setting preliminary judgments about materiality." },
+      { "id": "b", "text": "Management's vicarious liability for illegal acts committed by its employees." },
+      { "id": "c", "text": "The auditor's responsibility to search for significant internal control deficiencies." },
+      { "id": "d", "text": "Management's responsibility for the entity's compliance with laws and regulations." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-014",
+    "prompt": "Which of the following statements would least likely appear in an auditor's engagement letter?",
+    "choices": [
+      { "id": "a", "text": "During the course of our audit we may observe opportunities for economy in, or improved controls over, your operations." },
+      { "id": "b", "text": "Fees for our services are based on our regular per diem rates, plus travel and other out-of-pocket expenses." },
+      { "id": "c", "text": "After performing our preliminary analytical procedures we will discuss with you the other procedures we consider necessary to complete the engagement." },
+      { "id": "d", "text": "Our engagement is subject to the risk that material misstatements or fraud, if they exist, will not be detected." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-015",
+    "prompt": "In establishing the overall audit strategy for an audit, an auditor should",
+    "choices": [
+      { "id": "a", "text": "Assess the risk of material misstatement and develop substantive procedures to mitigate the risk." },
+      { "id": "b", "text": "Form a conclusion on compliance with independence requirements that apply to the audit engagement." },
+      { "id": "c", "text": "Perform an internal control walkthrough to determine the type of audit procedures required." },
+      { "id": "d", "text": "Plan the timing of the audit and the nature of the communications required based on the engagement's reporting objectives." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-016",
+    "prompt": "Audit programs should be designed so that",
+    "choices": [
+      { "id": "a", "text": "Most of the required procedures can be performed as interim work." },
+      { "id": "b", "text": "Inherent risk is assessed at a sufficiently low level." },
+      { "id": "c", "text": "The auditor can make constructive suggestions to management." },
+      { "id": "d", "text": "The audit evidence gathered supports the auditor's opinion." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-017",
+    "prompt": "Which of the following is least likely to be a continuous activity that an auditor would be expected to perform throughout an audit engagement?",
+    "choices": [
+      { "id": "a", "text": "Understanding the entity and its environment." },
+      { "id": "b", "text": "Assessing risk of material misstatement." },
+      { "id": "c", "text": "Considering client continuance." },
+      { "id": "d", "text": "Inquiring as to the design of internal controls." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-018",
+    "prompt": "Holding other planning considerations equal, a decrease in the amount of misstatement in a class of transactions that an auditor could tolerate most likely would cause the auditor to",
+    "choices": [
+      { "id": "a", "text": "Increase the assessed level of control risk for relevant financial statement assertions." },
+      { "id": "b", "text": "Apply the planned substantive tests prior to the balance sheet date." },
+      { "id": "c", "text": "Perform the planned auditing procedures closer to the balance sheet date." },
+      { "id": "d", "text": "Decrease the extent of auditing procedures to be applied to the class of transactions." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-019",
+    "prompt": "Why do auditors establish a preliminary judgment about materiality?",
+    "choices": [
+      { "id": "a", "text": "To plan the appropriate audit evidence to accumulate and develop an overall audit strategy." },
+      { "id": "b", "text": "To determine the appropriate level of audit experience required for the work." },
+      { "id": "c", "text": "So that the client can know what records to make available to the auditor." },
+      { "id": "d", "text": "To finalize the assessment of control risk." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-020",
+    "prompt": "A wholesale company recognizes revenue when sales orders are filled. Which of the following controls would best prevent sales orders from being recorded more than once?",
+    "choices": [
+      { "id": "a", "text": "An error message appears when a sales order number is used twice." },
+      { "id": "b", "text": "A reconciliation between sales orders and shipments is performed." },
+      { "id": "c", "text": "Management reviews sales order reports for duplicate sales." },
+      { "id": "d", "text": "Changes to physical inventory are compared to sales orders." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-021",
+    "prompt": "Which of the following procedures would an auditor most likely perform in planning a financial statement audit?",
+    "choices": [
+      { "id": "a", "text": "Examining computer generated exception reports to verify the effectiveness of internal control." },
+      { "id": "b", "text": "Inquiring of the client's legal counsel concerning pending litigation." },
+      { "id": "c", "text": "Comparing the financial statements to anticipated results." },
+      { "id": "d", "text": "Searching for unauthorized transactions that may aid in detecting unrecorded liabilities." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-022",
+    "prompt": "Which of the following is correct with respect to the use of analytical procedures?",
+    "choices": [
+      { "id": "a", "text": "Analytical procedures used in the testing phase of the audit are primarily used to direct an auditor's attention so that the auditor's understanding of the business is improved." },
+      { "id": "b", "text": "Analytical procedures may be used in evaluating balances in the testing phase as long as the auditor also uses them in assessing the going concern assumption." },
+      { "id": "c", "text": "Analytical procedures are performed by studying plausible relationships between financial and nonfinancial data." },
+      { "id": "d", "text": "Analytical procedures must be used throughout the audit engagement." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-023",
+    "prompt": "The overall attitude and awareness of an entity's board of directors concerning the importance of internal control usually is reflected in its",
+    "choices": [
+      { "id": "a", "text": "Safeguards over access to assets." },
+      { "id": "b", "text": "Computer-based controls." },
+      { "id": "c", "text": "Control environment." },
+      { "id": "d", "text": "System of segregation of duties." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-024",
+    "prompt": "Which of the following most likely would not be considered an inherent limitation of the potential effectiveness of an entity's internal control?",
+    "choices": [
+      { "id": "a", "text": "Collusion among employees." },
+      { "id": "b", "text": "Management override." },
+      { "id": "c", "text": "Incompatible duties." },
+      { "id": "d", "text": "Mistakes in judgment." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-025",
+    "prompt": "After assessing control risk, an auditor desires to seek a further reduction in the assessed level of control risk. At this time, the auditor would consider whether",
+    "choices": [
+      { "id": "a", "text": "The entity's controls have been implemented." },
+      { "id": "b", "text": "It would be efficient to obtain an understanding of the entity's information system." },
+      { "id": "c", "text": "The entity's controls pertain to any financial statement assertions." },
+      { "id": "d", "text": "Additional audit evidence sufficient to support a further reduction is likely to be available." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-026",
+    "prompt": "Assessing control risk at a low level most likely would involve",
+    "choices": [
+      { "id": "a", "text": "Performing more extensive substantive tests with larger sample sizes than originally planned." },
+      { "id": "b", "text": "Identifying specific controls relevant to specific assertions." },
+      { "id": "c", "text": "Reducing inherent risk for most of the assertions relevant to significant account balances." },
+      { "id": "d", "text": "Changing the timing of substantive tests by omitting interim-date testing and performing the tests at year-end." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-027",
+    "prompt": "Control risk should be assessed in terms of",
+    "choices": [
+      { "id": "a", "text": "Specific controls." },
+      { "id": "b", "text": "Types of potential fraud." },
+      { "id": "c", "text": "Financial statement assertions." },
+      { "id": "d", "text": "Control environment factors." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-028",
+    "prompt": "Which of the following statements best describes the auditor's responsibility regarding the detection of material errors and fraud?",
+    "choices": [
+      { "id": "a", "text": "The auditor is responsible for the failure to detect material errors and fraud only when the auditor fails to confirm receivables or observe inventories." },
+      { "id": "b", "text": "The auditor is responsible for the failure to detect material errors and fraud only when such failure results from the nonapplication of generally accepted accounting principles." },
+      { "id": "c", "text": "Auditing procedures may or may not need to be extended if the auditor's analysis indicates the existence of fraud risk factors." },
+      { "id": "d", "text": "Extended auditing procedures are required to detect unrecorded transactions even if there is no evidence that material errors and fraud may exist." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-029",
+    "prompt": "At which stage(s) of the audit may fraud risk factors be identified? Planning | Obtaining understanding | Conducting fieldwork",
+    "choices": [
+      { "id": "a", "text": "Yes | Yes | Yes" },
+      { "id": "b", "text": "Yes | Yes | No" },
+      { "id": "c", "text": "Yes | No | Yes" },
+      { "id": "d", "text": "No | Yes | Yes" }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-030",
+    "prompt": "While performing their audit, the audit team uncovers fraud that is likely to have an immaterial effect on the financial statements taken as whole. In this case the auditors should",
+    "choices": [
+      { "id": "a", "text": "Disclose the fraud to the appropriate level of management or to the audit committee." },
+      { "id": "b", "text": "Call the whistleblower hotline and name the suspected individuals." },
+      { "id": "c", "text": "Communicate with legal authorities as to the identity of the fraudsters." },
+      { "id": "d", "text": "Plan on additional audit procedures to determine the exact amount of the fraud." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-031",
+    "prompt": "An auditor suspects that a client's cashier is misappropriating cash receipts for personal use by lapping customer checks received in the mail. In attempting to uncover this embezzlement scheme, the auditor most likely would compare the",
+    "choices": [
+      { "id": "a", "text": "Dates uncollectible accounts are authorized to be written off with the dates the write-offs are actually recorded." },
+      { "id": "b", "text": "Daily cash summaries with the sums of the cash receipts journal entries." },
+      { "id": "c", "text": "Individual bank deposit slips with the details of the monthly bank statements." },
+      { "id": "d", "text": "Dates checks are deposited per bank statements with the dates remittance credits are recorded." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-032",
+    "prompt": "An auditor who discovers that client employees have committed an illegal act that has a material effect on the client's financial statements most likely would withdraw from the engagement if",
+    "choices": [
+      { "id": "a", "text": "The illegal act is a violation of generally accepted accounting principles." },
+      { "id": "b", "text": "The auditor has already assessed control risk at the maximum level." },
+      { "id": "c", "text": "The client does not take the remedial action that the auditor considers necessary." },
+      { "id": "d", "text": "The illegal act was committed during a prior year that was not audited." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-033",
+    "prompt": "Which of the following is least likely to be required on an audit?",
+    "choices": [
+      { "id": "a", "text": "Test appropriateness of journal entries and adjustment." },
+      { "id": "b", "text": "Review accounting estimates for biases." },
+      { "id": "c", "text": "Evaluate the business rationale for significant unusual transactions." },
+      { "id": "d", "text": "Make a legal determination of whether fraud has occurred." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-034",
+    "prompt": "After obtaining an understanding of internal control and assessing the risk of material misstatement, an auditor decided to perform tests of controls. The auditor most likely decided that",
+    "choices": [
+      { "id": "a", "text": "It would be efficient to perform tests of controls that would result in a reduction in planned substantive tests." },
+      { "id": "b", "text": "An increase in the assessed level of risk of material misstatement is justified for certain financial statement assertions." },
+      { "id": "c", "text": "Additional evidence to support a further reduction in the risk of material misstatement is not available." },
+      { "id": "d", "text": "There were many internal control weaknesses that could allow misstatements to enter the accounting records." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-035",
+    "prompt": "Which of the following actions should the auditor take in response to discovering a deviation from the prescribed control procedure?",
+    "choices": [
+      { "id": "a", "text": "Assume that the deviation is an isolated occurrence without audit significance." },
+      { "id": "b", "text": "Make inquiries to understand the potential consequence of the deviation." },
+      { "id": "c", "text": "Increase sample size of tests of controls." },
+      { "id": "d", "text": "Report the matter to the next higher level of authority within the entity." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-036",
+    "prompt": "In an audit of financial statements in accordance with auditing standards, an auditor is required to",
+    "choices": [
+      { "id": "a", "text": "Perform tests of controls to evaluate the effectiveness of the entity's internal control." },
+      { "id": "b", "text": "Search for significant deficiencies in the operation of internal control." },
+      { "id": "c", "text": "Document the auditor's understanding of the entity's internal control." },
+      { "id": "d", "text": "Determine whether controls are suitably designed to prevent or detect material misstatements." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-037",
+    "prompt": "In obtaining an understanding of an entity's internal control, an auditor is required to obtain knowledge about the: Operating effectiveness of controls | Design of controls",
+    "choices": [
+      { "id": "a", "text": "Yes | Yes" },
+      { "id": "b", "text": "No | Yes" },
+      { "id": "c", "text": "Yes | No" },
+      { "id": "d", "text": "No | No" }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-038",
+    "prompt": "Beta Company uses its sales invoices for posting perpetual inventory records. Inadequate controls over the invoicing function allow goods to be shipped that are not invoiced. The inadequate controls could cause an",
+    "choices": [
+      { "id": "a", "text": "Understatement of revenues, receivables, and inventory." },
+      { "id": "b", "text": "Understatement of revenues and receivables, and an overstatement of inventory." },
+      { "id": "c", "text": "Overstatement of revenues and receivables, and an understatement of inventory." },
+      { "id": "d", "text": "Overstatement of revenues, receivables, and inventory." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-039",
+    "prompt": "Which of the following types of evidence would an auditor most likely examine to determine whether controls are operating as designed?",
+    "choices": [
+      { "id": "a", "text": "Letters of representations corroborating inventory pricing." },
+      { "id": "b", "text": "Confirmations of receivables verifying account balances." },
+      { "id": "c", "text": "Client records documenting the use of computer programs." },
+      { "id": "d", "text": "Attorneys' responses to the auditor's inquiries." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-040",
+    "prompt": "The risk that an auditor will conclude, based on substantive tests, that a material misstatement does not exist in an account balance when, in fact, such misstatement does exist is referred to as",
+    "choices": [
+      { "id": "a", "text": "Control risk." },
+      { "id": "b", "text": "Detection risk." },
+      { "id": "c", "text": "Nonsampling risk." },
+      { "id": "d", "text": "Inherent risk." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-041",
+    "prompt": "As the acceptable level of detection risk decreases, the assurance directly provided from",
+    "choices": [
+      { "id": "a", "text": "Tests of controls should increase." },
+      { "id": "b", "text": "Tests of controls should decrease." },
+      { "id": "c", "text": "Substantive tests should increase." },
+      { "id": "d", "text": "Substantive tests should decrease." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-042",
+    "prompt": "The following audit evidence has been gathered relating to accuracy of wages and salaries of ABC: I. Proof of calculation performed by an audit team member; II. Written representation from the directors confirming accuracy; III. Verbal confirmation from the finance director confirming accuracy; IV. Recalculation by an internal audit team member. What is the order of reliability starting from the most reliable?",
+    "choices": [
+      { "id": "a", "text": "I, II, III, IV" },
+      { "id": "b", "text": "IV, I, II, III" },
+      { "id": "c", "text": "IV, I, III, II" },
+      { "id": "d", "text": "I, IV, II, III" }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-043",
+    "prompt": "In regard to an auditor's responsibility for professional skepticism, which of the following is an example of the best procedure to be performed to corroborate management's response to an auditor's inquiry?",
+    "choices": [
+      { "id": "a", "text": "Making inquiries of the entity's internal auditors who report to management." },
+      { "id": "b", "text": "Reviewing the general ledger to validate the amounts provided by management." },
+      { "id": "c", "text": "Obtaining confirmation from a third-party source." },
+      { "id": "d", "text": "Reviewing written internal correspondence that takes place among staff members within the entity." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-044",
+    "prompt": "Select whether the following are test of controls or substantive procedures in relation to inventory balance: I. Observe the client's staff to ensure they are following count instructions; II. Inspect the inventory for evidence of damage or obsolescence; III. Reperform the reconciliation from inventory counting to assess accuracy of quantities.",
+    "choices": [
+      { "id": "a", "text": "Test of Control, Substantive Test, Substantive Test" },
+      { "id": "b", "text": "Substantive Test, Substantive Test, Substantive Test" },
+      { "id": "c", "text": "Test of Control, Test of Control, Substantive Test" },
+      { "id": "d", "text": "Test of Control, Test of Control, Test of Control" }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-045",
+    "prompt": "What is the auditor's primary purpose in performing a retrospective review of management's significant accounting estimates reflected in the prior-year financial statements?",
+    "choices": [
+      { "id": "a", "text": "To indicate whether an adjustment should have been recorded." },
+      { "id": "b", "text": "To reevaluate professional judgments made by the auditor in the prior year." },
+      { "id": "c", "text": "To indicate whether a bias by management existed." },
+      { "id": "d", "text": "To indicate whether a significant deficiency existed." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-046",
+    "prompt": "Which of the following is the best example of a substantive test?",
+    "choices": [
+      { "id": "a", "text": "Comparison of signatures on checks to a list of authorized signers." },
+      { "id": "b", "text": "Examining a sample of cash disbursements to test whether expenses have been properly approved." },
+      { "id": "c", "text": "Confirmation of balances of accounts receivable." },
+      { "id": "d", "text": "Flowcharting of the client's cash receipts process." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-047",
+    "prompt": "Which of the following auditing procedures most likely would provide assurance about a manufacturing entity's inventory valuation?",
+    "choices": [
+      { "id": "a", "text": "Tracing test counts to the entity's inventory listing." },
+      { "id": "b", "text": "Obtaining confirmation of inventories pledged under loan agreements." },
+      { "id": "c", "text": "Reviewing shipping and receiving cutoff procedures for inventories." },
+      { "id": "d", "text": "Testing the entity's computation of standard overhead rates." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-048",
+    "prompt": "Analysis of which account is least likely to reveal evidence relating to recorded retirement of equipment?",
+    "choices": [
+      { "id": "a", "text": "Insurance expense." },
+      { "id": "b", "text": "Accumulated depreciation." },
+      { "id": "c", "text": "Purchase returns and allowances." },
+      { "id": "d", "text": "Property, plant, and equipment." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-049",
+    "prompt": "Management engaged an actuary to calculate the year-end assets and liabilities balances of its employee pension plan. The actuary's report provided year-end balances that were consistent with the balances reported in the year-end balance sheet. In this situation, an auditor would most appropriately",
+    "choices": [
+      { "id": "a", "text": "Evaluate the nature and level of expertise of the actuary." },
+      { "id": "b", "text": "Recalculate the year-end pension plan assets and liabilities balances using original source data." },
+      { "id": "c", "text": "Conclude that the pension plan assets and liabilities accounts are free from material misstatements." },
+      { "id": "d", "text": "Prepare an agreement with the actuary detailing the nature, scope, and objective of the work." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-050",
+    "prompt": "Which of the following statements best describes a positive request for confirmation of an accounts receivable balance?",
+    "choices": [
+      { "id": "a", "text": "The customer will be asked to indicate to the auditor the customer balance in the account." },
+      { "id": "b", "text": "The customer will be asked to indicate the balance only if it is positive or greater than zero." },
+      { "id": "c", "text": "The customer will be asked to respond only if the balance indicated in the request is incorrect." },
+      { "id": "d", "text": "The customer will be asked to inform the auditor whether the balance indicated is correct and to respond regardless of whether such stated balance is correct or not." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-051",
+    "prompt": "Which of the following procedures would an auditor most likely perform in searching for unrecorded liabilities?",
+    "choices": [
+      { "id": "a", "text": "Trace a sample of accounts payable entries recorded just before year-end to the unmatched receiving report file." },
+      { "id": "b", "text": "Vouch a sample of cash disbursements recorded just after year-end to receiving reports and vendor invoices." },
+      { "id": "c", "text": "Compare a sample of purchase orders issued just after year-end with the year-end accounts payable trial balance." },
+      { "id": "d", "text": "Scan the cash disbursements entries recorded just before year-end for indications of unusual transactions." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-052",
+    "prompt": "In testing the existence assertion for an asset, an auditor ordinarily works from the",
+    "choices": [
+      { "id": "a", "text": "Potentially unrecorded items to the financial statements." },
+      { "id": "b", "text": "Accounting records to the supporting evidence." },
+      { "id": "c", "text": "Financial statements to the potentially unrecorded items." },
+      { "id": "d", "text": "Supporting evidence to the accounting records." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-053",
+    "prompt": "When obtaining evidence regarding litigation against a client, the CPA will be least interested in determining?",
+    "choices": [
+      { "id": "a", "text": "The probability of an unfavorable outcome." },
+      { "id": "b", "text": "An estimate of the potential loss." },
+      { "id": "c", "text": "An estimate of when the matter will be resolved." },
+      { "id": "d", "text": "The period in which the underlying cause of the litigation occurred." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-054",
+    "prompt": "The objective of tests of details of transactions performed as substantive tests is to",
+    "choices": [
+      { "id": "a", "text": "Comply with generally accepted auditing standards." },
+      { "id": "b", "text": "Attain assurance about the reliability of the accounting system." },
+      { "id": "c", "text": "Detect material misstatements in the financial statements." },
+      { "id": "d", "text": "Evaluate whether management's policies and procedures are effective." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-055",
+    "prompt": "In determining whether transactions have been recorded, the direction of the audit testing should be from the",
+    "choices": [
+      { "id": "a", "text": "Adjusted trial balance." },
+      { "id": "b", "text": "General journal entries." },
+      { "id": "c", "text": "Original source documents." },
+      { "id": "d", "text": "General ledger." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-056",
+    "prompt": "An auditor's working papers serve mainly to",
+    "choices": [
+      { "id": "a", "text": "Document the level of independence maintained by the auditor." },
+      { "id": "b", "text": "Satisfy the auditor's responsibilities concerning the Code of Professional Conduct." },
+      { "id": "c", "text": "Monitor the effectiveness of the CPA firm's quality management procedures." },
+      { "id": "d", "text": "Provide the principal support for the auditor's report." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-057",
+    "prompt": "Auditors may identify conditions during fieldwork that change or support a judgment about the initial assessment of fraud risks. Which of the following is not a condition which should alert an auditor that the initial assessment should be changed?",
+    "choices": [
+      { "id": "a", "text": "Discrepancies in the accounting records." },
+      { "id": "b", "text": "The auditor's lack of independence." },
+      { "id": "c", "text": "Unusual relationships between the auditor and management." },
+      { "id": "d", "text": "Missing or conflicting evidence." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-058",
+    "prompt": "While testing a sample of an audit client's bank reconciliations during the year under audit, an auditor notices that several immaterial deposits in transit did not clear the bank in a timely manner. The auditor suspects there may be fraud. Which of the following audit responses is most appropriate in this situation?",
+    "choices": [
+      { "id": "a", "text": "The auditor should report the finding to the appropriate level of management immediately." },
+      { "id": "b", "text": "Because the findings are not material, the auditor should project the errors to the population and consider the materiality of the projected misstatement in the auditor's concluding procedures." },
+      { "id": "c", "text": "The auditor should focus on material misstatements and not consider these immaterial findings or potential errors further." },
+      { "id": "d", "text": "The auditor should consider the implications on the integrity of management or employees and the possible effect on other aspects of the audit." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-059",
+    "prompt": "Auditors may identify conditions during fieldwork that change or support a judgment about the initial assessment of fraud risks. Which of the following is not a condition which should alert an auditor that the initial assessment should be changed?",
+    "choices": [
+      { "id": "a", "text": "Preliminary assessment of control risk has been modified." },
+      { "id": "b", "text": "Discrepancies in the accounting records." },
+      { "id": "c", "text": "Unusual relationships between the auditor and management." },
+      { "id": "d", "text": "Missing or conflicting evidence." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-060",
+    "prompt": "The objective of tests of details of transactions performed as tests of controls is to",
+    "choices": [
+      { "id": "a", "text": "Monitor the design and use of entity documents such as prenumbered shipping forms." },
+      { "id": "b", "text": "Determine whether controls have been implemented." },
+      { "id": "c", "text": "Detect material misstatements in the account balances of the financial statements." },
+      { "id": "d", "text": "Evaluate whether controls operated effectively." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-061",
+    "prompt": "Which of the following factors should prompt an auditor to seek a larger sample size for tests of details?",
+    "choices": [
+      { "id": "a", "text": "High assessed level of control risk and high assessed level of inherent risk." },
+      { "id": "b", "text": "Method of sampling." },
+      { "id": "c", "text": "Number of items in the population to be tested." },
+      { "id": "d", "text": "Larger measure of tolerable misstatement and low assessed level of control risk." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-062",
+    "prompt": "When an auditor uses statistical sampling techniques to perform a test of controls related to an assertion, factors that influence the sample size include",
+    "choices": [
+      { "id": "a", "text": "The tolerable misstatement." },
+      { "id": "b", "text": "The expected rate of deviation of the population to be tested." },
+      { "id": "c", "text": "The assessment of the risk of material misstatement." },
+      { "id": "d", "text": "The assurance obtained from other substantive procedures directed at the same assertion." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-063",
+    "prompt": "Auditors who prefer statistical sampling to non-statistical sampling may do so because statistical sampling helps the auditor",
+    "choices": [
+      { "id": "a", "text": "Minimize the failure to detect errors and irregularities." },
+      { "id": "b", "text": "Eliminate subjectivity in the evaluation of sampling results." },
+      { "id": "c", "text": "Measure the sufficiency of the evidential matter obtained." },
+      { "id": "d", "text": "Reduce the level of tolerable error to a relatively low amount." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-064",
+    "prompt": "Alpha risk in statistical sampling is",
+    "choices": [
+      { "id": "a", "text": "Related to non-sampling risk." },
+      { "id": "b", "text": "The risk of deciding a book balance is materially misstated when it is fairly stated." },
+      { "id": "c", "text": "The risk that a material misstatement will occur in a financial statement assertion and the audit will not detect it." },
+      { "id": "d", "text": "The risk of selecting a sample that is too small." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-065",
+    "prompt": "Which of the following would form part of the auditor's overall review of the financial statements? I. Establishing whether the preconditions for an audit are present; II. Assessing whether information obtained is adequately reflected; III. Performing detailed review of working papers; IV. Reviewing adequacy of disclosure of accounting policies.",
+    "choices": [
+      { "id": "a", "text": "I and II" },
+      { "id": "b", "text": "I and III" },
+      { "id": "c", "text": "II and IV" },
+      { "id": "d", "text": "III and IV" }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-066",
+    "prompt": "During an audit, the auditor sent the client's attorney a letter of inquiry for any pending litigation or unasserted claims. The attorney returned the letter, indicating that the attorney would not respond to the inquiry. Under these circumstances the auditor most likely would",
+    "choices": [
+      { "id": "a", "text": "Place increased reliance on information obtained from management." },
+      { "id": "b", "text": "Obtain information concerning contingency guarantees from bank confirmations." },
+      { "id": "c", "text": "Increase tests of controls concerning the related liability account." },
+      { "id": "d", "text": "Consider the impact of a scope limitation." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-067",
+    "prompt": "An auditor is required to give special consideration to related party transactions because they",
+    "choices": [
+      { "id": "a", "text": "Are generally required to be accounted for on a basis different from the basis that would be appropriate if the entities were not related." },
+      { "id": "b", "text": "Usually represent a significant source of revenue and expense for the two related entities." },
+      { "id": "c", "text": "Could cause the financial statements to fail to achieve fair presentation." },
+      { "id": "d", "text": "Are not usually conducted in the normal course of business." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-068",
+    "prompt": "Subsequent events procedures should be performed between the date of the financial statements and which date?",
+    "choices": [
+      { "id": "a", "text": "The date the audit work for subsequent events is performed." },
+      { "id": "b", "text": "The date of the auditor's report." },
+      { "id": "c", "text": "The date the financial statements are issued." },
+      { "id": "d", "text": "The date of approval of financial statements by management." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-069",
+    "prompt": "When considering the use of management's written representations as audit evidence about the completeness assertion, an auditor should understand that such representations",
+    "choices": [
+      { "id": "a", "text": "Are not part of the audit evidence considered to support the assertion." },
+      { "id": "b", "text": "Replace a low assessed level of control risk as audit evidence to support the assertion." },
+      { "id": "c", "text": "Complement, but not replace, substantive tests designed to support the assertion." },
+      { "id": "d", "text": "Constitute sufficient appropriate audit evidence to support the assertion when considered in combination with a sufficiently low assessed level of control risk." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-070",
+    "prompt": "For which of the following matters should an auditor obtain written management representations?",
+    "choices": [
+      { "id": "a", "text": "Management's cost-benefit justifications for not correcting internal control weaknesses." },
+      { "id": "b", "text": "Management's knowledge of future plans that may affect the price of the entity's stock." },
+      { "id": "c", "text": "Management's compliance with contractual agreements that may affect the financial statements." },
+      { "id": "d", "text": "Management's acknowledgment of its responsibility for employees' violations of laws." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-071",
+    "prompt": "After considering an entity's negative trends and financial difficulties, an auditor has substantial doubt about the entity's ability to continue as a going concern. The auditor's considerations relating to management's plans for dealing with the adverse effects of these conditions most likely would include management's plans to",
+    "choices": [
+      { "id": "a", "text": "Purchase assets formerly leased." },
+      { "id": "b", "text": "Increase current dividend distributions." },
+      { "id": "c", "text": "Reduce existing lines of credit." },
+      { "id": "d", "text": "Increase ownership equity." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-072",
+    "prompt": "Which of the following statements is correct concerning the use of negative confirmation requests?",
+    "choices": [
+      { "id": "a", "text": "Unreturned negative confirmation requests indicate that alternative procedures are necessary." },
+      { "id": "b", "text": "Negative confirmation requests are effective when detection risk is low." },
+      { "id": "c", "text": "Unreturned negative confirmation requests rarely provide significant explicit evidence." },
+      { "id": "d", "text": "Negative confirmation requests are effective when understatements of account balances are suspected." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-073",
+    "prompt": "Evaluate the following statements: I. The audit engagement partner will review all working papers on the audit file before issuing an opinion. II. If working papers have been reviewed there is no quality issue arising from the lack of documentation. III. All working papers should be signed by the person who prepared them. IV. All team members' work should be reviewed by someone more senior than the preparer.",
+    "choices": [
+      { "id": "a", "text": "All statements are correct." },
+      { "id": "b", "text": "All statements are incorrect." },
+      { "id": "c", "text": "Only two statements are correct." },
+      { "id": "d", "text": "Only one statement is correct." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-074",
+    "prompt": "Which of the following is least likely to be a factor in the auditor's decision about the extent of the documentation of a particular audit area?",
+    "choices": [
+      { "id": "a", "text": "The extent of the judgment involved in performing the procedures." },
+      { "id": "b", "text": "The risk of material misstatement." },
+      { "id": "c", "text": "Whether or not the client has an internal audit function." },
+      { "id": "d", "text": "The nature and extent of exceptions identified." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-075",
+    "prompt": "Analytical procedures used in the overall review stage of an audit generally include",
+    "choices": [
+      { "id": "a", "text": "Gathering evidence concerning account balances that have not changed from the prior year." },
+      { "id": "b", "text": "Retesting control procedures that appeared to be ineffective during the assessment of control risk." },
+      { "id": "c", "text": "Performing tests of transactions to corroborate management's financial statement assertions." },
+      { "id": "d", "text": "Considering unusual or unexpected account balances that were not previously identified." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-076",
+    "prompt": "Written representations are required by the IAS in respect of subject specific areas. Which of the following results require a subject specific written representation to be obtained?",
+    "choices": [
+      { "id": "a", "text": "Fraud and error" },
+      { "id": "b", "text": "Laws and regulations" },
+      { "id": "c", "text": "Analytical procedures" },
+      { "id": "d", "text": "Subsequent events" }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-077",
+    "prompt": "Which of the following statements is a basic element of the auditor's standard report?",
+    "choices": [
+      { "id": "a", "text": "The auditor evaluated the overall internal control." },
+      { "id": "b", "text": "An audit includes assessing significant estimates made by management." },
+      { "id": "c", "text": "The financial statements are consistent with those of the prior period." },
+      { "id": "d", "text": "The disclosures provide reasonable assurance that the financial statements are free of material misstatement." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-078",
+    "prompt": "An auditor's responsibility to express an opinion on the financial statements is",
+    "choices": [
+      { "id": "a", "text": "Implicitly represented in the auditor's standard report." },
+      { "id": "b", "text": "Explicitly represented in the opening paragraph of the auditor's standard report." },
+      { "id": "c", "text": "Explicitly represented in the opinion paragraph of the auditor's standard report." },
+      { "id": "d", "text": "Explicitly represented in the scope paragraph of the auditor's standard report." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-079",
+    "prompt": "When issuing an unqualified opinion, the auditor who evaluates the audit findings should be satisfied that the",
+    "choices": [
+      { "id": "a", "text": "Amount of known misstatement is documented in the management representation letter." },
+      { "id": "b", "text": "Amount of known misstatement is acknowledged and recorded by the client." },
+      { "id": "c", "text": "Estimate of the total likely misstatement includes the adjusting entries already recorded by the client." },
+      { "id": "d", "text": "Estimate of the total likely misstatement is less than a material amount." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-080",
+    "prompt": "Two of the following are reasons why the auditor would need to modify the auditor's opinion? I. Material inconsistency between audited financial statements and other information; II. Draw attention to a matter fundamental to users' understanding; III. Financial statements as a whole are not free from material misstatements; IV. Unable to obtain sufficient appropriate evidence; V. Wish to restrict reliance by third parties.",
+    "choices": [
+      { "id": "a", "text": "III, IV" },
+      { "id": "b", "text": "I, III, IV" },
+      { "id": "c", "text": "I, II, III, IV" },
+      { "id": "d", "text": "I, II, III, IV, V" }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-081",
+    "prompt": "If comparative information is presented in the financial statements and the audit client asks the auditor to express an opinion on all periods presented, then the auditor should first",
+    "choices": [
+      { "id": "a", "text": "Consider whether the information included for the prior period contains sufficient detail to constitute a fair presentation in accordance with the applicable financial reporting framework." },
+      { "id": "b", "text": "Request additional written representations from management identifying the substantive reasons that the entity wants to have an opinion including the prior-period information." },
+      { "id": "c", "text": "Consider including an additional paragraph in the audit report disclosing the request by management for the auditor to express an opinion including the prior-period information." },
+      { "id": "d", "text": "Issue a separate audit report on the prior-period information with an appropriate expression of opinion." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-082",
+    "prompt": "A client is presenting comparative (two-year) financial statements. Which of the following is correct concerning reporting responsibilities of a continuing auditor?",
+    "choices": [
+      { "id": "a", "text": "The auditor should issue one audit report that is on both presented years." },
+      { "id": "b", "text": "The auditor should issue two audit reports, one on each year." },
+      { "id": "c", "text": "The auditor should issue one audit report, but only on the most recent year." },
+      { "id": "d", "text": "The auditor may issue either one audit report on both presented years, or two audit reports, one on each year." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-083",
+    "prompt": "Which of the following draft extracts for the auditor's report do not contain the correct wordings as per PSA 700? S1: we conducted our audit in accordance with Philippine Standards on Auditing applicable to this audit. S2: Our objectives are to obtain maximum assurance about whether the financial statements as a whole are free from material misstatements. S3: Misstatements can arise from deliberate manipulation by management or error.",
+    "choices": [
+      { "id": "a", "text": "S1 only" },
+      { "id": "b", "text": "S2 and S3 only" },
+      { "id": "c", "text": "S3 only" },
+      { "id": "d", "text": "S1, S2, S3" }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-084",
+    "prompt": "Which of the following procedures would an auditor most appropriately perform to provide an opinion on whether supplementary information presented with financial statements is fairly stated in relation to the financial statements?",
+    "choices": [
+      { "id": "a", "text": "Evaluate the appropriateness, but not the completeness, of the supplementary information." },
+      { "id": "b", "text": "Inquire of management about the purpose of the supplementary information and the criteria used by management to prepare the information." },
+      { "id": "c", "text": "Obtain verbal representations from management about any significant assumptions or interpretations underlying the measurement of the supplementary information." },
+      { "id": "d", "text": "Obtain verbal representations from management stating that it acknowledges its responsibility for the presentation of the supplementary information." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-085",
+    "prompt": "An auditor intends to reference the work of an auditor's external specialist in the audit report because the reference was relevant to understanding a modification to the auditor's opinion. In this case, the auditor should indicate in the report that",
+    "choices": [
+      { "id": "a", "text": "The specialist was responsible for evaluating an item material to the financial statements." },
+      { "id": "b", "text": "The reference to the auditor's external specialist does not reduce the auditor's responsibility for that opinion." },
+      { "id": "c", "text": "The specialist had been employed by the client." },
+      { "id": "d", "text": "The auditor planned and evaluated the adequacy of the specialist's work." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-086",
+    "prompt": "When an auditor reports on compliance with contractual agreements in a separate report in connection with an audit of financial statements, the report should include a",
+    "choices": [
+      { "id": "a", "text": "Reference to specific covenants of the contractual agreements." },
+      { "id": "b", "text": "Reference to the specific date on which sufficient documentation regarding compliance was obtained." },
+      { "id": "c", "text": "Statement that the audit was directed primarily toward obtaining knowledge regarding compliance." },
+      { "id": "d", "text": "Statement that no financial statement audit was performed." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-087",
+    "prompt": "An audit report contains the following paragraph: 'Since the company did not take physical inventories and we were not able to apply auditing procedures to satisfy ourselves as to inventory quantities and the cost of property and equipment, the scope of our work was not sufficient to enable us to express, and we do not express, an opinion on these financial statements.' This paragraph illustrates a (an)",
+    "choices": [
+      { "id": "a", "text": "Disclaimer of opinion due to scope restrictions." },
+      { "id": "b", "text": "Disclaimer of opinion due to uncertainty." },
+      { "id": "c", "text": "Adverse audit opinion." },
+      { "id": "d", "text": "Audit opinion qualified for material scope limitation." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-088",
+    "prompt": "CPA Firm A has performed most of the audit of Consolidated Company's financial statements and qualifies as the principal auditor. CPA Firm B did the remainder of the work. Firm A wishes to assume full responsibility for Firm B's work. Which of the following statements is CORRECT?",
+    "choices": [
+      { "id": "a", "text": "In such circumstances, when appropriate requirements have been met, Firm A should issue an unqualified opinion on the financial statements but should make appropriate reference to Firm B in the audit report." },
+      { "id": "b", "text": "In such circumstances, when appropriate requirements have been met, Firm A should issue an unqualified opinion on the financial statements." },
+      { "id": "c", "text": "Such assumption of responsibility violates the profession's standards." },
+      { "id": "d", "text": "CPA Firm A should normally qualify its audit report on the basis of the scope limitation involved when another CPA firm participates." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-089",
+    "prompt": "Which of the following material events occurring subsequent to the December 31, 2024, reporting date would not ordinarily result in an adjustment to the financial statements before they are issued on March 2, 2025?",
+    "choices": [
+      { "id": "a", "text": "Write-off of a receivable from a debtor who had suffered from deteriorating financial condition for the past 6 years. The debtor filed for bankruptcy on January 23, 2025." },
+      { "id": "b", "text": "Acquisition of a subsidiary on January 23, 2025. Negotiations had begun in December 2024." },
+      { "id": "c", "text": "Settlement of extended litigation on January 23, 2025 in excess of the recorded year-end liability." },
+      { "id": "d", "text": "A 3 for 5 reverse stock split consummated on January 23, 2025." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-090",
+    "prompt": "On February 25, a CPA issued an auditor's report expressing an unqualified opinion on financial statements for the year ended January 31. On March 2, the CPA learned that on February 11, the entity incurred a material loss on an uncollectible trade receivable as a result of the deteriorating financial condition of the entity's principal customer that led to the customer's bankruptcy. Management then refused to adjust the financial statements for this subsequent event. The CPA determined that the information is reliable and that there are creditors currently relying on the financial statements. The CPA's next course of action most likely would be to",
+    "choices": [
+      { "id": "a", "text": "Issue revised financial statements and distribute them to each creditor known to be relying on the financial statements." },
+      { "id": "b", "text": "Notify each member of the entity's board of directors about management's refusal to adjust the financial statements." },
+      { "id": "c", "text": "Issue a revised auditor's report and distribute it to each creditor known to be relying on the financial statements." },
+      { "id": "d", "text": "Notify the entity's creditors that the financial statements and the related auditor's report should no longer be relied upon." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-091",
+    "prompt": "In which of the following situations would an auditor ordinarily choose between expressing a qualified opinion or an adverse opinion?",
+    "choices": [
+      { "id": "a", "text": "Conditions that cause the auditor to have substantial doubt about the entity's ability to continue as a going concern are inadequately disclosed." },
+      { "id": "b", "text": "The auditor is unable to apply necessary procedures concerning an investor's share of an investee's earnings recognized on the equity method." },
+      { "id": "c", "text": "The auditor did not observe the entity's physical inventory and is unable to become satisfied about its balance by other auditing procedures." },
+      { "id": "d", "text": "There has been a change in accounting principles that has a material effect on the comparability of the entity's financial statements." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-092",
+    "prompt": "An auditor's report on financial statements prepared in accordance with another comprehensive basis of accounting should include all of the following except",
+    "choices": [
+      { "id": "a", "text": "An opinion as to whether the basis of accounting used is appropriate under the circumstances." },
+      { "id": "b", "text": "A statement that the basis of presentation is a comprehensive basis of accounting other than generally accepted accounting principles." },
+      { "id": "c", "text": "Reference to the note to the financial statements that describes the basis of presentation." },
+      { "id": "d", "text": "An opinion as to whether the financial statements are presented fairly in conformity with the comprehensive basis of accounting." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-093",
+    "prompt": "Which of the following statements best describes the auditor's responsibilities in respect of other information?",
+    "choices": [
+      { "id": "a", "text": "The auditor must audit the other information and obtain sufficient appropriate evidence that the other information is true and fair." },
+      { "id": "b", "text": "The auditor must read the other information to ensure it is consistent with the financial statements and their knowledge of the entity obtained during the audit." },
+      { "id": "c", "text": "Other information only needs to be considered if it is made available at the start of the audit with the draft financial statements." },
+      { "id": "d", "text": "The auditor provides limited assurance over the completeness and accuracy of the other information." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-094",
+    "prompt": "When audited financial statements are presented in a client's document containing other information, the auditor should",
+    "choices": [
+      { "id": "a", "text": "Read the other information to determine that it is consistent with the audited financial statements." },
+      { "id": "b", "text": "Perform inquiry and analytical procedures to ascertain whether the other information is reasonable." },
+      { "id": "c", "text": "Add an explanatory paragraph to the auditor's report without changing the opinion on the financial statements." },
+      { "id": "d", "text": "Perform the appropriate substantive auditing procedures to corroborate the other information." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-095",
+    "prompt": "Harris, CPA, has been asked to audit and report on the balance sheet of Fox Co. but not on the statements of income, retained earnings, or cash flows. Harris will have access to all information underlying the basic financial statements. Under these circumstances, Harris may",
+    "choices": [
+      { "id": "a", "text": "Not accept the engagement because it would be tantamount to rendering a piecemeal opinion." },
+      { "id": "b", "text": "Accept the engagement because such engagements merely involve limited reporting objectives." },
+      { "id": "c", "text": "Accept the engagement but should disclaim an opinion because of an inability to apply the procedures considered necessary." },
+      { "id": "d", "text": "Not accept the engagement because it would constitute a violation of the profession's ethical standards." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-096",
+    "prompt": "Which of the following statements best distinguishes a forecast from a projection?",
+    "choices": [
+      { "id": "a", "text": "A forecast contains one or more hypothetical assumptions, whereas a projection reflects conditions expected to exist." },
+      { "id": "b", "text": "A projection is appropriate for general distribution to third parties, whereas a forecast is more tentative and should be restricted to those parties with whom the client is negotiating directly." },
+      { "id": "c", "text": "The CPA may review a financial forecast, but may only compile a projection." },
+      { "id": "d", "text": "A forecast reflects conditions expected to exist, whereas a projection presents financial position, results of operations, and cash flows given one or more hypothetical assumptions." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-097",
+    "prompt": "Select whether the following explanations are valid as to why audit risk increases when auditing around the computer: S1: the actual computer files and programs are not tested therefore the auditor has no direct evidence that the programs are working as expected; S2: where errors are found in reconciling inputs to outputs it may be difficult or even impossible to determine why those errors occurred.",
+    "choices": [
+      { "id": "a", "text": "Invalid, Valid" },
+      { "id": "b", "text": "Both valid" },
+      { "id": "c", "text": "Valid, Invalid" },
+      { "id": "d", "text": "Both invalid" }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-098",
+    "prompt": "Using test data, an auditor has processed both normal and atypical transactions through a computerized payroll system to test calculation of regular and overtime hours. Sufficient competent evidence of controls exists if:",
+    "choices": [
+      { "id": "a", "text": "Test data results are compared to predetermined expectations." },
+      { "id": "b", "text": "Exceptions are mapped to identify the control logic executed." },
+      { "id": "c", "text": "No other tests are performed." },
+      { "id": "d", "text": "Test result data are tagged to instigate creation of an audit data file." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-099",
+    "prompt": "A large organization relies on comprehensive user controls over stand-alone microcomputer usage and wishes to gain some assurance as to the control structure over microcomputer-based processing. Which of the following audit strategies is most appropriate?",
+    "choices": [
+      { "id": "a", "text": "Perform comprehensive tests of software licensing procedures." },
+      { "id": "b", "text": "Perform edit tests of data entered into key applications." },
+      { "id": "c", "text": "Perform tests of user controls." },
+      { "id": "d", "text": "Perform substantive tests of executed program logic." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-100",
+    "prompt": "Which of the following is not a benefit of using information technology in solving audit problems?",
+    "choices": [
+      { "id": "a", "text": "It helps reduce audit risk." },
+      { "id": "b", "text": "It improves the auditor's judgment." },
+      { "id": "c", "text": "It improves the timeliness of the audit." },
+      { "id": "d", "text": "It increases audit efficiency." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-101",
+    "prompt": "When an auditor tests a computerized accounting system, which of the following is true of the test data approach?",
+    "choices": [
+      { "id": "a", "text": "Several transactions of each type must be tested." },
+      { "id": "b", "text": "Test data must consist of all possible valid and invalid conditions." },
+      { "id": "c", "text": "The program tested is different from the program used throughout the year by the client." },
+      { "id": "d", "text": "Test data are processed by the client's computer programs under the auditor's control." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-102",
+    "prompt": "Auditing by testing the input and output of a computer system instead of the computer program itself will",
+    "choices": [
+      { "id": "a", "text": "Detect all program errors, regardless of the nature of the output." },
+      { "id": "b", "text": "Provide the auditor with the same type of evidence as tests of application controls." },
+      { "id": "c", "text": "Not detect program errors which do not show up in the output sampled." },
+      { "id": "d", "text": "Not provide the auditor with confidence in the results of the auditing procedures." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-103",
+    "prompt": "An accountant does not express a report of findings, an opinion, a conclusion, or any form of assurance on the financial statements for which of the following engagements?",
+    "choices": [
+      { "id": "a", "text": "Review of financial statements." },
+      { "id": "b", "text": "Agreed-upon procedures." },
+      { "id": "c", "text": "Examination of prospective financial information." },
+      { "id": "d", "text": "Compilation of financial statements." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-104",
+    "prompt": "When performing an audit of a government entity under applicable government auditing standards, an auditor",
+    "choices": [
+      { "id": "a", "text": "Makes decisions to ensure that statements are not materially misstated." },
+      { "id": "b", "text": "Is primarily responsible to the Chairperson of the Commission on Audit." },
+      { "id": "c", "text": "May use a specialist with required professional skills, if needed, at the auditor's discretion." },
+      { "id": "d", "text": "May use the information obtained in any way the auditor deems appropriate." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-105",
+    "prompt": "In an audit of financial statements in accordance with generally accepted auditing standards, an auditor is required to",
+    "choices": [
+      { "id": "a", "text": "Determine whether controls are suitably designed to prevent or detect material misstatements." },
+      { "id": "b", "text": "Search for significant deficiencies in the operation of internal control." },
+      { "id": "c", "text": "Document the auditor's understanding of the entity's internal control." },
+      { "id": "d", "text": "Perform tests of controls to evaluate the effectiveness of the entity's internal control." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-106",
+    "prompt": "Engagement quality reviews form part of the audit firm's quality management system to ensure the audit is performed to a high standard. Which of the following statements is false in respect of engagement quality reviews?",
+    "choices": [
+      { "id": "a", "text": "An engagement quality review involves a discussion of the significant judgments arising during the audit." },
+      { "id": "b", "text": "An engagement quality review should be documented in the audit file." },
+      { "id": "c", "text": "Frequent communication between the engagement quality reviewer and auditing team enhances the effectiveness of an engagement quality review." },
+      { "id": "d", "text": "An engagement quality review can be performed after the auditor's report has been issued." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-107",
+    "prompt": "One purpose of establishing quality management policies and procedures for acceptance and continuance of client relationships and specific engagements is to",
+    "choices": [
+      { "id": "a", "text": "Identify noncompliance with aspects of contractual agreements that affect the financial statements." },
+      { "id": "b", "text": "Provide reasonable assurance that personnel will be adequately trained to fulfill their assigned responsibilities." },
+      { "id": "c", "text": "Undertake engagements only that the accounting firm is competent to perform." },
+      { "id": "d", "text": "Monitor significant deficiencies in the design and operation of the client's internal control." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-108",
+    "prompt": "Within the context of quality management, a primary purpose of the engagement performance element is to help ensure that",
+    "choices": [
+      { "id": "a", "text": "CPA firm personnel have adequate technical training." },
+      { "id": "b", "text": "CPA firm personnel comply with relevant ethical requirements." },
+      { "id": "c", "text": "The CPA firm undertakes only those engagements it is competent to perform." },
+      { "id": "d", "text": "Engagements are adequately supervised and reviewed." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-109",
+    "prompt": "PSQM 2 requires firms to establish policies or procedures that specify cooling-off, as a condition for eligibility, before the engagement partner can assume the role of engagement quality reviewer. How long before can an engagement partner assume the role of quality reviewer?",
+    "choices": [
+      { "id": "a", "text": "Between one to two years." },
+      { "id": "b", "text": "Less than two years." },
+      { "id": "c", "text": "Two years or a longer period if required by relevant ethical requirements." },
+      { "id": "d", "text": "Depends on the policy established by the person with overall responsibility for the system of quality management." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-110",
+    "prompt": "The Philippine Standard on Quality Management deals with a firm's responsibilities to design, implement and operate a system of quality management. The PSQM shall apply to which of the following: I. Audit of financial statements; II. Review of financial statements; III. Other assurance engagements; IV. Related services engagements.",
+    "choices": [
+      { "id": "a", "text": "I and II" },
+      { "id": "b", "text": "I and III" },
+      { "id": "c", "text": "I, II and III" },
+      { "id": "d", "text": "I, II, III and IV" }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-111",
+    "prompt": "Under the ISQM, a firm shall include inspection of completed engagements designed to provide evidence of compliance by engagement teams with the firm's system of quality management. Which best describes the statement above?",
+    "choices": [
+      { "id": "a", "text": "Quality Review" },
+      { "id": "b", "text": "Inspection" },
+      { "id": "c", "text": "Monitoring" },
+      { "id": "d", "text": "Quality control" }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-112",
+    "prompt": "A public accounting firm proposed to a potential audit client that 20% of the audit fee will be based on the profit after tax of the company. In relation to the said proposal, which of the following is true?",
+    "choices": [
+      { "id": "a", "text": "This will lead to a fee dependency which is a self-interest threat. The proposal should be rejected." },
+      { "id": "b", "text": "This is a contingent fee arrangement which creates a self-interest threat. The proposal should be rejected." },
+      { "id": "c", "text": "This is a contingent fee arrangement which creates an advocacy threat; the proposal should only be accepted if no more than 15% of the audit fee is based on profit before tax." },
+      { "id": "d", "text": "This will lead to a fee dependency which is a self-interest threat. The proposal should only be accepted if no more than 15% of the audit fee is based on profit before tax." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-113",
+    "prompt": "On August 1, year 1, the former controller of a company becomes an audit manager with a public accounting firm. The new audit manager had been employed at the company for the past 10 years, resigned from the position on July 15, year 1, and completed disassociation from the company on September 1, year 1. In which, if any, of the following attest engagements involving the company could this manager participate without affecting the accounting firm's independence?",
+    "choices": [
+      { "id": "a", "text": "Because of the former position as controller of the company, the new audit manager cannot participate directly in any attest engagements involving the company." },
+      { "id": "b", "text": "A first-time audit for the public accounting firm, awarded October 15, year 1, of the comparative financial statements covering January 1, year 1, through December 31, year 1, and January 1, year 2, through December 31, year 2." },
+      { "id": "c", "text": "A first-time audit for the public accounting firm, awarded on September 15, year 1, of financial statements covering November 1, year 1, through October 31, year 2." },
+      { "id": "d", "text": "A repeat audit for the public accounting firm, awarded on August 15, year 1, of financial statements covering August 1, year 1, through July 31, year 2." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-114",
+    "prompt": "In relation to offering and accepting of inducements when performing professional services, a professional shall take into consideration the provision of the Code. Which of the following statements is/are true? I. An inducement is an object, situation, or action that is used to influence another individual's behavior, with the sole intent to improperly influence that individual's behavior. II. The offering or accepting of inducements that is not prohibited by laws and regulations might still create threats to compliance with the fundamental principles.",
+    "choices": [
+      { "id": "a", "text": "Both statements" },
+      { "id": "b", "text": "Neither I nor II" },
+      { "id": "c", "text": "Statement I" },
+      { "id": "d", "text": "Statement II" }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-115",
+    "prompt": "S1: When encountering such non-compliance or suspected non-compliance, the accountant shall obtain an understanding of those legal or regulatory provisions and comply with them, including any requirement to report the matter to an appropriate authority and any prohibition on alerting the client. S2: A self-interest or intimidation threat to compliance with the principles of integrity and professional behavior is created when a professional accountant becomes aware of noncompliance or suspected noncompliance with laws and regulations.",
+    "choices": [
+      { "id": "a", "text": "False, False" },
+      { "id": "b", "text": "False, True" },
+      { "id": "c", "text": "True, False" },
+      { "id": "d", "text": "True, True" }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-116",
+    "prompt": "In which of the following circumstances would a CPA be bound by ethics to refrain from disclosing any confidential information about a client?",
+    "choices": [
+      { "id": "a", "text": "An inquiry by a disciplinary body of a CPA society requests confidential client information." },
+      { "id": "b", "text": "Confidential client information is made available as part of a quality review of the CPA's practice by a peer review team authorized by law or regulation." },
+      { "id": "c", "text": "A major stockholder of a client company seeks accounting information from the CPA after management declined to disclose the requested information." },
+      { "id": "d", "text": "The CPA is issued a summons enforceable by a court order which orders the CPA to present confidential information." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-117",
+    "prompt": "Independence is linked to the principles of",
+    "choices": [
+      { "id": "a", "text": "Objectivity, integrity and confidentiality" },
+      { "id": "b", "text": "Objectivity" },
+      { "id": "c", "text": "Integrity and due care" },
+      { "id": "d", "text": "Objectivity and integrity" }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-118",
+    "prompt": "Which of the following statements about independence in assurance engagements is false?",
+    "choices": [
+      { "id": "a", "text": "A firm shall document conclusions regarding its compliance with the independence requirement of the Code, and the substance of any relevant discussions that support such conclusions." },
+      { "id": "b", "text": "There is no threat to independence if a non-assurance service was provided to an audit client during or after the period covered by the financial statements, but before the engagement team begins to perform the audit, and the service would not be permitted during the engagement." },
+      { "id": "c", "text": "Independence is linked to the principles of objectivity and integrity. It comprises independence of mind and independence in appearance." },
+      { "id": "d", "text": "Independence shall be maintained during both the engagement period and the period covered by the financial statements." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-119",
+    "prompt": "Josie has been the audit engagement partner since Padayon Corporation became an audit client almost eight years ago. As she has completed seven years as the audit engagement partner, Josie has recently been rotated off the audit engagement. The new audit engagement partner, Judith, has suggested that in order to maintain a close relationship with Padayon Corporation Josie should undertake the role of engagement quality reviewer this year. What is the most appropriate response to the suggestion that Josie takes on the role of engagement quality reviewer?",
+    "choices": [
+      { "id": "a", "text": "Josie could take the review role immediately." },
+      { "id": "b", "text": "Josie could take the review role immediately, but additional safeguards will be required." },
+      { "id": "c", "text": "Josie should not serve as engagement quality reviewer for a period of at least five years." },
+      { "id": "d", "text": "The firm will need to reconsider resigning as the auditor of Padayon Corporation." }
+    ],
+    "correctChoiceId": null,
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "at-b51-st01",
+    "prompt": "The primary responsibility for the adequacy of disclosure in the financial statements of a publicly held company rests with the",
+    "choices": [
+      { "id": "a", "text": "Partner assigned to the audit engagement." },
+      { "id": "b", "text": "Auditor in charge of the fieldwork." },
+      { "id": "c", "text": "Management of the company." },
+      { "id": "d", "text": "Securities and Exchange Commission." }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Management has primary responsibility for the financial statements, including adequacy of disclosure."
+  },
+  {
+    "id": "at-b51-st02",
+    "prompt": "When an auditor believes that an understanding with the client has not been established, he or she should ordinarily",
+    "choices": [
+      { "id": "a", "text": "Perform the audit with increased professional skepticism." },
+      { "id": "b", "text": "Decline to accept or perform the audit." },
+      { "id": "c", "text": "Assess control risk at the maximum level and perform a primarily substantive audit." },
+      { "id": "d", "text": "Modify the scope of the audit to reflect an increased risk of material misstatement due to fraud." }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "If an understanding with the client has not been established, the auditor should ordinarily decline to accept or perform the audit."
+  },
+  {
+    "id": "at-b51-st03",
+    "prompt": "Each of the following questions is appropriate to ask internal audit personnel, except:",
+    "choices": [
+      { "id": "a", "text": "Do you have knowledge of any fraud or suspected fraud affecting the entity?" },
+      { "id": "b", "text": "What procedures did you perform to identify or detect fraud during the year?" },
+      { "id": "c", "text": "Has management responded satisfactorily to any findings from the fraud-related procedures you performed?" },
+      { "id": "d", "text": "How did you communicate to employees your views on business practices and ethical behavior?" }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "The internal auditor's communication to employees about ethical behavior is not typically a question the external auditor would ask."
+  },
+  {
+    "id": "at-b51-st04",
+    "prompt": "On the basis of the audit evidence gathered and evaluated, an auditor decides to increase the assessed level of control risk from that originally planned. To achieve an overall audit risk level that is substantially the same as the planned audit risk level, the auditor would",
+    "choices": [
+      { "id": "a", "text": "Decrease substantive testing." },
+      { "id": "b", "text": "Decrease detection risk." },
+      { "id": "c", "text": "Increase inherent risk." },
+      { "id": "d", "text": "Increase materiality." }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Audit risk = Inherent risk × Control risk × Detection risk. If control risk increases, detection risk must decrease to maintain the same overall audit risk, requiring more substantive testing."
+  },
+  {
+    "id": "at-b51-st05",
+    "prompt": "The auditor with final responsibility for an engagement and one of the assistants have a difference of opinion about the results of an auditing procedure. If the assistant believes it is necessary to be disassociated from the matter's resolution, the CPA firm's procedures should enable the assistant to",
+    "choices": [
+      { "id": "a", "text": "Refer the disagreement to the IAASB's Quality Review Committee." },
+      { "id": "b", "text": "Discuss the disagreement with the entity's management or its audit committee." },
+      { "id": "c", "text": "Document the details of the disagreement with the conclusion reached." },
+      { "id": "d", "text": "Report the disagreement to an impartial peer review monitoring team." }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Firm procedures should enable an assistant to document the disagreement and conclusion reached without being associated with the resolution."
+  },
+  {
+    "id": "at-b51-st06",
+    "prompt": "The permanent file of an auditor's working papers generally would not include",
+    "choices": [
+      { "id": "a", "text": "Working trial balance." },
+      { "id": "b", "text": "Lease agreements." },
+      { "id": "c", "text": "Flowchart of internal control." },
+      { "id": "d", "text": "Bond indenture." }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "The working trial balance is part of the current file, not the permanent file."
+  },
+  {
+    "id": "at-b51-st07",
+    "prompt": "The audit work performed by each assistant should be reviewed to determine whether it was adequately performed and to evaluate whether the",
+    "choices": [
+      { "id": "a", "text": "Audit has been performed by persons having adequate technical training and proficiency as auditors." },
+      { "id": "b", "text": "Audit procedures performed are approved in the professional standards." },
+      { "id": "c", "text": "Auditor's system of quality control has been maintained at a high level." },
+      { "id": "d", "text": "Results are consistent with the conclusions to be presented in the auditor's report." }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Review of assistants' work evaluates whether results are consistent with conclusions to be presented in the auditor's report."
+  },
+  {
+    "id": "at-b51-st08",
+    "prompt": "Which threat/s might be created if, before the period covered by the audit report, a team member had served as a director or officer of an audit client or was an employee in a position to exert significant influence over the preparations of the client's accounting records or financial statements on which the firm will express an opinion?",
+    "choices": [
+      { "id": "a", "text": "Familiarity" },
+      { "id": "b", "text": "Self-review" },
+      { "id": "c", "text": "Self-interest" },
+      { "id": "d", "text": "All of these" }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Serving as a director/officer or in an influential position creates self-review, self-interest, and familiarity threats."
+  },
+  {
+    "id": "at-b51-st09",
+    "prompt": "An entity ordinarily issues on an annual basis a document which includes its financial statements together with the audit report thereon. This document is frequently referred to as the",
+    "choices": [
+      { "id": "a", "text": "Annual document" },
+      { "id": "b", "text": "Annual financial statement" },
+      { "id": "c", "text": "Annual report" },
+      { "id": "d", "text": "Audit report" }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "The annual report includes financial statements and the auditor's report."
+  },
+  {
+    "id": "at-b51-st10",
+    "prompt": "Confirmation is most likely to be a relevant form of evidence with regard to assertions about accounts receivable when the auditor has concerns about the receivables'",
+    "choices": [
+      { "id": "a", "text": "Completeness." },
+      { "id": "b", "text": "Valuation." },
+      { "id": "c", "text": "Classification." },
+      { "id": "d", "text": "Existence." }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Confirmation directly addresses the existence assertion for accounts receivable."
+  },
+  {
+    "id": "at-b51-st11",
+    "prompt": "An auditor has a close personal friendship with the accounting manager of a local government unit. This relationship poses which type of threat to the auditor's independence?",
+    "choices": [
+      { "id": "a", "text": "Bias." },
+      { "id": "b", "text": "Self-interest." },
+      { "id": "c", "text": "Undue influence." },
+      { "id": "d", "text": "Familiarity." }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "A close personal friendship creates a familiarity threat to independence."
+  },
+  {
+    "id": "at-b51-st12",
+    "prompt": "In evaluating the reasonableness of an entity's accounting estimates, an auditor normally would be concerned about assumptions that are",
+    "choices": [
+      { "id": "a", "text": "Consistent with prior periods." },
+      { "id": "b", "text": "Insensitive to variations." },
+      { "id": "c", "text": "Susceptible to bias." },
+      { "id": "d", "text": "Similar to industry averages." }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Assumptions susceptible to bias raise concerns about the reasonableness of accounting estimates."
+  },
+  {
+    "id": "at-b51-st13",
+    "prompt": "In comparing management fraud with employee fraud, the auditors' ability to discover the fraud is:",
+    "choices": [
+      { "id": "a", "text": "Greater for employee fraud because there are more employees than management in the organization in terms of number." },
+      { "id": "b", "text": "Greater for employee fraud because of the higher misconduct rate among blue collar workers." },
+      { "id": "c", "text": "Greater for management fraud because of management's ability to override existing internal controls." },
+      { "id": "d", "text": "Greater for management fraud because managers are inherently more deceptive than employees." }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Management fraud is often more difficult to detect because management can override internal controls."
+  },
+  {
+    "id": "at-b51-st14",
+    "prompt": "Which of the following procedures would an auditor ordinarily perform first in evaluating management's accounting estimates for reasonableness?",
+    "choices": [
+      { "id": "a", "text": "Develop independent expectations of management's estimates." },
+      { "id": "b", "text": "Obtain an understanding of how management developed its estimates." },
+      { "id": "c", "text": "Consider the appropriateness of the key factors or assumptions used in preparing the estimates." },
+      { "id": "d", "text": "Test the calculations used by management in developing the estimates." }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "The auditor should first obtain an understanding of how management developed its estimates before performing other procedures."
+  },
+  {
+    "id": "at-b51-st15",
+    "prompt": "On the basis of audit evidence related to internal control, an auditor decides to increase the assessed level of the risk of material misstatement from that originally planned. To achieve an overall audit risk level that is substantially the same as the planned audit risk level, the auditor would",
+    "choices": [
+      { "id": "a", "text": "Decrease substantive testing." },
+      { "id": "b", "text": "Increase materiality levels." },
+      { "id": "c", "text": "Increase the inherent risk." },
+      { "id": "d", "text": "Decrease detection risk." }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "When risk of material misstatement increases, detection risk must decrease to maintain overall audit risk."
+  },
+  {
+    "id": "at-b51-st16",
+    "prompt": "The most difficult type of misstatement to detect is fraud based on",
+    "choices": [
+      { "id": "a", "text": "Recorded transactions in subsidiaries." },
+      { "id": "b", "text": "The over recording of transactions." },
+      { "id": "c", "text": "Related-party receivables." },
+      { "id": "d", "text": "The nonrecording of transactions." }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Fraud involving nonrecording of transactions (omission) is most difficult to detect because there is no audit trail."
+  },
+  {
+    "id": "at-b51-st17",
+    "prompt": "When an auditor discovered that certain control activities were ineffective, the auditor should increase the",
+    "choices": [
+      { "id": "a", "text": "Extent of tests of details." },
+      { "id": "b", "text": "Level of detection risk." },
+      { "id": "c", "text": "Level of inherent risk." },
+      { "id": "d", "text": "Extent of tests of controls." }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "Ineffective controls lead to higher control risk, requiring increased substantive tests of details."
+  },
+  {
+    "id": "at-b51-st18",
+    "prompt": "A client maintains perpetual inventory records in both quantities and pesos. If the assessed level of control risk is high, an auditor would probably",
+    "choices": [
+      { "id": "a", "text": "Insist that the client perform physical counts of inventory items several times during the year." },
+      { "id": "b", "text": "Request the client to schedule the physical inventory count at the end of the year." },
+      { "id": "c", "text": "Apply gross profit tests to ascertain the reasonableness of the physical counts." },
+      { "id": "d", "text": "Increase the extent of tests of controls of the inventory records." }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "With high control risk, the auditor would likely request an end-of-year physical count to verify inventory."
+  },
+  {
+    "id": "at-b51-st19",
+    "prompt": "The negative form of accounts receivable confirmation request is particularly useful except when",
+    "choices": [
+      { "id": "a", "text": "A large number of small balances are involved." },
+      { "id": "b", "text": "Control procedures surrounding accounts receivable are considered to be effective." },
+      { "id": "c", "text": "The auditor has reason to believe the persons receiving the requests are likely to give them consideration." },
+      { "id": "d", "text": "Individual account balances are relatively large." }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Negative confirmations are not appropriate when individual balances are relatively large or significant."
+  },
+  {
+    "id": "at-b51-st20",
+    "prompt": "An auditor most likely would be responsible for communicating significant deficiencies in the design of internal control",
+    "choices": [
+      { "id": "a", "text": "To the Securities and Exchange Commission when the client is a publicly held entity." },
+      { "id": "b", "text": "To specific legislative and regulatory bodies when reporting under Government Auditing Standards." },
+      { "id": "c", "text": "To the management and board of directors." },
+      { "id": "d", "text": "The auditor must report to all of the above." }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Significant deficiencies are communicated to management and those charged with governance (board of directors/audit committee)."
+  },
+  {
+    "id": "at-b51-st21",
+    "prompt": "Statement 1: The required CPD credit units per year for the renewal of professional identification card (PIC), notwithstanding the previously executed CPD undertaking for 2025 is 15. Statement 2: A refresher certificate is valid for two years or two examinations only, whichever comes first.",
+    "choices": [
+      { "id": "a", "text": "True, False" },
+      { "id": "b", "text": "True, True" },
+      { "id": "c", "text": "False, True" },
+      { "id": "d", "text": "False, False" }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Statement 1 is false (CPD requirement is not 15 units per year as stated); Statement 2 is true regarding refresher certificate validity."
+  },
+  {
+    "id": "at-b51-st22",
+    "prompt": "Which of the following pairs of accounts would an auditor most likely analyze on the same working paper?",
+    "choices": [
+      { "id": "a", "text": "Accrued interest receivable and accrued interest payable." },
+      { "id": "b", "text": "Notes payable and notes receivable." },
+      { "id": "c", "text": "Interest income and interest expense." },
+      { "id": "d", "text": "Notes receivable and interest income." }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Notes receivable and interest income are directly related and would typically be analyzed together on the same working paper."
+  },
+  {
+    "id": "at-b51-st23",
+    "prompt": "In compliance with the SEC, which accreditation can perform FS audit services to investment houses and companies?",
+    "choices": [
+      { "id": "a", "text": "Group A only" },
+      { "id": "b", "text": "Groups A and B only" },
+      { "id": "c", "text": "Groups A, B, and C only" },
+      { "id": "d", "text": "Groups A, B, C, and D" }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "For investment houses and companies, both Groups A and B can perform FS audit services under SEC rules."
+  },
+  {
+    "id": "at-b51-st24",
+    "prompt": "Which of the following is a prospective financial information for general use upon which an accountant may appropriately report? I. Financial projection; II. Pro forma financial statement; III. Financial forecast.",
+    "choices": [
+      { "id": "a", "text": "I only" },
+      { "id": "b", "text": "III only" },
+      { "id": "c", "text": "I and III only" },
+      { "id": "d", "text": "All of the above" }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Financial forecasts are for general use; financial projections are for restricted use. Pro forma statements are not prospective financial information."
+  },
+  {
+    "id": "at-b51-st25",
+    "prompt": "Which of the following factors most likely would affect an auditor's judgment about the quantity, type, and content of the auditor's working papers?",
+    "choices": [
+      { "id": "a", "text": "The content of the management representation letter." },
+      { "id": "b", "text": "The number of personnel assigned to the audit." },
+      { "id": "c", "text": "The assessed level of control risk." },
+      { "id": "d", "text": "The likelihood of a review by a concurring (second) partner." }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "The assessed level of control risk affects the nature, timing, and extent of audit procedures, which in turn affects working papers."
+  },
+  {
+    "id": "at-b51-st26",
+    "prompt": "Which of the following procedures would best contribute to developing a reasonable basis for an opinion about a client's cash balances?",
+    "choices": [
+      { "id": "a", "text": "Scanning the cash disbursements ledger." },
+      { "id": "b", "text": "Counting petty cash directly." },
+      { "id": "c", "text": "Sending a confirmation to the client's bank." },
+      { "id": "d", "text": "Vouching entries in the cash disbursements journal." }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Bank confirmations provide direct external evidence about cash balances and are essential for developing a reasonable basis for an opinion."
+  },
+  {
+    "id": "at-b51-st27",
+    "prompt": "Analytical procedures used in planning an audit should focus on",
+    "choices": [
+      { "id": "a", "text": "Reducing the scope of tests of controls and substantive tests." },
+      { "id": "b", "text": "Providing assurance that potential material misstatements will be identified." },
+      { "id": "c", "text": "Enhancing the auditor's understanding of the client's business." },
+      { "id": "d", "text": "Assessing the adequacy of the available evidential matter." }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Analytical procedures in planning are primarily used to enhance understanding of the client's business and identify areas of risk."
+  },
+  {
+    "id": "at-b51-st28",
+    "prompt": "An auditor finds a misstatement of P30,000 in a selected sample that includes 20% of the recorded amount of inventory. What is the projected estimate of misstatement in the population?",
+    "choices": [
+      { "id": "a", "text": "P6,000" },
+      { "id": "b", "text": "P54,000" },
+      { "id": "c", "text": "P180,000" },
+      { "id": "d", "text": "P150,000" }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "If the sample represents 20% of the population, the projected misstatement is P30,000 / 0.20 = P150,000."
+  },
+  {
+    "id": "at-b51-st29",
+    "prompt": "An audit client failed to maintain copies of its procedures manuals and organizational flowcharts. What should the auditor do in an audit of financial statements?",
+    "choices": [
+      { "id": "a", "text": "Issue a qualified opinion on the basis of a scope limitation." },
+      { "id": "b", "text": "Assess control risk at the maximum level." },
+      { "id": "c", "text": "Document the auditor's understanding of internal control." },
+      { "id": "d", "text": "Restrict the auditor's responsibility to assess the effectiveness of controls in the audit engagement." }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "The auditor should still document their understanding of internal control through inquiry and observation, even if formal documentation is lacking."
+  },
+  {
+    "id": "at-b51-st30",
+    "prompt": "Which of the following statements is not true?",
+    "choices": [
+      { "id": "a", "text": "Inherent risk is inversely related to detection risk." },
+      { "id": "b", "text": "Inherent risk is inversely related to evidence." },
+      { "id": "c", "text": "Inherent risk is the auditor's assessment of the likelihood that errors exceeding a tolerable amount exist in a segment before considering the effectiveness of internal controls." },
+      { "id": "d", "text": "Inherent risk is the susceptibility of the financial statements to material error, assuming no internal controls." }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Inherent risk is directly related to evidence (higher inherent risk requires more evidence), not inversely related."
+  },
+  {
+    "id": "at-b51-st31",
+    "prompt": "Which of the following statements regarding auditor documentation of the client's internal control is correct?",
+    "choices": [
+      { "id": "a", "text": "Documentation must include procedural write-ups." },
+      { "id": "b", "text": "No documentation is necessary although it is desirable." },
+      { "id": "c", "text": "Documentation must include flowcharts." },
+      { "id": "d", "text": "No one particular form of documentation is necessary, and the extent of documentation may vary." }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Auditing standards do not mandate a specific form of documentation; the extent may vary based on the circumstances."
+  },
+  {
+    "id": "at-b51-st32",
+    "prompt": "A primary objective of procedures performed to obtain an understanding of internal control is to provide an auditor with",
+    "choices": [
+      { "id": "a", "text": "A basis for modifying tests of controls." },
+      { "id": "b", "text": "Evidence to use in assessing inherent risk." },
+      { "id": "c", "text": "Knowledge necessary to assess the risks of material misstatements." },
+      { "id": "d", "text": "An evaluation of the consistency of application of management's policies." }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Understanding internal control provides knowledge necessary to assess the risks of material misstatement."
+  },
+  {
+    "id": "at-b51-st33",
+    "prompt": "Which of the following is most likely to be unique to the audit work of CPAs as compared to work performed by practitioners of other professions?",
+    "choices": [
+      { "id": "a", "text": "Due professional care." },
+      { "id": "b", "text": "Independence." },
+      { "id": "c", "text": "Competence." },
+      { "id": "d", "text": "Complex body of knowledge." }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Independence is a distinguishing feature of CPA audit work required by professional standards."
+  },
+  {
+    "id": "at-b51-st34",
+    "prompt": "The exercise of due professional care requires that an auditor",
+    "choices": [
+      { "id": "a", "text": "Examine all available corroborating evidence." },
+      { "id": "b", "text": "Critically review the judgment exercised at every level of supervision." },
+      { "id": "c", "text": "Reduce control risk below the maximum." },
+      { "id": "d", "text": "Attain the proper balance of professional experience and formal education." }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Due professional care requires critical review of judgment at every level of supervision."
+  },
+  {
+    "id": "at-b51-st35",
+    "prompt": "Early appointment of the independent auditor will enable:",
+    "choices": [
+      { "id": "a", "text": "A more thorough examination to be performed." },
+      { "id": "b", "text": "Sufficient competent evidential matter to be obtained." },
+      { "id": "c", "text": "A proper study and evaluation of internal control to be performed." },
+      { "id": "d", "text": "A more efficient examination to be performed." }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Early appointment allows for better planning and a more efficient examination."
+  },
+  {
+    "id": "at-b51-st36",
+    "prompt": "An auditor concludes that a client's illegal act, which has a material effect on the financial statements, has not been properly accounted for or disclosed. Depending on the materiality of the effect on the financial statements, the auditor should express either a(n)",
+    "choices": [
+      { "id": "a", "text": "Unqualified opinion with a separate explanatory paragraph or a qualified opinion." },
+      { "id": "b", "text": "Adverse opinion or a disclaimer of opinion." },
+      { "id": "c", "text": "Disclaimer of opinion or an unqualified opinion with a separate explanatory paragraph." },
+      { "id": "d", "text": "Qualified opinion or an adverse opinion." }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Material misstatements due to illegal acts would result in either a qualified or adverse opinion depending on materiality and pervasiveness."
+  }
+]

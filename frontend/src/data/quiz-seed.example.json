@@ -1,0 +1,26 @@
+[
+  {
+    "id": "far-101",
+    "prompt": "Under the accrual basis of accounting, revenue is recognized when it is:",
+    "choices": [
+      { "id": "a", "text": "Received in cash" },
+      { "id": "b", "text": "Earned, regardless of when cash is received" },
+      { "id": "c", "text": "Billed to the customer" },
+      { "id": "d", "text": "Budgeted for the period" }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Accrual accounting recognizes revenue when it is earned and realizable, not when cash changes hands. This matches revenue to the period in which the related goods or services were delivered."
+  },
+  {
+    "id": "far-102",
+    "prompt": "Which financial statement reports a company's financial position at a specific point in time?",
+    "choices": [
+      { "id": "a", "text": "Income statement" },
+      { "id": "b", "text": "Statement of cash flows" },
+      { "id": "c", "text": "Balance sheet" },
+      { "id": "d", "text": "Statement of retained earnings" }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "The balance sheet is a snapshot as of a specific date, showing assets, liabilities, and equity. The other statements cover activity over a period of time."
+  }
+]

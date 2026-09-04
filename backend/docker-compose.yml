@@ -1,0 +1,37 @@
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: cpa-reviewer-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: cpa_reviewer
+      MYSQL_USER: cpa_reviewer
+      MYSQL_PASSWORD: cpa_reviewer
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - '3307:3306'
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./src/db/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql
+    healthcheck:
+      test: ['CMD', 'mysqladmin', 'ping', '-h', 'localhost', '-uroot', '-proot']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  phpmyadmin:
+    image: phpmyadmin:5
+    container_name: cpa-reviewer-phpmyadmin
+    restart: unless-stopped
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: cpa_reviewer
+      PMA_PASSWORD: cpa_reviewer
+    ports:
+      - '8081:80'
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+volumes:
+  mysql-data:
