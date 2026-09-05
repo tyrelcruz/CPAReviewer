@@ -1,4 +1,6 @@
+import bcrypt from 'bcryptjs'
 import 'dotenv/config'
+import { randomUUID } from 'node:crypto'
 import { readFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -6,6 +8,12 @@ import { fileURLToPath } from 'node:url'
 import { pool } from '../db/pool.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
+
+const DEMO_USER = {
+  name: 'Demo User',
+  email: 'demo@cpareviewer.test',
+  password: 'password123',
+}
 
 interface RawQuestion {
   id: string
@@ -22,6 +30,15 @@ const QUIZ_SET = {
 }
 
 async function seed() {
+  const passwordHash = await bcrypt.hash(DEMO_USER.password, 10)
+  await pool.query(
+    `INSERT INTO users (id, name, email, password_hash)
+     VALUES (?, ?, ?, ?)
+     ON DUPLICATE KEY UPDATE name = VALUES(name)`,
+    [randomUUID(), DEMO_USER.name, DEMO_USER.email, passwordHash],
+  )
+  console.log(`Seeded demo user "${DEMO_USER.email}" (password: ${DEMO_USER.password}).`)
+
   const seedPath = path.resolve(
     __dirname,
     '../../../frontend/src/data/seeds/at-b51-raw.json',

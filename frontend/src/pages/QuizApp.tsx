@@ -1,59 +1,51 @@
-import { ArrowLeft } from 'lucide-react'
-import { AnimatePresence, motion } from 'framer-motion'
-import { useState } from 'react'
+import { motion } from 'framer-motion'
+import { useNavigate, useParams } from 'react-router-dom'
 
+import { Navbar } from '@/components/landing/Navbar'
 import { Quiz } from '@/components/quiz/Quiz'
-import { TestSelector } from '@/components/quiz/TestSelector'
 import { quizSets } from '@/data/quiz-data'
-import type { QuizSet } from '@/types/quiz'
 
 export function QuizApp() {
-  const [selectedSet, setSelectedSet] = useState<QuizSet | null>(null)
+  const { quizSetId } = useParams()
+  const navigate = useNavigate()
+  const selectedSet = quizSetId
+    ? quizSets.find((set) => set.id === quizSetId)
+    : quizSets[0]
 
   return (
-    <div className="animated-gradient flex min-h-svh flex-col items-center justify-center gap-8 p-6">
-      <motion.h1
-        initial={{ opacity: 0, y: -16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: 'easeOut' }}
-        className="font-display text-4xl font-bold tracking-tight text-white drop-shadow-sm"
-      >
-        KABIS CPA Reviewer
-      </motion.h1>
-
-      <AnimatePresence mode="wait">
+    <div className="min-h-svh bg-[#F3ECDC] text-[#3A2A1A]">
+      <Navbar />
+      <div className="mx-auto max-w-6xl px-6 py-10">
         {selectedSet ? (
           <motion.div
-            key="quiz"
+            key={selectedSet.id}
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.3, ease: 'easeOut' }}
-            className="flex w-full max-w-lg flex-col gap-3"
           >
-            <button
-              type="button"
-              onClick={() => setSelectedSet(null)}
-              className="flex items-center gap-1 self-start text-sm text-white/80 transition-colors hover:text-white"
-            >
-              <ArrowLeft className="size-4" />
-              Back to tests
-            </button>
-            <Quiz key={selectedSet.id} questions={selectedSet.questions} />
+            <Quiz
+              quizSetId={selectedSet.id}
+              questions={selectedSet.questions}
+              code={selectedSet.code}
+              onBack={() => navigate('/app')}
+            />
           </motion.div>
         ) : (
-          <motion.div
-            key="selector"
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -16 }}
-            transition={{ duration: 0.3, ease: 'easeOut' }}
-            className="w-full max-w-lg"
-          >
-            <TestSelector quizSets={quizSets} onSelect={setSelectedSet} />
-          </motion.div>
+          <div className="mx-auto max-w-lg py-16 text-center">
+            <p className="font-display text-2xl text-[#7A2323]">Exam not found</p>
+            <p className="font-reading mt-2 text-sm text-[#3A2A1A]/70">
+              We couldn&rsquo;t find that practice exam. It may have been moved or renamed.
+            </p>
+            <button
+              type="button"
+              onClick={() => navigate('/app')}
+              className="mt-6 rounded-full bg-[#7A2323] px-6 py-3 text-sm font-semibold text-[#F3ECDC] transition-colors hover:bg-[#7A2323]/90"
+            >
+              Back to Mock Exams
+            </button>
+          </div>
         )}
-      </AnimatePresence>
+      </div>
     </div>
   )
 }

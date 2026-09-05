@@ -128,6 +128,14 @@
 }
 
 @font-face {
+  font-family: 'Tagalog Stylized';
+  src: url('./assets/fonts/baybayin/TagalogStylized-GOJeq.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: 'SF Pro Text';
   src: url('./assets/fonts/sf-pro/SF-Pro-Text-Regular.otf') format('opentype');
   font-weight: 400;
@@ -171,6 +179,11 @@
 /* Montserrat: long-form copy meant to be read (paragraphs, questions). */
 .font-reading {
   font-family: 'Montserrat', 'SF Pro Text', sans-serif;
+}
+
+/* Tagalog Stylized: baybayin-script ornaments (Morrow baybayin keying: plain lowercase syllables). */
+.font-baybayin {
+  font-family: 'Tagalog Stylized', serif;
 }
 
 .animated-gradient {

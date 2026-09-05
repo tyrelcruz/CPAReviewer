@@ -1,7 +1,9 @@
 import 'dotenv/config'
 import cors from 'cors'
-import express from 'express'
+import express, { type NextFunction, type Request, type Response } from 'express'
 
+import { requireAuth } from './middleware/auth.js'
+import { authRouter } from './routes/auth.js'
 import { quizSetsRouter } from './routes/quizSets.js'
 
 const app = express()
@@ -14,7 +16,13 @@ app.get('/health', (_req, res) => {
   res.json({ status: 'ok' })
 })
 
-app.use('/api/quiz-sets', quizSetsRouter)
+app.use('/api/auth', authRouter)
+app.use('/api/quiz-sets', requireAuth, quizSetsRouter)
+
+app.use((err: unknown, _req: Request, res: Response, _next: NextFunction) => {
+  console.error(err)
+  res.status(500).json({ error: 'Internal server error' })
+})
 
 app.listen(port, () => {
   console.log(`Backend listening on http://localhost:${port}`)

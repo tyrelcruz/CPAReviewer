@@ -35,7 +35,7 @@ export function Navbar() {
             Get started
           </Link>
           <Link
-            to="/app"
+            to="/login"
             className="hidden text-xs font-semibold tracking-widest text-[#3A2A1A] uppercase hover:text-[#7A2323] sm:inline"
           >
             Sign in

@@ -37,13 +37,20 @@ export function HeroSection() {
     <section className="mx-auto max-w-7xl px-6 py-16 lg:py-20">
       <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
         <div>
-          <div className="mb-6 flex items-center gap-3 text-[#3A5A40]">
-            <span className="h-px w-16 bg-[#7A2323]/40" />
-            <span className="text-2xl">〜◡〜</span>
-            <span className="h-px w-16 bg-[#7A2323]/40" />
+          <div className="mb-5 flex flex-col items-start gap-1.5">
+            <span
+              className="font-baybayin text-4xl leading-none text-[#3A5A40]"
+              aria-hidden="true"
+            >
+              pasa
+            </span>
+            <div className="flex w-40 flex-col gap-1">
+              <span className="h-[3px] w-full rounded-full bg-[#7A2323]" />
+              <span className="h-[3px] w-full rounded-full bg-[#7A2323]" />
+            </div>
           </div>
 
-          <h1 className="font-display text-5xl leading-[1.05] tracking-tight sm:text-6xl">
+          <h1 className="font-display text-5xl leading-[1.05] font-black tracking-tight uppercase sm:text-6xl">
             <span className="text-[#7A2323]">Pass smarter.</span>
             <br />
             <span className="text-[#3A5A40]">Not harder.</span>
