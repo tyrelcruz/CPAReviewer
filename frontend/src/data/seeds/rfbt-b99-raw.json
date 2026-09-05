@@ -1,0 +1,1922 @@
+[
+  {
+    "id": "rfbt-b99-001",
+    "prompt": "On January 12, 2026, Atty. D agreed to prepare and to give not later than January 30, 2026, 50 questions for the first preboard examination, being prepared by Atty. V, where there will be 100 questions. The examination will be administered on February 7, 2026. Which of the following statements is not correct?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "The agreement need not be in writing to be enforceable"
+      },
+      {
+        "id": "b",
+        "text": "The agreement is valid, hence Atty. V can ask Atty. D for specific performance"
+      },
+      {
+        "id": "c",
+        "text": "The agreement is without effect because its fulfillment depends upon the sole will of Atty. D"
+      },
+      {
+        "id": "d",
+        "text": "The contract is enforceable hence, Atty. D incurs delay if he cannot prepare and give the 50 questions on January 30, 2026"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-002",
+    "prompt": "If the right of the creditor to enforce his claim against the debtor has prescribed and yet a third person effected the payment which was accepted by the creditor, which of the following is not correct?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "The third person cannot recover from the creditor the amount paid because the creditor was benefited."
+      },
+      {
+        "id": "b",
+        "text": "The third person cannot recover from the debtor the amount paid to the creditor"
+      },
+      {
+        "id": "c",
+        "text": "The third person can recover from the third person the amount paid if the third person is not aware that there was prescription"
+      },
+      {
+        "id": "d",
+        "text": "The third person can no longer recover from either the creditor or debtor because he voluntarily effected"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-003",
+    "prompt": "Atty. Kin obliged himself to paint the portrait of Atty. Con beginning July 26, 2025. They agreed that Atty. Kin will complete the work and effect delivery on Dec. 25, 2026. It was further stipulated that if Atty. Kin failed to fulfill his obligation, he will give his only horse as a penalty. On Dec. 25, 2026, Atty. Kin failed to fulfill his obligation, despite repeated demands from Atty. Con. As a result, which of the following is not correct?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "The contract between Atty. Kin and Atty. Con need not be in writing to be enforceable"
+      },
+      {
+        "id": "b",
+        "text": "Atty. Con can demand for specific performance plus damages"
+      },
+      {
+        "id": "c",
+        "text": "Atty. Kin is in legal delay and should be required to deliver his only horse plus specific performance and damages"
+      },
+      {
+        "id": "d",
+        "text": "The obligation of Atty. Kin is with a penal clause, hence he is required to give his only horse, which is in lieu of interest and damages, and Atty. Kin can be compelled to paint Atty. Con's portrait"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-004",
+    "prompt": "In which of the following cases, will the debtor still enjoy the benefit of the period?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "If the debtor fails to give the guaranty or security which he promised."
+      },
+      {
+        "id": "b",
+        "text": "If the guaranty or security is impaired through the fault of the debtor."
+      },
+      {
+        "id": "c",
+        "text": "If the guaranty or security is lost due to a fortuitous event"
+      },
+      {
+        "id": "d",
+        "text": "If the debtor will go to a foreign country for medical"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-005",
+    "prompt": "If S a minor sells the necklace of her mother with her mother's consent, to her classmate B, who is also a minor, the contract is",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Rescissible, and can be rescinded by the parents of her classmate"
+      },
+      {
+        "id": "b",
+        "text": "Valid and effective but the parents of her classmate can ask for annulment."
+      },
+      {
+        "id": "c",
+        "text": "Unenforceable, unless the parents of buyer B ratify the contract."
+      },
+      {
+        "id": "d",
+        "text": "Voidable but either S or her mother can ask for annulment"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-006",
+    "prompt": "On Feb 7, 2026 Atty. Per agreed to give to Atty. Tis his only cock if Atty. Tis will pass the CPALE. If the cock will have fruits on May 30, 2026 and Atty. Tis passed the CPALE, where the results were released on May 30, 2026, which of the following is not correct?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Atty. Tis has the right to the cock beginning Feb. 7, 2026"
+      },
+      {
+        "id": "b",
+        "text": "Atty. Tis has the right to the fruits beginning May 30, 2026"
+      },
+      {
+        "id": "c",
+        "text": "Atty. Tis will have the right to the cock of Atty. Per on Feb 7, 2026 but not its fruits before May 30, 2026."
+      },
+      {
+        "id": "d",
+        "text": "The fulfillment of the condition retroacts on the day the contract was perfected making Atty. Tis entitled to the cock and its fruits beginning Feb 7, 2026"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-007",
+    "prompt": "If the consignation was already approved by the court but the debtor thereafter was able to withdraw the money from the court, which of the following is not correct?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Such withdrawal was with the consent of the creditor"
+      },
+      {
+        "id": "b",
+        "text": "The obligation of the debtor is revived"
+      },
+      {
+        "id": "c",
+        "text": "The obligation of the co-debtor, guarantor or surety is, revived"
+      },
+      {
+        "id": "d",
+        "text": "The expenses of consignation shall be borne by the"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-008",
+    "prompt": "April maintains savings and time deposit amounting to 600k and P1m respectively with Banco de Plata which was closed by the BSP due to alleged fraud and irregularity resulting to bankruptcy. April can demand payment from PDIC amounting to how much?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "₱500,000"
+      },
+      {
+        "id": "b",
+        "text": "₱1,000,000"
+      },
+      {
+        "id": "c",
+        "text": "Nothing"
+      },
+      {
+        "id": "d",
+        "text": "₱1,600,000"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-009",
+    "prompt": "Using the same facts in no. 8 but the savings deposit is a joint account with her sister Max, and the time deposit is with her friends, June, July and August. How much can April recover from PDIC?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Nothing"
+      },
+      {
+        "id": "b",
+        "text": "₱633,333"
+      },
+      {
+        "id": "c",
+        "text": "₱550,000"
+      },
+      {
+        "id": "d",
+        "text": "₱650,000"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-010",
+    "prompt": "January deposits ₱2m by way of savings deposit with PNB, which of the following is not correct?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "There exists a contract of loan between January and PNB"
+      },
+      {
+        "id": "b",
+        "text": "PNB became the owner of the ₱2m"
+      },
+      {
+        "id": "c",
+        "text": "PNB is the debtor of the ₱2m"
+      },
+      {
+        "id": "d",
+        "text": "PNB should keep the money safely and return the same money upon demand by January"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-011",
+    "prompt": "If the right of the creditor to demand payment from the debtor has prescribed because of the passage of time and later payment is effected, which of the following statements is correct?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "If payment is effected by a third person, such third person can recover the amount paid"
+      },
+      {
+        "id": "b",
+        "text": "If the payment is effected by the debtor, such debtor can recover the amount paid"
+      },
+      {
+        "id": "c",
+        "text": "If payment is effected by a third person, such third person can recover up to the amount that the debtor was benefited"
+      },
+      {
+        "id": "d",
+        "text": "If the payment is effected by the debtor, such debtor cannot recover the amount paid"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-012",
+    "prompt": "Which of the following contracts is valid but specific performance cannot be sought?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Bon agreed to kill Con and if Bon fails, Bon will give ₱2m to Don"
+      },
+      {
+        "id": "b",
+        "text": "Em will give ₱2m to Fe, if Fe will have sex with Em"
+      },
+      {
+        "id": "c",
+        "text": "Roy agreed to paint the house of Eve or if Roy wants Roy will have sex with Cris for one week"
+      },
+      {
+        "id": "d",
+        "text": "Wil agreed to burn the house of Joy and if Wil fails he will pay Joy ₱2m"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-013",
+    "prompt": "Bato and Coco are solidary debtors of Wawa, Zaza and Yaya, solidary creditors for ₱12,000. Later Wawa condoned the share of Bato, without the knowledge of Yaya and Zaza. On due date, Yaya can collect from",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Coco only ₱6,000"
+      },
+      {
+        "id": "b",
+        "text": "Either Bato or Coco ₱6,000"
+      },
+      {
+        "id": "c",
+        "text": "Either Bato or Coco ₱8000"
+      },
+      {
+        "id": "d",
+        "text": "Either Coco or Wawa ₱6000"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-014",
+    "prompt": "Bobo, Coco or Dodo are solidary debtors of Soso and Toto, solidary creditors for ₱12,000 later Soso, who is courting Dodo, condoned the entire obligation of the debtors, without the knowledge of Toto. One day later, Toto accepted the tender of payment amounting to ₱12,000 made by Bobo without the knowledge of Soso. As a result,",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Bobo can recover ₱4,000 each from Coco and Dodo"
+      },
+      {
+        "id": "b",
+        "text": "Bobo cannot recover from anyone because the payment was made after the condonation was made"
+      },
+      {
+        "id": "c",
+        "text": "Bobo can recover ₱6,000 from Toto and ₱6,000 from Soso"
+      },
+      {
+        "id": "d",
+        "text": "Toto can recover ₱6,000 from Soso"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-015",
+    "prompt": "The following contracts will take effect upon perfection of the contract, except",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Emptio rei speratio"
+      },
+      {
+        "id": "b",
+        "text": "Ratification of unenforceable contracts"
+      },
+      {
+        "id": "c",
+        "text": "Fulfillments of suspensive condition"
+      },
+      {
+        "id": "d",
+        "text": "Sale of future things"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-016",
+    "prompt": "Bubot, a 16 years old student took the watch of her Father with a FMV of ₱20,000 and sold it to Guro, her teacher for only ₱12,000 resulting to a lesion of more than 1/4 of its value, The contract is",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Voidable, hence her father can ask for annulment"
+      },
+      {
+        "id": "b",
+        "text": "Rescissible, hence her father should ask for rescission within four years"
+      },
+      {
+        "id": "c",
+        "text": "Valid and enforceable"
+      },
+      {
+        "id": "d",
+        "text": "Without effect, unless her father"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-017",
+    "prompt": "Bebe works as sales clerk in a Boutique store with a daily wage of ₱800. Bebe is scheduled to work on May 1. How much will she receive if the works on that day?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "$1,040.00"
+      },
+      {
+        "id": "b",
+        "text": "P1,600.00"
+      },
+      {
+        "id": "c",
+        "text": "1,000.00"
+      },
+      {
+        "id": "d",
+        "text": "P800.00"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-018",
+    "prompt": "If a minimum wage earner works on this day, she will get a compensation equivalent to 200% of her regular rate",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Ninoy Aquino day"
+      },
+      {
+        "id": "b",
+        "text": "Manuel L. Quezon day"
+      },
+      {
+        "id": "c",
+        "text": "Andres Bonifacio day"
+      },
+      {
+        "id": "d",
+        "text": "Emilio Aguinaldo day"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-019",
+    "prompt": "Mimi, a cashier who receives ₱800.00 as her daily wage was required to render 6 hours of overtime work from 6pm to 12pm. How much will she receive for that day?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "775.00"
+      },
+      {
+        "id": "b",
+        "text": "P1,550.00"
+      },
+      {
+        "id": "c",
+        "text": "P825.00"
+      },
+      {
+        "id": "d",
+        "text": "1,575.00"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-020",
+    "prompt": "Ada has availed of her 105-day maternity leave with pay. If she wants to extend her leave further, how many days of additional maternity leave, can she availed of?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "15 days without pay"
+      },
+      {
+        "id": "b",
+        "text": "30 days without pay"
+      },
+      {
+        "id": "c",
+        "text": "30 days with pay"
+      },
+      {
+        "id": "d",
+        "text": "15 days without pay"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-021",
+    "prompt": "Which of the following is a covered institution under the AMLA",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Rustan's Dep't Store"
+      },
+      {
+        "id": "b",
+        "text": "Puregold"
+      },
+      {
+        "id": "c",
+        "text": "Tambunting Pawnshop"
+      },
+      {
+        "id": "d",
+        "text": "SM Supermarket"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-022",
+    "prompt": "What is the consequence of being placed on the AMLC's freeze order?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Suspension of business permits"
+      },
+      {
+        "id": "b",
+        "text": "Immediate confiscation of assets"
+      },
+      {
+        "id": "c",
+        "text": "Temporary freezing of accounts"
+      },
+      {
+        "id": "d",
+        "text": "Issuance of warrants of arrest"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-023",
+    "prompt": "Which of the following statements is correct?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "A contract which is without effect is considered ratified by the acceptance by a party to the contract of a benefit under its terms"
+      },
+      {
+        "id": "b",
+        "text": "A contract of marriage between a minor and a deaf mute is valid if made with the consent of their respective parents"
+      },
+      {
+        "id": "c",
+        "text": "The defense of due diligence in the selection and supervision of employees may be used against subsidiary liability of an employer arising from delict."
+      },
+      {
+        "id": "d",
+        "text": "In culpa contractual, proof of existence of contract and of its breach is sufficient prima facie to warrant recovery"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-024",
+    "prompt": "Which of the following statements is wrong?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "In culpa aquiliana, the source of liability is the defendant's negligent act or omission itself"
+      },
+      {
+        "id": "b",
+        "text": "Concealment or the failure to disclose facts when there is duty to reveal them, as when the parties are bound by confidential relations, constitutes fraud"
+      },
+      {
+        "id": "c",
+        "text": "The statute of frauds does not apply to both partially and wholly executed contracts"
+      },
+      {
+        "id": "d",
+        "text": "A contract of sale between a minor and an insane person is valid and enforceable"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-025",
+    "prompt": "Which of the following contracts is a real contract? Contract",
+    "choices": [
+      {
+        "id": "a",
+        "text": "To lend a car for one month"
+      },
+      {
+        "id": "b",
+        "text": "To make a deposit of goods"
+      },
+      {
+        "id": "c",
+        "text": "To make a pledge of necklace"
+      },
+      {
+        "id": "d",
+        "text": "Of loan amounting to ₱1m"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-026",
+    "prompt": "Ken cleans the house of Tok, in return Ken expects that Tok will clean his condo unit. This is",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Do ut Des"
+      },
+      {
+        "id": "b",
+        "text": "Do ut Facias"
+      },
+      {
+        "id": "c",
+        "text": "Facio ut Des"
+      },
+      {
+        "id": "d",
+        "text": "Facio ut Facias"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-027",
+    "prompt": "Jose, a waiter borrowed ₱200k from his employer Starmoon Coffee. To guarantee the payment, he gave his TCT (transfer certificate of title) to his employer for Starmoon Coffee to hold it until he pays the amount borrowed. There is a contract of",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Pledge"
+      },
+      {
+        "id": "b",
+        "text": "Real Estate Mortgage"
+      },
+      {
+        "id": "c",
+        "text": "Antichresis"
+      },
+      {
+        "id": "d",
+        "text": "Simple loan"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-028",
+    "prompt": "If a debtor gives a property to his creditor who accepts it in payment of an obligation in money, this will be governed by law on",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Barter"
+      },
+      {
+        "id": "b",
+        "text": "Cession"
+      },
+      {
+        "id": "c",
+        "text": "Sales"
+      },
+      {
+        "id": "d",
+        "text": "Application of payment"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-029",
+    "prompt": "It is a contract by virtue of the terms of which the parties thereto promise and obligate themselves to enter into another contract at a future time, upon happening of certain events, or the fulfillment of certain conditions",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Option contract"
+      },
+      {
+        "id": "b",
+        "text": "Arras"
+      },
+      {
+        "id": "c",
+        "text": "Aleatory contract"
+      },
+      {
+        "id": "d",
+        "text": "Resolutory contract"
+      }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-030",
+    "prompt": "Maja obliged herself to give Rot ₱1m but if Maja fails, she will have sex with Rot. The contract is",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Valid, hence Maja has the obligation to give Rot ₱1m"
+      },
+      {
+        "id": "b",
+        "text": "Valid, hence Maja can be compelled to have sex with Rot if she fails to give the ₱1m"
+      },
+      {
+        "id": "c",
+        "text": "Facultative, where the principal is valid but the substitute is not possible"
+      },
+      {
+        "id": "d",
+        "text": "Void, hence Rot cannot demand anything from Maja"
+      }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-031",
+    "prompt": "What is the nature of proceedings under the Financial Rehabilitation and Insolvency Act (FRIA) as described?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "In Personam, requiring direct notice to all creditors."
+      },
+      {
+        "id": "b",
+        "text": "In Rem, with jurisdiction acquired through publication."
+      },
+      {
+        "id": "c",
+        "text": "Criminal proceedings, focusing on debtor misconduct."
+      },
+      {
+        "id": "d",
+        "text": "Arbitration, requiring mutual agreement among parties"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-032",
+    "prompt": "Who is considered an 'individual debtor' under the Financial Rehabilitation and Insolvency Act (FRIA)?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Any natural person, regardless of residency or citizenship, has become insolvent."
+      },
+      {
+        "id": "b",
+        "text": "A corporation that has filed for bankruptcy."
+      },
+      {
+        "id": "c",
+        "text": "A natural person who is a resident and citizen of the Philippines and has become insolvent."
+      },
+      {
+        "id": "d",
+        "text": "A foreign national residing in the Philippines"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-033",
+    "prompt": "Rafael enters a contract with Miguel to sell him the entire mango harvest from his farm for P50,000. The contract is made in January, and the harvest is expected in June. Unfortunately, in May, a severe typhoon destroyed all the mango trees on Rafael's farm, resulting in no harvest. In this case –",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Rafael is obligated to deliver the mangoes or pay damages to Miguel for non-fulfilment of the obligation."
+      },
+      {
+        "id": "b",
+        "text": "Rafael can substitute the mangoes with another fruit on his farm to fulfill the obligation."
+      },
+      {
+        "id": "c",
+        "text": "The contract is valid."
+      },
+      {
+        "id": "d",
+        "text": "The contract is"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-034",
+    "prompt": "Incorporeal property may be delivered by –",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Mere pointing"
+      },
+      {
+        "id": "b",
+        "text": "Execution of public instrument"
+      },
+      {
+        "id": "c",
+        "text": "Symbolic delivery"
+      },
+      {
+        "id": "d",
+        "text": "Cannot be delivered because it has no physical manifestation"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-035",
+    "prompt": "What are the functions of the Philippine Deposit Insurance Corporation (PDIC)?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Deposit insurer, co-regulator of banks, and receiver/liquidator of closed banks"
+      },
+      {
+        "id": "b",
+        "text": "Lender of last resort, bank regulator, and financial advisor"
+      },
+      {
+        "id": "c",
+        "text": "Investment banker, financial analyst, and auditor"
+      },
+      {
+        "id": "d",
+        "text": "Bank supervisor, monetary policy maker, and financial market regulator"
+      }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-036",
+    "prompt": "Under the principle of Negotiorum Gestio, what is the specific standard of diligence required of the officious manager?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Extraordinary diligence"
+      },
+      {
+        "id": "b",
+        "text": "Diligence of a father of a good family"
+      },
+      {
+        "id": "c",
+        "text": "Diligence of a good father of a family"
+      },
+      {
+        "id": "d",
+        "text": "Slight diligence"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-037",
+    "prompt": "Managers A and B voluntarily take over the management of a neglected restaurant. Due to their negligence, the restaurant's equipment is damaged. What is the nature of their liability to the owner?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Joint: A and B are only liable for their respective 50% shares of the damage."
+      },
+      {
+        "id": "b",
+        "text": "Solidary: The owner can demand the full amount of damages from either A or B."
+      },
+      {
+        "id": "c",
+        "text": "Subsidiary: The owner must first sue the restaurant staff before suing the managers."
+      },
+      {
+        "id": "d",
+        "text": "None: Since they acted voluntarily, they cannot be held liable for"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-038",
+    "prompt": "If a person is injured, but their own negligence was the 'immediate and proximate' (main) cause of the injury, what happens?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "They can still get full payment for damages."
+      },
+      {
+        "id": "b",
+        "text": "They cannot recover any damages at all."
+      },
+      {
+        "id": "c",
+        "text": "The court will give them double the money."
+      },
+      {
+        "id": "d",
+        "text": "The defendant must pay even if it wasn't their"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-039",
+    "prompt": "What does an employer need to prove regarding 'Diligence in Selection' to avoid liability for a quasidelict committed by an employee?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "That they paid the employee a very high salary."
+      },
+      {
+        "id": "b",
+        "text": "That they are friends with the employee's family."
+      },
+      {
+        "id": "c",
+        "text": "That they carefully checked the employee's background, skills, and character before hiring them."
+      },
+      {
+        "id": "d",
+        "text": "That the employee has a university"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-040",
+    "prompt": "What is an 'indeterminate' or 'generic' thing?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "A specific ring with the owner's name engraved on it."
+      },
+      {
+        "id": "b",
+        "text": "A thing that is designated only by its class or genus"
+      },
+      {
+        "id": "c",
+        "text": "A house located at 123 Maple Street."
+      },
+      {
+        "id": "d",
+        "text": "A specific painting by Fernando"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-041",
+    "prompt": "If a debtor fails to deliver 100 bags of cement (a generic thing), what can the creditor do under the law?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "The creditor must cancel the contract immediately."
+      },
+      {
+        "id": "b",
+        "text": "The creditor can ask a third person to deliver the cement and charge the cost to the debtor."
+      },
+      {
+        "id": "c",
+        "text": "The creditor can only sue for 'emotional distress.'"
+      },
+      {
+        "id": "d",
+        "text": "The creditor must wait forever for the debtor to find the"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-042",
+    "prompt": "A debtor promised to deliver his only laptop to 'Person A' on Monday. He also promised to deliver the exact same laptop to 'Person B' on Tuesday. On Wednesday, a lightning strike destroyed the laptop. Is the debtor liable?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "No, because lightning is a fortuitous event and it is nobody's fault."
+      },
+      {
+        "id": "b",
+        "text": "Yes, because he promised the same thing to two different persons with different interests."
+      },
+      {
+        "id": "c",
+        "text": "No, because he hasn't delivered it to anyone yet."
+      },
+      {
+        "id": "d",
+        "text": "Yes, but only if Person A and Person B are"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-043",
+    "prompt": "If a creditor accepts the full payment of the principal amount without saying anything about the unpaid interest, what does the law generally assume?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "The creditor has donated the interest to the debtor."
+      },
+      {
+        "id": "b",
+        "text": "The interest has already been paid."
+      },
+      {
+        "id": "c",
+        "text": "The interest is still owed and must be paid later."
+      },
+      {
+        "id": "d",
+        "text": "The contract is automatically"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-044",
+    "prompt": "What is the general rule regarding rights acquired from an obligation?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "They can never be transferred to another person."
+      },
+      {
+        "id": "b",
+        "text": "They are transmissible to others."
+      },
+      {
+        "id": "c",
+        "text": "They can only be transferred if the debtor gives permission."
+      },
+      {
+        "id": "d",
+        "text": "They expire the moment the creditor"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-045",
+    "prompt": "In which of the following obligations will delay not exist?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Positive obligation"
+      },
+      {
+        "id": "b",
+        "text": "Negative obligation"
+      },
+      {
+        "id": "c",
+        "text": "Personal obligation"
+      },
+      {
+        "id": "d",
+        "text": "Real obligation"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-046",
+    "prompt": "Which of the following is considered a civil fruit?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Young of animal"
+      },
+      {
+        "id": "b",
+        "text": "Palay"
+      },
+      {
+        "id": "c",
+        "text": "Dividend"
+      },
+      {
+        "id": "d",
+        "text": "Grass"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-047",
+    "prompt": "They include everything which is produced by a thing, or which is incorporated or attached thereto, either naturally or",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Alluvium"
+      },
+      {
+        "id": "b",
+        "text": "Accessions"
+      },
+      {
+        "id": "c",
+        "text": "Accessories"
+      },
+      {
+        "id": "d",
+        "text": "Avulsion"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-048",
+    "prompt": "It refers to a right that can be exercised against the whole world thereby allowing an action to recover the ownership or possession of a specific thing regardless of the possessor of such",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Personal right"
+      },
+      {
+        "id": "b",
+        "text": "Real right"
+      },
+      {
+        "id": "c",
+        "text": "Intangible right"
+      },
+      {
+        "id": "d",
+        "text": "Tangible right"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-049",
+    "prompt": "D has an outstanding obligation to deliver a specific car to C. If D refuses to deliver the said car to C despite repeated demands, what is the legal remedy available to C?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "File an action for specific performance plus damages against D"
+      },
+      {
+        "id": "b",
+        "text": "File an action to ask a third person to deliver another car at the expense of D"
+      },
+      {
+        "id": "c",
+        "text": "File an action for annulment of obligation"
+      },
+      {
+        "id": "d",
+        "text": "File an action for reformation of instrument"
+      }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-050",
+    "prompt": "D has an obligation to clean the house of C. If D refused to clean the house of C despite repeated demands, what is the legal remedy available to C?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "File an action for specific performance plus damages"
+      },
+      {
+        "id": "b",
+        "text": "File an action for annulment of obligation"
+      },
+      {
+        "id": "c",
+        "text": "File an action to ask another person to clean the house or allow D to clean the house at the expense of D"
+      },
+      {
+        "id": "d",
+        "text": "File an action for declaration of nullity of obligation"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-051",
+    "prompt": "Which of the following waiver of action is considered valid?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Waiver of a civil action for past fraud"
+      },
+      {
+        "id": "b",
+        "text": "Waiver of a civil action for future fraud"
+      },
+      {
+        "id": "c",
+        "text": "Waiver of a civil action for future gross negligence"
+      },
+      {
+        "id": "d",
+        "text": "None of the above"
+      }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-052",
+    "prompt": "It refers to the right of unpaid creditor to exercise all rights and actions of the judgment debtor to recover his claim, except those rights which are inherently personal to the",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Accion subrogatoria"
+      },
+      {
+        "id": "b",
+        "text": "Accion pauliana"
+      },
+      {
+        "id": "c",
+        "text": "Accion directa"
+      },
+      {
+        "id": "d",
+        "text": "Accion capcatoria"
+      }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-053",
+    "prompt": "Which of the following obligations is not immediately demandable?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Pure obligation"
+      },
+      {
+        "id": "b",
+        "text": "Obligation when debtor's means permit him to do so"
+      },
+      {
+        "id": "c",
+        "text": "Obligation with a resolutory period"
+      },
+      {
+        "id": "d",
+        "text": "Obligation with a resolutory condition"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-054",
+    "prompt": "Which of the following suspensive conditions will nullify the obligation that is dependent upon them?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Condition purely potestative upon the sole will of debtor"
+      },
+      {
+        "id": "b",
+        "text": "Condition purely potestative upon the sole will of creditor"
+      },
+      {
+        "id": "c",
+        "text": "Mixed condition"
+      },
+      {
+        "id": "d",
+        "text": "Casual condition"
+      }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-055",
+    "prompt": "In conditional reciprocal obligations, what will happen to the fruits and interests during the pendency of the suspensive condition?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "They shall be forfeited in favor of the state."
+      },
+      {
+        "id": "b",
+        "text": "They shall inure to the benefit of the debtor."
+      },
+      {
+        "id": "c",
+        "text": "They shall inure to the benefit of the creditor."
+      },
+      {
+        "id": "d",
+        "text": "They shall be deemed to have been mutually"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-056",
+    "prompt": "In an alternative obligation, if the contract does not state who has the right to choose which prestation to perform, who holds that right by default?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Both parties must agree on the choice together"
+      },
+      {
+        "id": "b",
+        "text": "The Debtor"
+      },
+      {
+        "id": "c",
+        "text": "The Creditor"
+      },
+      {
+        "id": "d",
+        "text": "The Court"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-057",
+    "prompt": "What happens if the creditor performs an act that makes it impossible for the debtor to choose between the options in an alternative obligation?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "The debtor may rescind the contract with damages."
+      },
+      {
+        "id": "b",
+        "text": "The creditor gets to choose for the debtor."
+      },
+      {
+        "id": "c",
+        "text": "The debtor must still perform the remaining options regardless of the interference."
+      },
+      {
+        "id": "d",
+        "text": "The obligation is automatically cancelled without any"
+      }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-058",
+    "prompt": "What is the effect if a solidary debtor pays the entire obligation after it has already 'prescribed' (expired due to time)?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "The other co-debtors must still pay their shares to the one who paid."
+      },
+      {
+        "id": "b",
+        "text": "The paying debtor loses the right to be reimbursed by the co-debtors."
+      },
+      {
+        "id": "c",
+        "text": "The creditor must return the money to the debtor."
+      },
+      {
+        "id": "d",
+        "text": "The co-debtors must pay double because the debt was"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-059",
+    "prompt": "What is required for a creditor to demand the penalty stipulated in an obligation with a penal clause?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "The creditor must prove that the debtor acted with malice or fraud."
+      },
+      {
+        "id": "b",
+        "text": "The creditor must present receipts proving the exact amount of loss."
+      },
+      {
+        "id": "c",
+        "text": "The creditor only needs to prove that the debtor breached the obligation."
+      },
+      {
+        "id": "d",
+        "text": "The creditor must first ask the court to calculate the damages."
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-060",
+    "prompt": "Which of the following would be considered a third person 'who has an interest' in the fulfillment of the obligation?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "A random stranger who wants to be generous."
+      },
+      {
+        "id": "b",
+        "text": "A guarantor."
+      },
+      {
+        "id": "c",
+        "text": "A neighbor of the creditor."
+      },
+      {
+        "id": "d",
+        "text": "None of the above"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-061",
+    "prompt": "In a dation in payment, the debtor transfers ownership of a determinate thing to the creditor to satisfy a debt in money. Which of the following statements regarding its governing law is correct?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "It is governed primarily by the law on donations since the creditor receives property."
+      },
+      {
+        "id": "b",
+        "text": "It is governed by the law on sales because the debt is considered the purchase price and the property is the object."
+      },
+      {
+        "id": "c",
+        "text": "It is governed by the law on agency because the creditor acts as an agent to sell the property."
+      },
+      {
+        "id": "d",
+        "text": "It is governed by the law on partnerships because the parties share in the value of the property."
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-062",
+    "prompt": "Dation in payment and a Contract of Sale share many characteristics. However, they differ in one of the following aspects. Which is it?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "In a sale, an obligation is created; in dation, an existing obligation is extinguished."
+      },
+      {
+        "id": "b",
+        "text": "In a sale, there is a transfer of ownership; in dation, there is no transfer of ownership."
+      },
+      {
+        "id": "c",
+        "text": "In a sale, the cause is a price certain in money; in dation, the cause is the liberality (generosity) of the debtor."
+      },
+      {
+        "id": "d",
+        "text": "A sale is a real contract, while dation is a consensual contract."
+      }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-063",
+    "prompt": "D borrowed ₱10,000 from C at an annual interest rate of 10%. On the due date, the total debt is ₱11,000 (₱10,000 principal + ₱1,000 interest). If D pays C ₱5,000 without any specific agreement on how it should be applied, how will the payment be legally credited?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "The entire ₱5,000 will be applied to the principal, leaving ₱1,000 interest unpaid."
+      },
+      {
+        "id": "b",
+        "text": "₱2,500 will be applied to the principal and ₱2,500 to the interest."
+      },
+      {
+        "id": "c",
+        "text": "The payment will first cover the ₱1,000 interest, and the remaining ₱4,000 will be applied to the principal."
+      },
+      {
+        "id": "d",
+        "text": "The payment is void because it does not cover the full amount of the principal."
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-064",
+    "prompt": "If a creditor voluntarily delivers a private document evidencing a debt to the debtor, what is the legal implication?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "It implies that the debt has been fully paid in cash."
+      },
+      {
+        "id": "b",
+        "text": "It implies the renunciation of the action the creditor had against the debtor."
+      },
+      {
+        "id": "c",
+        "text": "It implies that the creditor is appointing the debtor as his new agent."
+      },
+      {
+        "id": "d",
+        "text": "It has no legal effect unless a public instrument is executed."
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-065",
+    "prompt": "What is the effect of confusion (merger of the characters of creditor and debtor) in a joint obligation?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "The entire obligation is extinguished for all parties involved."
+      },
+      {
+        "id": "b",
+        "text": "The obligation is extinguished only as regards the share corresponding to the specific person in whom the two characters concur."
+      },
+      {
+        "id": "c",
+        "text": "The obligation remains fully demandable from the remaining joint debtors by the remaining joint creditors."
+      },
+      {
+        "id": "d",
+        "text": "The joint obligation is automatically converted into a solidary"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-066",
+    "prompt": "When can debts that are rescissible or voidable be compensated against each other?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Before they are judicially rescinded or avoided."
+      },
+      {
+        "id": "b",
+        "text": "Only if both parties explicitly waive their right to sue for rescission."
+      },
+      {
+        "id": "c",
+        "text": "Never, because these debts are considered defective from the beginning."
+      },
+      {
+        "id": "d",
+        "text": "Only after a judge has confirmed the validity of both"
+      }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-067",
+    "prompt": "Under Article 1287, which of the following debts is strictly prohibited from being extinguished by legal compensation?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "debt arising from a depositum or the obligations of a depositary."
+      },
+      {
+        "id": "b",
+        "text": "A debt arising from an lease agreement."
+      },
+      {
+        "id": "c",
+        "text": "A debt arising from a simple loan (mutuum) with interest."
+      },
+      {
+        "id": "d",
+        "text": "A debt arising from a contract of"
+      }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-068",
+    "prompt": "In a case of 'delegacion,' where the original debtor proposes a new debtor to the creditor, what is the general rule if the new debtor becomes insolvent after the substitution?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "The creditor can automatically go back to the original debtor to demand payment."
+      },
+      {
+        "id": "b",
+        "text": "The action of the creditor against the original debtor is NOT revived."
+      },
+      {
+        "id": "c",
+        "text": "The original debtor must pay half of the debt to show good faith."
+      },
+      {
+        "id": "d",
+        "text": "The obligation is extinguished for everyone, and the creditor loses the"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-069",
+    "prompt": "As a rule, what happens to the original obligation if the new obligation intended to novate it is void?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "The parties must create a third obligation to replace both."
+      },
+      {
+        "id": "b",
+        "text": "The original obligation is extinguished along with the void new one."
+      },
+      {
+        "id": "c",
+        "text": "The debtor is released from all liability as a penalty to the creditor."
+      },
+      {
+        "id": "d",
+        "text": "The original obligation subsists and remains"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-070",
+    "prompt": "Legal subrogation is presumed when a creditor pays another creditor who is 'preferred.' Does this subrogation require the debtor's knowledge or consent?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Yes, but only if the preferred creditor is a banking institution."
+      },
+      {
+        "id": "b",
+        "text": "No, but it only applies if the debtor is currently in default (mora)."
+      },
+      {
+        "id": "c",
+        "text": "No, it takes place even without the debtor's knowledge."
+      },
+      {
+        "id": "d",
+        "text": "Yes, the debtor must give express consent for the transfer of credit"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-071",
+    "prompt": "When bank records indicate in a deposit account the name of a person followed by the preposition 'by' and the name of another person (e.g., 'Danilo Reyes by Dianne Fernandez'), the maximum insured deposit belongs to:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Danilo Reyes"
+      },
+      {
+        "id": "b",
+        "text": "Dianne Fernandez"
+      },
+      {
+        "id": "c",
+        "text": "Both Danilo Reyes and Dianne Fernandez shared equally"
+      },
+      {
+        "id": "d",
+        "text": "The person who physically deposited the money"
+      }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-072",
+    "prompt": "What is the primary purpose of a freeze order under the Anti-Money Laundering Act (AMLA)?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "To allow the bank to use the funds for its own investments during the investigation."
+      },
+      {
+        "id": "b",
+        "text": "To penalize the account holder for failing to submit a Suspicious Transaction Report."
+      },
+      {
+        "id": "c",
+        "text": "To permanently confiscate the funds and transfer them to the National Treasury."
+      },
+      {
+        "id": "d",
+        "text": "To prevent the withdrawal, transfer, or dissipation of funds related to an unlawful"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-073",
+    "prompt": "What is the quantum of evidence required for the Court of Appeals to issue a freeze order?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Proof beyond reasonable doubt"
+      },
+      {
+        "id": "b",
+        "text": "Preponderance of evidence"
+      },
+      {
+        "id": "c",
+        "text": "Probable cause"
+      },
+      {
+        "id": "d",
+        "text": "Substantial evidence"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-074",
+    "prompt": "Statement 1: Under AMLA, covered persons are prohibited from communicating to any person the fact that a covered transaction report was made, its contents, and other information in relation. Statement 2: Under AMLA, accountants acting as legal independent professionals are required to report covered transactions of the relevant information, although obtained in professional.",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Both statements are correct"
+      },
+      {
+        "id": "b",
+        "text": "Both statements are incorrect"
+      },
+      {
+        "id": "c",
+        "text": "Only statement 1 is incorrect"
+      },
+      {
+        "id": "d",
+        "text": "Only statement 2 is incorrect"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-075",
+    "prompt": "Under the 'Safe Harbor Provision,' no case shall lie against a person for reporting a transaction to the AMLC if:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "The report leads to a successful conviction."
+      },
+      {
+        "id": "b",
+        "text": "The customer gives written consent to be reported."
+      },
+      {
+        "id": "c",
+        "text": "The report was made in the regular performance of duties and in good faith."
+      },
+      {
+        "id": "d",
+        "text": "All of the above"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-076",
+    "prompt": "What is the prohibited act of 'Tipping Off' under the AMLA?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Sharing AMLC circulars with other bank branches."
+      },
+      {
+        "id": "b",
+        "text": "Accepting a tip or bribe from a customer to skip KYC procedures."
+      },
+      {
+        "id": "c",
+        "text": "Reporting a suspicious transaction to the AMLC without the manager's approval."
+      },
+      {
+        "id": "d",
+        "text": "Informing the client that a suspicious transaction report has been filed or that their account is being"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-077",
+    "prompt": "Under AMLA, which of the following best defines a 'Beneficial Owner'?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Any person who is a registered shareholder in the SEC General Information Sheet."
+      },
+      {
+        "id": "b",
+        "text": "The bank manager who oversees the corporate account relationship."
+      },
+      {
+        "id": "c",
+        "text": "The government regulator tasked with monitoring the financial institution"
+      },
+      {
+        "id": "d",
+        "text": "The natural person who ultimately owns or controls the customer or on whose behalf a transaction is"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-078",
+    "prompt": "Are 'Kasambahays' (Domestic Workers) entitled to 13th-month pay under Philippine Law?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Yes, but it is purely discretionary on the part of the employer."
+      },
+      {
+        "id": "b",
+        "text": "Only if the employer has more than 10 employees."
+      },
+      {
+        "id": "c",
+        "text": "No, they are only entitled to their agreed monthly wage."
+      },
+      {
+        "id": "d",
+        "text": "Yes, they are entitled to a 13th-month pay equivalent to at least one-twelfth (1/12) of their total basic salary earned in a"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-079",
+    "prompt": "Which of the following best describes the financial condition of an individual debtor who may file a petition for Suspension of Payments under FRIA?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "The debtor has no assets and is completely insolvent."
+      },
+      {
+        "id": "b",
+        "text": "The debtor's liabilities exceed their total assets by at least ₱500,000."
+      },
+      {
+        "id": "c",
+        "text": "The debtor is a corporation undergoing financial distress."
+      },
+      {
+        "id": "d",
+        "text": "The debtor possesses sufficient property to cover all debts but foresees the impossibility of meeting them when they respectively fall"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Answer not provided in source material."
+  },
+  {
+    "id": "rfbt-b99-080",
+    "prompt": "What is the legal effect(s) of the 'Suspension Order' issued by the court upon the filing of a verified petition?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "It automatically cancels all of the debtor's debts."
+      },
+      {
+        "id": "b",
+        "text": "The debtor is required to leave the country until the debts are paid."
+      },
+      {
+        "id": "c",
+        "text": "No creditor may sue or proceed with the collection of their claims, except for specific exempted creditors."
+      },
+      {
+        "id": "d",
+        "text": "All of the above"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Answer not provided in source material."
+  }
+]

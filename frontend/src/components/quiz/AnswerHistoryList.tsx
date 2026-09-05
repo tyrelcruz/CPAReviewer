@@ -28,7 +28,7 @@ export function AnswerHistoryList({ questions, answers }: AnswerHistoryListProps
                   : 'border-destructive/50 bg-destructive/10',
             )}
           >
-            <p className="font-medium">
+            <p className="font-reading font-medium">
               {i + 1}. {q.prompt}
             </p>
             <p className="mt-1">

@@ -58,13 +58,13 @@ export function StudySmarterSection() {
           </div>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-[13rem_1fr]">
-          <div className="rounded-2xl border border-[#F3ECDC]/10 bg-[#4A1414] p-4">
+        <div className="grid overflow-hidden rounded-2xl bg-[#F3ECDC] text-[#3A2A1A] sm:grid-cols-[13rem_1fr]">
+          <div className="border-b border-[#3A2A1A]/10 p-4 sm:border-r sm:border-b-0">
             <div className="mb-3 flex items-center justify-between">
-              <p className="text-xs font-semibold text-[#F3ECDC]/80">
+              <p className="text-xs font-semibold text-[#3A2A1A]/80">
                 Card Decks
               </p>
-              <Plus className="size-4 text-[#F3ECDC]/60" />
+              <Plus className="size-4 text-[#3A2A1A]/60" />
             </div>
             <div className="flex flex-col gap-1.5">
               {DECKS.map((deck) => (
@@ -73,7 +73,7 @@ export function StudySmarterSection() {
                   className={`flex items-center gap-2 rounded-lg px-2.5 py-2 text-xs ${
                     deck.active
                       ? 'bg-[#E0AC48] text-[#3A2A1A]'
-                      : 'text-[#F3ECDC]/75 hover:bg-[#F3ECDC]/5'
+                      : 'text-[#3A2A1A]/75 hover:bg-[#3A2A1A]/5'
                   }`}
                 >
                   <deck.icon className="size-3.5 shrink-0" />
@@ -86,12 +86,12 @@ export function StudySmarterSection() {
             </div>
           </div>
 
-          <div className="rounded-2xl border border-[#F3ECDC]/10 bg-[#4A1414] p-5">
+          <div className="p-5">
             <div className="flex items-center justify-between">
               <span className="rounded-md bg-[#E0AC48] px-2 py-0.5 text-xs font-bold text-[#3A2A1A]">
                 FRONT
               </span>
-              <div className="flex items-center gap-3 text-[#F3ECDC]/60">
+              <div className="flex items-center gap-3 text-[#3A2A1A]/60">
                 <Volume2 className="size-4" />
                 <Star className="size-4" />
               </div>
@@ -102,8 +102,8 @@ export function StudySmarterSection() {
               recognized?
             </p>
 
-            <div className="mt-8 border-t border-[#F3ECDC]/10 pt-4 text-center">
-              <span className="text-sm font-medium text-[#E0AC48] underline underline-offset-4">
+            <div className="mt-8 border-t border-[#3A2A1A]/10 pt-4 text-center">
+              <span className="text-sm font-medium text-[#B8721F] underline underline-offset-4">
                 Tap to reveal answer
               </span>
             </div>
@@ -111,27 +111,27 @@ export function StudySmarterSection() {
             <div className="mt-6 flex items-center justify-between">
               <button
                 type="button"
-                className="flex items-center gap-1.5 rounded-full border border-[#F3ECDC]/20 px-3 py-1.5 text-xs font-semibold"
+                className="flex items-center gap-1.5 rounded-full border border-[#3A2A1A]/20 px-3 py-1.5 text-xs font-semibold"
               >
                 <Shuffle className="size-3.5" />
                 Shuffle
               </button>
               <div className="flex flex-1 items-center gap-2 px-4">
-                <span className="text-xs text-[#F3ECDC]/60">23/156</span>
-                <div className="h-1 flex-1 overflow-hidden rounded-full bg-[#F3ECDC]/15">
+                <span className="text-xs text-[#3A2A1A]/60">23/156</span>
+                <div className="h-1 flex-1 overflow-hidden rounded-full bg-[#3A2A1A]/15">
                   <div className="h-full w-[15%] rounded-full bg-[#E0AC48]" />
                 </div>
               </div>
               <div className="flex items-center gap-1.5">
                 <button
                   type="button"
-                  className="flex size-7 items-center justify-center rounded-full border border-[#F3ECDC]/20"
+                  className="flex size-7 items-center justify-center rounded-full border border-[#3A2A1A]/20"
                 >
                   <ChevronLeft className="size-3.5" />
                 </button>
                 <button
                   type="button"
-                  className="flex size-7 items-center justify-center rounded-full border border-[#F3ECDC]/20"
+                  className="flex size-7 items-center justify-center rounded-full border border-[#3A2A1A]/20"
                 >
                   <ChevronRight className="size-3.5" />
                 </button>

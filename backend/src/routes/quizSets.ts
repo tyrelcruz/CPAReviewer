@@ -2,6 +2,7 @@ import { Router } from 'express'
 import type { RowDataPacket } from 'mysql2'
 
 import { pool } from '../db/pool.js'
+import { asyncHandler } from '../middleware/asyncHandler.js'
 
 export const quizSetsRouter = Router()
 
@@ -26,7 +27,7 @@ interface ChoiceRow extends RowDataPacket {
   position: number
 }
 
-quizSetsRouter.get('/', async (_req, res) => {
+quizSetsRouter.get('/', asyncHandler(async (_req, res) => {
   const [rows] = await pool.query<QuizSetRow[]>(
     `SELECT qs.id, qs.title, qs.description, COUNT(q.id) AS questionCount
      FROM quiz_sets qs
@@ -35,9 +36,9 @@ quizSetsRouter.get('/', async (_req, res) => {
      ORDER BY qs.created_at ASC`,
   )
   res.json(rows)
-})
+}))
 
-quizSetsRouter.get('/:id', async (req, res) => {
+quizSetsRouter.get('/:id', asyncHandler(async (req, res) => {
   const { id } = req.params
 
   const [setRows] = await pool.query<QuizSetRow[]>(
@@ -91,4 +92,4 @@ quizSetsRouter.get('/:id', async (req, res) => {
     description: quizSet.description,
     questions,
   })
-})
+}))
