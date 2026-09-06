@@ -17,13 +17,14 @@ function defaultTopicCounts(topics: RfbtTopic[], total: number): Record<string, 
   return counts
 }
 
-// Only RFBT is ingested today (ReSA + REO + CPAR question banks) — extend
-// this list as more subjects/centers are ingested via `npm run db:ingest`.
+// Only RFBT is ingested today (ReSA + REO + CPAR + REDEFINE question banks) —
+// extend this list as more subjects/centers are ingested via `npm run db:ingest`.
 const SUBJECTS = ['RFBT']
 const REVIEW_CENTERS = [
   'ReSA - The Review School of Accountancy',
   'REO CPA Review (Real Excellence Online)',
   'CPA Review School of the Philippines (CPAR)',
+  'REDEFINE CPA Review School',
 ]
 const ITEM_COUNT_OPTIONS = [25, 50, 70, 100]
 

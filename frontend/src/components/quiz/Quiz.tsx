@@ -324,7 +324,7 @@ export function Quiz({
             transition={{ duration: 0.25, ease: 'easeOut' }}
             className="min-w-0 rounded-2xl border border-[#3A2A1A]/10 bg-white p-6"
           >
-            {(current.sources?.length || variantInfo) && (
+            {(current.sources?.length || current.section || variantInfo) && (
               <div className="mb-3 flex flex-wrap items-center gap-2">
                 {current.sources?.map((s) => (
                   <span
@@ -334,6 +334,11 @@ export function Quiz({
                     {s.center}
                   </span>
                 ))}
+                {current.section && (
+                  <span className="rounded-full bg-[#7A2323]/10 px-2.5 py-1 text-[10px] font-bold whitespace-nowrap text-[#7A2323] uppercase">
+                    {current.section}
+                  </span>
+                )}
                 {variantInfo && (
                   <span className="rounded-full bg-[#E0AC48]/15 px-2.5 py-1 text-[10px] font-bold whitespace-nowrap text-[#B4791F] uppercase">
                     Variant {variantInfo.index} of {variantInfo.total}
