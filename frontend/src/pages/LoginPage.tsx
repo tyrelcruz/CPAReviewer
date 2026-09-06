@@ -75,14 +75,14 @@ export function LoginPage() {
   }
 
   return (
-    <div className="flex min-h-svh items-center justify-center bg-[#F3ECDC] p-4 lg:p-8">
+    <div className="flex min-h-svh items-center justify-center bg-[#F3ECDC] p-2 sm:p-4 lg:p-8">
       <motion.div
         initial={{ opacity: 0, y: 16, scale: 0.98 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.4, ease: 'easeOut' }}
         className="grid w-full max-w-6xl overflow-hidden rounded-3xl shadow-2xl lg:grid-cols-2"
       >
-        <div className="flex items-center justify-center gap-2 bg-[#E0AC48]/20 px-4 py-2 text-center text-xs font-medium text-[#8a5a12] lg:col-span-2">
+        <div className="flex items-center justify-center gap-2 bg-[#E0AC48]/20 px-4 py-1.5 text-center text-xs font-medium text-[#8a5a12] lg:col-span-2">
           <FlaskConical className="size-3.5 shrink-0" />
           <span>
             Alpha build — expect bugs. Found one? Screenshot it and notify Vanessa.
@@ -93,7 +93,7 @@ export function LoginPage() {
           initial={{ opacity: 0, x: -24 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.45, delay: 0.1, ease: 'easeOut' }}
-          className="relative flex flex-col justify-between bg-[#F3ECDC] bg-cover bg-center p-10"
+          className="relative hidden flex-col justify-between bg-[#F3ECDC] bg-cover bg-center p-10 lg:flex"
           style={{ backgroundImage: `url(${illustrationBg})` }}
         >
           <div className="absolute inset-0 bg-[#F3ECDC]/25" />
@@ -161,7 +161,7 @@ export function LoginPage() {
           initial={{ opacity: 0, x: 24 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.45, delay: 0.15, ease: 'easeOut' }}
-          className="flex flex-col justify-between bg-[#F3ECDC] p-10 lg:p-12"
+          className="flex flex-col justify-between bg-[#F3ECDC] p-6 sm:p-10 lg:p-12"
         >
           <div>
             <div className="flex items-center gap-3 text-[#3A5A40]">
@@ -171,7 +171,7 @@ export function LoginPage() {
               </span>
               <span className="h-px flex-1 bg-[#7A2323]/30" />
             </div>
-            <h2 className="font-display mt-4 text-center text-2xl text-[#7A2323]">
+            <h2 className="font-display mt-3 text-center text-2xl text-[#7A2323] sm:mt-4">
               Welcome back!
             </h2>
             <p className="mt-1 text-center text-sm text-[#3A2A1A]/70">
@@ -183,7 +183,7 @@ export function LoginPage() {
               initial="hidden"
               animate="show"
               onSubmit={handleSubmit}
-              className="mt-8 flex flex-col gap-5"
+              className="mt-5 flex flex-col gap-4 sm:mt-8 sm:gap-5"
             >
               <motion.div variants={fadeUpItem}>
                 <label
@@ -277,7 +277,7 @@ export function LoginPage() {
               </motion.button>
             </motion.form>
 
-            <div className="my-6 flex items-center gap-3 text-xs text-[#3A2A1A]/50">
+            <div className="my-4 flex items-center gap-3 text-xs text-[#3A2A1A]/50 sm:my-6">
               <span className="h-px flex-1 bg-[#3A2A1A]/10" />
               or continue with
               <span className="h-px flex-1 bg-[#3A2A1A]/10" />
@@ -288,7 +288,7 @@ export function LoginPage() {
                 type="button"
                 disabled
                 title="Coming soon"
-                className="flex items-center justify-center gap-2 rounded-xl border border-[#3A2A1A]/15 bg-white py-2.5 text-sm font-medium text-[#3A2A1A] opacity-50 transition-colors"
+                className="flex items-center justify-center gap-2 rounded-xl border border-[#3A2A1A]/15 bg-white py-2 sm:py-2.5 text-sm font-medium text-[#3A2A1A] opacity-50 transition-colors"
               >
                 <GoogleIcon className="size-4" />
                 Google
@@ -297,14 +297,14 @@ export function LoginPage() {
                 type="button"
                 disabled
                 title="Coming soon"
-                className="flex items-center justify-center gap-2 rounded-xl border border-[#3A2A1A]/15 bg-white py-2.5 text-sm font-medium text-[#3A2A1A] opacity-50 transition-colors"
+                className="flex items-center justify-center gap-2 rounded-xl border border-[#3A2A1A]/15 bg-white py-2 sm:py-2.5 text-sm font-medium text-[#3A2A1A] opacity-50 transition-colors"
               >
                 <MicrosoftIcon className="size-4" />
                 Microsoft
               </button>
             </div>
 
-            <p className="mt-6 text-center text-sm text-[#3A2A1A]/70">
+            <p className="mt-4 text-center text-sm text-[#3A2A1A]/70 sm:mt-6">
               Don&rsquo;t have an account?{' '}
               <Link to="/signup" className="font-semibold text-[#7A2323] hover:underline">
                 Sign up
@@ -312,7 +312,7 @@ export function LoginPage() {
             </p>
           </div>
 
-          <div className="mt-8 flex items-start gap-2.5 border-t border-[#3A2A1A]/10 pt-5 text-xs">
+          <div className="mt-5 flex items-start gap-2.5 border-t border-[#3A2A1A]/10 pt-4 text-xs sm:mt-8 sm:pt-5">
             <ShieldCheck className="mt-0.5 size-4 shrink-0 text-[#3A5A40]" />
             <div>
               <p className="font-semibold text-[#3A2A1A]">Your data is secure with us.</p>
