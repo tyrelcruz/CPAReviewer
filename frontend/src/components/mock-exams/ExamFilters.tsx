@@ -133,7 +133,7 @@ export function ExamFilters({
       </motion.div>
 
       <div className="flex flex-wrap items-end gap-3">
-        <div className="grid flex-1 grid-cols-2 gap-3 sm:grid-cols-4">
+        <div className="grid min-w-0 flex-1 grid-cols-2 gap-3 sm:grid-cols-4">
           <FilterSelect
             label="Exam Type"
             value={TYPE_OPTIONS.find((o) => o.value === typeFilter)?.label ?? 'All'}

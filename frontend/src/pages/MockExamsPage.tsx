@@ -78,6 +78,12 @@ export function MockExamsPage() {
     })
 
     return [...filtered].sort((a, b) => {
+      // Temporary: always surface the currently playable exams first, ahead
+      // of "Coming Soon" cards, regardless of sort mode.
+      const aAvailable = Boolean(a.quizSetId)
+      const bAvailable = Boolean(b.quizSetId)
+      if (aAvailable !== bAvailable) return aAvailable ? -1 : 1
+
       if (sort === 'alphabetical') return a.title.localeCompare(b.title)
       if (sort === 'score') {
         const scoreA = a.taken ? a.taken.score / a.taken.total : -1
@@ -100,7 +106,7 @@ export function MockExamsPage() {
     <div className="flex min-h-svh bg-[#FBF3EA] text-[#3A2A1A]">
       <Sidebar />
 
-      <div className="flex-1">
+      <div className="min-w-0 flex-1">
         <main className="mx-auto max-w-[1400px] px-8 py-8">
           <motion.div
             initial={{ opacity: 0, y: -16 }}
@@ -161,7 +167,7 @@ export function MockExamsPage() {
                   </div>
                   <button
                     type="button"
-                    onClick={() => navigate('/app/practice')}
+                    onClick={() => navigate('/app/exam-setup')}
                     className="flex items-center gap-1.5 rounded-full border border-[#3A2A1A]/20 px-5 py-2.5 text-sm font-semibold text-[#3A2A1A] hover:bg-[#3A2A1A]/5"
                   >
                     Create Custom Exam

@@ -40,9 +40,17 @@ interface QuizProps {
   questions: QuizQuestion[]
   code?: string
   onBack: () => void
+  /** Fires once when the attempt is finished — lets a caller persist the score server-side. */
+  onComplete?: (answers: Record<string, string>) => void
 }
 
-export function Quiz({ quizSetId, questions: orderedQuestions, code = 'Practice', onBack }: QuizProps) {
+export function Quiz({
+  quizSetId,
+  questions: orderedQuestions,
+  code = 'Practice',
+  onBack,
+  onComplete,
+}: QuizProps) {
   // Shuffled once per attempt (and reshuffled on retake) so the answer to
   // "question 5" isn't something a repeat test-taker can just memorize.
   // Scenario chains (shared scenarioId) are kept intact and in order.
@@ -87,6 +95,16 @@ export function Quiz({ quizSetId, questions: orderedQuestions, code = 'Practice'
 
   const correctCount = correctIndices.size
 
+  // "Variants" grouping: questions sharing a TOS sub-topic are practice
+  // variations of the same rule (different numbers/wording) — surfaced so
+  // practice reads as repeated application, not rote memorization.
+  const variantInfo = useMemo(() => {
+    if (!current?.tosCode) return null
+    const group = questions.filter((q) => q.tosCode === current.tosCode)
+    if (group.length <= 1) return null
+    return { index: group.findIndex((q) => q.id === current.id) + 1, total: group.length }
+  }, [questions, current])
+
   const answeredCount = answeredIndices.size
   const progressPct = (answeredCount / questions.length) * 100
   const accuracyPct = answeredCount === 0 ? 0 : Math.round((correctCount / answeredCount) * 100)
@@ -107,6 +125,11 @@ export function Quiz({ quizSetId, questions: orderedQuestions, code = 'Practice'
     }, 1000)
     return () => clearInterval(interval)
   }, [isComplete, startTime])
+
+  useEffect(() => {
+    if (isComplete) onComplete?.(answers)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isComplete])
 
   function handleSelect(choiceId: string) {
     if (isAnswered) return
@@ -289,6 +312,25 @@ export function Quiz({ quizSetId, questions: orderedQuestions, code = 'Practice'
             transition={{ duration: 0.25, ease: 'easeOut' }}
             className="min-w-0 rounded-2xl border border-[#3A2A1A]/10 bg-white p-6"
           >
+            {(current.sources?.length || variantInfo) && (
+              <div className="mb-3 flex flex-wrap items-center gap-2">
+                {current.sources?.map((s) => (
+                  <span
+                    key={s.center}
+                    className="rounded-full bg-[#3A5A40]/10 px-2.5 py-1 text-[10px] font-bold whitespace-nowrap text-[#3A5A40] uppercase"
+                  >
+                    {s.center}
+                  </span>
+                ))}
+                {variantInfo && (
+                  <span className="rounded-full bg-[#E0AC48]/15 px-2.5 py-1 text-[10px] font-bold whitespace-nowrap text-[#B4791F] uppercase">
+                    Variant {variantInfo.index} of {variantInfo.total}
+                    {current.subTopic ? ` — ${current.subTopic}` : ''}
+                  </span>
+                )}
+              </div>
+            )}
+
             <p className="font-reading text-lg leading-snug font-semibold text-[#3A2A1A]">
               {current.prompt}
             </p>

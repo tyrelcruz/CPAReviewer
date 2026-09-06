@@ -93,7 +93,7 @@ export function QuizResults({
 
   const sectionScores: SectionScore[] = Object.values(
     questions.reduce<Record<string, SectionScore>>((map, q) => {
-      const key = q.section ?? GENERAL_SECTION
+      const key = q.section ?? q.topicCategory ?? GENERAL_SECTION
       const entry = map[key] ?? { section: key, correct: 0, total: 0 }
       entry.total += 1
       if (answers[q.id] === q.correctChoiceId) entry.correct += 1

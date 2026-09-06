@@ -28,7 +28,7 @@ export function DashboardPage() {
     <div className="flex min-h-svh bg-[#FBF3EA] text-[#3A2A1A]">
       <Sidebar />
 
-      <div className="flex-1">
+      <div className="min-w-0 flex-1">
         <motion.main
           variants={staggerContainer}
           initial="hidden"

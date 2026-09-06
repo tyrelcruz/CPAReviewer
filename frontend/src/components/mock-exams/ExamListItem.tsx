@@ -150,7 +150,12 @@ export function ExamListItem({ exam }: ExamListItemProps) {
           type="button"
           disabled={!isAvailable}
           onClick={() => {
-            if (exam.quizSetId) navigate(`/app/practice/${exam.quizSetId}`)
+            if (!exam.quizSetId) return
+            navigate(
+              exam.taken
+                ? `/app/practice/${exam.quizSetId}`
+                : `/app/choose-strategy/${exam.quizSetId}`,
+            )
           }}
           className={cn(
             'shrink-0 rounded-full px-5 py-2.5 text-sm font-semibold whitespace-nowrap transition-colors',

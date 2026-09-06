@@ -19,6 +19,12 @@ export interface QuizQuestion {
    * questions) get reordered against each other.
    */
   scenarioId?: string
+  /** Present only for question-bank-sourced questions (see types/bank.ts). */
+  tosCode?: string
+  topicCategory?: string
+  subTopic?: string
+  bankDifficulty?: 'Easy' | 'Moderate' | 'Difficult'
+  sources?: { center: string }[]
 }
 
 export interface QuizSet {

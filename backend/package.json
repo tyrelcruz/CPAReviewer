@@ -10,7 +10,8 @@
     "db:up": "docker compose up -d",
     "db:down": "docker compose down",
     "db:seed": "tsx src/scripts/seed.ts",
-    "db:migrate": "tsx src/scripts/migrate.ts"
+    "db:migrate": "tsx src/scripts/migrate.ts",
+    "db:ingest": "tsx src/scripts/ingestBank.ts"
   },
   "dependencies": {
     "bcryptjs": "^3.0.3",

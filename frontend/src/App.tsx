@@ -5,7 +5,10 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { ProtectedRoute } from '@/components/auth/ProtectedRoute'
 import { LoadingScreen } from '@/components/LoadingScreen'
 import { AuthProvider } from '@/context/AuthContext'
+import { BankExamApp } from '@/pages/BankExamApp'
+import { ChooseStrategyPage } from '@/pages/ChooseStrategyPage'
 import { DashboardPage } from '@/pages/DashboardPage'
+import { ExamSetupPage } from '@/pages/ExamSetupPage'
 import { LandingPage } from '@/pages/LandingPage'
 import { LoginPage } from '@/pages/LoginPage'
 import { MockExamsPage } from '@/pages/MockExamsPage'
@@ -58,6 +61,30 @@ function App() {
               element={
                 <ProtectedRoute>
                   <QuizApp />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/app/choose-strategy/:quizSetId"
+              element={
+                <ProtectedRoute>
+                  <ChooseStrategyPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/app/exam-setup"
+              element={
+                <ProtectedRoute>
+                  <ExamSetupPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/app/exam/:sessionId"
+              element={
+                <ProtectedRoute>
+                  <BankExamApp />
                 </ProtectedRoute>
               }
             />

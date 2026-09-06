@@ -1,0 +1,3802 @@
+[
+  {
+    "id": "rfbt-reo-may26-1",
+    "prompt": "Which of the following is an incorrect characteristic of a partnership contract?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Consensual"
+      },
+      {
+        "id": "b",
+        "text": "Nominate"
+      },
+      {
+        "id": "c",
+        "text": "Accessory"
+      },
+      {
+        "id": "d",
+        "text": "Onerous"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "A partnership contract is consensual (perfected by mere consent), nominate (has a name given by law), principal (not accessory), and onerous (each partner contributes to a common fund expecting a share in profits). 'Accessory' is incorrect because a partnership contract is a PRINCIPAL contract that can exist independently and does not depend on another contract for its existence.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Organization",
+      "subTopic": "Partnerships",
+      "tosCode": "G.1",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "A contract of partnership is consensual, nominate, principal, and onerous; it is never an accessory contract since it does not depend on another contract for its existence."
+  },
+  {
+    "id": "rfbt-reo-may26-2",
+    "prompt": "Where one partner acting within the scope of his apparent authority receives money or property of a third person and misapplies it, who becomes liable for the misappropriation?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "The guilty partner"
+      },
+      {
+        "id": "b",
+        "text": "The guilty partner and the other partners who may have knowledge"
+      },
+      {
+        "id": "c",
+        "text": "All the partners, including the innocent ones"
+      },
+      {
+        "id": "d",
+        "text": "All the partners and the partnership"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Under Art. 1823 of the Civil Code, the partnership is bound to make good the loss where a partner, acting within the scope of his apparent authority, receives money or property of a third person and misapplies it; under Art. 1824, all partners are solidarily liable with the partnership for such wrongful acts, extending liability to both the partnership entity and all the partners, not just the guilty partner.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Organization",
+      "subTopic": "Partnerships",
+      "tosCode": "G.1",
+      "cognitiveLevel": "Analyzing",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "When a partner misapplies money or property received within his apparent authority, both the partnership and all the partners (solidarily) are liable to the third person for the resulting loss."
+  },
+  {
+    "id": "rfbt-reo-may26-3",
+    "prompt": "King, Queen and Jack formed the Beast Pirates Partnership, Ltd., where Jack is a limited partner. King was in charge of preparing the Certificate of Limited Partnership and failed to submit the same to the SEC. After three years of operations, the partnership had total assets of P12,000,000, while it owed third party creditors P18,000,000. How much will be the liability of the partners?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "King for the entire P6M"
+      },
+      {
+        "id": "b",
+        "text": "King and Queen for P3M each"
+      },
+      {
+        "id": "c",
+        "text": "King, Queen and Jack for P2M each"
+      },
+      {
+        "id": "d",
+        "text": "No partner is liable to third party creditors"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Failure to file the Certificate of Limited Partnership with the SEC means the limited partnership was never validly formed as such; it is treated as a general partnership, making ALL partners (King, Queen, and Jack, including the supposed limited partner) general partners solidarily/pro-rata liable with their separate property for the P6,000,000 deficiency (P18M debts less P12M assets), i.e., P2,000,000 each.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Organization",
+      "subTopic": "Partnerships",
+      "tosCode": "G.1",
+      "cognitiveLevel": "Applying",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "Failure to record the certificate of limited partnership with the SEC results in a de facto general partnership where all partners, including the intended limited partner, are treated as general partners liable to creditors."
+  },
+  {
+    "id": "rfbt-reo-may26-4",
+    "prompt": "What is/are the requirement/s for there to be apparent authority of a partner and the act becomes binding upon the partnership? I. When the partner apparently carries on the usual business of the partnership; II. The person to whom the partner is dealing has no knowledge of the fact that the partner has no such authority.",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Both I and II"
+      },
+      {
+        "id": "b",
+        "text": "Either I or II"
+      },
+      {
+        "id": "c",
+        "text": "I only"
+      },
+      {
+        "id": "d",
+        "text": "II only"
+      }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "Under Art. 1818 of the Civil Code, an act of a partner apparently carrying on in the usual way the business of the partnership binds the partnership, UNLESS the partner so acting has in fact no authority to act for the partnership AND the person with whom he is dealing has knowledge of the fact that he has no such authority; thus, binding apparent authority requires both that the act appears to be in the usual course of business AND that the third person had no knowledge of the partner's lack of actual authority.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Organization",
+      "subTopic": "Partnerships",
+      "tosCode": "G.1",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "A partner's act binds the partnership under apparent authority only when it appears to be carrying on the usual business of the firm and the third person had no knowledge that the partner lacked actual authority."
+  },
+  {
+    "id": "rfbt-reo-may26-5",
+    "prompt": "In a Universal Partnership of All Present Property, profits derived from properties other than those that are contributed are considered",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Property of the partner only if there is a stipulation to that effect"
+      },
+      {
+        "id": "b",
+        "text": "Property of the partnership only if there is a stipulation to that effect"
+      },
+      {
+        "id": "c",
+        "text": "Property of the partner and any stipulation to the contrary is void"
+      },
+      {
+        "id": "d",
+        "text": "Property of the partnership whether or not there is stipulation"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Under Art. 1778, in a universal partnership of all present property, all property owned by the partners at the time of constitution becomes common property, but profits from OTHER property acquired subsequently (not contributed) belong to the partnership ONLY if there is an express stipulation to that effect; absent such stipulation, the profits remain the partner's own.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Organization",
+      "subTopic": "Partnerships",
+      "tosCode": "G.1",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "In a universal partnership of all present property, profits from property not contributed become partnership property only upon an express stipulation."
+  },
+  {
+    "id": "rfbt-reo-may26-6",
+    "prompt": "A partner's right to compensation is considered a/an:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Essential element"
+      },
+      {
+        "id": "b",
+        "text": "Natural element"
+      },
+      {
+        "id": "c",
+        "text": "Accidental element"
+      },
+      {
+        "id": "d",
+        "text": "None of the choices"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "The default rule (natural element) is that a partner is NOT entitled to compensation for services rendered to the partnership beyond his share in profits, since the essence of partnership is sharing in profits, not earning wages; a right to compensation only arises if expressly stipulated by the partners, making it an accidental element (one dependent on agreement, neither essential to nor a default incident of the contract).",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Organization",
+      "subTopic": "Partnerships",
+      "tosCode": "G.1",
+      "cognitiveLevel": "Analyzing",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "A partner's right to compensation for services is an accidental element of the partnership contract, arising only from an express stipulation, since the default rule denies compensation beyond a partner's share in profits."
+  },
+  {
+    "id": "rfbt-reo-may26-7",
+    "prompt": "Under the Revised Corporation Code, if the number of directors of a corporation vested with public interest is 12, how many independent directors are required?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "1"
+      },
+      {
+        "id": "b",
+        "text": "2"
+      },
+      {
+        "id": "c",
+        "text": "2.4"
+      },
+      {
+        "id": "d",
+        "text": "3"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Under Sec. 22 of the RCC, corporations vested with public interest must have independent directors constituting at least 20% of the board, but in no case less than two (2); 20% of 12 directors = 2.4, which is rounded UP to the next whole number, i.e., 3 independent directors.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Organization",
+      "subTopic": "Corporations",
+      "tosCode": "G.1.1.5",
+      "cognitiveLevel": "Applying",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "Corporations vested with public interest must have independent directors comprising at least 20% of the board (rounded up), but never fewer than two."
+  },
+  {
+    "id": "rfbt-reo-may26-8",
+    "prompt": "A corporation's directors and officers are generally not personally liable for acts done in their official capacity, this comes from which principle applicable to a corporation?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Doctrine of Limited liability"
+      },
+      {
+        "id": "b",
+        "text": "Corporate Entity Theory"
+      },
+      {
+        "id": "c",
+        "text": "Doctrine of Limited Capacity"
+      },
+      {
+        "id": "d",
+        "text": "Piercing the Veil of Corporate Entity"
+      }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "As commonly tested in CPA reviewer materials, the Doctrine of Limited Liability is applied broadly to explain why a corporation's representatives — directors, officers, and stockholders alike — are not personally answerable beyond their defined role or contribution, since the corporation's separate juridical personality confines liability for corporate acts to the corporation itself. This is distinguished from Piercing the Veil (an exception that disregards the separate personality to reach the individuals behind it) and the Doctrine of Limited Capacity (which concerns the scope of the corporation's own powers, not the liability of its representatives).",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Organization",
+      "subTopic": "Corporations",
+      "tosCode": "G.1.1.5",
+      "cognitiveLevel": "Analyzing",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "The doctrine of limited liability, as broadly applied, confines the exposure of a corporation's directors, officers, and stockholders for corporate acts to their defined role or contribution, given the corporation's separate juridical personality."
+  },
+  {
+    "id": "rfbt-reo-may26-9",
+    "prompt": "There is dissolution but no liquidation in: I. Merger; II. Consolidation",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Both I and II"
+      },
+      {
+        "id": "b",
+        "text": "Neither I nor II"
+      },
+      {
+        "id": "c",
+        "text": "I only"
+      },
+      {
+        "id": "d",
+        "text": "II only"
+      }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "In both merger and consolidation, the constituent corporations are dissolved, but there is no liquidation of assets because all assets, liabilities, and the business of the constituent corporations are automatically absorbed by the surviving (merger) or the newly formed consolidated (consolidation) corporation.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Organization",
+      "subTopic": "Corporations",
+      "tosCode": "G.1.1.5",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "Merger and consolidation both result in dissolution of the constituent corporations without liquidation, since assets and liabilities are automatically transferred to the surviving or new corporation."
+  },
+  {
+    "id": "rfbt-reo-may26-10",
+    "prompt": "Voluntary dissolution where no creditors are affected would necessitate submission of a request for dissolution with the SEC. A withdrawal of that request can be made in writing signed by the same number of directors, trustees, shareholders, members necessary to request for dissolution. Within how many days can the withdrawal be filed from the time the request for dissolution is filed with the SEC?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "10 days"
+      },
+      {
+        "id": "b",
+        "text": "15 days"
+      },
+      {
+        "id": "c",
+        "text": "30 days"
+      },
+      {
+        "id": "d",
+        "text": "60 days"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Under the SEC rules implementing Sec. 134 of the RCC on voluntary dissolution where no creditors are affected, a request for withdrawal of the dissolution filing, signed by the same number/percentage required for the dissolution request, may be filed with the SEC within 15 days from the filing of the request for dissolution.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Organization",
+      "subTopic": "Corporations",
+      "tosCode": "G.1.1.5",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "A request for voluntary dissolution not affecting creditors may be withdrawn within 15 days from its filing with the SEC, upon the same consent required to file it."
+  },
+  {
+    "id": "rfbt-reo-may26-11",
+    "prompt": "Kanjuro is the secretary of Oden, a director in, and the President of, Wano Corporation. In the course of his employment, Kanjuro obtained material non-public information which he shared with his friend Orochi. All three of them purchased shares of Wano Corporation prior to the information becoming public but for Kanjuro he did so after he resigned therefrom. Who may be considered insiders?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Oden only"
+      },
+      {
+        "id": "b",
+        "text": "Oden and Orochi only"
+      },
+      {
+        "id": "c",
+        "text": "Kanjuro and Orochi only"
+      },
+      {
+        "id": "d",
+        "text": "Kanjuro, Orochi and Oden"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Under the Securities Regulation Code, an 'insider' includes an officer/director of the issuer, a person who obtained material non-public information by reason of a special relationship to the issuer (even a former officer/employee acting on information obtained during employment), and a 'tippee' who knowingly received such information from an insider. Oden (director/President) is clearly an insider; Kanjuro remains an insider even after resignation because he acted on information obtained during his employment; and Orochi, as a knowing tippee, is also treated as an insider.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Organization",
+      "subTopic": "Corporations",
+      "tosCode": "G.1.1.5",
+      "cognitiveLevel": "Analyzing",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "Insider trading liability under the SRC extends to officers/directors, persons who obtained material non-public information by virtue of a relationship with the issuer (even after they leave), and knowing tippees who trade on that information."
+  },
+  {
+    "id": "rfbt-reo-may26-12",
+    "prompt": "A par value share's voting rights can only be limited by the existence of what type of shares?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Founders' shares"
+      },
+      {
+        "id": "b",
+        "text": "Preferred shares"
+      },
+      {
+        "id": "c",
+        "text": "Redeemable shares"
+      },
+      {
+        "id": "d",
+        "text": "Treasury shares"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Under Sec. 6 of the RCC, no share may be deprived of voting rights except those classified and issued as 'preferred' OR 'redeemable' shares — an expansion from the old Corporation Code, which recognized only preferred shares as capable of being made non-voting. Since redeemable shares are explicitly named in this expanded RCC provision as a class whose existence may limit or exclude another class's voting rights, redeemable shares is the answer tested here under the RCC's updated framework.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Organization",
+      "subTopic": "Corporations",
+      "tosCode": "G.1.1.5",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "Under the Revised Corporation Code, both preferred and redeemable shares (an expansion beyond the old Corporation Code) may be classified as non-voting, unlike common/par value shares which must always carry full voting rights."
+  },
+  {
+    "id": "rfbt-reo-may26-13",
+    "prompt": "A member of the board of directors had a transaction with the Corporation where his presence was necessary to constitute a quorum and/or his vote was necessary to approve the transaction. What would be the required votes to ratify this transaction?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Majority of the BOD and majority of the stockholders"
+      },
+      {
+        "id": "b",
+        "text": "Majority of the BOD and 2/3 of the stockholders"
+      },
+      {
+        "id": "c",
+        "text": "Majority of the stockholders"
+      },
+      {
+        "id": "d",
+        "text": "2/3 of the stockholders"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Under Sec. 31 of the RCC, a self-dealing director's contract that would otherwise be voidable (because his presence/vote was necessary for board approval) may be ratified by the vote of stockholders representing at least two-thirds (2/3) of the outstanding capital stock, provided full disclosure is made and the contract is fair and reasonable.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Organization",
+      "subTopic": "Corporations",
+      "tosCode": "G.1.1.5",
+      "cognitiveLevel": "Applying",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "A contract of a self-dealing director whose presence or vote was necessary for board approval requires ratification by 2/3 of the outstanding capital stock, with full disclosure and fairness of the contract."
+  },
+  {
+    "id": "rfbt-reo-may26-14",
+    "prompt": "The number of directors in a corporation",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Not less than 5 but not more than 15"
+      },
+      {
+        "id": "b",
+        "text": "May be less than 5 but not more than 15"
+      },
+      {
+        "id": "c",
+        "text": "May be less than 5 and more than 15"
+      },
+      {
+        "id": "d",
+        "text": "Not less than 5 but may be more than 15"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "For an ordinary stock corporation, Sec. 22 of the RCC caps the board at not more than fifteen (15) directors, while removing the old Corporation Code's fixed minimum of five, so the number of directors may validly be fewer than five (even a single director, as in a One Person Corporation) but may not exceed fifteen. (A non-stock corporation's trustees, by contrast, are not capped at 15 under Sec. 13 and so may exceed that number — the distinction tested when the question specifies 'a corporation' generally rather than 'a non-stock corporation.')",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Organization",
+      "subTopic": "Corporations",
+      "tosCode": "G.1.1.5",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "Under the Revised Corporation Code, an ordinary corporation's directors may number fewer than five but must not exceed fifteen, unlike a non-stock corporation's trustees which may exceed fifteen."
+  },
+  {
+    "id": "rfbt-reo-may26-15",
+    "prompt": "If a corporation has 10 directors, 8 of which are present in the meeting to elect corporate officers, how many votes are required?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "10"
+      },
+      {
+        "id": "b",
+        "text": "8"
+      },
+      {
+        "id": "c",
+        "text": "6"
+      },
+      {
+        "id": "d",
+        "text": "5"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Election of corporate officers requires the vote of a MAJORITY OF ALL THE MEMBERS OF THE BOARD (i.e., majority of the total number of directors, not merely of those present), so a majority of 10 directors is 6 votes, regardless of the number actually present at the meeting.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Organization",
+      "subTopic": "Corporations",
+      "tosCode": "G.1.1.5",
+      "cognitiveLevel": "Applying",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "Corporate officers are elected by the vote of a majority of the entire board of directors, not merely a majority of those present at the meeting."
+  },
+  {
+    "id": "rfbt-reo-may26-16",
+    "prompt": "The annual stockholders meeting shall be conducted on the date fixed in the by-laws. If there is no such date, it can be held",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Anytime within April"
+      },
+      {
+        "id": "b",
+        "text": "Any date after April 15"
+      },
+      {
+        "id": "c",
+        "text": "Within 120 days from the close of the year"
+      },
+      {
+        "id": "d",
+        "text": "After finalization of the annual financial statements"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Under Sec. 49 of the RCC, if no date is fixed in the by-laws for the annual stockholders' meeting, it may be held on any date after April 15 of every year, as determined by the board of directors or trustees.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Organization",
+      "subTopic": "Corporations",
+      "tosCode": "G.1.1.5",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "Absent a by-law-fixed date, the default rule under the RCC is that the annual stockholders' meeting may be held on any date after April 15, as the board may determine."
+  },
+  {
+    "id": "rfbt-reo-may26-17",
+    "prompt": "The appraisal right can only be exercised on the specific grounds provided in the Corporation Code. This applies to shareholders of: I. An Ordinary Stock Corporation; II. A Close Corporation",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Both I and II"
+      },
+      {
+        "id": "b",
+        "text": "Neither I nor II"
+      },
+      {
+        "id": "c",
+        "text": "I only"
+      },
+      {
+        "id": "d",
+        "text": "II only"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "In an ordinary stock corporation, the appraisal right may be exercised only in the specific instances enumerated by the RCC (e.g., amendment of AOI restricting rights, sale of substantially all assets, merger/consolidation, extension/shortening of corporate term, investment in another business). In a CLOSE corporation, however, Sec. 104 of the RCC grants a stockholder a broader right to compel the corporation to purchase his shares 'for any reason,' which is NOT limited to the specific statutory grounds.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Organization",
+      "subTopic": "Corporations",
+      "tosCode": "G.1.1.5",
+      "cognitiveLevel": "Analyzing",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "The appraisal right is confined to the Corporation Code's specific enumerated grounds only for stockholders of an ordinary stock corporation, not for close corporation stockholders, who may invoke it for any reason."
+  },
+  {
+    "id": "rfbt-reo-may26-18",
+    "prompt": "If a corporation opted to have a fixed term but wishes to extend the same, the extension shall be filed not earlier than __ years prior to the said expiration date:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "2"
+      },
+      {
+        "id": "b",
+        "text": "3"
+      },
+      {
+        "id": "c",
+        "text": "5"
+      },
+      {
+        "id": "d",
+        "text": "10"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Under Sec. 11 of the RCC, a corporation with a fixed corporate term may extend it by amending its Articles of Incorporation, and such amendment for extension must be filed with the SEC not earlier than three (3) years prior to the original or subsequent expiry date, unless the SEC allows an earlier filing justified by compelling reasons.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Organization",
+      "subTopic": "Corporations",
+      "tosCode": "G.1.1.5",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "An extension of a corporation's fixed term must generally be filed with the SEC not earlier than 3 years before the expiration date."
+  },
+  {
+    "id": "rfbt-reo-may26-19",
+    "prompt": "Under the Revised Corporation Code, failure to organize a corporation within _____ would result in _____",
+    "choices": [
+      {
+        "id": "a",
+        "text": "2 years; automatic dissolution"
+      },
+      {
+        "id": "b",
+        "text": "2 years; delinquency status"
+      },
+      {
+        "id": "c",
+        "text": "5 years; automatic dissolution"
+      },
+      {
+        "id": "d",
+        "text": "5 years; delinquency status"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Under Sec. 21 of the RCC, if a corporation does not formally organize and commence the transaction of its business (or construction of its works) within five (5) years from the date of its incorporation, its certificate of incorporation is deemed REVOKED as of the day following the end of the five-year period, i.e., an automatic dissolution by operation of law. This is distinct from continuous inoperation of an already-organized corporation for 5 years, which merely places it under delinquent status.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Organization",
+      "subTopic": "Corporations",
+      "tosCode": "G.1.1.5",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "A corporation that fails to formally organize and commence business within 5 years from incorporation suffers automatic revocation of its certificate of incorporation, distinct from delinquency status which applies to continuous inoperation after organization."
+  },
+  {
+    "id": "rfbt-reo-may26-20",
+    "prompt": "Elbaf Corporation has its principal office in Elbaph Building, Lian Batangas. The building is too small to house its stockholders. Which of the following can be a valid venue for the stockholders meeting?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Anywhere in Lian"
+      },
+      {
+        "id": "b",
+        "text": "Anywhere in Batangas"
+      },
+      {
+        "id": "c",
+        "text": "Anywhere in Region IV"
+      },
+      {
+        "id": "d",
+        "text": "Anywhere in Luzon"
+      }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "Under Sec. 50 of the RCC, stockholders'/members' meetings of corporations with principal offices outside Metro Manila may be held in the city or municipality where the principal office is located, i.e., the meeting must be held within Lian, Batangas (the city/municipality of the principal office), not merely anywhere within the province or region.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Organization",
+      "subTopic": "Corporations",
+      "tosCode": "G.1.1.5",
+      "cognitiveLevel": "Applying",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "A stockholders' meeting must be held in the city or municipality where the corporation's principal office is located, as stated in the Articles of Incorporation."
+  },
+  {
+    "id": "rfbt-reo-may26-21",
+    "prompt": "The trustees of a non-stock corporation generally have a term of:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "1 year"
+      },
+      {
+        "id": "b",
+        "text": "2 years"
+      },
+      {
+        "id": "c",
+        "text": "3 years"
+      },
+      {
+        "id": "d",
+        "text": "5 years"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Under Sec. 91 of the RCC, unless the articles of incorporation or by-laws provide otherwise for staggered terms, the trustees of a non-stock corporation shall generally hold office for a term of not more than three (3) years, and may be more than 15 in number as fixed in the articles/by-laws.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Organization",
+      "subTopic": "Corporations",
+      "tosCode": "G.1.1.5",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "Trustees of a non-stock corporation generally serve a term of not more than three years, unlike directors of an ordinary stock corporation who serve one-year terms."
+  },
+  {
+    "id": "rfbt-reo-may26-22",
+    "prompt": "Which corporate officer is required to be a resident but not required to be a citizen of the Philippines?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "President"
+      },
+      {
+        "id": "b",
+        "text": "Corporate Secretary"
+      },
+      {
+        "id": "c",
+        "text": "Treasurer"
+      },
+      {
+        "id": "d",
+        "text": "All of the choices"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Under Sec. 24 of the RCC, the Treasurer must be a resident of the Philippines but is not required to be a Filipino citizen (unless a special law applicable to the corporation's line of business imposes such requirement); the Corporate Secretary, by contrast, must be BOTH a resident and a citizen of the Philippines.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Organization",
+      "subTopic": "Corporations",
+      "tosCode": "G.1.1.5",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "The Revised Corporation Code requires the Treasurer to be a Philippine resident but does not require Filipino citizenship, unlike the Corporate Secretary who must be both resident and citizen."
+  },
+  {
+    "id": "rfbt-reo-may26-23",
+    "prompt": "Where creditors are affected, the voluntary dissolution of a corporation would require a vote of ___ from the stockholders:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Majority"
+      },
+      {
+        "id": "b",
+        "text": "2/3"
+      },
+      {
+        "id": "c",
+        "text": "3/4"
+      },
+      {
+        "id": "d",
+        "text": "Unanimous"
+      }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "Under Sec. 135 of the RCC, voluntary dissolution where creditors ARE affected still requires the same voting threshold as when no creditors are affected — a resolution approved by the affirmative vote of stockholders/members representing at least a MAJORITY of the outstanding capital stock or membership — the distinguishing feature is instead a more elaborate procedure (verified petition, notice, and hearing before the SEC to protect creditors), not a higher voting requirement.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Organization",
+      "subTopic": "Corporations",
+      "tosCode": "G.1.1.5",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "Voluntary dissolution affecting creditors still requires only a majority stockholder/member vote, but follows a more elaborate SEC petition-and-hearing procedure to protect creditors' interests."
+  },
+  {
+    "id": "rfbt-reo-may26-24",
+    "prompt": "Gan Fall is a stockholder of Skypiea Corporation and owns 20% of its outstanding shares. Eneru owns 45%. How many shares would Gan Fall need to purchase from Eneru, at a minimum to trigger the Mandatory Tender Offer Rule?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "30%"
+      },
+      {
+        "id": "b",
+        "text": "31%"
+      },
+      {
+        "id": "c",
+        "text": "35%"
+      },
+      {
+        "id": "d",
+        "text": "50%"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Under the SRC's Mandatory Tender Offer Rule, a tender offer is required, among others, when an acquisition would result in ownership of over 50% of a public company's outstanding shares. Gan Fall already owns 20%; acquiring 31% more from Eneru (20% + 31% = 51%) pushes his ownership beyond 50%, triggering the rule, whereas acquiring only 30% brings him to exactly 50% (not 'over' 50%).",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Organization",
+      "subTopic": "Corporations",
+      "tosCode": "G.1.1.5",
+      "cognitiveLevel": "Applying",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "The Mandatory Tender Offer Rule is triggered when an acquisition brings the acquirer's total ownership to more than 50% of the outstanding shares of a public company (or 35% or more outright)."
+  },
+  {
+    "id": "rfbt-reo-may26-25",
+    "prompt": "The resolutions adopted by the sole director of a One Person Corporation are recorded in a Minutes Book which would be a substitute for:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Authorized Capital Stock"
+      },
+      {
+        "id": "b",
+        "text": "By-Laws"
+      },
+      {
+        "id": "c",
+        "text": "Minutes of the Meeting"
+      },
+      {
+        "id": "d",
+        "text": "All of the choices"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Under Sec. 128 of the RCC (One Person Corporations), since an OPC has only one stockholder who is also its sole director, there is no board meeting to hold; the sole director's decisions are simply recorded in a Minutes Book, which serves as the substitute for minutes of the meeting otherwise required for corporations with a multi-member board.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Organization",
+      "subTopic": "Corporations",
+      "tosCode": "G.1.1.5",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "A One Person Corporation's Minutes Book, recording the sole director/stockholder's decisions, substitutes for the minutes of a board meeting since there is no multi-member board to convene."
+  },
+  {
+    "id": "rfbt-reo-may26-26",
+    "prompt": "A proxy may be allowed in: I. Stockholders' meeting; II. Directors' meeting",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Both I and II"
+      },
+      {
+        "id": "b",
+        "text": "Neither I nor II"
+      },
+      {
+        "id": "c",
+        "text": "I only"
+      },
+      {
+        "id": "d",
+        "text": "II only"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Proxy voting is expressly allowed for stockholders' or members' meetings under Sec. 57 of the RCC. Directors, being elected for their personal trust, confidence, and business judgment, cannot vote or attend board meetings by proxy; they must attend and act in person (or through remote communication, but not by proxy).",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Organization",
+      "subTopic": "Corporations",
+      "tosCode": "G.1.1.5",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "Proxy voting is allowed only in stockholders'/members' meetings; directors and trustees, occupying positions of trust, cannot vote by proxy in board meetings."
+  },
+  {
+    "id": "rfbt-reo-may26-27",
+    "prompt": "In case of a delinquency of a subscriber, which right is suspended and withheld until full payment of the subscription?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Right to vote"
+      },
+      {
+        "id": "b",
+        "text": "Right to be voted upon"
+      },
+      {
+        "id": "c",
+        "text": "Right to receive cash dividends"
+      },
+      {
+        "id": "d",
+        "text": "Right to receive stock dividends"
+      }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "Under Sec. 70 of the RCC, no delinquent stock shall be voted for, be entitled to vote, or be represented at any stockholders' meeting, nor shall the holder thereof be entitled to any of the rights of a stockholder except the right to dividends, until and unless the unpaid balance is fully settled; the right to vote is thus the right expressly suspended and withheld by the statute for as long as the shares remain delinquent.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Organization",
+      "subTopic": "Corporations",
+      "tosCode": "G.1.1.5",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "Under Sec. 70 of the Revised Corporation Code, a delinquent stockholder loses the right to vote and be represented at stockholders' meetings until the unpaid subscription balance is fully paid."
+  },
+  {
+    "id": "rfbt-reo-may26-28",
+    "prompt": "The adoption of the by-laws prior to incorporation would necessitate _______ vote of the incorporators and filed together with the Articles of Incorporation:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Majority"
+      },
+      {
+        "id": "b",
+        "text": "2/3"
+      },
+      {
+        "id": "c",
+        "text": "3/4"
+      },
+      {
+        "id": "d",
+        "text": "Unanimous"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Under Sec. 45 of the RCC, by-laws may be adopted and filed prior to incorporation, simultaneously with the Articles of Incorporation, in which case they must be signed by ALL the incorporators, i.e., a unanimous vote/signature of the incorporators is required — as distinguished from by-laws adopted AFTER incorporation, which only require a majority vote of the outstanding capital stock or members.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Organization",
+      "subTopic": "Corporations",
+      "tosCode": "G.1.1.5",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "By-laws adopted and filed simultaneously with the Articles of Incorporation (prior to incorporation) require the unanimous signature of all incorporators, unlike by-laws adopted after incorporation which need only a majority vote."
+  },
+  {
+    "id": "rfbt-reo-may26-29",
+    "prompt": "Thriller Bark Corporation has 5 directors, 2 vacancies occurred as follows: I. Gecko Moria retired; II. Ghost Princess Perona abandoned her seat. Which of the above vacancies would be filled up by the remaining directors?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Both I and II"
+      },
+      {
+        "id": "b",
+        "text": "Neither I nor II"
+      },
+      {
+        "id": "c",
+        "text": "I only"
+      },
+      {
+        "id": "d",
+        "text": "II only"
+      }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "Under Sec. 28 of the RCC, vacancies in the board arising from causes OTHER THAN removal or expiration of term (e.g., retirement, resignation, or abandonment of office) may be filled by the vote of at least a majority of the remaining directors, if still constituting a quorum; both retirement and abandonment fall under this category, so both vacancies may be filled by the remaining directors.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Organization",
+      "subTopic": "Corporations",
+      "tosCode": "G.1.1.5",
+      "cognitiveLevel": "Analyzing",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "Vacancies in the board arising from causes other than removal or expiration of term (such as retirement or abandonment) may be filled by a majority vote of the remaining directors constituting a quorum."
+  },
+  {
+    "id": "rfbt-reo-may26-30",
+    "prompt": "Alternative Certification of the Financial Statements would be allowed for corporation whose",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Total assets are less than P600,000"
+      },
+      {
+        "id": "b",
+        "text": "Total liabilities are less than P600,000"
+      },
+      {
+        "id": "c",
+        "text": "Total assets or total liabilities are less than P600,000"
+      },
+      {
+        "id": "d",
+        "text": "Total net assets are less than P600,000"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Under SEC rules on financial statement requirements, corporations whose total assets OR total liabilities are less than P600,000 may submit financial statements with an alternative (non-CPA-audited) certification jointly signed by the president and treasurer, in lieu of a full independent CPA audit.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Organization",
+      "subTopic": "Corporations",
+      "tosCode": "G.1.1.5",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "Small corporations with total assets or total liabilities below the P600,000 threshold may use an alternative certification of financial statements instead of a full independent audit."
+  },
+  {
+    "id": "rfbt-reo-may26-31",
+    "prompt": "Which of the following is false with regards to a close corporation?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "The number of stockholders cannot exceed 20"
+      },
+      {
+        "id": "b",
+        "text": "The stockholders may directly manage the corporation"
+      },
+      {
+        "id": "c",
+        "text": "The shares are prohibited from being listed in a stock exchange"
+      },
+      {
+        "id": "d",
+        "text": "The pre-emptive right can be denied in order to meet minimum public ownership"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "A close corporation's shares are, by definition, not listed in any stock exchange and are held by a limited number of persons (not more than 20), and stockholders may manage the business directly without a board (Secs. 96-97, RCC). Choice (d) is false because a close corporation, by its nature, has no publicly-traded shares and thus has no 'minimum public ownership' requirement to meet in the first place.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Organization",
+      "subTopic": "Corporations",
+      "tosCode": "G.1.1.5",
+      "cognitiveLevel": "Analyzing",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "A close corporation is characterized by a cap of 20 stockholders, non-listing of shares in any stock exchange, and the option for direct stockholder management; it has no 'minimum public ownership' requirement since its shares are not publicly traded."
+  },
+  {
+    "id": "rfbt-reo-may26-32",
+    "prompt": "X Drake is a director in SWORD Corporation and BEAST PIRATES Corporation. The two corporations had a transaction with each other. What would be the ownership of X Drake in the corporations that would make the transaction voidable at the option of SWORD?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "15% in SWORD; 20% in BEAST PIRATES"
+      },
+      {
+        "id": "b",
+        "text": "20% in SWORD; 25% in BEAST PIRATES"
+      },
+      {
+        "id": "c",
+        "text": "30% in SWORD; 40% in BEAST PIRATES"
+      },
+      {
+        "id": "d",
+        "text": "40% in SWORD; 10% in BEAST PIRATES"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Under Sec. 32 of the RCC on contracts between corporations with interlocking directors, if the interlocking director's interest in one of the corporations exceeds 20% of its outstanding capital stock, his interest is deemed 'substantial,' and the transaction is treated in the same manner as a contract between the corporation and its own self-dealing director, i.e., voidable at the corporation's option absent proper ratification. Here, X Drake's 25% interest in BEAST PIRATES is substantial, making the contract voidable at SWORD's option.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Organization",
+      "subTopic": "Corporations",
+      "tosCode": "G.1.1.5",
+      "cognitiveLevel": "Applying",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "Where an interlocking director's interest exceeds 20% (deemed 'substantial') in either contracting corporation, the contract is treated as a self-dealing director's contract and is voidable at the option of the corporation absent proper ratification."
+  },
+  {
+    "id": "rfbt-reo-may26-33",
+    "prompt": "A One Person Corporation's sole stockholder is also its sole director. Which corporate officer position is he/she not allowed to occupy?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "President"
+      },
+      {
+        "id": "b",
+        "text": "Corporate Secretary"
+      },
+      {
+        "id": "c",
+        "text": "Treasurer"
+      },
+      {
+        "id": "d",
+        "text": "All of the choices"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Under Sec. 130 of the RCC, the single stockholder of an OPC shall be the sole director and president, and may also assume the role of Treasurer (subject to a bond and notice to the SEC), but cannot be the Corporate Secretary; the OPC must appoint a different natural person as Corporate Secretary.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Organization",
+      "subTopic": "Corporations",
+      "tosCode": "G.1.1.5",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "In a One Person Corporation, the single stockholder/sole director may act as President and Treasurer, but a different natural person must be appointed as Corporate Secretary."
+  },
+  {
+    "id": "rfbt-reo-may26-34",
+    "prompt": "After dissolution, a corporation continues to be a body corporate for purposes of liquidation and winding-up for a period of:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "1 year"
+      },
+      {
+        "id": "b",
+        "text": "3 years"
+      },
+      {
+        "id": "c",
+        "text": "5 years"
+      },
+      {
+        "id": "d",
+        "text": "10 years"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Under Sec. 139 of the RCC, a dissolved corporation continues as a body corporate for three (3) years from the effective date of dissolution for purposes of winding up its affairs, prosecuting/defending suits, and disposing of and conveying its property.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Organization",
+      "subTopic": "Corporations",
+      "tosCode": "G.1.1.5",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Easy"
+    },
+    "canonicalConcept": "A dissolved corporation retains its corporate existence for three years solely for purposes of liquidation, winding up, and settling its affairs."
+  },
+  {
+    "id": "rfbt-reo-may26-35",
+    "prompt": "Any transaction in a security which involves no change in the beneficial ownership. A series of buy and sale transaction may be placed by one and the same beneficial owner in the exchange which would not affect any change of ownership of the shares transacted.",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Wash Sale"
+      },
+      {
+        "id": "b",
+        "text": "Matched Order"
+      },
+      {
+        "id": "c",
+        "text": "Marking the Close"
+      },
+      {
+        "id": "d",
+        "text": "Painting the Tape"
+      }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "Under the SRC's provisions on market manipulation, a 'wash sale' is a transaction involving no genuine change in beneficial ownership of a security, typically effected through pre-arranged simultaneous buy and sell orders by or for the same beneficial owner, creating a false appearance of trading activity without an actual transfer of ownership.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Organization",
+      "subTopic": "Corporations",
+      "tosCode": "G.1.1.5",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "A wash sale is a manipulative securities transaction that creates the appearance of trading activity without any real change in the beneficial ownership of the security."
+  },
+  {
+    "id": "rfbt-reo-may26-36",
+    "prompt": "Which of the following best describes an ultra vires act?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "It is an illegal act"
+      },
+      {
+        "id": "b",
+        "text": "It is contrary to morals and public policy"
+      },
+      {
+        "id": "c",
+        "text": "It is not within the powers of the corporation and is illegal"
+      },
+      {
+        "id": "d",
+        "text": "It is not within the powers of the corporation and may be illegal"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "An ultra vires act is one that is beyond or outside the powers conferred upon the corporation by its Articles of Incorporation, the RCC, and other applicable laws; it is not necessarily illegal per se (an ultra vires act may be entirely lawful in itself, just not among the corporation's authorized powers), so it 'may be' but is not always illegal.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Organization",
+      "subTopic": "Corporations",
+      "tosCode": "G.1.1.5",
+      "cognitiveLevel": "Analyzing",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "An ultra vires act is one outside the corporation's express, implied, or incidental powers; it is distinct from an illegal act, though it may sometimes also be illegal."
+  },
+  {
+    "id": "rfbt-reo-may26-37",
+    "prompt": "A cooperative which engages in medical and dental care, hospitalization, transportation, insurance, housing, labor, electric light and power, communication, professional and other services.",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Health Services Cooperative"
+      },
+      {
+        "id": "b",
+        "text": "Service Cooperative"
+      },
+      {
+        "id": "c",
+        "text": "Consumers Cooperative"
+      },
+      {
+        "id": "d",
+        "text": "Bida-Bidang Cooperative"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Under the Philippine Cooperative Code (RA 9520), a Service Cooperative is a broad category organized to engage in medical and dental care, hospitalization, transportation, insurance, housing, labor, electric light and power, communication, professional, and other services not falling under a more specific cooperative type.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Organization",
+      "subTopic": "Cooperatives",
+      "tosCode": "G.1.1.8",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "A Service Cooperative broadly covers cooperative undertakings in health, transportation, insurance, housing, labor, utilities, communication, professional, and similar services."
+  },
+  {
+    "id": "rfbt-reo-may26-38",
+    "prompt": "the general assembly may by a _______ vote of all its members with voting rights, present and constituting a quorum, delegate some of its powers to a smaller body of the cooperative:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Majority"
+      },
+      {
+        "id": "b",
+        "text": "2/3"
+      },
+      {
+        "id": "c",
+        "text": "3/4"
+      },
+      {
+        "id": "d",
+        "text": "Unanimous"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Under the Cooperative Code, the general assembly may delegate certain of its powers to a representative or smaller body only upon the affirmative vote of at least three-fourths (3/4) of the members with voting rights present and constituting a quorum.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Organization",
+      "subTopic": "Cooperatives",
+      "tosCode": "G.1.1.8",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "A cooperative's general assembly may delegate some of its powers to a smaller representative body only by a three-fourths vote of the voting members present at a quorum."
+  },
+  {
+    "id": "rfbt-reo-may26-39",
+    "prompt": "The Reserve Fund is required to at least ___ during the first five years of operations of a cooperative:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "10%"
+      },
+      {
+        "id": "b",
+        "text": "25%"
+      },
+      {
+        "id": "c",
+        "text": "50%"
+      },
+      {
+        "id": "d",
+        "text": "100%"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Under the Cooperative Code's allocation of net surplus, a cooperative must set aside a higher allocation to its Reserve Fund during its first five years of operation — at least fifty percent (50%) of net surplus — which is reduced to a minimum of 10% once the cooperative has been operating for more than five years.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Organization",
+      "subTopic": "Cooperatives",
+      "tosCode": "G.1.1.8",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "During its first five years of operation, a cooperative must allocate at least 50% of its net surplus to the Reserve Fund, a rate that later decreases to a minimum of 10% after five years."
+  },
+  {
+    "id": "rfbt-reo-may26-40",
+    "prompt": "Special meetings of either the Board of Directors or General Assembly of the Cooperative would necessitate a notice of at least ______ before the meeting:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "2 days"
+      },
+      {
+        "id": "b",
+        "text": "1 week"
+      },
+      {
+        "id": "c",
+        "text": "2 weeks"
+      },
+      {
+        "id": "d",
+        "text": "21 days"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Under the Cooperative Code's rules on notice of special meetings, a special meeting of either the board of directors or the general assembly of a cooperative requires a written notice sent at least twenty-one (21) days before the scheduled date, stating the time, place, and purpose of the meeting, to give members and directors sufficient opportunity to prepare for the specific matters to be taken up.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Organization",
+      "subTopic": "Cooperatives",
+      "tosCode": "G.1.1.8",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "Special meetings of a cooperative's board or general assembly require at least 21 days' prior written notice specifying the meeting's purpose."
+  },
+  {
+    "id": "rfbt-reo-may26-41",
+    "prompt": "The members of this committee are elected directly by the General Assembly:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Audit"
+      },
+      {
+        "id": "b",
+        "text": "Ethics"
+      },
+      {
+        "id": "c",
+        "text": "Mediation and Conciliation"
+      },
+      {
+        "id": "d",
+        "text": "Appeals and Grievances"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Under the Cooperative Code and its implementing rules on cooperative governance structures, the Appeals and Grievances Committee is composed of members elected directly by the General Assembly (rather than appointed by the Board of Directors), so that it can independently hear and resolve complaints, appeals, and grievances brought by members, including those that may involve the board itself.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Organization",
+      "subTopic": "Cooperatives",
+      "tosCode": "G.1.1.8",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "The Appeals and Grievances Committee of a cooperative is elected directly by the General Assembly to preserve its independence in resolving member complaints and appeals."
+  },
+  {
+    "id": "rfbt-reo-may26-42",
+    "prompt": "In which of the following proceedings of the FRIA can there be a standstill period not exceeding 120 days agreed upon by the debtor and his creditors?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Court supervised rehabilitation"
+      },
+      {
+        "id": "b",
+        "text": "Out of court rehabilitation"
+      },
+      {
+        "id": "c",
+        "text": "Suspension of payments"
+      },
+      {
+        "id": "d",
+        "text": "Liquidation"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Under the FRIA (RA 10142), an out-of-court or informal restructuring/rehabilitation agreement (OCRA) may include a standstill period, not exceeding 120 days, during which the debtor and participating creditors agree to suspend actions/claims to allow negotiation of a restructuring/rehabilitation plan.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Transactions",
+      "subTopic": "Financial Rehabilitation and Insolvency Act",
+      "tosCode": "D",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "An out-of-court rehabilitation agreement under the FRIA may include a negotiated standstill period of up to 120 days during which creditors refrain from enforcing claims."
+  },
+  {
+    "id": "rfbt-reo-may26-43",
+    "prompt": "The cram down effect applies to all of the following types of rehabilitation, except:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Pre-negotiated"
+      },
+      {
+        "id": "b",
+        "text": "Court supervised"
+      },
+      {
+        "id": "c",
+        "text": "Out of court"
+      },
+      {
+        "id": "d",
+        "text": "None is an exception"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Under the FRIA, the 'cram down' effect — whereby an approved rehabilitation plan binds the debtor and all creditors, including dissenting ones and those who did not participate, upon court confirmation — applies to court-supervised rehabilitation, pre-negotiated rehabilitation, and even out-of-court/informal restructuring agreements once approved/confirmed as provided by law; hence none is an exception.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Transactions",
+      "subTopic": "Financial Rehabilitation and Insolvency Act",
+      "tosCode": "D",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "The FRIA's cram-down effect, which binds all creditors (including dissenters) to an approved rehabilitation plan, applies across court-supervised, pre-negotiated, and out-of-court rehabilitation proceedings."
+  },
+  {
+    "id": "rfbt-reo-may26-44",
+    "prompt": "Involuntary liquidation of a juridical person would require at least 3 creditors whose aggregate claims is the higher between 25% of the subscribed capital or partners' contribution or at least",
+    "choices": [
+      {
+        "id": "a",
+        "text": "P500,000"
+      },
+      {
+        "id": "b",
+        "text": "P1,000,000"
+      },
+      {
+        "id": "c",
+        "text": "P5,000,000"
+      },
+      {
+        "id": "d",
+        "text": "P10,000,000"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Under Sec. 91 of the FRIA, a petition for involuntary liquidation of a juridical debtor may be filed by three (3) or more creditors with an aggregate claim of at least Php1,000,000 or at least twenty-five percent (25%) of the subscribed capital stock or partners' contributions, whichever is higher — the same threshold applicable to involuntary rehabilitation petitions.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Transactions",
+      "subTopic": "Financial Rehabilitation and Insolvency Act",
+      "tosCode": "D",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "A petition for involuntary liquidation requires at least three creditors with aggregate claims of at least P1,000,000 or 25% of the debtor's subscribed capital/partners' contributions, whichever is higher."
+  },
+  {
+    "id": "rfbt-reo-may26-45",
+    "prompt": "If a petition for rehabilitation is filed, but the court finds that the debtor is not insolvent, the course of action would be:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "To give due course to the petition"
+      },
+      {
+        "id": "b",
+        "text": "To deny the petition"
+      },
+      {
+        "id": "c",
+        "text": "To convert the proceeding into one of liquidation"
+      },
+      {
+        "id": "d",
+        "text": "None of the choices"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Insolvency (or imminent inability to pay debts as they fall due) is a jurisdictional/substantive requirement for a rehabilitation petition under the FRIA; if the court finds that the debtor is not insolvent, there is no basis for rehabilitation, and the proper course of action is to DENY the petition outright, as distinguished from a case where rehabilitation was initially given due course but is later found unviable, warranting conversion to liquidation.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Transactions",
+      "subTopic": "Financial Rehabilitation and Insolvency Act",
+      "tosCode": "D",
+      "cognitiveLevel": "Applying",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "A rehabilitation petition must be denied outright if the court finds the debtor is not actually insolvent, since insolvency is a threshold requirement for rehabilitation proceedings."
+  },
+  {
+    "id": "rfbt-reo-may26-46",
+    "prompt": "What is the maximum period for the court to approve a pre-negotiated rehabilitation plan?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "30 days"
+      },
+      {
+        "id": "b",
+        "text": "60 days"
+      },
+      {
+        "id": "c",
+        "text": "120 days"
+      },
+      {
+        "id": "d",
+        "text": "1 year"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Under Sec. 76 of the FRIA on pre-negotiated rehabilitation, the court must act on (approve or disapprove) the petition within 120 days from its filing; failure to act within this period results in the plan being deemed approved by operation of law.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Transactions",
+      "subTopic": "Financial Rehabilitation and Insolvency Act",
+      "tosCode": "D",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "A court has a maximum of 120 days to act on a pre-negotiated rehabilitation plan under the FRIA, after which the plan is deemed approved by operation of law."
+  },
+  {
+    "id": "rfbt-reo-may26-47",
+    "prompt": "Electronic documents and electronic data messages can be considered the functional equivalent of their written counterparts in the following requirements of the law, except:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "The law requires the contract to be in writing to be enforceable"
+      },
+      {
+        "id": "b",
+        "text": "The law requires the document be retained in its original form"
+      },
+      {
+        "id": "c",
+        "text": "The law requires the transaction be in writing to be valid"
+      },
+      {
+        "id": "d",
+        "text": "None is an exception"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Under the Electronic Commerce Act (RA 8792) and its rules, electronic documents/data messages are given legal recognition as functional equivalents of paper documents for purposes of satisfying writing requirements (whether for validity, enforceability under the Statute of Frauds, or retention in original form) — the law recognizes their equivalence across all these situations, so none of the choices is an exception.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Other Business Transactions",
+      "subTopic": "Electronic Commerce Act",
+      "tosCode": "H.7",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "The Electronic Commerce Act grants electronic documents and data messages legal recognition as functional equivalents of their written counterparts, whether the writing requirement pertains to validity, enforceability, or retention in original form."
+  },
+  {
+    "id": "rfbt-reo-may26-48",
+    "prompt": "If the originator or addressee of an electronic data message or electronic document has more than one place of business and there is an underlying transaction related thereto, the place of dispatch or receipt would be:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "The place with the closest relationship to the underlying transaction"
+      },
+      {
+        "id": "b",
+        "text": "The principal place of business"
+      },
+      {
+        "id": "c",
+        "text": "The habitual residence"
+      },
+      {
+        "id": "d",
+        "text": "None of the choices"
+      }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "Under the E-Commerce Act's rules on time and place of dispatch/receipt of electronic data messages, if a party has more than one place of business, the relevant place is the one that has the closest relationship to the underlying transaction; if there is no underlying transaction, the principal place of business governs; and if a party has no place of business, the habitual residence is used.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Other Business Transactions",
+      "subTopic": "Electronic Commerce Act",
+      "tosCode": "H.7",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "Where a party to an e-commerce transaction has multiple places of business, the place with the closest relationship to the underlying transaction governs the place of dispatch or receipt of an electronic data message."
+  },
+  {
+    "id": "rfbt-reo-may26-49",
+    "prompt": "The maximum number of signatories allowed under the Ease of Doing Business Act is:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "1"
+      },
+      {
+        "id": "b",
+        "text": "3"
+      },
+      {
+        "id": "c",
+        "text": "5"
+      },
+      {
+        "id": "d",
+        "text": "7"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Under RA 11032 (Ease of Doing Business and Efficient Government Service Delivery Act), the number of signatories for any application or request submitted to a government agency shall be limited to a maximum of three (3) signatures, to streamline processing and reduce red tape.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Other Business Transactions",
+      "subTopic": "Ease of Doing Business Act",
+      "tosCode": "H.8",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "The Ease of Doing Business Act caps the required number of signatories for any government application or request at a maximum of three."
+  },
+  {
+    "id": "rfbt-reo-may26-50",
+    "prompt": "The following constitutes a violation of the Ease of Doing Business Act, except:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Imposition of additional requirements other than those listed in the Citizen's Charter"
+      },
+      {
+        "id": "b",
+        "text": "Failure to render government services within the prescribed processing time on any application or request without due cause"
+      },
+      {
+        "id": "c",
+        "text": "Failure to attend to applicants or requesting parties who are within the premises of the office or agency concerned prior to the end of official working hours and during lunch break"
+      },
+      {
+        "id": "d",
+        "text": "None is an exception"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Under RA 11032, all the enumerated acts constitute violations: imposing additional requirements beyond the Citizen's Charter, failing to act on applications within the prescribed processing time without due cause, and refusing to attend to applicants present within office premises before the end of official hours (including during lunch break, under the mandated 'no noon break' policy) are all expressly penalized violations, so none is an exception.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Other Business Transactions",
+      "subTopic": "Ease of Doing Business Act",
+      "tosCode": "H.8",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "The Ease of Doing Business Act penalizes imposing extra requirements beyond the Citizen's Charter, failing to act within the prescribed processing time, and refusing to serve applicants present before the close of official hours, including during lunch break."
+  },
+  {
+    "id": "rfbt-reo-may26-51",
+    "prompt": "Shaka finished a patentable invention in May of 2025. Lilith also finished the same invention separately in December of 2025. Shaka filed an application for a patent in December of 2026, while Lilith filed the application on May of 2026. Who is entitled to the patent assuming all requisites for the grant of a patent are applicable?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Shaka"
+      },
+      {
+        "id": "b",
+        "text": "Lilith"
+      },
+      {
+        "id": "c",
+        "text": "Shaka and Lilith, jointly"
+      },
+      {
+        "id": "d",
+        "text": "Shaka and Lilith, as co-owners"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "The Philippines follows the 'first-to-file' rule (Sec. 29, IP Code) rather than 'first-to-invent': as between two or more persons who made the same invention separately and independently of each other, the right to the patent belongs to whoever FILED an application first, regardless of who invented it first. Lilith filed in May 2026, ahead of Shaka's December 2026 filing, so Lilith is entitled to the patent despite Shaka having invented it earlier.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Other Business Transactions",
+      "subTopic": "Intellectual Property Law",
+      "tosCode": "H.5",
+      "cognitiveLevel": "Applying",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "Under the first-to-file rule of the Intellectual Property Code, the patent is awarded to whoever files the application first, not to whoever invented it first."
+  },
+  {
+    "id": "rfbt-reo-may26-52",
+    "prompt": "A declaration of actual use of a trademark is required to be filed within 3 years from:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Filing of the application"
+      },
+      {
+        "id": "b",
+        "text": "The 5th anniversary of the registration"
+      },
+      {
+        "id": "c",
+        "text": "From the date of renewal of the registration"
+      },
+      {
+        "id": "d",
+        "text": "None of the choices"
+      }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "Under Sec. 124.2 of the IP Code, an applicant for trademark registration must file a Declaration of Actual Use (DAU), together with evidence of use, within three (3) years from the filing date of the trademark application; a separate DAU is also required within one year from the 5th anniversary of registration to maintain the registration.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Other Business Transactions",
+      "subTopic": "Intellectual Property Law",
+      "tosCode": "H.5",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "A trademark applicant must file the initial Declaration of Actual Use within three years from the filing date of the trademark application."
+  },
+  {
+    "id": "rfbt-reo-may26-53",
+    "prompt": "The following are outside the scope of the Data Privacy Act, except:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "The classification, salary range and responsibilities of the Secretary of Finance"
+      },
+      {
+        "id": "b",
+        "text": "A permit granted to a telecommunications company"
+      },
+      {
+        "id": "c",
+        "text": "The name of a person as used in a historical book"
+      },
+      {
+        "id": "d",
+        "text": "Bank account details of an individual"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Under Sec. 4 of the Data Privacy Act (RA 10173), information about public officers relating to their position/functions (including classification and salary range), information about grantees of government permits/licenses, and personal information necessarily processed for journalistic, artistic, literary, or research purposes (such as being named in a historical book) are all EXCLUDED from DPA coverage. Bank account details of an ordinary individual, however, are not among the enumerated exclusions and remain fully covered by, and protected under, the DPA as personal (and potentially sensitive/financial) information.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Other Business Transactions",
+      "subTopic": "Data Privacy Act",
+      "tosCode": "H.6",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "The Data Privacy Act excludes public officers' position-related information, information tied to government permits/licenses, and information incidentally used for journalistic/historical purposes, but a private individual's bank account details remain covered and protected under the Act."
+  },
+  {
+    "id": "rfbt-reo-may26-54",
+    "prompt": "A person's face as captured in a photograph is considered a:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Personal Information"
+      },
+      {
+        "id": "b",
+        "text": "Sensitive Personal Information"
+      },
+      {
+        "id": "c",
+        "text": "Privileged Information"
+      },
+      {
+        "id": "d",
+        "text": "Depends on the face"
+      }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "Under the Data Privacy Act, a photograph of a person's face, being information from which the identity of an individual is reasonably and directly ascertainable, constitutes 'personal information'; it does not automatically fall under 'sensitive personal information' (which covers specific categories like race, health, sexual life, criminal history, etc.) unless it reveals such sensitive attributes.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Other Business Transactions",
+      "subTopic": "Data Privacy Act",
+      "tosCode": "H.6",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "A photograph capturing a person's face is classified as personal information under the Data Privacy Act because it can be used to reasonably identify that individual."
+  },
+  {
+    "id": "rfbt-reo-may26-55",
+    "prompt": "The data subject shall be notified and given an opportunity to withhold consent to the processing in case of changes or any amendment to the information supplied or declared to the data subject. This describes which right of a data subject?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Right to Informed Consent"
+      },
+      {
+        "id": "b",
+        "text": "Right to Withhold Consent"
+      },
+      {
+        "id": "c",
+        "text": "Right to Access"
+      },
+      {
+        "id": "d",
+        "text": "Right to Erasure"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Under Sec. 16 of the Data Privacy Act, a data subject has the right to be notified and given the opportunity to withhold consent to the processing in case of changes to the information supplied or declared — this is the distinct right to withhold consent, as opposed to the more general right to be informed (informed consent) at the time of the initial collection of information.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Other Business Transactions",
+      "subTopic": "Data Privacy Act",
+      "tosCode": "H.6",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "A data subject's right to withhold consent allows them to refuse further processing when there are changes or amendments to the previously supplied or declared personal information."
+  },
+  {
+    "id": "rfbt-reo-may26-56",
+    "prompt": "This kind of damages is awarded by the court to vindicate a right:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Exemplary"
+      },
+      {
+        "id": "b",
+        "text": "Nominal"
+      },
+      {
+        "id": "c",
+        "text": "Temperate"
+      },
+      {
+        "id": "d",
+        "text": "Liquidated"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Under Art. 2221 of the Civil Code, nominal damages are adjudicated in order that a right of the plaintiff, which has been violated or invaded by the defendant, may be vindicated or recognized, and not for the purpose of indemnifying the plaintiff for any loss suffered.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Transactions",
+      "subTopic": "Obligations",
+      "tosCode": "A.1",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "Nominal damages are awarded not to compensate for actual loss but simply to recognize and vindicate a violated right of the plaintiff."
+  },
+  {
+    "id": "rfbt-reo-may26-57",
+    "prompt": "Which kind of check is considered legal tender?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Cashier's check"
+      },
+      {
+        "id": "b",
+        "text": "Manager's check"
+      },
+      {
+        "id": "c",
+        "text": "Certified check"
+      },
+      {
+        "id": "d",
+        "text": "None of the choices"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Checks, regardless of type (cashier's, manager's, or certified), are not legal tender in the Philippines; only Philippine currency issued by the BSP is legal tender. Checks are merely a conditional means of payment of an obligation absent novation or actual encashment.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Transactions",
+      "subTopic": "Obligations",
+      "tosCode": "A.1",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Easy"
+    },
+    "canonicalConcept": "No check is legal tender under Philippine law; checks are only a conditional means of payment of an obligation."
+  },
+  {
+    "id": "rfbt-reo-may26-58",
+    "prompt": "Vivi is indebted to Igaram for P10,000 and Igaram is indebted to Vivi for P10,000. What mode can extinguish the obligations?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Compensation"
+      },
+      {
+        "id": "b",
+        "text": "Confusion/Merger"
+      },
+      {
+        "id": "c",
+        "text": "Consignation"
+      },
+      {
+        "id": "d",
+        "text": "Condonation"
+      }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "Under Art. 1278-1279 of the Civil Code, compensation takes place when two persons are, in their own right, creditors and debtors of each other, and both debts are due, liquidated, demandable, and of a consumable/fungible thing of the same kind and quality; since Vivi and Igaram are mutually indebted to each other in the same amount, compensation extinguishes both obligations to the concurrent amount.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Transactions",
+      "subTopic": "Obligations",
+      "tosCode": "A.1",
+      "cognitiveLevel": "Applying",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "Compensation extinguishes mutual obligations between two parties who are reciprocally creditor and debtor of each other, to the concurrent amount of their debts."
+  },
+  {
+    "id": "rfbt-reo-may26-59",
+    "prompt": "This type of fraud is employed to induce the other party to enter into the contract and makes the consent given vitiated.",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Dolo causante"
+      },
+      {
+        "id": "b",
+        "text": "Dolo incidente"
+      },
+      {
+        "id": "c",
+        "text": "Sa dolo ng walang hanggan"
+      },
+      {
+        "id": "d",
+        "text": "None of the choices"
+      }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "Dolo causante (causal fraud) is fraud that is the determining cause of a party's consent to enter into a contract — without it, the party would not have agreed to the contract — and it renders the contract voidable due to vitiated consent (Art. 1338). Dolo incidente (incidental fraud), by contrast, does not vitiate consent and merely gives rise to a claim for damages.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Transactions",
+      "subTopic": "Contracts",
+      "tosCode": "A.2",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "Dolo causante is fraud that induces and determines a party's consent to enter into a contract, vitiating that consent and rendering the contract voidable."
+  },
+  {
+    "id": "rfbt-reo-may26-60",
+    "prompt": "If a third party pays an obligation with the consent of the debtor, the following are the effects, except:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "The third party may compel the creditor to accept payment"
+      },
+      {
+        "id": "b",
+        "text": "The third party will be subrogated to the rights of the creditor"
+      },
+      {
+        "id": "c",
+        "text": "The third party is entitled to beneficial reimbursement"
+      },
+      {
+        "id": "d",
+        "text": "None of the choices is an exception"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Under Art. 1236, when a third person pays with the debtor's express or tacit consent, the payor is entitled to full reimbursement AND to legal subrogation to the rights of the creditor (Art. 1237), not merely 'beneficial reimbursement' — the latter concept applies only where payment is made WITHOUT the debtor's knowledge or against his will, limited to the extent the payment benefited the debtor.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Transactions",
+      "subTopic": "Obligations",
+      "tosCode": "A.1",
+      "cognitiveLevel": "Analyzing",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "Payment by a third party with the debtor's consent entitles the payor to full reimbursement and legal subrogation to the creditor's rights, unlike payment without consent which only gives beneficial reimbursement."
+  },
+  {
+    "id": "rfbt-reo-may26-61",
+    "prompt": "D promised to deliver to C the following specific objects and their equivalent values, in the alternative: (1) Cow – P50,000; (2) Horse – P80,000; or (3) Carabao – P70,000. All the things were lost in the order they were mentioned with the fault of the debtor. How much can the creditor collect from the debtor?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "P50,000"
+      },
+      {
+        "id": "b",
+        "text": "P70,000"
+      },
+      {
+        "id": "c",
+        "text": "P80,000"
+      },
+      {
+        "id": "d",
+        "text": "P200,000"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "In alternative obligations where the right of choice belongs to the debtor and all the objects are lost through the debtor's fault, the debtor must pay the value of the LAST thing which became impossible (Art. 1204), which here is the Carabao at P70,000.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Transactions",
+      "subTopic": "Obligations",
+      "tosCode": "A.1",
+      "cognitiveLevel": "Applying",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "In alternative obligations with the debtor holding the right of choice, if all objects are lost through the debtor's fault, the price of the last object lost is what is payable as damages."
+  },
+  {
+    "id": "rfbt-reo-may26-62",
+    "prompt": "One party cannot revoke or renounce a contract without the consent of the other, nor have it said aside on the ground that he had made a bad bargain. This relates to which fundamental characteristic of a contract?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Autonomy"
+      },
+      {
+        "id": "b",
+        "text": "Mutuality"
+      },
+      {
+        "id": "c",
+        "text": "Obligatory Force"
+      },
+      {
+        "id": "d",
+        "text": "Relativity"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "The principle of mutuality of contracts (Art. 1308) provides that a contract must bind both parties and its validity/compliance cannot be left to the will of only one of them; a party cannot unilaterally revoke or set aside a contract merely because it turned out to be a bad bargain.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Transactions",
+      "subTopic": "Contracts",
+      "tosCode": "A.2",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "Mutuality of contracts means a contract binds both parties and cannot be revoked or modified at the sole will of one party."
+  },
+  {
+    "id": "rfbt-reo-may26-63",
+    "prompt": "In case a contract is voidable because of mistake or fraud employed to wrest consent of one party, the prescriptive period to annul the contract shall be 4 years counted from:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "When the defect caused by mistake or fraud ceases"
+      },
+      {
+        "id": "b",
+        "text": "Discovery of the mistake or fraud"
+      },
+      {
+        "id": "c",
+        "text": "When the injured party becomes capacitated to decide"
+      },
+      {
+        "id": "d",
+        "text": "When the guardianship ceases"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Under Art. 1391 of the Civil Code, the action to annul a voidable contract based on vitiated consent due to mistake or fraud must be brought within four (4) years from the time of the DISCOVERY of the mistake or fraud; this differs from the counting rule for contracts entered under intimidation, violence, or undue influence (from the time the defect ceases) or those entered by incapacitated persons (from the time capacity is acquired or guardianship ceases).",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Transactions",
+      "subTopic": "Contracts",
+      "tosCode": "A.2",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "An action to annul a voidable contract vitiated by mistake or fraud prescribes in four years counted from the time of discovery of the mistake or fraud."
+  },
+  {
+    "id": "rfbt-reo-may26-64",
+    "prompt": "Statement I: Contracts without cause, or with unlawful cause, produce no effect whatever. Statement II: The cause is unlawful if it is contrary to law, morals, good customs, public order or public policy. Statement III: The statement of a false cause in contracts shall render them void, if it should not be proved that they were founded upon another cause which is true and lawful.",
+    "choices": [
+      {
+        "id": "a",
+        "text": "All statements are correct"
+      },
+      {
+        "id": "b",
+        "text": "Only 1 statement is correct"
+      },
+      {
+        "id": "c",
+        "text": "Only 2 statements are correct"
+      },
+      {
+        "id": "d",
+        "text": "All of the statements are incorrect"
+      }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "All three statements correctly restate the Civil Code provisions on cause: Art. 1352 (contracts without cause or with unlawful cause produce no effect), Art. 1352 (definition of unlawful cause), and Art. 1353 (false cause renders the contract void unless it is proven to be founded upon another true and lawful cause).",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Transactions",
+      "subTopic": "Contracts",
+      "tosCode": "A.2",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "A contract is void if it lacks cause, has an unlawful cause, or states a false cause not shown to be founded upon another true and lawful cause."
+  },
+  {
+    "id": "rfbt-reo-may26-65",
+    "prompt": "In a contract of commodatum, the essential elements would be:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Consent, object, cause"
+      },
+      {
+        "id": "b",
+        "text": "Consent, object, cause, form"
+      },
+      {
+        "id": "c",
+        "text": "Consent, object, cause, delivery"
+      },
+      {
+        "id": "d",
+        "text": "Consent, object, cause, form and delivery"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Commodatum is a real contract, meaning that in addition to the ordinary essential requisites of contracts (consent, object, cause), delivery of the thing loaned is required for the contract to be perfected; form is not an essential element of commodatum.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Transactions",
+      "subTopic": "Contracts",
+      "tosCode": "A.2",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "Being a real contract, a contract of commodatum requires delivery of the object, in addition to consent, object, and cause, for its perfection."
+  },
+  {
+    "id": "rfbt-reo-may26-66",
+    "prompt": "A contract entered into between a deaf-mute and an insane person is:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Valid"
+      },
+      {
+        "id": "b",
+        "text": "Voidable"
+      },
+      {
+        "id": "c",
+        "text": "Unenforceable"
+      },
+      {
+        "id": "d",
+        "text": "Rescissible"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Under Art. 1390 of the Civil Code, contracts entered into by persons who are insane or demented (unless the contract was entered during a lucid interval), and by deaf-mutes who do not know how to write, are considered VOIDABLE (annullable) rather than void, since the incapacity affects only the party's ability to give intelligent consent, not the contract's essential existence.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Transactions",
+      "subTopic": "Contracts",
+      "tosCode": "A.2",
+      "cognitiveLevel": "Analyzing",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "Contracts entered into by parties suffering from incapacity to give intelligent consent, such as an insane person or a deaf-mute who cannot write, are voidable rather than void."
+  },
+  {
+    "id": "rfbt-reo-may26-67",
+    "prompt": "A contract involving gratuitous alienation of property is presumed to be in fraud of creditors when:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "There has been some judgment rendered against the debtor who entered the contract"
+      },
+      {
+        "id": "b",
+        "text": "The debtor did not reserve sufficient property to pay for his obligations"
+      },
+      {
+        "id": "c",
+        "text": "The transfer amounts to the greatest reciprocity of interests"
+      },
+      {
+        "id": "d",
+        "text": "The transfer exemplifies the least transmission of rights"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Under Art. 1387 of the Civil Code, alienations by GRATUITOUS title are presumed to have been made in fraud of creditors when the debtor did not reserve sufficient property to pay all his obligations contracted before the alienation; the 'prior judgment against the debtor' presumption, in contrast, applies specifically to alienations made by ONEROUS title.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Transactions",
+      "subTopic": "Contracts",
+      "tosCode": "A.2",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "A gratuitous alienation of property is presumed fraudulent as to creditors when the debtor failed to reserve sufficient property to cover his existing obligations."
+  },
+  {
+    "id": "rfbt-reo-may26-68",
+    "prompt": "Which right of an unpaid seller will require the existence of a possessory lien or stoppage in transitu for it to be exercised?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Rescission"
+      },
+      {
+        "id": "b",
+        "text": "Resale"
+      },
+      {
+        "id": "c",
+        "text": "Both Rescission and Resale"
+      },
+      {
+        "id": "d",
+        "text": "Neither Rescission nor Resale"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Under Art. 1533 of the Civil Code, an unpaid seller having a right of lien or having stopped the goods in transitu may RESELL the goods; the exercise of the right of resale thus presupposes the seller's prior possession of a lien or right of stoppage in transitu. The right of rescission, by contrast, is a separate right that arises upon express reservation of the right to rescind for non-payment or upon proper notice, and does not require the existence of a lien or stoppage in transitu as a precondition.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Transactions",
+      "subTopic": "Sales",
+      "tosCode": "A.3",
+      "cognitiveLevel": "Analyzing",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "The unpaid seller's right of resale can only be exercised where the seller already holds a possessory lien or has exercised the right of stoppage in transitu over the goods."
+  },
+  {
+    "id": "rfbt-reo-may26-69",
+    "prompt": "Kinemon exclusively owns a parcel of land which he sold to his wife O-Tsuru on April 25. He again sold the same land to Momonosuke, 17 years old on April 30. Momonosuke took possession of the land in good faith, while O-Tsuru registered the sale. Who will have a better right?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Kinemon"
+      },
+      {
+        "id": "b",
+        "text": "O-Tsuru"
+      },
+      {
+        "id": "c",
+        "text": "Momonosuke"
+      },
+      {
+        "id": "d",
+        "text": "O-Tsuru and Momonosuke, 50-50"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Under the rules on double sales (Art. 1544), for immovable property, ownership belongs to the buyer who first registers the sale in good faith; however, the first sale here — from Kinemon to his wife O-Tsuru — is VOID under Art. 1490 (spouses cannot sell property to each other except in specific exceptions), so O-Tsuru's registration produces no effect since she acquired nothing to register. Between Kinemon and Momonosuke, despite Momonosuke's minority, possession in good faith under the only valid sale prevails, making Momonosuke's right superior (a sale to a minor is merely voidable, not void, and remains valid until annulled).",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Transactions",
+      "subTopic": "Sales",
+      "tosCode": "A.3",
+      "cognitiveLevel": "Analyzing",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "A sale between spouses is void under Art. 1490 of the Civil Code, so a subsequent buyer in good faith under a valid (even if voidable, as when the buyer is a minor) sale prevails over the void first sale despite the first buyer's registration."
+  },
+  {
+    "id": "rfbt-reo-may26-70",
+    "prompt": "Iceburg, the mayor of Water 7 and head of Galley-La Company, approaches Kokoro, the experienced sea train conductor, and says: \"I need a train component that can safely withstand Aqua Laguna because we'll be transporting important cargo.\" Kokoro recommends a specific part, assuring him it's reliable even in extreme sea conditions. Iceburg trusts her expertise and uses it. However, during Aqua Laguna, the component fails, putting the cargo at risk. Which implied warranty applies?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Warranty of fitness"
+      },
+      {
+        "id": "b",
+        "text": "Warranty of merchantability"
+      },
+      {
+        "id": "c",
+        "text": "Warranty against eviction"
+      },
+      {
+        "id": "d",
+        "text": "Warranty against redhibitory defects"
+      }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "Under Art. 1562 of the Civil Code, when the buyer makes known to the seller the particular purpose for which the goods are required and relies on the seller's skill or judgment to select suitable goods, there arises an implied warranty of fitness for that particular purpose; here, Iceburg disclosed the specific purpose (withstanding Aqua Laguna) and relied on Kokoro's expertise to select the component.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Transactions",
+      "subTopic": "Sales",
+      "tosCode": "A.3",
+      "cognitiveLevel": "Applying",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "An implied warranty of fitness for a particular purpose arises when the buyer relies on the seller's skill or judgment after making known the specific purpose for which the goods are needed."
+  },
+  {
+    "id": "rfbt-reo-may26-71",
+    "prompt": "Delivery will be necessary for perfection in which accessory contract?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Pledge"
+      },
+      {
+        "id": "b",
+        "text": "Real Estate Mortgage"
+      },
+      {
+        "id": "c",
+        "text": "Chattel Mortgage"
+      },
+      {
+        "id": "d",
+        "text": "Both Real Estate and Chattel Mortgage"
+      }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "Under Art. 2093 of the Civil Code, a pledge is a real contract requiring delivery of the thing pledged to the creditor (or a third person by common agreement) for the contract to be perfected; a real estate mortgage and chattel mortgage, by contrast, do not require delivery of possession — the mortgagor retains possession of the property.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Transactions",
+      "subTopic": "Credit Transactions",
+      "tosCode": "A.4",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "Unlike real estate and chattel mortgages, a pledge is a real contract requiring actual delivery of the thing pledged for its perfection."
+  },
+  {
+    "id": "rfbt-reo-may26-72",
+    "prompt": "A creditor generally has the right to recover the deficiency in a foreclosure sale in which accessory contract?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Pledge"
+      },
+      {
+        "id": "b",
+        "text": "Real Estate Mortgage"
+      },
+      {
+        "id": "c",
+        "text": "Chattel Mortgage"
+      },
+      {
+        "id": "d",
+        "text": "Both Real Estate and Chattel Mortgage"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "In both real estate mortgage foreclosure and (ordinary, non-Recto-Law) chattel mortgage foreclosure, the creditor generally may recover any deficiency between the debt and the proceeds of the foreclosure sale through a subsequent action. In a pledge, however, Art. 2115 of the Civil Code expressly denies the creditor the right to recover any deficiency between the sale price and the principal obligation, notwithstanding any stipulation to the contrary.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Transactions",
+      "subTopic": "Credit Transactions",
+      "tosCode": "A.4",
+      "cognitiveLevel": "Analyzing",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "A pledgee cannot recover any deficiency after foreclosure sale of the pledged thing under Art. 2115, unlike mortgagees (real estate or chattel) who generally may pursue a deficiency claim."
+  },
+  {
+    "id": "rfbt-reo-may26-73",
+    "prompt": "Absolute ownership of the object is a requirement in which of the following? I. Pledge; II. Real Estate Mortgage; III. Chattel Mortgage",
+    "choices": [
+      {
+        "id": "a",
+        "text": "I, II and III"
+      },
+      {
+        "id": "b",
+        "text": "I and II only"
+      },
+      {
+        "id": "c",
+        "text": "I and III only"
+      },
+      {
+        "id": "d",
+        "text": "II and III only"
+      }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "Under Arts. 2085 and 2093 of the Civil Code, one of the common essential requisites of pledge, real estate mortgage, and chattel mortgage is that the pledgor/mortgagor be the absolute owner of the thing pledged or mortgaged.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Transactions",
+      "subTopic": "Credit Transactions",
+      "tosCode": "A.4",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "Absolute ownership by the pledgor/mortgagor of the object given as security is a common essential requisite of pledge, real estate mortgage, and chattel mortgage."
+  },
+  {
+    "id": "rfbt-reo-may26-74",
+    "prompt": "Which of the following predicate crimes for money laundering requires an amount of at least P50,000,000?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Malversation of Public Funds"
+      },
+      {
+        "id": "b",
+        "text": "Graft and Corrupt Practices"
+      },
+      {
+        "id": "c",
+        "text": "Bribery"
+      },
+      {
+        "id": "d",
+        "text": "Plunder"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Plunder (RA 7080, as amended) is committed by a public officer who amasses, accumulates, or acquires ill-gotten wealth through a combination or series of overt or criminal acts amounting to at least P50,000,000; this specific monetary threshold distinguishes plunder from malversation, graft and corrupt practices, and bribery, which carry no such fixed minimum amount as an element of the offense (though the amount involved may affect the specific penalty).",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Other Business Transactions",
+      "subTopic": "AMLA Law",
+      "tosCode": "H.4",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "Plunder, as a predicate crime under the AMLA, specifically requires that the ill-gotten wealth amassed by the public officer amount to at least P50,000,000."
+  },
+  {
+    "id": "rfbt-reo-may26-75",
+    "prompt": "An auditing firm is considered a covered institution if it offers the following services, except:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "acting as a formation agent of juridical persons"
+      },
+      {
+        "id": "b",
+        "text": "acting as a director or corporate secretary of a company"
+      },
+      {
+        "id": "c",
+        "text": "managing of client money, securities or other assets"
+      },
+      {
+        "id": "d",
+        "text": "None is an exception"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Under the AMLA as amended (RA 10927/RA 11521), 'covered persons' include lawyers, accountants, and other professionals when they act as formation agents of juridical persons, act as (or arrange for another to act as) a director/corporate secretary/nominee shareholder, or manage client money, securities, or other assets — all three activities listed subject such professionals/firms to AMLA coverage, so none of the choices is an exception.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Other Business Transactions",
+      "subTopic": "AMLA Law",
+      "tosCode": "H.4",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "Professionals such as lawyers and accountants become AMLA-covered persons when they act as formation agents, corporate officers/nominees, or asset managers for clients."
+  },
+  {
+    "id": "rfbt-reo-may26-76",
+    "prompt": "For casinos, a single casino cash transaction exceeding __________ will be considered a covered transaction:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "P500,000"
+      },
+      {
+        "id": "b",
+        "text": "P1,000,000"
+      },
+      {
+        "id": "c",
+        "text": "P5,000,000"
+      },
+      {
+        "id": "d",
+        "text": "P7,500,000"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Under RA 10365 (amending the AMLA to include casinos as covered persons) and its implementing rules, a single casino cash transaction, or a series of related transactions within 24 hours, exceeding P5,000,000 or its equivalent in any other currency, is treated as a covered transaction subject to reporting to the AMLC.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Other Business Transactions",
+      "subTopic": "AMLA Law",
+      "tosCode": "H.4",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "Casinos must report single cash transactions (or aggregated related transactions in 24 hours) exceeding P5,000,000 as covered transactions under the AMLA."
+  },
+  {
+    "id": "rfbt-reo-may26-77",
+    "prompt": "At this stage the money re-enters mainstream economy in legitimate-looking form, appearing to have come from legitimate transaction.",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Placement"
+      },
+      {
+        "id": "b",
+        "text": "Layering"
+      },
+      {
+        "id": "c",
+        "text": "Integration"
+      },
+      {
+        "id": "d",
+        "text": "None of the choices"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Money laundering typically occurs in three stages: (1) placement, where illicit funds first enter the financial system; (2) layering, where the funds are moved through multiple transactions to obscure their origin; and (3) integration, where the layered funds are reintroduced into the mainstream economy appearing to originate from legitimate sources.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Other Business Transactions",
+      "subTopic": "AMLA Law",
+      "tosCode": "H.4",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "Integration is the final stage of money laundering where previously layered illicit funds are reintroduced into the legitimate economy in an apparently clean form."
+  },
+  {
+    "id": "rfbt-reo-may26-78",
+    "prompt": "Holding company systems are considered covered institutions under the AMLA because they are supervised and/or regulated by:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "The BSP"
+      },
+      {
+        "id": "b",
+        "text": "The Insurance Commission"
+      },
+      {
+        "id": "c",
+        "text": "The Securities and Exchange Commission"
+      },
+      {
+        "id": "d",
+        "text": "All of the choices"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Holding company systems, as juridical entities organized primarily to hold and manage controlling interests in other companies, fall under the general corporate regulatory jurisdiction of the Securities and Exchange Commission; it is this SEC oversight of holding companies as corporate entities that brings them within the AMLA's definition of covered persons/institutions, distinguishing them from BSP-supervised banks or IC-supervised insurers.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Other Business Transactions",
+      "subTopic": "AMLA Law",
+      "tosCode": "H.4",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "Holding company systems are AMLA-covered institutions because, as corporate entities, they fall under the general regulatory and supervisory jurisdiction of the Securities and Exchange Commission."
+  },
+  {
+    "id": "rfbt-reo-may26-79",
+    "prompt": "A court order is not necessary for the AMLC to investigate a bank account if the predicate crime involved is any of the following, except:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Kidnapping"
+      },
+      {
+        "id": "b",
+        "text": "Murder"
+      },
+      {
+        "id": "c",
+        "text": "Conspiracy to commit terrorism"
+      },
+      {
+        "id": "d",
+        "text": "Drugs-related cases"
+      }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "Under Sec. 3(i)(1) of the AMLA, the examination of bank deposits without a court order is allowed specifically for 'kidnapping for ransom' — a distinct, narrower offense than kidnapping in general. Since the choice here refers simply to 'Kidnapping' without the qualifying 'for ransom,' it falls outside this narrow statutory carve-out and would still require a court order for the AMLC to examine bank accounts, unlike murder (Sec. 3(i)(12)), drug-related cases (Sec. 3(i)(2)), and terrorism/conspiracy to commit terrorism, which fall within the recognized no-court-order category.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Other Business Transactions",
+      "subTopic": "AMLA Law",
+      "tosCode": "H.4",
+      "cognitiveLevel": "Analyzing",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "The AMLA's no-court-order exception for bank account examination applies specifically to 'kidnapping for ransom,' a narrower category than kidnapping in general, which still requires a court order."
+  },
+  {
+    "id": "rfbt-reo-may26-80",
+    "prompt": "The following are covered by the confidentiality of bank deposits, except:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Demand deposit in a universal bank"
+      },
+      {
+        "id": "b",
+        "text": "Time deposit in a rural bank"
+      },
+      {
+        "id": "c",
+        "text": "Trust account in a commercial bank"
+      },
+      {
+        "id": "d",
+        "text": "Investment in bonds issued by a bank"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Bank deposit secrecy laws (RA 1405, the Law on Secrecy of Bank Deposits, and related General Banking Law provisions on trust operations) cover demand, savings, and time deposits, as well as trust accounts held with banks; an investment in BONDS issued by a bank is a debt security/investment instrument rather than a deposit or trust arrangement, and is therefore not covered by bank deposit secrecy.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Other Business Transactions",
+      "subTopic": "Secrecy of Bank Deposits",
+      "tosCode": "H.2",
+      "cognitiveLevel": "Analyzing",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "Bank deposit secrecy covers demand and time deposits as well as trust accounts held with banks, but does not extend to bonds or other debt securities issued by a bank, which are investments rather than deposits."
+  },
+  {
+    "id": "rfbt-reo-may26-81",
+    "prompt": "The following requires a court order for the inspection or examination of bank accounts, except:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Cases of bribery and dereliction of duty of a public official"
+      },
+      {
+        "id": "b",
+        "text": "Where the money deposited is the subject of litigation"
+      },
+      {
+        "id": "c",
+        "text": "When the Commissioner determines the net estate of a deceased depositor"
+      },
+      {
+        "id": "d",
+        "text": "Cases involving unexplained wealth of a public official"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Under RA 1405 and related jurisprudence, examination of deposits for bribery/dereliction of duty cases (RA 3019), litigation involving the money deposited, and unexplained wealth cases (RA 1379) require a prior court order; however, the BIR Commissioner may inquire into a decedent's bank deposits to determine the gross estate for estate tax purposes WITHOUT need of a court order, under the Tax Code (as amended by the TRAIN Law).",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Other Business Transactions",
+      "subTopic": "Secrecy of Bank Deposits",
+      "tosCode": "H.2",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "The BIR Commissioner may examine a deceased depositor's bank accounts to determine the gross estate for estate tax purposes without a court order, unlike other statutory exceptions to bank secrecy that require one."
+  },
+  {
+    "id": "rfbt-reo-may26-82",
+    "prompt": "The maximum possible civil penalty for violation of the Truth in Lending Act is:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "P100"
+      },
+      {
+        "id": "b",
+        "text": "P1,000"
+      },
+      {
+        "id": "c",
+        "text": "P2,000"
+      },
+      {
+        "id": "d",
+        "text": "P10,000"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Under Sec. 6(a) of RA 3765 (Truth in Lending Act), a non-compliant creditor is civilly liable to the debtor for an amount equal to twice the finance charge required to be disclosed, subject to a floor of P100 and a ceiling of P2,000 (or actual damages, if greater), reflecting the amounts fixed under the original 1963 statute.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Other Business Transactions",
+      "subTopic": "Truth in Lending Act",
+      "tosCode": "H.3",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "The Truth in Lending Act imposes a civil penalty on non-compliant creditors ranging from a minimum of P100 to a maximum of P2,000 (or actual damages, if greater)."
+  },
+  {
+    "id": "rfbt-reo-may26-83",
+    "prompt": "Violation of the truth in lending act",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Makes the contract void"
+      },
+      {
+        "id": "b",
+        "text": "Makes the loan fully paid"
+      },
+      {
+        "id": "c",
+        "text": "Makes the finance charge illegal"
+      },
+      {
+        "id": "d",
+        "text": "None of the choices is correct"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "A creditor's failure to comply with the Truth in Lending Act's disclosure requirements does NOT invalidate the underlying loan/credit transaction, does not extinguish or deem the loan fully paid, and does not make the finance charge itself illegal; it merely subjects the creditor to the prescribed civil penalty (and possible criminal liability) for non-disclosure.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Other Business Transactions",
+      "subTopic": "Truth in Lending Act",
+      "tosCode": "H.3",
+      "cognitiveLevel": "Analyzing",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "Non-compliance with the Truth in Lending Act's disclosure requirements does not void the loan contract or the finance charge; it merely exposes the creditor to statutory civil (and criminal) penalties."
+  },
+  {
+    "id": "rfbt-reo-may26-84",
+    "prompt": "The following accounts bore the name of Emporio Ivankov in a closed bank: Ivankov by Sabo P100,000; Ivankov in trust for Dragon P100,000; Ivankov for account of Kuma P100,000; Ivankov and/or Revolutionary Army Corporation P100,000. How much can Ivankov recover from the PDIC?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "P100,000"
+      },
+      {
+        "id": "b",
+        "text": "P200,000"
+      },
+      {
+        "id": "c",
+        "text": "P300,000"
+      },
+      {
+        "id": "d",
+        "text": "P350,000"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Under PDIC rules, deposits held by the same person in the SAME right and capacity are combined for insurance purposes, while deposits held in a DIFFERENT right or capacity — such as a joint 'and/or' account with another person or entity — constitute a separate insurable right. Here, Ivankov's individual deposit ('Ivankov by Sabo,' i.e., his own account) is insured up to P100,000, while his joint 'and/or' account with the Revolutionary Army Corporation is a distinct insurable right in which Ivankov, as a named co-depositor, may likewise claim his P100,000 share; the 'in trust for Dragon' and 'for account of Kuma' accounts, being explicitly fiduciary/representative in nature, insure the named beneficiaries (Dragon and Kuma) rather than Ivankov himself. Combining Ivankov's individual account and his share of the joint account gives a total recoverable amount of P200,000.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Other Business Transactions",
+      "subTopic": "PDIC Law",
+      "tosCode": "H.1",
+      "cognitiveLevel": "Analyzing",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "PDIC deposit insurance treats accounts held by the same person in different rights or capacities — such as an individual account versus a joint 'and/or' account — as separate insurable rights, each insured up to the statutory maximum."
+  },
+  {
+    "id": "rfbt-reo-may26-85",
+    "prompt": "The period to file a claim with the PDIC for deposit insurance is __ from the actual takeover of the bank:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "1 year"
+      },
+      {
+        "id": "b",
+        "text": "2 years"
+      },
+      {
+        "id": "c",
+        "text": "3 years"
+      },
+      {
+        "id": "d",
+        "text": "5 years"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Under the PDIC Law (RA 3591, as amended), depositors must file their claims for deposit insurance with the PDIC within two (2) years from the date of actual takeover of the closed bank by the PDIC as receiver; claims filed beyond this period are barred.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Other Business Transactions",
+      "subTopic": "PDIC Law",
+      "tosCode": "H.1",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "A depositor must file a deposit insurance claim with the PDIC within two years from the actual takeover of the closed bank, or the claim is barred."
+  },
+  {
+    "id": "rfbt-reo-may26-86",
+    "prompt": "An employee is entitled to how much if he works on a regular holiday that is also his rest day?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "130%"
+      },
+      {
+        "id": "b",
+        "text": "200%"
+      },
+      {
+        "id": "c",
+        "text": "250%"
+      },
+      {
+        "id": "d",
+        "text": "260%"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Under DOLE labor standards rules, an employee who works on a regular holiday is entitled to 200% of his basic daily wage; if that regular holiday also falls on the employee's scheduled rest day, an additional premium of 30% of that 200% rate is added, resulting in a total of 260% of the basic daily wage.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Other Business Transactions",
+      "subTopic": "Labor Law",
+      "tosCode": "H.9",
+      "cognitiveLevel": "Applying",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "Work performed on a regular holiday that also falls on the employee's rest day is compensated at 260% of the basic daily wage (200% holiday rate plus a 30% rest-day premium on that rate)."
+  },
+  {
+    "id": "rfbt-reo-may26-87",
+    "prompt": "A victim of VAWC who is employed shall be entitled to a paid leave of upto __ days in addition to other paid leaves:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "3"
+      },
+      {
+        "id": "b",
+        "text": "7"
+      },
+      {
+        "id": "c",
+        "text": "10"
+      },
+      {
+        "id": "d",
+        "text": "60"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Under RA 9262 (Anti-VAWC Law), a woman employee who is a victim of violence is entitled to a paid leave of up to 10 days, extendible when necessary as specified in the protection order, in addition to other paid leaves under existing labor laws.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Other Business Transactions",
+      "subTopic": "Labor Law",
+      "tosCode": "H.9",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "RA 9262 grants a victim of violence against women and children who is employed a paid leave of up to 10 days, apart from other statutory leave benefits."
+  },
+  {
+    "id": "rfbt-reo-may26-88",
+    "prompt": "To be entitled to the monthly pension, a disabled member should have contributed at least __ monthly contributions:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "12"
+      },
+      {
+        "id": "b",
+        "text": "36"
+      },
+      {
+        "id": "c",
+        "text": "60"
+      },
+      {
+        "id": "d",
+        "text": "120"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Under the Social Security Law, a member who suffers permanent total or partial disability is entitled to a MONTHLY disability pension only if he/she has paid at least 36 monthly contributions prior to the semester of disability; if fewer than 36 contributions were paid, only a lump-sum benefit is given instead.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Other Business Transactions",
+      "subTopic": "Social Security Law",
+      "tosCode": "H.10",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "An SSS monthly disability pension requires at least 36 monthly contributions prior to the semester of disability, below which only a lump-sum benefit is paid."
+  },
+  {
+    "id": "rfbt-reo-may26-89",
+    "prompt": "Charlotte Linlin, single, had a miscarriage and wanted to avail of the optional days without pay. How long is her maternity leave?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "60 days"
+      },
+      {
+        "id": "b",
+        "text": "90 days"
+      },
+      {
+        "id": "c",
+        "text": "105 days"
+      },
+      {
+        "id": "d",
+        "text": "150 days"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Under the Expanded Maternity Leave Law (RA 11210), all female workers, regardless of civil status, are entitled to 105 days of paid maternity leave regardless of the mode of delivery, including miscarriage/emergency termination of pregnancy, plus an option for additional 30 days without pay.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Other Business Transactions",
+      "subTopic": "Labor Law",
+      "tosCode": "H.9",
+      "cognitiveLevel": "Applying",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "RA 11210 grants 105 days of paid maternity leave to all covered female workers regardless of civil status or mode of delivery, with an additional optional 30 days without pay."
+  },
+  {
+    "id": "rfbt-reo-may26-90",
+    "prompt": "Insurable interest is required to exist when the insurance takes effect and when the loss occurs:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Life insurance"
+      },
+      {
+        "id": "b",
+        "text": "Property insurance"
+      },
+      {
+        "id": "c",
+        "text": "Both life and property insurance"
+      },
+      {
+        "id": "d",
+        "text": "Neither life nor property insurance"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Under the Insurance Code, for PROPERTY insurance, insurable interest must exist both at the time the policy takes effect and at the time of loss; for life insurance, by contrast, insurable interest need only exist at the time the policy takes effect and need not exist at the time of loss (death).",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Organization",
+      "subTopic": "Insurance",
+      "tosCode": "G.1.1.7",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "Property insurance requires insurable interest to exist both at the inception of the policy and at the time of loss, unlike life insurance which requires it only at inception."
+  },
+  {
+    "id": "rfbt-reo-may26-91",
+    "prompt": "The mortgagee's insurable interest in property given as security is:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Upto the value of the property"
+      },
+      {
+        "id": "b",
+        "text": "Upto the unpaid obligation"
+      },
+      {
+        "id": "c",
+        "text": "Upto the original amount of the obligation"
+      },
+      {
+        "id": "d",
+        "text": "None of the choices"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "A mortgagee's insurable interest in the mortgaged property is limited to the extent of the unpaid balance of the secured obligation, since the mortgagee's stake in the property is only to satisfy the debt still owed to him, not the full value of the property (which remains the mortgagor's, as owner).",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Organization",
+      "subTopic": "Insurance",
+      "tosCode": "G.1.1.7",
+      "cognitiveLevel": "Analyzing",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "The mortgagee's insurable interest in mortgaged property is limited to the unpaid balance of the secured debt, unlike the mortgagor's insurable interest which extends to the full value of the property."
+  },
+  {
+    "id": "rfbt-reo-may26-92",
+    "prompt": "This shall mean that form of life insurance under which the premiums are payable either monthly or oftener, if the face amount of insurance provided in any policy is not more than five hundred times that of the current statutory minimum daily wage in the City of Manila, and if the words industrial policy are printed upon the policy as part of the descriptive matter.",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Individual Life"
+      },
+      {
+        "id": "b",
+        "text": "Group Life"
+      },
+      {
+        "id": "c",
+        "text": "Industrial Life"
+      },
+      {
+        "id": "d",
+        "text": "Microinsurance"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "This is the statutory definition of Industrial Life Insurance under the Insurance Code: premiums are collected periodically (monthly or more frequently), the face amount does not exceed 500 times the current statutory minimum daily wage in Metro Manila, and the policy is expressly labeled an 'industrial policy.'",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Organization",
+      "subTopic": "Insurance",
+      "tosCode": "G.1.1.7",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "Industrial life insurance is defined by frequent (monthly or more often) premium collection, a face amount capped at 500 times the Metro Manila minimum daily wage, and an express 'industrial policy' label."
+  },
+  {
+    "id": "rfbt-reo-may26-93",
+    "prompt": "Which of the following modes of government procurement does not involve any bidding?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Limited Source Bidding"
+      },
+      {
+        "id": "b",
+        "text": "Competitive Dialogue"
+      },
+      {
+        "id": "c",
+        "text": "Unsolicited Offer with Bid Matching"
+      },
+      {
+        "id": "d",
+        "text": "Negotiated Procurement"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Under RA 9184 (as amended by RA 12009, the New Government Procurement Act) and its IRR, Negotiated Procurement is an alternative method resorted to WITHOUT public bidding under specific exceptional circumstances (e.g., emergency cases, two failed biddings, small value procurement), whereas limited source bidding, competitive dialogue, and unsolicited offer with bid matching still involve a bidding/competitive process among qualified or invited participants.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Transactions",
+      "subTopic": "Government Procurement Law",
+      "tosCode": "F",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "Negotiated procurement is a mode of government procurement resorted to without conducting competitive public bidding, allowed only under specified exceptional circumstances."
+  },
+  {
+    "id": "rfbt-reo-may26-94",
+    "prompt": "The Most Economically Advantageous Bid as a criterion for bid evaluation considers both price and quality. However, the law requires that the price proposal shall be given a minimum of what weight?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "10-25%"
+      },
+      {
+        "id": "b",
+        "text": "15-25%"
+      },
+      {
+        "id": "c",
+        "text": "10-40%"
+      },
+      {
+        "id": "d",
+        "text": "15-40%"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Under the government procurement IRR's rules on the Most Economically Advantageous Bid (MEAB) evaluation method, the price component of a bid must be given a weight within a prescribed range — at least 15% but not more than 40% of the total evaluation score — with the remaining weight allocated to technical/quality factors, ensuring price remains a meaningfully weighted factor even in a method that also considers quality.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Transactions",
+      "subTopic": "Government Procurement Law",
+      "tosCode": "F",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "Under the Most Economically Advantageous Bid method, government procurement rules require the price component to be weighted within a prescribed 15%-40% range of the total evaluation score."
+  },
+  {
+    "id": "rfbt-reo-may26-95",
+    "prompt": "Which of the following prohibited acts under the Philippine Competition Act may result in criminal liability?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Anti-Competitive Agreements"
+      },
+      {
+        "id": "b",
+        "text": "Abuse of Dominant Position"
+      },
+      {
+        "id": "c",
+        "text": "Prohibited Mergers"
+      },
+      {
+        "id": "d",
+        "text": "All of the choices"
+      }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "Under Sec. 30 of the Philippine Competition Act (RA 10667), criminal liability specifically attaches to entering into the per se prohibited anti-competitive agreements under Sec. 14(a) and (b) (e.g., price-fixing and bid-rigation/market allocation cartels); abuse of dominant position and prohibited mergers and acquisitions, by contrast, are subject only to administrative fines/sanctions, not criminal penalties, under the PCA.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Transactions",
+      "subTopic": "Philippine Competition Act",
+      "tosCode": "E",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "Under the Philippine Competition Act, only per se prohibited anti-competitive agreements (such as price-fixing and bid-rigging cartels) carry criminal liability, unlike abuse of dominant position and prohibited mergers, which are subject only to administrative penalties."
+  },
+  {
+    "id": "rfbt-reo-may26-96",
+    "prompt": "Selling goods or services below cost with the object of driving competition out of the relevant market?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Anti-Competitive Agreements"
+      },
+      {
+        "id": "b",
+        "text": "Abuse of Dominant Position"
+      },
+      {
+        "id": "c",
+        "text": "Prohibited Mergers"
+      },
+      {
+        "id": "d",
+        "text": "All of the choices"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Predatory pricing — selling goods or services below cost with the object or effect of driving competitors out of the relevant market, or of preventing entry, with the intent of recouping losses through anti-competitive prices later — is a recognized form of Abuse of Dominant Position under Sec. 15 of the Philippine Competition Act.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Transactions",
+      "subTopic": "Philippine Competition Act",
+      "tosCode": "E",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "Predatory pricing, or selling below cost to drive out competitors, is a form of abuse of dominant position under the Philippine Competition Act."
+  },
+  {
+    "id": "rfbt-reo-may26-97",
+    "prompt": "a specific price advantage of a consumer product exists when in fact it does not. This will be considered as _____ under the Consumer Protection Act",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Unconscionable Sales Act or Practice"
+      },
+      {
+        "id": "b",
+        "text": "Deceptive Sales Act or Practice"
+      },
+      {
+        "id": "c",
+        "text": "Mislabeled Product"
+      },
+      {
+        "id": "d",
+        "text": "Breach of Warranty"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Under RA 7394 (Consumer Act), representing that a consumer product has a sponsorship, approval, characteristic, ingredient, use, benefit, or quantity (such as a price advantage) which it does not actually have is classified as a deceptive sales act or practice.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Transactions",
+      "subTopic": "Consumer Protection Act",
+      "tosCode": "C",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "Falsely representing a nonexistent price or other advantage of a consumer product constitutes a deceptive sales act or practice under the Consumer Act."
+  },
+  {
+    "id": "rfbt-reo-may26-98",
+    "prompt": "How many total repair attempts will be necessary before filing a complaint with the DTI under the Philippine Lemon Law?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "3"
+      },
+      {
+        "id": "b",
+        "text": "4"
+      },
+      {
+        "id": "c",
+        "text": "5"
+      },
+      {
+        "id": "d",
+        "text": "10"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Under RA 10642 (Philippine Lemon Law), the vehicle must undergo at least four (4) separate repair attempts for the same nonconformity, and it must still exhibit the defect, before the consumer avails of Lemon Law rights; if the defect persists after the notice and final repair opportunity, the consumer may bring a complaint before the DTI.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Transactions",
+      "subTopic": "Consumer Protection Act",
+      "tosCode": "C",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "The Philippine Lemon Law requires at least four unsuccessful repair attempts for the same defect before a consumer may escalate the matter through notice and, eventually, a DTI complaint."
+  },
+  {
+    "id": "rfbt-reo-may26-99",
+    "prompt": "A bounced check given as payment for a pre-existing obligation may be the source of liability under:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Estafa"
+      },
+      {
+        "id": "b",
+        "text": "BP 22"
+      },
+      {
+        "id": "c",
+        "text": "Both Estafa and BP 22"
+      },
+      {
+        "id": "d",
+        "text": "Neither Estafa nor BP 22"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Estafa under Art. 315(2)(d) of the Revised Penal Code requires that the check be issued as the efficient cause/inducement for the offended party to part with money or property; a check issued merely in payment of a PRE-EXISTING obligation does not give rise to estafa since deceit is not the efficient cause of the transaction, but it may still give rise to liability under BP 22 (Bouncing Checks Law), which penalizes the mere act of issuing a worthless check regardless of the purpose for which it was issued.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Transactions",
+      "subTopic": "Bouncing Checks (BP 22)",
+      "tosCode": "B",
+      "cognitiveLevel": "Analyzing",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "A check issued for a pre-existing obligation cannot give rise to estafa (since deceit did not induce the delivery of value), but it may still constitute a violation of BP 22, which punishes the issuance of a worthless check regardless of purpose."
+  },
+  {
+    "id": "rfbt-reo-may26-100",
+    "prompt": "In violations of BP Blg 22, the drawer must be notified of the bounced check and from such notice he is given _____ to make good the check or make arrangements for its payment.",
+    "choices": [
+      {
+        "id": "a",
+        "text": "3 days"
+      },
+      {
+        "id": "b",
+        "text": "5 days"
+      },
+      {
+        "id": "c",
+        "text": "3 banking days"
+      },
+      {
+        "id": "d",
+        "text": "5 banking days"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Under BP 22, upon receiving notice of dishonor, the drawer is given five (5) banking days within which to make good the check (i.e., pay the amount or make arrangements for payment) to avoid the presumption of knowledge of insufficiency of funds and criminal liability.",
+    "source": {
+      "center": "REO CPA Review (Real Excellence Online)",
+      "batch": "May 2026 CPALE Batch",
+      "examType": "Final Preboard Examination"
+    },
+    "tos": {
+      "subject": "RFBT",
+      "topicCategory": "Law on Business Transactions",
+      "subTopic": "Bouncing Checks (BP 22)",
+      "tosCode": "B",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "Under BP 22, a drawer notified of a dishonored check has five banking days from receipt of notice to make the check good or arrange payment before the presumption of knowledge of insufficient funds attaches."
+  }
+]

@@ -28,6 +28,18 @@ export function AnswerHistoryList({ questions, answers }: AnswerHistoryListProps
                   : 'border-destructive/50 bg-destructive/10',
             )}
           >
+            {(q.sources?.length ?? 0) > 0 && (
+              <div className="mb-1 flex flex-wrap gap-1.5">
+                {q.sources!.map((s) => (
+                  <span
+                    key={s.center}
+                    className="rounded-full bg-[#3A5A40]/10 px-2 py-0.5 text-[9px] font-bold whitespace-nowrap text-[#3A5A40] uppercase"
+                  >
+                    {s.center}
+                  </span>
+                ))}
+              </div>
+            )}
             <p className="font-reading font-medium">
               {i + 1}. {q.prompt}
             </p>

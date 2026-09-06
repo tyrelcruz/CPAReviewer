@@ -154,7 +154,7 @@ export const quizSets: QuizSet[] = [
   },
   {
     id: 'rfbt-first-preboard-b99',
-    title: 'RFBT First Preboard B99',
+    title: 'RFBT First Preboard B99 (Final)',
     description: 'Regulatory Framework for Business Transactions — first preboard, batch 99',
     code: 'RFBT',
     questions: rfbtB99Quiz,
