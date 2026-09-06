@@ -146,7 +146,7 @@ export function computeMaxSupportedItemCountForCategories(
  * allocation itself (from `selectExamQuestionsByCategory`) is the hard
  * constraint here; difficulty is only a best-effort preference within it.
  */
-function pickWithSoftDifficultyPreference<T extends BankQuestionPoolItem>(
+export function pickWithSoftDifficultyPreference<T extends BankQuestionPoolItem>(
   bucket: T[],
   needed: number,
   difficultyWeights: DifficultyWeights,
@@ -212,6 +212,38 @@ export function selectExamQuestionsByCategory<T extends CategorizedPoolItem>(
     if (chosen.length < needed) {
       console.warn(
         `examGenerator: only ${chosen.length}/${needed} questions available in category "${category}" — that category's TOS share will be under-filled.`,
+      )
+    }
+    selected.push(...chosen)
+  }
+
+  return shuffle(selected)
+}
+
+/**
+ * Selects questions using exact, caller-specified per-category counts (e.g.
+ * a student overriding the official TOS table's percentages with their own
+ * item counts per topic) instead of computing counts from a weight table.
+ * Each category is clamped independently to whatever that category's pool
+ * actually supports — one thin category running short doesn't affect any
+ * other category's count.
+ */
+export function selectExamQuestionsByExactCounts<T extends CategorizedPoolItem>(
+  pool: T[],
+  categoryCounts: Record<string, number>,
+  difficultyWeights: DifficultyWeights,
+  recentlySeenIds: Set<string> = new Set(),
+): T[] {
+  const selected: T[] = []
+
+  for (const [category, needed] of Object.entries(categoryCounts)) {
+    if (needed <= 0) continue
+
+    const bucket = pool.filter((q) => q.category === category)
+    const chosen = pickWithSoftDifficultyPreference(bucket, needed, difficultyWeights, recentlySeenIds)
+    if (chosen.length < needed) {
+      console.warn(
+        `examGenerator: only ${chosen.length}/${needed} questions available in category "${category}".`,
       )
     }
     selected.push(...chosen)

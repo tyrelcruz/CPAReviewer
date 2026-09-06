@@ -1,16 +1,30 @@
 import { apiClient } from '@/api/client'
-import type { BankQuestion, ExamMode, GeneratedExamSession, SubmitExamResult } from '@/types/bank'
+import type {
+  BankQuestion,
+  ExamMode,
+  GeneratedExamSession,
+  RfbtTopic,
+  SubmitExamResult,
+} from '@/types/bank'
 
 interface GenerateExamParams {
   subject: string
   mode: ExamMode
-  itemCount: number
+  /** Required unless topicCounts is provided (RFBT tos_simulator only). */
+  itemCount?: number
   center?: string
+  /** RFBT tos_simulator only — overrides the default TOS percentages with exact per-topic counts. */
+  topicCounts?: Record<string, number>
 }
 
 export async function generateExam(params: GenerateExamParams): Promise<GeneratedExamSession> {
   const { data } = await apiClient.post<GeneratedExamSession>('/api/exams/generate', params)
   return data
+}
+
+export async function listRfbtTopics(): Promise<RfbtTopic[]> {
+  const { data } = await apiClient.get<{ topics: RfbtTopic[] }>('/api/exams/rfbt-topics')
+  return data.topics
 }
 
 export async function getExamSession(sessionId: string): Promise<GeneratedExamSession> {

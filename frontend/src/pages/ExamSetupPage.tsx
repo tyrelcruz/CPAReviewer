@@ -1,13 +1,21 @@
 import { motion } from 'framer-motion'
 import { ClipboardList, Layers, Loader2 } from 'lucide-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { generateExam } from '@/api/exams'
+import { generateExam, listRfbtTopics } from '@/api/exams'
 import { Sidebar } from '@/components/dashboard/Sidebar'
 import { fadeUpItem, staggerContainer } from '@/lib/motion'
 import { cn } from '@/lib/utils'
-import type { ExamMode } from '@/types/bank'
+import type { ExamMode, RfbtTopic } from '@/types/bank'
+
+function defaultTopicCounts(topics: RfbtTopic[], total: number): Record<string, number> {
+  const counts: Record<string, number> = {}
+  for (const t of topics) {
+    counts[t.category] = Math.min(t.available, Math.round(total * t.weightPct))
+  }
+  return counts
+}
 
 // Only RFBT is ingested today (ReSA + REO + CPAR question banks) — extend
 // this list as more subjects/centers are ingested via `npm run db:ingest`.
@@ -28,14 +36,47 @@ export function ExamSetupPage() {
   const [isGenerating, setIsGenerating] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
+  const [topics, setTopics] = useState<RfbtTopic[]>([])
+  const [customizeTopics, setCustomizeTopics] = useState(false)
+  const [topicCounts, setTopicCounts] = useState<Record<string, number>>({})
+
+  useEffect(() => {
+    if (subject !== 'RFBT') return
+    listRfbtTopics()
+      .then(setTopics)
+      .catch(() => {})
+  }, [subject])
+
+  const usingCustomTopics = customizeTopics && subject === 'RFBT' && mode === 'tos_simulator'
+  const topicTotal = Object.values(topicCounts).reduce((sum, n) => sum + n, 0)
+
+  function handleToggleCustomizeTopics() {
+    if (!customizeTopics) {
+      setTopicCounts(defaultTopicCounts(topics, itemCount))
+    }
+    setCustomizeTopics((v) => !v)
+  }
+
+  function updateTopicCount(category: string, available: number, rawValue: string) {
+    const raw = Number(rawValue)
+    const clamped = Number.isFinite(raw) ? Math.max(0, Math.min(available, Math.round(raw))) : 0
+    setTopicCounts((prev) => ({ ...prev, [category]: clamped }))
+  }
+
   async function handleGenerate() {
+    if (usingCustomTopics && topicTotal <= 0) {
+      setError('Set at least one topic count above 0 before generating.')
+      return
+    }
+
     setError(null)
     setIsGenerating(true)
     try {
       const session = await generateExam({
         subject,
         mode,
-        itemCount,
+        itemCount: usingCustomTopics ? undefined : itemCount,
+        topicCounts: usingCustomTopics ? topicCounts : undefined,
         center: mode === 'review_center_drill' ? center : undefined,
       })
       navigate(`/app/exam/${session.sessionId}`, { state: { notice: session.notice ?? null } })
@@ -149,7 +190,10 @@ export function ExamSetupPage() {
 
             <motion.div
               variants={fadeUpItem}
-              className="flex flex-col gap-2 rounded-2xl border border-[#3A2A1A]/10 bg-white p-5"
+              className={cn(
+                'flex flex-col gap-2 rounded-2xl border border-[#3A2A1A]/10 bg-white p-5',
+                usingCustomTopics && 'opacity-50',
+              )}
             >
               <label className="text-xs font-semibold text-[#3A2A1A]/60">Item Count</label>
               <div className="flex flex-wrap gap-2">
@@ -157,19 +201,84 @@ export function ExamSetupPage() {
                   <button
                     key={n}
                     type="button"
+                    disabled={usingCustomTopics}
                     onClick={() => setItemCount(n)}
                     className={cn(
-                      'rounded-full border px-4 py-2 text-sm font-semibold transition-colors',
+                      'rounded-full border px-4 py-2 text-sm font-semibold transition-colors disabled:cursor-not-allowed',
                       itemCount === n
                         ? 'border-transparent bg-[#E0AC48] text-[#3A2A1A]'
-                        : 'border-[#3A2A1A]/15 text-[#3A2A1A]/80 hover:bg-[#3A2A1A]/5',
+                        : 'border-[#3A2A1A]/15 text-[#3A2A1A]/80 hover:enabled:bg-[#3A2A1A]/5',
                     )}
                   >
                     {n} items
                   </button>
                 ))}
               </div>
+              {usingCustomTopics && (
+                <p className="font-reading text-xs text-[#3A2A1A]/60">
+                  Using the per-topic counts below instead.
+                </p>
+              )}
             </motion.div>
+
+            {subject === 'RFBT' && mode === 'tos_simulator' && topics.length > 0 && (
+              <motion.div
+                variants={fadeUpItem}
+                className="flex flex-col gap-3 rounded-2xl border border-[#3A2A1A]/10 bg-white p-5"
+              >
+                <div className="flex items-center justify-between gap-3">
+                  <div>
+                    <label className="text-xs font-semibold text-[#3A2A1A]/60">
+                      Customize RFBT Topics
+                    </label>
+                    <p className="font-reading mt-0.5 text-xs text-[#3A2A1A]/60">
+                      Override the default PRC topic split with your own count per topic.
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={handleToggleCustomizeTopics}
+                    className={cn(
+                      'shrink-0 rounded-full border px-4 py-2 text-xs font-semibold transition-colors',
+                      customizeTopics
+                        ? 'border-transparent bg-[#3A5A40] text-white'
+                        : 'border-[#3A2A1A]/15 text-[#3A2A1A]/80 hover:bg-[#3A2A1A]/5',
+                    )}
+                  >
+                    {customizeTopics ? 'Customizing' : 'Customize'}
+                  </button>
+                </div>
+
+                {customizeTopics && (
+                  <div className="flex flex-col gap-2 border-t border-[#3A2A1A]/10 pt-3">
+                    {topics.map((t) => (
+                      <div key={t.category} className="flex items-center gap-3">
+                        <div className="min-w-0 flex-1">
+                          <p className="truncate text-sm font-semibold text-[#3A2A1A]">
+                            {t.category}
+                          </p>
+                          <p className="text-xs text-[#3A2A1A]/50">
+                            {Math.round(t.weightPct * 100)}% default · {t.available} available
+                          </p>
+                        </div>
+                        <input
+                          type="number"
+                          min={0}
+                          max={t.available}
+                          value={topicCounts[t.category] ?? 0}
+                          onChange={(e) => updateTopicCount(t.category, t.available, e.target.value)}
+                          className="w-20 shrink-0 rounded-lg border border-[#3A2A1A]/15 px-2.5 py-1.5 text-right text-sm font-semibold text-[#3A2A1A] outline-none focus:border-[#7A2323]/40"
+                        />
+                      </div>
+                    ))}
+                    <div className="mt-1 flex items-center justify-between border-t border-[#3A2A1A]/10 pt-3 text-sm font-semibold text-[#3A2A1A]">
+                      <span>Total items</span>
+                      <span>{topicTotal}</span>
+                    </div>
+                  </div>
+                )}
+              </motion.div>
+            )}
 
             {error && (
               <motion.p variants={fadeUpItem} className="text-sm font-semibold text-[#7A2323]">

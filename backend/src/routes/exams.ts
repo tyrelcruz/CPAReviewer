@@ -9,6 +9,7 @@ import {
   computeMaxSupportedItemCountForCategories,
   selectExamQuestions,
   selectExamQuestionsByCategory,
+  selectExamQuestionsByExactCounts,
   type Difficulty,
 } from '../lib/examGenerator.js'
 
@@ -49,6 +50,7 @@ interface PoolRow extends RowDataPacket {
   id: string
   difficulty: Difficulty
   sub_topic: string
+  category?: string
 }
 
 interface SessionRow extends RowDataPacket {
@@ -165,7 +167,7 @@ async function fetchSessionQuestions(sessionId: string): Promise<SessionQuestion
 }
 
 examsRouter.post('/generate', asyncHandler(async (req, res) => {
-  const { subject, mode, itemCount, center } = req.body ?? {}
+  const { subject, mode, itemCount, center, topicCounts } = req.body ?? {}
 
   if (typeof subject !== 'string' || !subject) {
     res.status(400).json({ error: 'subject is required' })
@@ -175,13 +177,50 @@ examsRouter.post('/generate', asyncHandler(async (req, res) => {
     res.status(400).json({ error: "mode must be 'tos_simulator' or 'review_center_drill'" })
     return
   }
-  if (typeof itemCount !== 'number' || itemCount <= 0 || itemCount > MAX_ITEM_COUNT) {
-    res.status(400).json({ error: `itemCount must be a number between 1 and ${MAX_ITEM_COUNT}` })
-    return
-  }
   if (mode === 'review_center_drill' && (typeof center !== 'string' || !center)) {
     res.status(400).json({ error: 'center is required for review_center_drill mode' })
     return
+  }
+
+  // Lets a student override the official RFBT TOS percentages with their own
+  // exact per-topic item counts (e.g. "give me 20 Corp Code, 5 Partnership…")
+  // instead of the fixed 57/12/10/10/6/5 split.
+  const useCustomTopicCounts = subject === 'RFBT' && mode === 'tos_simulator' && topicCounts !== undefined
+
+  let requestedItemCount: number
+  if (useCustomTopicCounts) {
+    if (typeof topicCounts !== 'object' || topicCounts === null || Array.isArray(topicCounts)) {
+      res.status(400).json({ error: 'topicCounts must be an object of category -> count' })
+      return
+    }
+    for (const [category, count] of Object.entries(topicCounts as Record<string, unknown>)) {
+      if (!(category in RFBT_CATEGORY_WEIGHTS)) {
+        res.status(400).json({ error: `Unknown RFBT topic "${category}"` })
+        return
+      }
+      if (typeof count !== 'number' || !Number.isInteger(count) || count < 0) {
+        res.status(400).json({ error: `topicCounts.${category} must be a non-negative integer` })
+        return
+      }
+    }
+    requestedItemCount = Object.values(topicCounts as Record<string, number>).reduce(
+      (sum, n) => sum + n,
+      0,
+    )
+    if (requestedItemCount <= 0) {
+      res.status(400).json({ error: 'topicCounts must sum to at least 1' })
+      return
+    }
+    if (requestedItemCount > MAX_ITEM_COUNT) {
+      res.status(400).json({ error: `topicCounts must sum to at most ${MAX_ITEM_COUNT}` })
+      return
+    }
+  } else {
+    if (typeof itemCount !== 'number' || itemCount <= 0 || itemCount > MAX_ITEM_COUNT) {
+      res.status(400).json({ error: `itemCount must be a number between 1 and ${MAX_ITEM_COUNT}` })
+      return
+    }
+    requestedItemCount = itemCount
   }
 
   const conditions = ['tc.subject = ?']
@@ -220,33 +259,52 @@ examsRouter.post('/generate', asyncHandler(async (req, res) => {
   const useCategoryTable = subject === 'RFBT' && mode === 'tos_simulator'
 
   let selected: PoolRow[]
-  let maxSupported: number
-  let noticeReason: string
+  let notice: string | null = null
 
-  if (useCategoryTable) {
+  if (useCustomTopicCounts) {
+    const categorized = poolRows.map((row) => ({
+      ...row,
+      category: RFBT_CATEGORY_BY_SUBTOPIC[row.sub_topic] ?? '',
+    }))
+    const counts = topicCounts as Record<string, number>
+    selected = selectExamQuestionsByExactCounts(categorized, counts, DEFAULT_DIFFICULTY_WEIGHTS, recentlySeenIds)
+
+    if (selected.length < requestedItemCount) {
+      const shortfalls = Object.entries(counts)
+        .map(([category, needed]) => ({
+          category,
+          needed,
+          actual: selected.filter((q) => q.category === category).length,
+        }))
+        .filter((s) => s.actual < s.needed)
+        .map((s) => `${s.category} (${s.actual}/${s.needed})`)
+      notice = `Only ${selected.length} of ${requestedItemCount} requested items could be generated — some topics don't have enough questions: ${shortfalls.join(', ')}.`
+    }
+  } else if (useCategoryTable) {
     const categorized = poolRows.map((row) => ({
       ...row,
       category: RFBT_CATEGORY_BY_SUBTOPIC[row.sub_topic] ?? '',
     }))
     selected = selectExamQuestionsByCategory(
       categorized,
-      itemCount,
+      requestedItemCount,
       RFBT_CATEGORY_WEIGHTS,
       DEFAULT_DIFFICULTY_WEIGHTS,
       recentlySeenIds,
     )
-    maxSupported = computeMaxSupportedItemCountForCategories(categorized, RFBT_CATEGORY_WEIGHTS)
-    noticeReason = "the question pool doesn't yet have enough items in every RFBT TOS topic"
+    const maxSupported = computeMaxSupportedItemCountForCategories(categorized, RFBT_CATEGORY_WEIGHTS)
+    notice =
+      selected.length < requestedItemCount
+        ? `Only ${selected.length} items could be generated at the required TOS ratio (requested ${requestedItemCount}) — the question pool doesn't yet have enough items in every RFBT TOS topic. Pool currently supports up to ${maxSupported} items at this ratio.`
+        : null
   } else {
-    selected = selectExamQuestions(poolRows, itemCount, DEFAULT_DIFFICULTY_WEIGHTS, recentlySeenIds)
-    maxSupported = computeMaxSupportedItemCount(poolRows, DEFAULT_DIFFICULTY_WEIGHTS)
-    noticeReason = "the question pool for this subject/mode doesn't yet have enough items in every difficulty band"
+    selected = selectExamQuestions(poolRows, requestedItemCount, DEFAULT_DIFFICULTY_WEIGHTS, recentlySeenIds)
+    const maxSupported = computeMaxSupportedItemCount(poolRows, DEFAULT_DIFFICULTY_WEIGHTS)
+    notice =
+      selected.length < requestedItemCount
+        ? `Only ${selected.length} items could be generated at the required TOS ratio (requested ${requestedItemCount}) — the question pool for this subject/mode doesn't yet have enough items in every difficulty band. Pool currently supports up to ${maxSupported} items at this ratio.`
+        : null
   }
-
-  const notice =
-    selected.length < itemCount
-      ? `Only ${selected.length} items could be generated at the required TOS ratio (requested ${itemCount}) — ${noticeReason}. Pool currently supports up to ${maxSupported} items at this ratio.`
-      : null
 
   const sessionId = randomUUID()
   await pool.query(
@@ -264,6 +322,37 @@ examsRouter.post('/generate', asyncHandler(async (req, res) => {
 
   const questions = await fetchSessionQuestions(sessionId)
   res.status(201).json({ sessionId, subject, mode, itemCount: selected.length, notice, questions })
+}))
+
+/**
+ * Exposes the RFBT TOS category table (weight + how many questions are
+ * actually available per category) so the client can default and clamp a
+ * "customize per-topic counts" UI without hardcoding the pool sizes.
+ * Registered before `/:id` — it must not be swallowed by that wildcard.
+ */
+examsRouter.get('/rfbt-topics', asyncHandler(async (_req, res) => {
+  const [rows] = await pool.query<RowDataPacket[]>(
+    `SELECT tc.sub_topic, COUNT(*) as c
+     FROM bank_questions bq
+     JOIN tos_categories tc ON tc.tos_code = bq.tos_code
+     WHERE tc.subject = 'RFBT'
+     GROUP BY tc.sub_topic`,
+  )
+
+  const availableByCategory: Record<string, number> = {}
+  for (const row of rows) {
+    const category = RFBT_CATEGORY_BY_SUBTOPIC[row.sub_topic as string]
+    if (!category) continue
+    availableByCategory[category] = (availableByCategory[category] ?? 0) + Number(row.c)
+  }
+
+  const topics = Object.entries(RFBT_CATEGORY_WEIGHTS).map(([category, weightPct]) => ({
+    category,
+    weightPct,
+    available: availableByCategory[category] ?? 0,
+  }))
+
+  res.json({ topics })
 }))
 
 examsRouter.get('/:id', asyncHandler(async (req, res) => {

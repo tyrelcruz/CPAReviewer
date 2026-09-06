@@ -19,6 +19,12 @@ export interface BankQuestion {
   sources: BankQuestionSource[]
 }
 
+export interface RfbtTopic {
+  category: string
+  weightPct: number
+  available: number
+}
+
 export interface GeneratedExamSession {
   sessionId: string
   subject: string
