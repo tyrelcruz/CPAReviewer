@@ -6,6 +6,7 @@ interface QuestionNavigatorProps {
   total: number
   currentIndex: number
   answeredIndices: Set<number>
+  correctIndices: Set<number>
   flaggedIndices: Set<number>
   onJump: (index: number) => void
   onReviewFlagged: () => void
@@ -15,6 +16,7 @@ export function QuestionNavigator({
   total,
   currentIndex,
   answeredIndices,
+  correctIndices,
   flaggedIndices,
   onJump,
   onReviewFlagged,
@@ -26,7 +28,11 @@ export function QuestionNavigator({
       <div className="mt-3 flex flex-wrap items-center gap-3 text-xs text-[#3A2A1A]/70">
         <span className="flex items-center gap-1.5">
           <span className="size-2.5 rounded-full bg-[#3A5A40]" />
-          Answered
+          Correct
+        </span>
+        <span className="flex items-center gap-1.5">
+          <span className="size-2.5 rounded-full bg-red-600" />
+          Incorrect
         </span>
         <span className="flex items-center gap-1.5">
           <span className="size-2.5 rounded-full border border-[#3A2A1A]/30" />
@@ -38,9 +44,10 @@ export function QuestionNavigator({
         </span>
       </div>
 
-      <div className="mt-4 grid grid-cols-7 gap-2">
+      <div className="mt-4 grid max-h-64 grid-cols-7 gap-1.5 overflow-y-auto pr-1 sm:gap-2">
         {Array.from({ length: total }, (_, i) => {
           const isAnswered = answeredIndices.has(i)
+          const isCorrect = correctIndices.has(i)
           const isCurrent = i === currentIndex
           const isFlagged = flaggedIndices.has(i)
 
@@ -50,11 +57,13 @@ export function QuestionNavigator({
               type="button"
               onClick={() => onJump(i)}
               className={cn(
-                'relative flex size-9 items-center justify-center rounded-full border text-xs font-semibold transition-colors',
-                isAnswered
-                  ? 'border-transparent bg-[#3A5A40] text-white'
-                  : 'border-[#3A2A1A]/20 bg-[#F3ECDC]/60 text-[#3A2A1A]/70 hover:bg-[#3A2A1A]/5',
-                isCurrent && 'ring-2 ring-[#E0AC48] ring-offset-2 ring-offset-white',
+                'relative flex size-8 items-center justify-center rounded-full border text-xs font-semibold transition-colors sm:size-9',
+                !isAnswered
+                  ? 'border-[#3A2A1A]/20 bg-[#F3ECDC]/60 text-[#3A2A1A]/70 hover:bg-[#3A2A1A]/5'
+                  : isCorrect
+                    ? 'border-transparent bg-[#3A5A40] text-white'
+                    : 'border-transparent bg-red-600 text-white',
+                isCurrent && 'ring-2 ring-inset ring-[#E0AC48]',
               )}
             >
               {i + 1}

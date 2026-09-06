@@ -29,7 +29,7 @@ export function Navbar() {
         </nav>
         <div className="flex items-center gap-4">
           <Link
-            to="/app"
+            to="/signup"
             className="rounded-full border border-[#3A2A1A] px-5 py-2 text-xs font-semibold tracking-widest text-[#3A2A1A] uppercase transition-colors hover:bg-[#3A2A1A] hover:text-[#F3ECDC]"
           >
             Get started

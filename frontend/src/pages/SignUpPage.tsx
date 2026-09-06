@@ -9,6 +9,7 @@ import {
   ShieldCheck,
   Star,
   Target,
+  User,
 } from 'lucide-react'
 import axios from 'axios'
 import { AnimatePresence, motion } from 'framer-motion'
@@ -35,12 +36,14 @@ const FEATURES = [
   { icon: Star, label: 'Built for CPA success' },
 ]
 
-export function LoginPage() {
+export function SignUpPage() {
   const navigate = useNavigate()
   const location = useLocation()
-  const { login } = useAuth()
+  const { register } = useAuth()
+  const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -52,14 +55,26 @@ export function LoginPage() {
   async function handleSubmit(e: FormEvent) {
     e.preventDefault()
     setError(null)
+
+    if (password.length < 8) {
+      setError('Password must be at least 8 characters.')
+      return
+    }
+    if (password !== confirmPassword) {
+      setError('Passwords do not match.')
+      return
+    }
+
     setIsSubmitting(true)
     try {
-      await login(email, password)
+      await register(name, email, password)
       navigate(redirectTo, { replace: true })
     } catch (err) {
       if (axios.isAxiosError(err)) {
-        if (err.response?.status === 401) {
-          setError('Invalid email or password.')
+        if (err.response?.status === 409) {
+          setError('An account with this email already exists.')
+        } else if (err.response?.data?.error) {
+          setError(err.response.data.error)
         } else if (err.response) {
           setError('Something went wrong. Please try again.')
         } else {
@@ -164,10 +179,10 @@ export function LoginPage() {
               <span className="h-px flex-1 bg-[#7A2323]/30" />
             </div>
             <h2 className="font-display mt-4 text-center text-2xl text-[#7A2323]">
-              Welcome back!
+              Create your account
             </h2>
             <p className="mt-1 text-center text-sm text-[#3A2A1A]/70">
-              Log in to continue your CPA review journey.
+              Start your CPA review journey today.
             </p>
 
             <motion.form
@@ -178,10 +193,26 @@ export function LoginPage() {
               className="mt-8 flex flex-col gap-5"
             >
               <motion.div variants={fadeUpItem}>
-                <label
-                  htmlFor="email"
-                  className="text-sm font-semibold text-[#7A2323]"
-                >
+                <label htmlFor="name" className="text-sm font-semibold text-[#7A2323]">
+                  Full name
+                </label>
+                <div className="mt-1.5 flex items-center gap-2 rounded-xl border border-[#3A2A1A]/15 bg-white px-3.5 py-2.5">
+                  <User className="size-4 shrink-0 text-[#3A2A1A]/50" />
+                  <input
+                    id="name"
+                    type="text"
+                    required
+                    autoComplete="name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="Enter your full name"
+                    className="w-full bg-transparent text-sm text-[#3A2A1A] outline-none placeholder:text-[#3A2A1A]/40"
+                  />
+                </div>
+              </motion.div>
+
+              <motion.div variants={fadeUpItem}>
+                <label htmlFor="email" className="text-sm font-semibold text-[#7A2323]">
                   Email address
                 </label>
                 <div className="mt-1.5 flex items-center gap-2 rounded-xl border border-[#3A2A1A]/15 bg-white px-3.5 py-2.5">
@@ -200,10 +231,7 @@ export function LoginPage() {
               </motion.div>
 
               <motion.div variants={fadeUpItem}>
-                <label
-                  htmlFor="password"
-                  className="text-sm font-semibold text-[#7A2323]"
-                >
+                <label htmlFor="password" className="text-sm font-semibold text-[#7A2323]">
                   Password
                 </label>
                 <div className="mt-1.5 flex items-center gap-2 rounded-xl border border-[#3A2A1A]/15 bg-white px-3.5 py-2.5">
@@ -212,10 +240,11 @@ export function LoginPage() {
                     id="password"
                     type={showPassword ? 'text' : 'password'}
                     required
-                    autoComplete="current-password"
+                    minLength={8}
+                    autoComplete="new-password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Enter your password"
+                    placeholder="At least 8 characters"
                     className="w-full bg-transparent text-sm text-[#3A2A1A] outline-none placeholder:text-[#3A2A1A]/40"
                   />
                   <button
@@ -231,13 +260,27 @@ export function LoginPage() {
                     )}
                   </button>
                 </div>
-                <div className="mt-2 text-right">
-                  <Link
-                    to="#"
-                    className="text-xs font-semibold text-[#7A2323] hover:underline"
-                  >
-                    Forgot password?
-                  </Link>
+              </motion.div>
+
+              <motion.div variants={fadeUpItem}>
+                <label
+                  htmlFor="confirmPassword"
+                  className="text-sm font-semibold text-[#7A2323]"
+                >
+                  Confirm password
+                </label>
+                <div className="mt-1.5 flex items-center gap-2 rounded-xl border border-[#3A2A1A]/15 bg-white px-3.5 py-2.5">
+                  <Lock className="size-4 shrink-0 text-[#3A2A1A]/50" />
+                  <input
+                    id="confirmPassword"
+                    type={showPassword ? 'text' : 'password'}
+                    required
+                    autoComplete="new-password"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    placeholder="Re-enter your password"
+                    className="w-full bg-transparent text-sm text-[#3A2A1A] outline-none placeholder:text-[#3A2A1A]/40"
+                  />
                 </div>
               </motion.div>
 
@@ -264,7 +307,7 @@ export function LoginPage() {
                 disabled={isSubmitting}
                 className="flex items-center justify-center gap-2 rounded-full bg-[#7A2323] py-3 text-sm font-bold text-[#E0AC48] transition-colors hover:bg-[#7A2323]/90 disabled:opacity-60"
               >
-                {isSubmitting ? 'Logging in…' : 'Log In'}
+                {isSubmitting ? 'Creating account…' : 'Create Account'}
                 <ArrowRight className="size-4" />
               </motion.button>
             </motion.form>
@@ -297,9 +340,9 @@ export function LoginPage() {
             </div>
 
             <p className="mt-6 text-center text-sm text-[#3A2A1A]/70">
-              Don&rsquo;t have an account?{' '}
-              <Link to="/signup" className="font-semibold text-[#7A2323] hover:underline">
-                Sign up
+              Already have an account?{' '}
+              <Link to="/login" className="font-semibold text-[#7A2323] hover:underline">
+                Log in
               </Link>
             </p>
           </div>

@@ -1,6 +1,8 @@
 import { HeroSection } from '@/components/landing/HeroSection'
+import { HowItWorksSteps } from '@/components/landing/HowItWorksSteps'
 import { Navbar } from '@/components/landing/Navbar'
 import { StudySmarterSection } from '@/components/landing/StudySmarterSection'
+import { WhyKabisSection } from '@/components/landing/WhyKabisSection'
 
 export function LandingPage() {
   return (
@@ -8,6 +10,8 @@ export function LandingPage() {
       <Navbar />
       <HeroSection />
       <StudySmarterSection />
+      <WhyKabisSection />
+      <HowItWorksSteps />
     </div>
   )
 }

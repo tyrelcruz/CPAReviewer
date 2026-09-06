@@ -1,4 +1,5 @@
 import { Bookmark, Clock, FileText, Gauge, Lock } from 'lucide-react'
+import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -48,7 +49,9 @@ export function ExamListItem({ exam }: ExamListItemProps) {
   const isAvailable = Boolean(exam.quizSetId)
 
   return (
-    <div
+    <motion.div
+      whileHover={isAvailable ? { y: -3, boxShadow: '0 8px 20px -8px rgba(58,42,26,0.25)' } : undefined}
+      transition={{ type: 'spring', stiffness: 300, damping: 22 }}
       className={cn(
         'relative flex flex-col gap-4 rounded-2xl border p-5 sm:flex-row sm:items-center',
         isAvailable
@@ -56,15 +59,16 @@ export function ExamListItem({ exam }: ExamListItemProps) {
           : 'cursor-not-allowed border-[#3A2A1A]/10 bg-[#F3ECDC]/40 opacity-60 grayscale',
       )}
     >
-      <button
+      <motion.button
         type="button"
         onClick={() => setBookmarked((v) => !v)}
         disabled={!isAvailable}
+        whileTap={isAvailable ? { scale: 0.8 } : undefined}
         aria-label={bookmarked ? 'Remove bookmark' : 'Bookmark this exam'}
         className="absolute top-4 right-4 text-[#3A2A1A]/40 enabled:hover:text-[#7A2323] disabled:cursor-not-allowed"
       >
         <Bookmark className={cn('size-4', bookmarked && 'fill-[#E0AC48] text-[#E0AC48]')} />
-      </button>
+      </motion.button>
 
       <div
         className="flex size-12 shrink-0 items-center justify-center rounded-xl text-white"
@@ -160,6 +164,6 @@ export function ExamListItem({ exam }: ExamListItemProps) {
           {!isAvailable ? 'Coming Soon' : exam.taken ? 'Review Results' : 'Start Exam'}
         </button>
       </div>
-    </div>
+    </motion.div>
   )
 }

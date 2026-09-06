@@ -1,5 +1,8 @@
 import { Award, ClipboardList, Flame, TrendingUp } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
+
+import { listItem, listStagger } from '@/lib/motion'
 
 interface StatsPanelProps {
   examsTaken: number
@@ -33,9 +36,14 @@ export function StatsPanel({ examsTaken, averageScore, bestScore, studyStreak }:
         <TrendingUp className="size-4 text-[#3A5A40]" />
       </div>
 
-      <div className="mt-4 grid grid-cols-2 gap-3">
+      <motion.div
+        variants={listStagger}
+        initial="hidden"
+        animate="show"
+        className="mt-4 grid grid-cols-2 gap-3"
+      >
         {stats.map((stat) => (
-          <div key={stat.label} className="rounded-xl bg-[#FBF3EA] p-3">
+          <motion.div key={stat.label} variants={listItem} className="rounded-xl bg-[#FBF3EA] p-3">
             <p className="text-xs text-[#3A2A1A]/60">{stat.label}</p>
             <div className="mt-1 flex items-center justify-between">
               <p className="text-xl font-bold text-[#3A2A1A]">{stat.value}</p>
@@ -46,9 +54,9 @@ export function StatsPanel({ examsTaken, averageScore, bestScore, studyStreak }:
                 <stat.icon className="size-3.5" style={{ color: stat.tint }} />
               </span>
             </div>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
 
       <Link
         to="#"

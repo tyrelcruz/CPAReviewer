@@ -22,6 +22,7 @@ import { NotesPopover } from '@/components/quiz/NotesPopover'
 import { ProgressRing } from '@/components/quiz/ProgressRing'
 import { QuestionNavigator } from '@/components/quiz/QuestionNavigator'
 import { QuizResults } from '@/components/quiz/QuizResults'
+import { shuffleQuestionsKeepingChains } from '@/lib/quizShuffle'
 import { getStudyStreak } from '@/lib/streak'
 import { formatClock, SECONDS_PER_QUESTION } from '@/lib/time'
 import { cn } from '@/lib/utils'
@@ -41,7 +42,11 @@ interface QuizProps {
   onBack: () => void
 }
 
-export function Quiz({ quizSetId, questions, code = 'Practice', onBack }: QuizProps) {
+export function Quiz({ quizSetId, questions: orderedQuestions, code = 'Practice', onBack }: QuizProps) {
+  // Shuffled once per attempt (and reshuffled on retake) so the answer to
+  // "question 5" isn't something a repeat test-taker can just memorize.
+  // Scenario chains (shared scenarioId) are kept intact and in order.
+  const [questions, setQuestions] = useState(() => shuffleQuestionsKeepingChains(orderedQuestions))
   const [currentIndex, setCurrentIndex] = useState(0)
   const [answers, setAnswers] = useState<Record<string, string>>({})
   const [flaggedIndices, setFlaggedIndices] = useState<Set<number>>(new Set())
@@ -72,12 +77,15 @@ export function Quiz({ quizSetId, questions, code = 'Practice', onBack }: QuizPr
     return set
   }, [answers, questions])
 
-  const correctCount = useMemo(
-    () =>
-      questions.filter((q, i) => answeredIndices.has(i) && answers[q.id] === q.correctChoiceId)
-        .length,
-    [answers, answeredIndices, questions],
-  )
+  const correctIndices = useMemo(() => {
+    const set = new Set<number>()
+    questions.forEach((q, i) => {
+      if (answeredIndices.has(i) && answers[q.id] === q.correctChoiceId) set.add(i)
+    })
+    return set
+  }, [answers, answeredIndices, questions])
+
+  const correctCount = correctIndices.size
 
   const answeredCount = answeredIndices.size
   const progressPct = (answeredCount / questions.length) * 100
@@ -120,13 +128,14 @@ export function Quiz({ quizSetId, questions, code = 'Practice', onBack }: QuizPr
   }
 
   function handleRetake() {
+    setQuestions(shuffleQuestionsKeepingChains(orderedQuestions))
     setAnswers({})
     setFlaggedIndices(new Set())
     setExplanationOverrides({})
     setCurrentIndex(0)
     setIsComplete(false)
     setStartTime(Date.now())
-    setRemainingSeconds(questions.length * SECONDS_PER_QUESTION)
+    setRemainingSeconds(orderedQuestions.length * SECONDS_PER_QUESTION)
   }
 
   function toggleFlag() {
@@ -220,7 +229,7 @@ export function Quiz({ quizSetId, questions, code = 'Practice', onBack }: QuizPr
           {calculatorOpen && (
             <>
               <div className="fixed inset-0 z-10" onClick={() => setCalculatorOpen(false)} />
-              <div className="absolute top-full right-0 z-20 mt-2">
+              <div className="fixed inset-x-4 bottom-4 z-20 sm:absolute sm:inset-x-auto sm:bottom-auto sm:top-full sm:right-0 sm:mt-2">
                 <CalculatorPopover />
               </div>
             </>
@@ -244,7 +253,7 @@ export function Quiz({ quizSetId, questions, code = 'Practice', onBack }: QuizPr
           {notesOpen && (
             <>
               <div className="fixed inset-0 z-10" onClick={() => setNotesOpen(false)} />
-              <div className="absolute top-full right-0 z-20 mt-2">
+              <div className="fixed inset-x-4 bottom-4 z-20 sm:absolute sm:inset-x-auto sm:bottom-auto sm:top-full sm:right-0 sm:mt-2">
                 <NotesPopover value={notes} onChange={setNotes} />
               </div>
             </>
@@ -270,7 +279,7 @@ export function Quiz({ quizSetId, questions, code = 'Practice', onBack }: QuizPr
         </button>
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-[1fr_20rem]">
+      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_20rem]">
         <AnimatePresence mode="wait">
           <motion.div
             key={current.id}
@@ -278,7 +287,7 @@ export function Quiz({ quizSetId, questions, code = 'Practice', onBack }: QuizPr
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -24 }}
             transition={{ duration: 0.25, ease: 'easeOut' }}
-            className="rounded-2xl border border-[#3A2A1A]/10 bg-white p-6"
+            className="min-w-0 rounded-2xl border border-[#3A2A1A]/10 bg-white p-6"
           >
             <p className="font-reading text-lg leading-snug font-semibold text-[#3A2A1A]">
               {current.prompt}
@@ -431,14 +440,15 @@ export function Quiz({ quizSetId, questions, code = 'Practice', onBack }: QuizPr
           total={questions.length}
           currentIndex={currentIndex}
           answeredIndices={answeredIndices}
+          correctIndices={correctIndices}
           flaggedIndices={flaggedIndices}
           onJump={setCurrentIndex}
           onReviewFlagged={handleReviewFlagged}
         />
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-[1fr_20rem]">
-        <div className="grid grid-cols-1 gap-6 rounded-2xl border border-[#3A2A1A]/10 bg-white p-6 sm:grid-cols-3">
+      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_20rem]">
+        <div className="grid min-w-0 grid-cols-1 gap-6 rounded-2xl border border-[#3A2A1A]/10 bg-white p-6 sm:grid-cols-3">
           <div className="flex items-center gap-4">
             <ProgressRing
               percent={progressPct}

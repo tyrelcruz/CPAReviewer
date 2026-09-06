@@ -1,4 +1,5 @@
 import { ClipboardList, Plus, SquarePen } from 'lucide-react'
+import { AnimatePresence, motion } from 'framer-motion'
 import { useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -15,6 +16,7 @@ import { StatsPanel } from '@/components/mock-exams/StatsPanel'
 import { MOCK_EXAMS, type MockExam } from '@/data/mock-exams-data'
 import { quizSets } from '@/data/quiz-data'
 import { getAggregatedExamStats, getExamHistory } from '@/lib/examHistory'
+import { fadeUpItem, staggerContainer } from '@/lib/motion'
 import { peekStudyStreak } from '@/lib/streak'
 import { SECONDS_PER_QUESTION } from '@/lib/time'
 
@@ -100,7 +102,10 @@ export function MockExamsPage() {
 
       <div className="flex-1">
         <main className="mx-auto max-w-[1400px] px-8 py-8">
-          <div
+          <motion.div
+            initial={{ opacity: 0, y: -16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, ease: 'easeOut' }}
             className="relative overflow-hidden rounded-2xl border border-[#3A2A1A]/10 bg-cover bg-right px-8 py-8"
             style={{ backgroundImage: `url(${illustrationBg})` }}
           >
@@ -118,10 +123,15 @@ export function MockExamsPage() {
                 Practice with exam-like simulations and track your progress.
               </p>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="mt-6 grid gap-6 lg:grid-cols-[1fr_20rem]">
-            <div className="flex flex-col gap-5">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            animate="show"
+            className="mt-6 grid gap-6 lg:grid-cols-[1fr_20rem]"
+          >
+            <motion.div variants={fadeUpItem} className="flex flex-col gap-5">
               <ExamFilters
                 typeFilter={typeFilter}
                 onTypeChange={setTypeFilter}
@@ -164,12 +174,25 @@ export function MockExamsPage() {
                     No exams match these filters yet.
                   </div>
                 ) : (
-                  exams.map((exam) => <ExamListItem key={exam.id} exam={exam} />)
+                  <AnimatePresence mode="popLayout">
+                    {exams.map((exam, index) => (
+                      <motion.div
+                        key={exam.id}
+                        layout
+                        initial={{ opacity: 0, y: 12 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.97 }}
+                        transition={{ duration: 0.25, ease: 'easeOut', delay: index * 0.03 }}
+                      >
+                        <ExamListItem exam={exam} />
+                      </motion.div>
+                    ))}
+                  </AnimatePresence>
                 )}
               </div>
-            </div>
+            </motion.div>
 
-            <div className="flex flex-col gap-6">
+            <motion.div variants={fadeUpItem} className="flex flex-col gap-6">
               <StatsPanel
                 examsTaken={examsTaken}
                 averageScore={averageScore}
@@ -177,8 +200,8 @@ export function MockExamsPage() {
                 studyStreak={studyStreak}
               />
               <PromoPanel />
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </main>
       </div>
     </div>

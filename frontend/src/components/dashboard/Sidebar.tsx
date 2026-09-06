@@ -1,34 +1,10 @@
-import {
-  Bookmark,
-  Calendar,
-  ChevronLeft,
-  ClipboardList,
-  FileText,
-  Layers,
-  LayoutGrid,
-  BarChart3,
-  BookOpen,
-  Settings,
-  StickyNote,
-} from 'lucide-react'
+import { ChevronLeft } from 'lucide-react'
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
 import { Logo } from '@/components/landing/Logo'
+import { NAV_ITEMS } from '@/data/nav-items'
 import { cn } from '@/lib/utils'
-
-const NAV_ITEMS = [
-  { label: 'Dashboard', icon: LayoutGrid, to: '#' },
-  { label: 'Subjects', icon: BookOpen, to: '#' },
-  { label: 'Question Bank', icon: FileText, to: '#' },
-  { label: 'Mock Exams', icon: ClipboardList, to: '/app' },
-  { label: 'Flashcards', icon: Layers, to: '#' },
-  { label: 'Performance', icon: BarChart3, to: '#' },
-  { label: 'Study Planner', icon: Calendar, to: '#' },
-  { label: 'Bookmarks', icon: Bookmark, to: '#' },
-  { label: 'Notes', icon: StickyNote, to: '#' },
-  { label: 'Settings', icon: Settings, to: '#' },
-]
 
 export function Sidebar() {
   const [collapsed, setCollapsed] = useState(false)
@@ -52,7 +28,33 @@ export function Sidebar() {
 
       <nav className="flex flex-1 flex-col gap-1 px-3">
         {NAV_ITEMS.map((item) => {
-          const isActive = location.pathname === item.to
+          const isDisabled = item.to === '#'
+          const isActive = !isDisabled && location.pathname === item.to
+
+          if (isDisabled) {
+            return (
+              <span
+                key={item.label}
+                aria-disabled="true"
+                className={cn(
+                  'flex cursor-not-allowed items-center gap-3 rounded-lg border-l-[3px] border-transparent px-3 py-2.5 text-sm font-medium text-[#3A2A1A]/35',
+                  collapsed && 'justify-center px-0',
+                )}
+                title={collapsed ? `${item.label} (coming soon)` : 'Coming soon'}
+              >
+                <item.icon className="size-4.5 shrink-0" />
+                {!collapsed && (
+                  <span className="flex flex-1 items-center justify-between gap-2">
+                    {item.label}
+                    <span className="text-[10px] font-semibold tracking-wide uppercase">
+                      Soon
+                    </span>
+                  </span>
+                )}
+              </span>
+            )
+          }
+
           return (
             <Link
               key={item.label}

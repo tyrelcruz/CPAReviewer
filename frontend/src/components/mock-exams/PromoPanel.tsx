@@ -1,5 +1,8 @@
 import { ArrowRight, CheckCircle2 } from 'lucide-react'
+import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
+
+import { listItem, listStagger } from '@/lib/motion'
 
 const CHECKLIST = [
   '3-day full exam experience',
@@ -17,23 +20,34 @@ export function PromoPanel() {
         Full-length simulations help you build stamina and exam confidence.
       </p>
 
-      <ul className="mt-4 flex flex-col gap-2">
+      <motion.ul
+        variants={listStagger}
+        initial="hidden"
+        animate="show"
+        className="mt-4 flex flex-col gap-2"
+      >
         {CHECKLIST.map((item) => (
-          <li key={item} className="flex items-center gap-2 text-sm text-[#3A2A1A]">
+          <motion.li
+            key={item}
+            variants={listItem}
+            className="flex items-center gap-2 text-sm text-[#3A2A1A]"
+          >
             <CheckCircle2 className="size-4 shrink-0 text-[#3A5A40]" />
             {item}
-          </li>
+          </motion.li>
         ))}
-      </ul>
+      </motion.ul>
 
-      <button
+      <motion.button
         type="button"
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
         onClick={() => navigate('/app/practice')}
         className="mt-4 flex w-full items-center justify-center gap-1.5 rounded-full bg-[#7A2323] px-4 py-2.5 text-sm font-semibold text-[#F3ECDC] transition-colors hover:bg-[#7A2323]/90"
       >
         Try Full-length Exam
         <ArrowRight className="size-4" />
-      </button>
+      </motion.button>
 
       <p className="mt-3 text-center text-sm text-[#3A5A40]/60" aria-hidden="true">
         〜◡〜

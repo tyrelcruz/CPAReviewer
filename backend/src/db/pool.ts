@@ -1,4 +1,11 @@
+import { readFileSync } from 'node:fs'
 import mysql from 'mysql2/promise'
+
+const sslCa = process.env.DB_SSL_CA
+  ? process.env.DB_SSL_CA
+  : process.env.DB_SSL_CA_PATH
+    ? readFileSync(process.env.DB_SSL_CA_PATH, 'utf-8')
+    : undefined
 
 export const pool = mysql.createPool({
   host: process.env.DB_HOST ?? 'localhost',
@@ -8,4 +15,5 @@ export const pool = mysql.createPool({
   database: process.env.DB_NAME ?? 'cpa_reviewer',
   waitForConnections: true,
   connectionLimit: 10,
+  ssl: sslCa ? { ca: sslCa } : undefined,
 })

@@ -11,6 +11,14 @@ export interface QuizQuestion {
   rationale: string
   reference?: string
   section?: string
+  /**
+   * Set this to the same value on every question that shares a case
+   * study/passage (e.g. "Items 45-48 refer to the following information").
+   * Shuffling keeps questions with the same scenarioId glued together in
+   * their original relative order — only whole chains (and standalone
+   * questions) get reordered against each other.
+   */
+  scenarioId?: string
 }
 
 export interface QuizSet {

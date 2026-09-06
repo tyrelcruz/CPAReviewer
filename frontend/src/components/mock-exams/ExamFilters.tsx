@@ -8,8 +8,10 @@ import {
   Timer,
   type LucideIcon,
 } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 import type { ExamType } from '@/data/mock-exams-data'
+import { listItem, listStagger } from '@/lib/motion'
 import { cn } from '@/lib/utils'
 
 export type TypeFilter = ExamType | 'all'
@@ -100,13 +102,21 @@ export function ExamFilters({
 }: ExamFiltersProps) {
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex flex-wrap gap-2.5">
+      <motion.div
+        variants={listStagger}
+        initial="hidden"
+        animate="show"
+        className="flex flex-wrap gap-2.5"
+      >
         {TABS.map((tab) => {
           const isActive = tab.key === typeFilter
           return (
-            <button
+            <motion.button
               key={tab.key}
               type="button"
+              variants={listItem}
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
               onClick={() => onTypeChange(tab.key)}
               className={cn(
                 'flex items-center gap-2 rounded-full border px-4 py-2.5 text-sm font-semibold transition-colors',
@@ -117,10 +127,10 @@ export function ExamFilters({
             >
               <tab.icon className="size-4" />
               {tab.label}
-            </button>
+            </motion.button>
           )
         })}
-      </div>
+      </motion.div>
 
       <div className="flex flex-wrap items-end gap-3">
         <div className="grid flex-1 grid-cols-2 gap-3 sm:grid-cols-4">

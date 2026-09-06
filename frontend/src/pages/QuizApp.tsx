@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { useNavigate, useParams } from 'react-router-dom'
 
-import { Navbar } from '@/components/landing/Navbar'
+import { TopNavbar } from '@/components/dashboard/TopNavbar'
 import { Quiz } from '@/components/quiz/Quiz'
 import { quizSets } from '@/data/quiz-data'
 
@@ -14,7 +14,7 @@ export function QuizApp() {
 
   return (
     <div className="min-h-svh bg-[#F3ECDC] text-[#3A2A1A]">
-      <Navbar />
+      <TopNavbar />
       <div className="mx-auto max-w-6xl px-6 py-10">
         {selectedSet ? (
           <motion.div

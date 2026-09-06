@@ -19,6 +19,7 @@ interface AuthContextValue {
   user: AuthUser | null
   isLoading: boolean
   login: (email: string, password: string) => Promise<void>
+  register: (name: string, email: string, password: string) => Promise<void>
   logout: () => void
 }
 
@@ -51,13 +52,22 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setUser(data.user)
   }
 
+  async function register(name: string, email: string, password: string) {
+    const { data } = await apiClient.post<{ token: string; user: AuthUser }>(
+      '/api/auth/register',
+      { name, email, password },
+    )
+    setStoredToken(data.token)
+    setUser(data.user)
+  }
+
   function logout() {
     clearStoredToken()
     setUser(null)
   }
 
   const value = useMemo(
-    () => ({ user, isLoading, login, logout }),
+    () => ({ user, isLoading, login, register, logout }),
     [user, isLoading],
   )
 
