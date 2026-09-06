@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowRight, Layers, Sparkle, Target } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Layers, Lock, Sparkle, Target } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
@@ -13,11 +13,16 @@ import { cn } from '@/lib/utils'
 
 const WIZARD_STEPS = ['Choose Strategy', 'Set Quiz Details', 'Start Exam']
 
+// Cross-Center Tagging and Variation Display aren't implemented yet — only
+// Dual Quiz Modes is backed by real functionality right now.
+const COMING_SOON_KEYS: (typeof STRATEGY_CARDS)[number]['key'][] = ['tagging', 'variants']
+
 export function ChooseStrategyPage() {
   const { quizSetId } = useParams()
   const navigate = useNavigate()
   const [selectedKey, setSelectedKey] = useState<(typeof STRATEGY_CARDS)[number]['key']>(
-    STRATEGY_CARDS[0].key,
+    STRATEGY_CARDS.find((card) => !COMING_SOON_KEYS.includes(card.key))?.key ??
+      STRATEGY_CARDS[0].key,
   )
 
   const quizSet = quizSetId ? quizSets.find((set) => set.id === quizSetId) : undefined
@@ -123,15 +128,21 @@ export function ChooseStrategyPage() {
                 <div role="radiogroup" aria-label="Exam strategy" className="flex flex-col gap-4">
                   {STRATEGY_CARDS.map((card) => {
                     const selected = card.key === selectedKey
+                    const isComingSoon = COMING_SOON_KEYS.includes(card.key)
                     return (
                       <motion.label
                         key={card.key}
                         variants={fadeUpItem}
                         className={cn(
-                          'flex cursor-pointer items-start gap-5 rounded-2xl border p-5 transition-colors sm:p-6',
-                          selected
-                            ? 'border-[#E0AC48] bg-white shadow-[0_0_0_1px_rgba(224,172,72,0.4)]'
-                            : 'border-[#3A2A1A]/10 bg-white hover:border-[#3A2A1A]/20',
+                          'flex items-start gap-5 rounded-2xl border p-5 transition-colors sm:p-6',
+                          isComingSoon
+                            ? 'cursor-not-allowed border-[#3A2A1A]/10 bg-[#F3ECDC]/40 opacity-60 grayscale'
+                            : cn(
+                                'cursor-pointer',
+                                selected
+                                  ? 'border-[#E0AC48] bg-white shadow-[0_0_0_1px_rgba(224,172,72,0.4)]'
+                                  : 'border-[#3A2A1A]/10 bg-white hover:border-[#3A2A1A]/20',
+                              ),
                         )}
                       >
                         <input
@@ -139,6 +150,7 @@ export function ChooseStrategyPage() {
                           name="strategy"
                           value={card.key}
                           checked={selected}
+                          disabled={isComingSoon}
                           onChange={() => setSelectedKey(card.key)}
                           className="sr-only"
                         />
@@ -146,9 +158,17 @@ export function ChooseStrategyPage() {
                           <card.Icon />
                         </div>
                         <div className="min-w-0 flex-1">
-                          <h3 className="font-serif text-lg font-bold text-[#7A2323] uppercase">
-                            {card.title}
-                          </h3>
+                          <div className="flex flex-wrap items-center gap-2">
+                            <h3 className="font-serif text-lg font-bold text-[#7A2323] uppercase">
+                              {card.title}
+                            </h3>
+                            {isComingSoon && (
+                              <span className="inline-flex items-center gap-1 rounded-full bg-[#3A2A1A]/10 px-2 py-0.5 text-[10px] font-bold tracking-wide text-[#3A2A1A]/70 uppercase">
+                                <Lock className="size-2.5" />
+                                Coming Soon
+                              </span>
+                            )}
+                          </div>
                           <p className="font-reading mt-1.5 text-sm text-[#3A2A1A]/75">
                             {card.description}
                           </p>
@@ -159,14 +179,16 @@ export function ChooseStrategyPage() {
                             </p>
                           </div>
                         </div>
-                        <span
-                          className={cn(
-                            'mt-1 flex size-5 shrink-0 items-center justify-center rounded-full border-2 transition-colors',
-                            selected ? 'border-[#E0AC48] bg-[#E0AC48]' : 'border-[#3A2A1A]/20',
-                          )}
-                        >
-                          {selected && <span className="size-2 rounded-full bg-white" />}
-                        </span>
+                        {!isComingSoon && (
+                          <span
+                            className={cn(
+                              'mt-1 flex size-5 shrink-0 items-center justify-center rounded-full border-2 transition-colors',
+                              selected ? 'border-[#E0AC48] bg-[#E0AC48]' : 'border-[#3A2A1A]/20',
+                            )}
+                          >
+                            {selected && <span className="size-2 rounded-full bg-white" />}
+                          </span>
+                        )}
                       </motion.label>
                     )
                   })}
@@ -198,7 +220,8 @@ export function ChooseStrategyPage() {
                     Strategy Component
                   </p>
                   <p className="font-reading mt-0.5 text-sm text-[#F3ECDC]">
-                    {STRATEGY_CARDS.length} Options Available
+                    {STRATEGY_CARDS.length - COMING_SOON_KEYS.length} of {STRATEGY_CARDS.length}{' '}
+                    Available Now
                   </p>
                 </div>
               </div>

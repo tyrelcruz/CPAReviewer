@@ -9,10 +9,10 @@ export function TopNavbar() {
 
   return (
     <header className="border-b border-[#3A2A1A]/10 bg-[#FBF3EA]">
-      <div className="mx-auto flex max-w-[1400px] items-center gap-6 px-6 py-3">
+      <div className="mx-auto flex max-w-[1400px] flex-col items-center gap-2 px-4 py-3">
         <Logo className="h-9 shrink-0" />
 
-        <nav className="flex flex-1 items-center gap-1 overflow-x-auto">
+        <nav className="flex w-full items-center justify-center gap-1 overflow-x-auto">
           {NAV_ITEMS.map((item) => {
             const isDisabled = item.to === '#'
             const isActive = !isDisabled && location.pathname === item.to

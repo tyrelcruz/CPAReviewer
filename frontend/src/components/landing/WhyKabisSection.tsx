@@ -246,8 +246,10 @@ export function WhyKabisSection() {
           </h2>
 
           <p className="font-reading mt-5 max-w-md text-[#F3ECDC]/70">
-            KABIS is designed to help you study smarter and stay consistent from your first
-            review to exam day.
+            KABIS was born out of my love and support for my partner, Vanessa, inspired by her
+            tireless dedication toward her dream of becoming a CPA. Designed to guide her toward
+            real results, KABIS helps Vanessa — and every dedicated aspiring CPA — study smarter,
+            build consistency, and gain complete confidence leading up to exam day.
           </p>
 
           <div className="mt-10 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-4">

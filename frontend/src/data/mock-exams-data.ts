@@ -91,10 +91,10 @@ export const MOCK_EXAMS: MockExam[] = [
     type: 'topic',
     subject: 'RFBT',
     difficulty: 'Easy',
-    durationMinutes: 45,
-    itemCount: 25,
+    durationMinutes: 180,
+    itemCount: 100,
     icon: Target,
     iconBg: '#5C1A1A',
-    taken: { date: '2025-05-05', score: 22, total: 25, percentile: 92 },
+    taken: { date: '2025-05-05', score: 88, total: 100, percentile: 92 },
   },
 ]

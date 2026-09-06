@@ -4,6 +4,7 @@ import {
   Eye,
   EyeOff,
   FileText,
+  FlaskConical,
   Lock,
   Mail,
   ShieldCheck,
@@ -81,6 +82,13 @@ export function LoginPage() {
         transition={{ duration: 0.4, ease: 'easeOut' }}
         className="grid w-full max-w-6xl overflow-hidden rounded-3xl shadow-2xl lg:grid-cols-2"
       >
+        <div className="flex items-center justify-center gap-2 bg-[#E0AC48]/20 px-4 py-2 text-center text-xs font-medium text-[#8a5a12] lg:col-span-2">
+          <FlaskConical className="size-3.5 shrink-0" />
+          <span>
+            Alpha build — expect bugs. Found one? Screenshot it and notify Vanessa.
+          </span>
+        </div>
+
         <motion.div
           initial={{ opacity: 0, x: -24 }}
           animate={{ opacity: 1, x: 0 }}

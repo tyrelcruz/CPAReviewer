@@ -3,20 +3,22 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 
 import mountainLandscape from '@/assets/images/mountain_landscape.png'
-import kabisLight from '@/assets/logo/kabis_light.png'
+import kabisEmblem from '@/assets/logo/kabis_emblem.png'
 import { STRATEGY_CARDS } from '@/components/quiz/StrategyOptions'
 import { fadeUpItem, staggerContainer } from '@/lib/motion'
 
 export function ChooseYourStrategySection() {
   return (
     <section id="product">
-      <div className="relative overflow-hidden bg-[#7A2323] px-6 py-16 text-[#F3ECDC] sm:py-20">
-        <img
-          src={mountainLandscape}
-          alt=""
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-36 w-full object-contain object-bottom opacity-90 sm:h-48 lg:h-64"
-        />
+      <div className="relative overflow-hidden bg-[#520b07] px-6 py-16 text-[#F3ECDC] sm:py-20">
+        <div className="pointer-events-none absolute inset-0 mx-auto max-w-7xl">
+          <img
+            src={mountainLandscape}
+            alt=""
+            aria-hidden="true"
+            className="absolute right-0 bottom-0 h-36 w-auto object-contain object-bottom-right opacity-90 sm:h-48 lg:h-64"
+          />
+        </div>
 
         <motion.div
           initial="hidden"
@@ -39,7 +41,7 @@ export function ChooseYourStrategySection() {
             >
               <span className="text-white">Choose your</span>
               <br />
-              <span className="text-[#E0AC48]">Strategy</span>
+              <span className="text-[#E0AC48]">Study Approach</span>
             </motion.h2>
             <motion.p variants={fadeUpItem} className="font-reading mt-5 max-w-lg text-[#F3ECDC]/75">
               KABIS gives you more than just questions — it gives you the right way to study.
@@ -47,20 +49,20 @@ export function ChooseYourStrategySection() {
             </motion.p>
           </div>
 
-          <motion.div variants={fadeUpItem} className="hidden items-center gap-5 lg:flex">
+          <motion.div variants={fadeUpItem} className="hidden items-center justify-end gap-5 lg:flex">
             <img
-              src={kabisLight}
+              src={kabisEmblem}
               alt=""
               aria-hidden="true"
-              className="h-24 w-24 shrink-0 object-contain"
+              className="h-36 w-36 shrink-0 object-contain"
             />
-            <div>
+            <div className="text-right">
               <p className="font-serif text-2xl leading-tight font-bold text-[#F3ECDC]">
                 Same goal.
                 <br />
                 Different paths.
               </p>
-              <Sparkle className="mt-2 size-4 text-[#E0AC48]" />
+              <Sparkle className="mt-2 ml-auto size-4 text-[#E0AC48]" />
             </div>
           </motion.div>
         </motion.div>

@@ -18,6 +18,7 @@ import {
 import { useEffect, useMemo, useState } from 'react'
 
 import { CalculatorPopover } from '@/components/quiz/CalculatorPopover'
+import { DrawingNotesPanel } from '@/components/quiz/DrawingNotesPanel'
 import { NotesPopover } from '@/components/quiz/NotesPopover'
 import { ProgressRing } from '@/components/quiz/ProgressRing'
 import { QuestionNavigator } from '@/components/quiz/QuestionNavigator'
@@ -205,6 +206,17 @@ export function Quiz({
 
   const isCorrect = selectedChoiceId === current.correctChoiceId
 
+  // Some seeded questions carry only a placeholder rationale ("Answer not
+  // provided in source material") — showing that verbatim reads as if we
+  // don't even know the right answer. Fall back to naming the correct
+  // choice instead of the raw placeholder sentence.
+  const hasRealRationale = Boolean(
+    current.rationale && !/answer not provided in source material/i.test(current.rationale),
+  )
+  const correctChoiceIndex = current.choices.findIndex((c) => c.id === current.correctChoiceId)
+  const correctChoiceLetter =
+    correctChoiceIndex >= 0 ? String.fromCharCode(65 + correctChoiceIndex) : null
+
   return (
     <div className="flex flex-col gap-6">
       <div className="flex flex-wrap items-center gap-x-8 gap-y-4 rounded-2xl border border-[#3A2A1A]/10 bg-white px-6 py-4">
@@ -302,7 +314,7 @@ export function Quiz({
         </button>
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_20rem]">
+      <div className="grid gap-6 2xl:grid-cols-[minmax(0,1fr)_24rem_20rem]">
         <AnimatePresence mode="wait">
           <motion.div
             key={current.id}
@@ -428,8 +440,15 @@ export function Quiz({
                         )}
                       >
                         {isCorrect ? 'Correct' : 'Incorrect'}
+                        {correctChoiceLetter && !isCorrect && ` — correct answer: ${correctChoiceLetter}`}
                       </p>
-                      <p className="font-reading mt-1">{current.rationale}</p>
+                      <p className="font-reading mt-1">
+                        {hasRealRationale
+                          ? current.rationale
+                          : correctChoiceLetter
+                            ? `The correct choice is ${correctChoiceLetter}. A written explanation isn't available for this question yet.`
+                            : "A written explanation isn't available for this question yet."}
+                      </p>
                       {current.reference && (
                         <p className="mt-2 text-xs text-[#3A2A1A]/60">
                           <span className="font-semibold text-[#3A2A1A]">Reference:</span>{' '}
@@ -478,15 +497,23 @@ export function Quiz({
           </motion.div>
         </AnimatePresence>
 
-        <QuestionNavigator
-          total={questions.length}
-          currentIndex={currentIndex}
-          answeredIndices={answeredIndices}
-          correctIndices={correctIndices}
-          flaggedIndices={flaggedIndices}
-          onJump={setCurrentIndex}
-          onReviewFlagged={handleReviewFlagged}
-        />
+        <div className="grid gap-6 sm:grid-cols-2 2xl:contents">
+          <DrawingNotesPanel
+            questionNumber={currentIndex + 1}
+            totalQuestions={questions.length}
+            questionPrompt={current.prompt}
+            choices={current.choices}
+          />
+          <QuestionNavigator
+            total={questions.length}
+            currentIndex={currentIndex}
+            answeredIndices={answeredIndices}
+            correctIndices={correctIndices}
+            flaggedIndices={flaggedIndices}
+            onJump={setCurrentIndex}
+            onReviewFlagged={handleReviewFlagged}
+          />
+        </div>
       </div>
 
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_20rem]">

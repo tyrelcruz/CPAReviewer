@@ -11,6 +11,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const DEFAULT_FILES = [
   '../../../frontend/src/assets/kb/rfbt/ReSA_RFBT_Final.json',
   '../../../frontend/src/assets/kb/rfbt/REO_RFBT_Final.json',
+  '../../../frontend/src/assets/kb/rfbt/CPAR_RFBT_Final.json',
 ]
 
 async function ingest() {

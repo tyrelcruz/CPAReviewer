@@ -22,7 +22,7 @@ export function QuestionNavigator({
   onReviewFlagged,
 }: QuestionNavigatorProps) {
   return (
-    <div className="flex flex-col rounded-2xl border border-[#3A2A1A]/10 bg-white p-5">
+    <div className="flex h-full flex-col rounded-2xl border border-[#3A2A1A]/10 bg-white p-5">
       <p className="text-sm font-bold text-[#7A2323]">Question Navigator</p>
 
       <div className="mt-3 flex flex-wrap items-center gap-3 text-xs text-[#3A2A1A]/70">
@@ -44,7 +44,7 @@ export function QuestionNavigator({
         </span>
       </div>
 
-      <div className="mt-4 grid max-h-64 grid-cols-7 gap-1.5 overflow-y-auto pr-1 sm:gap-2">
+      <div className="mt-4 grid max-h-64 flex-1 grid-cols-7 content-start gap-1.5 overflow-y-auto pr-1 sm:max-h-80 sm:gap-2">
         {Array.from({ length: total }, (_, i) => {
           const isAnswered = answeredIndices.has(i)
           const isCorrect = correctIndices.has(i)

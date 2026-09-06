@@ -16,11 +16,26 @@ async function migrate() {
     .map((s) => s.trim())
     .filter(Boolean)
 
+  // CREATE TABLE uses IF NOT EXISTS, but CREATE INDEX has no such guard in
+  // MySQL, so re-running this against a database that already has some (or
+  // all) of these indexes would otherwise abort partway through.
+  let applied = 0
+  let skipped = 0
   for (const statement of statements) {
-    await pool.query(statement)
+    try {
+      await pool.query(statement)
+      applied++
+    } catch (err) {
+      const code = (err as { code?: string }).code
+      if (code === 'ER_DUP_KEYNAME') {
+        skipped++
+        continue
+      }
+      throw err
+    }
   }
 
-  console.log(`Applied ${statements.length} statements from schema.sql.`)
+  console.log(`Applied ${applied} statements, skipped ${skipped} already-applied index(es).`)
   await pool.end()
 }
 
