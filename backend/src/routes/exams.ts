@@ -4,7 +4,13 @@ import { randomUUID } from 'node:crypto'
 
 import { pool } from '../db/pool.js'
 import { asyncHandler } from '../middleware/asyncHandler.js'
-import { computeMaxSupportedItemCount, selectExamQuestions, type Difficulty } from '../lib/examGenerator.js'
+import {
+  computeMaxSupportedItemCount,
+  computeMaxSupportedItemCountForCategories,
+  selectExamQuestions,
+  selectExamQuestionsByCategory,
+  type Difficulty,
+} from '../lib/examGenerator.js'
 
 export const examsRouter = Router()
 
@@ -13,9 +19,36 @@ type ExamMode = 'tos_simulator' | 'review_center_drill'
 const DEFAULT_DIFFICULTY_WEIGHTS = { Easy: 0.3, Moderate: 0.4, Difficult: 0.3 }
 const MAX_ITEM_COUNT = 200
 
+/**
+ * Official PRC table of specifications for RFBT ("RFBT MDE"): the exact
+ * per-topic item allocation the TOS simulator must follow, keyed by the
+ * `sub_topic` values our ingested question bank actually uses. Topics not
+ * listed here (Obligations, Contracts, Sales, AMLA, etc.) sit outside this
+ * table and are excluded from tos_simulator-mode selection for RFBT.
+ */
+const RFBT_CATEGORY_BY_SUBTOPIC: Record<string, string> = {
+  Corporations: 'Revised Corp Code',
+  Partnerships: 'Partnership',
+  Cooperatives: 'Cooperatives',
+  'Financial Rehabilitation and Insolvency Act': 'FRIA Act',
+  'Labor Law': 'Labor and SSS Law',
+  'Social Security Law': 'Labor and SSS Law',
+  Insurance: 'Insurance',
+}
+
+const RFBT_CATEGORY_WEIGHTS: Record<string, number> = {
+  'Revised Corp Code': 0.57,
+  Partnership: 0.12,
+  Cooperatives: 0.1,
+  'FRIA Act': 0.1,
+  'Labor and SSS Law': 0.06,
+  Insurance: 0.05,
+}
+
 interface PoolRow extends RowDataPacket {
   id: string
   difficulty: Difficulty
+  sub_topic: string
 }
 
 interface SessionRow extends RowDataPacket {
@@ -159,7 +192,7 @@ examsRouter.post('/generate', asyncHandler(async (req, res) => {
   }
 
   const [poolRows] = await pool.query<PoolRow[]>(
-    `SELECT bq.id, bq.difficulty
+    `SELECT bq.id, bq.difficulty, tc.sub_topic
      FROM bank_questions bq
      JOIN tos_categories tc ON tc.tos_code = bq.tos_code
      WHERE ${conditions.join(' AND ')}`,
@@ -181,11 +214,38 @@ examsRouter.post('/generate', asyncHandler(async (req, res) => {
   )
   const recentlySeenIds = new Set(historyRows.map((r) => r.question_id as string))
 
-  const selected = selectExamQuestions(poolRows, itemCount, DEFAULT_DIFFICULTY_WEIGHTS, recentlySeenIds)
-  const maxSupported = computeMaxSupportedItemCount(poolRows, DEFAULT_DIFFICULTY_WEIGHTS)
+  // The official RFBT TOS category table only governs tos_simulator mode —
+  // review_center_drill intentionally scopes to one center's full question
+  // set, not the PRC blueprint.
+  const useCategoryTable = subject === 'RFBT' && mode === 'tos_simulator'
+
+  let selected: PoolRow[]
+  let maxSupported: number
+  let noticeReason: string
+
+  if (useCategoryTable) {
+    const categorized = poolRows.map((row) => ({
+      ...row,
+      category: RFBT_CATEGORY_BY_SUBTOPIC[row.sub_topic] ?? '',
+    }))
+    selected = selectExamQuestionsByCategory(
+      categorized,
+      itemCount,
+      RFBT_CATEGORY_WEIGHTS,
+      DEFAULT_DIFFICULTY_WEIGHTS,
+      recentlySeenIds,
+    )
+    maxSupported = computeMaxSupportedItemCountForCategories(categorized, RFBT_CATEGORY_WEIGHTS)
+    noticeReason = "the question pool doesn't yet have enough items in every RFBT TOS topic"
+  } else {
+    selected = selectExamQuestions(poolRows, itemCount, DEFAULT_DIFFICULTY_WEIGHTS, recentlySeenIds)
+    maxSupported = computeMaxSupportedItemCount(poolRows, DEFAULT_DIFFICULTY_WEIGHTS)
+    noticeReason = "the question pool for this subject/mode doesn't yet have enough items in every difficulty band"
+  }
+
   const notice =
     selected.length < itemCount
-      ? `Only ${selected.length} items could be generated at the required TOS ratio (requested ${itemCount}) — the question pool for this subject/mode doesn't yet have enough items in every difficulty band. Pool currently supports up to ${maxSupported} items at this ratio.`
+      ? `Only ${selected.length} items could be generated at the required TOS ratio (requested ${itemCount}) — ${noticeReason}. Pool currently supports up to ${maxSupported} items at this ratio.`
       : null
 
   const sessionId = randomUUID()

@@ -97,3 +97,125 @@ export function selectExamQuestions<T extends BankQuestionPoolItem>(
 
   return shuffle(selected)
 }
+
+export interface CategorizedPoolItem extends BankQuestionPoolItem {
+  category: string
+}
+
+/** Largest-remainder rounding, generalized to any string-keyed weight map. */
+function allocateWeightedCounts(itemCount: number, weights: Record<string, number>): Record<string, number> {
+  const keys = Object.keys(weights)
+  const raw = keys.map((key) => ({ key, exact: itemCount * weights[key] }))
+  const floored = raw.map((r) => ({ ...r, floor: Math.floor(r.exact) }))
+  let allocated = floored.reduce((sum, r) => sum + r.floor, 0)
+  let remainder = itemCount - allocated
+
+  const byRemainderDesc = [...floored].sort((a, b) => (b.exact - b.floor) - (a.exact - a.floor))
+  const counts = Object.fromEntries(floored.map((r) => [r.key, r.floor]))
+
+  for (let i = 0; i < byRemainderDesc.length && remainder > 0; i++, remainder--) {
+    counts[byRemainderDesc[i].key] += 1
+  }
+
+  return counts
+}
+
+/**
+ * The largest itemCount for which every category bucket in the pool has
+ * enough questions to satisfy its exact weighted share — the topic-ratio
+ * analogue of computeMaxSupportedItemCount.
+ */
+export function computeMaxSupportedItemCountForCategories(
+  pool: CategorizedPoolItem[],
+  categoryWeights: Record<string, number>,
+): number {
+  let max = Infinity
+  for (const [category, weight] of Object.entries(categoryWeights)) {
+    if (weight <= 0) continue
+    const poolCount = pool.filter((q) => q.category === category).length
+    max = Math.min(max, Math.floor(poolCount / weight))
+  }
+  return Number.isFinite(max) ? max : 0
+}
+
+/**
+ * Picks `needed` items from a single category bucket, preferring the target
+ * difficulty ratio but never letting a thin/missing difficulty band zero out
+ * the whole bucket the way `selectExamQuestions`'s hard clamp would — it
+ * backfills from whichever difficulty is actually available. The category
+ * allocation itself (from `selectExamQuestionsByCategory`) is the hard
+ * constraint here; difficulty is only a best-effort preference within it.
+ */
+function pickWithSoftDifficultyPreference<T extends BankQuestionPoolItem>(
+  bucket: T[],
+  needed: number,
+  difficultyWeights: DifficultyWeights,
+  recentlySeenIds: Set<string>,
+): T[] {
+  const targets = allocateCounts(needed, difficultyWeights)
+  const selected: T[] = []
+  const chosenIds = new Set<string>()
+
+  for (const difficulty of DIFFICULTIES) {
+    const want = targets[difficulty]
+    if (want <= 0) continue
+    const candidates = bucket.filter((q) => q.difficulty === difficulty)
+    const unseen = shuffle(candidates.filter((q) => !recentlySeenIds.has(q.id)))
+    const seen = shuffle(candidates.filter((q) => recentlySeenIds.has(q.id)))
+    for (const q of [...unseen, ...seen].slice(0, want)) {
+      selected.push(q)
+      chosenIds.add(q.id)
+    }
+  }
+
+  if (selected.length < needed) {
+    const leftover = bucket.filter((q) => !chosenIds.has(q.id))
+    const unseen = shuffle(leftover.filter((q) => !recentlySeenIds.has(q.id)))
+    const seen = shuffle(leftover.filter((q) => recentlySeenIds.has(q.id)))
+    selected.push(...[...unseen, ...seen].slice(0, needed - selected.length))
+  }
+
+  return shuffle(selected.slice(0, needed))
+}
+
+/**
+ * Selects questions matching an official topic/category table of
+ * specifications (e.g. PRC's per-topic item allocation for a subject) as the
+ * primary hard constraint, then applies the difficulty ratio as a secondary,
+ * best-effort preference *within* each category bucket (soft — a category
+ * missing one difficulty band still gets filled from the others, rather than
+ * collapsing to zero). A category bucket may still come back short of its
+ * exact quota if the category itself is too small — that shortfall is
+ * logged, not silently absorbed.
+ */
+export function selectExamQuestionsByCategory<T extends CategorizedPoolItem>(
+  pool: T[],
+  itemCount: number,
+  categoryWeights: Record<string, number>,
+  difficultyWeights: DifficultyWeights,
+  recentlySeenIds: Set<string> = new Set(),
+): T[] {
+  const eligible = pool.filter((q) => (categoryWeights[q.category] ?? 0) > 0)
+  const effectiveItemCount = Math.min(
+    itemCount,
+    computeMaxSupportedItemCountForCategories(eligible, categoryWeights),
+  )
+  const targetCounts = allocateWeightedCounts(effectiveItemCount, categoryWeights)
+  const selected: T[] = []
+
+  for (const category of Object.keys(categoryWeights)) {
+    const needed = targetCounts[category]
+    if (needed <= 0) continue
+
+    const bucket = eligible.filter((q) => q.category === category)
+    const chosen = pickWithSoftDifficultyPreference(bucket, needed, difficultyWeights, recentlySeenIds)
+    if (chosen.length < needed) {
+      console.warn(
+        `examGenerator: only ${chosen.length}/${needed} questions available in category "${category}" — that category's TOS share will be under-filled.`,
+      )
+    }
+    selected.push(...chosen)
+  }
+
+  return shuffle(selected)
+}
