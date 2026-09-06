@@ -246,9 +246,9 @@ export function WhyKabisSection() {
           </h2>
 
           <p className="font-reading mt-5 max-w-md text-[#F3ECDC]/70">
-            KABIS was born out of my love and support for my partner, Vanessa, inspired by her
-            tireless dedication toward her dream of becoming a CPA. Designed to guide her toward
-            real results, KABIS helps Vanessa — and every dedicated aspiring CPA — study smarter,
+            KABIS was born out of love and support for my partner, Vanessa, inspired by her
+            tireless dedication towards her goal of becoming a CPA. Designed to guide her toward
+            real results, KABIS purpose is to provide assistance to Vanessa — and every dedicated aspiring CPA — study smarter,
             build consistency, and gain complete confidence leading up to exam day.
           </p>
 
