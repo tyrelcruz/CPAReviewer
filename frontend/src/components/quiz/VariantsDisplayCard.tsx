@@ -1,5 +1,6 @@
 import { Lightbulb } from 'lucide-react'
 
+import grungeWallTexture from '@/assets/images/grunge-wall-texture.jpg'
 import variationDisplayBanner from '@/assets/images/variationdisplay_banner.png'
 import { STRATEGY_CARDS, VariantsIcon } from '@/components/quiz/StrategyOptions'
 
@@ -28,6 +29,18 @@ export function VariantsDisplayCard({ selected, onSelect }: VariantsDisplayCardP
         className="sr-only"
       />
 
+      {/* Grunge wall texture (cracks, mottling) screened over the green fill for a worn, vintage feel — matches WizardAside's maroon panel. */}
+      <div
+        className="pointer-events-none absolute inset-0 mix-blend-screen"
+        aria-hidden="true"
+        style={{
+          backgroundImage: `url(${grungeWallTexture})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          opacity: 0.25,
+        }}
+      />
+
       <img
         src={variationDisplayBanner}
         alt=""
@@ -40,12 +53,6 @@ export function VariantsDisplayCard({ selected, onSelect }: VariantsDisplayCardP
       </div>
 
       <div className="relative min-w-0 flex-1">
-        {/* Floated into the card's own top padding rather than taking a flow
-            line, so this text column matches the generic card's height
-            exactly (same title/description/pill stack) for a seamless swap. */}
-        <p className="absolute -top-4 left-0 text-xs leading-none font-semibold tracking-[0.25em] text-[#E0AC48]/80 uppercase">
-          Strategy
-        </p>
         <h3 className="font-serif text-lg font-bold uppercase">{title}</h3>
         <p className="font-reading mt-1.5 text-sm text-[#F3ECDC]/80">{description}</p>
 

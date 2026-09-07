@@ -355,6 +355,22 @@ examsRouter.get('/rfbt-topics', asyncHandler(async (_req, res) => {
   res.json({ topics })
 }))
 
+/**
+ * Total ingested question count per subject, so the client can show real
+ * pool sizes on the exam-setup subject picker instead of hardcoded numbers.
+ * Registered before `/:id` — it must not be swallowed by that wildcard.
+ */
+examsRouter.get('/subject-counts', asyncHandler(async (_req, res) => {
+  const [rows] = await pool.query<RowDataPacket[]>(
+    'SELECT subject, COUNT(*) as c FROM bank_questions GROUP BY subject',
+  )
+  const counts: Record<string, number> = {}
+  for (const row of rows) {
+    counts[row.subject as string] = Number(row.c)
+  }
+  res.json({ counts })
+}))
+
 examsRouter.get('/:id', asyncHandler(async (req, res) => {
   const { id } = req.params
 

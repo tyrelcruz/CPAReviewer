@@ -32,6 +32,8 @@ export function BankExamApp() {
   const [notice, setNotice] = useState<string | null>(
     (location.state as { notice?: string | null } | null)?.notice ?? null,
   )
+  const timeLimitSeconds = (location.state as { timeLimitSeconds?: number } | null)
+    ?.timeLimitSeconds
 
   useEffect(() => {
     if (!sessionId) return
@@ -101,6 +103,7 @@ export function BankExamApp() {
                 code={session.subject}
                 onBack={() => navigate('/app')}
                 onComplete={handleComplete}
+                timeLimitSeconds={timeLimitSeconds}
               />
             </div>
           ) : (

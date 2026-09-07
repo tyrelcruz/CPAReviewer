@@ -1,5 +1,6 @@
 import { Lock, Sparkle } from 'lucide-react'
 
+import grungeWallTexture from '@/assets/images/grunge-wall-texture.jpg'
 import mountainHeader from '@/assets/images/mountain_header.png'
 import { SourceStackIcon, STRATEGY_CARDS } from '@/components/quiz/StrategyOptions'
 
@@ -17,6 +18,18 @@ export function CrossCenterTaggingCard() {
       aria-disabled="true"
       className="relative flex cursor-not-allowed items-center gap-5 overflow-hidden rounded-2xl bg-[#2B3A22] p-5 text-[#F3ECDC] opacity-60 grayscale sm:p-6"
     >
+      {/* Grunge wall texture (cracks, mottling) screened over the green fill for a worn, vintage feel — matches WizardAside's maroon panel. */}
+      <div
+        className="pointer-events-none absolute inset-0 mix-blend-screen"
+        aria-hidden="true"
+        style={{
+          backgroundImage: `url(${grungeWallTexture})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          opacity: 0.25,
+        }}
+      />
+
       <img
         src={mountainHeader}
         alt=""
@@ -30,9 +43,6 @@ export function CrossCenterTaggingCard() {
 
       <div className="relative min-w-0 flex-1">
         <div className="mb-1 flex flex-wrap items-center gap-2">
-          <p className="text-xs leading-none font-semibold tracking-[0.25em] text-[#E0AC48]/80 uppercase">
-            Strategy
-          </p>
           <span className="inline-flex items-center gap-1 rounded-full bg-[#F3ECDC]/15 px-2 py-0.5 text-[10px] font-bold tracking-wide text-[#F3ECDC]/80 uppercase">
             <Lock className="size-2.5" />
             Coming Soon

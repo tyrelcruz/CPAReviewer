@@ -17,7 +17,6 @@ import { type FormEvent, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 import illustrationBg from '@/assets/images/illustration_bg.png'
-import { GoogleIcon, MicrosoftIcon } from '@/components/auth/BrandIcons'
 import { Logo } from '@/components/landing/Logo'
 import { useAuth } from '@/context/AuthContext'
 import { fadeUpItem, listItem, listStagger, staggerContainer } from '@/lib/motion'
@@ -276,33 +275,6 @@ export function LoginPage() {
                 <ArrowRight className="size-4" />
               </motion.button>
             </motion.form>
-
-            <div className="my-4 flex items-center gap-3 text-xs text-[#3A2A1A]/50 sm:my-6">
-              <span className="h-px flex-1 bg-[#3A2A1A]/10" />
-              or continue with
-              <span className="h-px flex-1 bg-[#3A2A1A]/10" />
-            </div>
-
-            <div className="grid grid-cols-2 gap-3">
-              <button
-                type="button"
-                disabled
-                title="Coming soon"
-                className="flex items-center justify-center gap-2 rounded-xl border border-[#3A2A1A]/15 bg-white py-2 sm:py-2.5 text-sm font-medium text-[#3A2A1A] opacity-50 transition-colors"
-              >
-                <GoogleIcon className="size-4" />
-                Google
-              </button>
-              <button
-                type="button"
-                disabled
-                title="Coming soon"
-                className="flex items-center justify-center gap-2 rounded-xl border border-[#3A2A1A]/15 bg-white py-2 sm:py-2.5 text-sm font-medium text-[#3A2A1A] opacity-50 transition-colors"
-              >
-                <MicrosoftIcon className="size-4" />
-                Microsoft
-              </button>
-            </div>
 
             <p className="mt-4 text-center text-sm text-[#3A2A1A]/70 sm:mt-6">
               Don&rsquo;t have an account?{' '}

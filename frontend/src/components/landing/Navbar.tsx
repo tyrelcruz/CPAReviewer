@@ -42,7 +42,7 @@ export function Navbar() {
             to="/login"
             className="hidden text-xs font-semibold tracking-widest text-[#3A2A1A] uppercase hover:text-[#7A2323] sm:inline"
           >
-            Sign in
+            Login
           </Link>
           <button
             type="button"
@@ -73,7 +73,7 @@ export function Navbar() {
             onClick={() => setMobileOpen(false)}
             className="rounded-lg px-3 py-2.5 text-sm font-semibold tracking-wide text-[#3A2A1A] uppercase hover:bg-[#3A2A1A]/5 sm:hidden"
           >
-            Sign in
+            Login
           </Link>
         </nav>
       )}

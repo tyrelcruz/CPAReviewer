@@ -27,6 +27,13 @@ export async function listRfbtTopics(): Promise<RfbtTopic[]> {
   return data.topics
 }
 
+export async function listSubjectCounts(): Promise<Record<string, number>> {
+  const { data } = await apiClient.get<{ counts: Record<string, number> }>(
+    '/api/exams/subject-counts',
+  )
+  return data.counts
+}
+
 export async function getExamSession(sessionId: string): Promise<GeneratedExamSession> {
   const { data } = await apiClient.get<GeneratedExamSession>(`/api/exams/${sessionId}`)
   return data
