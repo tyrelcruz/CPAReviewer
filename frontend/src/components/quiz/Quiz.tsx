@@ -223,21 +223,21 @@ export function Quiz({
 
   return (
     <div className="flex flex-col gap-6">
-      <div className="flex flex-wrap items-center gap-x-8 gap-y-4 rounded-2xl border border-[#3A2A1A]/10 bg-white px-6 py-4">
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-3 rounded-2xl border border-[#3A2A1A]/10 bg-white px-4 py-3 sm:gap-x-8 sm:gap-y-4 sm:px-6 sm:py-4">
         <button
           type="button"
           onClick={onBack}
           className="flex items-center gap-1.5 text-sm font-semibold text-[#7A2323] hover:underline"
         >
           <ArrowLeft className="size-4" />
-          Back to tests
+          <span className="hidden sm:inline">Back to tests</span>
         </button>
 
-        <span className="text-sm font-bold whitespace-nowrap text-[#3A2A1A]">
+        <span className="hidden text-sm font-bold whitespace-nowrap text-[#3A2A1A] sm:inline">
           {code} — Practice Exam
         </span>
 
-        <div className="flex min-w-40 flex-1 flex-col gap-1.5">
+        <div className="order-last flex w-full min-w-40 flex-1 flex-col gap-1.5 sm:order-0 sm:w-auto">
           <span className="text-xs text-[#3A2A1A]/70">
             Question {currentIndex + 1} of {questions.length}
           </span>
@@ -255,15 +255,16 @@ export function Quiz({
           <button
             type="button"
             onClick={toggleCalculator}
+            aria-label="Calculator"
             className={cn(
-              'relative z-20 flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-semibold whitespace-nowrap transition-colors',
+              'relative z-20 flex items-center gap-1.5 rounded-full border px-2.5 py-1.5 text-xs font-semibold whitespace-nowrap transition-colors sm:px-3',
               calculatorOpen
                 ? 'border-[#7A2323]/30 bg-[#7A2323]/10 text-[#7A2323]'
                 : 'border-[#3A2A1A]/15 text-[#3A2A1A]/80 hover:bg-[#3A2A1A]/5',
             )}
           >
             <Calculator className="size-4" />
-            Calculator
+            <span className="hidden sm:inline">Calculator</span>
           </button>
           {calculatorOpen && (
             <>
@@ -279,15 +280,16 @@ export function Quiz({
           <button
             type="button"
             onClick={toggleNotes}
+            aria-label="Notes"
             className={cn(
-              'relative z-20 flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-semibold whitespace-nowrap transition-colors',
+              'relative z-20 flex items-center gap-1.5 rounded-full border px-2.5 py-1.5 text-xs font-semibold whitespace-nowrap transition-colors sm:px-3',
               notesOpen
                 ? 'border-[#7A2323]/30 bg-[#7A2323]/10 text-[#7A2323]'
                 : 'border-[#3A2A1A]/15 text-[#3A2A1A]/80 hover:bg-[#3A2A1A]/5',
             )}
           >
             <StickyNote className="size-4" />
-            Notes
+            <span className="hidden sm:inline">Notes</span>
           </button>
           {notesOpen && (
             <>
@@ -305,14 +307,14 @@ export function Quiz({
             <p className="text-sm font-bold whitespace-nowrap">
               {formatClock(remainingSeconds)}
             </p>
-            <p className="text-[11px] text-[#3A2A1A]/60">Time Remaining</p>
+            <p className="hidden text-[11px] text-[#3A2A1A]/60 sm:block">Time Remaining</p>
           </div>
         </div>
 
         <button
           type="button"
           onClick={handleFinishNow}
-          className="rounded-full bg-[#7A2323] px-5 py-2.5 text-sm font-semibold whitespace-nowrap text-[#F3ECDC] transition-colors hover:bg-[#7A2323]/90"
+          className="rounded-full bg-[#7A2323] px-4 py-2 text-xs font-semibold whitespace-nowrap text-[#F3ECDC] transition-colors hover:bg-[#7A2323]/90 sm:px-5 sm:py-2.5 sm:text-sm"
         >
           Finish test
         </button>
@@ -326,7 +328,7 @@ export function Quiz({
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -24 }}
             transition={{ duration: 0.25, ease: 'easeOut' }}
-            className="min-w-0 rounded-2xl border border-[#3A2A1A]/10 bg-white p-6"
+            className="min-w-0 rounded-2xl border border-[#3A2A1A]/10 bg-white p-4 sm:p-6"
           >
             {(current.sources?.length || current.section || variantInfo) && (
               <div className="mb-3 flex flex-wrap items-center gap-2">
@@ -471,12 +473,12 @@ export function Quiz({
               )}
             </AnimatePresence>
 
-            <div className="mt-6 flex items-center justify-between border-t border-[#3A2A1A]/10 pt-5">
+            <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-[#3A2A1A]/10 pt-5">
               <button
                 type="button"
                 onClick={toggleFlag}
                 className={cn(
-                  'flex items-center gap-1.5 rounded-full border px-4 py-2 text-xs font-semibold transition-colors',
+                  'flex items-center gap-1.5 rounded-full border px-3 py-2 text-xs font-semibold whitespace-nowrap transition-colors sm:px-4',
                   isFlagged
                     ? 'border-[#E0AC48] bg-[#E0AC48]/15 text-[#B4791F]'
                     : 'border-[#3A2A1A]/20 text-[#3A2A1A]/70 hover:bg-[#3A2A1A]/5',
@@ -489,7 +491,7 @@ export function Quiz({
                 type="button"
                 onClick={toggleExplanation}
                 disabled={!isAnswered}
-                className="flex items-center gap-1.5 rounded-full border border-[#3A2A1A]/20 px-4 py-2 text-xs font-semibold text-[#3A2A1A]/70 transition-colors hover:bg-[#3A2A1A]/5 disabled:cursor-not-allowed disabled:opacity-40"
+                className="flex items-center gap-1.5 rounded-full border border-[#3A2A1A]/20 px-3 py-2 text-xs font-semibold whitespace-nowrap text-[#3A2A1A]/70 transition-colors hover:bg-[#3A2A1A]/5 disabled:cursor-not-allowed disabled:opacity-40 sm:px-4"
               >
                 <Eye className="size-3.5" />
                 View explanation
@@ -498,7 +500,7 @@ export function Quiz({
                 type="button"
                 onClick={handleNext}
                 disabled={!isAnswered}
-                className="flex items-center gap-1.5 rounded-full bg-[#7A2323] px-5 py-2.5 text-xs font-semibold text-[#F3ECDC] transition-colors hover:bg-[#7A2323]/90 disabled:cursor-not-allowed disabled:opacity-40"
+                className="flex w-full items-center justify-center gap-1.5 rounded-full bg-[#7A2323] px-5 py-2.5 text-xs font-semibold whitespace-nowrap text-[#F3ECDC] transition-colors hover:bg-[#7A2323]/90 disabled:cursor-not-allowed disabled:opacity-40 sm:w-auto"
               >
                 {isLastQuestion ? 'See results' : 'Next question'}
                 <ArrowRight className="size-3.5" />
@@ -527,7 +529,7 @@ export function Quiz({
       </div>
 
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_20rem]">
-        <div className="grid min-w-0 grid-cols-1 gap-6 rounded-2xl border border-[#3A2A1A]/10 bg-white p-6 sm:grid-cols-3">
+        <div className="grid min-w-0 grid-cols-1 gap-6 rounded-2xl border border-[#3A2A1A]/10 bg-white p-4 sm:grid-cols-3 sm:p-6">
           <div className="flex items-center gap-4">
             <ProgressRing
               percent={progressPct}
@@ -571,7 +573,7 @@ export function Quiz({
           </div>
         </div>
 
-        <div className="rounded-2xl border border-[#E0AC48]/30 bg-[#FBEED2] p-6">
+        <div className="rounded-2xl border border-[#E0AC48]/30 bg-[#FBEED2] p-4 sm:p-6">
           <p className="flex items-center gap-2 text-sm font-semibold text-[#7A2323]">
             <Lightbulb className="size-4" />
             Study Tip

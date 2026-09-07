@@ -106,7 +106,7 @@ export function ExamFilters({
         variants={listStagger}
         initial="hidden"
         animate="show"
-        className="-mx-4 flex flex-nowrap gap-2.5 overflow-x-auto px-4 pb-1 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 sm:pb-0"
+        className="flex flex-wrap gap-2 sm:gap-2.5"
       >
         {TABS.map((tab) => {
           const isActive = tab.key === typeFilter
@@ -119,13 +119,13 @@ export function ExamFilters({
               whileTap={{ scale: 0.97 }}
               onClick={() => onTypeChange(tab.key)}
               className={cn(
-                'flex shrink-0 items-center gap-2 rounded-full border px-4 py-2.5 text-sm font-semibold whitespace-nowrap transition-colors',
+                'flex shrink-0 items-center gap-1.5 rounded-full border px-3 py-2 text-xs font-semibold whitespace-nowrap transition-colors sm:gap-2 sm:px-4 sm:py-2.5 sm:text-sm',
                 isActive
                   ? 'border-transparent bg-[#3A5A40] text-white'
                   : 'border-[#3A2A1A]/15 text-[#3A2A1A]/80 hover:bg-[#3A2A1A]/5',
               )}
             >
-              <tab.icon className="size-4" />
+              <tab.icon className="size-3.5 sm:size-4" />
               {tab.label}
             </motion.button>
           )

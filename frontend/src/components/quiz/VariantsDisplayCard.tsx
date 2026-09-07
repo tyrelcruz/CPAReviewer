@@ -1,42 +1,42 @@
 import { Lightbulb } from 'lucide-react'
 
-import dualQuizBanner from '@/assets/images/dualquiz_banner.png'
-import { DualModeIcon, STRATEGY_CARDS } from '@/components/quiz/StrategyOptions'
+import variationDisplayBanner from '@/assets/images/variationdisplay_banner.png'
+import { STRATEGY_CARDS, VariantsIcon } from '@/components/quiz/StrategyOptions'
 
-interface DualQuizModesCardProps {
+interface VariantsDisplayCardProps {
   selected: boolean
   onSelect: () => void
 }
 
 // Single source of truth for this strategy's copy — shared with the plain
 // generic card so the content never has to be kept in sync by hand.
-const { title, description, whyText } = STRATEGY_CARDS.find((c) => c.key === 'modes')!
+const { title, description, whyText } = STRATEGY_CARDS.find((c) => c.key === 'variants')!
 
 // Only ever rendered while it's the selected strategy — its distinctive dark
 // green fill IS the selected indicator, so there's no separate ring/border
 // to toggle here. When another strategy is selected, ChooseStrategyPage
 // swaps this out for the plain generic card treatment instead.
-export function DualQuizModesCard({ selected, onSelect }: DualQuizModesCardProps) {
+export function VariantsDisplayCard({ selected, onSelect }: VariantsDisplayCardProps) {
   return (
     <label className="relative flex cursor-pointer items-center gap-5 overflow-hidden rounded-2xl bg-[#2B3A22] p-5 text-[#F3ECDC] sm:p-6">
       <input
         type="radio"
         name="strategy"
-        value="modes"
+        value="variants"
         checked={selected}
         onChange={onSelect}
         className="sr-only"
       />
 
       <img
-        src={dualQuizBanner}
+        src={variationDisplayBanner}
         alt=""
         aria-hidden="true"
         className="pointer-events-none absolute inset-y-0 right-0 h-full w-3/5 object-contain object-right-bottom opacity-25 sm:w-1/2"
       />
 
       <div className="hidden shrink-0 sm:block">
-        <DualModeIcon />
+        <VariantsIcon />
       </div>
 
       <div className="relative min-w-0 flex-1">

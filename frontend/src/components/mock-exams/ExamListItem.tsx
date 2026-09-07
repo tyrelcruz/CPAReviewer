@@ -132,8 +132,8 @@ export function ExamListItem({ exam }: ExamListItemProps) {
         </div>
       </div>
 
-      <div className="flex shrink-0 items-center gap-6 sm:w-auto">
-        <div className="w-32 text-xs text-[#3A2A1A]/60">
+      <div className="flex w-full flex-wrap items-center gap-4 sm:w-auto sm:flex-nowrap sm:shrink-0 sm:gap-6">
+        <div className="text-xs text-[#3A2A1A]/60 sm:w-32">
           {!isAvailable
             ? 'Not available yet'
             : exam.taken

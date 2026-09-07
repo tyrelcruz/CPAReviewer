@@ -4,8 +4,10 @@ import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import { Sidebar } from '@/components/dashboard/Sidebar'
+import { CrossCenterTaggingCard } from '@/components/quiz/CrossCenterTaggingCard'
 import { DualQuizModesCard } from '@/components/quiz/DualQuizModesCard'
 import { COMING_SOON_KEYS, STRATEGY_CARDS } from '@/components/quiz/StrategyOptions'
+import { VariantsDisplayCard } from '@/components/quiz/VariantsDisplayCard'
 import { WizardAside } from '@/components/quiz/WizardAside'
 import { WizardHeader } from '@/components/quiz/WizardHeader'
 import { quizSets } from '@/data/quiz-data'
@@ -90,10 +92,29 @@ export function ChooseStrategyPage() {
                     const selected = card.key === selectedKey
                     const isComingSoon = COMING_SOON_KEYS.includes(card.key)
 
+                    if (card.key === 'tagging') {
+                      return (
+                        <motion.div key={card.key} variants={fadeUpItem}>
+                          <CrossCenterTaggingCard />
+                        </motion.div>
+                      )
+                    }
+
                     if (card.key === 'modes' && selected) {
                       return (
                         <motion.div key={card.key} variants={fadeUpItem}>
                           <DualQuizModesCard
+                            selected={selected}
+                            onSelect={() => setSelectedKey(card.key)}
+                          />
+                        </motion.div>
+                      )
+                    }
+
+                    if (card.key === 'variants' && selected) {
+                      return (
+                        <motion.div key={card.key} variants={fadeUpItem}>
+                          <VariantsDisplayCard
                             selected={selected}
                             onSelect={() => setSelectedKey(card.key)}
                           />
