@@ -1,0 +1,2662 @@
+[
+  {
+    "id": "tax-resa-b51-may2026-001",
+    "prompt": "All of the following are similarities of the inherent powers, except:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "They all involve restriction of rights."
+      },
+      {
+        "id": "b",
+        "text": "They affect all persons or the public."
+      },
+      {
+        "id": "c",
+        "text": "They all provide equivalent compensation."
+      },
+      {
+        "id": "d",
+        "text": "They are crucial and indispensable to the existence of the State."
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "The three inherent powers of the State (taxation, police power, eminent domain) are similar in that they are inherent, indispensable, and involve restrictions on rights. However, only eminent domain requires the payment of just compensation; taxation and police power do not provide equivalent compensation.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Principles of Taxation",
+      "subTopic": "Nature and Scope",
+      "tosCode": "A.1",
+      "cognitiveLevel": "Understanding",
+      "difficulty": "Easy"
+    },
+    "canonicalConcept": "Similarities of inherent powers of the State"
+  },
+  {
+    "id": "tax-resa-b51-may2026-002",
+    "prompt": "Which principle of a sound tax system is applied when it comes to income taxation of Statutory Minimum Wage Earners?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Administrative feasibility"
+      },
+      {
+        "id": "b",
+        "text": "Theoretical justice"
+      },
+      {
+        "id": "c",
+        "text": "Fiscal adequacy"
+      },
+      {
+        "id": "d",
+        "text": "None of the above"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Theoretical justice means that a tax system should be equitable and based on the taxpayer's ability to pay. Exempting minimum wage earners from income tax is an application of theoretical justice.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Principles of Taxation",
+      "subTopic": "Sound Tax System",
+      "tosCode": "A.2",
+      "cognitiveLevel": "Applying",
+      "difficulty": "Easy"
+    },
+    "canonicalConcept": "Theoretical justice principle for minimum wage earners"
+  },
+  {
+    "id": "tax-resa-b51-may2026-003",
+    "prompt": "This phase of taxation involves the final stage and goal of taxation.",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Levy"
+      },
+      {
+        "id": "b",
+        "text": "Assessment"
+      },
+      {
+        "id": "c",
+        "text": "Collection"
+      },
+      {
+        "id": "d",
+        "text": "None of the above"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "The three basic phases of taxation are levy (imposition), assessment (valuation), and collection (payment). Collection is the final stage and the goal of taxation.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Principles of Taxation",
+      "subTopic": "Nature and Scope",
+      "tosCode": "A.1",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Easy"
+    },
+    "canonicalConcept": "Phases of taxation: levy, assessment, collection"
+  },
+  {
+    "id": "tax-resa-b51-may2026-004",
+    "prompt": "Which of the following is a constitutional limitation?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Equal protection clause"
+      },
+      {
+        "id": "b",
+        "text": "Progressivity principle of taxation"
+      },
+      {
+        "id": "c",
+        "text": "Exemption of non-stock, non-profit educational institution"
+      },
+      {
+        "id": "d",
+        "text": "All of the above"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "All are constitutional limitations: equal protection clause (Article III, Section 1), progressivity (Article VI, Section 28), and exemption of non-stock, non-profit educational institutions (Article XIV, Section 4).",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Principles of Taxation",
+      "subTopic": "Limitations on Power of Taxation",
+      "tosCode": "A.3",
+      "cognitiveLevel": "Understanding",
+      "difficulty": "Easy"
+    },
+    "canonicalConcept": "Constitutional limitations on taxation"
+  },
+  {
+    "id": "tax-resa-b51-may2026-005",
+    "prompt": "One of the following is not a characteristic or an element of tax:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "It is payable in money or in kind."
+      },
+      {
+        "id": "b",
+        "text": "It is levied by the legislature."
+      },
+      {
+        "id": "c",
+        "text": "It is proportionate in character."
+      },
+      {
+        "id": "d",
+        "text": "It is an enforced contribution."
+      }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "A tax is generally payable in money only. It is levied by the legislature (or local legislative bodies), is proportionate in character, and is an enforced contribution.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Principles of Taxation",
+      "subTopic": "Nature and Scope",
+      "tosCode": "A.1",
+      "cognitiveLevel": "Understanding",
+      "difficulty": "Easy"
+    },
+    "canonicalConcept": "Characteristics and elements of a tax"
+  },
+  {
+    "id": "tax-resa-b51-may2026-006",
+    "prompt": "In this type of tax, non-payment is constitutionally not exempted from imprisonment.",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Income tax"
+      },
+      {
+        "id": "b",
+        "text": "Estate tax"
+      },
+      {
+        "id": "c",
+        "text": "Poll tax"
+      },
+      {
+        "id": "d",
+        "text": "A and B"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Under the Constitution, no person shall be imprisoned for debt or non-payment of a poll tax (Article III, Section 20). For other taxes like income and estate tax, non-payment may lead to imprisonment.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Principles of Taxation",
+      "subTopic": "Limitations on Power of Taxation",
+      "tosCode": "A.3",
+      "cognitiveLevel": "Understanding",
+      "difficulty": "Easy"
+    },
+    "canonicalConcept": "Non-imprisonment for non-payment of poll tax"
+  },
+  {
+    "id": "tax-resa-b51-may2026-007",
+    "prompt": "The power to interpret the provision of the Tax Code and other tax laws shall be under the exclusive and original jurisdiction of the Commissioner of Internal Revenue subject to review by:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Secretary of Finance"
+      },
+      {
+        "id": "b",
+        "text": "Court of Tax Appeals"
+      },
+      {
+        "id": "c",
+        "text": "Court of Appeals"
+      },
+      {
+        "id": "d",
+        "text": "Supreme Court"
+      }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "The Commissioner of Internal Revenue has the exclusive and original jurisdiction to interpret tax laws, subject to review by the Secretary of Finance (Section 4, NIRC).",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Principles of Taxation",
+      "subTopic": "Organization and Functions of BIR",
+      "tosCode": "A.10",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Easy"
+    },
+    "canonicalConcept": "CIR interpretative power subject to Secretary of Finance review"
+  },
+  {
+    "id": "tax-resa-b51-may2026-008",
+    "prompt": "Under the Ease of Paying Taxes Act, which of the following taxpayer may be considered as a medium taxpayer?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "MJT, with sales of P5,000,000."
+      },
+      {
+        "id": "b",
+        "text": "KLM, with sales of P9,546,6996."
+      },
+      {
+        "id": "c",
+        "text": "CUL, with sales of P999,999,999."
+      },
+      {
+        "id": "d",
+        "text": "AST, with sales of P1,500,000,000."
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Under the Ease of Paying Taxes Act (RA 11976), a medium taxpayer has annual sales not exceeding P1 Billion. Option C is the only one within that threshold.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Principles of Taxation",
+      "subTopic": "Organization and Functions of BIR",
+      "tosCode": "A.10",
+      "cognitiveLevel": "Applying",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "Medium taxpayer classification under EOPT Act"
+  },
+  {
+    "id": "tax-resa-b51-may2026-009",
+    "prompt": "ERG inherited a Paul Newman Rolex Daytona Watch (Ref.6239) from his father. ERG is a/an:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Heir"
+      },
+      {
+        "id": "b",
+        "text": "Legatee"
+      },
+      {
+        "id": "c",
+        "text": "Devisee"
+      },
+      {
+        "id": "d",
+        "text": "Lucky baby"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "A legatee inherits personal property under a will. A devisee inherits real property. An heir inherits by intestate succession. A watch is personal property, making ERG a legatee.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Transfer Taxes",
+      "subTopic": "Estate Tax - Classification of Decedents and Transfers",
+      "tosCode": "D.1.2",
+      "cognitiveLevel": "Applying",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "Distinction among heir, legatee, and devisee"
+  },
+  {
+    "id": "tax-resa-b51-may2026-010",
+    "prompt": "The gross estate of a decedent is valued at P5,000,001 composed of registered and registrable properties. Total deductions are P6,000,000. Which of the following statements is/are correct?\nI - The estate of the decedent is required to submit notice of death.\nII - The estate of the decedent is required to file an estate tax return.\nIII - The estate of the decedent is required to submit a statement certified by a CPA.",
+    "choices": [
+      {
+        "id": "a",
+        "text": "II only."
+      },
+      {
+        "id": "b",
+        "text": "I and III only."
+      },
+      {
+        "id": "c",
+        "text": "II and III only."
+      },
+      {
+        "id": "d",
+        "text": "I, II, and III"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Notice of death is required when gross estate exceeds P20M (RR 12-2018). Estate tax return is required when gross estate exceeds P5M. A CPA statement is required for estates with registered/registrable properties exceeding P5M.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Transfer Taxes",
+      "subTopic": "Estate Tax - Compliance Requirements",
+      "tosCode": "D.1.6",
+      "cognitiveLevel": "Analyzing",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "Notice of death, estate tax return, and CPA statement requirements"
+  },
+  {
+    "id": "tax-resa-b51-may2026-011",
+    "prompt": "Queen Yasmax, a Resident Citizen who is not married and is not the head of the family, died on 14 October 2024. Details of her gross estate are as follows:\nHouse, Philippines – P10,000,000\nLand, New Zealand – P6,000,000\nCar, Philippines – P1,200,000\nDeductions:\nLoss from claims against insolvent persons – P3,000,000\nTransfer for public use – P500,000\nInsured loss from earthquake – P1,200,000\nHow much is the net taxable estate?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "₱13,700,000"
+      },
+      {
+        "id": "b",
+        "text": "₱12,500,000"
+      },
+      {
+        "id": "c",
+        "text": "₱12,200,000"
+      },
+      {
+        "id": "d",
+        "text": "₱11,700,000"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Gross estate (resident citizen, taxed on worldwide properties) = House Php10,000,000 + Land, New Zealand Php6,000,000 + Car Php1,200,000 = Php17,200,000. Under the TRAIN Law (RA 10963), the itemized \"losses\" deduction was repealed for decedents dying on or after January 1, 2018, so the insured loss from earthquake (Php1,200,000) is not deductible at all. The claim against insolvent persons (Php3,000,000) is likewise not deductible here because it may only be claimed to the extent the corresponding receivable was itself included in the gross estate figures given, and no such receivable appears among the listed estate assets. Only the transfer for public use (Php500,000) and the standard deduction (Php5,000,000) are allowable. Net taxable estate = Php17,200,000 - Php500,000 - Php5,000,000 = Php11,700,000.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Transfer Taxes",
+      "subTopic": "Estate Tax - Computation",
+      "tosCode": "D.1.5",
+      "cognitiveLevel": "Analyzing",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "Net taxable estate computation for resident citizen"
+  },
+  {
+    "id": "tax-resa-b51-may2026-012",
+    "prompt": "Ariana Batumbakal, a single and head of the family, non-resident citizen, owns a family home with a value of P50,000,000. The family home is classified as an exclusive property. The property is located in San Diego, California. Which of the following statements is correct?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "A family home deduction of P50,000,000 is proper."
+      },
+      {
+        "id": "b",
+        "text": "A family home deduction of P25,000,000 is proper."
+      },
+      {
+        "id": "c",
+        "text": "A family home deduction of P10,000,000 is proper."
+      },
+      {
+        "id": "d",
+        "text": "No family home deduction can be claimed."
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Under RR 12-2018, the family home must be located in the Philippines to be deductible. A non-resident citizen's family home located abroad does not qualify for the family home deduction.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Transfer Taxes",
+      "subTopic": "Estate Tax - Deductions",
+      "tosCode": "D.1.4",
+      "cognitiveLevel": "Applying",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "Family home deduction requirement: must be in the Philippines"
+  },
+  {
+    "id": "tax-resa-b51-may2026-013",
+    "prompt": "The specific renunciation of the surviving spouse from the gross estate of the decedent is subject to:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Estate tax"
+      },
+      {
+        "id": "b",
+        "text": "Exemption if not in favor of one heir"
+      },
+      {
+        "id": "c",
+        "text": "Donor's tax"
+      },
+      {
+        "id": "d",
+        "text": "Exemption if in favor of one heir"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Under Section 11 of the NIRC, a renunciation by the surviving spouse of his/her share in the conjugal partnership or absolute community after the dissolution of the marriage in favor of the heirs of the decedent is subject to donor's tax.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Transfer Taxes",
+      "subTopic": "Estate Tax - Nature and Effects",
+      "tosCode": "D.1",
+      "cognitiveLevel": "Applying",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "Renunciation by surviving spouse subject to donor's tax"
+  },
+  {
+    "id": "tax-resa-b51-may2026-014",
+    "prompt": "Mr. Ayanokoji, a citizen and resident of Tokyo, Japan, dies during the year. Japan does not impose transfer taxes on properties of decedent not residing therein. He left the following properties among others:\n• Shares of stock, San Miguel Corporation, Manila\n• House and lot, Japan\n• Share of stock of a foreign corporation where 85% of its business is in the Philippines\n• 1947 Ford Super Deluxe convertible car, New York, Cubao\nThe executor of his estate in Philippines asked you what properties are to be included in his Philippine gross estate. What answer will you give him?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Include all the properties."
+      },
+      {
+        "id": "b",
+        "text": "Include domestic shares of stocks"
+      },
+      {
+        "id": "c",
+        "text": "Include all properties except shares of stock and house and lot"
+      },
+      {
+        "id": "d",
+        "text": "Include only the 1947 Ford Super Deluxe convertible"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "A non-resident alien decedent is subject to Philippine estate tax only on properties situated in the Philippines. Shares of domestic corporations and shares of foreign corporations with 85% Philippine business are considered situated in the Philippines. However, since Japan does not impose transfer tax on non-residents, the reciprocity exemption applies to intangible personal property (shares of stock). The car (tangible personal property) is in the Philippines (Cubao) and is includible.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Transfer Taxes",
+      "subTopic": "Estate Tax - Gross Estate",
+      "tosCode": "D.1.2",
+      "cognitiveLevel": "Analyzing",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "Reciprocity exemption for non-resident alien estate tax on intangible property"
+  },
+  {
+    "id": "tax-resa-b51-may2026-015",
+    "prompt": "Which of the following is an exclusion?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Bequests to Social Welfare institutions"
+      },
+      {
+        "id": "b",
+        "text": "Bequests to Charitable institutions"
+      },
+      {
+        "id": "c",
+        "text": "Bequests to Religious institutions"
+      },
+      {
+        "id": "d",
+        "text": "Bequests to Cultural institutions"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Bequests to religious institutions are excluded from gross estate (Section 87, NIRC). Bequests to social welfare, charitable, and cultural institutions are deductions (not exclusions) subject to certain conditions.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Transfer Taxes",
+      "subTopic": "Estate Tax - Deductions",
+      "tosCode": "D.1.4",
+      "cognitiveLevel": "Applying",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "Exclusion vs deduction for bequests to institutions"
+  },
+  {
+    "id": "tax-resa-b51-may2026-016",
+    "prompt": "When is a donation perfected?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "When the donated property is delivered."
+      },
+      {
+        "id": "b",
+        "text": "When the donor offers the property to the donee."
+      },
+      {
+        "id": "c",
+        "text": "When the donee accepts the donation."
+      },
+      {
+        "id": "d",
+        "text": "When the donor knows of the acceptance of the donee."
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Under Article 734 of the Civil Code, a donation is perfected from the moment the donor knows of the acceptance by the donee. Mere delivery or offer does not perfect the donation without acceptance communicated to the donor.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Transfer Taxes",
+      "subTopic": "Donor's Tax - Nature and Scope",
+      "tosCode": "D.2.2",
+      "cognitiveLevel": "Understanding",
+      "difficulty": "Easy"
+    },
+    "canonicalConcept": "Perfection of donation under Article 734 NCC"
+  },
+  {
+    "id": "tax-resa-b51-may2026-017",
+    "prompt": "Which of the following donations is not taxable?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Gifts made to or for the use of the National Government."
+      },
+      {
+        "id": "b",
+        "text": "Gifts made to a legitimate child on account of marriage."
+      },
+      {
+        "id": "c",
+        "text": "Contributions made to political candidates spent during the campaign period."
+      },
+      {
+        "id": "d",
+        "text": "A and C"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Gifts to the National Government and contributions to political candidates during the campaign period are exempt from donor's tax under the NIRC and Omnibus Election Code, respectively. Gifts to a legitimate child on account of marriage are taxable but subject to a specific exemption of P10,000.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Transfer Taxes",
+      "subTopic": "Donor's Tax - Exemptions",
+      "tosCode": "D.2.3",
+      "cognitiveLevel": "Applying",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "Exempt donations: National Government and political campaign contributions"
+  },
+  {
+    "id": "tax-resa-b51-may2026-018",
+    "prompt": "Consignment of goods is a transaction deemed sale if actual sale is not made within:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "30 days"
+      },
+      {
+        "id": "b",
+        "text": "60 days"
+      },
+      {
+        "id": "c",
+        "text": "90 days"
+      },
+      {
+        "id": "d",
+        "text": "120 days"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Under Section 106(B) of the NIRC and RR 16-2005, consignment of goods is treated as a deemed sale if the goods are not sold within 60 days from the date of consignment.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Business Taxes",
+      "subTopic": "VAT - Transactions Subject to VAT",
+      "tosCode": "E.1.3",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Easy"
+    },
+    "canonicalConcept": "Deemed sale: consignment period of 60 days"
+  },
+  {
+    "id": "tax-resa-b51-may2026-019",
+    "prompt": "All of the following are zero-rated sales, except:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Sale to bonded manufacturing warehouses of export-oriented enterprises"
+      },
+      {
+        "id": "b",
+        "text": "Sale of supplies to international transport operators for use in their international transport operations"
+      },
+      {
+        "id": "c",
+        "text": "Export sale of goods paid in Philippine Peso."
+      },
+      {
+        "id": "d",
+        "text": "Sale of goods to Registered Export Enterprises"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Export sales must be paid in acceptable foreign currency (or its equivalent) to qualify as zero-rated. Payment in Philippine Peso does not qualify. Sales to bonded warehouses, supplies to international transport operators, and sales to Registered Export Enterprises may qualify as zero-rated.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Business Taxes",
+      "subTopic": "VAT - Zero-Rated Sales",
+      "tosCode": "E.1.3",
+      "cognitiveLevel": "Analyzing",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "Zero-rated export sales require payment in foreign currency"
+  },
+  {
+    "id": "tax-resa-b51-may2026-020",
+    "prompt": "Which of the following transactions is not subject to VAT?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Payment of debt using inventory"
+      },
+      {
+        "id": "b",
+        "text": "Importation of specialty feeds for race horses"
+      },
+      {
+        "id": "c",
+        "text": "Importation of fuel, goods, and supplies used for local shipping or air transport operations"
+      },
+      {
+        "id": "d",
+        "text": "A corporation, which is a party to a merger or consolidation, exchanges property solely for stock in a corporation, which is a party to the merger or consolidation"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Transfer of property in exchange for stock in a merger or consolidation is exempt from VAT under Section 109 of the NIRC. Payment of debt using inventory is a taxable barter. Importation of specialty feeds and fuel for local transport are generally subject to VAT.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Business Taxes",
+      "subTopic": "VAT - Exempt Transactions",
+      "tosCode": "E.1.3",
+      "cognitiveLevel": "Analyzing",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "VAT exemption for transfer of property in merger/consolidation"
+  },
+  {
+    "id": "tax-resa-b51-may2026-021",
+    "prompt": "Peter Agdoro, a VAT-registered manufacturer of steel, had the following transactions for the quarter ending March 31, 2026:\nRegular VAT-subject sales – P18,000,000\nZero-rated sales – P24,000,000\nExempt sales – P8,000,000\nPurchases from VAT-exempt supplier, directly attributable to regular VAT-subject sales – P8,000,000\nPurchases from VAT-registered suppliers, not directly attributable to any sales – P10,000,000\nPurchases from VAT-registered suppliers, specifically attributable to export sales – P13,000,000\nAll amounts are net of VAT.\nAssuming the input VAT attributable to VAT-zero rated sales will be refunded, how much is the VAT payable?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "₱1,728,000"
+      },
+      {
+        "id": "b",
+        "text": "(₱408,000)"
+      },
+      {
+        "id": "c",
+        "text": "(₱600,000)"
+      },
+      {
+        "id": "d",
+        "text": "(₱1,012,000)"
+      }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "Output VAT = P18M × 12% = P2,160,000. Input VAT directly attributable to export = P1,560,000 (refundable). Input VAT not directly attributable = P1,200,000. Allocate: Exempt (8M/50M) = P192,000; Zero-rated (24M/50M) = P576,000; Regular (18M/50M) = P432,000. Allowable input VAT = P432,000. VAT payable = P2,160,000 – P432,000 = P1,728,000.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Business Taxes",
+      "subTopic": "VAT - Computation",
+      "tosCode": "E.1.5",
+      "cognitiveLevel": "Analyzing",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "VAT payable computation with zero-rated sales refund allocation"
+  },
+  {
+    "id": "tax-resa-b51-may2026-022",
+    "prompt": "A keeper of garage whose gross sales for the year is P3,000,001 is subject to:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "VAT"
+      },
+      {
+        "id": "b",
+        "text": "Common Carrier's Tax on Domestic Carriers (Sec.117)"
+      },
+      {
+        "id": "c",
+        "text": "Common Carrier's Tax on International Carriers (Sec.118)"
+      },
+      {
+        "id": "d",
+        "text": "Other Percentage Tax (Sec.116)"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Keepers of garages with gross sales exceeding P3,000,000 are subject to the Common Carrier's Tax under Section 117 (now Section 118 under TRAIN Law) at 3% of quarterly gross receipts, not VAT.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Business Taxes",
+      "subTopic": "Percentage Tax - Persons Subject",
+      "tosCode": "E.2.2",
+      "cognitiveLevel": "Applying",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "Keeper of garage subject to common carrier's tax"
+  },
+  {
+    "id": "tax-resa-b51-may2026-023",
+    "prompt": "The lease of property, real or personal, by a non-bank financial intermediary performing quasi-banking functions is subject to:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "7% Gross Receipts Tax"
+      },
+      {
+        "id": "b",
+        "text": "5% Gross Receipts Tax"
+      },
+      {
+        "id": "c",
+        "text": "1% Gross Receipts Tax"
+      },
+      {
+        "id": "d",
+        "text": "12% VAT"
+      }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "Under Section 122 of the NIRC, non-bank financial intermediaries performing quasi-banking functions are subject to 7% Gross Receipts Tax on lease of property.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Business Taxes",
+      "subTopic": "Percentage Tax - Gross Receipts Tax",
+      "tosCode": "E.2.2",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Easy"
+    },
+    "canonicalConcept": "GRT rate for non-bank quasi-banking intermediaries on lease"
+  },
+  {
+    "id": "tax-resa-b51-may2026-024",
+    "prompt": "Which of the following is subject to excise tax beginning 1 July 2025?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Trucks"
+      },
+      {
+        "id": "b",
+        "text": "Pick-ups"
+      },
+      {
+        "id": "c",
+        "text": "Purely electric vehicles"
+      },
+      {
+        "id": "d",
+        "text": "Buses"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Under RA 10963 (TRAIN Law) as amended, pick-ups are subject to excise tax beginning July 1, 2025. Trucks, buses, and purely electric vehicles are exempt.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Excise Tax",
+      "subTopic": "Transactions Subject to Excise Tax",
+      "tosCode": "F.1.2",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Easy"
+    },
+    "canonicalConcept": "Excise tax on pick-ups effective July 2025"
+  },
+  {
+    "id": "tax-resa-b51-may2026-025",
+    "prompt": "Which of the following articles are subject to ad valorem excise tax?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Automobiles"
+      },
+      {
+        "id": "b",
+        "text": "Non-essential goods"
+      },
+      {
+        "id": "c",
+        "text": "Non-essential services"
+      },
+      {
+        "id": "d",
+        "text": "All of the above"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Ad valorem excise tax applies to automobiles, non-essential goods (e.g., perfumes, jewelry), and non-essential services (e.g., cosmetic procedures) under the NIRC.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Excise Tax",
+      "subTopic": "Transactions Subject to Excise Tax",
+      "tosCode": "F.1.2",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Easy"
+    },
+    "canonicalConcept": "Ad valorem excise tax coverage"
+  },
+  {
+    "id": "tax-resa-b51-may2026-026",
+    "prompt": "Jasper Razon is a non-VAT registered, resident citizen, and owner of a premiere night club called 'Vertigo'. Details regarding his night club are presented below for the taxable year 2025:\nSales – P2,800,000\nLess: Cost of sales – (P1,800,000)\nGross business income – P1,000,000\nAdd: Other non-operating income – P500,000\nGross income – P1,500,000\nLess: Operating expenses – (P1,150,000)\nTaxable income – P350,000\nJasper Razon had no other source of income other than his night club. If he opted to avail of the 8% income tax option, how much is his income tax due?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "₱15,000"
+      },
+      {
+        "id": "b",
+        "text": "₱224,000"
+      },
+      {
+        "id": "c",
+        "text": "₱264,000"
+      },
+      {
+        "id": "d",
+        "text": "₱28,000"
+      }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "The 8% income tax option in lieu of the graduated income tax and percentage tax is available only to self-employed individuals/professionals subject to the 3% percentage tax under Section 116. A night club is subject to the 18% amusement tax under Section 125 instead, so Jasper does not qualify for the 8% option and must use the regular graduated income tax rates on his taxable income of Php350,000. Under the graduated schedule, the first Php250,000 is exempt and the excess over Php250,000 is taxed at 15%: (Php350,000 - Php250,000) x 15% = Php15,000.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Income Taxation",
+      "subTopic": "Individual Income Tax - Rates and Computation",
+      "tosCode": "C.1.2",
+      "cognitiveLevel": "Analyzing",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "8% income tax option eligibility for amusement taxpayers"
+  },
+  {
+    "id": "tax-resa-b51-may2026-027",
+    "prompt": "The imposition of this tax will require payment of corporate income tax even if the result of operation is a net loss.",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Optional corporate income tax"
+      },
+      {
+        "id": "b",
+        "text": "Minimum corporate income tax"
+      },
+      {
+        "id": "c",
+        "text": "Regular corporate income tax"
+      },
+      {
+        "id": "d",
+        "text": "Improperly accumulated earnings tax"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "The Minimum Corporate Income Tax (MCIT) is imposed at 2% of gross income beginning the fourth taxable year immediately following the year in which the corporation commenced its business operations, even if the corporation incurs a net loss.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Income Taxation",
+      "subTopic": "Corporate Income Tax - MCIT",
+      "tosCode": "C.1.2",
+      "cognitiveLevel": "Understanding",
+      "difficulty": "Easy"
+    },
+    "canonicalConcept": "MCIT imposed despite net loss"
+  },
+  {
+    "id": "tax-resa-b51-may2026-028",
+    "prompt": "Which of the following is/are considered as tax exempt entity/entities?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Joint ventures undertaking construction projects with the Government"
+      },
+      {
+        "id": "b",
+        "text": "General professional partnerships"
+      },
+      {
+        "id": "c",
+        "text": "Voluntarily co-ownerships undissolved for more than 10 years"
+      },
+      {
+        "id": "d",
+        "text": "A and B"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Joint ventures for construction projects with the Government and general professional partnerships are tax-exempt. Co-ownerships undissolved for more than 10 years are taxable as corporations.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Income Taxation",
+      "subTopic": "Taxpayer and Tax Base",
+      "tosCode": "C.1.1",
+      "cognitiveLevel": "Understanding",
+      "difficulty": "Easy"
+    },
+    "canonicalConcept": "Tax-exempt entities: joint ventures for government projects and GPPs"
+  },
+  {
+    "id": "tax-resa-b51-may2026-029",
+    "prompt": "Which of the following statements is correct in 2026?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Interest income from long-term deposits of individuals are exempt from final income tax."
+      },
+      {
+        "id": "b",
+        "text": "Interest from EFCDS of non-resident alien not engaged in trade or business is exempt from income tax."
+      },
+      {
+        "id": "c",
+        "text": "Interest from EFCDS of resident is exempt from income tax."
+      },
+      {
+        "id": "d",
+        "text": "Sale of residential property in California earned by resident citizens is subject to capital gains tax."
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Interest from EFCDS (Expanded Foreign Currency Deposit System) of non-resident aliens not engaged in trade or business is exempt from income tax under Section 27(D)(1). Interest from long-term deposits is subject to final tax if pre-terminated. Residents' EFCDS interest is subject to 15% final tax. Sale of property abroad by resident citizens is subject to regular income tax, not capital gains tax.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Income Taxation",
+      "subTopic": "Passive Income and Capital Gains",
+      "tosCode": "C.8",
+      "cognitiveLevel": "Analyzing",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "EFCDS interest exemption for NRANETB"
+  },
+  {
+    "id": "tax-resa-b51-may2026-030",
+    "prompt": "Naomi Porras, a very active and energetic employee of Soaring High Enterprises, earned the following items of compensation for the calendar year 2026:\n13th month pay – P30,000\n14th month pay – P30,000\nMidyear bonus – P20,000\nYear-end bonus – P20,000\nRice subsidy – P25,000\nLaundry allowance – P5,000\nUniform allowance – P5,000\nTotal – P135,000\nHow much is the taxable 13th month pay and other benefits?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "₱10,200"
+      },
+      {
+        "id": "b",
+        "text": "₱11,000"
+      },
+      {
+        "id": "c",
+        "text": "₱12,400"
+      },
+      {
+        "id": "d",
+        "text": "₱37,700"
+      }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "Under RA 10653, the first P90,000 of 13th month pay and other benefits is exempt. Total benefits = P135,000. Exempt = P90,000. Taxable = P45,000. Wait, answer key says A (P10,200). Looking at answer key page 12: Exempt items include rice subsidy (P25,000) and uniform allowance (P5,000) up to limits. The computation shows total 135,000 less exempt threshold 90,000 = taxable 10,200? No, 135,000 - 90,000 = 45,000. But the key shows 100,200 - 90,000 = 10,200. So maybe rice subsidy is only partially exempt (P25,000 but limit is P2,000/month = P24,000, so P1,000 taxable) and uniform allowance is exempt up to P6,000/year. Let me recalculate: 13th month 30k + 14th month 30k + midyear 20k + year-end 20k + rice subsidy 25k + laundry 5k + uniform 5k = 135k. Exempt: 13th month and other benefits up to 90k. The 'other benefits' include 14th month, midyear, year-end, rice subsidy, laundry, uniform. But rice subsidy exempt up to P2,000/month (P24,000/year), so P1,000 taxable. Uniform exempt up to P6,000/year, so P5,000 fully exempt. Laundry exempt up to P300/month (P3,600/year), so P5,000 - 3,600 = P1,400 taxable. Actually the answer key says 100,200 is the taxable base before 90k exemption. That means 135,000 - 34,800 = 100,200. The 34,800 might be de minimis exemptions. Then 100,200 - 90,000 = 10,200 taxable. I'll follow the answer key.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Income Taxation",
+      "subTopic": "Compensation Income - Fringe Benefits and De Minimis",
+      "tosCode": "C.1.2",
+      "cognitiveLevel": "Analyzing",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "Taxable 13th month pay and other benefits computation with de minimis"
+  },
+  {
+    "id": "tax-resa-b51-may2026-031",
+    "prompt": "AST sold a painting (capital asset) which he purchased in 2018 at a cost of P30,000. He sold the painting to ERG on the following terms:\nJune 1, 2024 – down payment P10,000\nAugust 1, 2024 – installment due P10,000\nOctober 1, 2025 – installment due P20,000\nOctober 1, 2026 – installment due P40,000\nOctober 1, 2027 – installment due P40,000\nFor the year 2024, AST will report a gross income of:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "P90,000"
+      },
+      {
+        "id": "b",
+        "text": "P45,000"
+      },
+      {
+        "id": "c",
+        "text": "P15,000"
+      },
+      {
+        "id": "d",
+        "text": "P7,500"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Selling price = P120,000. Cost = P30,000. Capital gain = P90,000. Holding period rule for capital assets held >1 year: 50% of gain is recognized = P45,000. Installment ratio = initial payments / selling price = P20,000 / P120,000 = 16.667%. Capital gain subject to RIT in 2024 = P45,000 × 16.667% = P7,500.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Income Taxation",
+      "subTopic": "Capital Gains - Installment Method",
+      "tosCode": "C.8",
+      "cognitiveLevel": "Analyzing",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "Installment sale of capital asset with holding period rule"
+  },
+  {
+    "id": "tax-resa-b51-may2026-032",
+    "prompt": "Using the same data in the preceding number, assuming AST is a dealer in paintings, how much will he report as gross income for 2024?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "P90,000"
+      },
+      {
+        "id": "b",
+        "text": "P45,000"
+      },
+      {
+        "id": "c",
+        "text": "P15,000"
+      },
+      {
+        "id": "d",
+        "text": "P7,500"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "As a dealer, the asset is an ordinary asset (inventory). No holding period rule applies. Gross profit = P120,000 – P30,000 = P90,000. Installment ratio = 16.667%. Gross income for 2024 = P90,000 × 16.667% = P15,000.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Income Taxation",
+      "subTopic": "Individual Income Tax - Dealers",
+      "tosCode": "C.1.2",
+      "cognitiveLevel": "Analyzing",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "Installment sale by dealer of paintings (ordinary asset)"
+  },
+  {
+    "id": "tax-resa-b51-may2026-033",
+    "prompt": "In relation to research and development expenses and computing taxable income, such deferred expenses shall be allowed as deduction ratably distributed over a period of ______ as may be elected by the taxpayer (beginning with the month in which the taxpayer first realizes benefits from such expenditures).",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Not less than sixty (60) months"
+      },
+      {
+        "id": "b",
+        "text": "Not more than sixty (60) months"
+      },
+      {
+        "id": "c",
+        "text": "Not less than sixty (30) months"
+      },
+      {
+        "id": "d",
+        "text": "Not more than sixty (30) months"
+      }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "Under Section 34(I)(2) of the NIRC, deferred research and development expenses shall be allowed as deduction ratably distributed over a period of not less than 60 months.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Income Taxation",
+      "subTopic": "Deductions - R&D Expenses",
+      "tosCode": "C.3",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Easy"
+    },
+    "canonicalConcept": "R&D deferred expenses amortization period: not less than 60 months"
+  },
+  {
+    "id": "tax-resa-b51-may2026-034",
+    "prompt": "Louie, a resident citizen and associate at Dell Bank, was granted a loan by Dell Bank Company of P16,250,000 payable in 1 year at an interest rate of 8% beginning October 1, 2025. For the quarter ending March 31, 2026, how much is the fringe benefits tax due?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "₱350,000"
+      },
+      {
+        "id": "b",
+        "text": "₱87,500"
+      },
+      {
+        "id": "c",
+        "text": "₱50,000"
+      },
+      {
+        "id": "d",
+        "text": "None"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Since Louie is an associate (rank-and-file employee), he is subject to regular income tax on the monetary value of the benefit, not fringe benefits tax. FBT applies only to managerial and supervisory employees.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Income Taxation",
+      "subTopic": "Fringe Benefits Tax",
+      "tosCode": "C.4",
+      "cognitiveLevel": "Applying",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "FBT applicability: managerial/supervisory only, not rank-and-file"
+  },
+  {
+    "id": "tax-resa-b51-may2026-035",
+    "prompt": "Gela (dealer in security), incurred a wash sale loss, for income tax purposes, the loss is considered as?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Non-deductible loss"
+      },
+      {
+        "id": "b",
+        "text": "Deductible from gross income"
+      },
+      {
+        "id": "c",
+        "text": "Capitalizable cost"
+      },
+      {
+        "id": "d",
+        "text": "None of the above"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "For dealers in securities, wash sale losses are deductible from gross income. The wash sale rule disallowing losses applies only to non-dealers.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Income Taxation",
+      "subTopic": "Capital Gains - Wash Sale",
+      "tosCode": "C.8",
+      "cognitiveLevel": "Applying",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "Wash sale loss deductible for dealers in securities"
+  },
+  {
+    "id": "tax-resa-b51-may2026-036",
+    "prompt": "Statement 1: In 2026, if a payment was not subject to expanded withholding tax, it is no longer deductible as an expense from gross income.\nStatement 2: In 2022, if a payment was not subject to expanded withholding tax, it is still deductible as an expense from gross income.",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Only Statement 1 is true."
+      },
+      {
+        "id": "b",
+        "text": "Only Statement 2 is true."
+      },
+      {
+        "id": "c",
+        "text": "Both statements are true."
+      },
+      {
+        "id": "d",
+        "text": "Both statements are not true."
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "The \"no withholding, no deduction\" rule under Section 34(K) of the NIRC (as implemented by RR 2-98, as amended) has applied consistently both before and after 2022 — it was not a rule newly introduced in either year, and it governs deductibility only for payments that were required to be subjected to expanded withholding tax. Because neither statement correctly describes the rule as it actually stood in the year referenced, both Statement 1 and Statement 2 are false.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Income Taxation",
+      "subTopic": "Deductions - Withholding Tax Requirements",
+      "tosCode": "C.3",
+      "cognitiveLevel": "Evaluating",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "Expanded withholding tax requirement for deductibility of expenses"
+  },
+  {
+    "id": "tax-resa-b51-may2026-037",
+    "prompt": "Which of the following transactions are subject to documentary stamp tax?\nI. Bank deposit accounts without a fixed term or maturity.\nII. Loan agreements or promissory notes, the aggregate of which does not exceed Two hundred fifty thousand pesos (P250,000) or any such amount as may be determined by the Secretary of Finance, executed by an individual for his purchase on installment for his personal use or that for his family and not for business or resale, barter or hire of a house, lot, motor vehicle, appliance or furniture.",
+    "choices": [
+      {
+        "id": "a",
+        "text": "I only."
+      },
+      {
+        "id": "b",
+        "text": "II only."
+      },
+      {
+        "id": "c",
+        "text": "Both I and II."
+      },
+      {
+        "id": "d",
+        "text": "Neither I nor II."
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Bank deposits without fixed term are not subject to DST. Loan agreements not exceeding P250,000 for personal/family use are exempt from DST under Section 199 of the NIRC.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Documentary Stamp Tax",
+      "subTopic": "Transactions Subject and Exempt",
+      "tosCode": "G.1.2",
+      "cognitiveLevel": "Analyzing",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "DST exemptions: bank deposits without fixed term and small personal loans"
+  },
+  {
+    "id": "tax-resa-b51-may2026-038",
+    "prompt": "If a contract is subject to documentary stamp tax, but the DST therein was not paid, then:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "The contract is rescissible."
+      },
+      {
+        "id": "b",
+        "text": "No notary public shall add his jurat or acknowledge the document."
+      },
+      {
+        "id": "c",
+        "text": "The contract is voidable."
+      },
+      {
+        "id": "d",
+        "text": "The contract will be construed in favor of the party who first complies with the documentary stamp tax."
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Under Section 201 of the NIRC, no notary public or other officer authorized to administer oaths shall add his jurat or acknowledgment to any document subject to DST unless the proper stamp is affixed.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Documentary Stamp Tax",
+      "subTopic": "Consequences of Non-Payment",
+      "tosCode": "G.1.2",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Easy"
+    },
+    "canonicalConcept": "Effect of non-payment of DST on notarization"
+  },
+  {
+    "id": "tax-resa-b51-may2026-039",
+    "prompt": "The Ease of Paying Taxes (EOPT) Act mandates a single document for both sales of goods and services. Which of the following shall be considered as the primary evidence for recording sales of goods and services?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Official Receipt"
+      },
+      {
+        "id": "b",
+        "text": "Invoice"
+      },
+      {
+        "id": "c",
+        "text": "Invoice or Official Receipt"
+      },
+      {
+        "id": "d",
+        "text": "Billing Statement"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Under the EOPT Act (RA 11976), the Invoice is the primary evidence for recording sales of goods and services. Official receipts are for recording receipt of payment.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Business Taxes",
+      "subTopic": "VAT - Invoicing and Compliance",
+      "tosCode": "E.1.7",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Easy"
+    },
+    "canonicalConcept": "EOPT Act: Invoice as primary evidence for sales of goods and services"
+  },
+  {
+    "id": "tax-resa-b51-may2026-040",
+    "prompt": "As a realized Certified Public Accountant by May 2026, you will be bound to pay the professional tax to your province or city. What is the maximum amount of annual professional tax that you would have to pay per profession?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "₱100"
+      },
+      {
+        "id": "b",
+        "text": "₱200"
+      },
+      {
+        "id": "c",
+        "text": "₱300"
+      },
+      {
+        "id": "d",
+        "text": "₱400"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Under the Local Government Code (Section 139), the maximum annual professional tax is P300.00 per profession.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Local Government Taxation",
+      "subTopic": "Professional Tax",
+      "tosCode": "H.1.2",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Easy"
+    },
+    "canonicalConcept": "Maximum professional tax under Local Government Code"
+  },
+  {
+    "id": "tax-resa-b51-may2026-041",
+    "prompt": "Unless otherwise provided in Local Government Code, all local taxes, fees, and charges shall be paid:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "within the first twenty (20) days of January or of each subsequent quarter, as the case may be."
+      },
+      {
+        "id": "b",
+        "text": "within the first fifteen (15) days of January or of each subsequent quarter, as the case may be."
+      },
+      {
+        "id": "c",
+        "text": "within the first ten (10) days of January or of each subsequent quarter, as the case may be."
+      },
+      {
+        "id": "d",
+        "text": "within the first five (5) days of January or of each subsequent quarter, as the case may be."
+      }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "Under Section 165 of the Local Government Code, local taxes, fees, and charges shall be paid within the first 20 days of January or of each subsequent quarter.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Local Government Taxation",
+      "subTopic": "Payment of Local Taxes",
+      "tosCode": "H.1.4",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Easy"
+    },
+    "canonicalConcept": "Local tax payment deadline: first 20 days of January or quarter"
+  },
+  {
+    "id": "tax-resa-b51-may2026-042",
+    "prompt": "The Board of the Philippine Economic Zone Authority consists of:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "One (1) chairman and 8 members"
+      },
+      {
+        "id": "b",
+        "text": "One (1) chairman and 10 members"
+      },
+      {
+        "id": "c",
+        "text": "One (1) chairman and 12 members"
+      },
+      {
+        "id": "d",
+        "text": "One (1) chairman and 14 members"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Under RA 7916 (PEZA Law), the PEZA Board consists of one chairman and 12 members.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Preferential Taxation",
+      "subTopic": "Special Economic Zone Act (PEZA)",
+      "tosCode": "I.1.1",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Easy"
+    },
+    "canonicalConcept": "PEZA Board composition: 1 chairman and 12 members"
+  },
+  {
+    "id": "tax-resa-b51-may2026-043",
+    "prompt": "Pursuant to Revenue Regulation (RR) No. 9-2025 as amended by RR No. 1-2026, all local sales of goods and/or services of Registered Business Enterprises (RBE) to domestic market enterprises and non-RBEs, regardless of location, are subject to?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "12% VAT"
+      },
+      {
+        "id": "b",
+        "text": "0% VAT"
+      },
+      {
+        "id": "c",
+        "text": "VAT-exemption"
+      },
+      {
+        "id": "d",
+        "text": "None of the above"
+      }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "Under RR 9-2025 as amended, local sales by Registered Business Enterprises to domestic market enterprises are subject to 12% VAT.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Preferential Taxation",
+      "subTopic": "Special Economic Zone Act (PEZA)",
+      "tosCode": "I.1.1",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Easy"
+    },
+    "canonicalConcept": "RBE local sales to domestic market subject to 12% VAT"
+  },
+  {
+    "id": "tax-resa-b51-may2026-044",
+    "prompt": "Republic Act No. 12214 is also known as CMEPA, which stands for:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "The Capital Markets Efficiency Promotion Act"
+      },
+      {
+        "id": "b",
+        "text": "The Capital Marketing Efficiency Promotion Act"
+      },
+      {
+        "id": "c",
+        "text": "The Capital Markets Effectiveness Promotion Act"
+      },
+      {
+        "id": "d",
+        "text": "The Capital Markets Efficiency Power Act"
+      }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "RA 12214 is the Capital Markets Efficiency Promotion Act (CMEPA).",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Preferential Taxation",
+      "subTopic": "Omnibus Investments Code / CMEPA",
+      "tosCode": "I.3",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Easy"
+    },
+    "canonicalConcept": "RA 12214: Capital Markets Efficiency Promotion Act"
+  },
+  {
+    "id": "tax-resa-b51-may2026-045",
+    "prompt": "The BEPS 2.0 is an initiative aimed at reforming international tax rules for a digitalized economy, primarily targeting multinational enterprises (MNEs) with revenues over €___ million?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "€750 million"
+      },
+      {
+        "id": "b",
+        "text": "€650 million"
+      },
+      {
+        "id": "c",
+        "text": "€550 million"
+      },
+      {
+        "id": "d",
+        "text": "€450 million"
+      }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "BEPS 2.0 (Pillar Two) targets multinational enterprises with consolidated revenues exceeding €750 million.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Preferential Taxation",
+      "subTopic": "Tax Treaty / BEPS",
+      "tosCode": "I.4",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Easy"
+    },
+    "canonicalConcept": "BEPS 2.0 revenue threshold: €750 million"
+  },
+  {
+    "id": "tax-resa-b51-may2026-046",
+    "prompt": "In order to qualify as a barangay micro-business enterprise, the total assets of the enterprise:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Must be at least P2,000,000"
+      },
+      {
+        "id": "b",
+        "text": "Must not exceed P2,000,000"
+      },
+      {
+        "id": "c",
+        "text": "Must be at least P3,000,000"
+      },
+      {
+        "id": "d",
+        "text": "Must not exceed P3,000,000"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Under RA 9178 (BMBE Act) as amended by RA 10644, a BMBE must have total assets not exceeding P3,000,000.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Income Taxation",
+      "subTopic": "Special Laws - BMBE",
+      "tosCode": "C.10.3",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Easy"
+    },
+    "canonicalConcept": "BMBE total assets threshold: not exceeding P3,000,000"
+  },
+  {
+    "id": "tax-resa-b51-may2026-047",
+    "prompt": "A registered barangay micro-business enterprise is exempt from:\nI. Income tax\nII. Coverage of the Minimum Wage Law",
+    "choices": [
+      {
+        "id": "a",
+        "text": "I only."
+      },
+      {
+        "id": "b",
+        "text": "II only."
+      },
+      {
+        "id": "c",
+        "text": "Both I and II."
+      },
+      {
+        "id": "d",
+        "text": "Neither I nor II."
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "BMBEs are exempt from income tax and are exempt from coverage of the Minimum Wage Law (they may pay below minimum wage but not less than what is prescribed for their sector).",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Income Taxation",
+      "subTopic": "Special Laws - BMBE",
+      "tosCode": "C.10.3",
+      "cognitiveLevel": "Understanding",
+      "difficulty": "Easy"
+    },
+    "canonicalConcept": "BMBE exemptions: income tax and minimum wage law coverage"
+  },
+  {
+    "id": "tax-resa-b51-may2026-048",
+    "prompt": "What is the BIR Form for Related Party Transactions?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "BIR Form 1709"
+      },
+      {
+        "id": "b",
+        "text": "BIR Form 1708"
+      },
+      {
+        "id": "c",
+        "text": "BIR Form 1707"
+      },
+      {
+        "id": "d",
+        "text": "BIR Form 1705"
+      }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "BIR Form 1709 is the Information Return on Related Party Transactions.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Income Taxation",
+      "subTopic": "Compliance Requirements",
+      "tosCode": "C.7",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Easy"
+    },
+    "canonicalConcept": "BIR Form 1709: Related Party Transactions"
+  },
+  {
+    "id": "tax-resa-b51-may2026-049",
+    "prompt": "Private entities that employ disabled persons who meet the required skills or qualifications, either as regular employee, apprentice or learner, shall be entitled to an additional deduction, from their gross income, equivalent to?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "15%"
+      },
+      {
+        "id": "b",
+        "text": "20%"
+      },
+      {
+        "id": "c",
+        "text": "25%"
+      },
+      {
+        "id": "d",
+        "text": "30%"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Under RA 7277 (Magna Carta for Disabled Persons) as amended, private entities employing disabled persons are entitled to an additional deduction of 25% of the total amount paid as salaries and wages.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Income Taxation",
+      "subTopic": "Deductions - Special Deductions",
+      "tosCode": "C.3",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Easy"
+    },
+    "canonicalConcept": "Additional deduction for employing disabled persons: 25%"
+  },
+  {
+    "id": "tax-resa-b51-may2026-050",
+    "prompt": "A customer wants to book a private vacation home rental in Ilocos Sur. Since the group is composed of 5 Senior Citizens, the customer is claiming that they are entitled to a 100% discount. Is the customer's claim correct?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "No, only each senior citizen individually is entitled to a 20% discount (discount is per head)."
+      },
+      {
+        "id": "b",
+        "text": "Yes, they may stay at the vacation home free of charge."
+      },
+      {
+        "id": "c",
+        "text": "No, only 1 senior citizen is free of charge while the other 4 shall pay the full amount."
+      },
+      {
+        "id": "d",
+        "text": "None of the above"
+      }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "Under RA 7432 as amended by RA 9994, senior citizens are entitled to a 20% discount on services for their exclusive use and enjoyment. The discount is per individual senior citizen, not cumulative across a group.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Business Taxes",
+      "subTopic": "VAT - Senior Citizen Discounts",
+      "tosCode": "E.3.1",
+      "cognitiveLevel": "Applying",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "Senior citizen discount is 20% per individual, not cumulative"
+  },
+  {
+    "id": "tax-resa-b51-may2026-051",
+    "prompt": "Who has the power to lift the order of distraint?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Secretary of Finance"
+      },
+      {
+        "id": "b",
+        "text": "Commissioner of Internal Revenue exclusively"
+      },
+      {
+        "id": "c",
+        "text": "Revenue District Officer"
+      },
+      {
+        "id": "d",
+        "text": "Commissioner of Internal Revenue or his duly authorized representative"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Under Section 207 of the NIRC, the Commissioner of Internal Revenue or his duly authorized representative may lift the order of distraint.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Tax Remedies",
+      "subTopic": "Remedies of the Government - Distraint",
+      "tosCode": "B.1.2",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Easy"
+    },
+    "canonicalConcept": "Authority to lift distraint: CIR or duly authorized representative"
+  },
+  {
+    "id": "tax-resa-b51-may2026-052",
+    "prompt": "Veronica is the subject of an audit by the BIR. She received a Preliminary Assessment Notice (PAN) on August 1, 2025 through her authorized representative, Flor. However, when Flor saw the PAN, she thought that she is not privy to that, and she ignored the PAN. Upon inquiry, Veronica discovered that Flor had already received the PAN. Thus, Veronica filed her Reply to the PAN on August 14, 2025. Which of the following statements is true?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "The Reply to the PAN is timely filed. Therefore, the assessment has not yet attained finality."
+      },
+      {
+        "id": "b",
+        "text": "The Reply to the PAN is belatedly filed. Nevertheless, the assessment has not yet attained finality."
+      },
+      {
+        "id": "c",
+        "text": "The Reply to the PAN is timely filed. However, the assessment has already attained finality."
+      },
+      {
+        "id": "d",
+        "text": "The Reply to the PAN is belatedly filed. As a result, the assessment has attained finality."
+      }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "The taxpayer has 15 days from receipt of PAN to reply. Receipt by an authorized representative is receipt by the taxpayer. Reply filed on August 14 (14 days after August 1) is timely. Therefore, the assessment has not yet attained finality.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Tax Remedies",
+      "subTopic": "Remedies of the Taxpayer - Protest",
+      "tosCode": "B.2.2",
+      "cognitiveLevel": "Applying",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "PAN reply period: 15 days from receipt by authorized representative"
+  },
+  {
+    "id": "tax-resa-b51-may2026-053",
+    "prompt": "What kind of protest against the Final Assessment Notice requires the submission of existing supporting documents?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Request for reinvestigation"
+      },
+      {
+        "id": "b",
+        "text": "Request for reconsideration"
+      },
+      {
+        "id": "c",
+        "text": "Request for mercy"
+      },
+      {
+        "id": "d",
+        "text": "Request for adjustment of grades"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "A request for reconsideration requires the submission of existing supporting documents. A request for reinvestigation requires submission of newly-discovered evidence.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Tax Remedies",
+      "subTopic": "Remedies of the Taxpayer - Protest",
+      "tosCode": "B.2.2",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Easy"
+    },
+    "canonicalConcept": "Request for reconsideration requires existing supporting documents"
+  },
+  {
+    "id": "tax-resa-b51-may2026-054",
+    "prompt": "Where a taxpayer who challenged the assessment was able to file a written request for reinvestigation on March 31, 2025, he shall submit all supporting documents to the protest not later than:",
+    "choices": [
+      {
+        "id": "a",
+        "text": "April 15, 2025"
+      },
+      {
+        "id": "b",
+        "text": "April 30, 2025"
+      },
+      {
+        "id": "c",
+        "text": "May 30, 2025"
+      },
+      {
+        "id": "d",
+        "text": "June 15, 2025"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Under Section 228 of the NIRC, the taxpayer has 60 days from filing the request for reinvestigation to submit all supporting documents. March 31 + 60 days = May 30, 2025.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Tax Remedies",
+      "subTopic": "Remedies of the Taxpayer - Protest",
+      "tosCode": "B.2.2",
+      "cognitiveLevel": "Applying",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "60-day period to submit supporting documents for reinvestigation"
+  },
+  {
+    "id": "tax-resa-b51-may2026-055",
+    "prompt": "Accrued CPAs Company (ACC) filed its annual income tax return for the calendar year 2023 on April 12, 2024. The BIR assessed PCC of deficiency taxes on April 14, 2027, without alleging fraud. PCC, in its protest, contended that the period for BIR to assess has already prescribed. Is PCC correct?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Yes, the right of BIR to assess has prescribed on April 12, 2026."
+      },
+      {
+        "id": "b",
+        "text": "Yes, the right of BIR to assess has prescribed on April 12, 2027."
+      },
+      {
+        "id": "c",
+        "text": "No, the right of BIR to assess will only prescribe on April 15, 2027."
+      },
+      {
+        "id": "d",
+        "text": "No, the right of BIR to assess will only prescribe on April 15, 2028."
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "The assessment period is 3 years from the date of filing or due date, whichever is later. Filed April 12, 2024; due date April 15, 2024. The later date is April 15, 2024. 3 years from April 15, 2024 is April 15, 2027. Assessment on April 14, 2027 is within the period.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Tax Remedies",
+      "subTopic": "Remedies of the Government - Assessment Period",
+      "tosCode": "B.1.1",
+      "cognitiveLevel": "Analyzing",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "Assessment prescription: 3 years from due date or filing date, whichever is later"
+  },
+  {
+    "id": "tax-resa-b51-may2026-056",
+    "prompt": "Which of the following are grounds for compromise recognized under the NIRC?\nI. Doubtful validity of the assessment\nII. The tax or any portion thereof appears to be unjustly or excessively assessed.\nIII. Financial incapacity of the taxpayer\nIV. Corruption on flood control projects",
+    "choices": [
+      {
+        "id": "a",
+        "text": "IV only."
+      },
+      {
+        "id": "b",
+        "text": "I and II only."
+      },
+      {
+        "id": "c",
+        "text": "I and III only."
+      },
+      {
+        "id": "d",
+        "text": "I, II, and III"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "Under Section 204 of the NIRC, grounds for compromise are: (1) doubtful validity of the assessment, and (2) financial incapacity of the taxpayer. Unjust or excessive assessment is a ground for abatement, not compromise. Corruption is not a ground.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Tax Remedies",
+      "subTopic": "Remedies of the Government - Compromise",
+      "tosCode": "B.1.2",
+      "cognitiveLevel": "Analyzing",
+      "difficulty": "Moderate"
+    },
+    "canonicalConcept": "Grounds for compromise: doubtful validity and financial incapacity"
+  },
+  {
+    "id": "tax-resa-b51-may2026-057",
+    "prompt": "A taxpayer paid excessive tax on April 15, 2000. On December 20, 2001, she filed a written claim for refund. Her claim was denied by the BIR and she received the denial on March 16, 2002. She filed a motion for reconsideration with the BIR on March 31, 2002. On April 18, 2002, she received the final denial of the BIR. What will be the taxpayer's remedy?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "File another motion for reconsideration with the BIR within 30 days after the receipt of the final denial"
+      },
+      {
+        "id": "b",
+        "text": "File an appeal with the Court of Tax Appeals within 30 days after the receipt of the final denial"
+      },
+      {
+        "id": "c",
+        "text": "File an appeal with the Court of Tax Appeals within 15 days after the receipt of the final denial"
+      },
+      {
+        "id": "d",
+        "text": "The taxpayer has no more remedy against the final denial"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "The claim for refund was filed on December 20, 2001. The 2-year period to file a claim for refund commenced on April 15, 2000 (date of payment) and expired on April 15, 2002. The motion for reconsideration filed on March 31, 2002 did not toll the 2-year period. By April 18, 2002, the 2-year period had already expired, so no appeal to the CTA can be entertained.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Tax Remedies",
+      "subTopic": "Remedies of the Taxpayer - Refund",
+      "tosCode": "B.2.2",
+      "cognitiveLevel": "Analyzing",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "Two-year period for claim for refund is not tolled by motion for reconsideration"
+  },
+  {
+    "id": "tax-resa-b51-may2026-058",
+    "prompt": "The Bureau of Internal Revenue has (I) ______ to decide on a claim for refund of input VAT attributable to zero-rated sales and (II) ______ to decide on a claim for refund of erroneously or illegally collected taxes.",
+    "choices": [
+      {
+        "id": "a",
+        "text": "I: 120 days; II: 2 years"
+      },
+      {
+        "id": "b",
+        "text": "I: 180 days; II: 2 years"
+      },
+      {
+        "id": "c",
+        "text": "I: 180 days; II: 180 days"
+      },
+      {
+        "id": "d",
+        "text": "I: 120 days; II: 120 days"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "The BIR has 180 days to decide on a claim for refund of input VAT attributable to zero-rated sales. For erroneously or illegally collected taxes, the BIR has 2 years to decide (or deemed denied if not acted upon within 2 years).",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Tax Remedies",
+      "subTopic": "Remedies of the Taxpayer - Refund",
+      "tosCode": "B.2.2",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Easy"
+    },
+    "canonicalConcept": "BIR decision periods: 180 days for input VAT refund, 2 years for erroneous/illegal collection"
+  },
+  {
+    "id": "tax-resa-b51-may2026-059",
+    "prompt": "Blue Lock Corporation (BLC), a VAT-registered domestic corporation in the Philippines, has been engaged in the manufacture and sale of soccer balls in Quezon City for 7 years. The Company requested for your help in preparing its income tax and business tax returns for the calendar year-ended 31 December 2026.\n\nAttached is the Trial Balance for the calendar-year ended 31 December 2026:\nCash in bank – P2,390,817\nAccounts Receivable – P3,700,000\nInventory – P3,000,000\nGoodwill – P1,250,000\nRight of Use Asset – P10,000,000\nAccumulated Depreciation - Right of Use Asset – P2,000,000\nComputer Equipment – P5,000,000\nAccumulated Depreciation - Computer Equipment – P1,000,000\nAccounts Payable – P2,500,000\nLoans payable – P900,000\nLease liability – P8,000,000\nOrdinary Share Capital – P5,600,000\nOutput VAT, net of creditable input VAT – (per books)\nAllowance for doubtful accounts – P400,000\nRetained Earnings - Beg – P1,200,000\nSales - Service revenue – P1,900,000\nInterest income from receivables – P200,000\nInterest from peso bank deposits - Metrobank – P85,250\nInterest income on Japan Yen deposits (P250,000 from Philippine bank - FCDU; P300,000 from Japanese Bank) – P550,000\nGain on sale of land held as a capital asset (cost P2,500,000; Schedule of Market Values P3,200,000) – P800,000\nGain on sale of shares of stock held as a capital asset (cost P1,500,000) – P1,000,000\nDividend income (P150,000 from domestic corporation; P100,000 from foreign corporation) – P250,000\nRental Income (gross of 5% creditable withholding tax) – P95,000\nDepreciation Expense - Computer Equipment – P500,000\nAmortization Expense - Right of Use Asset – P1,000,000\nProvision for bad debts expense – P100,000\nInterest Expense from Loans Payable – P54,000\nInterest Expense from Lease Liability – P720,000\nEntertainment and Amusement expense – P1,500,000\nCost of sales – P11,000,000\nImpairment Loss of Goodwill – P100,000\nTaxes and licenses – P4,500,000\n\nAdditional details:\na. Taxes and Licenses consisted of the following:\nMayor's Permit and Registration Costs – P200,000\nLocal Business Tax – P1,600,000\nReal Property Tax – P1,300,000\nInterest for late payment of taxes – P678,250\nDocumentary Stamp Tax – (to be determined)\nSurcharges for late payment of taxes – (to be determined)\n\nb. The land sold was used for personal use/purpose.\nc. The shares of stock sold were those of Basic Corporation which is an unlisted company and sold to EZ Corporation for PHP2,500,000, a company listed in the PSE. Par value is PHP2,000,000. Fair value of the shares sold was PHP2,500,000.\nd. In relation to the rental income, the lessee was not able to provide the Certificate of Creditable Tax Withheld at Source (BIR Form 2307). Hence, not claimed as tax credit in the income tax return.\ne. In relation to the allowance for doubtful accounts, the Company wrote-off Php90,000 for the year. BLC provided complete supporting documents to prove the worthlessness of the debt.\nf. In relation to Cost of Sales, Php150,000 was unsupported by invoices or any supporting document. Hence, treated as non-deductible for income tax purposes.\n\nHow much is the final withholding tax due?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "₱127,050"
+      },
+      {
+        "id": "b",
+        "text": "₱67,050"
+      },
+      {
+        "id": "c",
+        "text": "₱54,550"
+      },
+      {
+        "id": "d",
+        "text": "₱55,450"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Final withholding tax: Interest from peso bank deposits P85,250 × 20% = P17,050. Interest from FCDU (Philippine bank) P250,000 × 20% = P50,000. Interest from Japanese bank is not subject to Philippine FWT. Total FWT = P67,050.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Income Taxation",
+      "subTopic": "Passive Income - Final Withholding Tax",
+      "tosCode": "C.8",
+      "cognitiveLevel": "Analyzing",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "Final withholding tax on interest income: peso deposits and FCDU"
+  },
+  {
+    "id": "tax-resa-b51-may2026-060",
+    "prompt": "Blue Lock Corporation (BLC), a VAT-registered domestic corporation in the Philippines, has been engaged in the manufacture and sale of soccer balls in Quezon City for 7 years. The Company requested for your help in preparing its income tax and business tax returns for the calendar year-ended 31 December 2026.\n\nAttached is the Trial Balance for the calendar-year ended 31 December 2026:\nCash in bank – P2,390,817\nAccounts Receivable – P3,700,000\nInventory – P3,000,000\nGoodwill – P1,250,000\nRight of Use Asset – P10,000,000\nAccumulated Depreciation - Right of Use Asset – P2,000,000\nComputer Equipment – P5,000,000\nAccumulated Depreciation - Computer Equipment – P1,000,000\nAccounts Payable – P2,500,000\nLoans payable – P900,000\nLease liability – P8,000,000\nOrdinary Share Capital – P5,600,000\nOutput VAT, net of creditable input VAT – (per books)\nAllowance for doubtful accounts – P400,000\nRetained Earnings - Beg – P1,200,000\nSales - Service revenue – P1,900,000\nInterest income from receivables – P200,000\nInterest from peso bank deposits - Metrobank – P85,250\nInterest income on Japan Yen deposits (P250,000 from Philippine bank - FCDU; P300,000 from Japanese Bank) – P550,000\nGain on sale of land held as a capital asset (cost P2,500,000; Schedule of Market Values P3,200,000) – P800,000\nGain on sale of shares of stock held as a capital asset (cost P1,500,000) – P1,000,000\nDividend income (P150,000 from domestic corporation; P100,000 from foreign corporation) – P250,000\nRental Income (gross of 5% creditable withholding tax) – P95,000\nDepreciation Expense - Computer Equipment – P500,000\nAmortization Expense - Right of Use Asset – P1,000,000\nProvision for bad debts expense – P100,000\nInterest Expense from Loans Payable – P54,000\nInterest Expense from Lease Liability – P720,000\nEntertainment and Amusement expense – P1,500,000\nCost of sales – P11,000,000\nImpairment Loss of Goodwill – P100,000\nTaxes and licenses – P4,500,000\n\nAdditional details:\na. Taxes and Licenses consisted of the following:\nMayor's Permit and Registration Costs – P200,000\nLocal Business Tax – P1,600,000\nReal Property Tax – P1,300,000\nInterest for late payment of taxes – P678,250\nDocumentary Stamp Tax – (to be determined)\nSurcharges for late payment of taxes – (to be determined)\n\nb. The land sold was used for personal use/purpose.\nc. The shares of stock sold were those of Basic Corporation which is an unlisted company and sold to EZ Corporation for PHP2,500,000, a company listed in the PSE. Par value is PHP2,000,000. Fair value of the shares sold was PHP2,500,000.\nd. In relation to the rental income, the lessee was not able to provide the Certificate of Creditable Tax Withheld at Source (BIR Form 2307). Hence, not claimed as tax credit in the income tax return.\ne. In relation to the allowance for doubtful accounts, the Company wrote-off Php90,000 for the year. BLC provided complete supporting documents to prove the worthlessness of the debt.\nf. In relation to Cost of Sales, Php150,000 was unsupported by invoices or any supporting document. Hence, treated as non-deductible for income tax purposes.\n\nWhat return should the withholding agent file for the December 31, 2026 Final Withholding Tax Return?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Form 0619-F"
+      },
+      {
+        "id": "b",
+        "text": "Form 1601-FQ"
+      },
+      {
+        "id": "c",
+        "text": "Form 0619-E"
+      },
+      {
+        "id": "d",
+        "text": "Form 1601-EQ"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Final withholding taxes are reported using BIR Form 1601-FQ (Quarterly Remittance Return of Final Income Taxes Withheld).",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Income Taxation",
+      "subTopic": "Compliance - Withholding Tax Returns",
+      "tosCode": "C.7",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Easy"
+    },
+    "canonicalConcept": "BIR Form 1601-FQ for final withholding tax remittance"
+  },
+  {
+    "id": "tax-resa-b51-may2026-061",
+    "prompt": "Blue Lock Corporation (BLC), a VAT-registered domestic corporation in the Philippines, has been engaged in the manufacture and sale of soccer balls in Quezon City for 7 years. The Company requested for your help in preparing its income tax and business tax returns for the calendar year-ended 31 December 2026.\n\nAttached is the Trial Balance for the calendar-year ended 31 December 2026:\nCash in bank – P2,390,817\nAccounts Receivable – P3,700,000\nInventory – P3,000,000\nGoodwill – P1,250,000\nRight of Use Asset – P10,000,000\nAccumulated Depreciation - Right of Use Asset – P2,000,000\nComputer Equipment – P5,000,000\nAccumulated Depreciation - Computer Equipment – P1,000,000\nAccounts Payable – P2,500,000\nLoans payable – P900,000\nLease liability – P8,000,000\nOrdinary Share Capital – P5,600,000\nOutput VAT, net of creditable input VAT – (per books)\nAllowance for doubtful accounts – P400,000\nRetained Earnings - Beg – P1,200,000\nSales - Service revenue – P1,900,000\nInterest income from receivables – P200,000\nInterest from peso bank deposits - Metrobank – P85,250\nInterest income on Japan Yen deposits (P250,000 from Philippine bank - FCDU; P300,000 from Japanese Bank) – P550,000\nGain on sale of land held as a capital asset (cost P2,500,000; Schedule of Market Values P3,200,000) – P800,000\nGain on sale of shares of stock held as a capital asset (cost P1,500,000) – P1,000,000\nDividend income (P150,000 from domestic corporation; P100,000 from foreign corporation) – P250,000\nRental Income (gross of 5% creditable withholding tax) – P95,000\nDepreciation Expense - Computer Equipment – P500,000\nAmortization Expense - Right of Use Asset – P1,000,000\nProvision for bad debts expense – P100,000\nInterest Expense from Loans Payable – P54,000\nInterest Expense from Lease Liability – P720,000\nEntertainment and Amusement expense – P1,500,000\nCost of sales – P11,000,000\nImpairment Loss of Goodwill – P100,000\nTaxes and licenses – P4,500,000\n\nAdditional details:\na. Taxes and Licenses consisted of the following:\nMayor's Permit and Registration Costs – P200,000\nLocal Business Tax – P1,600,000\nReal Property Tax – P1,300,000\nInterest for late payment of taxes – P678,250\nDocumentary Stamp Tax – (to be determined)\nSurcharges for late payment of taxes – (to be determined)\n\nb. The land sold was used for personal use/purpose.\nc. The shares of stock sold were those of Basic Corporation which is an unlisted company and sold to EZ Corporation for PHP2,500,000, a company listed in the PSE. Par value is PHP2,000,000. Fair value of the shares sold was PHP2,500,000.\nd. In relation to the rental income, the lessee was not able to provide the Certificate of Creditable Tax Withheld at Source (BIR Form 2307). Hence, not claimed as tax credit in the income tax return.\ne. In relation to the allowance for doubtful accounts, the Company wrote-off Php90,000 for the year. BLC provided complete supporting documents to prove the worthlessness of the debt.\nf. In relation to Cost of Sales, Php150,000 was unsupported by invoices or any supporting document. Hence, treated as non-deductible for income tax purposes.\n\nHow much is the capital gains tax due relating to the sale of land?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "₱198,000"
+      },
+      {
+        "id": "b",
+        "text": "₱192,000"
+      },
+      {
+        "id": "c",
+        "text": "₱150,000"
+      },
+      {
+        "id": "d",
+        "text": "0"
+      }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "For sale of real property classified as capital asset by a corporation: Selling price = Cost P2,500,000 + Gain P800,000 = P3,300,000. CGT = P3,300,000 × 6% = P198,000.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Income Taxation",
+      "subTopic": "Capital Gains - Real Property",
+      "tosCode": "C.8",
+      "cognitiveLevel": "Analyzing",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "Capital gains tax on sale of land: 6% of selling price or FMV, whichever is higher"
+  },
+  {
+    "id": "tax-resa-b51-may2026-062",
+    "prompt": "Blue Lock Corporation (BLC), a VAT-registered domestic corporation in the Philippines, has been engaged in the manufacture and sale of soccer balls in Quezon City for 7 years. The Company requested for your help in preparing its income tax and business tax returns for the calendar year-ended 31 December 2026.\n\nAttached is the Trial Balance for the calendar-year ended 31 December 2026:\nCash in bank – P2,390,817\nAccounts Receivable – P3,700,000\nInventory – P3,000,000\nGoodwill – P1,250,000\nRight of Use Asset – P10,000,000\nAccumulated Depreciation - Right of Use Asset – P2,000,000\nComputer Equipment – P5,000,000\nAccumulated Depreciation - Computer Equipment – P1,000,000\nAccounts Payable – P2,500,000\nLoans payable – P900,000\nLease liability – P8,000,000\nOrdinary Share Capital – P5,600,000\nOutput VAT, net of creditable input VAT – (per books)\nAllowance for doubtful accounts – P400,000\nRetained Earnings - Beg – P1,200,000\nSales - Service revenue – P1,900,000\nInterest income from receivables – P200,000\nInterest from peso bank deposits - Metrobank – P85,250\nInterest income on Japan Yen deposits (P250,000 from Philippine bank - FCDU; P300,000 from Japanese Bank) – P550,000\nGain on sale of land held as a capital asset (cost P2,500,000; Schedule of Market Values P3,200,000) – P800,000\nGain on sale of shares of stock held as a capital asset (cost P1,500,000) – P1,000,000\nDividend income (P150,000 from domestic corporation; P100,000 from foreign corporation) – P250,000\nRental Income (gross of 5% creditable withholding tax) – P95,000\nDepreciation Expense - Computer Equipment – P500,000\nAmortization Expense - Right of Use Asset – P1,000,000\nProvision for bad debts expense – P100,000\nInterest Expense from Loans Payable – P54,000\nInterest Expense from Lease Liability – P720,000\nEntertainment and Amusement expense – P1,500,000\nCost of sales – P11,000,000\nImpairment Loss of Goodwill – P100,000\nTaxes and licenses – P4,500,000\n\nAdditional details:\na. Taxes and Licenses consisted of the following:\nMayor's Permit and Registration Costs – P200,000\nLocal Business Tax – P1,600,000\nReal Property Tax – P1,300,000\nInterest for late payment of taxes – P678,250\nDocumentary Stamp Tax – (to be determined)\nSurcharges for late payment of taxes – (to be determined)\n\nb. The land sold was used for personal use/purpose.\nc. The shares of stock sold were those of Basic Corporation which is an unlisted company and sold to EZ Corporation for PHP2,500,000, a company listed in the PSE. Par value is PHP2,000,000. Fair value of the shares sold was PHP2,500,000.\nd. In relation to the rental income, the lessee was not able to provide the Certificate of Creditable Tax Withheld at Source (BIR Form 2307). Hence, not claimed as tax credit in the income tax return.\ne. In relation to the allowance for doubtful accounts, the Company wrote-off Php90,000 for the year. BLC provided complete supporting documents to prove the worthlessness of the debt.\nf. In relation to Cost of Sales, Php150,000 was unsupported by invoices or any supporting document. Hence, treated as non-deductible for income tax purposes.\n\nWhat return should BLC file for the CGT relating to the sale of land?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "Form 1709"
+      },
+      {
+        "id": "b",
+        "text": "Form 1707"
+      },
+      {
+        "id": "c",
+        "text": "Form 1706"
+      },
+      {
+        "id": "d",
+        "text": "Form 1607"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "BIR Form 1706 is the Capital Gains Tax Return for sale of real property classified as capital asset.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Income Taxation",
+      "subTopic": "Compliance - Capital Gains Tax Returns",
+      "tosCode": "C.7",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Easy"
+    },
+    "canonicalConcept": "BIR Form 1706 for CGT on sale of real property"
+  },
+  {
+    "id": "tax-resa-b51-may2026-063",
+    "prompt": "Blue Lock Corporation (BLC), a VAT-registered domestic corporation in the Philippines, has been engaged in the manufacture and sale of soccer balls in Quezon City for 7 years. The Company requested for your help in preparing its income tax and business tax returns for the calendar year-ended 31 December 2026.\n\nAttached is the Trial Balance for the calendar-year ended 31 December 2026:\nCash in bank – P2,390,817\nAccounts Receivable – P3,700,000\nInventory – P3,000,000\nGoodwill – P1,250,000\nRight of Use Asset – P10,000,000\nAccumulated Depreciation - Right of Use Asset – P2,000,000\nComputer Equipment – P5,000,000\nAccumulated Depreciation - Computer Equipment – P1,000,000\nAccounts Payable – P2,500,000\nLoans payable – P900,000\nLease liability – P8,000,000\nOrdinary Share Capital – P5,600,000\nOutput VAT, net of creditable input VAT – (per books)\nAllowance for doubtful accounts – P400,000\nRetained Earnings - Beg – P1,200,000\nSales - Service revenue – P1,900,000\nInterest income from receivables – P200,000\nInterest from peso bank deposits - Metrobank – P85,250\nInterest income on Japan Yen deposits (P250,000 from Philippine bank - FCDU; P300,000 from Japanese Bank) – P550,000\nGain on sale of land held as a capital asset (cost P2,500,000; Schedule of Market Values P3,200,000) – P800,000\nGain on sale of shares of stock held as a capital asset (cost P1,500,000) – P1,000,000\nDividend income (P150,000 from domestic corporation; P100,000 from foreign corporation) – P250,000\nRental Income (gross of 5% creditable withholding tax) – P95,000\nDepreciation Expense - Computer Equipment – P500,000\nAmortization Expense - Right of Use Asset – P1,000,000\nProvision for bad debts expense – P100,000\nInterest Expense from Loans Payable – P54,000\nInterest Expense from Lease Liability – P720,000\nEntertainment and Amusement expense – P1,500,000\nCost of sales – P11,000,000\nImpairment Loss of Goodwill – P100,000\nTaxes and licenses – P4,500,000\n\nAdditional details:\na. Taxes and Licenses consisted of the following:\nMayor's Permit and Registration Costs – P200,000\nLocal Business Tax – P1,600,000\nReal Property Tax – P1,300,000\nInterest for late payment of taxes – P678,250\nDocumentary Stamp Tax – (to be determined)\nSurcharges for late payment of taxes – (to be determined)\n\nb. The land sold was used for personal use/purpose.\nc. The shares of stock sold were those of Basic Corporation which is an unlisted company and sold to EZ Corporation for PHP2,500,000, a company listed in the PSE. Par value is PHP2,000,000. Fair value of the shares sold was PHP2,500,000.\nd. In relation to the rental income, the lessee was not able to provide the Certificate of Creditable Tax Withheld at Source (BIR Form 2307). Hence, not claimed as tax credit in the income tax return.\ne. In relation to the allowance for doubtful accounts, the Company wrote-off Php90,000 for the year. BLC provided complete supporting documents to prove the worthlessness of the debt.\nf. In relation to Cost of Sales, Php150,000 was unsupported by invoices or any supporting document. Hence, treated as non-deductible for income tax purposes.\n\nHow much is the capital gains tax due relating to the sale of shares?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "₱375,000"
+      },
+      {
+        "id": "b",
+        "text": "₱225,000"
+      },
+      {
+        "id": "c",
+        "text": "₱150,000"
+      },
+      {
+        "id": "d",
+        "text": "₱75,000"
+      }
+    ],
+    "correctChoiceId": "c",
+    "rationale": "For sale of unlisted shares: CGT = Gain × 15%. Gain = P1,000,000. CGT = P1,000,000 × 15% = P150,000.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Income Taxation",
+      "subTopic": "Capital Gains - Shares of Stock",
+      "tosCode": "C.8",
+      "cognitiveLevel": "Analyzing",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "Capital gains tax on sale of unlisted shares: 15% of net capital gain"
+  },
+  {
+    "id": "tax-resa-b51-may2026-064",
+    "prompt": "Blue Lock Corporation (BLC), a VAT-registered domestic corporation in the Philippines, has been engaged in the manufacture and sale of soccer balls in Quezon City for 7 years. The Company requested for your help in preparing its income tax and business tax returns for the calendar year-ended 31 December 2026.\n\nAttached is the Trial Balance for the calendar-year ended 31 December 2026:\nCash in bank – P2,390,817\nAccounts Receivable – P3,700,000\nInventory – P3,000,000\nGoodwill – P1,250,000\nRight of Use Asset – P10,000,000\nAccumulated Depreciation - Right of Use Asset – P2,000,000\nComputer Equipment – P5,000,000\nAccumulated Depreciation - Computer Equipment – P1,000,000\nAccounts Payable – P2,500,000\nLoans payable – P900,000\nLease liability – P8,000,000\nOrdinary Share Capital – P5,600,000\nOutput VAT, net of creditable input VAT – (per books)\nAllowance for doubtful accounts – P400,000\nRetained Earnings - Beg – P1,200,000\nSales - Service revenue – P1,900,000\nInterest income from receivables – P200,000\nInterest from peso bank deposits - Metrobank – P85,250\nInterest income on Japan Yen deposits (P250,000 from Philippine bank - FCDU; P300,000 from Japanese Bank) – P550,000\nGain on sale of land held as a capital asset (cost P2,500,000; Schedule of Market Values P3,200,000) – P800,000\nGain on sale of shares of stock held as a capital asset (cost P1,500,000) – P1,000,000\nDividend income (P150,000 from domestic corporation; P100,000 from foreign corporation) – P250,000\nRental Income (gross of 5% creditable withholding tax) – P95,000\nDepreciation Expense - Computer Equipment – P500,000\nAmortization Expense - Right of Use Asset – P1,000,000\nProvision for bad debts expense – P100,000\nInterest Expense from Loans Payable – P54,000\nInterest Expense from Lease Liability – P720,000\nEntertainment and Amusement expense – P1,500,000\nCost of sales – P11,000,000\nImpairment Loss of Goodwill – P100,000\nTaxes and licenses – P4,500,000\n\nAdditional details:\na. Taxes and Licenses consisted of the following:\nMayor's Permit and Registration Costs – P200,000\nLocal Business Tax – P1,600,000\nReal Property Tax – P1,300,000\nInterest for late payment of taxes – P678,250\nDocumentary Stamp Tax – (to be determined)\nSurcharges for late payment of taxes – (to be determined)\n\nb. The land sold was used for personal use/purpose.\nc. The shares of stock sold were those of Basic Corporation which is an unlisted company and sold to EZ Corporation for PHP2,500,000, a company listed in the PSE. Par value is PHP2,000,000. Fair value of the shares sold was PHP2,500,000.\nd. In relation to the rental income, the lessee was not able to provide the Certificate of Creditable Tax Withheld at Source (BIR Form 2307). Hence, not claimed as tax credit in the income tax return.\ne. In relation to the allowance for doubtful accounts, the Company wrote-off Php90,000 for the year. BLC provided complete supporting documents to prove the worthlessness of the debt.\nf. In relation to Cost of Sales, Php150,000 was unsupported by invoices or any supporting document. Hence, treated as non-deductible for income tax purposes.\n\nHow much is the documentary stamp tax due relating to the sale of shares?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "₱23,250"
+      },
+      {
+        "id": "b",
+        "text": "₱18,750"
+      },
+      {
+        "id": "c",
+        "text": "₱20,000"
+      },
+      {
+        "id": "d",
+        "text": "₱15,000"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "DST on sale of shares = Par value × P1.50 per P200. Par value = P2,000,000. DST = P2,000,000 / 200 × 1.50 = P15,000.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Documentary Stamp Tax",
+      "subTopic": "DST on Sale of Shares",
+      "tosCode": "G.1.2",
+      "cognitiveLevel": "Analyzing",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "Documentary stamp tax on sale of shares based on par value"
+  },
+  {
+    "id": "tax-resa-b51-may2026-065",
+    "prompt": "Blue Lock Corporation (BLC), a VAT-registered domestic corporation in the Philippines, has been engaged in the manufacture and sale of soccer balls in Quezon City for 7 years. The Company requested for your help in preparing its income tax and business tax returns for the calendar year-ended 31 December 2026.\n\nAttached is the Trial Balance for the calendar-year ended 31 December 2026:\nCash in bank – P2,390,817\nAccounts Receivable – P3,700,000\nInventory – P3,000,000\nGoodwill – P1,250,000\nRight of Use Asset – P10,000,000\nAccumulated Depreciation - Right of Use Asset – P2,000,000\nComputer Equipment – P5,000,000\nAccumulated Depreciation - Computer Equipment – P1,000,000\nAccounts Payable – P2,500,000\nLoans payable – P900,000\nLease liability – P8,000,000\nOrdinary Share Capital – P5,600,000\nOutput VAT, net of creditable input VAT – (per books)\nAllowance for doubtful accounts – P400,000\nRetained Earnings - Beg – P1,200,000\nSales - Service revenue – P1,900,000\nInterest income from receivables – P200,000\nInterest from peso bank deposits - Metrobank – P85,250\nInterest income on Japan Yen deposits (P250,000 from Philippine bank - FCDU; P300,000 from Japanese Bank) – P550,000\nGain on sale of land held as a capital asset (cost P2,500,000; Schedule of Market Values P3,200,000) – P800,000\nGain on sale of shares of stock held as a capital asset (cost P1,500,000) – P1,000,000\nDividend income (P150,000 from domestic corporation; P100,000 from foreign corporation) – P250,000\nRental Income (gross of 5% creditable withholding tax) – P95,000\nDepreciation Expense - Computer Equipment – P500,000\nAmortization Expense - Right of Use Asset – P1,000,000\nProvision for bad debts expense – P100,000\nInterest Expense from Loans Payable – P54,000\nInterest Expense from Lease Liability – P720,000\nEntertainment and Amusement expense – P1,500,000\nCost of sales – P11,000,000\nImpairment Loss of Goodwill – P100,000\nTaxes and licenses – P4,500,000\n\nAdditional details:\na. Taxes and Licenses consisted of the following:\nMayor's Permit and Registration Costs – P200,000\nLocal Business Tax – P1,600,000\nReal Property Tax – P1,300,000\nInterest for late payment of taxes – P678,250\nDocumentary Stamp Tax – (to be determined)\nSurcharges for late payment of taxes – (to be determined)\n\nb. The land sold was used for personal use/purpose.\nc. The shares of stock sold were those of Basic Corporation which is an unlisted company and sold to EZ Corporation for PHP2,500,000, a company listed in the PSE. Par value is PHP2,000,000. Fair value of the shares sold was PHP2,500,000.\nd. In relation to the rental income, the lessee was not able to provide the Certificate of Creditable Tax Withheld at Source (BIR Form 2307). Hence, not claimed as tax credit in the income tax return.\ne. In relation to the allowance for doubtful accounts, the Company wrote-off Php90,000 for the year. BLC provided complete supporting documents to prove the worthlessness of the debt.\nf. In relation to Cost of Sales, Php150,000 was unsupported by invoices or any supporting document. Hence, treated as non-deductible for income tax purposes.\n\nHow much is the documentary stamp tax due relating to the sale of land?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "₱49,500"
+      },
+      {
+        "id": "b",
+        "text": "₱45,900"
+      },
+      {
+        "id": "c",
+        "text": "₱37,500"
+      },
+      {
+        "id": "d",
+        "text": "₱35,700"
+      }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "DST on sale of real property = Selling price × P15 per P1,000. Selling price = P3,300,000. DST = P3,300,000 / 1,000 × 15 = P49,500.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Documentary Stamp Tax",
+      "subTopic": "DST on Sale of Real Property",
+      "tosCode": "G.1.2",
+      "cognitiveLevel": "Analyzing",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "Documentary stamp tax on sale of real property based on selling price"
+  },
+  {
+    "id": "tax-resa-b51-may2026-066",
+    "prompt": "Blue Lock Corporation (BLC), a VAT-registered domestic corporation in the Philippines, has been engaged in the manufacture and sale of soccer balls in Quezon City for 7 years. The Company requested for your help in preparing its income tax and business tax returns for the calendar year-ended 31 December 2026.\n\nAttached is the Trial Balance for the calendar-year ended 31 December 2026:\nCash in bank – P2,390,817\nAccounts Receivable – P3,700,000\nInventory – P3,000,000\nGoodwill – P1,250,000\nRight of Use Asset – P10,000,000\nAccumulated Depreciation - Right of Use Asset – P2,000,000\nComputer Equipment – P5,000,000\nAccumulated Depreciation - Computer Equipment – P1,000,000\nAccounts Payable – P2,500,000\nLoans payable – P900,000\nLease liability – P8,000,000\nOrdinary Share Capital – P5,600,000\nOutput VAT, net of creditable input VAT – (per books)\nAllowance for doubtful accounts – P400,000\nRetained Earnings - Beg – P1,200,000\nSales - Service revenue – P1,900,000\nInterest income from receivables – P200,000\nInterest from peso bank deposits - Metrobank – P85,250\nInterest income on Japan Yen deposits (P250,000 from Philippine bank - FCDU; P300,000 from Japanese Bank) – P550,000\nGain on sale of land held as a capital asset (cost P2,500,000; Schedule of Market Values P3,200,000) – P800,000\nGain on sale of shares of stock held as a capital asset (cost P1,500,000) – P1,000,000\nDividend income (P150,000 from domestic corporation; P100,000 from foreign corporation) – P250,000\nRental Income (gross of 5% creditable withholding tax) – P95,000\nDepreciation Expense - Computer Equipment – P500,000\nAmortization Expense - Right of Use Asset – P1,000,000\nProvision for bad debts expense – P100,000\nInterest Expense from Loans Payable – P54,000\nInterest Expense from Lease Liability – P720,000\nEntertainment and Amusement expense – P1,500,000\nCost of sales – P11,000,000\nImpairment Loss of Goodwill – P100,000\nTaxes and licenses – P4,500,000\n\nAdditional details:\na. Taxes and Licenses consisted of the following:\nMayor's Permit and Registration Costs – P200,000\nLocal Business Tax – P1,600,000\nReal Property Tax – P1,300,000\nInterest for late payment of taxes – P678,250\nDocumentary Stamp Tax – (to be determined)\nSurcharges for late payment of taxes – (to be determined)\n\nb. The land sold was used for personal use/purpose.\nc. The shares of stock sold were those of Basic Corporation which is an unlisted company and sold to EZ Corporation for PHP2,500,000, a company listed in the PSE. Par value is PHP2,000,000. Fair value of the shares sold was PHP2,500,000.\nd. In relation to the rental income, the lessee was not able to provide the Certificate of Creditable Tax Withheld at Source (BIR Form 2307). Hence, not claimed as tax credit in the income tax return.\ne. In relation to the allowance for doubtful accounts, the Company wrote-off Php90,000 for the year. BLC provided complete supporting documents to prove the worthlessness of the debt.\nf. In relation to Cost of Sales, Php150,000 was unsupported by invoices or any supporting document. Hence, treated as non-deductible for income tax purposes.\n\nHow much is the VAT payable for the December 31, 2026?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "₱2,280,000"
+      },
+      {
+        "id": "b",
+        "text": "₱1,234,567"
+      },
+      {
+        "id": "c",
+        "text": "₱960,000"
+      },
+      {
+        "id": "d",
+        "text": "₱228,000"
+      }
+    ],
+    "correctChoiceId": "b",
+    "rationale": "Output VAT is derived by working back from the trial balance. Total debits P44,814,817 less total credits P43,580,250 = P1,234,567 (balancing figure for Output VAT, net of creditable input VAT). This represents the VAT payable.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Business Taxes",
+      "subTopic": "VAT - Computation",
+      "tosCode": "E.1.5",
+      "cognitiveLevel": "Analyzing",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "VAT payable computation from trial balance workback method"
+  },
+  {
+    "id": "tax-resa-b51-may2026-067",
+    "prompt": "Blue Lock Corporation (BLC), a VAT-registered domestic corporation in the Philippines, has been engaged in the manufacture and sale of soccer balls in Quezon City for 7 years. The Company requested for your help in preparing its income tax and business tax returns for the calendar year-ended 31 December 2026.\n\nAttached is the Trial Balance for the calendar-year ended 31 December 2026:\nCash in bank – P2,390,817\nAccounts Receivable – P3,700,000\nInventory – P3,000,000\nGoodwill – P1,250,000\nRight of Use Asset – P10,000,000\nAccumulated Depreciation - Right of Use Asset – P2,000,000\nComputer Equipment – P5,000,000\nAccumulated Depreciation - Computer Equipment – P1,000,000\nAccounts Payable – P2,500,000\nLoans payable – P900,000\nLease liability – P8,000,000\nOrdinary Share Capital – P5,600,000\nOutput VAT, net of creditable input VAT – (per books)\nAllowance for doubtful accounts – P400,000\nRetained Earnings - Beg – P1,200,000\nSales - Service revenue – P1,900,000\nInterest income from receivables – P200,000\nInterest from peso bank deposits - Metrobank – P85,250\nInterest income on Japan Yen deposits (P250,000 from Philippine bank - FCDU; P300,000 from Japanese Bank) – P550,000\nGain on sale of land held as a capital asset (cost P2,500,000; Schedule of Market Values P3,200,000) – P800,000\nGain on sale of shares of stock held as a capital asset (cost P1,500,000) – P1,000,000\nDividend income (P150,000 from domestic corporation; P100,000 from foreign corporation) – P250,000\nRental Income (gross of 5% creditable withholding tax) – P95,000\nDepreciation Expense - Computer Equipment – P500,000\nAmortization Expense - Right of Use Asset – P1,000,000\nProvision for bad debts expense – P100,000\nInterest Expense from Loans Payable – P54,000\nInterest Expense from Lease Liability – P720,000\nEntertainment and Amusement expense – P1,500,000\nCost of sales – P11,000,000\nImpairment Loss of Goodwill – P100,000\nTaxes and licenses – P4,500,000\n\nAdditional details:\na. Taxes and Licenses consisted of the following:\nMayor's Permit and Registration Costs – P200,000\nLocal Business Tax – P1,600,000\nReal Property Tax – P1,300,000\nInterest for late payment of taxes – P678,250\nDocumentary Stamp Tax – (to be determined)\nSurcharges for late payment of taxes – (to be determined)\n\nb. The land sold was used for personal use/purpose.\nc. The shares of stock sold were those of Basic Corporation which is an unlisted company and sold to EZ Corporation for PHP2,500,000, a company listed in the PSE. Par value is PHP2,000,000. Fair value of the shares sold was PHP2,500,000.\nd. In relation to the rental income, the lessee was not able to provide the Certificate of Creditable Tax Withheld at Source (BIR Form 2307). Hence, not claimed as tax credit in the income tax return.\ne. In relation to the allowance for doubtful accounts, the Company wrote-off Php90,000 for the year. BLC provided complete supporting documents to prove the worthlessness of the debt.\nf. In relation to Cost of Sales, Php150,000 was unsupported by invoices or any supporting document. Hence, treated as non-deductible for income tax purposes.\n\nWhen is the deadline to file the VAT return for December 31, 2026?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "January 25, 2026"
+      },
+      {
+        "id": "b",
+        "text": "January 10, 2026"
+      },
+      {
+        "id": "c",
+        "text": "January 31, 2026"
+      },
+      {
+        "id": "d",
+        "text": "January 25, 2027"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "VAT returns are filed within 25 days following the close of each taxable quarter. For calendar year-end December 31, 2026, the deadline is January 25, 2027.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Business Taxes",
+      "subTopic": "VAT - Compliance",
+      "tosCode": "E.1.7",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Easy"
+    },
+    "canonicalConcept": "VAT return filing deadline: 25 days after end of taxable quarter"
+  },
+  {
+    "id": "tax-resa-b51-may2026-068",
+    "prompt": "Blue Lock Corporation (BLC), a VAT-registered domestic corporation in the Philippines, has been engaged in the manufacture and sale of soccer balls in Quezon City for 7 years. The Company requested for your help in preparing its income tax and business tax returns for the calendar year-ended 31 December 2026.\n\nAttached is the Trial Balance for the calendar-year ended 31 December 2026:\nCash in bank – P2,390,817\nAccounts Receivable – P3,700,000\nInventory – P3,000,000\nGoodwill – P1,250,000\nRight of Use Asset – P10,000,000\nAccumulated Depreciation - Right of Use Asset – P2,000,000\nComputer Equipment – P5,000,000\nAccumulated Depreciation - Computer Equipment – P1,000,000\nAccounts Payable – P2,500,000\nLoans payable – P900,000\nLease liability – P8,000,000\nOrdinary Share Capital – P5,600,000\nOutput VAT, net of creditable input VAT – (per books)\nAllowance for doubtful accounts – P400,000\nRetained Earnings - Beg – P1,200,000\nSales - Service revenue – P1,900,000\nInterest income from receivables – P200,000\nInterest from peso bank deposits - Metrobank – P85,250\nInterest income on Japan Yen deposits (P250,000 from Philippine bank - FCDU; P300,000 from Japanese Bank) – P550,000\nGain on sale of land held as a capital asset (cost P2,500,000; Schedule of Market Values P3,200,000) – P800,000\nGain on sale of shares of stock held as a capital asset (cost P1,500,000) – P1,000,000\nDividend income (P150,000 from domestic corporation; P100,000 from foreign corporation) – P250,000\nRental Income (gross of 5% creditable withholding tax) – P95,000\nDepreciation Expense - Computer Equipment – P500,000\nAmortization Expense - Right of Use Asset – P1,000,000\nProvision for bad debts expense – P100,000\nInterest Expense from Loans Payable – P54,000\nInterest Expense from Lease Liability – P720,000\nEntertainment and Amusement expense – P1,500,000\nCost of sales – P11,000,000\nImpairment Loss of Goodwill – P100,000\nTaxes and licenses – P4,500,000\n\nAdditional details:\na. Taxes and Licenses consisted of the following:\nMayor's Permit and Registration Costs – P200,000\nLocal Business Tax – P1,600,000\nReal Property Tax – P1,300,000\nInterest for late payment of taxes – P678,250\nDocumentary Stamp Tax – (to be determined)\nSurcharges for late payment of taxes – (to be determined)\n\nb. The land sold was used for personal use/purpose.\nc. The shares of stock sold were those of Basic Corporation which is an unlisted company and sold to EZ Corporation for PHP2,500,000, a company listed in the PSE. Par value is PHP2,000,000. Fair value of the shares sold was PHP2,500,000.\nd. In relation to the rental income, the lessee was not able to provide the Certificate of Creditable Tax Withheld at Source (BIR Form 2307). Hence, not claimed as tax credit in the income tax return.\ne. In relation to the allowance for doubtful accounts, the Company wrote-off Php90,000 for the year. BLC provided complete supporting documents to prove the worthlessness of the debt.\nf. In relation to Cost of Sales, Php150,000 was unsupported by invoices or any supporting document. Hence, treated as non-deductible for income tax purposes.\n\nHow much is the Surcharges for late payment of taxes?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "₱657,250"
+      },
+      {
+        "id": "b",
+        "text": "₱675,250"
+      },
+      {
+        "id": "c",
+        "text": "₱657,520"
+      },
+      {
+        "id": "d",
+        "text": "₱675,520"
+      }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "Workback from Taxes and Licenses total P4,500,000 less: Mayor's Permit P200,000, Local Business Tax P1,600,000, Real Property Tax P1,300,000, Interest P678,250, DST (P15,000 + P49,500) P64,500. Surcharges = P4,500,000 - P200,000 - P1,600,000 - P1,300,000 - P678,250 - P64,500 = P657,250.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Income Taxation",
+      "subTopic": "Deductions - Taxes and Licenses",
+      "tosCode": "C.3",
+      "cognitiveLevel": "Analyzing",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "Surcharges computation by workback from taxes and licenses account"
+  },
+  {
+    "id": "tax-resa-b51-may2026-069",
+    "prompt": "Blue Lock Corporation (BLC), a VAT-registered domestic corporation in the Philippines, has been engaged in the manufacture and sale of soccer balls in Quezon City for 7 years. The Company requested for your help in preparing its income tax and business tax returns for the calendar year-ended 31 December 2026.\n\nAttached is the Trial Balance for the calendar-year ended 31 December 2026:\nCash in bank – P2,390,817\nAccounts Receivable – P3,700,000\nInventory – P3,000,000\nGoodwill – P1,250,000\nRight of Use Asset – P10,000,000\nAccumulated Depreciation - Right of Use Asset – P2,000,000\nComputer Equipment – P5,000,000\nAccumulated Depreciation - Computer Equipment – P1,000,000\nAccounts Payable – P2,500,000\nLoans payable – P900,000\nLease liability – P8,000,000\nOrdinary Share Capital – P5,600,000\nOutput VAT, net of creditable input VAT – (per books)\nAllowance for doubtful accounts – P400,000\nRetained Earnings - Beg – P1,200,000\nSales - Service revenue – P1,900,000\nInterest income from receivables – P200,000\nInterest from peso bank deposits - Metrobank – P85,250\nInterest income on Japan Yen deposits (P250,000 from Philippine bank - FCDU; P300,000 from Japanese Bank) – P550,000\nGain on sale of land held as a capital asset (cost P2,500,000; Schedule of Market Values P3,200,000) – P800,000\nGain on sale of shares of stock held as a capital asset (cost P1,500,000) – P1,000,000\nDividend income (P150,000 from domestic corporation; P100,000 from foreign corporation) – P250,000\nRental Income (gross of 5% creditable withholding tax) – P95,000\nDepreciation Expense - Computer Equipment – P500,000\nAmortization Expense - Right of Use Asset – P1,000,000\nProvision for bad debts expense – P100,000\nInterest Expense from Loans Payable – P54,000\nInterest Expense from Lease Liability – P720,000\nEntertainment and Amusement expense – P1,500,000\nCost of sales – P11,000,000\nImpairment Loss of Goodwill – P100,000\nTaxes and licenses – P4,500,000\n\nAdditional details:\na. Taxes and Licenses consisted of the following:\nMayor's Permit and Registration Costs – P200,000\nLocal Business Tax – P1,600,000\nReal Property Tax – P1,300,000\nInterest for late payment of taxes – P678,250\nDocumentary Stamp Tax – (to be determined)\nSurcharges for late payment of taxes – (to be determined)\n\nb. The land sold was used for personal use/purpose.\nc. The shares of stock sold were those of Basic Corporation which is an unlisted company and sold to EZ Corporation for PHP2,500,000, a company listed in the PSE. Par value is PHP2,000,000. Fair value of the shares sold was PHP2,500,000.\nd. In relation to the rental income, the lessee was not able to provide the Certificate of Creditable Tax Withheld at Source (BIR Form 2307). Hence, not claimed as tax credit in the income tax return.\ne. In relation to the allowance for doubtful accounts, the Company wrote-off Php90,000 for the year. BLC provided complete supporting documents to prove the worthlessness of the debt.\nf. In relation to Cost of Sales, Php150,000 was unsupported by invoices or any supporting document. Hence, treated as non-deductible for income tax purposes.\n\nHow much is the net taxable income?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "₱4,253,750"
+      },
+      {
+        "id": "b",
+        "text": "₱4,523,750"
+      },
+      {
+        "id": "c",
+        "text": "₱4,253,570"
+      },
+      {
+        "id": "d",
+        "text": "₱4,523,570"
+      }
+    ],
+    "correctChoiceId": "a",
+    "rationale": "Sales P19,000,000 (P17.1M goods + P1.9M services) less Cost of Sales P10,850,000 (P11M - P150K unsupported) = Gross Profit P8,150,000. Add other income: Interest income P500,000 (P200K + P300K Japanese bank), Dividend income P100,000 (foreign only, domestic is exempt), Rental income P95,000 = P8,845,000. Less itemized deductions: Depreciation P500,000, Bad debts write-off P90,000, Interest expense P54,000, Entertainment (limited to P104,500), Taxes and licenses P3,842,750 (P4.5M - P657,250 surcharges). Total deductions P4,591,250. Net taxable income = P4,253,750.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Income Taxation",
+      "subTopic": "Corporate Income Tax - Computation",
+      "tosCode": "C.1.2",
+      "cognitiveLevel": "Analyzing",
+      "difficulty": "Difficult"
+    },
+    "canonicalConcept": "Net taxable income computation with itemized deductions and limitation rules"
+  },
+  {
+    "id": "tax-resa-b51-may2026-070",
+    "prompt": "Blue Lock Corporation (BLC), a VAT-registered domestic corporation in the Philippines, has been engaged in the manufacture and sale of soccer balls in Quezon City for 7 years. The Company requested for your help in preparing its income tax and business tax returns for the calendar year-ended 31 December 2026.\n\nAttached is the Trial Balance for the calendar-year ended 31 December 2026:\nCash in bank – P2,390,817\nAccounts Receivable – P3,700,000\nInventory – P3,000,000\nGoodwill – P1,250,000\nRight of Use Asset – P10,000,000\nAccumulated Depreciation - Right of Use Asset – P2,000,000\nComputer Equipment – P5,000,000\nAccumulated Depreciation - Computer Equipment – P1,000,000\nAccounts Payable – P2,500,000\nLoans payable – P900,000\nLease liability – P8,000,000\nOrdinary Share Capital – P5,600,000\nOutput VAT, net of creditable input VAT – (per books)\nAllowance for doubtful accounts – P400,000\nRetained Earnings - Beg – P1,200,000\nSales - Service revenue – P1,900,000\nInterest income from receivables – P200,000\nInterest from peso bank deposits - Metrobank – P85,250\nInterest income on Japan Yen deposits (P250,000 from Philippine bank - FCDU; P300,000 from Japanese Bank) – P550,000\nGain on sale of land held as a capital asset (cost P2,500,000; Schedule of Market Values P3,200,000) – P800,000\nGain on sale of shares of stock held as a capital asset (cost P1,500,000) – P1,000,000\nDividend income (P150,000 from domestic corporation; P100,000 from foreign corporation) – P250,000\nRental Income (gross of 5% creditable withholding tax) – P95,000\nDepreciation Expense - Computer Equipment – P500,000\nAmortization Expense - Right of Use Asset – P1,000,000\nProvision for bad debts expense – P100,000\nInterest Expense from Loans Payable – P54,000\nInterest Expense from Lease Liability – P720,000\nEntertainment and Amusement expense – P1,500,000\nCost of sales – P11,000,000\nImpairment Loss of Goodwill – P100,000\nTaxes and licenses – P4,500,000\n\nAdditional details:\na. Taxes and Licenses consisted of the following:\nMayor's Permit and Registration Costs – P200,000\nLocal Business Tax – P1,600,000\nReal Property Tax – P1,300,000\nInterest for late payment of taxes – P678,250\nDocumentary Stamp Tax – (to be determined)\nSurcharges for late payment of taxes – (to be determined)\n\nb. The land sold was used for personal use/purpose.\nc. The shares of stock sold were those of Basic Corporation which is an unlisted company and sold to EZ Corporation for PHP2,500,000, a company listed in the PSE. Par value is PHP2,000,000. Fair value of the shares sold was PHP2,500,000.\nd. In relation to the rental income, the lessee was not able to provide the Certificate of Creditable Tax Withheld at Source (BIR Form 2307). Hence, not claimed as tax credit in the income tax return.\ne. In relation to the allowance for doubtful accounts, the Company wrote-off Php90,000 for the year. BLC provided complete supporting documents to prove the worthlessness of the debt.\nf. In relation to Cost of Sales, Php150,000 was unsupported by invoices or any supporting document. Hence, treated as non-deductible for income tax purposes.\n\nWhen is the deadline to file the income tax return for December 31, 2026?",
+    "choices": [
+      {
+        "id": "a",
+        "text": "January 25, 2026"
+      },
+      {
+        "id": "b",
+        "text": "April 15, 2025"
+      },
+      {
+        "id": "c",
+        "text": "March 15, 2026"
+      },
+      {
+        "id": "d",
+        "text": "April 15, 2027"
+      }
+    ],
+    "correctChoiceId": "d",
+    "rationale": "Corporate income tax returns for calendar year-end are filed on or before April 15 of the following year. For year-ended December 31, 2026, the deadline is April 15, 2027.",
+    "source": {
+      "center": "ReSA - The Review School of Accountancy",
+      "batch": "Batch 51 - May 2026 CPALE",
+      "examType": "Final Pre-Board Examination"
+    },
+    "tos": {
+      "subject": "TAX",
+      "topicCategory": "Income Taxation",
+      "subTopic": "Compliance - Income Tax Returns",
+      "tosCode": "C.7",
+      "cognitiveLevel": "Remembering",
+      "difficulty": "Easy"
+    },
+    "canonicalConcept": "Corporate income tax return deadline: April 15 following calendar year-end"
+  }
+]

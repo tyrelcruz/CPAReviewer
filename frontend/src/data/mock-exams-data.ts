@@ -23,6 +23,12 @@ export interface MockExam {
   recommended?: boolean
   /** Present for exams backed by a real, playable quiz set (see data/quiz-data.ts). */
   quizSetId?: string
+  /** Present for exams backed by the ingested question bank (see api/exams.ts) — generated on demand via /api/exams/generate. */
+  bankExam?: {
+    subject: string
+    mode: 'tos_simulator' | 'review_center_drill'
+    itemCount: number
+  }
   taken?: {
     date: string
     score: number
@@ -73,16 +79,17 @@ export const MOCK_EXAMS: MockExam[] = [
     taken: { date: '2025-05-10', score: 50, total: 70, percentile: 68 },
   },
   {
-    id: 'taxation-subject-1',
-    title: 'Taxation Subject Exam 1',
-    description: 'Focused practice on Taxation',
-    type: 'subject',
+    id: 'taxation-final-all-centers',
+    title: 'TAXATION Final Exam (All Review Center)',
+    description: 'Cross-center ReSA Taxation final pre-board question pool',
+    type: 'full-length',
     subject: 'Taxation',
-    difficulty: 'Medium',
+    difficulty: 'Mixed',
     durationMinutes: 240,
     itemCount: 70,
     icon: Percent,
     iconBg: '#3A5A40',
+    bankExam: { subject: 'TAX', mode: 'tos_simulator', itemCount: 70 },
   },
   {
     id: 'rfbt-partnership',

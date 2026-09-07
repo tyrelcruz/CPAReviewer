@@ -40,7 +40,7 @@ export function AnswerHistoryList({ questions, answers }: AnswerHistoryListProps
                 ))}
               </div>
             )}
-            <p className="font-reading font-medium">
+            <p className="font-reading line-clamp-2 font-medium whitespace-pre-line">
               {i + 1}. {q.prompt}
             </p>
             <p className="mt-1">

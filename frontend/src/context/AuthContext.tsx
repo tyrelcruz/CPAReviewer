@@ -37,11 +37,34 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
 
     apiClient
-      .get<{ user: AuthUser }>('/api/auth/me')
-      .then(({ data }) => setUser(data.user))
+      .get<{ user: AuthUser; token: string }>('/api/auth/me')
+      .then(({ data }) => {
+        setStoredToken(data.token)
+        setUser(data.user)
+      })
       .catch(() => clearStoredToken())
       .finally(() => setIsLoading(false))
   }, [])
+
+  // Keeps an actively-open session sliding forward past the 7-day token
+  // expiry — only a session with no visits for 7 straight days actually
+  // expires, rather than every session hard-expiring a week after login.
+  useEffect(() => {
+    if (!user) return
+
+    const REFRESH_INTERVAL_MS = 6 * 60 * 60 * 1000 // 6 hours
+    const id = setInterval(() => {
+      apiClient
+        .post<{ token: string }>('/api/auth/refresh')
+        .then(({ data }) => setStoredToken(data.token))
+        .catch(() => {
+          // A failed refresh (e.g. token already expired) leaves the stored
+          // token as-is; the user finds out on their next real request.
+        })
+    }, REFRESH_INTERVAL_MS)
+
+    return () => clearInterval(id)
+  }, [user])
 
   async function login(email: string, password: string) {
     const { data } = await apiClient.post<{ token: string; user: AuthUser }>(

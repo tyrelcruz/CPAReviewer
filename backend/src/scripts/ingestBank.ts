@@ -13,6 +13,9 @@ const DEFAULT_FILES = [
   '../../../frontend/src/assets/kb/rfbt/REO_RFBT_Final.json',
   '../../../frontend/src/assets/kb/rfbt/CPAR_RFBT_Final.json',
   '../../../frontend/src/assets/kb/rfbt/RedeFine_RFBT_Final.json',
+  '../../../frontend/src/assets/kb/tax/ReSA_Tax_Final.json',
+  '../../../frontend/src/assets/kb/tax/CPAR_Tax_Final.json',
+  '../../../frontend/src/assets/kb/tax/Redefine_Tax_Final.json',
 ]
 
 async function ingest() {
@@ -26,7 +29,11 @@ async function ingest() {
   for (const relativePath of relativePaths) {
     const filePath = path.resolve(__dirname, relativePath)
     const raw = await readFile(filePath, 'utf-8')
-    const records: unknown[] = JSON.parse(raw)
+    const parsed: unknown = JSON.parse(raw)
+    // Some kb files are a bare array; others wrap it as { meta, questions }.
+    const records: unknown[] = Array.isArray(parsed)
+      ? parsed
+      : ((parsed as { questions?: unknown[] })?.questions ?? [])
 
     const result = await ingestBankQuestions(records)
     inserted += result.inserted

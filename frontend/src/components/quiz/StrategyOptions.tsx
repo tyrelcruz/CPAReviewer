@@ -85,6 +85,10 @@ export interface StrategyCard {
   whyText: string
 }
 
+// Cross-Center Tagging isn't implemented yet. Dual Quiz Modes and Variation
+// Display are both selectable now.
+export const COMING_SOON_KEYS: StrategyCard['key'][] = ['tagging']
+
 export const STRATEGY_CARDS: StrategyCard[] = [
   {
     key: 'tagging',

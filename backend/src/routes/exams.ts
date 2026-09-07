@@ -119,7 +119,7 @@ async function fetchSessionQuestions(sessionId: string): Promise<SessionQuestion
             esq.position
      FROM exam_session_questions esq
      JOIN bank_questions bq ON bq.id = esq.question_id
-     JOIN tos_categories tc ON tc.tos_code = bq.tos_code
+     JOIN tos_categories tc ON tc.subject = bq.subject AND tc.tos_code = bq.tos_code
      WHERE esq.session_id = ?
      ORDER BY esq.position ASC`,
     [sessionId],
@@ -233,7 +233,7 @@ examsRouter.post('/generate', asyncHandler(async (req, res) => {
   const [poolRows] = await pool.query<PoolRow[]>(
     `SELECT bq.id, bq.difficulty, tc.sub_topic
      FROM bank_questions bq
-     JOIN tos_categories tc ON tc.tos_code = bq.tos_code
+     JOIN tos_categories tc ON tc.subject = bq.subject AND tc.tos_code = bq.tos_code
      WHERE ${conditions.join(' AND ')}`,
     params,
   )
@@ -247,7 +247,7 @@ examsRouter.post('/generate', asyncHandler(async (req, res) => {
     `SELECT uqh.question_id
      FROM user_question_history uqh
      JOIN bank_questions bq ON bq.id = uqh.question_id
-     JOIN tos_categories tc ON tc.tos_code = bq.tos_code
+     JOIN tos_categories tc ON tc.subject = bq.subject AND tc.tos_code = bq.tos_code
      WHERE uqh.user_id = ? AND tc.subject = ?`,
     [req.user!.id, subject],
   )
@@ -334,7 +334,7 @@ examsRouter.get('/rfbt-topics', asyncHandler(async (_req, res) => {
   const [rows] = await pool.query<RowDataPacket[]>(
     `SELECT tc.sub_topic, COUNT(*) as c
      FROM bank_questions bq
-     JOIN tos_categories tc ON tc.tos_code = bq.tos_code
+     JOIN tos_categories tc ON tc.subject = bq.subject AND tc.tos_code = bq.tos_code
      WHERE tc.subject = 'RFBT'
      GROUP BY tc.sub_topic`,
   )

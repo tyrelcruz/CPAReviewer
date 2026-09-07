@@ -1,0 +1,59 @@
+import { Lightbulb } from 'lucide-react'
+
+import dualQuizBanner from '@/assets/images/dualquiz_banner.png'
+import { DualModeIcon, STRATEGY_CARDS } from '@/components/quiz/StrategyOptions'
+
+interface DualQuizModesCardProps {
+  selected: boolean
+  onSelect: () => void
+}
+
+// Single source of truth for this strategy's copy — shared with the plain
+// generic card so the content never has to be kept in sync by hand.
+const { title, description, whyText } = STRATEGY_CARDS.find((c) => c.key === 'modes')!
+
+// Only ever rendered while it's the selected strategy — its distinctive dark
+// green fill IS the selected indicator, so there's no separate ring/border
+// to toggle here. When another strategy is selected, ChooseStrategyPage
+// swaps this out for the plain generic card treatment instead.
+export function DualQuizModesCard({ selected, onSelect }: DualQuizModesCardProps) {
+  return (
+    <label className="relative flex cursor-pointer items-center gap-5 overflow-hidden rounded-2xl bg-[#2B3A22] p-5 text-[#F3ECDC] sm:p-6">
+      <input
+        type="radio"
+        name="strategy"
+        value="modes"
+        checked={selected}
+        onChange={onSelect}
+        className="sr-only"
+      />
+
+      <img
+        src={dualQuizBanner}
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-y-0 right-0 h-full w-3/5 object-contain object-right-bottom opacity-90 sm:w-1/2"
+      />
+
+      <div className="hidden shrink-0 sm:block">
+        <DualModeIcon />
+      </div>
+
+      <div className="relative min-w-0 flex-1">
+        {/* Floated into the card's own top padding rather than taking a flow
+            line, so this text column matches the generic card's height
+            exactly (same title/description/pill stack) for a seamless swap. */}
+        <p className="absolute -top-4 left-0 text-xs leading-none font-semibold tracking-[0.25em] text-[#E0AC48]/80 uppercase">
+          Strategy
+        </p>
+        <h3 className="font-serif text-lg font-bold uppercase">{title}</h3>
+        <p className="font-reading mt-1.5 text-sm text-[#F3ECDC]/80">{description}</p>
+
+        <div className="mt-4 flex items-start gap-2 rounded-full bg-[#F3ECDC]/15 px-4 py-2.5">
+          <Lightbulb className="mt-0.5 size-3.5 shrink-0 text-[#E0AC48]" />
+          <p className="font-reading text-xs text-[#F3ECDC]/85">{whyText}</p>
+        </div>
+      </div>
+    </label>
+  )
+}

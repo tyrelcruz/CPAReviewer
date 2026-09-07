@@ -91,5 +91,14 @@ authRouter.get('/me', requireAuth, asyncHandler(async (req, res) => {
     return
   }
 
-  res.json({ user: { id: user.id, name: user.name, email: user.email } })
+  // Slide the session forward on every check-in so an actively used app
+  // never hits the 7-day hard expiry — only a genuinely abandoned session
+  // (no visits for 7 days) actually expires.
+  const token = signToken({ id: user.id, email: user.email })
+  res.json({ token, user: { id: user.id, name: user.name, email: user.email } })
+}))
+
+authRouter.post('/refresh', requireAuth, asyncHandler(async (req, res) => {
+  const token = signToken({ id: req.user!.id, email: req.user!.email })
+  res.json({ token })
 }))

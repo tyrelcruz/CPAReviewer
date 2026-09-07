@@ -22,6 +22,7 @@ import { DrawingNotesPanel } from '@/components/quiz/DrawingNotesPanel'
 import { NotesPopover } from '@/components/quiz/NotesPopover'
 import { ProgressRing } from '@/components/quiz/ProgressRing'
 import { QuestionNavigator } from '@/components/quiz/QuestionNavigator'
+import { QuestionPromptText } from '@/components/quiz/QuestionPromptText'
 import { QuizResults } from '@/components/quiz/QuizResults'
 import { shuffleQuestionsKeepingChains } from '@/lib/quizShuffle'
 import { getStudyStreak } from '@/lib/streak'
@@ -43,6 +44,8 @@ interface QuizProps {
   onBack: () => void
   /** Fires once when the attempt is finished — lets a caller persist the score server-side. */
   onComplete?: (answers: Record<string, string>) => void
+  /** Overrides the default `questions.length * SECONDS_PER_QUESTION` countdown, e.g. from a chosen quiz-setup time limit. */
+  timeLimitSeconds?: number
 }
 
 export function Quiz({
@@ -51,6 +54,7 @@ export function Quiz({
   code = 'Practice',
   onBack,
   onComplete,
+  timeLimitSeconds,
 }: QuizProps) {
   // Shuffled once per attempt (and reshuffled on retake) so the answer to
   // "question 5" isn't something a repeat test-taker can just memorize.
@@ -64,7 +68,7 @@ export function Quiz({
   const [startTime, setStartTime] = useState(() => Date.now())
   const [elapsedMs, setElapsedMs] = useState(0)
   const [remainingSeconds, setRemainingSeconds] = useState(
-    () => questions.length * SECONDS_PER_QUESTION,
+    () => timeLimitSeconds ?? questions.length * SECONDS_PER_QUESTION,
   )
   const [calculatorOpen, setCalculatorOpen] = useState(false)
   const [notesOpen, setNotesOpen] = useState(false)
@@ -159,7 +163,7 @@ export function Quiz({
     setCurrentIndex(0)
     setIsComplete(false)
     setStartTime(Date.now())
-    setRemainingSeconds(orderedQuestions.length * SECONDS_PER_QUESTION)
+    setRemainingSeconds(timeLimitSeconds ?? orderedQuestions.length * SECONDS_PER_QUESTION)
   }
 
   function toggleFlag() {
@@ -348,9 +352,10 @@ export function Quiz({
               </div>
             )}
 
-            <p className="font-reading text-lg leading-snug font-semibold text-[#3A2A1A]">
-              {current.prompt}
-            </p>
+            <QuestionPromptText
+              text={current.prompt}
+              className="font-reading text-lg leading-snug font-semibold text-[#3A2A1A]"
+            />
 
             <div className="mt-5 flex flex-col gap-3">
               {current.choices.map((choice, i) => {

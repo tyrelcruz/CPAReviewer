@@ -12,6 +12,7 @@ import {
 } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 
+import { QuestionPromptText } from '@/components/quiz/QuestionPromptText'
 import { cn } from '@/lib/utils'
 
 type DrawTool = 'pen' | 'highlight' | 'eraser' | 'move'
@@ -390,9 +391,10 @@ export function DrawingNotesPanel({
             <p className="text-xs font-semibold text-[#3A2A1A]/60">
               Question {questionNumber} of {totalQuestions}
             </p>
-            <p className="font-reading mt-1 text-sm font-semibold text-[#3A2A1A] sm:text-base">
-              {questionPrompt}
-            </p>
+            <QuestionPromptText
+              text={questionPrompt}
+              className="font-reading mt-1 text-sm font-semibold text-[#3A2A1A] sm:text-base"
+            />
             {choices.length > 0 && (
               <div className="mt-3 grid gap-2 sm:grid-cols-2">
                 {choices.map((c, i) => (

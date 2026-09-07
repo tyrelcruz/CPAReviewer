@@ -38,18 +38,21 @@ CREATE INDEX idx_questions_quiz_set ON questions(quiz_set_id);
 -- from the quiz_sets/questions/choices tables above, which back the static
 -- practice sets and are untouched by this system).
 
+-- tos_code (e.g. "A.1") is only unique within a subject — different subjects'
+-- kb files independently number their own TOS codes, so the key must be
+-- (subject, tos_code), not tos_code alone.
 CREATE TABLE IF NOT EXISTS tos_categories (
-  tos_code VARCHAR(16) PRIMARY KEY,
   subject VARCHAR(16) NOT NULL,
+  tos_code VARCHAR(16) NOT NULL,
   topic_category VARCHAR(255) NOT NULL,
   sub_topic VARCHAR(255) NOT NULL,
-  weight_pct DECIMAL(5,2) NULL
+  weight_pct DECIMAL(5,2) NULL,
+  PRIMARY KEY (subject, tos_code)
 );
-
-CREATE INDEX idx_tos_categories_subject ON tos_categories(subject);
 
 CREATE TABLE IF NOT EXISTS bank_questions (
   id VARCHAR(64) PRIMARY KEY,
+  subject VARCHAR(16) NOT NULL,
   tos_code VARCHAR(16) NOT NULL,
   cognitive_level VARCHAR(32) NOT NULL,
   difficulty ENUM('Easy', 'Moderate', 'Difficult') NOT NULL,
@@ -59,10 +62,10 @@ CREATE TABLE IF NOT EXISTS bank_questions (
   canonical_concept TEXT NOT NULL,
   canonical_concept_hash CHAR(64) NOT NULL,
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (tos_code) REFERENCES tos_categories(tos_code)
+  FOREIGN KEY (subject, tos_code) REFERENCES tos_categories(subject, tos_code)
 );
 
-CREATE INDEX idx_bank_questions_tos_code ON bank_questions(tos_code);
+CREATE INDEX idx_bank_questions_subject_tos_code ON bank_questions(subject, tos_code);
 CREATE INDEX idx_bank_questions_difficulty ON bank_questions(difficulty);
 CREATE INDEX idx_bank_questions_cognitive_level ON bank_questions(cognitive_level);
 CREATE INDEX idx_bank_questions_concept_hash ON bank_questions(canonical_concept_hash);

@@ -35,7 +35,7 @@ const SUBJECT_TABS = [
 export function HeroSection() {
   return (
     <section className="mx-auto max-w-7xl px-6 py-16 lg:py-20">
-      <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+      <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center">
         <div>
           <div className="mb-5 flex items-center gap-3">
             <div className="flex w-10 flex-col gap-1">

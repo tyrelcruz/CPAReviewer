@@ -1,10 +1,12 @@
-import { ClipboardList, Plus, SquarePen } from 'lucide-react'
+import { Bell, ClipboardList, Plus, SquarePen, User } from 'lucide-react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import illustrationBg from '@/assets/images/illustration_bg.png'
+import { MobileTabBar } from '@/components/dashboard/MobileTabBar'
 import { Sidebar } from '@/components/dashboard/Sidebar'
+import { Logo } from '@/components/landing/Logo'
 import {
   ExamFilters,
   type SortOption,
@@ -80,8 +82,8 @@ export function MockExamsPage() {
     return [...filtered].sort((a, b) => {
       // Temporary: always surface the currently playable exams first, ahead
       // of "Coming Soon" cards, regardless of sort mode.
-      const aAvailable = Boolean(a.quizSetId)
-      const bAvailable = Boolean(b.quizSetId)
+      const aAvailable = Boolean(a.quizSetId || a.bankExam)
+      const bAvailable = Boolean(b.quizSetId || b.bankExam)
       if (aAvailable !== bAvailable) return aAvailable ? -1 : 1
 
       if (sort === 'alphabetical') return a.title.localeCompare(b.title)
@@ -104,15 +106,54 @@ export function MockExamsPage() {
 
   return (
     <div className="flex min-h-svh bg-[#FBF3EA] text-[#3A2A1A]">
-      <Sidebar />
+      <Sidebar showMobileMenu={false} />
 
-      <div className="min-w-0 flex-1">
-        <main className="mx-auto max-w-[1400px] px-8 py-8">
+      <div className="min-w-0 flex-1 pb-20 lg:pb-0">
+        <main className="mx-auto max-w-[1400px] px-4 py-6 sm:px-8 sm:py-8">
+          {/* Mobile hero: logo + bell/profile icons, left-aligned heading. Desktop keeps its own centered-divider layout below. */}
           <motion.div
             initial={{ opacity: 0, y: -16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, ease: 'easeOut' }}
-            className="relative overflow-hidden rounded-2xl border border-[#3A2A1A]/10 bg-cover bg-right px-8 py-8"
+            className="relative overflow-hidden rounded-2xl border border-[#3A2A1A]/10 bg-cover bg-right px-5 py-5 lg:hidden"
+            style={{ backgroundImage: `url(${illustrationBg})` }}
+          >
+            <div className="absolute inset-0 bg-[#FBF3EA]/20" />
+            <div className="relative">
+              <div className="flex items-center justify-between gap-3">
+                <Logo className="h-9" />
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    aria-label="Notifications"
+                    className="flex size-10 items-center justify-center rounded-full bg-white text-[#3A2A1A] shadow-sm"
+                  >
+                    <Bell className="size-4" />
+                  </button>
+                  <button
+                    type="button"
+                    aria-label="Profile"
+                    className="flex size-10 items-center justify-center rounded-full bg-white text-[#3A2A1A] shadow-sm"
+                  >
+                    <User className="size-4" />
+                  </button>
+                </div>
+              </div>
+              <h1 className="font-serif mt-5 text-3xl font-bold text-[#7A2323]">Mock Exams</h1>
+              <p className="font-reading mt-1.5 text-sm text-[#3A2A1A]/75">
+                Practice with exam-like simulations and track your progress.
+              </p>
+              <p className="mt-2 text-sm text-[#3A5A40]/60" aria-hidden="true">
+                〜◡〜
+              </p>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: -16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, ease: 'easeOut' }}
+            className="relative hidden overflow-hidden rounded-2xl border border-[#3A2A1A]/10 bg-cover bg-right px-8 py-8 lg:block"
             style={{ backgroundImage: `url(${illustrationBg})` }}
           >
             <div className="absolute inset-0 bg-[#FBF3EA]/20" />
@@ -135,7 +176,7 @@ export function MockExamsPage() {
             variants={staggerContainer}
             initial="hidden"
             animate="show"
-            className="mt-6 grid gap-6 lg:grid-cols-[1fr_20rem]"
+            className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_20rem]"
           >
             <motion.div variants={fadeUpItem} className="flex flex-col gap-5">
               <ExamFilters
@@ -210,6 +251,8 @@ export function MockExamsPage() {
           </motion.div>
         </main>
       </div>
+
+      <MobileTabBar />
     </div>
   )
 }

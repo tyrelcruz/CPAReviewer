@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion'
 
-import { Sidebar } from '@/components/dashboard/Sidebar'
 import { DashboardHeader } from '@/components/dashboard/DashboardHeader'
+import { MobileTabBar } from '@/components/dashboard/MobileTabBar'
+import { Sidebar } from '@/components/dashboard/Sidebar'
 import { StatSummaryCards } from '@/components/dashboard/StatSummaryCards'
 import { StudyProgressCard } from '@/components/dashboard/StudyProgressCard'
 import { RecentActivityCard } from '@/components/dashboard/RecentActivityCard'
@@ -26,14 +27,14 @@ export function DashboardPage() {
 
   return (
     <div className="flex min-h-svh bg-[#FBF3EA] text-[#3A2A1A]">
-      <Sidebar />
+      <Sidebar showMobileMenu={false} />
 
-      <div className="min-w-0 flex-1">
+      <div className="min-w-0 flex-1 pb-20 lg:pb-0">
         <motion.main
           variants={staggerContainer}
           initial="hidden"
           animate="show"
-          className="mx-auto flex max-w-[1400px] flex-col gap-6 px-8 py-8"
+          className="mx-auto flex max-w-[1400px] flex-col gap-6 px-4 py-6 sm:px-8 sm:py-8"
         >
           <motion.div variants={fadeUpItem}>
             <DashboardHeader firstName={firstName} />
@@ -50,12 +51,12 @@ export function DashboardPage() {
             />
           </motion.div>
 
-          <motion.div variants={fadeUpItem} className="grid gap-6 lg:grid-cols-2">
+          <motion.div variants={fadeUpItem} className="grid grid-cols-1 gap-6 lg:grid-cols-2">
             <StudyProgressCard overall={OVERALL_PROGRESS} subjects={SUBJECT_PROGRESS} />
             <RecentActivityCard items={RECENT_ACTIVITY} />
           </motion.div>
 
-          <motion.div variants={fadeUpItem} className="grid gap-6 lg:grid-cols-3">
+          <motion.div variants={fadeUpItem} className="grid grid-cols-1 gap-6 lg:grid-cols-3">
             <StudyPlanCard tasks={TODAYS_STUDY_PLAN} />
             <PerformanceTrendCard data={PERFORMANCE_TREND} />
             <SubjectStrengthsCard subjects={SUBJECT_STRENGTHS} />
@@ -66,6 +67,8 @@ export function DashboardPage() {
           </motion.div>
         </motion.main>
       </div>
+
+      <MobileTabBar />
     </div>
   )
 }

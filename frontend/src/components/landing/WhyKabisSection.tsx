@@ -227,7 +227,7 @@ function FlashcardFloatCard() {
 export function WhyKabisSection() {
   return (
     <section className="overflow-hidden bg-[#2E0D0A] px-6 py-24 text-[#F3ECDC]">
-      <div className="mx-auto grid max-w-7xl items-center gap-16 lg:grid-cols-2">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-16 lg:grid-cols-2">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

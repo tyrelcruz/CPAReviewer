@@ -14,6 +14,7 @@ import { LoginPage } from '@/pages/LoginPage'
 import { MockExamsPage } from '@/pages/MockExamsPage'
 import { NotFoundPage } from '@/pages/NotFoundPage'
 import { QuizApp } from '@/pages/QuizApp'
+import { QuizDetailsPage } from '@/pages/QuizDetailsPage'
 import { SignUpPage } from '@/pages/SignUpPage'
 
 function App() {
@@ -69,6 +70,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <ChooseStrategyPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/app/choose-strategy/:quizSetId/details"
+              element={
+                <ProtectedRoute>
+                  <QuizDetailsPage />
                 </ProtectedRoute>
               }
             />

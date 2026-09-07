@@ -1,8 +1,9 @@
-import { ChevronLeft, LogOut, Menu, X } from 'lucide-react'
+import { ChevronLeft, LogOut, Menu, Sun, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 import { Logo } from '@/components/landing/Logo'
+import mountainLandscape from '@/assets/images/mountain_landscape.png'
 import kabisEmblem from '@/assets/logo/kabis_emblem.png'
 import { useAuth } from '@/context/AuthContext'
 import { NAV_ITEMS } from '@/data/nav-items'
@@ -100,21 +101,27 @@ function SidebarLogoutButton({
 
 function SidebarPromoCard() {
   return (
-    <div className="mx-4 mb-4 rounded-2xl border border-[#3A2A1A]/10 bg-white p-4">
-      <p className="text-center text-lg text-[#3A5A40]/70" aria-hidden="true">
-        〜◡〜
-      </p>
-      <p className="font-display mt-1 text-center text-lg leading-tight">
-        <span className="text-[#7A2323]">Pass smarter.</span>
+    <div className="relative mx-4 mb-4 overflow-hidden rounded-2xl border border-[#3A2A1A]/10 bg-white p-4">
+      <Sun className="mx-auto size-5 fill-[#E0AC48] text-[#E0AC48]" aria-hidden="true" />
+      <p className="font-display mt-2 text-center text-lg leading-tight text-[#7A2323] uppercase">
+        Pass smarter,
         <br />
-        <span className="text-[#3A5A40]">Not harder.</span>
+        not harder.
       </p>
-      <p className="font-reading mt-2 text-center text-xs text-[#3A2A1A]/70">
+      <p className="font-reading mt-2 text-center text-xs text-[#3A2A1A]/60">
         Focus your time on what really matters.
       </p>
-      <p className="mt-2 text-center text-sm text-[#3A5A40]/70" aria-hidden="true">
-        〜◡〜
+      <p className="mt-2 text-center text-sm text-[#3A5A40]/50" aria-hidden="true">
+        〜
       </p>
+      <div className="relative -mx-4 -mb-4 mt-1 h-20 w-[calc(100%+2rem)]">
+        <img
+          src={mountainLandscape}
+          alt=""
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-full w-full object-contain object-bottom"
+        />
+      </div>
     </div>
   )
 }

@@ -17,22 +17,24 @@ function defaultTopicCounts(topics: RfbtTopic[], total: number): Record<string, 
   return counts
 }
 
-// Only RFBT is ingested today (ReSA + REO + CPAR + REDEFINE question banks) —
-// extend this list as more subjects/centers are ingested via `npm run db:ingest`.
-const SUBJECTS = ['RFBT']
-const REVIEW_CENTERS = [
-  'ReSA - The Review School of Accountancy',
-  'REO CPA Review (Real Excellence Online)',
-  'CPA Review School of the Philippines (CPAR)',
-  'REDEFINE CPA Review School',
-]
+// extend these as more subjects/centers are ingested via `npm run db:ingest`.
+const SUBJECTS = ['RFBT', 'TAX']
+const REVIEW_CENTERS_BY_SUBJECT: Record<string, string[]> = {
+  RFBT: [
+    'ReSA - The Review School of Accountancy',
+    'REO CPA Review (Real Excellence Online)',
+    'CPA Review School of the Philippines (CPAR)',
+    'REDEFINE CPA Review School',
+  ],
+  TAX: ['ReSA - The Review School of Accountancy', 'CPAR', 'ReDeFine'],
+}
 const ITEM_COUNT_OPTIONS = [25, 50, 70, 100]
 
 export function ExamSetupPage() {
   const navigate = useNavigate()
   const [subject, setSubject] = useState(SUBJECTS[0])
   const [mode, setMode] = useState<ExamMode>('tos_simulator')
-  const [center, setCenter] = useState(REVIEW_CENTERS[0])
+  const [center, setCenter] = useState(REVIEW_CENTERS_BY_SUBJECT[SUBJECTS[0]][0])
   const [itemCount, setItemCount] = useState(70)
   const [isGenerating, setIsGenerating] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -112,7 +114,10 @@ export function ExamSetupPage() {
                   <button
                     key={s}
                     type="button"
-                    onClick={() => setSubject(s)}
+                    onClick={() => {
+                      setSubject(s)
+                      setCenter(REVIEW_CENTERS_BY_SUBJECT[s][0])
+                    }}
                     className={cn(
                       'rounded-full border px-4 py-2 text-sm font-semibold transition-colors',
                       subject === s
@@ -179,7 +184,7 @@ export function ExamSetupPage() {
                     onChange={(e) => setCenter(e.target.value)}
                     className="w-full rounded-xl border border-[#3A2A1A]/15 bg-white py-2.5 px-3.5 text-sm font-medium text-[#3A2A1A] outline-none focus:border-[#7A2323]/40"
                   >
-                    {REVIEW_CENTERS.map((c) => (
+                    {REVIEW_CENTERS_BY_SUBJECT[subject].map((c) => (
                       <option key={c} value={c}>
                         {c}
                       </option>

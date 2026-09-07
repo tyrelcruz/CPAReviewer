@@ -1,21 +1,16 @@
-import { ArrowLeft, ArrowRight, Layers, Lock, Sparkle, Target } from 'lucide-react'
+import { Lock, Sparkle } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
-import mountainLandscape from '@/assets/images/mountain_landscape.png'
-import kabisEmblem from '@/assets/logo/kabis_emblem.png'
 import { Sidebar } from '@/components/dashboard/Sidebar'
-import { STRATEGY_CARDS } from '@/components/quiz/StrategyOptions'
+import { DualQuizModesCard } from '@/components/quiz/DualQuizModesCard'
+import { COMING_SOON_KEYS, STRATEGY_CARDS } from '@/components/quiz/StrategyOptions'
+import { WizardAside } from '@/components/quiz/WizardAside'
+import { WizardHeader } from '@/components/quiz/WizardHeader'
 import { quizSets } from '@/data/quiz-data'
 import { fadeUpItem, staggerContainer } from '@/lib/motion'
 import { cn } from '@/lib/utils'
-
-const WIZARD_STEPS = ['Choose Strategy', 'Set Quiz Details', 'Start Exam']
-
-// Cross-Center Tagging and Variation Display aren't implemented yet — only
-// Dual Quiz Modes is backed by real functionality right now.
-const COMING_SOON_KEYS: (typeof STRATEGY_CARDS)[number]['key'][] = ['tagging', 'variants']
 
 export function ChooseStrategyPage() {
   const { quizSetId } = useParams()
@@ -59,47 +54,12 @@ export function ChooseStrategyPage() {
 
       <div className="min-w-0 flex-1">
         <main className="mx-auto max-w-[1400px] px-4 py-8 sm:px-6 lg:px-10 lg:py-12">
-          <button
-            type="button"
-            onClick={() => navigate('/app')}
-            className="inline-flex w-fit items-center gap-1.5 text-sm font-semibold text-[#3A2A1A]/70 transition-colors hover:text-[#7A2323]"
-          >
-            <ArrowLeft className="size-4" />
-            Back to Subjects
-          </button>
-
-          <div className="mt-5 flex flex-wrap items-center gap-x-8 gap-y-3">
-            <div>
-              <p className="font-display text-2xl text-[#7A2323]">{subjectCode}</p>
-              <p className="font-reading mt-0.5 text-xs font-semibold tracking-wide text-[#3A2A1A]/60 uppercase">
-                {subjectFullName}
-              </p>
-            </div>
-
-            <ol className="flex flex-wrap items-center gap-2">
-              {WIZARD_STEPS.map((step, i) => (
-                <li
-                  key={step}
-                  className={cn(
-                    'flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-semibold transition-colors',
-                    i === 0 ? 'bg-[#530b08] text-white' : 'bg-[#3A2A1A]/5 text-[#3A2A1A]/40',
-                  )}
-                >
-                  <span
-                    className={cn(
-                      'flex size-5 shrink-0 items-center justify-center rounded-full text-[10px] font-bold',
-                      i === 0
-                        ? 'bg-white text-[#530b08]'
-                        : 'border border-[#3A2A1A]/20 text-[#3A2A1A]/40',
-                    )}
-                  >
-                    {i + 1}
-                  </span>
-                  {step}
-                </li>
-              ))}
-            </ol>
-          </div>
+          <WizardHeader
+            subjectCode={subjectCode}
+            subjectFullName={subjectFullName}
+            activeStepIndex={0}
+            onBack={() => navigate('/app')}
+          />
 
           <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_20rem] lg:items-start lg:gap-10">
             <div className="min-w-0">
@@ -111,7 +71,7 @@ export function ChooseStrategyPage() {
               >
                 <motion.div variants={fadeUpItem}>
                   <div className="mb-3 flex items-center gap-3 text-xs font-semibold tracking-[0.2em] text-[#3A2A1A]/50 uppercase">
-                    <span>Step 1 of 3</span>
+                    <span>Step 1 of 2</span>
                     <span className="h-px flex-1 bg-[#3A2A1A]/15" />
                   </div>
                   <h1 className="font-display text-4xl leading-[1.05] uppercase sm:text-5xl">
@@ -129,18 +89,30 @@ export function ChooseStrategyPage() {
                   {STRATEGY_CARDS.map((card) => {
                     const selected = card.key === selectedKey
                     const isComingSoon = COMING_SOON_KEYS.includes(card.key)
+
+                    if (card.key === 'modes' && selected) {
+                      return (
+                        <motion.div key={card.key} variants={fadeUpItem}>
+                          <DualQuizModesCard
+                            selected={selected}
+                            onSelect={() => setSelectedKey(card.key)}
+                          />
+                        </motion.div>
+                      )
+                    }
+
                     return (
                       <motion.label
                         key={card.key}
                         variants={fadeUpItem}
                         className={cn(
-                          'flex items-start gap-5 rounded-2xl border p-5 transition-colors sm:p-6',
+                          'flex items-center gap-5 rounded-2xl border p-5 transition-colors sm:p-6',
                           isComingSoon
                             ? 'cursor-not-allowed border-[#3A2A1A]/10 bg-[#F3ECDC]/40 opacity-60 grayscale'
                             : cn(
                                 'cursor-pointer',
                                 selected
-                                  ? 'border-[#E0AC48] bg-white shadow-[0_0_0_1px_rgba(224,172,72,0.4)]'
+                                  ? 'border-[#3A5A40] bg-white shadow-[0_0_0_1px_rgba(58,90,64,0.35)]'
                                   : 'border-[#3A2A1A]/10 bg-white hover:border-[#3A2A1A]/20',
                               ),
                         )}
@@ -182,8 +154,8 @@ export function ChooseStrategyPage() {
                         {!isComingSoon && (
                           <span
                             className={cn(
-                              'mt-1 flex size-5 shrink-0 items-center justify-center rounded-full border-2 transition-colors',
-                              selected ? 'border-[#E0AC48] bg-[#E0AC48]' : 'border-[#3A2A1A]/20',
+                              'flex size-5 shrink-0 items-center justify-center rounded-full border-2 transition-colors',
+                              selected ? 'border-[#3A5A40] bg-[#3A5A40]' : 'border-[#3A2A1A]/20',
                             )}
                           >
                             {selected && <span className="size-2 rounded-full bg-white" />}
@@ -196,68 +168,12 @@ export function ChooseStrategyPage() {
               </motion.div>
             </div>
 
-            <aside className="relative flex flex-col gap-6 overflow-hidden rounded-3xl bg-[#530b08] p-6 text-[#F3ECDC] lg:sticky lg:top-8">
-              <img
-                src={kabisEmblem}
-                alt=""
-                aria-hidden="true"
-                className="mx-auto h-28 w-28 shrink-0 object-contain"
-              />
-
-              <div>
-                <p className="font-serif text-2xl font-bold text-white">{subjectCode}</p>
-                <p className="font-reading mt-1 text-xs font-semibold tracking-wide text-[#E0AC48] uppercase">
-                  {subjectFullName}
-                </p>
-              </div>
-
-              <div className="h-px bg-[#E0AC48]/40" />
-
-              <div className="flex items-start gap-3">
-                <Layers className="size-5 shrink-0 text-[#E0AC48]" />
-                <div>
-                  <p className="text-xs font-semibold tracking-wide text-[#E0AC48] uppercase">
-                    Strategy Component
-                  </p>
-                  <p className="font-reading mt-0.5 text-sm text-[#F3ECDC]">
-                    {STRATEGY_CARDS.length - COMING_SOON_KEYS.length} of {STRATEGY_CARDS.length}{' '}
-                    Available Now
-                  </p>
-                </div>
-              </div>
-
-              <div className="h-px bg-[#E0AC48]/40" />
-
-              <div className="flex items-start gap-3">
-                <Target className="size-5 shrink-0 text-[#E0AC48]" />
-                <div>
-                  <p className="text-xs font-semibold tracking-wide text-[#E0AC48] uppercase">
-                    Your Goal
-                  </p>
-                  <p className="font-reading mt-0.5 text-sm text-[#F3ECDC]">
-                    Build smarter. Pass stronger.
-                  </p>
-                </div>
-              </div>
-
-              <div className="relative -mx-6 mt-2 h-36 w-[calc(100%+3rem)] shrink-0 sm:h-44">
-                <img
-                  src={mountainLandscape}
-                  alt=""
-                  aria-hidden="true"
-                  className="pointer-events-none absolute inset-x-0 bottom-0 h-full w-full object-contain object-bottom opacity-90"
-                />
-              </div>
-
-              <button
-                type="button"
-                onClick={() => navigate(`/app/practice/${quizSet.id}`)}
-                className="relative z-10 flex items-center justify-center gap-2 rounded-full bg-[#E0AC48] px-6 py-3.5 text-sm font-bold tracking-wide text-[#3A2A1A] uppercase transition-transform hover:scale-[1.02]"
-              >
-                Continue
-                <ArrowRight className="size-4" />
-              </button>
-            </aside>
+            <WizardAside
+              subjectCode={subjectCode}
+              subjectFullName={subjectFullName}
+              ctaLabel="Continue"
+              onCta={() => navigate(`/app/choose-strategy/${quizSet.id}/details`)}
+            />
           </div>
         </main>
       </div>

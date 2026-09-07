@@ -1,8 +1,9 @@
-import { Bookmark, Clock, FileText, Gauge, Lock } from 'lucide-react'
+import { Bookmark, Clock, FileText, Gauge, Loader2, Lock } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+import { generateExam } from '@/api/exams'
 import { ProgressRing } from '@/components/quiz/ProgressRing'
 import type { MockExam } from '@/data/mock-exams-data'
 import { scoreColor } from '@/lib/score'
@@ -44,9 +45,29 @@ interface ExamListItemProps {
 export function ExamListItem({ exam }: ExamListItemProps) {
   const navigate = useNavigate()
   const [bookmarked, setBookmarked] = useState(false)
+  const [isGenerating, setIsGenerating] = useState(false)
   const Icon = exam.icon
   const scorePct = exam.taken ? Math.round((exam.taken.score / exam.taken.total) * 100) : null
-  const isAvailable = Boolean(exam.quizSetId)
+  const isAvailable = Boolean(exam.quizSetId || exam.bankExam)
+
+  async function handleStart() {
+    if (exam.quizSetId) {
+      navigate(exam.taken ? `/app/practice/${exam.quizSetId}` : `/app/choose-strategy/${exam.quizSetId}`)
+      return
+    }
+    if (!exam.bankExam) return
+    setIsGenerating(true)
+    try {
+      const session = await generateExam({
+        subject: exam.bankExam.subject,
+        mode: exam.bankExam.mode,
+        itemCount: exam.bankExam.itemCount,
+      })
+      navigate(`/app/exam/${session.sessionId}`, { state: { notice: session.notice ?? null } })
+    } catch {
+      setIsGenerating(false)
+    }
+  }
 
   return (
     <motion.div
@@ -148,25 +169,20 @@ export function ExamListItem({ exam }: ExamListItemProps) {
 
         <button
           type="button"
-          disabled={!isAvailable}
-          onClick={() => {
-            if (!exam.quizSetId) return
-            navigate(
-              exam.taken
-                ? `/app/practice/${exam.quizSetId}`
-                : `/app/choose-strategy/${exam.quizSetId}`,
-            )
-          }}
+          disabled={!isAvailable || isGenerating}
+          onClick={handleStart}
           className={cn(
-            'shrink-0 rounded-full px-5 py-2.5 text-sm font-semibold whitespace-nowrap transition-colors',
+            'flex shrink-0 items-center gap-1.5 rounded-full px-5 py-2.5 text-sm font-semibold whitespace-nowrap transition-colors',
             !isAvailable
               ? 'cursor-not-allowed border border-[#3A2A1A]/15 text-[#3A2A1A]/50'
               : exam.taken
                 ? 'bg-[#7A2323] text-[#F3ECDC] hover:bg-[#7A2323]/90'
                 : 'border border-[#E0AC48] text-[#B4791F] hover:bg-[#E0AC48]/10',
+            isGenerating && 'cursor-wait opacity-70',
           )}
         >
-          {!isAvailable ? 'Coming Soon' : exam.taken ? 'Review Results' : 'Start Exam'}
+          {isGenerating && <Loader2 className="size-3.5 animate-spin" />}
+          {!isAvailable ? 'Coming Soon' : isGenerating ? 'Preparing…' : exam.taken ? 'Review Results' : 'Start Exam'}
         </button>
       </div>
     </motion.div>

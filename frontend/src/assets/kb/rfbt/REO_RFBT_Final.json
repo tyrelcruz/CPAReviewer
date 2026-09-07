@@ -1008,7 +1008,7 @@
         "text": "Right to receive stock dividends"
       }
     ],
-    "correctChoiceId": "a",
+    "correctChoiceId": "d",
     "rationale": "Under Sec. 70 of the RCC, no delinquent stock shall be voted for, be entitled to vote, or be represented at any stockholders' meeting, nor shall the holder thereof be entitled to any of the rights of a stockholder except the right to dividends, until and unless the unpaid balance is fully settled; the right to vote is thus the right expressly suspended and withheld by the statute for as long as the shares remain delinquent.",
     "source": {
       "center": "REO CPA Review (Real Excellence Online)",
@@ -1502,7 +1502,7 @@
         "text": "21 days"
       }
     ],
-    "correctChoiceId": "d",
+    "correctChoiceId": "b",
     "rationale": "Under the Cooperative Code's rules on notice of special meetings, a special meeting of either the board of directors or the general assembly of a cooperative requires a written notice sent at least twenty-one (21) days before the scheduled date, stating the time, place, and purpose of the meeting, to give members and directors sufficient opportunity to prepare for the specific matters to be taken up.",
     "source": {
       "center": "REO CPA Review (Real Excellence Online)",
@@ -1540,8 +1540,8 @@
         "text": "Appeals and Grievances"
       }
     ],
-    "correctChoiceId": "d",
-    "rationale": "Under the Cooperative Code and its implementing rules on cooperative governance structures, the Appeals and Grievances Committee is composed of members elected directly by the General Assembly (rather than appointed by the Board of Directors), so that it can independently hear and resolve complaints, appeals, and grievances brought by members, including those that may involve the board itself.",
+    "correctChoiceId": "a",
+    "rationale": "Under the Cooperative Code and its IRR, the members of both the Audit Committee and the Election Committee are elected directly by the General Assembly, while the Mediation and Conciliation Committee, the Ethics Committee, and other committees are appointed by the Board of Directors.",
     "source": {
       "center": "REO CPA Review (Real Excellence Online)",
       "batch": "May 2026 CPALE Batch",
@@ -2946,8 +2946,8 @@
         "text": "All of the choices"
       }
     ],
-    "correctChoiceId": "c",
-    "rationale": "Holding company systems, as juridical entities organized primarily to hold and manage controlling interests in other companies, fall under the general corporate regulatory jurisdiction of the Securities and Exchange Commission; it is this SEC oversight of holding companies as corporate entities that brings them within the AMLA's definition of covered persons/institutions, distinguishing them from BSP-supervised banks or IC-supervised insurers.",
+    "correctChoiceId": "b",
+    "rationale": "Under the AMLA IRR, holding companies and holding company systems are considered covered institutions because they are supervised and/or regulated by the Insurance Commission (IC) — one of AMLA's three supervising authorities alongside the BSP and SEC.",
     "source": {
       "center": "REO CPA Review (Real Excellence Online)",
       "batch": "May 2026 CPALE Batch",

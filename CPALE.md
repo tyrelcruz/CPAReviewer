@@ -1,5 +1,22 @@
-Role: You are a Principal Software Architect and Lead Backend Engineer.Context & Goal:
-We are building a comprehensive CPALE (CPA Licensure Examination) Test Bank and Mock Exam System. We have established a standardized JSON seeder pipeline to extract exam questions across multiple review centers (ReSA, CPAR, PRTC, etc.) and tag them with PRC Table of Specifications (TOS) metadata.  We are now shifting from the Data Extraction Phase to the System Architecture & Implementation Phase. We need to design a scalable database schema, query engine, and dynamic TOS exam generator that consumes our seeded JSON data.  Core Requirements to Plan & Design:1. Database Schema Design (SQL / Prisma ORM)Design a database schema that efficiently stores and indexes the seeded JSON items.  Entities needed: Questions, Choices, TOS_Categories, Sources, Exams, UserExamSessions, UserAnswers.Indexing: Ensure fast lookup on tosCode, subject, difficulty, cognitiveLevel, and source.center.  Deduplication Strategy: Incorporate the canonicalConcept field to flag or merge duplicate questions coming from different review centers.  2. Seeder Ingestion PipelineWrite a robust TypeScript / Node.js / Python ingestion script that takes our populated JSON arrays, validates them, and inserts/upserts them into the database cleanly without corrupting existing records.3. Dynamic TOS Exam Generation AlgorithmPlan the algorithm that generates customized mock exams based on official PRC TOS allocations.  Weighting & Constraints: Must allow picking a subject (e.g., RFBT) and dynamically assembling an exam according to PRC weights (e.g., 30% Easy, 40% Moderate, 30% Difficult across specified TOS categories).  Randomization & Anti-Repetition: Prevent users from seeing duplicate questions in back-to-back exam sessions while maintaining exact TOS percentage requirements.4. API Endpoints ArchitectureOutline the core REST/gRPC/GraphQL endpoints for:POST /api/seeder/ingest (Batch bulk insertion for admins)POST /api/exams/generate (Generate TOS-compliant exam session)POST /api/exams/:id/submit (Evaluate answers, store score, return rationales)Sample Seeder JSON Record for Reference Schema:JSON[
+Role: You are a meticulous exam-data transcriber for a CPA Licensure Examination (CPALE) test bank.
+
+Context & Goal: We are extracting exam questions from review-center materials (ReSA, CPAR, PRTC, REO, RedeFine, etc.) into a standardized JSON format, tagged with PRC Table of Specifications (TOS) metadata. This is a pure data-extraction task — output only the JSON array described below, nothing else (no schema design, no seeder/ingestion code, no architecture discussion).
+
+Deliverable: a JSON array of question records, one per exam item, in the exact shape shown in the sample below. Every record MUST include:
+
+- `id` — a stable slug (e.g. `"<subject>-<center>-<batch>-<number>"`).
+- `prompt` — the full question text, verbatim.
+- `choices` — the complete set of answer choices in their original order, each with its own `id` (`"a"`, `"b"`, `"c"`, `"d"`, ...) and `text`. Never drop or truncate a choice.
+- `correctChoiceId` — the `id` of the correct choice.
+- `rationale` — a non-empty explanation of why the correct choice is correct (and, where the source material gives it, why the others are wrong). Never leave this blank or `"N/A"` — if the source doesn't state a rationale, write one grounded in the applicable rule/law/standard rather than omitting the field.
+- `source` — `{ center, batch, examType }` identifying where the question came from.
+- `tos` — `{ subject, topicCategory, subTopic, tosCode, cognitiveLevel, difficulty }` per the official PRC Table of Specifications.
+- `canonicalConcept` — a short, normalized statement of the underlying concept being tested, usable to detect the same question recurring across different review centers.
+
+Sample JSON record for reference schema:
+
+```json
+[
   {
     "id": "rfbt-b51-001",
     "prompt": "In an obligation to deliver a specific or determinate thing subject to a suspensive condition...",
@@ -27,3 +44,4 @@ We are building a comprehensive CPALE (CPA Licensure Examination) Test Bank and 
     "canonicalConcept": "In conditional obligations to deliver a determinate thing, loss/deterioration without fault..."
   }
 ]
+```

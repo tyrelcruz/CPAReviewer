@@ -1,17 +1,28 @@
 import { motion } from 'framer-motion'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 
 import { Sidebar } from '@/components/dashboard/Sidebar'
 import { TopNavbar } from '@/components/dashboard/TopNavbar'
 import { Quiz } from '@/components/quiz/Quiz'
 import { quizSets } from '@/data/quiz-data'
 
+interface QuizSetupState {
+  itemCount?: number
+  timeLimitSeconds?: number
+}
+
 export function QuizApp() {
   const { quizSetId } = useParams()
   const navigate = useNavigate()
+  const location = useLocation()
+  const setupState = location.state as QuizSetupState | null
   const selectedSet = quizSetId
     ? quizSets.find((set) => set.id === quizSetId)
     : quizSets[0]
+  const questions =
+    selectedSet && setupState?.itemCount
+      ? selectedSet.questions.slice(0, setupState.itemCount)
+      : selectedSet?.questions
 
   return (
     <div className="flex min-h-svh flex-col bg-[#F3ECDC] text-[#3A2A1A] lg:flex-row">
@@ -30,9 +41,10 @@ export function QuizApp() {
             >
               <Quiz
                 quizSetId={selectedSet.id}
-                questions={selectedSet.questions}
+                questions={questions ?? selectedSet.questions}
                 code={selectedSet.code}
                 onBack={() => navigate('/app')}
+                timeLimitSeconds={setupState?.timeLimitSeconds}
               />
             </motion.div>
           ) : (

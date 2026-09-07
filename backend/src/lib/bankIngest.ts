@@ -41,6 +41,53 @@ interface ExistingQuestionRow extends RowDataPacket {
   rationale: string
 }
 
+interface TosCategoryRow extends RowDataPacket {
+  tos_code: string
+  topic_category: string
+  sub_topic: string
+}
+
+/**
+ * tos_code is only guaranteed unique within one center's own kb file — independently
+ * authored files (or even different questions in the same file) can reuse the same
+ * code for a different topic/sub-topic. Blindly upserting would silently overwrite
+ * the earlier mapping and mislabel already-ingested questions. Instead, resolve to
+ * the existing code if the topic/sub-topic already matches, otherwise mint a
+ * disambiguated code (tos_code~1, ~2, ...) and reuse it consistently on reruns.
+ */
+async function resolveTosCode(
+  subject: string,
+  tosCode: string,
+  topicCategory: string,
+  subTopic: string,
+): Promise<string> {
+  let candidate = tosCode
+  let suffix = 0
+
+  while (true) {
+    const [rows] = await pool.query<TosCategoryRow[]>(
+      'SELECT tos_code, topic_category, sub_topic FROM tos_categories WHERE subject = ? AND tos_code = ?',
+      [subject, candidate],
+    )
+    const existing = rows[0]
+
+    if (!existing) {
+      await pool.query(
+        `INSERT INTO tos_categories (tos_code, subject, topic_category, sub_topic)
+         VALUES (?, ?, ?, ?)`,
+        [candidate, subject, topicCategory, subTopic],
+      )
+      return candidate
+    }
+    if (existing.topic_category === topicCategory && existing.sub_topic === subTopic) {
+      return candidate
+    }
+
+    suffix += 1
+    candidate = `${tosCode}~${suffix}`
+  }
+}
+
 const VALID_DIFFICULTIES = new Set(['Easy', 'Moderate', 'Difficult'])
 const PLACEHOLDER_RATIONALE_PATTERN = /not provided/i
 
@@ -128,20 +175,17 @@ export async function ingestBankQuestions(records: unknown[]): Promise<IngestRes
 
     const record = raw
 
-    await pool.query(
-      `INSERT INTO tos_categories (tos_code, subject, topic_category, sub_topic)
-       VALUES (?, ?, ?, ?)
-       ON DUPLICATE KEY UPDATE
-         subject = VALUES(subject),
-         topic_category = VALUES(topic_category),
-         sub_topic = VALUES(sub_topic)`,
-      [record.tos.tosCode, record.tos.subject, record.tos.topicCategory, record.tos.subTopic],
+    const tosCode = await resolveTosCode(
+      record.tos.subject,
+      record.tos.tosCode,
+      record.tos.topicCategory,
+      record.tos.subTopic,
     )
 
     const conceptHash = hashConcept(record.canonicalConcept)
     const [existingRows] = await pool.query<ExistingQuestionRow[]>(
-      'SELECT id, rationale FROM bank_questions WHERE canonical_concept_hash = ? LIMIT 1',
-      [conceptHash],
+      'SELECT id, rationale FROM bank_questions WHERE canonical_concept_hash = ? AND subject = ? LIMIT 1',
+      [conceptHash, record.tos.subject],
     )
     const existing = existingRows[0]
 
@@ -174,15 +218,16 @@ export async function ingestBankQuestions(records: unknown[]): Promise<IngestRes
 
     await pool.query(
       `INSERT INTO bank_questions
-         (id, tos_code, cognitive_level, difficulty, prompt, correct_choice_id, rationale, canonical_concept, canonical_concept_hash)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+         (id, subject, tos_code, cognitive_level, difficulty, prompt, correct_choice_id, rationale, canonical_concept, canonical_concept_hash)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
        ON DUPLICATE KEY UPDATE
          prompt = VALUES(prompt),
          correct_choice_id = VALUES(correct_choice_id),
          rationale = VALUES(rationale)`,
       [
         record.id,
-        record.tos.tosCode,
+        record.tos.subject,
+        tosCode,
         record.tos.cognitiveLevel,
         record.tos.difficulty,
         record.prompt,

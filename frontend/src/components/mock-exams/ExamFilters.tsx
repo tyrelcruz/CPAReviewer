@@ -106,7 +106,7 @@ export function ExamFilters({
         variants={listStagger}
         initial="hidden"
         animate="show"
-        className="flex flex-wrap gap-2.5"
+        className="-mx-4 flex flex-nowrap gap-2.5 overflow-x-auto px-4 pb-1 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 sm:pb-0"
       >
         {TABS.map((tab) => {
           const isActive = tab.key === typeFilter
@@ -119,7 +119,7 @@ export function ExamFilters({
               whileTap={{ scale: 0.97 }}
               onClick={() => onTypeChange(tab.key)}
               className={cn(
-                'flex items-center gap-2 rounded-full border px-4 py-2.5 text-sm font-semibold transition-colors',
+                'flex shrink-0 items-center gap-2 rounded-full border px-4 py-2.5 text-sm font-semibold whitespace-nowrap transition-colors',
                 isActive
                   ? 'border-transparent bg-[#3A5A40] text-white'
                   : 'border-[#3A2A1A]/15 text-[#3A2A1A]/80 hover:bg-[#3A2A1A]/5',
@@ -134,15 +134,18 @@ export function ExamFilters({
 
       <div className="flex flex-wrap items-end gap-3">
         <div className="grid min-w-0 flex-1 grid-cols-2 gap-3 sm:grid-cols-4">
-          <FilterSelect
-            label="Exam Type"
-            value={TYPE_OPTIONS.find((o) => o.value === typeFilter)?.label ?? 'All'}
-            options={TYPE_OPTIONS.map((o) => o.label)}
-            onChange={(label) => {
-              const match = TYPE_OPTIONS.find((o) => o.label === label)
-              if (match) onTypeChange(match.value)
-            }}
-          />
+          {/* Redundant with the type pills above at mobile width — only shown once there's room, sm: and up. */}
+          <div className="hidden sm:contents">
+            <FilterSelect
+              label="Exam Type"
+              value={TYPE_OPTIONS.find((o) => o.value === typeFilter)?.label ?? 'All'}
+              options={TYPE_OPTIONS.map((o) => o.label)}
+              onChange={(label) => {
+                const match = TYPE_OPTIONS.find((o) => o.label === label)
+                if (match) onTypeChange(match.value)
+              }}
+            />
+          </div>
           <FilterSelect
             label="Subject"
             value={subjectFilter}
@@ -161,9 +164,21 @@ export function ExamFilters({
             options={DURATION_OPTIONS}
             onChange={onDurationChange}
           />
+          {/* Sort fills the 4th grid slot at mobile width; the icon-styled select below takes over at sm: and up. */}
+          <div className="sm:hidden">
+            <FilterSelect
+              label="Sort By"
+              value={SORT_OPTIONS.find((o) => o.value === sort)?.label ?? 'Most Recent'}
+              options={SORT_OPTIONS.map((o) => o.label)}
+              onChange={(label) => {
+                const match = SORT_OPTIONS.find((o) => o.label === label)
+                if (match) onSortChange(match.value)
+              }}
+            />
+          </div>
         </div>
 
-        <div className="relative">
+        <div className="relative hidden sm:block">
           <select
             value={SORT_OPTIONS.find((o) => o.value === sort)?.label}
             onChange={(e) => {
