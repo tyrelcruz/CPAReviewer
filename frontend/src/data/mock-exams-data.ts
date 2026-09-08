@@ -2,6 +2,7 @@ import {
   BarChart3,
   BookOpen,
   ClipboardList,
+  Landmark,
   Percent,
   Target,
   type LucideIcon,
@@ -26,7 +27,7 @@ export interface MockExam {
   /** Present for exams backed by the ingested question bank (see api/exams.ts) — generated on demand via /api/exams/generate. */
   bankExam?: {
     subject: string
-    mode: 'tos_simulator' | 'review_center_drill'
+    mode: 'tos_simulator' | 'subject_drill'
     itemCount: number
   }
   taken?: {
@@ -80,8 +81,8 @@ export const MOCK_EXAMS: MockExam[] = [
   },
   {
     id: 'taxation-final-all-centers',
-    title: 'TAXATION Final Exam (All Review Center)',
-    description: 'Cross-center ReSA Taxation final pre-board question pool',
+    title: 'TAXATION Final Exam (All Sources)',
+    description: 'Cross-source Taxation final pre-board question pool',
     type: 'full-length',
     subject: 'Taxation',
     difficulty: 'Mixed',
@@ -90,6 +91,19 @@ export const MOCK_EXAMS: MockExam[] = [
     icon: Percent,
     iconBg: '#3A5A40',
     bankExam: { subject: 'TAX', mode: 'tos_simulator', itemCount: 70 },
+  },
+  {
+    id: 'rfbt-final-all-sources',
+    title: 'RFBT Final Exam (All Sources)',
+    description: 'Cross-source RFBT final pre-board question pool',
+    type: 'full-length',
+    subject: 'RFBT',
+    difficulty: 'Mixed',
+    durationMinutes: 240,
+    itemCount: 70,
+    icon: Landmark,
+    iconBg: '#7A2323',
+    bankExam: { subject: 'RFBT', mode: 'tos_simulator', itemCount: 70 },
   },
   {
     id: 'rfbt-partnership',

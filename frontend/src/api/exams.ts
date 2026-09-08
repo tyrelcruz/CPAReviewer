@@ -12,7 +12,6 @@ interface GenerateExamParams {
   mode: ExamMode
   /** Required unless topicCounts is provided (RFBT tos_simulator only). */
   itemCount?: number
-  center?: string
   /** RFBT tos_simulator only — overrides the default TOS percentages with exact per-topic counts. */
   topicCounts?: Record<string, number>
 }

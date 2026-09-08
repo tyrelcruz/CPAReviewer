@@ -1,9 +1,11 @@
 import { CheckCircle2 } from 'lucide-react'
 
+import type { ExamMode } from '@/types/bank'
+
 const SOURCE_TAGS = [
-  { label: "CPAR PB '26", color: '#E0AC48' },
-  { label: "REO PB '26", color: '#3A5A40' },
-  { label: "ReSA PB '26", color: '#7A2323' },
+  { label: 'Source A', color: '#E0AC48' },
+  { label: 'Source B', color: '#3A5A40' },
+  { label: 'Source C', color: '#7A2323' },
 ]
 
 export function SourceStackIcon() {
@@ -45,7 +47,7 @@ export function DualModeIcon() {
       </div>
       <div className="relative flex h-16 w-14 rotate-3 flex-col gap-1.5 rounded-lg border-2 border-[#E0AC48]/60 bg-white p-2 pt-3 shadow-sm">
         <span className="absolute -top-2 left-2 rounded-full bg-[#E0AC48] px-1.5 py-0.5 text-[8px] font-bold text-[#3A2A1A]">
-          CENTER
+          DRILL
         </span>
         <span className="h-1.5 w-8 rounded-full bg-[#3A2A1A]/15" />
         <span className="h-1.5 w-6 rounded-full bg-[#3A2A1A]/15" />
@@ -85,35 +87,47 @@ export interface StrategyCard {
   whyText: string
 }
 
-// Cross-Center Tagging isn't implemented yet. Dual Quiz Modes and Variation
-// Display are both selectable now.
-export const COMING_SOON_KEYS: StrategyCard['key'][] = ['tagging']
+// All three strategies are live and selectable.
+export const COMING_SOON_KEYS: StrategyCard['key'][] = []
+
+/**
+ * Exam-generation template each strategy maps to today. 'tagging' (AI
+ * Variation Mode) has no distinct backend behavior yet — the AI
+ * variant-generation algorithm is still being built — so for now it
+ * templates to the same default as the others; swap its entry here once
+ * that algorithm has a real mode/config to drive.
+ */
+export const STRATEGY_MODE_TEMPLATE: Record<StrategyCard['key'], ExamMode> = {
+  tagging: 'tos_simulator',
+  modes: 'tos_simulator',
+  variants: 'tos_simulator',
+}
 
 export const STRATEGY_CARDS: StrategyCard[] = [
   {
     key: 'tagging',
     Icon: SourceStackIcon,
-    title: 'Cross-Center Tagging',
+    title: 'AI Variation Mode',
     description:
-      "Merge duplicate questions into a single canonical entry, but tag each review center that featured it (e.g., Sources: [CPAR PB '26, REO PB '26]).",
-    whyLabel: 'Why it outperforms raw question dumps',
+      'AI generates fresh, original variants of each question — same underlying concept, new numbers and scenario — so repeat practice never feels like memorizing the same item.',
+    whyLabel: 'Why it works',
     whyText:
-      'Eliminates redundant grinding while showing you exactly how multiple centers present the same core concept.',
+      'Forces real understanding of the concept instead of pattern-matching a memorized question.',
   },
   {
     key: 'modes',
     Icon: DualModeIcon,
-    title: 'Dual Quiz Modes',
+    title: 'TOS Simulator Mode',
     description:
-      'TOS Simulator Mode assembles exams strictly to match PRC TOS weights and difficulty ratios. Review Center Drill Mode filters quizzes to questions unique to CPAR, ReSA, REO, Pinnacle, or Redefine.',
+      'Assembles exams strictly to match official PRC TOS weights and difficulty ratios, so every practice session mirrors the real exam blueprint.',
     whyLabel: 'Why it works',
     whyText:
-      'Gives examinees the exact preboard experience when desired, while keeping daily practice grounded in actual exam blueprints.',
+      'Gives you the exact exam-day experience every time, keeping practice grounded in the real PRC blueprint instead of a random mix of questions.',
   },
   {
     key: 'variants',
     Icon: VariantsIcon,
-    title: 'Variation Display',
+    title: 'Quiz Mode',
     description:
       'For questions testing the same standard with slight variations in numbers or wording, group them as "Variants" under the same sub-topic.',
     whyLabel: 'Why it works',

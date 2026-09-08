@@ -20,9 +20,8 @@ import { quizSets } from '@/data/quiz-data'
 import { fadeUpItem, staggerContainer } from '@/lib/motion'
 import { cn } from '@/lib/utils'
 
-type QuizMode = 'tos_simulator' | 'review_center_drill'
+type QuizMode = 'tos_simulator' | 'subject_drill'
 
-const REVIEW_CENTERS = ['CPAR', 'ReSA', 'REO', 'Pinnacle', 'Redefine']
 const ITEM_COUNT_OPTIONS = [25, 50, 70, 100]
 const TIME_LIMIT_OPTIONS = [
   { seconds: 30 * 60, label: '00:30:00' },
@@ -37,7 +36,6 @@ export function QuizDetailsPage() {
   const navigate = useNavigate()
 
   const [mode, setMode] = useState<QuizMode>('tos_simulator')
-  const [center, setCenter] = useState(REVIEW_CENTERS[0])
   const [itemCount, setItemCount] = useState(70)
   const [customRatio, setCustomRatio] = useState(false)
   const [timeLimitEnabled, setTimeLimitEnabled] = useState(true)
@@ -137,37 +135,12 @@ export function QuizDetailsPage() {
                         Icon={Target}
                       />
                       <ModeCard
-                        selected={mode === 'review_center_drill'}
-                        onClick={() => setMode('review_center_drill')}
-                        title="Review Center Drill Mode"
-                        description="Practice questions from specific review centers (CPAR, ReSA, REO, Pinnacle, or Redefine)."
+                        selected={mode === 'subject_drill'}
+                        onClick={() => setMode('subject_drill')}
+                        title="Subject Drill Mode"
+                        description="Plain practice across the whole subject, no TOS blueprint weighting."
                         Icon={Landmark}
                       />
-                    </div>
-                  </SettingRow>
-
-                  <SettingRow
-                    icon={Landmark}
-                    label="Review Center"
-                    description="Select a review center (only for Drill Mode)."
-                  >
-                    <div className="flex flex-wrap gap-2">
-                      {REVIEW_CENTERS.map((c) => (
-                        <button
-                          key={c}
-                          type="button"
-                          disabled={mode !== 'review_center_drill'}
-                          onClick={() => setCenter(c)}
-                          className={cn(
-                            'rounded-full border px-4 py-2 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50',
-                            center === c
-                              ? 'border-transparent bg-[#7A2323] text-white'
-                              : 'border-[#3A2A1A]/15 text-[#3A2A1A]/80 hover:enabled:bg-[#3A2A1A]/5',
-                          )}
-                        >
-                          {c}
-                        </button>
-                      ))}
                     </div>
                   </SettingRow>
 
@@ -251,7 +224,7 @@ export function QuizDetailsPage() {
                       </p>
                       <p className="font-reading mt-0.5 text-sm text-[#3A2A1A]/80">
                         TOS Simulator Mode is best for exam simulation, while Drill Mode helps you
-                        focus on specific review centers and their unique questions.
+                        practice a subject without worrying about the official topic weighting.
                       </p>
                     </div>
                   </div>

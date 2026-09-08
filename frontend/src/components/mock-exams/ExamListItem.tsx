@@ -1,17 +1,12 @@
-import { Bookmark, Clock, FileText, Gauge, Loader2, Lock, PlayCircle } from 'lucide-react'
+import { Bookmark, Clock, FileText, Gauge, Lock, PlayCircle } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { generateExam } from '@/api/exams'
 import { ProgressRing } from '@/components/quiz/ProgressRing'
 import { useAuth } from '@/context/AuthContext'
 import type { MockExam } from '@/data/mock-exams-data'
-import {
-  getExamProgress,
-  getInProgressSessionPointer,
-  saveInProgressSessionPointer,
-} from '@/lib/examProgress'
+import { getExamProgress, getInProgressSessionPointer } from '@/lib/examProgress'
 import { scoreColor } from '@/lib/score'
 import { cn } from '@/lib/utils'
 
@@ -53,7 +48,6 @@ export function ExamListItem({ exam }: ExamListItemProps) {
   const { user } = useAuth()
   const userId = user?.id ?? ''
   const [bookmarked, setBookmarked] = useState(false)
-  const [isGenerating, setIsGenerating] = useState(false)
   const Icon = exam.icon
   const scorePct = exam.taken ? Math.round((exam.taken.score / exam.taken.total) * 100) : null
   const isAvailable = Boolean(exam.quizSetId || exam.bankExam)
@@ -72,7 +66,7 @@ export function ExamListItem({ exam }: ExamListItemProps) {
       : null
   const isInProgress = Boolean(progress) && !exam.taken
 
-  async function handleStart() {
+  function handleStart() {
     if (exam.quizSetId) {
       if (isInProgress) {
         navigate(`/app/practice/${exam.quizSetId}`)
@@ -88,18 +82,9 @@ export function ExamListItem({ exam }: ExamListItemProps) {
       navigate(`/app/exam/${inProgressBankSessionId}`)
       return
     }
-    setIsGenerating(true)
-    try {
-      const session = await generateExam({
-        subject: exam.bankExam.subject,
-        mode: exam.bankExam.mode,
-        itemCount: exam.bankExam.itemCount,
-      })
-      saveInProgressSessionPointer(userId, bankConfigKey!, session.sessionId)
-      navigate(`/app/exam/${session.sessionId}`, { state: { notice: session.notice ?? null } })
-    } catch {
-      setIsGenerating(false)
-    }
+    // Route through Choose Your Strategy first (same as the old quiz-set
+    // flow) so the learner picks a strategy template before Exam Setup.
+    navigate(`/app/choose-strategy/${exam.bankExam.subject}`)
   }
 
   return (
@@ -210,7 +195,7 @@ export function ExamListItem({ exam }: ExamListItemProps) {
 
         <button
           type="button"
-          disabled={!isAvailable || isGenerating}
+          disabled={!isAvailable}
           onClick={handleStart}
           className={cn(
             'flex shrink-0 items-center gap-1.5 rounded-full px-5 py-2.5 text-sm font-semibold whitespace-nowrap transition-colors',
@@ -221,19 +206,15 @@ export function ExamListItem({ exam }: ExamListItemProps) {
                 : exam.taken
                   ? 'bg-[#7A2323] text-[#F3ECDC] hover:bg-[#7A2323]/90'
                   : 'border border-[#E0AC48] text-[#B4791F] hover:bg-[#E0AC48]/10',
-            isGenerating && 'cursor-wait opacity-70',
           )}
         >
-          {isGenerating && <Loader2 className="size-3.5 animate-spin" />}
           {!isAvailable
             ? 'Coming Soon'
-            : isGenerating
-              ? 'Preparing…'
-              : isInProgress
-                ? 'Resume Exam'
-                : exam.taken
-                  ? 'Review Results'
-                  : 'Start Exam'}
+            : isInProgress
+              ? 'Resume Exam'
+              : exam.taken
+                ? 'Review Results'
+                : 'Start Exam'}
         </button>
       </div>
     </motion.div>

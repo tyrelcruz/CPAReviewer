@@ -5,9 +5,7 @@ import { Link } from 'react-router-dom'
 import { Logo } from '@/components/landing/Logo'
 
 const NAV_LINKS = [
-  'Product',
   'Subjects',
-  'Question Bank',
   'Mock Exams',
   'Pricing',
   'Resources',

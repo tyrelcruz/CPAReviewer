@@ -55,7 +55,7 @@ export function buildCombinedAttempts(
     subjectCode: session.subject,
     subjectLabel: SUBJECT_LABELS[session.subject] ?? session.subject,
     title: `Completed ${session.subject} ${
-      session.mode === 'tos_simulator' ? 'TOS Simulator' : 'Review Center Drill'
+      session.mode === 'tos_simulator' ? 'TOS Simulator' : 'Subject Drill'
     } Exam`,
     correct: session.score,
     total: session.itemCount,

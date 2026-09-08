@@ -8,15 +8,12 @@ import { ingestBankQuestions } from '../lib/bankIngest.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
-const DEFAULT_FILES = [
-  '../../../frontend/src/assets/kb/rfbt/ReSA_RFBT_Final.json',
-  '../../../frontend/src/assets/kb/rfbt/REO_RFBT_Final.json',
-  '../../../frontend/src/assets/kb/rfbt/CPAR_RFBT_Final.json',
-  '../../../frontend/src/assets/kb/rfbt/RedeFine_RFBT_Final.json',
-  '../../../frontend/src/assets/kb/tax/ReSA_Tax_Final.json',
-  '../../../frontend/src/assets/kb/tax/CPAR_Tax_Final.json',
-  '../../../frontend/src/assets/kb/tax/Redefine_Tax_Final.json',
-]
+// No default files: the KB used to ship verbatim competitor exam content
+// (REO/CPAR/ReSA/RedeFine "Final Preboard Examination" questions), which was
+// purged for copyright reasons. Only originally-authored question sets
+// (source.center set to something like "Original", not a competitor name)
+// belong here going forward — pass their path(s) as CLI args to this script.
+const DEFAULT_FILES: string[] = []
 
 async function ingest() {
   const args = process.argv.slice(2)

@@ -15,7 +15,7 @@ import {
 
 export const examsRouter = Router()
 
-type ExamMode = 'tos_simulator' | 'review_center_drill'
+type ExamMode = 'tos_simulator' | 'subject_drill'
 
 const DEFAULT_DIFFICULTY_WEIGHTS = { Easy: 0.3, Moderate: 0.4, Difficult: 0.3 }
 const MAX_ITEM_COUNT = 200
@@ -167,18 +167,14 @@ async function fetchSessionQuestions(sessionId: string): Promise<SessionQuestion
 }
 
 examsRouter.post('/generate', asyncHandler(async (req, res) => {
-  const { subject, mode, itemCount, center, topicCounts } = req.body ?? {}
+  const { subject, mode, itemCount, topicCounts } = req.body ?? {}
 
   if (typeof subject !== 'string' || !subject) {
     res.status(400).json({ error: 'subject is required' })
     return
   }
-  if (mode !== 'tos_simulator' && mode !== 'review_center_drill') {
-    res.status(400).json({ error: "mode must be 'tos_simulator' or 'review_center_drill'" })
-    return
-  }
-  if (mode === 'review_center_drill' && (typeof center !== 'string' || !center)) {
-    res.status(400).json({ error: 'center is required for review_center_drill mode' })
+  if (mode !== 'tos_simulator' && mode !== 'subject_drill') {
+    res.status(400).json({ error: "mode must be 'tos_simulator' or 'subject_drill'" })
     return
   }
 
@@ -223,19 +219,12 @@ examsRouter.post('/generate', asyncHandler(async (req, res) => {
     requestedItemCount = itemCount
   }
 
-  const conditions = ['tc.subject = ?']
-  const params: unknown[] = [subject]
-  if (mode === 'review_center_drill') {
-    conditions.push('EXISTS (SELECT 1 FROM bank_sources bs WHERE bs.question_id = bq.id AND bs.center = ?)')
-    params.push(center)
-  }
-
   const [poolRows] = await pool.query<PoolRow[]>(
     `SELECT bq.id, bq.difficulty, tc.sub_topic
      FROM bank_questions bq
      JOIN tos_categories tc ON tc.subject = bq.subject AND tc.tos_code = bq.tos_code
-     WHERE ${conditions.join(' AND ')}`,
-    params,
+     WHERE tc.subject = ?`,
+    [subject],
   )
 
   if (poolRows.length === 0) {
@@ -254,8 +243,8 @@ examsRouter.post('/generate', asyncHandler(async (req, res) => {
   const recentlySeenIds = new Set(historyRows.map((r) => r.question_id as string))
 
   // The official RFBT TOS category table only governs tos_simulator mode —
-  // review_center_drill intentionally scopes to one center's full question
-  // set, not the PRC blueprint.
+  // subject_drill intentionally skips the PRC blueprint weighting in favor
+  // of a plain difficulty-balanced draw across the whole subject.
   const useCategoryTable = subject === 'RFBT' && mode === 'tos_simulator'
 
   let selected: PoolRow[]
@@ -308,9 +297,9 @@ examsRouter.post('/generate', asyncHandler(async (req, res) => {
 
   const sessionId = randomUUID()
   await pool.query(
-    `INSERT INTO exam_sessions (id, user_id, subject, mode, center_filter, item_count)
-     VALUES (?, ?, ?, ?, ?, ?)`,
-    [sessionId, req.user!.id, subject, mode, mode === 'review_center_drill' ? center : null, selected.length],
+    `INSERT INTO exam_sessions (id, user_id, subject, mode, item_count)
+     VALUES (?, ?, ?, ?, ?)`,
+    [sessionId, req.user!.id, subject, mode, selected.length],
   )
 
   for (const [index, question] of selected.entries()) {
@@ -416,7 +405,6 @@ examsRouter.get('/:id', asyncHandler(async (req, res) => {
     sessionId: session.id,
     subject: session.subject,
     mode: session.mode,
-    centerFilter: session.center_filter,
     itemCount: session.item_count,
     score: session.score,
     submitted: Boolean(session.submitted_at),

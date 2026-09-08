@@ -1,30 +1,35 @@
-import { Lock, Sparkle } from 'lucide-react'
+import { Sparkle } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import { Sidebar } from '@/components/dashboard/Sidebar'
-import { CrossCenterTaggingCard } from '@/components/quiz/CrossCenterTaggingCard'
+import { AiVariationModeCard } from '@/components/quiz/AiVariationModeCard'
 import { DualQuizModesCard } from '@/components/quiz/DualQuizModesCard'
-import { COMING_SOON_KEYS, STRATEGY_CARDS } from '@/components/quiz/StrategyOptions'
+import { STRATEGY_CARDS, STRATEGY_MODE_TEMPLATE } from '@/components/quiz/StrategyOptions'
 import { VariantsDisplayCard } from '@/components/quiz/VariantsDisplayCard'
 import { WizardAside } from '@/components/quiz/WizardAside'
 import { WizardHeader } from '@/components/quiz/WizardHeader'
-import { quizSets } from '@/data/quiz-data'
 import { fadeUpItem, staggerContainer } from '@/lib/motion'
 import { cn } from '@/lib/utils'
 
+// Full display name per subject code, ingested-content subjects only — the
+// same lineup ExamSetupPage's SUBJECT_DEFS selects from.
+const SUBJECT_LABELS: Record<string, string> = {
+  RFBT: 'Regulatory Framework for Business Transactions',
+  TAX: 'Taxation',
+}
+
 export function ChooseStrategyPage() {
-  const { quizSetId } = useParams()
+  const { subject } = useParams()
   const navigate = useNavigate()
   const [selectedKey, setSelectedKey] = useState<(typeof STRATEGY_CARDS)[number]['key']>(
-    STRATEGY_CARDS.find((card) => !COMING_SOON_KEYS.includes(card.key))?.key ??
-      STRATEGY_CARDS[0].key,
+    STRATEGY_CARDS[0].key,
   )
 
-  const quizSet = quizSetId ? quizSets.find((set) => set.id === quizSetId) : undefined
+  const subjectFullName = subject ? SUBJECT_LABELS[subject] : undefined
 
-  if (!quizSet) {
+  if (!subject || !subjectFullName) {
     return (
       <div className="flex min-h-svh bg-[#FBF3EA] text-[#3A2A1A]">
         <Sidebar />
@@ -47,8 +52,7 @@ export function ChooseStrategyPage() {
     )
   }
 
-  const subjectCode = quizSet.code ?? quizSet.title
-  const subjectFullName = quizSet.description.split(' — ')[0]
+  const subjectCode = subject
 
   return (
     <div className="flex min-h-svh bg-[#FBF3EA] text-[#3A2A1A]">
@@ -90,12 +94,14 @@ export function ChooseStrategyPage() {
                 <div role="radiogroup" aria-label="Exam strategy" className="flex flex-col gap-4">
                   {STRATEGY_CARDS.map((card) => {
                     const selected = card.key === selectedKey
-                    const isComingSoon = COMING_SOON_KEYS.includes(card.key)
 
-                    if (card.key === 'tagging') {
+                    if (card.key === 'tagging' && selected) {
                       return (
                         <motion.div key={card.key} variants={fadeUpItem}>
-                          <CrossCenterTaggingCard />
+                          <AiVariationModeCard
+                            selected={selected}
+                            onSelect={() => setSelectedKey(card.key)}
+                          />
                         </motion.div>
                       )
                     }
@@ -127,15 +133,10 @@ export function ChooseStrategyPage() {
                         key={card.key}
                         variants={fadeUpItem}
                         className={cn(
-                          'flex items-center gap-5 rounded-2xl border p-5 transition-colors sm:p-6',
-                          isComingSoon
-                            ? 'cursor-not-allowed border-[#3A2A1A]/10 bg-[#F3ECDC]/40 opacity-60 grayscale'
-                            : cn(
-                                'cursor-pointer',
-                                selected
-                                  ? 'border-[#3A5A40] bg-white shadow-[0_0_0_1px_rgba(58,90,64,0.35)]'
-                                  : 'border-[#3A2A1A]/10 bg-white hover:border-[#3A2A1A]/20',
-                              ),
+                          'flex cursor-pointer items-center gap-5 rounded-2xl border p-5 transition-colors sm:p-6',
+                          selected
+                            ? 'border-[#3A5A40] bg-white shadow-[0_0_0_1px_rgba(58,90,64,0.35)]'
+                            : 'border-[#3A2A1A]/10 bg-white hover:border-[#3A2A1A]/20',
                         )}
                       >
                         <input
@@ -143,7 +144,6 @@ export function ChooseStrategyPage() {
                           name="strategy"
                           value={card.key}
                           checked={selected}
-                          disabled={isComingSoon}
                           onChange={() => setSelectedKey(card.key)}
                           className="sr-only"
                         />
@@ -151,17 +151,9 @@ export function ChooseStrategyPage() {
                           <card.Icon />
                         </div>
                         <div className="min-w-0 flex-1">
-                          <div className="flex flex-wrap items-center gap-2">
-                            <h3 className="font-serif text-lg font-bold text-[#7A2323] uppercase">
-                              {card.title}
-                            </h3>
-                            {isComingSoon && (
-                              <span className="inline-flex items-center gap-1 rounded-full bg-[#3A2A1A]/10 px-2 py-0.5 text-[10px] font-bold tracking-wide text-[#3A2A1A]/70 uppercase">
-                                <Lock className="size-2.5" />
-                                Coming Soon
-                              </span>
-                            )}
-                          </div>
+                          <h3 className="font-serif text-lg font-bold text-[#7A2323] uppercase">
+                            {card.title}
+                          </h3>
                           <p className="font-reading mt-1.5 text-sm text-[#3A2A1A]/75">
                             {card.description}
                           </p>
@@ -172,16 +164,14 @@ export function ChooseStrategyPage() {
                             </p>
                           </div>
                         </div>
-                        {!isComingSoon && (
-                          <span
-                            className={cn(
-                              'flex size-5 shrink-0 items-center justify-center rounded-full border-2 transition-colors',
-                              selected ? 'border-[#3A5A40] bg-[#3A5A40]' : 'border-[#3A2A1A]/20',
-                            )}
-                          >
-                            {selected && <span className="size-2 rounded-full bg-white" />}
-                          </span>
-                        )}
+                        <span
+                          className={cn(
+                            'flex size-5 shrink-0 items-center justify-center rounded-full border-2 transition-colors',
+                            selected ? 'border-[#3A5A40] bg-[#3A5A40]' : 'border-[#3A2A1A]/20',
+                          )}
+                        >
+                          {selected && <span className="size-2 rounded-full bg-white" />}
+                        </span>
                       </motion.label>
                     )
                   })}
@@ -193,7 +183,11 @@ export function ChooseStrategyPage() {
               subjectCode={subjectCode}
               subjectFullName={subjectFullName}
               ctaLabel="Continue"
-              onCta={() => navigate(`/app/choose-strategy/${quizSet.id}/details`)}
+              onCta={() =>
+                navigate('/app/exam-setup', {
+                  state: { subject, mode: STRATEGY_MODE_TEMPLATE[selectedKey] },
+                })
+              }
             />
           </div>
         </main>

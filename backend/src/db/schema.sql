@@ -139,7 +139,7 @@ CREATE TABLE IF NOT EXISTS exams (
   id VARCHAR(64) PRIMARY KEY,
   title VARCHAR(255) NOT NULL,
   subject VARCHAR(16) NOT NULL,
-  mode ENUM('tos_simulator', 'review_center_drill') NOT NULL,
+  mode ENUM('tos_simulator', 'subject_drill') NOT NULL,
   item_count INT NOT NULL,
   difficulty_weights JSON NOT NULL,
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -150,7 +150,11 @@ CREATE TABLE IF NOT EXISTS exam_sessions (
   exam_id VARCHAR(64) NULL,
   user_id VARCHAR(64) NOT NULL,
   subject VARCHAR(16) NOT NULL,
-  mode ENUM('tos_simulator', 'review_center_drill') NOT NULL,
+  mode ENUM('tos_simulator', 'subject_drill') NOT NULL,
+  -- Vestigial: only ever populated for the retired center-based drill mode.
+  -- Left in place (always NULL going forward) rather than dropped, since
+  -- dropping a column is a destructive migration not worth doing just for
+  -- an unused field.
   center_filter VARCHAR(255) NULL,
   item_count INT NOT NULL,
   score INT NULL,
@@ -161,6 +165,16 @@ CREATE TABLE IF NOT EXISTS exam_sessions (
 );
 
 CREATE INDEX idx_exam_sessions_user ON exam_sessions(user_id);
+
+-- review_center_drill -> subject_drill rename: widen the enum first so
+-- existing 'review_center_drill' rows stay valid while they're updated,
+-- then narrow it back down. Safe to rerun via db:migrate.
+ALTER TABLE exams MODIFY COLUMN mode ENUM('tos_simulator', 'review_center_drill', 'subject_drill') NOT NULL;
+UPDATE exams SET mode = 'subject_drill' WHERE mode = 'review_center_drill';
+ALTER TABLE exams MODIFY COLUMN mode ENUM('tos_simulator', 'subject_drill') NOT NULL;
+ALTER TABLE exam_sessions MODIFY COLUMN mode ENUM('tos_simulator', 'review_center_drill', 'subject_drill') NOT NULL;
+UPDATE exam_sessions SET mode = 'subject_drill' WHERE mode = 'review_center_drill';
+ALTER TABLE exam_sessions MODIFY COLUMN mode ENUM('tos_simulator', 'subject_drill') NOT NULL;
 
 CREATE TABLE IF NOT EXISTS exam_session_questions (
   session_id VARCHAR(64) NOT NULL,

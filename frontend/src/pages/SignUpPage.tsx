@@ -1,4 +1,5 @@
 import {
+  ArrowLeft,
   ArrowRight,
   BarChart3,
   Eye,
@@ -105,7 +106,9 @@ export function SignUpPage() {
           <div className="absolute inset-0 bg-[#F3ECDC]/25" />
 
           <div className="relative">
-            <Logo className="h-14" />
+            <Link to="/" className="inline-block">
+              <Logo className="h-14" />
+            </Link>
 
             <h1 className="font-display mt-8 text-4xl leading-[1.1] uppercase">
               <span className="text-[#7A2323]">Pass smarter.</span>
@@ -162,6 +165,14 @@ export function SignUpPage() {
           className="flex flex-col justify-between bg-[#F3ECDC] p-6 sm:p-10 lg:p-12"
         >
           <div>
+            <Link
+              to="/"
+              className="mb-4 inline-flex items-center gap-1.5 text-xs font-semibold text-[#3A2A1A]/60 transition-colors hover:text-[#7A2323]"
+            >
+              <ArrowLeft className="size-3.5" />
+              Back to home
+            </Link>
+
             <h2 className="font-display text-center text-2xl text-[#7A2323]">
               Create your account
             </h2>

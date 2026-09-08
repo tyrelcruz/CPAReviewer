@@ -1,4 +1,4 @@
-export type ExamMode = 'tos_simulator' | 'review_center_drill'
+export type ExamMode = 'tos_simulator' | 'subject_drill'
 
 export interface BankQuestionSource {
   center: string
@@ -29,7 +29,6 @@ export interface GeneratedExamSession {
   sessionId: string
   subject: string
   mode: ExamMode
-  centerFilter?: string | null
   itemCount: number
   score?: number | null
   submitted?: boolean

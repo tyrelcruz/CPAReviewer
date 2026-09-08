@@ -76,7 +76,7 @@ function App() {
               }
             />
             <Route
-              path="/app/choose-strategy/:quizSetId"
+              path="/app/choose-strategy/:subject"
               element={
                 <ProtectedRoute>
                   <ChooseStrategyPage />

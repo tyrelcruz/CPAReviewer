@@ -24,7 +24,7 @@ import {
   Timer,
 } from 'lucide-react'
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 import { generateExam, listRfbtTopics, listSubjectCounts } from '@/api/exams'
 import { Sidebar } from '@/components/dashboard/Sidebar'
@@ -67,27 +67,25 @@ const SUBJECT_DEFS: SubjectDef[] = [
   { code: 'RFBT', name: 'Regulatory Framework for Business Transactions', icon: Landmark, subjectKey: 'RFBT' },
 ]
 
-const REVIEW_CENTERS_BY_SUBJECT: Record<string, string[]> = {
-  RFBT: [
-    'ReSA - The Review School of Accountancy',
-    'REO CPA Review (Real Excellence Online)',
-    'CPA Review School of the Philippines (CPAR)',
-    'REDEFINE CPA Review School',
-  ],
-  TAX: ['ReSA - The Review School of Accountancy', 'CPAR', 'ReDeFine'],
-}
-
 const DIFFICULTY_OPTIONS = ['All Levels', 'Easy', 'Moderate', 'Difficult']
 
 export function ExamSetupPage() {
   const navigate = useNavigate()
+  const location = useLocation()
+  const requestedState = location.state as { subject?: string; mode?: ExamMode } | null
+  const requestedSubject = requestedState?.subject
   const [examName, setExamName] = useState('')
   const [examType, setExamType] = useState<'standard' | 'timed'>('standard')
   const [timedMinutes, setTimedMinutes] = useState(90)
 
-  const [subject, setSubject] = useState('RFBT')
-  const [mode, setMode] = useState<ExamMode>('tos_simulator')
-  const [center, setCenter] = useState(REVIEW_CENTERS_BY_SUBJECT.RFBT[0])
+  const [subject, setSubject] = useState(
+    requestedSubject && SUBJECT_DEFS.some((d) => d.subjectKey === requestedSubject)
+      ? requestedSubject
+      : 'RFBT',
+  )
+  const [mode, setMode] = useState<ExamMode>(
+    requestedState?.mode === 'subject_drill' ? 'subject_drill' : 'tos_simulator',
+  )
   const [itemCount, setItemCount] = useState(70)
   const [isGenerating, setIsGenerating] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -131,7 +129,6 @@ export function ExamSetupPage() {
   function handleSelectSubject(def: SubjectDef) {
     if (!def.subjectKey) return
     setSubject(def.subjectKey)
-    setCenter(REVIEW_CENTERS_BY_SUBJECT[def.subjectKey]?.[0] ?? '')
   }
 
   async function handleGenerate() {
@@ -148,7 +145,6 @@ export function ExamSetupPage() {
         mode,
         itemCount: usingCustomTopics ? undefined : itemCount,
         topicCounts: usingCustomTopics ? topicCounts : undefined,
-        center: mode === 'review_center_drill' ? center : undefined,
       })
       navigate(`/app/exam/${session.sessionId}`, {
         state: {
@@ -352,46 +348,29 @@ export function ExamSetupPage() {
                       <div>
                         <p className="text-sm font-bold text-[#3A2A1A]">TOS Simulator Mode</p>
                         <p className="font-reading mt-1 text-xs text-[#3A2A1A]/70">
-                          Assembled to PRC TOS difficulty ratios across every source center.
+                          Assembled to match the official PRC TOS topic and difficulty ratios.
                         </p>
                       </div>
                     </button>
                     <button
                       type="button"
-                      onClick={() => setMode('review_center_drill')}
+                      onClick={() => setMode('subject_drill')}
                       className={cn(
                         'flex items-start gap-3 rounded-xl border p-4 text-left transition-colors',
-                        mode === 'review_center_drill'
+                        mode === 'subject_drill'
                           ? 'border-[#7A2323] bg-[#7A2323]/5'
                           : 'border-[#3A2A1A]/15 hover:bg-[#3A2A1A]/5',
                       )}
                     >
                       <Landmark className="mt-0.5 size-5 shrink-0 text-[#7A2323]" />
                       <div>
-                        <p className="text-sm font-bold text-[#3A2A1A]">Review Center Drill Mode</p>
+                        <p className="text-sm font-bold text-[#3A2A1A]">Subject Drill Mode</p>
                         <p className="font-reading mt-1 text-xs text-[#3A2A1A]/70">
-                          Practice only questions unique to one review center.
+                          Plain practice across the whole subject — no TOS blueprint weighting.
                         </p>
                       </div>
                     </button>
                   </div>
-
-                  {mode === 'review_center_drill' && (
-                    <div className="flex flex-col gap-1.5">
-                      <label className="text-xs font-semibold text-[#3A2A1A]/60">Review Center</label>
-                      <select
-                        value={center}
-                        onChange={(e) => setCenter(e.target.value)}
-                        className="w-full rounded-xl border border-[#3A2A1A]/15 bg-white py-2.5 px-3.5 text-sm font-medium text-[#3A2A1A] outline-none focus:border-[#7A2323]/40"
-                      >
-                        {(REVIEW_CENTERS_BY_SUBJECT[subject] ?? []).map((c) => (
-                          <option key={c} value={c}>
-                            {c}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                  )}
                 </motion.div>
 
                 <motion.div

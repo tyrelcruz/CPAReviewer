@@ -7,7 +7,7 @@ import { getAdminAnalytics, type AdminFeatureUsageItem } from '@/api/admin'
 // as fresh as the Active Sessions view.
 const POLL_INTERVAL_MS = 60_000
 
-// Only two exam modes exist server-side today (tos_simulator, review_center_drill)
+// Only two exam modes exist server-side today (tos_simulator, subject_drill)
 // — classic quizzes/flashcards/AI variation mode have no backend telemetry,
 // so they simply can't appear here. Extra colors are unused until more modes exist.
 const BAR_COLORS = ['#7A2323', '#C4707A', '#E0AC48', '#E0AC48CC', '#E0C88A']

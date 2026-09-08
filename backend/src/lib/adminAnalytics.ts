@@ -10,7 +10,7 @@ export const ACTIVE_SESSION_WINDOW_MS = 5 * 60 * 1000
 
 const MODE_LABELS: Record<string, string> = {
   tos_simulator: 'TOS Simulator Mode',
-  review_center_drill: 'Review Center Drill',
+  subject_drill: 'Subject Drill',
 }
 
 interface CountRow extends RowDataPacket {
