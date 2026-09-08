@@ -2,9 +2,11 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { useState } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
+import { AdminRoute } from '@/components/auth/AdminRoute'
 import { ProtectedRoute } from '@/components/auth/ProtectedRoute'
 import { LoadingScreen } from '@/components/LoadingScreen'
 import { AuthProvider } from '@/context/AuthContext'
+import { AdminDashboardPage } from '@/pages/AdminDashboardPage'
 import { BankExamApp } from '@/pages/BankExamApp'
 import { ChooseStrategyPage } from '@/pages/ChooseStrategyPage'
 import { DashboardPage } from '@/pages/DashboardPage'
@@ -41,6 +43,14 @@ function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignUpPage />} />
+            <Route
+              path="/admin"
+              element={
+                <AdminRoute>
+                  <AdminDashboardPage />
+                </AdminRoute>
+              }
+            />
             <Route
               path="/app/dashboard"
               element={

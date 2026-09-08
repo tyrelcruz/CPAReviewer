@@ -1,0 +1,205 @@
+import type { ExamSessionSummary } from '@/api/exams'
+import type {
+  ActivityItem,
+  PerformancePoint,
+  StrengthLevel,
+  StudyPlanTask,
+  SubjectProgress,
+  SubjectStrength,
+} from '@/data/dashboard-data'
+import { getExamHistory } from '@/lib/examHistory'
+import type { QuizSet } from '@/types/quiz'
+
+const SUBJECT_LABELS: Record<string, string> = {
+  AT: 'Auditing Theory',
+  RFBT: 'RFBT',
+  TAX: 'Taxation',
+}
+
+const SUBJECT_COLORS: Record<string, string> = {
+  AT: '#E0AC48',
+  RFBT: '#3A5A40',
+  TAX: '#7A2323',
+}
+
+export interface CombinedAttempt {
+  subjectCode: string
+  subjectLabel: string
+  title: string
+  correct: number
+  total: number
+  date: Date
+}
+
+/** Merges real localStorage practice history (legacy quiz sets) with real
+ * backend bank-exam session history into one chronological attempt log —
+ * no fabricated entries. */
+export function buildCombinedAttempts(
+  quizSets: QuizSet[],
+  bankSessions: ExamSessionSummary[],
+): CombinedAttempt[] {
+  const legacy: CombinedAttempt[] = quizSets.flatMap((set) => {
+    const code = set.code ?? set.title
+    return getExamHistory(set.id).map((attempt) => ({
+      subjectCode: code,
+      subjectLabel: SUBJECT_LABELS[code] ?? code,
+      title: `Completed ${set.title}`,
+      correct: attempt.correct,
+      total: attempt.total,
+      date: new Date(attempt.date),
+    }))
+  })
+
+  const bank: CombinedAttempt[] = bankSessions.map((session) => ({
+    subjectCode: session.subject,
+    subjectLabel: SUBJECT_LABELS[session.subject] ?? session.subject,
+    title: `Completed ${session.subject} ${
+      session.mode === 'tos_simulator' ? 'TOS Simulator' : 'Review Center Drill'
+    } Exam`,
+    correct: session.score,
+    total: session.itemCount,
+    date: new Date(session.submittedAt),
+  }))
+
+  return [...legacy, ...bank].sort((a, b) => b.date.getTime() - a.date.getTime())
+}
+
+interface SubjectAggregate {
+  code: string
+  label: string
+  percent: number
+  attempts: number
+}
+
+export function aggregateBySubject(attempts: CombinedAttempt[]): SubjectAggregate[] {
+  const bySubject = new Map<string, { label: string; correct: number; total: number; attempts: number }>()
+  for (const attempt of attempts) {
+    const entry = bySubject.get(attempt.subjectCode) ?? {
+      label: attempt.subjectLabel,
+      correct: 0,
+      total: 0,
+      attempts: 0,
+    }
+    entry.correct += attempt.correct
+    entry.total += attempt.total
+    entry.attempts += 1
+    bySubject.set(attempt.subjectCode, entry)
+  }
+  return [...bySubject.entries()].map(([code, v]) => ({
+    code,
+    label: v.label,
+    percent: v.total > 0 ? Math.round((v.correct / v.total) * 100) : 0,
+    attempts: v.attempts,
+  }))
+}
+
+export function overallAveragePercent(attempts: CombinedAttempt[]): number | null {
+  if (attempts.length === 0) return null
+  const totalCorrect = attempts.reduce((sum, a) => sum + a.correct, 0)
+  const totalItems = attempts.reduce((sum, a) => sum + a.total, 0)
+  return totalItems > 0 ? Math.round((totalCorrect / totalItems) * 100) : null
+}
+
+/** Average score of attempts within the last `windowDays` vs. everything
+ * before that — null when there isn't at least one attempt on each side to
+ * compare (a fresh account, or one whose whole history is within the window). */
+export function scoreDeltaVsPrevious(
+  attempts: CombinedAttempt[],
+  windowDays = 7,
+): number | null {
+  const cutoff = Date.now() - windowDays * 86_400_000
+  const recent = attempts.filter((a) => a.date.getTime() >= cutoff)
+  const older = attempts.filter((a) => a.date.getTime() < cutoff)
+  if (recent.length === 0 || older.length === 0) return null
+
+  const avgPercent = (list: CombinedAttempt[]) => {
+    const correct = list.reduce((sum, a) => sum + a.correct, 0)
+    const total = list.reduce((sum, a) => sum + a.total, 0)
+    return total > 0 ? (correct / total) * 100 : 0
+  }
+
+  return Math.round(avgPercent(recent) - avgPercent(older))
+}
+
+export function toSubjectProgress(aggregates: SubjectAggregate[]): SubjectProgress[] {
+  return aggregates.map((a) => ({
+    code: a.code,
+    label: a.label,
+    percent: a.percent,
+    color: SUBJECT_COLORS[a.code] ?? '#3A5A40',
+  }))
+}
+
+function strengthLevel(percent: number): StrengthLevel {
+  if (percent >= 80) return 'Strong'
+  if (percent >= 65) return 'Good'
+  if (percent >= 50) return 'Average'
+  return 'Needs Work'
+}
+
+export function toSubjectStrengths(aggregates: SubjectAggregate[]): SubjectStrength[] {
+  return [...aggregates]
+    .sort((a, b) => b.percent - a.percent)
+    .map((a) => ({
+      code: a.code,
+      percent: a.percent,
+      level: strengthLevel(a.percent),
+      color: SUBJECT_COLORS[a.code] ?? '#3A5A40',
+    }))
+}
+
+// The icon is a display concern attached by the page component (keeps this
+// module free of React/component imports, per lib/ conventions).
+export function toRecentActivity(
+  attempts: CombinedAttempt[],
+  limit = 5,
+): Omit<ActivityItem, 'icon'>[] {
+  return attempts.slice(0, limit).map((attempt) => {
+    const percent = attempt.total > 0 ? Math.round((attempt.correct / attempt.total) * 100) : 0
+    return {
+      title: attempt.title,
+      description: `Score: ${percent}% · ${attempt.correct} / ${attempt.total}`,
+      date: attempt.date.toLocaleDateString(undefined, {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric',
+      }),
+      time: attempt.date.toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' }),
+    }
+  })
+}
+
+export function toPerformanceTrend(attempts: CombinedAttempt[], limit = 7): PerformancePoint[] {
+  const chronological = [...attempts]
+    .sort((a, b) => a.date.getTime() - b.date.getTime())
+    .slice(-limit)
+  return chronological.map((attempt) => ({
+    date: attempt.date.toLocaleDateString(undefined, { month: 'short', day: 'numeric' }),
+    score: attempt.total > 0 ? Math.round((attempt.correct / attempt.total) * 100) : 0,
+  }))
+}
+
+/** Recommends the weakest attempted subjects first, then any real subject
+ * that hasn't been attempted yet — grounded in actual scores, not a
+ * fabricated schedule. */
+export function toStudyPlan(
+  aggregates: SubjectAggregate[],
+  allSubjectCodes: string[] = ['AT', 'RFBT', 'TAX'],
+): Omit<StudyPlanTask, 'icon'>[] {
+  const attemptedCodes = new Set(aggregates.map((a) => a.code))
+  const attempted = [...aggregates].sort((a, b) => a.percent - b.percent)
+  const untouched = allSubjectCodes.filter((code) => !attemptedCodes.has(code))
+
+  const attemptedTasks = attempted.map((a) => ({
+    title: `Review ${a.label}`,
+    subtitle: `Average score: ${a.percent}% · ${a.attempts} attempt${a.attempts === 1 ? '' : 's'}`,
+    progress: a.percent,
+  }))
+  const untouchedTasks = untouched.map((code) => ({
+    title: `Start ${SUBJECT_LABELS[code] ?? code}`,
+    subtitle: 'Not started yet',
+    progress: 0,
+  }))
+
+  return [...attemptedTasks, ...untouchedTasks].slice(0, 3)
+}

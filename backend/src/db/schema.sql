@@ -3,8 +3,43 @@ CREATE TABLE IF NOT EXISTS users (
   name VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL UNIQUE,
   password_hash VARCHAR(255) NOT NULL,
+  role ENUM('user', 'admin') NOT NULL DEFAULT 'user',
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
+
+-- schema.sql only auto-applies to a fresh docker volume, so `npm run
+-- db:migrate` re-runs this file against a running container to pick up new
+-- columns. migrate.ts tolerates the "column already exists" / "already
+-- dropped" errors below, so this stays safe to run repeatedly.
+ALTER TABLE users ADD COLUMN role ENUM('user', 'admin') NOT NULL DEFAULT 'user';
+-- Superseded by user_sessions below, which is now the single source of truth
+-- for "is this token's session still valid" (see requireAuth) instead of a
+-- column on users that duplicated the same state.
+ALTER TABLE users DROP COLUMN active_session_id;
+
+-- One row per login. `id` is the session id ("sid") embedded in that login's
+-- JWT — requireAuth looks a request's sid up here on every call: a row with
+-- ended_at IS NULL is a live session; NULL result or a non-null ended_at
+-- means the token has been superseded (another login) or logged out, so the
+-- request is rejected. Also the source of the admin "Active Sessions" view:
+-- device/location are captured once at login, last_seen_at is bumped by
+-- requireAuth (throttled) to distinguish "logged in and active right now"
+-- from "logged in but idle".
+CREATE TABLE IF NOT EXISTS user_sessions (
+  id VARCHAR(64) PRIMARY KEY,
+  user_id VARCHAR(64) NOT NULL,
+  ip_address VARCHAR(64) NOT NULL,
+  user_agent TEXT NOT NULL,
+  device_label VARCHAR(128) NOT NULL,
+  location_label VARCHAR(255) NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  last_seen_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  ended_at TIMESTAMP NULL,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE INDEX idx_user_sessions_user ON user_sessions(user_id);
+CREATE INDEX idx_user_sessions_open ON user_sessions(user_id, ended_at);
 
 CREATE TABLE IF NOT EXISTS quiz_sets (
   id VARCHAR(64) PRIMARY KEY,

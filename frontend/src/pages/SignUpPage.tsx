@@ -107,14 +107,6 @@ export function SignUpPage() {
           <div className="relative">
             <Logo className="h-14" />
 
-            <div className="mt-3 flex items-center gap-3 text-[#3A5A40]">
-              <span className="h-px w-10 bg-[#7A2323]/40" />
-              <span className="font-baybayin text-lg" aria-hidden="true">
-                pasa
-              </span>
-              <span className="h-px w-10 bg-[#7A2323]/40" />
-            </div>
-
             <h1 className="font-display mt-8 text-4xl leading-[1.1] uppercase">
               <span className="text-[#7A2323]">Pass smarter.</span>
               <br />
@@ -170,14 +162,7 @@ export function SignUpPage() {
           className="flex flex-col justify-between bg-[#F3ECDC] p-6 sm:p-10 lg:p-12"
         >
           <div>
-            <div className="flex items-center gap-3 text-[#3A5A40]">
-              <span className="h-px flex-1 bg-[#7A2323]/30" />
-              <span className="font-baybayin text-lg" aria-hidden="true">
-                pasa
-              </span>
-              <span className="h-px flex-1 bg-[#7A2323]/30" />
-            </div>
-            <h2 className="font-display mt-3 text-center text-2xl text-[#7A2323] sm:mt-4">
+            <h2 className="font-display text-center text-2xl text-[#7A2323]">
               Create your account
             </h2>
             <p className="mt-1 text-center text-sm text-[#3A2A1A]/70">

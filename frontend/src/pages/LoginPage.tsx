@@ -13,7 +13,7 @@ import {
 } from 'lucide-react'
 import axios from 'axios'
 import { AnimatePresence, motion } from 'framer-motion'
-import { type FormEvent, useState } from 'react'
+import { type FormEvent, useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 import illustrationBg from '@/assets/images/illustration_bg.png'
@@ -38,24 +38,38 @@ const FEATURES = [
 export function LoginPage() {
   const navigate = useNavigate()
   const location = useLocation()
-  const { login } = useAuth()
+  const { login, loggedOutReason, clearLoggedOutReason } = useAuth()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const redirectTo =
-    (location.state as { from?: { pathname: string } } | null)?.from?.pathname ??
-    '/app/dashboard'
+  // Only present when a route guard (ProtectedRoute/AdminRoute) bounced the
+  // user here trying to reach a specific page — a direct visit to /login has
+  // no `from`. Role still wins over it: e.g. an admin who had a stale
+  // bookmark to /app/dashboard should land on /admin after logging in, not
+  // get sent back to the user page they merely happened to be bounced from.
+  const redirectFrom = (location.state as { from?: { pathname: string } } | null)?.from?.pathname
+
+  // Surfaces once, right after being bounced here for signing in elsewhere —
+  // reuses the same alert slot as a login error since only one applies at a time.
+  useEffect(() => {
+    if (loggedOutReason !== 'superseded') return
+    setError('You were signed out because this account was signed in on another device.')
+    clearLoggedOutReason()
+  }, [loggedOutReason, clearLoggedOutReason])
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault()
     setError(null)
     setIsSubmitting(true)
     try {
-      await login(email, password)
-      navigate(redirectTo, { replace: true })
+      const user = await login(email, password)
+      const homeBase = user.role === 'admin' ? '/admin' : '/app/dashboard'
+      const isCompatibleRedirect =
+        redirectFrom && (user.role === 'admin') === redirectFrom.startsWith('/admin')
+      navigate(isCompatibleRedirect ? redirectFrom : homeBase, { replace: true })
     } catch (err) {
       if (axios.isAxiosError(err)) {
         if (err.response?.status === 401) {
@@ -99,14 +113,6 @@ export function LoginPage() {
 
           <div className="relative">
             <Logo className="h-14" />
-
-            <div className="mt-3 flex items-center gap-3 text-[#3A5A40]">
-              <span className="h-px w-10 bg-[#7A2323]/40" />
-              <span className="font-baybayin text-lg" aria-hidden="true">
-                pasa
-              </span>
-              <span className="h-px w-10 bg-[#7A2323]/40" />
-            </div>
 
             <h1 className="font-display mt-8 text-4xl leading-[1.1] uppercase">
               <span className="text-[#7A2323]">Pass smarter.</span>
@@ -163,14 +169,7 @@ export function LoginPage() {
           className="flex flex-col justify-between bg-[#F3ECDC] p-6 sm:p-10 lg:p-12"
         >
           <div>
-            <div className="flex items-center gap-3 text-[#3A5A40]">
-              <span className="h-px flex-1 bg-[#7A2323]/30" />
-              <span className="font-baybayin text-lg" aria-hidden="true">
-                pasa
-              </span>
-              <span className="h-px flex-1 bg-[#7A2323]/30" />
-            </div>
-            <h2 className="font-display mt-3 text-center text-2xl text-[#7A2323] sm:mt-4">
+            <h2 className="font-display text-center text-2xl text-[#7A2323]">
               Welcome back!
             </h2>
             <p className="mt-1 text-center text-sm text-[#3A2A1A]/70">

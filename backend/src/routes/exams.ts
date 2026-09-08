@@ -371,6 +371,33 @@ examsRouter.get('/subject-counts', asyncHandler(async (_req, res) => {
   res.json({ counts })
 }))
 
+/**
+ * Lists the current user's own submitted exam sessions (most recent first) —
+ * real attempt history for dashboard widgets (recent activity, score trend,
+ * per-subject stats), not fabricated numbers. Registered before `/:id` so it
+ * isn't swallowed by that wildcard.
+ */
+examsRouter.get('/', asyncHandler(async (req, res) => {
+  const [rows] = await pool.query<SessionRow[]>(
+    `SELECT * FROM exam_sessions
+     WHERE user_id = ? AND submitted_at IS NOT NULL
+     ORDER BY submitted_at DESC
+     LIMIT 20`,
+    [req.user!.id],
+  )
+
+  res.json({
+    sessions: rows.map((row) => ({
+      sessionId: row.id,
+      subject: row.subject,
+      mode: row.mode,
+      itemCount: row.item_count,
+      score: row.score,
+      submittedAt: row.submitted_at,
+    })),
+  })
+}))
+
 examsRouter.get('/:id', asyncHandler(async (req, res) => {
   const { id } = req.params
 

@@ -33,6 +33,13 @@ import { formatClock } from '@/lib/time'
 import { cn } from '@/lib/utils'
 import type { QuizQuestion } from '@/types/quiz'
 
+interface LegacyAttemptSummary {
+  correct: number
+  total: number
+  elapsedMs: number
+  sectionScores: SectionScore[]
+}
+
 interface QuizResultsProps {
   quizSetId: string
   code?: string
@@ -41,6 +48,14 @@ interface QuizResultsProps {
   elapsedMs: number
   onRetake: () => void
   onBack: () => void
+  /** True when redisplaying an already-recorded attempt (e.g. "Review Results"
+   * from Mock Exams) — skips writing a duplicate entry to history. */
+  readOnly?: boolean
+  /** Attempts recorded before per-question replay data existed only have
+   * aggregate stats. When set, scores render from these stats directly
+   * instead of being recomputed from `questions`/`answers` (which are empty
+   * in that case), and the per-question review list is hidden. */
+  summaryOnly?: LegacyAttemptSummary
 }
 
 const PASSING_SCORE = 75
@@ -79,28 +94,39 @@ export function QuizResults({
   elapsedMs,
   onRetake,
   onBack,
+  readOnly = false,
+  summaryOnly,
 }: QuizResultsProps) {
   const [showReview, setShowReview] = useState(false)
 
-  const total = questions.length
-  const score = questions.filter((q) => answers[q.id] === q.correctChoiceId).length
-  const answeredCount = questions.filter((q) => answers[q.id] !== undefined).length
+  const total = summaryOnly ? summaryOnly.total : questions.length
+  const score = summaryOnly
+    ? summaryOnly.correct
+    : questions.filter((q) => answers[q.id] === q.correctChoiceId).length
+  // Legacy attempts only stored the final score, not which questions were
+  // left blank — treat every question as answered rather than guessing.
+  const answeredCount = summaryOnly
+    ? summaryOnly.total
+    : questions.filter((q) => answers[q.id] !== undefined).length
   const unansweredCount = total - answeredCount
   const incorrectCount = answeredCount - score
   const accuracy = Math.round((score / total) * 100)
   const passed = accuracy >= PASSING_SCORE
-  const avgSecondsPerQuestion = elapsedMs / 1000 / total
+  const effectiveElapsedMs = summaryOnly ? summaryOnly.elapsedMs : elapsedMs
+  const avgSecondsPerQuestion = effectiveElapsedMs / 1000 / total
 
-  const sectionScores: SectionScore[] = Object.values(
-    questions.reduce<Record<string, SectionScore>>((map, q) => {
-      const key = q.section ?? q.topicCategory ?? GENERAL_SECTION
-      const entry = map[key] ?? { section: key, correct: 0, total: 0 }
-      entry.total += 1
-      if (answers[q.id] === q.correctChoiceId) entry.correct += 1
-      map[key] = entry
-      return map
-    }, {}),
-  ).sort((a, b) => b.correct / b.total - a.correct / a.total)
+  const sectionScores: SectionScore[] = summaryOnly
+    ? summaryOnly.sectionScores
+    : Object.values(
+        questions.reduce<Record<string, SectionScore>>((map, q) => {
+          const key = q.section ?? q.topicCategory ?? GENERAL_SECTION
+          const entry = map[key] ?? { section: key, correct: 0, total: 0 }
+          entry.total += 1
+          if (answers[q.id] === q.correctChoiceId) entry.correct += 1
+          map[key] = entry
+          return map
+        }, {}),
+      ).sort((a, b) => b.correct / b.total - a.correct / a.total)
 
   // Lazy useState initializers run twice under React 18 StrictMode in dev, which would
   // double-log this attempt since recordExamAttempt is append-only. Recording happens
@@ -109,7 +135,7 @@ export function QuizResults({
   const hasRecordedAttempt = useRef(false)
 
   useLayoutEffect(() => {
-    if (hasRecordedAttempt.current) return
+    if (readOnly || summaryOnly || hasRecordedAttempt.current) return
     hasRecordedAttempt.current = true
     setHistory(
       recordExamAttempt(quizSetId, {
@@ -118,6 +144,8 @@ export function QuizResults({
         total,
         elapsedMs,
         sectionScores,
+        answers,
+        questionOrder: questions.map((q) => q.id),
       }),
     )
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -197,24 +225,21 @@ export function QuizResults({
             <ArrowLeft className="size-4" />
             Back to tests
           </button>
-          <div className="mt-2 flex items-center gap-3">
-            <h1 className="font-display text-2xl text-[#7A2323] sm:text-3xl">Exam Results &amp; Analytics</h1>
-            <span className="font-baybayin text-2xl text-[#3A5A40]/80" aria-hidden="true">
-              pasa
-            </span>
-          </div>
+          <h1 className="font-display mt-2 text-2xl text-[#7A2323] sm:text-3xl">Exam Results &amp; Analytics</h1>
           <p className="mt-1 text-sm text-[#3A2A1A]/70">{code} — Practice Exam</p>
         </div>
 
         <div className="flex items-center gap-3">
-          <button
-            type="button"
-            onClick={() => setShowReview((v) => !v)}
-            className="flex items-center gap-1.5 rounded-full border border-[#3A2A1A]/20 px-4 py-2.5 text-sm font-semibold text-[#3A2A1A]/80 transition-colors hover:bg-[#3A2A1A]/5"
-          >
-            <Eye className="size-4" />
-            Review Exam
-          </button>
+          {!summaryOnly && (
+            <button
+              type="button"
+              onClick={() => setShowReview((v) => !v)}
+              className="flex items-center gap-1.5 rounded-full border border-[#3A2A1A]/20 px-4 py-2.5 text-sm font-semibold text-[#3A2A1A]/80 transition-colors hover:bg-[#3A2A1A]/5"
+            >
+              <Eye className="size-4" />
+              Review Exam
+            </button>
+          )}
           <button
             type="button"
             onClick={onRetake}
@@ -265,7 +290,7 @@ export function QuizResults({
                 <div className="flex flex-col gap-2 text-xs text-[#3A2A1A]/70">
                   <span className="flex items-center gap-1.5">
                     <Clock className="size-3.5 text-[#7A2323]" />
-                    Time Spent: <span className="font-semibold text-[#3A2A1A]">{formatClock(Math.round(elapsedMs / 1000))}</span>
+                    Time Spent: <span className="font-semibold text-[#3A2A1A]">{formatClock(Math.round(effectiveElapsedMs / 1000))}</span>
                   </span>
                   <span className="flex items-center gap-1.5">
                     <FileText className="size-3.5 text-[#7A2323]" />
@@ -327,15 +352,15 @@ export function QuizResults({
             <p className="text-xs text-[#3A2A1A]/60">Performance breakdown by exam section</p>
 
             <div className="mt-4 overflow-x-auto">
-              <table className="w-full min-w-[36rem] border-collapse text-sm">
+              <table className="w-full min-w-full border-collapse text-sm sm:min-w-[36rem]">
                 <thead>
                   <tr className="border-b border-[#3A2A1A]/10 text-left text-xs text-[#3A2A1A]/60">
                     <th className="pb-2 font-semibold">Section</th>
                     <th className="pb-2 font-semibold">Correct</th>
                     <th className="pb-2 font-semibold">Total</th>
                     <th className="pb-2 font-semibold">Score</th>
-                    <th className="pb-2 font-semibold">Performance</th>
-                    <th className="pb-2 font-semibold">Compared to Last Exam</th>
+                    <th className="hidden pb-2 font-semibold sm:table-cell">Performance</th>
+                    <th className="hidden pb-2 font-semibold sm:table-cell">Compared to Last Exam</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -353,7 +378,7 @@ export function QuizResults({
                         <td className="py-2.5 pr-3 text-[#3A2A1A]/80">{s.correct}</td>
                         <td className="py-2.5 pr-3 text-[#3A2A1A]/80">{s.total}</td>
                         <td className="py-2.5 pr-3 font-semibold text-[#3A2A1A]">{pct}%</td>
-                        <td className="py-2.5 pr-3">
+                        <td className="hidden py-2.5 pr-3 sm:table-cell">
                           <div className="h-2 w-28 overflow-hidden rounded-full bg-[#3A2A1A]/10">
                             <div
                               className={cn('h-full rounded-full', scoreBgClass(pct))}
@@ -361,7 +386,7 @@ export function QuizResults({
                             />
                           </div>
                         </td>
-                        <td className="py-2.5 text-xs">
+                        <td className="hidden py-2.5 text-xs sm:table-cell">
                           {delta === null ? (
                             <span className="text-[#3A2A1A]/40">—</span>
                           ) : delta > 0 ? (
@@ -382,11 +407,11 @@ export function QuizResults({
                     )
                   })}
                   <tr className="bg-[#E0AC48]/15 font-semibold">
-                    <td className="rounded-l-lg py-2.5 pr-3 pl-2 text-[#3A2A1A]">Overall</td>
+                    <td className="rounded-l-lg py-2.5 pr-3 pl-2 text-[#3A2A1A] sm:rounded-l-lg">Overall</td>
                     <td className="py-2.5 pr-3 text-[#3A2A1A]">{score}</td>
                     <td className="py-2.5 pr-3 text-[#3A2A1A]">{total}</td>
-                    <td className="py-2.5 pr-3 text-[#3A2A1A]">{accuracy}%</td>
-                    <td className="py-2.5 pr-3">
+                    <td className="rounded-r-lg py-2.5 pr-3 text-[#3A2A1A] sm:rounded-r-none">{accuracy}%</td>
+                    <td className="hidden py-2.5 pr-3 sm:table-cell">
                       <div className="h-2 w-28 overflow-hidden rounded-full bg-[#3A2A1A]/10">
                         <div
                           className={cn('h-full rounded-full', scoreBgClass(accuracy))}
@@ -394,7 +419,7 @@ export function QuizResults({
                         />
                       </div>
                     </td>
-                    <td className="rounded-r-lg py-2.5 text-xs">
+                    <td className="hidden rounded-r-lg py-2.5 text-xs sm:table-cell">
                       {previousAccuracy === null ? (
                         <span className="text-[#3A2A1A]/40">—</span>
                       ) : accuracy > previousAccuracy ? (
@@ -643,7 +668,7 @@ export function QuizResults({
       </div>
 
       <AnimatePresence>
-        {showReview && (
+        {showReview && !summaryOnly && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}

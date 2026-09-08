@@ -15,7 +15,7 @@ import {
   Timer,
   XCircle,
 } from 'lucide-react'
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 
 import { CalculatorPopover } from '@/components/quiz/CalculatorPopover'
 import { DrawingNotesPanel } from '@/components/quiz/DrawingNotesPanel'
@@ -24,11 +24,15 @@ import { ProgressRing } from '@/components/quiz/ProgressRing'
 import { QuestionNavigator } from '@/components/quiz/QuestionNavigator'
 import { QuestionPromptText } from '@/components/quiz/QuestionPromptText'
 import { QuizResults } from '@/components/quiz/QuizResults'
+import { clearExamProgress, getExamProgress, saveExamProgress } from '@/lib/examProgress'
 import { shuffleQuestionsKeepingChains } from '@/lib/quizShuffle'
 import { getStudyStreak } from '@/lib/streak'
 import { formatClock, SECONDS_PER_QUESTION } from '@/lib/time'
 import { cn } from '@/lib/utils'
 import type { QuizQuestion } from '@/types/quiz'
+
+// Minimum horizontal drag (px) that counts as a swipe rather than a scroll/tap.
+const SWIPE_THRESHOLD_PX = 60
 
 const STUDY_TIPS = [
   'Read each question carefully and eliminate incorrect choices before selecting your answer.',
@@ -46,6 +50,10 @@ interface QuizProps {
   onComplete?: (answers: Record<string, string>) => void
   /** Overrides the default `questions.length * SECONDS_PER_QUESTION` countdown, e.g. from a chosen quiz-setup time limit. */
   timeLimitSeconds?: number
+  /** Unique per attempt (not just per quiz set/subject) — enables pause/resume via
+   * localStorage. Navigating away persists progress under this key; returning to
+   * the same key picks up right where the learner left off, timer included. */
+  progressKey?: string
 }
 
 export function Quiz({
@@ -55,25 +63,67 @@ export function Quiz({
   onBack,
   onComplete,
   timeLimitSeconds,
+  progressKey,
 }: QuizProps) {
+  const savedProgress = useMemo(
+    () => (progressKey ? getExamProgress(progressKey) : null),
+    // Only ever read once, on mount, for this attempt.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [],
+  )
+
   // Shuffled once per attempt (and reshuffled on retake) so the answer to
   // "question 5" isn't something a repeat test-taker can just memorize.
-  // Scenario chains (shared scenarioId) are kept intact and in order.
-  const [questions, setQuestions] = useState(() => shuffleQuestionsKeepingChains(orderedQuestions))
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [answers, setAnswers] = useState<Record<string, string>>({})
-  const [flaggedIndices, setFlaggedIndices] = useState<Set<number>>(new Set())
+  // Scenario chains (shared scenarioId) are kept intact and in order. A
+  // resumed attempt reuses its saved order instead of reshuffling, so saved
+  // indices/flags still point at the right questions.
+  const [questions, setQuestions] = useState(() => {
+    if (savedProgress) {
+      const byId = new Map(orderedQuestions.map((q) => [q.id, q]))
+      const restored = savedProgress.questionOrder
+        .map((id) => byId.get(id))
+        .filter((q): q is QuizQuestion => q !== undefined)
+      if (restored.length === orderedQuestions.length) return restored
+    }
+    return shuffleQuestionsKeepingChains(orderedQuestions)
+  })
+  const [currentIndex, setCurrentIndex] = useState(savedProgress?.currentIndex ?? 0)
+  const [answers, setAnswers] = useState<Record<string, string>>(savedProgress?.answers ?? {})
+  const [flaggedIndices, setFlaggedIndices] = useState<Set<number>>(
+    () => new Set(savedProgress?.flaggedIndices ?? []),
+  )
   const [explanationOverrides, setExplanationOverrides] = useState<Record<string, boolean>>({})
   const [isComplete, setIsComplete] = useState(false)
   const [startTime, setStartTime] = useState(() => Date.now())
   const [elapsedMs, setElapsedMs] = useState(0)
   const [remainingSeconds, setRemainingSeconds] = useState(
-    () => timeLimitSeconds ?? questions.length * SECONDS_PER_QUESTION,
+    () => savedProgress?.remainingSeconds ?? timeLimitSeconds ?? questions.length * SECONDS_PER_QUESTION,
   )
   const [calculatorOpen, setCalculatorOpen] = useState(false)
   const [notesOpen, setNotesOpen] = useState(false)
   const [notes, setNotes] = useState('')
   const [streak] = useState(() => getStudyStreak())
+  const touchStartRef = useRef<{ x: number; y: number } | null>(null)
+
+  // Persists on every change so leaving mid-attempt (back button, closing the
+  // tab, navigating to another page) never loses progress — the effect
+  // cleanup below also fires on unmount, covering in-app navigation.
+  useEffect(() => {
+    if (!progressKey || isComplete) return
+    saveExamProgress(progressKey, {
+      questionOrder: questions.map((q) => q.id),
+      currentIndex,
+      answers,
+      flaggedIndices: [...flaggedIndices],
+      remainingSeconds,
+      savedAt: new Date().toISOString(),
+    })
+  }, [progressKey, isComplete, questions, currentIndex, answers, flaggedIndices, remainingSeconds])
+
+  // Once finished, this attempt's saved progress is no longer "in progress".
+  useEffect(() => {
+    if (isComplete && progressKey) clearExamProgress(progressKey)
+  }, [isComplete, progressKey])
 
   const current = questions[currentIndex]
   const selectedChoiceId = answers[current?.id ?? '']
@@ -136,6 +186,24 @@ export function Quiz({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isComplete])
 
+  // Desktop shortcut: Enter / → advances once the current question is
+  // answered, mirroring the disabled state of the "Next question" button.
+  useEffect(() => {
+    if (isComplete) return
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.key !== 'Enter' && e.key !== 'ArrowRight') return
+      const target = e.target as HTMLElement | null
+      if (target && ['INPUT', 'TEXTAREA', 'SELECT'].includes(target.tagName)) return
+      if (target?.isContentEditable) return
+      if (!isAnswered) return
+      e.preventDefault()
+      handleNext()
+    }
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isComplete, isAnswered, currentIndex, questions])
+
   function handleSelect(choiceId: string) {
     if (isAnswered) return
     setAnswers((prev) => ({ ...prev, [current.id]: choiceId }))
@@ -182,6 +250,23 @@ export function Quiz({
 
   function toggleExplanation() {
     setExplanationOverrides((prev) => ({ ...prev, [current.id]: !explanationVisible }))
+  }
+
+  // Mobile gesture: swipe left on the question card advances once answered,
+  // mirroring the keyboard shortcut and the disabled "Next question" button.
+  function handleTouchStart(e: React.TouchEvent) {
+    const t = e.touches[0]
+    touchStartRef.current = { x: t.clientX, y: t.clientY }
+  }
+
+  function handleTouchEnd(e: React.TouchEvent) {
+    const start = touchStartRef.current
+    touchStartRef.current = null
+    if (!start || !isAnswered) return
+    const t = e.changedTouches[0]
+    const dx = t.clientX - start.x
+    const dy = t.clientY - start.y
+    if (dx < -SWIPE_THRESHOLD_PX && Math.abs(dx) > Math.abs(dy)) handleNext()
   }
 
   function toggleCalculator() {
@@ -328,6 +413,8 @@ export function Quiz({
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -24 }}
             transition={{ duration: 0.25, ease: 'easeOut' }}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
             className="min-w-0 rounded-2xl border border-[#3A2A1A]/10 bg-white p-4 sm:p-6"
           >
             {(current.sources?.length || current.section || variantInfo) && (
@@ -506,6 +593,11 @@ export function Quiz({
                 <ArrowRight className="size-3.5" />
               </button>
             </div>
+            {isAnswered && !isLastQuestion && (
+              <p className="mt-2 hidden text-right text-[11px] text-[#3A2A1A]/50 sm:block">
+                Press Enter or → for the next question
+              </p>
+            )}
           </motion.div>
         </AnimatePresence>
 

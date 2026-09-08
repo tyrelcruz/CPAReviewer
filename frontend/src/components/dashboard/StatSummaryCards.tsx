@@ -37,11 +37,13 @@ function StatCard({ label, icon: Icon, tint, children }: StatCardProps) {
 }
 
 interface StatSummaryCardsProps {
-  overallProgress: number
+  /** null when the user has no attempt history yet — nothing fabricated in its place. */
+  overallProgress: number | null
   questionsAnswered: number
   totalQuestions: number
-  averageScore: number
-  scoreDelta: number
+  averageScore: number | null
+  /** null when there isn't at least one attempt on both sides of the 7-day window to compare. */
+  scoreDelta: number | null
   streak: number
 }
 
@@ -59,13 +61,15 @@ export function StatSummaryCards({
       className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4"
     >
       <StatCard label="Overall Progress" icon={Target} tint="#3A5A40">
-        <p className="mt-2 text-3xl font-bold text-[#3A2A1A]">{overallProgress}%</p>
-        <p className="font-reading mt-1 text-sm text-[#3A2A1A]/55">Keep it up!</p>
+        <p className="mt-2 text-3xl font-bold text-[#3A2A1A]">{overallProgress ?? '—'}%</p>
+        <p className="font-reading mt-1 text-sm text-[#3A2A1A]/55">
+          {overallProgress === null ? 'Take your first exam to get started' : 'Keep it up!'}
+        </p>
         <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-[#3A2A1A]/10">
           <motion.div
             className="h-full rounded-full bg-[#3A5A40]"
             initial={{ width: 0 }}
-            animate={{ width: `${overallProgress}%` }}
+            animate={{ width: `${overallProgress ?? 0}%` }}
             transition={{ duration: 0.8, ease: 'easeOut', delay: 0.3 }}
           />
         </div>
@@ -81,9 +85,17 @@ export function StatSummaryCards({
       </StatCard>
 
       <StatCard label="Average Score" icon={TrendingUp} tint="#3A5A40">
-        <p className="mt-2 text-3xl font-bold text-[#3A2A1A]">{averageScore}%</p>
-        <p className="font-reading mt-1 text-sm text-[#3A5A40]">
-          +{scoreDelta}% vs last 7 days
+        <p className="mt-2 text-3xl font-bold text-[#3A2A1A]">{averageScore ?? '—'}%</p>
+        <p
+          className={
+            scoreDelta === null
+              ? 'font-reading mt-1 text-sm text-[#3A2A1A]/55'
+              : 'font-reading mt-1 text-sm text-[#3A5A40]'
+          }
+        >
+          {scoreDelta === null
+            ? 'Not enough history yet'
+            : `${scoreDelta >= 0 ? '+' : ''}${scoreDelta}% vs last 7 days`}
         </p>
       </StatCard>
 

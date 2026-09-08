@@ -10,6 +10,11 @@ export interface ExamAttempt {
   total: number
   elapsedMs: number
   sectionScores: SectionScore[]
+  /** Full per-question answers + the exact question order used, so "Review
+   * Results" can redisplay this exact attempt instead of starting a new one.
+   * Optional — attempts recorded before this field existed won't have it. */
+  answers?: Record<string, string>
+  questionOrder?: string[]
 }
 
 const HISTORY_PREFIX = 'kabis-exam-history:'

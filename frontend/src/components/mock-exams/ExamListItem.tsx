@@ -1,4 +1,4 @@
-import { Bookmark, Clock, FileText, Gauge, Loader2, Lock } from 'lucide-react'
+import { Bookmark, Clock, FileText, Gauge, Loader2, Lock, PlayCircle } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -6,6 +6,11 @@ import { useNavigate } from 'react-router-dom'
 import { generateExam } from '@/api/exams'
 import { ProgressRing } from '@/components/quiz/ProgressRing'
 import type { MockExam } from '@/data/mock-exams-data'
+import {
+  getExamProgress,
+  getInProgressSessionPointer,
+  saveInProgressSessionPointer,
+} from '@/lib/examProgress'
 import { scoreColor } from '@/lib/score'
 import { cn } from '@/lib/utils'
 
@@ -50,12 +55,34 @@ export function ExamListItem({ exam }: ExamListItemProps) {
   const scorePct = exam.taken ? Math.round((exam.taken.score / exam.taken.total) * 100) : null
   const isAvailable = Boolean(exam.quizSetId || exam.bankExam)
 
+  // Bank exams generate a fresh session id each start, so "in progress" is
+  // tracked via a pointer to the last unsubmitted session for this
+  // subject+mode; legacy quiz sets have a stable id to check directly.
+  const bankConfigKey = exam.bankExam ? `${exam.bankExam.subject}-${exam.bankExam.mode}` : null
+  const inProgressBankSessionId = bankConfigKey ? getInProgressSessionPointer(bankConfigKey) : null
+  const progress = exam.quizSetId
+    ? getExamProgress(exam.quizSetId)
+    : inProgressBankSessionId
+      ? getExamProgress(`bank-${inProgressBankSessionId}`)
+      : null
+  const isInProgress = Boolean(progress) && !exam.taken
+
   async function handleStart() {
     if (exam.quizSetId) {
-      navigate(exam.taken ? `/app/practice/${exam.quizSetId}` : `/app/choose-strategy/${exam.quizSetId}`)
+      if (isInProgress) {
+        navigate(`/app/practice/${exam.quizSetId}`)
+      } else if (exam.taken) {
+        navigate(`/app/practice/${exam.quizSetId}`, { state: { mode: 'review' } })
+      } else {
+        navigate(`/app/choose-strategy/${exam.quizSetId}`)
+      }
       return
     }
     if (!exam.bankExam) return
+    if (inProgressBankSessionId) {
+      navigate(`/app/exam/${inProgressBankSessionId}`)
+      return
+    }
     setIsGenerating(true)
     try {
       const session = await generateExam({
@@ -63,6 +90,7 @@ export function ExamListItem({ exam }: ExamListItemProps) {
         mode: exam.bankExam.mode,
         itemCount: exam.bankExam.itemCount,
       })
+      saveInProgressSessionPointer(bankConfigKey!, session.sessionId)
       navigate(`/app/exam/${session.sessionId}`, { state: { notice: session.notice ?? null } })
     } catch {
       setIsGenerating(false)
@@ -100,6 +128,12 @@ export function ExamListItem({ exam }: ExamListItemProps) {
 
       <div className="min-w-0 flex-1">
         <div className="mb-1 flex flex-wrap items-center gap-1.5">
+          {isInProgress && (
+            <span className="inline-flex items-center gap-1 rounded-full bg-[#3A5A40] px-2 py-0.5 text-[10px] font-bold tracking-wide text-white uppercase">
+              <PlayCircle className="size-2.5" />
+              In Progress
+            </span>
+          )}
           {exam.recommended && (
             <span className="inline-block rounded-full bg-[#E0AC48] px-2 py-0.5 text-[10px] font-bold tracking-wide text-[#3A2A1A] uppercase">
               Recommended
@@ -133,12 +167,14 @@ export function ExamListItem({ exam }: ExamListItemProps) {
       </div>
 
       <div className="flex w-full flex-wrap items-center gap-4 sm:w-auto sm:flex-nowrap sm:shrink-0 sm:gap-6">
-        <div className="text-xs text-[#3A2A1A]/60 sm:w-32">
+        <div className="text-xs text-[#3A2A1A]/60 sm:w-36">
           {!isAvailable
             ? 'Not available yet'
-            : exam.taken
-              ? `Taken: ${formatTakenDate(exam.taken.date)}`
-              : 'Not taken yet'}
+            : isInProgress && progress
+              ? `Left off at question ${progress.currentIndex + 1} of ${progress.questionOrder.length}`
+              : exam.taken
+                ? `Taken: ${formatTakenDate(exam.taken.date)}`
+                : 'Not taken yet'}
         </div>
 
         {isAvailable && exam.taken && scorePct !== null && (
@@ -175,14 +211,24 @@ export function ExamListItem({ exam }: ExamListItemProps) {
             'flex shrink-0 items-center gap-1.5 rounded-full px-5 py-2.5 text-sm font-semibold whitespace-nowrap transition-colors',
             !isAvailable
               ? 'cursor-not-allowed border border-[#3A2A1A]/15 text-[#3A2A1A]/50'
-              : exam.taken
-                ? 'bg-[#7A2323] text-[#F3ECDC] hover:bg-[#7A2323]/90'
-                : 'border border-[#E0AC48] text-[#B4791F] hover:bg-[#E0AC48]/10',
+              : isInProgress
+                ? 'bg-[#3A5A40] text-white hover:bg-[#3A5A40]/90'
+                : exam.taken
+                  ? 'bg-[#7A2323] text-[#F3ECDC] hover:bg-[#7A2323]/90'
+                  : 'border border-[#E0AC48] text-[#B4791F] hover:bg-[#E0AC48]/10',
             isGenerating && 'cursor-wait opacity-70',
           )}
         >
           {isGenerating && <Loader2 className="size-3.5 animate-spin" />}
-          {!isAvailable ? 'Coming Soon' : isGenerating ? 'Preparing…' : exam.taken ? 'Review Results' : 'Start Exam'}
+          {!isAvailable
+            ? 'Coming Soon'
+            : isGenerating
+              ? 'Preparing…'
+              : isInProgress
+                ? 'Resume Exam'
+                : exam.taken
+                  ? 'Review Results'
+                  : 'Start Exam'}
         </button>
       </div>
     </motion.div>

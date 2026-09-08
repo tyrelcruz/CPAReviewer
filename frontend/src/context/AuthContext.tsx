@@ -7,18 +7,30 @@ import {
   useState,
 } from 'react'
 
-import { apiClient, clearStoredToken, getStoredToken, setStoredToken } from '@/api/client'
+import {
+  apiClient,
+  clearStoredToken,
+  getStoredToken,
+  SESSION_SUPERSEDED_EVENT,
+  setStoredToken,
+} from '@/api/client'
 
 export interface AuthUser {
   id: string
   name: string
   email: string
+  role: 'user' | 'admin'
 }
 
 interface AuthContextValue {
   user: AuthUser | null
   isLoading: boolean
-  login: (email: string, password: string) => Promise<void>
+  /** Set when the session was cleared because this account signed in on
+   * another device — LoginPage surfaces it, then clears it via
+   * `clearLoggedOutReason`. */
+  loggedOutReason: 'superseded' | null
+  clearLoggedOutReason: () => void
+  login: (email: string, password: string) => Promise<AuthUser>
   register: (name: string, email: string, password: string) => Promise<void>
   logout: () => void
 }
@@ -28,6 +40,7 @@ const AuthContext = createContext<AuthContextValue | null>(null)
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<AuthUser | null>(null)
   const [isLoading, setIsLoading] = useState(true)
+  const [loggedOutReason, setLoggedOutReason] = useState<'superseded' | null>(null)
 
   useEffect(() => {
     const token = getStoredToken()
@@ -66,6 +79,22 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return () => clearInterval(id)
   }, [user])
 
+  // Any request that comes back rejected as superseded (this account signed
+  // in elsewhere) clears the session here — the app-wide axios interceptor
+  // dispatches this event since it, not React state, sees every response.
+  useEffect(() => {
+    function handleSuperseded() {
+      setUser(null)
+      setLoggedOutReason('superseded')
+    }
+    window.addEventListener(SESSION_SUPERSEDED_EVENT, handleSuperseded)
+    return () => window.removeEventListener(SESSION_SUPERSEDED_EVENT, handleSuperseded)
+  }, [])
+
+  function clearLoggedOutReason() {
+    setLoggedOutReason(null)
+  }
+
   async function login(email: string, password: string) {
     const { data } = await apiClient.post<{ token: string; user: AuthUser }>(
       '/api/auth/login',
@@ -73,6 +102,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     )
     setStoredToken(data.token)
     setUser(data.user)
+    setLoggedOutReason(null)
+    return data.user
   }
 
   async function register(name: string, email: string, password: string) {
@@ -82,16 +113,20 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     )
     setStoredToken(data.token)
     setUser(data.user)
+    setLoggedOutReason(null)
   }
 
   function logout() {
+    // Frees this account's device slot server-side; fire-and-forget since
+    // the client-side state below is what actually signs this device out.
+    apiClient.post('/api/auth/logout').catch(() => {})
     clearStoredToken()
     setUser(null)
   }
 
   const value = useMemo(
-    () => ({ user, isLoading, login, register, logout }),
-    [user, isLoading],
+    () => ({ user, isLoading, loggedOutReason, clearLoggedOutReason, login, register, logout }),
+    [user, isLoading, loggedOutReason],
   )
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>

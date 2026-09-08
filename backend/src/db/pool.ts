@@ -16,4 +16,10 @@ export const pool = mysql.createPool({
   waitForConnections: true,
   connectionLimit: 10,
   ssl: sslCa ? { ca: sslCa } : undefined,
+  // The docker-compose MySQL container runs with time_zone=SYSTEM, which is
+  // UTC for the stock mysql:8.4 image (no tzdata installed) — telling mysql2
+  // the server is UTC ('Z') makes it parse TIMESTAMP/DATETIME columns as UTC
+  // instead of the Node process's own local timezone, which otherwise skews
+  // every date it returns by the host's UTC offset (an 8-hour bug here).
+  timezone: 'Z',
 })

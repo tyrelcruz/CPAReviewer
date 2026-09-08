@@ -5,6 +5,7 @@ import { getExamSession, submitExam } from '@/api/exams'
 import { Sidebar } from '@/components/dashboard/Sidebar'
 import { TopNavbar } from '@/components/dashboard/TopNavbar'
 import { Quiz } from '@/components/quiz/Quiz'
+import { clearInProgressSessionPointer } from '@/lib/examProgress'
 import type { BankQuestion, GeneratedExamSession } from '@/types/bank'
 import type { QuizQuestion } from '@/types/quiz'
 
@@ -61,10 +62,11 @@ export function BankExamApp() {
       // key it already has — a failed submit only means server-side history
       // (anti-repetition, cross-device score) won't reflect this attempt.
     })
+    if (session) clearInProgressSessionPointer(`${session.subject}-${session.mode}`)
   }
 
   return (
-    <div className="flex min-h-svh flex-col bg-[#F3ECDC] text-[#3A2A1A] lg:flex-row">
+    <div className="flex min-h-svh flex-col bg-[#FBF3EA] text-[#3A2A1A] lg:flex-row">
       <div className="lg:hidden">
         <TopNavbar />
       </div>
@@ -104,6 +106,7 @@ export function BankExamApp() {
                 onBack={() => navigate('/app')}
                 onComplete={handleComplete}
                 timeLimitSeconds={timeLimitSeconds}
+                progressKey={`bank-${session.sessionId}`}
               />
             </div>
           ) : (

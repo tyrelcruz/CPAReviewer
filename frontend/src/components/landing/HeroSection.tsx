@@ -37,23 +37,6 @@ export function HeroSection() {
     <section className="mx-auto max-w-7xl px-6 py-16 lg:py-20">
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center">
         <div>
-          <div className="mb-5 flex items-center gap-3">
-            <div className="flex w-10 flex-col gap-1">
-              <span className="h-[3px] w-full rounded-full bg-[#7A2323]" />
-              <span className="h-[3px] w-full rounded-full bg-[#7A2323]" />
-            </div>
-            <span
-              className="font-baybayin text-4xl leading-none text-[#3A5A40]"
-              aria-hidden="true"
-            >
-              pasa
-            </span>
-            <div className="flex w-10 flex-col gap-1">
-              <span className="h-[3px] w-full rounded-full bg-[#7A2323]" />
-              <span className="h-[3px] w-full rounded-full bg-[#7A2323]" />
-            </div>
-          </div>
-
           <h1 className="font-display text-5xl leading-[1.05] font-black tracking-tight uppercase sm:text-6xl">
             <span className="text-[#7A2323]">Pass smarter.</span>
             <br />

@@ -1,29 +1,78 @@
+import { ClipboardCheck, FileText } from 'lucide-react'
 import { motion } from 'framer-motion'
+import { useEffect, useMemo, useState } from 'react'
 
+import { listMyExamSessions, listSubjectCounts, type ExamSessionSummary } from '@/api/exams'
+import { ConsistencyBanner } from '@/components/dashboard/ConsistencyBanner'
+import { ContinueStudyingBanner } from '@/components/dashboard/ContinueStudyingBanner'
 import { DashboardHeader } from '@/components/dashboard/DashboardHeader'
 import { MobileTabBar } from '@/components/dashboard/MobileTabBar'
+import { PerformanceTrendCard } from '@/components/dashboard/PerformanceTrendCard'
+import { RecentActivityCard } from '@/components/dashboard/RecentActivityCard'
 import { Sidebar } from '@/components/dashboard/Sidebar'
 import { StatSummaryCards } from '@/components/dashboard/StatSummaryCards'
-import { StudyProgressCard } from '@/components/dashboard/StudyProgressCard'
-import { RecentActivityCard } from '@/components/dashboard/RecentActivityCard'
 import { StudyPlanCard } from '@/components/dashboard/StudyPlanCard'
-import { PerformanceTrendCard } from '@/components/dashboard/PerformanceTrendCard'
+import { StudyProgressCard } from '@/components/dashboard/StudyProgressCard'
 import { SubjectStrengthsCard } from '@/components/dashboard/SubjectStrengthsCard'
-import { ConsistencyBanner } from '@/components/dashboard/ConsistencyBanner'
 import { useAuth } from '@/context/AuthContext'
-import { fadeUpItem, staggerContainer } from '@/lib/motion'
 import {
-  OVERALL_PROGRESS,
-  PERFORMANCE_TREND,
-  RECENT_ACTIVITY,
-  SUBJECT_PROGRESS,
-  SUBJECT_STRENGTHS,
-  TODAYS_STUDY_PLAN,
-} from '@/data/dashboard-data'
+  aggregateBySubject,
+  buildCombinedAttempts,
+  overallAveragePercent,
+  scoreDeltaVsPrevious,
+  toPerformanceTrend,
+  toRecentActivity,
+  toStudyPlan,
+  toSubjectProgress,
+  toSubjectStrengths,
+} from '@/lib/dashboardStats'
+import { fadeUpItem, staggerContainer } from '@/lib/motion'
+import { peekStudyStreak } from '@/lib/streak'
+import { quizSets } from '@/data/quiz-data'
 
 export function DashboardPage() {
   const { user } = useAuth()
   const firstName = user?.name?.split(' ')[0] ?? 'Juan'
+
+  const [bankSessions, setBankSessions] = useState<ExamSessionSummary[]>([])
+  const [bankSubjectCounts, setBankSubjectCounts] = useState<Record<string, number>>({})
+
+  useEffect(() => {
+    let cancelled = false
+    listMyExamSessions()
+      .then((sessions) => {
+        if (!cancelled) setBankSessions(sessions)
+      })
+      .catch(() => {
+        // No real sessions to show is a valid state — the localStorage-backed
+        // legacy attempts below still render on their own.
+      })
+    listSubjectCounts()
+      .then((counts) => {
+        if (!cancelled) setBankSubjectCounts(counts)
+      })
+      .catch(() => {})
+    return () => {
+      cancelled = true
+    }
+  }, [])
+
+  const attempts = useMemo(
+    () => buildCombinedAttempts(quizSets, bankSessions),
+    [bankSessions],
+  )
+  const aggregates = useMemo(() => aggregateBySubject(attempts), [attempts])
+  const overallProgress = useMemo(() => overallAveragePercent(attempts), [attempts])
+  const scoreDelta = useMemo(() => scoreDeltaVsPrevious(attempts), [attempts])
+  const streak = peekStudyStreak()
+
+  const questionsAnswered = attempts.reduce((sum, a) => sum + a.total, 0)
+  const totalQuestions =
+    quizSets.reduce((sum, set) => sum + set.questions.length, 0) +
+    Object.values(bankSubjectCounts).reduce((sum, n) => sum + n, 0)
+
+  const recentActivity = toRecentActivity(attempts).map((item) => ({ ...item, icon: FileText }))
+  const studyPlan = toStudyPlan(aggregates).map((task) => ({ ...task, icon: ClipboardCheck }))
 
   return (
     <div className="flex min-h-svh bg-[#FBF3EA] text-[#3A2A1A]">
@@ -40,26 +89,31 @@ export function DashboardPage() {
             <DashboardHeader firstName={firstName} />
           </motion.div>
 
+          <ContinueStudyingBanner />
+
           <motion.div variants={fadeUpItem}>
             <StatSummaryCards
-              overallProgress={OVERALL_PROGRESS}
-              questionsAnswered={2480}
-              totalQuestions={3600}
-              averageScore={76}
-              scoreDelta={8}
-              streak={12}
+              overallProgress={overallProgress}
+              questionsAnswered={questionsAnswered}
+              totalQuestions={totalQuestions}
+              averageScore={overallProgress}
+              scoreDelta={scoreDelta}
+              streak={streak}
             />
           </motion.div>
 
           <motion.div variants={fadeUpItem} className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-            <StudyProgressCard overall={OVERALL_PROGRESS} subjects={SUBJECT_PROGRESS} />
-            <RecentActivityCard items={RECENT_ACTIVITY} />
+            <StudyProgressCard
+              overall={overallProgress ?? 0}
+              subjects={toSubjectProgress(aggregates)}
+            />
+            <RecentActivityCard items={recentActivity} />
           </motion.div>
 
           <motion.div variants={fadeUpItem} className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-            <StudyPlanCard tasks={TODAYS_STUDY_PLAN} />
-            <PerformanceTrendCard data={PERFORMANCE_TREND} />
-            <SubjectStrengthsCard subjects={SUBJECT_STRENGTHS} />
+            <StudyPlanCard tasks={studyPlan} />
+            <PerformanceTrendCard data={toPerformanceTrend(attempts)} />
+            <SubjectStrengthsCard subjects={toSubjectStrengths(aggregates)} />
           </motion.div>
 
           <motion.div variants={fadeUpItem}>

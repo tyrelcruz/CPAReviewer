@@ -34,6 +34,21 @@ export async function listSubjectCounts(): Promise<Record<string, number>> {
   return data.counts
 }
 
+export interface ExamSessionSummary {
+  sessionId: string
+  subject: string
+  mode: ExamMode
+  itemCount: number
+  score: number
+  submittedAt: string
+}
+
+/** The current user's own submitted bank-exam sessions, most recent first. */
+export async function listMyExamSessions(): Promise<ExamSessionSummary[]> {
+  const { data } = await apiClient.get<{ sessions: ExamSessionSummary[] }>('/api/exams')
+  return data.sessions
+}
+
 export async function getExamSession(sessionId: string): Promise<GeneratedExamSession> {
   const { data } = await apiClient.get<GeneratedExamSession>(`/api/exams/${sessionId}`)
   return data

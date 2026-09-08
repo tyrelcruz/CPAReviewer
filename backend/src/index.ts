@@ -2,7 +2,8 @@ import 'dotenv/config'
 import cors from 'cors'
 import express, { type NextFunction, type Request, type Response } from 'express'
 
-import { requireAuth } from './middleware/auth.js'
+import { requireAdmin, requireAuth } from './middleware/auth.js'
+import { adminRouter } from './routes/admin.js'
 import { authRouter } from './routes/auth.js'
 import { bankQuestionsRouter } from './routes/bankQuestions.js'
 import { examsRouter } from './routes/exams.js'
@@ -22,6 +23,7 @@ app.use('/api/auth', authRouter)
 app.use('/api/quiz-sets', requireAuth, quizSetsRouter)
 app.use('/api/bank-questions', requireAuth, bankQuestionsRouter)
 app.use('/api/exams', requireAuth, examsRouter)
+app.use('/api/admin', requireAuth, requireAdmin, adminRouter)
 
 app.use((err: unknown, _req: Request, res: Response, _next: NextFunction) => {
   console.error(err)

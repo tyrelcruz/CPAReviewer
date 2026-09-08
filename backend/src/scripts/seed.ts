@@ -15,6 +15,12 @@ const DEMO_USER = {
   password: 'password123',
 }
 
+const ADMIN_USER = {
+  name: 'Admin User',
+  email: 'admin@cpareviewer.test',
+  password: 'admin12345',
+}
+
 interface RawQuestion {
   id: string
   prompt: string
@@ -38,6 +44,15 @@ async function seed() {
     [randomUUID(), DEMO_USER.name, DEMO_USER.email, passwordHash],
   )
   console.log(`Seeded demo user "${DEMO_USER.email}" (password: ${DEMO_USER.password}).`)
+
+  const adminPasswordHash = await bcrypt.hash(ADMIN_USER.password, 10)
+  await pool.query(
+    `INSERT INTO users (id, name, email, password_hash, role)
+     VALUES (?, ?, ?, ?, 'admin')
+     ON DUPLICATE KEY UPDATE name = VALUES(name), role = 'admin'`,
+    [randomUUID(), ADMIN_USER.name, ADMIN_USER.email, adminPasswordHash],
+  )
+  console.log(`Seeded admin user "${ADMIN_USER.email}" (password: ${ADMIN_USER.password}).`)
 
   const seedPath = path.resolve(
     __dirname,

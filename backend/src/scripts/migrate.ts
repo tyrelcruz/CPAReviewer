@@ -11,7 +11,15 @@ async function migrate() {
   const schemaPath = path.resolve(__dirname, '../db/schema.sql')
   const sql = await readFile(schemaPath, 'utf-8')
 
-  const statements = sql
+  // Strip `-- ...` line comments before splitting on ';' — otherwise a
+  // semicolon mentioned in comment prose (documentation, not SQL) gets
+  // mistaken for a statement terminator and the split breaks mid-comment.
+  const sqlWithoutComments = sql
+    .split('\n')
+    .map((line) => line.replace(/--.*$/, ''))
+    .join('\n')
+
+  const statements = sqlWithoutComments
     .split(';')
     .map((s) => s.trim())
     .filter(Boolean)
@@ -27,7 +35,11 @@ async function migrate() {
       applied++
     } catch (err) {
       const code = (err as { code?: string }).code
-      if (code === 'ER_DUP_KEYNAME') {
+      if (
+        code === 'ER_DUP_KEYNAME' ||
+        code === 'ER_DUP_FIELDNAME' ||
+        code === 'ER_CANT_DROP_FIELD_OR_KEY'
+      ) {
         skipped++
         continue
       }
