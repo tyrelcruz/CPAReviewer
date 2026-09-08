@@ -1,5 +1,5 @@
 import { MonitorSmartphone } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 import { listActiveSessions, type AdminSession } from '@/api/admin'
 import { formatRelativeTime } from '@/lib/time'
@@ -21,6 +21,58 @@ function initialsFor(name: string): string {
   const first = parts[0]?.[0] ?? ''
   const last = parts.length > 1 ? parts[parts.length - 1][0] : ''
   return (first + last).toUpperCase()
+}
+
+interface UserSessionGroup {
+  userId: string
+  name: string
+  email: string
+  sessions: AdminSession[]
+}
+
+/** An account can be signed in from more than one device at once — group all
+ * of a user's sessions together (regardless of where they fall in the list)
+ * so the table shows one identity block per account (with a "×N devices"
+ * badge) instead of repeating the same name/avatar on every row. A group's
+ * position follows its first-seen session, which — given the backend's
+ * last-active-first sort — is that account's most recently active session. */
+function groupSessionsByUser(sessions: AdminSession[]): UserSessionGroup[] {
+  const groups: UserSessionGroup[] = []
+  const indexByUserId = new Map<string, number>()
+
+  for (const session of sessions) {
+    const existingIndex = indexByUserId.get(session.userId)
+    if (existingIndex !== undefined) {
+      groups[existingIndex].sessions.push(session)
+      continue
+    }
+    indexByUserId.set(session.userId, groups.length)
+    groups.push({
+      userId: session.userId,
+      name: session.name,
+      email: session.email,
+      sessions: [session],
+    })
+  }
+
+  return groups
+}
+
+function StatusBadge({ status }: { status: AdminSession['status'] }) {
+  return (
+    <span
+      className={
+        status === 'active'
+          ? 'flex items-center gap-1.5 text-[#3A5A40]'
+          : 'flex items-center gap-1.5 text-[#3A2A1A]/50'
+      }
+    >
+      <span
+        className={status === 'active' ? 'size-1.5 rounded-full bg-[#3A5A40]' : 'size-1.5 rounded-full bg-[#3A2A1A]/30'}
+      />
+      {status === 'active' ? 'Active' : 'Inactive'}
+    </span>
+  )
 }
 
 export function ActiveSessionsCard() {
@@ -57,6 +109,8 @@ export function ActiveSessionsCard() {
     }
   }, [])
 
+  const groups = useMemo(() => groupSessionsByUser(sessions), [sessions])
+
   return (
     <div className="flex min-w-0 flex-col rounded-2xl border border-[#3A2A1A]/10 bg-white p-5 sm:p-6">
       <div className="flex flex-wrap items-start justify-between gap-3">
@@ -67,7 +121,7 @@ export function ActiveSessionsCard() {
           <div>
             <p className="font-semibold text-[#3A2A1A]">Active Sessions</p>
             <p className="font-reading text-xs text-[#3A2A1A]/60">
-              Accounts currently signed in — one device per account, per the session policy.
+              Accounts currently signed in — an account can have more than one device signed in at once.
             </p>
           </div>
         </div>
@@ -102,51 +156,62 @@ export function ActiveSessionsCard() {
               </tr>
             </thead>
             <tbody>
-              {sessions.map((session) => (
-                <tr key={session.sessionId} className="border-b border-[#3A2A1A]/5 last:border-0">
-                  <td className="py-3 pr-3">
-                    <div className="flex items-center gap-2.5">
-                      <span
-                        className="flex size-9 shrink-0 items-center justify-center rounded-full text-xs font-semibold text-white"
-                        style={{ background: avatarColorFor(session.userId) }}
-                      >
-                        {initialsFor(session.name)}
-                      </span>
-                      <div className="min-w-0">
-                        <p className="truncate font-medium text-[#3A2A1A]">{session.name}</p>
-                        <p className="truncate text-xs text-[#3A2A1A]/55">{session.email}</p>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="py-3 pr-3 whitespace-nowrap">
-                    <span
+              {groups.map((group) => {
+                const multiDevice = group.sessions.length > 1
+                return group.sessions.map((session, i) => {
+                  const isFirst = i === 0
+                  const isLastInGroup = i === group.sessions.length - 1
+                  return (
+                    <tr
+                      key={session.sessionId}
                       className={
-                        session.status === 'active'
-                          ? 'flex items-center gap-1.5 text-[#3A5A40]'
-                          : 'flex items-center gap-1.5 text-[#3A2A1A]/50'
+                        isLastInGroup ? 'border-b border-[#3A2A1A]/5 last:border-0' : 'border-b-0'
                       }
                     >
-                      <span
-                        className={
-                          session.status === 'active'
-                            ? 'size-1.5 rounded-full bg-[#3A5A40]'
-                            : 'size-1.5 rounded-full bg-[#3A2A1A]/30'
-                        }
-                      />
-                      {session.status === 'active' ? 'Active' : 'Inactive'}
-                    </span>
-                  </td>
-                  <td className="py-3 pr-3 whitespace-nowrap text-[#3A2A1A]/80">
-                    {session.device}
-                  </td>
-                  <td className="py-3 pr-3 whitespace-nowrap text-[#3A2A1A]/80">
-                    {session.location ?? 'Unknown'}
-                  </td>
-                  <td className="py-3 pr-3 whitespace-nowrap text-[#3A2A1A]/70">
-                    {formatRelativeTime(session.lastActiveAt)}
-                  </td>
-                </tr>
-              ))}
+                      <td className="py-3 pr-3">
+                        {isFirst ? (
+                          <div className="flex items-center gap-2.5">
+                            <span
+                              className="flex size-9 shrink-0 items-center justify-center rounded-full text-xs font-semibold text-white"
+                              style={{ background: avatarColorFor(session.userId) }}
+                            >
+                              {initialsFor(session.name)}
+                            </span>
+                            <div className="min-w-0">
+                              <div className="flex items-center gap-1.5">
+                                <p className="truncate font-medium text-[#3A2A1A]">{session.name}</p>
+                                {multiDevice && (
+                                  <span className="shrink-0 rounded-full bg-[#7A2323]/10 px-1.5 py-0.5 text-[10px] font-bold whitespace-nowrap text-[#7A2323]">
+                                    ×{group.sessions.length} devices
+                                  </span>
+                                )}
+                              </div>
+                              <p className="truncate text-xs text-[#3A2A1A]/55">{session.email}</p>
+                            </div>
+                          </div>
+                        ) : (
+                          <div className="flex items-center gap-2.5 pl-11 text-[#3A2A1A]/40">
+                            <span className="text-xs">↳</span>
+                            <span className="text-xs">another device</span>
+                          </div>
+                        )}
+                      </td>
+                      <td className="py-3 pr-3 whitespace-nowrap">
+                        <StatusBadge status={session.status} />
+                      </td>
+                      <td className="py-3 pr-3 whitespace-nowrap text-[#3A2A1A]/80">
+                        {session.device}
+                      </td>
+                      <td className="py-3 pr-3 whitespace-nowrap text-[#3A2A1A]/80">
+                        {session.location ?? 'Unknown'}
+                      </td>
+                      <td className="py-3 pr-3 whitespace-nowrap text-[#3A2A1A]/70">
+                        {formatRelativeTime(session.lastActiveAt)}
+                      </td>
+                    </tr>
+                  )
+                })
+              })}
             </tbody>
           </table>
         </div>

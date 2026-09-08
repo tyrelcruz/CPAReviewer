@@ -22,3 +22,13 @@ export function formatRelativeTime(iso: string): string {
   const diffDays = Math.floor(diffHours / 24)
   return `${diffDays}d ago`
 }
+
+/** Formats a whole-second duration compactly, e.g. "45s", "18m", "1h 12m". */
+export function formatDuration(totalSeconds: number): string {
+  const minutes = Math.round(totalSeconds / 60)
+  if (minutes < 1) return `${Math.round(totalSeconds)}s`
+  if (minutes < 60) return `${minutes}m`
+  const hours = Math.floor(minutes / 60)
+  const remainingMinutes = minutes % 60
+  return remainingMinutes > 0 ? `${hours}h ${remainingMinutes}m` : `${hours}h`
+}

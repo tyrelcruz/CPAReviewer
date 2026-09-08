@@ -11,7 +11,7 @@ import {
   apiClient,
   clearStoredToken,
   getStoredToken,
-  SESSION_SUPERSEDED_EVENT,
+  SESSION_ENDED_EVENT,
   setStoredToken,
 } from '@/api/client'
 
@@ -25,10 +25,10 @@ export interface AuthUser {
 interface AuthContextValue {
   user: AuthUser | null
   isLoading: boolean
-  /** Set when the session was cleared because this account signed in on
-   * another device — LoginPage surfaces it, then clears it via
-   * `clearLoggedOutReason`. */
-  loggedOutReason: 'superseded' | null
+  /** Set when the session was cleared because this device's session ended
+   * server-side (e.g. logged out from another tab) — LoginPage surfaces it,
+   * then clears it via `clearLoggedOutReason`. */
+  loggedOutReason: 'session_ended' | null
   clearLoggedOutReason: () => void
   login: (email: string, password: string) => Promise<AuthUser>
   register: (name: string, email: string, password: string) => Promise<void>
@@ -40,7 +40,7 @@ const AuthContext = createContext<AuthContextValue | null>(null)
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<AuthUser | null>(null)
   const [isLoading, setIsLoading] = useState(true)
-  const [loggedOutReason, setLoggedOutReason] = useState<'superseded' | null>(null)
+  const [loggedOutReason, setLoggedOutReason] = useState<'session_ended' | null>(null)
 
   useEffect(() => {
     const token = getStoredToken()
@@ -79,16 +79,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return () => clearInterval(id)
   }, [user])
 
-  // Any request that comes back rejected as superseded (this account signed
-  // in elsewhere) clears the session here — the app-wide axios interceptor
-  // dispatches this event since it, not React state, sees every response.
+  // Any request that comes back rejected because this device's session ended
+  // (e.g. logged out from another tab) clears the session here — the
+  // app-wide axios interceptor dispatches this event since it, not React
+  // state, sees every response.
   useEffect(() => {
-    function handleSuperseded() {
+    function handleSessionEnded() {
       setUser(null)
-      setLoggedOutReason('superseded')
+      setLoggedOutReason('session_ended')
     }
-    window.addEventListener(SESSION_SUPERSEDED_EVENT, handleSuperseded)
-    return () => window.removeEventListener(SESSION_SUPERSEDED_EVENT, handleSuperseded)
+    window.addEventListener(SESSION_ENDED_EVENT, handleSessionEnded)
+    return () => window.removeEventListener(SESSION_ENDED_EVENT, handleSessionEnded)
   }, [])
 
   function clearLoggedOutReason() {
@@ -117,8 +118,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }
 
   function logout() {
-    // Frees this account's device slot server-side; fire-and-forget since
-    // the client-side state below is what actually signs this device out.
+    // Ends this device's session server-side; fire-and-forget since the
+    // client-side state below is what actually signs this device out. Other
+    // devices signed into this account are unaffected.
     apiClient.post('/api/auth/logout').catch(() => {})
     clearStoredToken()
     setUser(null)

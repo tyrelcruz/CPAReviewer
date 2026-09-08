@@ -20,11 +20,13 @@ ALTER TABLE users DROP COLUMN active_session_id;
 -- One row per login. `id` is the session id ("sid") embedded in that login's
 -- JWT — requireAuth looks a request's sid up here on every call: a row with
 -- ended_at IS NULL is a live session; NULL result or a non-null ended_at
--- means the token has been superseded (another login) or logged out, so the
--- request is rejected. Also the source of the admin "Active Sessions" view:
--- device/location are captured once at login, last_seen_at is bumped by
--- requireAuth (throttled) to distinguish "logged in and active right now"
--- from "logged in but idle".
+-- means the session has been logged out, so the request is rejected. Sessions
+-- are additive, not exclusive — one user_id can have several open rows at
+-- once (signed in from multiple devices simultaneously). Also the source of
+-- the admin "Active Sessions" view: device/location are captured once at
+-- login, last_seen_at is bumped by requireAuth (throttled) to distinguish
+-- "logged in and active right now" from "logged in but idle", and an account
+-- with unusually many concurrent open rows is a possible account-sharing signal.
 CREATE TABLE IF NOT EXISTS user_sessions (
   id VARCHAR(64) PRIMARY KEY,
   user_id VARCHAR(64) NOT NULL,

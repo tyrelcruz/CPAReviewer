@@ -9,8 +9,10 @@ export type Role = 'user' | 'admin'
 export interface AuthUser {
   id: string
   email: string
-  /** Session id — must be an open (not superseded/logged-out) row in
-   * `user_sessions`, checked on every request by requireAuth. */
+  /** Session id — must correspond to a still-open (not logged-out) row in
+   * `user_sessions`, checked on every request by requireAuth. Sessions are
+   * additive: several concurrent sids (different devices) can be open for
+   * the same user at once. */
   sid: string
   role: Role
 }
@@ -68,9 +70,12 @@ export async function requireAuth(req: Request, res: Response, next: NextFunctio
     const row = rows[0]
 
     if (!row || row.ended_at) {
+      // No more "superseded by another login" — sessions are additive now.
+      // This still legitimately happens on a stale/logged-out tab (e.g. this
+      // same device logged out from another tab).
       res.status(401).json({
-        error: 'This account was signed in on another device',
-        code: 'SESSION_SUPERSEDED',
+        error: 'This session has ended. Please sign in again.',
+        code: 'SESSION_ENDED',
       })
       return
     }

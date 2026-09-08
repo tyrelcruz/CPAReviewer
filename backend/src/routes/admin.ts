@@ -3,13 +3,21 @@ import type { RowDataPacket } from 'mysql2'
 
 import { pool } from '../db/pool.js'
 import { asyncHandler } from '../middleware/asyncHandler.js'
+import {
+  ACTIVE_SESSION_WINDOW_MS,
+  countActiveSessions,
+  getActiveUsersStat,
+  getDailyActiveUsersSeries,
+  getDatabaseSizeBytes,
+  getExamsGeneratedStat,
+  getFeatureUsage,
+  getRecentActivity,
+  getTopLocations,
+  getTotalUsersStat,
+  getUsageStats,
+} from '../lib/adminAnalytics.js'
 
 export const adminRouter = Router()
-
-// A session with no activity in this window still counts as signed in
-// (ended_at IS NULL — nothing has superseded or logged it out) but shows as
-// "Inactive" rather than "Active" in the admin view.
-const ACTIVE_WINDOW_MS = 5 * 60 * 1000
 
 interface SessionRow extends RowDataPacket {
   session_id: string
@@ -44,7 +52,7 @@ adminRouter.get('/sessions', asyncHandler(async (_req, res) => {
     location: row.location_label,
     loginAt: row.created_at.toISOString(),
     lastActiveAt: row.last_seen_at.toISOString(),
-    status: (now - row.last_seen_at.getTime() <= ACTIVE_WINDOW_MS ? 'active' : 'inactive') as
+    status: (now - row.last_seen_at.getTime() <= ACTIVE_SESSION_WINDOW_MS ? 'active' : 'inactive') as
       | 'active'
       | 'inactive',
   }))
@@ -53,5 +61,46 @@ adminRouter.get('/sessions', asyncHandler(async (_req, res) => {
     sessions,
     activeCount: sessions.filter((s) => s.status === 'active').length,
     totalCount: sessions.length,
+  })
+}))
+
+adminRouter.get('/analytics', asyncHandler(async (_req, res) => {
+  const [
+    totalUsers,
+    activeUsers,
+    examsGenerated,
+    activeSessions,
+    databaseSizeBytes,
+    usageSeries,
+    usageStats,
+    featureUsage,
+    recentActivity,
+    topLocations,
+  ] = await Promise.all([
+    getTotalUsersStat(),
+    getActiveUsersStat(),
+    getExamsGeneratedStat(),
+    countActiveSessions(),
+    getDatabaseSizeBytes(),
+    getDailyActiveUsersSeries(),
+    getUsageStats(),
+    getFeatureUsage(),
+    getRecentActivity(10),
+    getTopLocations(5),
+  ])
+
+  res.json({
+    stats: {
+      totalUsers,
+      activeUsers,
+      examsGenerated,
+      activeSessions: { value: activeSessions },
+      databaseSizeBytes,
+    },
+    usageSeries,
+    usageStats,
+    featureUsage,
+    recentActivity,
+    topLocations,
   })
 }))

@@ -20,10 +20,13 @@ interface UserRow extends RowDataPacket {
   role: 'user' | 'admin'
 }
 
-/** Ends whatever session this user previously had open — enforcing one
- * signed-in device per account — and opens a new one, capturing device, IP,
- * and resolved location for the admin "Active Sessions" view. The caller's
- * user row must already exist (FK on user_id). */
+/** Opens a new session for this login/registration, capturing device, IP,
+ * and resolved location for the admin "Active Sessions" view. Sessions are
+ * additive, not exclusive — an account can be signed in from several
+ * devices/locations at once (e.g. phone + laptop), each tracked as its own
+ * row so the admin panel can surface an account with unusually many
+ * concurrent devices/locations as a possible account-sharing signal. The
+ * caller's user row must already exist (FK on user_id). */
 async function openSession(userId: string, req: Request): Promise<string> {
   const sid = randomUUID()
   const ip = getClientIp(req)
@@ -31,10 +34,6 @@ async function openSession(userId: string, req: Request): Promise<string> {
   const device = describeDevice(userAgent)
   const location = await resolveLocation(ip)
 
-  await pool.query(
-    'UPDATE user_sessions SET ended_at = CURRENT_TIMESTAMP WHERE user_id = ? AND ended_at IS NULL',
-    [userId],
-  )
   await pool.query(
     `INSERT INTO user_sessions (id, user_id, ip_address, user_agent, device_label, location_label)
      VALUES (?, ?, ?, ?, ?, ?)`,
@@ -105,9 +104,8 @@ authRouter.post('/login', asyncHandler(async (req, res) => {
     return
   }
 
-  // Opening a new session ends whatever session this user had open — the
-  // device that was signed in finds out on its next request (requireAuth
-  // rejects its now-superseded sid) and is bounced back to the login screen.
+  // Opens an additional, independent session — any other device already
+  // signed into this account stays signed in.
   const sid = await openSession(user.id, req)
 
   const token = signToken({ id: user.id, email: user.email, sid, role: user.role })
@@ -144,9 +142,8 @@ authRouter.post('/refresh', requireAuth, asyncHandler(async (req, res) => {
 }))
 
 authRouter.post('/logout', requireAuth, asyncHandler(async (req, res) => {
-  // Only ends the row if this device's sid is still open, so a device that
-  // was already superseded by a newer login can't accidentally end (and
-  // free up) the session that replaced it.
+  // Ends only this device's own session — other devices signed into the
+  // same account are unaffected.
   await pool.query(
     'UPDATE user_sessions SET ended_at = CURRENT_TIMESTAMP WHERE id = ? AND user_id = ? AND ended_at IS NULL',
     [req.user!.sid, req.user!.id],

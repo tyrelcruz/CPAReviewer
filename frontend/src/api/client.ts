@@ -3,9 +3,11 @@ import axios from 'axios'
 const TOKEN_STORAGE_KEY = 'cpa-reviewer:token'
 
 /** Dispatched on `window` when a request comes back rejected because this
- * account logged in on another device — see AuthContext, which listens for
- * it to clear the session and bounce the user to the login screen. */
-export const SESSION_SUPERSEDED_EVENT = 'auth:session-superseded'
+ * device's session has ended server-side (e.g. logged out from another tab)
+ * — see AuthContext, which listens for it to clear the session and bounce
+ * the user to the login screen. Signing in from another device no longer
+ * triggers this — multiple devices can be signed in at once. */
+export const SESSION_ENDED_EVENT = 'auth:session-ended'
 
 export const apiClient = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:8001',
@@ -25,9 +27,9 @@ apiClient.interceptors.request.use((config) => {
 apiClient.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (axios.isAxiosError(error) && error.response?.data?.code === 'SESSION_SUPERSEDED') {
+    if (axios.isAxiosError(error) && error.response?.data?.code === 'SESSION_ENDED') {
       clearStoredToken()
-      window.dispatchEvent(new Event(SESSION_SUPERSEDED_EVENT))
+      window.dispatchEvent(new Event(SESSION_ENDED_EVENT))
     }
     return Promise.reject(error)
   },

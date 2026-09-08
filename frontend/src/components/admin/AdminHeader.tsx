@@ -9,7 +9,7 @@ export function AdminHeader() {
         src={carabaoRepia}
         alt=""
         aria-hidden="true"
-        className="pointer-events-none absolute top-1 right-[8%] h-40 w-auto -translate-y-1/2 object-contain opacity-20 sm:h-56 lg:h-72"
+        className="pointer-events-none absolute top-1 right-[1%] h-40 w-auto -translate-y-1/2 object-contain opacity-20 sm:h-56 lg:h-72"
       />
 
       <div className="relative flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">

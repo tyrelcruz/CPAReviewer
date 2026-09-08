@@ -52,11 +52,12 @@ export function LoginPage() {
   // get sent back to the user page they merely happened to be bounced from.
   const redirectFrom = (location.state as { from?: { pathname: string } } | null)?.from?.pathname
 
-  // Surfaces once, right after being bounced here for signing in elsewhere —
-  // reuses the same alert slot as a login error since only one applies at a time.
+  // Surfaces once, right after being bounced here for a session that ended
+  // server-side (e.g. logged out from another tab) — reuses the same alert
+  // slot as a login error since only one applies at a time.
   useEffect(() => {
-    if (loggedOutReason !== 'superseded') return
-    setError('You were signed out because this account was signed in on another device.')
+    if (loggedOutReason !== 'session_ended') return
+    setError('You have been signed out. Please sign in again.')
     clearLoggedOutReason()
   }, [loggedOutReason, clearLoggedOutReason])
 
