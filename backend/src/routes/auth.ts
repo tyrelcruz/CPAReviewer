@@ -1,4 +1,3 @@
-import bcrypt from 'bcryptjs'
 import type { Request } from 'express'
 import { Router } from 'express'
 import type { RowDataPacket } from 'mysql2'
@@ -6,6 +5,14 @@ import { randomUUID } from 'node:crypto'
 
 import { describeDevice, getClientIp } from '../lib/deviceInfo.js'
 import { resolveLocation } from '../lib/geoLocation.js'
+import { sendOtpEmail } from '../lib/mailer.js'
+import {
+  generateOtpCode,
+  hashOtpCode,
+  OTP_MAX_ATTEMPTS,
+  OTP_RESEND_COOLDOWN_SECONDS,
+  OTP_TTL_MINUTES,
+} from '../lib/otp.js'
 import { pool } from '../db/pool.js'
 import { asyncHandler } from '../middleware/asyncHandler.js'
 import { requireAuth, signToken } from '../middleware/auth.js'
@@ -18,12 +25,23 @@ export const authRouter = Router()
 // rather than an instant silent kick.
 const GRACE_PERIOD_SECONDS = 30
 
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
 interface UserRow extends RowDataPacket {
   id: string
   name: string
   email: string
-  password_hash: string
   role: 'user' | 'admin'
+}
+
+interface OtpRow extends RowDataPacket {
+  email: string
+  code_hash: string
+  purpose: 'signup' | 'login'
+  pending_name: string | null
+  attempts: number
+  expires_at: Date
+  created_at: Date
 }
 
 /** Opens a new session for this login/registration, capturing device, IP,
@@ -57,64 +75,168 @@ async function openSession(userId: string, req: Request): Promise<string> {
   return sid
 }
 
-authRouter.post('/register', asyncHandler(async (req, res) => {
-  const { name, email, password } = req.body ?? {}
+/** Generates and emails a fresh OTP for `email`, replacing any still-pending
+ * one for that address. Enforces a per-email resend cooldown so a single
+ * email address can't be spammed with requests. Returns false (without
+ * sending) if the cooldown hasn't elapsed yet. */
+async function issueOtp(
+  email: string,
+  purpose: 'signup' | 'login',
+  pendingName: string | null,
+): Promise<boolean> {
+  const [existingRows] = await pool.query<OtpRow[]>(
+    'SELECT created_at FROM otp_codes WHERE email = ?',
+    [email],
+  )
+  const existing = existingRows[0]
+  if (existing) {
+    const secondsSinceLast = (Date.now() - existing.created_at.getTime()) / 1000
+    if (secondsSinceLast < OTP_RESEND_COOLDOWN_SECONDS) return false
+  }
 
-  if (
-    typeof name !== 'string' ||
-    typeof email !== 'string' ||
-    typeof password !== 'string' ||
-    !name ||
-    !email ||
-    password.length < 8
-  ) {
-    res
-      .status(400)
-      .json({ error: 'name, email, and a password of at least 8 characters are required' })
+  const code = generateOtpCode()
+  await pool.query(
+    `INSERT INTO otp_codes (email, code_hash, purpose, pending_name, attempts, expires_at)
+     VALUES (?, ?, ?, ?, 0, (CURRENT_TIMESTAMP + INTERVAL ? MINUTE))
+     ON DUPLICATE KEY UPDATE
+       code_hash = VALUES(code_hash),
+       purpose = VALUES(purpose),
+       pending_name = VALUES(pending_name),
+       attempts = 0,
+       expires_at = VALUES(expires_at),
+       created_at = CURRENT_TIMESTAMP`,
+    [email, hashOtpCode(code), purpose, pendingName, OTP_TTL_MINUTES],
+  )
+
+  await sendOtpEmail(email, code)
+  return true
+}
+
+/** Looks up and validates a pending OTP for `email`/`purpose`, incrementing
+ * the attempt counter on a mismatch. Returns the row on success so the
+ * caller can act on `pending_name`, or an error to send back otherwise. */
+async function consumeOtp(
+  email: string,
+  purpose: 'signup' | 'login',
+  code: string,
+): Promise<{ ok: true; row: OtpRow } | { ok: false; status: number; error: string }> {
+  const [rows] = await pool.query<OtpRow[]>('SELECT * FROM otp_codes WHERE email = ?', [email])
+  const row = rows[0]
+
+  if (!row || row.purpose !== purpose) {
+    return { ok: false, status: 400, error: 'No pending code for this email — request a new one.' }
+  }
+  if (row.expires_at.getTime() < Date.now()) {
+    await pool.query('DELETE FROM otp_codes WHERE email = ?', [email])
+    return { ok: false, status: 400, error: 'This code has expired — request a new one.' }
+  }
+  if (row.attempts >= OTP_MAX_ATTEMPTS) {
+    await pool.query('DELETE FROM otp_codes WHERE email = ?', [email])
+    return { ok: false, status: 429, error: 'Too many incorrect attempts — request a new code.' }
+  }
+  if (hashOtpCode(code) !== row.code_hash) {
+    await pool.query('UPDATE otp_codes SET attempts = attempts + 1 WHERE email = ?', [email])
+    return { ok: false, status: 401, error: 'Incorrect code.' }
+  }
+
+  await pool.query('DELETE FROM otp_codes WHERE email = ?', [email])
+  return { ok: true, row }
+}
+
+authRouter.post('/signup/request-otp', asyncHandler(async (req, res) => {
+  const { name, email } = req.body ?? {}
+
+  if (typeof name !== 'string' || !name.trim() || typeof email !== 'string' || !EMAIL_PATTERN.test(email)) {
+    res.status(400).json({ error: 'A name and a valid email are required' })
     return
   }
 
-  const [existing] = await pool.query<UserRow[]>(
-    'SELECT id FROM users WHERE email = ?',
-    [email],
-  )
+  const [existing] = await pool.query<UserRow[]>('SELECT id FROM users WHERE email = ?', [email])
+  if (existing.length > 0) {
+    res.status(409).json({ error: 'An account with this email already exists' })
+    return
+  }
+
+  const sent = await issueOtp(email, 'signup', name.trim())
+  if (!sent) {
+    res.status(429).json({ error: `Please wait before requesting another code.` })
+    return
+  }
+  res.status(200).json({ message: 'Verification code sent' })
+}))
+
+authRouter.post('/signup/verify-otp', asyncHandler(async (req, res) => {
+  const { email, code } = req.body ?? {}
+
+  if (typeof email !== 'string' || typeof code !== 'string') {
+    res.status(400).json({ error: 'email and code are required' })
+    return
+  }
+
+  const result = await consumeOtp(email, 'signup', code)
+  if (!result.ok) {
+    res.status(result.status).json({ error: result.error })
+    return
+  }
+
+  const [existing] = await pool.query<UserRow[]>('SELECT id FROM users WHERE email = ?', [email])
   if (existing.length > 0) {
     res.status(409).json({ error: 'An account with this email already exists' })
     return
   }
 
   const id = randomUUID()
-  const passwordHash = await bcrypt.hash(password, 10)
+  const name = result.row.pending_name ?? email
+  await pool.query('INSERT INTO users (id, name, email) VALUES (?, ?, ?)', [id, name, email])
 
-  await pool.query(
-    'INSERT INTO users (id, name, email, password_hash) VALUES (?, ?, ?, ?)',
-    [id, name, email, passwordHash],
-  )
   const sid = await openSession(id, req)
-
   const token = signToken({ id, email, sid, role: 'user' })
   res.status(201).json({ token, user: { id, name, email, role: 'user' } })
 }))
 
-authRouter.post('/login', asyncHandler(async (req, res) => {
-  const { email, password } = req.body ?? {}
+authRouter.post('/login/request-otp', asyncHandler(async (req, res) => {
+  const { email } = req.body ?? {}
 
-  if (typeof email !== 'string' || typeof password !== 'string') {
-    res.status(400).json({ error: 'email and password are required' })
+  if (typeof email !== 'string' || !EMAIL_PATTERN.test(email)) {
+    res.status(400).json({ error: 'A valid email is required' })
+    return
+  }
+
+  const [rows] = await pool.query<UserRow[]>('SELECT id FROM users WHERE email = ?', [email])
+  if (rows.length === 0) {
+    res.status(404).json({ error: 'No account found with this email' })
+    return
+  }
+
+  const sent = await issueOtp(email, 'login', null)
+  if (!sent) {
+    res.status(429).json({ error: `Please wait before requesting another code.` })
+    return
+  }
+  res.status(200).json({ message: 'Verification code sent' })
+}))
+
+authRouter.post('/login/verify-otp', asyncHandler(async (req, res) => {
+  const { email, code } = req.body ?? {}
+
+  if (typeof email !== 'string' || typeof code !== 'string') {
+    res.status(400).json({ error: 'email and code are required' })
+    return
+  }
+
+  const result = await consumeOtp(email, 'login', code)
+  if (!result.ok) {
+    res.status(result.status).json({ error: result.error })
     return
   }
 
   const [rows] = await pool.query<UserRow[]>(
-    'SELECT id, name, email, password_hash, role FROM users WHERE email = ?',
+    'SELECT id, name, email, role FROM users WHERE email = ?',
     [email],
   )
   const user = rows[0]
-  const passwordMatches = user
-    ? await bcrypt.compare(password, user.password_hash)
-    : false
-
-  if (!user || !passwordMatches) {
-    res.status(401).json({ error: 'Invalid email or password' })
+  if (!user) {
+    res.status(404).json({ error: 'No account found with this email' })
     return
   }
 

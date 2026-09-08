@@ -2,7 +2,6 @@ CREATE TABLE IF NOT EXISTS users (
   id VARCHAR(64) PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL UNIQUE,
-  password_hash VARCHAR(255) NOT NULL,
   role ENUM('user', 'admin') NOT NULL DEFAULT 'user',
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
@@ -16,6 +15,24 @@ ALTER TABLE users ADD COLUMN role ENUM('user', 'admin') NOT NULL DEFAULT 'user';
 -- for "is this token's session still valid" (see requireAuth) instead of a
 -- column on users that duplicated the same state.
 ALTER TABLE users DROP COLUMN active_session_id;
+-- Auth is now fully OTP-based (see otp_codes below) — no password is ever
+-- set, so this column has nothing left to store.
+ALTER TABLE users DROP COLUMN password_hash;
+
+-- One pending code per email (new request overwrites any unexpired one).
+-- `purpose` distinguishes a signup (no account yet — `pending_name` holds
+-- the name to create the account with once verified) from a login (account
+-- already exists). code_hash is a fast SHA-256, not bcrypt — see lib/otp.ts
+-- for why that's fine here.
+CREATE TABLE IF NOT EXISTS otp_codes (
+  email VARCHAR(255) PRIMARY KEY,
+  code_hash VARCHAR(64) NOT NULL,
+  purpose ENUM('signup', 'login') NOT NULL,
+  pending_name VARCHAR(255) NULL,
+  attempts INT NOT NULL DEFAULT 0,
+  expires_at TIMESTAMP NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
 
 -- One row per login. `id` is the session id ("sid") embedded in that login's
 -- JWT — requireAuth looks a request's sid up here on every call: a row with

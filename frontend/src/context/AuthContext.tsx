@@ -30,8 +30,10 @@ interface AuthContextValue {
    * then clears it via `clearLoggedOutReason`. */
   loggedOutReason: 'session_ended' | null
   clearLoggedOutReason: () => void
-  login: (email: string, password: string) => Promise<AuthUser>
-  register: (name: string, email: string, password: string) => Promise<void>
+  requestSignupOtp: (name: string, email: string) => Promise<void>
+  verifySignupOtp: (email: string, code: string) => Promise<AuthUser>
+  requestLoginOtp: (email: string) => Promise<void>
+  verifyLoginOtp: (email: string, code: string) => Promise<AuthUser>
   logout: () => void
 }
 
@@ -96,10 +98,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setLoggedOutReason(null)
   }
 
-  async function login(email: string, password: string) {
+  async function requestSignupOtp(name: string, email: string) {
+    await apiClient.post('/api/auth/signup/request-otp', { name, email })
+  }
+
+  async function verifySignupOtp(email: string, code: string) {
     const { data } = await apiClient.post<{ token: string; user: AuthUser }>(
-      '/api/auth/login',
-      { email, password },
+      '/api/auth/signup/verify-otp',
+      { email, code },
     )
     setStoredToken(data.token)
     setUser(data.user)
@@ -107,14 +113,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return data.user
   }
 
-  async function register(name: string, email: string, password: string) {
+  async function requestLoginOtp(email: string) {
+    await apiClient.post('/api/auth/login/request-otp', { email })
+  }
+
+  async function verifyLoginOtp(email: string, code: string) {
     const { data } = await apiClient.post<{ token: string; user: AuthUser }>(
-      '/api/auth/register',
-      { name, email, password },
+      '/api/auth/login/verify-otp',
+      { email, code },
     )
     setStoredToken(data.token)
     setUser(data.user)
     setLoggedOutReason(null)
+    return data.user
   }
 
   function logout() {
@@ -127,7 +138,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }
 
   const value = useMemo(
-    () => ({ user, isLoading, loggedOutReason, clearLoggedOutReason, login, register, logout }),
+    () => ({
+      user,
+      isLoading,
+      loggedOutReason,
+      clearLoggedOutReason,
+      requestSignupOtp,
+      verifySignupOtp,
+      requestLoginOtp,
+      verifyLoginOtp,
+      logout,
+    }),
     [user, isLoading, loggedOutReason],
   )
 
