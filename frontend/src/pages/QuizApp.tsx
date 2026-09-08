@@ -6,6 +6,7 @@ import { MobileTabBar } from '@/components/dashboard/MobileTabBar'
 import { Sidebar } from '@/components/dashboard/Sidebar'
 import { Quiz } from '@/components/quiz/Quiz'
 import { QuizResults } from '@/components/quiz/QuizResults'
+import { useAuth } from '@/context/AuthContext'
 import { quizSets } from '@/data/quiz-data'
 import { getExamHistory } from '@/lib/examHistory'
 import type { QuizQuestion } from '@/types/quiz'
@@ -23,6 +24,8 @@ export function QuizApp() {
   const { quizSetId } = useParams()
   const navigate = useNavigate()
   const location = useLocation()
+  const { user } = useAuth()
+  const userId = user?.id ?? ''
   const setupState = location.state as QuizSetupState | null
   const selectedSet = quizSetId
     ? quizSets.find((set) => set.id === quizSetId)
@@ -35,7 +38,7 @@ export function QuizApp() {
   // "Retake Exam" on the replayed results screen drops back to a live attempt.
   const [retaking, setRetaking] = useState(false)
 
-  const lastAttempt = selectedSet ? getExamHistory(selectedSet.id).at(-1) : undefined
+  const lastAttempt = selectedSet ? getExamHistory(userId, selectedSet.id).at(-1) : undefined
   const canReplayLastAttempt = Boolean(
     lastAttempt?.answers && lastAttempt?.questionOrder && lastAttempt.questionOrder.length > 0,
   )

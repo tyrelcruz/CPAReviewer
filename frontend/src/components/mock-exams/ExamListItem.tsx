@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { generateExam } from '@/api/exams'
 import { ProgressRing } from '@/components/quiz/ProgressRing'
+import { useAuth } from '@/context/AuthContext'
 import type { MockExam } from '@/data/mock-exams-data'
 import {
   getExamProgress,
@@ -49,6 +50,8 @@ interface ExamListItemProps {
 
 export function ExamListItem({ exam }: ExamListItemProps) {
   const navigate = useNavigate()
+  const { user } = useAuth()
+  const userId = user?.id ?? ''
   const [bookmarked, setBookmarked] = useState(false)
   const [isGenerating, setIsGenerating] = useState(false)
   const Icon = exam.icon
@@ -59,11 +62,13 @@ export function ExamListItem({ exam }: ExamListItemProps) {
   // tracked via a pointer to the last unsubmitted session for this
   // subject+mode; legacy quiz sets have a stable id to check directly.
   const bankConfigKey = exam.bankExam ? `${exam.bankExam.subject}-${exam.bankExam.mode}` : null
-  const inProgressBankSessionId = bankConfigKey ? getInProgressSessionPointer(bankConfigKey) : null
+  const inProgressBankSessionId = bankConfigKey
+    ? getInProgressSessionPointer(userId, bankConfigKey)
+    : null
   const progress = exam.quizSetId
-    ? getExamProgress(exam.quizSetId)
+    ? getExamProgress(userId, exam.quizSetId)
     : inProgressBankSessionId
-      ? getExamProgress(`bank-${inProgressBankSessionId}`)
+      ? getExamProgress(userId, `bank-${inProgressBankSessionId}`)
       : null
   const isInProgress = Boolean(progress) && !exam.taken
 
@@ -90,7 +95,7 @@ export function ExamListItem({ exam }: ExamListItemProps) {
         mode: exam.bankExam.mode,
         itemCount: exam.bankExam.itemCount,
       })
-      saveInProgressSessionPointer(bankConfigKey!, session.sessionId)
+      saveInProgressSessionPointer(userId, bankConfigKey!, session.sessionId)
       navigate(`/app/exam/${session.sessionId}`, { state: { notice: session.notice ?? null } })
     } catch {
       setIsGenerating(false)

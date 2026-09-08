@@ -24,6 +24,7 @@ import { ProgressRing } from '@/components/quiz/ProgressRing'
 import { QuestionNavigator } from '@/components/quiz/QuestionNavigator'
 import { QuestionPromptText } from '@/components/quiz/QuestionPromptText'
 import { QuizResults } from '@/components/quiz/QuizResults'
+import { useAuth } from '@/context/AuthContext'
 import { clearExamProgress, getExamProgress, saveExamProgress } from '@/lib/examProgress'
 import { shuffleQuestionsKeepingChains } from '@/lib/quizShuffle'
 import { getStudyStreak } from '@/lib/streak'
@@ -65,8 +66,10 @@ export function Quiz({
   timeLimitSeconds,
   progressKey,
 }: QuizProps) {
+  const { user } = useAuth()
+  const userId = user?.id ?? ''
   const savedProgress = useMemo(
-    () => (progressKey ? getExamProgress(progressKey) : null),
+    () => (progressKey ? getExamProgress(userId, progressKey) : null),
     // Only ever read once, on mount, for this attempt.
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
@@ -102,7 +105,7 @@ export function Quiz({
   const [calculatorOpen, setCalculatorOpen] = useState(false)
   const [notesOpen, setNotesOpen] = useState(false)
   const [notes, setNotes] = useState('')
-  const [streak] = useState(() => getStudyStreak())
+  const [streak] = useState(() => getStudyStreak(userId))
   const touchStartRef = useRef<{ x: number; y: number } | null>(null)
 
   // Persists on every change so leaving mid-attempt (back button, closing the
@@ -110,7 +113,7 @@ export function Quiz({
   // cleanup below also fires on unmount, covering in-app navigation.
   useEffect(() => {
     if (!progressKey || isComplete) return
-    saveExamProgress(progressKey, {
+    saveExamProgress(userId, progressKey, {
       questionOrder: questions.map((q) => q.id),
       currentIndex,
       answers,
@@ -118,12 +121,12 @@ export function Quiz({
       remainingSeconds,
       savedAt: new Date().toISOString(),
     })
-  }, [progressKey, isComplete, questions, currentIndex, answers, flaggedIndices, remainingSeconds])
+  }, [userId, progressKey, isComplete, questions, currentIndex, answers, flaggedIndices, remainingSeconds])
 
   // Once finished, this attempt's saved progress is no longer "in progress".
   useEffect(() => {
-    if (isComplete && progressKey) clearExamProgress(progressKey)
-  }, [isComplete, progressKey])
+    if (isComplete && progressKey) clearExamProgress(userId, progressKey)
+  }, [isComplete, progressKey, userId])
 
   const current = questions[currentIndex]
   const selectedChoiceId = answers[current?.id ?? '']

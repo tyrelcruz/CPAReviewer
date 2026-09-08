@@ -2,6 +2,7 @@ import { ArrowRight, PlayCircle } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 
+import { useAuth } from '@/context/AuthContext'
 import { MOCK_EXAMS } from '@/data/mock-exams-data'
 import { quizSets } from '@/data/quiz-data'
 import { getExamProgress, getInProgressSessionPointer } from '@/lib/examProgress'
@@ -16,9 +17,9 @@ interface InProgressInfo {
 /** Checks every real source of "in progress" exam state (localStorage-backed
  * legacy quiz progress, and the last unsubmitted bank-exam session pointer)
  * and surfaces whichever one is actually paused — nothing fabricated. */
-function findInProgressExam(): InProgressInfo | null {
+function findInProgressExam(userId: string): InProgressInfo | null {
   for (const set of quizSets) {
-    const progress = getExamProgress(set.id)
+    const progress = getExamProgress(userId, set.id)
     if (progress) {
       return {
         title: set.title,
@@ -30,9 +31,12 @@ function findInProgressExam(): InProgressInfo | null {
 
   for (const exam of MOCK_EXAMS) {
     if (!exam.bankExam) continue
-    const sessionId = getInProgressSessionPointer(`${exam.bankExam.subject}-${exam.bankExam.mode}`)
+    const sessionId = getInProgressSessionPointer(
+      userId,
+      `${exam.bankExam.subject}-${exam.bankExam.mode}`,
+    )
     if (!sessionId) continue
-    const progress = getExamProgress(`bank-${sessionId}`)
+    const progress = getExamProgress(userId, `bank-${sessionId}`)
     if (progress) {
       return {
         title: exam.title,
@@ -46,7 +50,8 @@ function findInProgressExam(): InProgressInfo | null {
 }
 
 export function ContinueStudyingBanner() {
-  const inProgress = findInProgressExam()
+  const { user } = useAuth()
+  const inProgress = findInProgressExam(user?.id ?? '')
   if (!inProgress) return null
 
   return (

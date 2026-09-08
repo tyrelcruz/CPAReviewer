@@ -35,12 +35,13 @@ export interface CombinedAttempt {
  * backend bank-exam session history into one chronological attempt log —
  * no fabricated entries. */
 export function buildCombinedAttempts(
+  userId: string,
   quizSets: QuizSet[],
   bankSessions: ExamSessionSummary[],
 ): CombinedAttempt[] {
   const legacy: CombinedAttempt[] = quizSets.flatMap((set) => {
     const code = set.code ?? set.title
-    return getExamHistory(set.id).map((attempt) => ({
+    return getExamHistory(userId, set.id).map((attempt) => ({
       subjectCode: code,
       subjectLabel: SUBJECT_LABELS[code] ?? code,
       title: `Completed ${set.title}`,

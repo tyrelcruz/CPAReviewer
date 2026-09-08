@@ -15,6 +15,7 @@ import {
 import { ExamListItem } from '@/components/mock-exams/ExamListItem'
 import { PromoPanel } from '@/components/mock-exams/PromoPanel'
 import { StatsPanel } from '@/components/mock-exams/StatsPanel'
+import { useAuth } from '@/context/AuthContext'
 import { MOCK_EXAMS, type MockExam } from '@/data/mock-exams-data'
 import { quizSets } from '@/data/quiz-data'
 import { getAggregatedExamStats, getExamHistory } from '@/lib/examHistory'
@@ -33,9 +34,9 @@ function matchesDuration(exam: MockExam, filter: string) {
 // The actual playable practice sets, so Mock Exams can launch real content —
 // not just the illustrative sample cards above. Scores/dates come from each
 // set's real attempt history; nothing here is fabricated.
-function buildRealExams(): MockExam[] {
+function buildRealExams(userId: string): MockExam[] {
   return quizSets.map((set) => {
-    const history = getExamHistory(set.id)
+    const history = getExamHistory(userId, set.id)
     const last = history[history.length - 1]
     return {
       id: `real-${set.id}`,
@@ -56,13 +57,15 @@ function buildRealExams(): MockExam[] {
 
 export function MockExamsPage() {
   const navigate = useNavigate()
+  const { user } = useAuth()
+  const userId = user?.id ?? ''
   const [typeFilter, setTypeFilter] = useState<TypeFilter>('all')
   const [subjectFilter, setSubjectFilter] = useState('All Subjects')
   const [difficultyFilter, setDifficultyFilter] = useState('All Levels')
   const [durationFilter, setDurationFilter] = useState('All Durations')
   const [sort, setSort] = useState<SortOption>('recent')
 
-  const allExams = useMemo(() => [...buildRealExams(), ...MOCK_EXAMS], [])
+  const allExams = useMemo(() => [...buildRealExams(userId), ...MOCK_EXAMS], [userId])
 
   const subjectOptions = useMemo(() => {
     const distinct = new Set(allExams.map((e) => e.subject))
@@ -100,9 +103,10 @@ export function MockExamsPage() {
   }, [allExams, typeFilter, subjectFilter, difficultyFilter, durationFilter, sort])
 
   const { examsTaken, averageScore, bestScore } = getAggregatedExamStats(
+    userId,
     quizSets.map((s) => s.id),
   )
-  const studyStreak = peekStudyStreak()
+  const studyStreak = peekStudyStreak(userId)
 
   return (
     <div className="flex min-h-svh bg-[#FBF3EA] text-[#3A2A1A]">

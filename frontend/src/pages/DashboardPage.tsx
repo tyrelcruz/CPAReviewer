@@ -58,13 +58,13 @@ export function DashboardPage() {
   }, [])
 
   const attempts = useMemo(
-    () => buildCombinedAttempts(quizSets, bankSessions),
-    [bankSessions],
+    () => buildCombinedAttempts(user?.id ?? '', quizSets, bankSessions),
+    [user?.id, bankSessions],
   )
   const aggregates = useMemo(() => aggregateBySubject(attempts), [attempts])
   const overallProgress = useMemo(() => overallAveragePercent(attempts), [attempts])
   const scoreDelta = useMemo(() => scoreDeltaVsPrevious(attempts), [attempts])
-  const streak = peekStudyStreak()
+  const streak = peekStudyStreak(user?.id ?? '')
 
   const questionsAnswered = attempts.reduce((sum, a) => sum + a.total, 0)
   const totalQuestions =

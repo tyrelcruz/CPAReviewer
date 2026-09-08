@@ -5,6 +5,7 @@ import { getExamSession, submitExam } from '@/api/exams'
 import { Sidebar } from '@/components/dashboard/Sidebar'
 import { TopNavbar } from '@/components/dashboard/TopNavbar'
 import { Quiz } from '@/components/quiz/Quiz'
+import { useAuth } from '@/context/AuthContext'
 import { clearInProgressSessionPointer } from '@/lib/examProgress'
 import type { BankQuestion, GeneratedExamSession } from '@/types/bank'
 import type { QuizQuestion } from '@/types/quiz'
@@ -28,6 +29,8 @@ export function BankExamApp() {
   const { sessionId } = useParams()
   const navigate = useNavigate()
   const location = useLocation()
+  const { user } = useAuth()
+  const userId = user?.id ?? ''
   const [session, setSession] = useState<GeneratedExamSession | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [notice, setNotice] = useState<string | null>(
@@ -62,7 +65,7 @@ export function BankExamApp() {
       // key it already has — a failed submit only means server-side history
       // (anti-repetition, cross-device score) won't reflect this attempt.
     })
-    if (session) clearInProgressSessionPointer(`${session.subject}-${session.mode}`)
+    if (session) clearInProgressSessionPointer(userId, `${session.subject}-${session.mode}`)
   }
 
   return (

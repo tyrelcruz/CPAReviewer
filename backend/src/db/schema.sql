@@ -20,13 +20,14 @@ ALTER TABLE users DROP COLUMN active_session_id;
 -- One row per login. `id` is the session id ("sid") embedded in that login's
 -- JWT — requireAuth looks a request's sid up here on every call: a row with
 -- ended_at IS NULL is a live session; NULL result or a non-null ended_at
--- means the session has been logged out, so the request is rejected. Sessions
--- are additive, not exclusive — one user_id can have several open rows at
--- once (signed in from multiple devices simultaneously). Also the source of
--- the admin "Active Sessions" view: device/location are captured once at
--- login, last_seen_at is bumped by requireAuth (throttled) to distinguish
--- "logged in and active right now" from "logged in but idle", and an account
--- with unusually many concurrent open rows is a possible account-sharing signal.
+-- means the session has been logged out, so the request is rejected. Only one
+-- device may be active per account: a new login gives every other open
+-- session a grace period (pending_logout_at) instead of an instant silent
+-- kick, so its owner sees a countdown warning before requireAuth finalizes
+-- it (sets ended_at) and starts rejecting it. Also the source of the admin
+-- "Active Sessions" view: device/location are captured once at login,
+-- last_seen_at is bumped by requireAuth (throttled) to distinguish "logged
+-- in and active right now" from "logged in but idle".
 CREATE TABLE IF NOT EXISTS user_sessions (
   id VARCHAR(64) PRIMARY KEY,
   user_id VARCHAR(64) NOT NULL,
@@ -37,11 +38,15 @@ CREATE TABLE IF NOT EXISTS user_sessions (
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   last_seen_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   ended_at TIMESTAMP NULL,
+  -- Set when a newer login on another device starts this session's grace
+  -- period countdown; NULL means no logout is pending.
+  pending_logout_at TIMESTAMP NULL,
   FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
 CREATE INDEX idx_user_sessions_user ON user_sessions(user_id);
 CREATE INDEX idx_user_sessions_open ON user_sessions(user_id, ended_at);
+ALTER TABLE user_sessions ADD COLUMN pending_logout_at TIMESTAMP NULL;
 
 CREATE TABLE IF NOT EXISTS quiz_sets (
   id VARCHAR(64) PRIMARY KEY,

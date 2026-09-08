@@ -9,10 +9,11 @@ export type Role = 'user' | 'admin'
 export interface AuthUser {
   id: string
   email: string
-  /** Session id — must correspond to a still-open (not logged-out) row in
-   * `user_sessions`, checked on every request by requireAuth. Sessions are
-   * additive: several concurrent sids (different devices) can be open for
-   * the same user at once. */
+  /** Session id — must correspond to a still-open row in `user_sessions`
+   * whose grace period (if any) hasn't elapsed, checked on every request by
+   * requireAuth. Only one device may be active per account — a newer login
+   * starts every other session's grace-period countdown (see
+   * routes/auth.ts's openSession). */
   sid: string
   role: Role
 }
@@ -38,6 +39,7 @@ export function signToken(user: AuthUser): string {
 
 interface SessionRow extends RowDataPacket {
   ended_at: Date | null
+  pending_logout_at: Date | null
   last_seen_at: Date
   role: Role
 }
@@ -61,7 +63,8 @@ export async function requireAuth(req: Request, res: Response, next: NextFunctio
 
   try {
     const [rows] = await pool.query<SessionRow[]>(
-      `SELECT s.ended_at AS ended_at, s.last_seen_at AS last_seen_at, u.role AS role
+      `SELECT s.ended_at AS ended_at, s.pending_logout_at AS pending_logout_at,
+              s.last_seen_at AS last_seen_at, u.role AS role
        FROM user_sessions s
        JOIN users u ON u.id = s.user_id
        WHERE s.id = ? AND s.user_id = ?`,
@@ -69,14 +72,31 @@ export async function requireAuth(req: Request, res: Response, next: NextFunctio
     )
     const row = rows[0]
 
-    if (!row || row.ended_at) {
-      // No more "superseded by another login" — sessions are additive now.
-      // This still legitimately happens on a stale/logged-out tab (e.g. this
-      // same device logged out from another tab).
-      res.status(401).json({
-        error: 'This session has ended. Please sign in again.',
-        code: 'SESSION_ENDED',
-      })
+    // The real, server-side enforcement of "one device at a time": once a
+    // session's grace period (set by a newer login elsewhere — see
+    // routes/auth.ts's openSession) has actually elapsed, it's rejected here
+    // regardless of what any client-side countdown UI does.
+    const gracePeriodExpired = Boolean(
+      row?.pending_logout_at && Date.now() >= row.pending_logout_at.getTime(),
+    )
+
+    if (!row || row.ended_at || gracePeriodExpired) {
+      if (row && gracePeriodExpired && !row.ended_at) {
+        // Finalize it so it stops showing as "open" elsewhere (admin
+        // sessions list, future auth checks) — fire-and-forget, doesn't
+        // block this rejection.
+        pool
+          .query('UPDATE user_sessions SET ended_at = pending_logout_at WHERE id = ?', [
+            payload.sid,
+          ])
+          .catch((err) => console.error('Failed to finalize expired session:', err))
+      }
+
+      res.status(401).json(
+        gracePeriodExpired
+          ? { error: 'This account was signed in on another device.', code: 'SESSION_SUPERSEDED' }
+          : { error: 'This session has ended. Please sign in again.', code: 'SESSION_ENDED' },
+      )
       return
     }
 

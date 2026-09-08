@@ -20,13 +20,17 @@ export interface ExamAttempt {
 const HISTORY_PREFIX = 'kabis-exam-history:'
 const MAX_HISTORY = 10
 
-function historyKey(quizSetId: string) {
-  return `${HISTORY_PREFIX}${quizSetId}`
+// Keyed by (userId, quizSetId) — this data lives in the browser's shared
+// localStorage, not scoped to an account server-side, so without the user id
+// in the key a second account signing in on the same browser would inherit
+// the first account's "completed"/"in progress" state.
+function historyKey(userId: string, quizSetId: string) {
+  return `${HISTORY_PREFIX}${userId}:${quizSetId}`
 }
 
-export function getExamHistory(quizSetId: string): ExamAttempt[] {
+export function getExamHistory(userId: string, quizSetId: string): ExamAttempt[] {
   try {
-    const raw = localStorage.getItem(historyKey(quizSetId))
+    const raw = localStorage.getItem(historyKey(userId, quizSetId))
     return raw ? (JSON.parse(raw) as ExamAttempt[]) : []
   } catch {
     return []
@@ -34,10 +38,14 @@ export function getExamHistory(quizSetId: string): ExamAttempt[] {
 }
 
 /** Appends a completed attempt to this quiz set's history and returns the updated log. */
-export function recordExamAttempt(quizSetId: string, attempt: ExamAttempt): ExamAttempt[] {
+export function recordExamAttempt(
+  userId: string,
+  quizSetId: string,
+  attempt: ExamAttempt,
+): ExamAttempt[] {
   try {
-    const next = [...getExamHistory(quizSetId), attempt].slice(-MAX_HISTORY)
-    localStorage.setItem(historyKey(quizSetId), JSON.stringify(next))
+    const next = [...getExamHistory(userId, quizSetId), attempt].slice(-MAX_HISTORY)
+    localStorage.setItem(historyKey(userId, quizSetId), JSON.stringify(next))
     return next
   } catch {
     return [attempt]
@@ -51,8 +59,8 @@ export interface AggregatedExamStats {
 }
 
 /** Aggregates real attempt history across every quiz set — no fabricated numbers. */
-export function getAggregatedExamStats(quizSetIds: string[]): AggregatedExamStats {
-  const attempts = quizSetIds.flatMap((id) => getExamHistory(id))
+export function getAggregatedExamStats(userId: string, quizSetIds: string[]): AggregatedExamStats {
+  const attempts = quizSetIds.flatMap((id) => getExamHistory(userId, id))
   if (attempts.length === 0) {
     return { examsTaken: 0, averageScore: null, bestScore: null }
   }

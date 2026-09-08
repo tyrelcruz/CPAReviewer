@@ -12,6 +12,12 @@ import { requireAuth, signToken } from '../middleware/auth.js'
 
 export const authRouter = Router()
 
+// How long another device's session stays valid, showing a countdown
+// warning, after this account logs in somewhere new — only one device may
+// be active per account, but this gives the previous one a moment to notice
+// rather than an instant silent kick.
+const GRACE_PERIOD_SECONDS = 30
+
 interface UserRow extends RowDataPacket {
   id: string
   name: string
@@ -21,12 +27,10 @@ interface UserRow extends RowDataPacket {
 }
 
 /** Opens a new session for this login/registration, capturing device, IP,
- * and resolved location for the admin "Active Sessions" view. Sessions are
- * additive, not exclusive — an account can be signed in from several
- * devices/locations at once (e.g. phone + laptop), each tracked as its own
- * row so the admin panel can surface an account with unusually many
- * concurrent devices/locations as a possible account-sharing signal. The
- * caller's user row must already exist (FK on user_id). */
+ * and resolved location for the admin "Active Sessions" view — then starts
+ * the grace-period countdown on every other still-open session this user
+ * has, enforcing one active device per account. The caller's user row must
+ * already exist (FK on user_id). */
 async function openSession(userId: string, req: Request): Promise<string> {
   const sid = randomUUID()
   const ip = getClientIp(req)
@@ -38,6 +42,16 @@ async function openSession(userId: string, req: Request): Promise<string> {
     `INSERT INTO user_sessions (id, user_id, ip_address, user_agent, device_label, location_label)
      VALUES (?, ?, ?, ?, ?, ?)`,
     [sid, userId, ip, userAgent, device, location],
+  )
+
+  // Only the first newer login starts the clock — a second new login
+  // shortly after doesn't push the deadline back out, and a session already
+  // mid-countdown isn't reset.
+  await pool.query(
+    `UPDATE user_sessions
+     SET pending_logout_at = (CURRENT_TIMESTAMP + INTERVAL ? SECOND)
+     WHERE user_id = ? AND id != ? AND ended_at IS NULL AND pending_logout_at IS NULL`,
+    [GRACE_PERIOD_SECONDS, userId, sid],
   )
 
   return sid
@@ -104,8 +118,9 @@ authRouter.post('/login', asyncHandler(async (req, res) => {
     return
   }
 
-  // Opens an additional, independent session — any other device already
-  // signed into this account stays signed in.
+  // Starts the grace-period countdown on any other device already signed
+  // into this account — it finds out (and can show a countdown warning) on
+  // its next request, then requireAuth rejects it once the period elapses.
   const sid = await openSession(user.id, req)
 
   const token = signToken({ id: user.id, email: user.email, sid, role: user.role })
@@ -139,6 +154,24 @@ authRouter.post('/refresh', requireAuth, asyncHandler(async (req, res) => {
     role: req.user!.role,
   })
   res.json({ token })
+}))
+
+interface PendingLogoutRow extends RowDataPacket {
+  pending_logout_at: Date | null
+}
+
+/** Polled by the frontend (while pending_logout_at is still null) to detect
+ * a grace-period countdown starting, so it can show a warning banner before
+ * requireAuth actually starts rejecting this session. Once a deadline is
+ * returned, the frontend counts down locally from that fixed timestamp
+ * instead of continuing to poll. */
+authRouter.get('/session-status', requireAuth, asyncHandler(async (req, res) => {
+  const [rows] = await pool.query<PendingLogoutRow[]>(
+    'SELECT pending_logout_at FROM user_sessions WHERE id = ?',
+    [req.user!.sid],
+  )
+  const pendingLogoutAt = rows[0]?.pending_logout_at ?? null
+  res.json({ pendingLogoutAt: pendingLogoutAt ? pendingLogoutAt.toISOString() : null })
 }))
 
 authRouter.post('/logout', requireAuth, asyncHandler(async (req, res) => {

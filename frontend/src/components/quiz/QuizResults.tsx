@@ -26,6 +26,7 @@ import { useLayoutEffect, useRef, useState } from 'react'
 import { AnswerHistoryList } from '@/components/quiz/AnswerHistoryList'
 import { ExamHistoryChart, type ExamHistoryPoint } from '@/components/quiz/ExamHistoryChart'
 import { ProgressRing } from '@/components/quiz/ProgressRing'
+import { useAuth } from '@/context/AuthContext'
 import { getExamHistory, recordExamAttempt, type SectionScore } from '@/lib/examHistory'
 import { scoreBgClass } from '@/lib/score'
 import { peekStudyStreak } from '@/lib/streak'
@@ -97,6 +98,8 @@ export function QuizResults({
   readOnly = false,
   summaryOnly,
 }: QuizResultsProps) {
+  const { user } = useAuth()
+  const userId = user?.id ?? ''
   const [showReview, setShowReview] = useState(false)
 
   const total = summaryOnly ? summaryOnly.total : questions.length
@@ -131,14 +134,14 @@ export function QuizResults({
   // Lazy useState initializers run twice under React 18 StrictMode in dev, which would
   // double-log this attempt since recordExamAttempt is append-only. Recording happens
   // in a layout effect (guarded by a ref) instead, so it fires exactly once per mount.
-  const [history, setHistory] = useState(() => getExamHistory(quizSetId))
+  const [history, setHistory] = useState(() => getExamHistory(userId, quizSetId))
   const hasRecordedAttempt = useRef(false)
 
   useLayoutEffect(() => {
     if (readOnly || summaryOnly || hasRecordedAttempt.current) return
     hasRecordedAttempt.current = true
     setHistory(
-      recordExamAttempt(quizSetId, {
+      recordExamAttempt(userId, quizSetId, {
         date: new Date().toISOString(),
         correct: score,
         total,
@@ -454,7 +457,7 @@ export function QuizResults({
               <Flame className="mt-0.5 size-5 shrink-0 text-[#7A2323]" />
               <div>
                 <p className="text-xs font-semibold text-[#3A2A1A]/70">Study Streak</p>
-                <p className="text-lg font-bold text-[#3A2A1A]">{peekStudyStreak()} days</p>
+                <p className="text-lg font-bold text-[#3A2A1A]">{peekStudyStreak(userId)} days</p>
                 <p className="text-xs text-[#3A2A1A]/60">Keep it up!</p>
               </div>
             </div>
