@@ -72,8 +72,15 @@ export function LoginPage() {
 
   function describeError(err: unknown, fallback: string) {
     if (axios.isAxiosError(err)) {
-      if (err.response?.data?.error) return err.response.data.error as string
       if (!err.response) return 'Unable to reach the server. Is the backend running?'
+      // A 500 here means the OTP email itself failed to send server-side
+      // (e.g. the mail provider rejected it) — the backend never leaks that
+      // detail (just the generic "Internal server error"), so show a
+      // message that's actually actionable instead of surfacing it raw.
+      if (err.response.status >= 500) {
+        return "We couldn't send the verification code right now. Please try again in a moment."
+      }
+      if (err.response.data?.error) return err.response.data.error as string
     }
     return fallback
   }

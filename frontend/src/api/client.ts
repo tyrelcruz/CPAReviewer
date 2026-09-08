@@ -10,7 +10,9 @@ const TOKEN_STORAGE_KEY = 'cpa-reviewer:token'
 export const SESSION_ENDED_EVENT = 'auth:session-ended'
 
 export const apiClient = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:8001',
+  // `||` (not `??`) on purpose — an empty string from a misconfigured .env
+  // must fall back too, not resolve to a same-origin relative baseURL.
+  baseURL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:8001',
   headers: {
     'Content-Type': 'application/json',
   },
