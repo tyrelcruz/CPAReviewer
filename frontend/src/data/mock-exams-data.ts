@@ -3,6 +3,7 @@ import {
   BookOpen,
   ClipboardList,
   Landmark,
+  Microscope,
   Percent,
   Target,
   type LucideIcon,
@@ -15,6 +16,9 @@ export interface MockExam {
   title: string
   description: string
   type: ExamType
+  /** Which board exam this card belongs to — MockExamsPage shows only the
+   * logged-in user's own course's cards. */
+  course: 'cpa' | 'rmt'
   subject: string
   difficulty: 'Easy' | 'Medium' | 'Hard' | 'Mixed'
   durationMinutes: number
@@ -45,6 +49,7 @@ export const MOCK_EXAMS: MockExam[] = [
     title: 'CPALE Full-length Mock Exam 1',
     description: 'Simulates the actual CPALE in 3 days',
     type: 'full-length',
+    course: 'cpa',
     subject: 'All Subjects',
     difficulty: 'Mixed',
     durationMinutes: 720,
@@ -59,6 +64,7 @@ export const MOCK_EXAMS: MockExam[] = [
     title: 'CPALE Full-length Mock Exam 2',
     description: 'Simulates the actual CPALE in 3 days',
     type: 'full-length',
+    course: 'cpa',
     subject: 'All Subjects',
     difficulty: 'Mixed',
     durationMinutes: 720,
@@ -71,6 +77,7 @@ export const MOCK_EXAMS: MockExam[] = [
     title: 'FAR Subject Exam 1',
     description: 'Focused practice on FAR',
     type: 'subject',
+    course: 'cpa',
     subject: 'FAR',
     difficulty: 'Hard',
     durationMinutes: 240,
@@ -84,6 +91,7 @@ export const MOCK_EXAMS: MockExam[] = [
     title: 'TAXATION Final Exam (All Sources)',
     description: 'Cross-source Taxation final pre-board question pool',
     type: 'full-length',
+    course: 'cpa',
     subject: 'Taxation',
     difficulty: 'Mixed',
     durationMinutes: 240,
@@ -97,6 +105,7 @@ export const MOCK_EXAMS: MockExam[] = [
     title: 'RFBT Final Exam (All Sources)',
     description: 'Cross-source RFBT final pre-board question pool',
     type: 'full-length',
+    course: 'cpa',
     subject: 'RFBT',
     difficulty: 'Mixed',
     durationMinutes: 240,
@@ -106,10 +115,25 @@ export const MOCK_EXAMS: MockExam[] = [
     bankExam: { subject: 'RFBT', mode: 'tos_simulator', itemCount: 70 },
   },
   {
+    id: 'is-week1-immunology-serology',
+    title: 'Immunology & Serology (Week 1)',
+    description: 'RMT/MedTech practice set — Week 1 Immunology & Serology reviewer bank',
+    type: 'subject',
+    course: 'rmt',
+    subject: 'IS',
+    difficulty: 'Mixed',
+    durationMinutes: 240,
+    itemCount: 70,
+    icon: Microscope,
+    iconBg: '#3A5A40',
+    bankExam: { subject: 'IS', mode: 'subject_drill', itemCount: 70 },
+  },
+  {
     id: 'rfbt-partnership',
     title: 'RFBT Topic Test – Partnership',
     description: 'Partnership formation, admission, and ratios',
     type: 'topic',
+    course: 'cpa',
     subject: 'RFBT',
     difficulty: 'Easy',
     durationMinutes: 180,

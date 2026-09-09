@@ -4,7 +4,8 @@ import type { LucideIcon } from 'lucide-react'
 import grungeWallTexture from '@/assets/images/grunge-wall-texture.jpg'
 import mountainLandscape from '@/assets/images/mountain_landscape.png'
 import kabisEmblem from '@/assets/logo/kabis_emblem.png'
-import { COMING_SOON_KEYS, STRATEGY_CARDS } from '@/components/quiz/StrategyOptions'
+import { getComingSoonKeys, STRATEGY_CARDS } from '@/components/quiz/StrategyOptions'
+import { useAuth } from '@/context/AuthContext'
 
 interface WizardAsideProps {
   subjectCode: string
@@ -21,6 +22,9 @@ export function WizardAside({
   ctaIcon: CtaIcon = ArrowRight,
   onCta,
 }: WizardAsideProps) {
+  const { user } = useAuth()
+  const comingSoonCount = getComingSoonKeys(user?.course).length
+
   return (
     <aside className="relative flex flex-col gap-6 overflow-hidden rounded-3xl bg-[#530b08] p-6 text-[#F3ECDC] shadow-[inset_0_0_12px_3px_rgba(0,0,0,0.55),inset_0_0_80px_20px_rgba(0,0,0,0.4)] lg:sticky lg:top-8">
       {/* Grunge wall texture (cracks, mottling) screened over the maroon for a worn, vintage feel. */}
@@ -58,7 +62,7 @@ export function WizardAside({
             Strategy Component
           </p>
           <p className="font-reading mt-0.5 text-sm text-[#F3ECDC]">
-            {STRATEGY_CARDS.length - COMING_SOON_KEYS.length} of {STRATEGY_CARDS.length}{' '}
+            {STRATEGY_CARDS.length - comingSoonCount} of {STRATEGY_CARDS.length}{' '}
             Available Now
           </p>
         </div>

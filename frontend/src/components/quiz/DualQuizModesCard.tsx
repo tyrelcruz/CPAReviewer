@@ -3,10 +3,14 @@ import { Lightbulb } from 'lucide-react'
 import dualQuizBanner from '@/assets/images/dualquiz_banner.png'
 import grungeWallTexture from '@/assets/images/grunge-wall-texture.jpg'
 import { DualModeIcon, STRATEGY_CARDS } from '@/components/quiz/StrategyOptions'
+import { cn } from '@/lib/utils'
 
 interface DualQuizModesCardProps {
   selected: boolean
   onSelect: () => void
+  /** Still selectable (so the copy can be previewed), but grayed out — the
+   * "Continue" step blocks with a coming-soon notice instead of generating. */
+  comingSoon?: boolean
 }
 
 // Single source of truth for this strategy's copy — shared with the plain
@@ -17,9 +21,14 @@ const { title, description, whyText } = STRATEGY_CARDS.find((c) => c.key === 'mo
 // green fill IS the selected indicator, so there's no separate ring/border
 // to toggle here. When another strategy is selected, ChooseStrategyPage
 // swaps this out for the plain generic card treatment instead.
-export function DualQuizModesCard({ selected, onSelect }: DualQuizModesCardProps) {
+export function DualQuizModesCard({ selected, onSelect, comingSoon }: DualQuizModesCardProps) {
   return (
-    <label className="relative flex cursor-pointer items-center gap-5 overflow-hidden rounded-2xl bg-[#2B3A22] p-5 text-[#F3ECDC] sm:p-6">
+    <label
+      className={cn(
+        'relative flex cursor-pointer items-center gap-5 overflow-hidden rounded-2xl bg-[#2B3A22] p-5 text-[#F3ECDC] sm:p-6',
+        comingSoon && 'opacity-60 grayscale',
+      )}
+    >
       <input
         type="radio"
         name="strategy"
@@ -53,7 +62,14 @@ export function DualQuizModesCard({ selected, onSelect }: DualQuizModesCardProps
       </div>
 
       <div className="relative min-w-0 flex-1">
-        <h3 className="font-serif text-lg font-bold uppercase">{title}</h3>
+        <h3 className="font-serif text-lg font-bold uppercase">
+          {title}
+          {comingSoon && (
+            <span className="ml-2 inline-block rounded-full bg-[#F3ECDC]/15 px-2 py-0.5 align-middle text-[10px] font-bold tracking-wide text-[#F3ECDC]/70 uppercase">
+              Coming Soon
+            </span>
+          )}
+        </h3>
         <p className="font-reading mt-1.5 text-sm text-[#F3ECDC]/80">{description}</p>
 
         <div className="mt-4 flex items-start gap-2 rounded-full bg-[#F3ECDC]/15 px-4 py-2.5">

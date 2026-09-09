@@ -87,8 +87,18 @@ export interface StrategyCard {
   whyText: string
 }
 
-// All three strategies are live and selectable.
-export const COMING_SOON_KEYS: StrategyCard['key'][] = []
+/**
+ * Which strategies are still "Coming Soon" for a given course — still
+ * selectable (so a curious user can preview the copy), but ChooseStrategyPage
+ * blocks "Continue" with a notice instead of generating an exam. AI Variation
+ * Mode has no real backend behavior yet for anyone (see
+ * STRATEGY_MODE_TEMPLATE below); RMT additionally has no TOS blueprint table
+ * yet (see RFBT_CATEGORY_WEIGHTS in the backend, RFBT-only today), so TOS
+ * Simulator Mode isn't a real distinct mode for that course either.
+ */
+export function getComingSoonKeys(course: 'cpa' | 'rmt' | undefined): StrategyCard['key'][] {
+  return course === 'rmt' ? ['tagging', 'modes'] : ['tagging']
+}
 
 /**
  * Exam-generation template each strategy maps to today. 'tagging' (AI

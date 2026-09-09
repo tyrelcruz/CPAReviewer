@@ -1,6 +1,6 @@
 import { ArrowLeft, Check } from 'lucide-react'
 
-import mountainsHeader from '@/assets/images/mountains_header.png'
+import mountainsHeader from '@/assets/images/carabao_repia.png'
 import { cn } from '@/lib/utils'
 
 const WIZARD_STEPS = ['Choose Strategy', 'Set Quiz Details']
@@ -78,7 +78,7 @@ export function WizardHeader({
           src={mountainsHeader}
           alt=""
           aria-hidden="true"
-          className="pointer-events-none absolute top-1/2 right-0 hidden h-24 w-auto -translate-y-1/2 object-contain sm:block md:h-32 lg:h-40 xl:h-48"
+          className="pointer-events-none absolute top-1 right-0 hidden h-24 w-auto -translate-y-1/2 object-contain opacity-20 sm:block md:h-32 lg:h-40 xl:h-48"
         />
       </div>
     </>

@@ -16,6 +16,7 @@ import {
   Lightbulb,
   ListChecks,
   Loader2,
+  Microscope,
   Scale,
   ScrollText,
   Settings2,
@@ -30,6 +31,7 @@ import { generateExam, listRfbtTopics, listSubjectCounts } from '@/api/exams'
 import { Sidebar } from '@/components/dashboard/Sidebar'
 import { Switch } from '@/components/ui/switch'
 import mountainHeader from '@/assets/images/carabao_repia.png'
+import { useAuth } from '@/context/AuthContext'
 import { fadeUpItem, staggerContainer } from '@/lib/motion'
 import { cn } from '@/lib/utils'
 import type { ExamMode, RfbtTopic } from '@/types/bank'
@@ -57,7 +59,7 @@ interface SubjectDef {
 // as the reference design — only FAR/TCP... err, only the subjects we've
 // actually ingested content for (RFBT, TAX) are selectable; the rest are
 // honestly marked "Coming Soon" rather than faking a question count.
-const SUBJECT_DEFS: SubjectDef[] = [
+const CPA_SUBJECT_DEFS: SubjectDef[] = [
   { code: 'FAR', name: 'Financial Accounting & Reporting', icon: BookOpen },
   { code: 'AUD', name: 'Auditing & Attestation', icon: Scale },
   { code: 'REG', name: 'Regulation', icon: Gauge },
@@ -67,21 +69,30 @@ const SUBJECT_DEFS: SubjectDef[] = [
   { code: 'RFBT', name: 'Regulatory Framework for Business Transactions', icon: Landmark, subjectKey: 'RFBT' },
 ]
 
+// RMT (Registered Medical Technologist) board-exam subject lineup — a
+// separate track from CPALE. Only the subjects we've actually ingested
+// content for get a subjectKey; same "Coming Soon" convention as CPA_SUBJECT_DEFS.
+const RMT_SUBJECT_DEFS: SubjectDef[] = [
+  { code: 'IS', name: 'Immunology & Serology', icon: Microscope, subjectKey: 'IS' },
+]
+
 const DIFFICULTY_OPTIONS = ['All Levels', 'Easy', 'Moderate', 'Difficult']
 
 export function ExamSetupPage() {
   const navigate = useNavigate()
   const location = useLocation()
+  const { user } = useAuth()
   const requestedState = location.state as { subject?: string; mode?: ExamMode } | null
   const requestedSubject = requestedState?.subject
   const [examName, setExamName] = useState('')
   const [examType, setExamType] = useState<'standard' | 'timed'>('standard')
   const [timedMinutes, setTimedMinutes] = useState(90)
 
+  const activeSubjectDefs = user?.course === 'rmt' ? RMT_SUBJECT_DEFS : CPA_SUBJECT_DEFS
   const [subject, setSubject] = useState(
-    requestedSubject && SUBJECT_DEFS.some((d) => d.subjectKey === requestedSubject)
+    requestedSubject && activeSubjectDefs.some((d) => d.subjectKey === requestedSubject)
       ? requestedSubject
-      : 'RFBT',
+      : (activeSubjectDefs.find((d) => d.subjectKey)?.subjectKey ?? 'RFBT'),
   )
   const [mode, setMode] = useState<ExamMode>(
     requestedState?.mode === 'subject_drill' ? 'subject_drill' : 'tos_simulator',
@@ -111,7 +122,7 @@ export function ExamSetupPage() {
   const usingCustomTopics = customizeTopics && subject === 'RFBT' && mode === 'tos_simulator'
   const topicTotal = Object.values(topicCounts).reduce((sum, n) => sum + n, 0)
   const effectiveItemCount = usingCustomTopics ? topicTotal : itemCount
-  const activeSubjectDef = SUBJECT_DEFS.find((s) => s.subjectKey === subject)
+  const activeSubjectDef = activeSubjectDefs.find((s) => s.subjectKey === subject)
 
   function handleToggleCustomizeTopics() {
     if (!customizeTopics) {
@@ -284,7 +295,7 @@ export function ExamSetupPage() {
                   />
 
                   <div className="grid grid-cols-[repeat(2,minmax(0,1fr))] gap-3 sm:grid-cols-[repeat(4,minmax(0,1fr))]">
-                    {SUBJECT_DEFS.map((def) => {
+                    {activeSubjectDefs.map((def) => {
                       const isReal = Boolean(def.subjectKey)
                       const isSelected = isReal && def.subjectKey === subject
                       const count = def.subjectKey ? subjectCounts[def.subjectKey] : undefined

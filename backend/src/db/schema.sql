@@ -3,6 +3,7 @@ CREATE TABLE IF NOT EXISTS users (
   name VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL UNIQUE,
   role ENUM('user', 'admin') NOT NULL DEFAULT 'user',
+  course ENUM('cpa', 'rmt') NOT NULL DEFAULT 'cpa',
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -11,6 +12,12 @@ CREATE TABLE IF NOT EXISTS users (
 -- columns. migrate.ts tolerates the "column already exists" / "already
 -- dropped" errors below, so this stays safe to run repeatedly.
 ALTER TABLE users ADD COLUMN role ENUM('user', 'admin') NOT NULL DEFAULT 'user';
+-- Which board exam this account is reviewing for — drives which mock exams/
+-- subjects are shown (see api/exams.ts's subject-agnostic pipeline and
+-- ExamSetupPage/MockExamsPage on the frontend). DEFAULT 'cpa' backfills
+-- every pre-existing row in one statement; seed.ts overrides the demo
+-- account to 'rmt' explicitly.
+ALTER TABLE users ADD COLUMN course ENUM('cpa', 'rmt') NOT NULL DEFAULT 'cpa';
 -- Superseded by user_sessions below, which is now the single source of truth
 -- for "is this token's session still valid" (see requireAuth) instead of a
 -- column on users that duplicated the same state.
@@ -29,10 +36,12 @@ CREATE TABLE IF NOT EXISTS otp_codes (
   code_hash VARCHAR(64) NOT NULL,
   purpose ENUM('signup', 'login') NOT NULL,
   pending_name VARCHAR(255) NULL,
+  pending_course ENUM('cpa', 'rmt') NULL,
   attempts INT NOT NULL DEFAULT 0,
   expires_at TIMESTAMP NOT NULL,
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
+ALTER TABLE otp_codes ADD COLUMN pending_course ENUM('cpa', 'rmt') NULL;
 
 -- One row per login. `id` is the session id ("sid") embedded in that login's
 -- JWT — requireAuth looks a request's sid up here on every call: a row with

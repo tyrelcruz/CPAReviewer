@@ -3,8 +3,10 @@ import {
   ArrowRight,
   BarChart3,
   FileText,
+  GraduationCap,
   KeyRound,
   Mail,
+  Microscope,
   ShieldCheck,
   Star,
   Target,
@@ -44,6 +46,7 @@ export function SignUpPage() {
   const [step, setStep] = useState<'details' | 'code'>('details')
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
+  const [course, setCourse] = useState<'cpa' | 'rmt' | null>(null)
   const [code, setCode] = useState('')
   const [error, setError] = useState<string | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -76,10 +79,14 @@ export function SignUpPage() {
 
   async function handleSendCode(e: FormEvent) {
     e.preventDefault()
+    if (!course) {
+      setError('Please select which exam you’re reviewing for.')
+      return
+    }
     setError(null)
     setIsSubmitting(true)
     try {
-      await requestSignupOtp(name, email)
+      await requestSignupOtp(name, email, course)
       setStep('code')
       setCooldown(RESEND_COOLDOWN_SECONDS)
     } catch (err) {
@@ -90,10 +97,10 @@ export function SignUpPage() {
   }
 
   async function handleResendCode() {
-    if (cooldown > 0) return
+    if (cooldown > 0 || !course) return
     setError(null)
     try {
-      await requestSignupOtp(name, email)
+      await requestSignupOtp(name, email, course)
       setCooldown(RESEND_COOLDOWN_SECONDS)
     } catch (err) {
       setError(describeError(err, 'Could not resend the code. Please try again.'))
@@ -255,6 +262,38 @@ export function SignUpPage() {
                   </div>
                 </motion.div>
 
+                <motion.div variants={fadeUpItem}>
+                  <p className="text-sm font-semibold text-[#7A2323]">
+                    Which are you reviewing for?
+                  </p>
+                  <div className="mt-1.5 grid grid-cols-2 gap-2">
+                    <button
+                      type="button"
+                      onClick={() => setCourse('cpa')}
+                      className={`flex items-center justify-center gap-2 rounded-xl border px-4 py-2.5 text-sm font-semibold transition-colors ${
+                        course === 'cpa'
+                          ? 'border-transparent bg-[#7A2323] text-[#F3ECDC]'
+                          : 'border-[#3A2A1A]/15 text-[#3A2A1A]/80 hover:bg-[#3A2A1A]/5'
+                      }`}
+                    >
+                      <GraduationCap className="size-4" />
+                      CPA (CPALE)
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setCourse('rmt')}
+                      className={`flex items-center justify-center gap-2 rounded-xl border px-4 py-2.5 text-sm font-semibold transition-colors ${
+                        course === 'rmt'
+                          ? 'border-transparent bg-[#7A2323] text-[#F3ECDC]'
+                          : 'border-[#3A2A1A]/15 text-[#3A2A1A]/80 hover:bg-[#3A2A1A]/5'
+                      }`}
+                    >
+                      <Microscope className="size-4" />
+                      RMT / MedTech
+                    </button>
+                  </div>
+                </motion.div>
+
                 <AnimatePresence>
                   {error && (
                     <motion.p
@@ -275,7 +314,7 @@ export function SignUpPage() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   type="submit"
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || !course}
                   className="flex items-center justify-center gap-2 rounded-full bg-[#7A2323] py-3 text-sm font-bold text-[#E0AC48] transition-colors hover:bg-[#7A2323]/90 disabled:opacity-60"
                 >
                   {isSubmitting ? 'Sending code…' : 'Send Code'}

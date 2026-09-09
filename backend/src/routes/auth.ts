@@ -27,11 +27,28 @@ const GRACE_PERIOD_SECONDS = 30
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
+// Dev convenience: emails listed in OTP_BYPASS_EMAILS skip real OTP delivery
+// and verification on /login entirely, so testing as these accounts doesn't
+// burn EmailJS send quota. Unset (the default) means no bypass — never set
+// this in a production .env.
+const OTP_BYPASS_EMAILS = new Set(
+  (process.env.OTP_BYPASS_EMAILS ?? '')
+    .split(',')
+    .map((email) => email.trim().toLowerCase())
+    .filter(Boolean),
+)
+if (OTP_BYPASS_EMAILS.size > 0) {
+  console.warn(
+    `[auth] OTP bypass active for ${OTP_BYPASS_EMAILS.size} email(s) — dev only, never enable in production.`,
+  )
+}
+
 interface UserRow extends RowDataPacket {
   id: string
   name: string
   email: string
   role: 'user' | 'admin'
+  course: 'cpa' | 'rmt'
 }
 
 interface OtpRow extends RowDataPacket {
@@ -39,6 +56,7 @@ interface OtpRow extends RowDataPacket {
   code_hash: string
   purpose: 'signup' | 'login'
   pending_name: string | null
+  pending_course: 'cpa' | 'rmt' | null
   attempts: number
   expires_at: Date
   created_at: Date
@@ -83,6 +101,7 @@ async function issueOtp(
   email: string,
   purpose: 'signup' | 'login',
   pendingName: string | null,
+  pendingCourse: 'cpa' | 'rmt' | null,
 ): Promise<boolean> {
   const [existingRows] = await pool.query<OtpRow[]>(
     'SELECT created_at FROM otp_codes WHERE email = ?',
@@ -96,16 +115,17 @@ async function issueOtp(
 
   const code = generateOtpCode()
   await pool.query(
-    `INSERT INTO otp_codes (email, code_hash, purpose, pending_name, attempts, expires_at)
-     VALUES (?, ?, ?, ?, 0, (CURRENT_TIMESTAMP + INTERVAL ? MINUTE))
+    `INSERT INTO otp_codes (email, code_hash, purpose, pending_name, pending_course, attempts, expires_at)
+     VALUES (?, ?, ?, ?, ?, 0, (CURRENT_TIMESTAMP + INTERVAL ? MINUTE))
      ON DUPLICATE KEY UPDATE
        code_hash = VALUES(code_hash),
        purpose = VALUES(purpose),
        pending_name = VALUES(pending_name),
+       pending_course = VALUES(pending_course),
        attempts = 0,
        expires_at = VALUES(expires_at),
        created_at = CURRENT_TIMESTAMP`,
-    [email, hashOtpCode(code), purpose, pendingName, OTP_TTL_MINUTES],
+    [email, hashOtpCode(code), purpose, pendingName, pendingCourse, OTP_TTL_MINUTES],
   )
 
   await sendOtpEmail(email, code)
@@ -144,10 +164,14 @@ async function consumeOtp(
 }
 
 authRouter.post('/signup/request-otp', asyncHandler(async (req, res) => {
-  const { name, email } = req.body ?? {}
+  const { name, email, course } = req.body ?? {}
 
   if (typeof name !== 'string' || !name.trim() || typeof email !== 'string' || !EMAIL_PATTERN.test(email)) {
     res.status(400).json({ error: 'A name and a valid email are required' })
+    return
+  }
+  if (course !== 'cpa' && course !== 'rmt') {
+    res.status(400).json({ error: 'course must be "cpa" or "rmt"' })
     return
   }
 
@@ -157,7 +181,7 @@ authRouter.post('/signup/request-otp', asyncHandler(async (req, res) => {
     return
   }
 
-  const sent = await issueOtp(email, 'signup', name.trim())
+  const sent = await issueOtp(email, 'signup', name.trim(), course)
   if (!sent) {
     res.status(429).json({ error: `Please wait before requesting another code.` })
     return
@@ -187,11 +211,17 @@ authRouter.post('/signup/verify-otp', asyncHandler(async (req, res) => {
 
   const id = randomUUID()
   const name = result.row.pending_name ?? email
-  await pool.query('INSERT INTO users (id, name, email) VALUES (?, ?, ?)', [id, name, email])
+  const course = result.row.pending_course ?? 'cpa'
+  await pool.query('INSERT INTO users (id, name, email, course) VALUES (?, ?, ?, ?)', [
+    id,
+    name,
+    email,
+    course,
+  ])
 
   const sid = await openSession(id, req)
-  const token = signToken({ id, email, sid, role: 'user' })
-  res.status(201).json({ token, user: { id, name, email, role: 'user' } })
+  const token = signToken({ id, email, sid, role: 'user', course })
+  res.status(201).json({ token, user: { id, name, email, role: 'user', course } })
 }))
 
 authRouter.post('/login/request-otp', asyncHandler(async (req, res) => {
@@ -208,7 +238,12 @@ authRouter.post('/login/request-otp', asyncHandler(async (req, res) => {
     return
   }
 
-  const sent = await issueOtp(email, 'login', null)
+  if (OTP_BYPASS_EMAILS.has(email.toLowerCase())) {
+    res.status(200).json({ message: 'Verification code sent' })
+    return
+  }
+
+  const sent = await issueOtp(email, 'login', null, null)
   if (!sent) {
     res.status(429).json({ error: `Please wait before requesting another code.` })
     return
@@ -224,14 +259,16 @@ authRouter.post('/login/verify-otp', asyncHandler(async (req, res) => {
     return
   }
 
-  const result = await consumeOtp(email, 'login', code)
-  if (!result.ok) {
-    res.status(result.status).json({ error: result.error })
-    return
+  if (!OTP_BYPASS_EMAILS.has(email.toLowerCase())) {
+    const result = await consumeOtp(email, 'login', code)
+    if (!result.ok) {
+      res.status(result.status).json({ error: result.error })
+      return
+    }
   }
 
   const [rows] = await pool.query<UserRow[]>(
-    'SELECT id, name, email, role FROM users WHERE email = ?',
+    'SELECT id, name, email, role, course FROM users WHERE email = ?',
     [email],
   )
   const user = rows[0]
@@ -245,13 +282,16 @@ authRouter.post('/login/verify-otp', asyncHandler(async (req, res) => {
   // its next request, then requireAuth rejects it once the period elapses.
   const sid = await openSession(user.id, req)
 
-  const token = signToken({ id: user.id, email: user.email, sid, role: user.role })
-  res.json({ token, user: { id: user.id, name: user.name, email: user.email, role: user.role } })
+  const token = signToken({ id: user.id, email: user.email, sid, role: user.role, course: user.course })
+  res.json({
+    token,
+    user: { id: user.id, name: user.name, email: user.email, role: user.role, course: user.course },
+  })
 }))
 
 authRouter.get('/me', requireAuth, asyncHandler(async (req, res) => {
   const [rows] = await pool.query<UserRow[]>(
-    'SELECT id, name, email, role FROM users WHERE id = ?',
+    'SELECT id, name, email, role, course FROM users WHERE id = ?',
     [req.user!.id],
   )
   const user = rows[0]
@@ -264,8 +304,17 @@ authRouter.get('/me', requireAuth, asyncHandler(async (req, res) => {
   // never hits the 7-day hard expiry — only a genuinely abandoned session
   // (no visits for 7 days) actually expires. Re-signed with the same sid:
   // this isn't a new device, so the active session shouldn't change.
-  const token = signToken({ id: user.id, email: user.email, sid: req.user!.sid, role: user.role })
-  res.json({ token, user: { id: user.id, name: user.name, email: user.email, role: user.role } })
+  const token = signToken({
+    id: user.id,
+    email: user.email,
+    sid: req.user!.sid,
+    role: user.role,
+    course: user.course,
+  })
+  res.json({
+    token,
+    user: { id: user.id, name: user.name, email: user.email, role: user.role, course: user.course },
+  })
 }))
 
 authRouter.post('/refresh', requireAuth, asyncHandler(async (req, res) => {
@@ -274,6 +323,7 @@ authRouter.post('/refresh', requireAuth, asyncHandler(async (req, res) => {
     email: req.user!.email,
     sid: req.user!.sid,
     role: req.user!.role,
+    course: req.user!.course,
   })
   res.json({ token })
 }))

@@ -20,6 +20,9 @@ export interface AuthUser {
   name: string
   email: string
   role: 'user' | 'admin'
+  /** Which board exam this account reviews for — fixed at signup, drives
+   * which subjects/mock exams the app shows. */
+  course: 'cpa' | 'rmt'
 }
 
 interface AuthContextValue {
@@ -30,7 +33,7 @@ interface AuthContextValue {
    * then clears it via `clearLoggedOutReason`. */
   loggedOutReason: 'session_ended' | null
   clearLoggedOutReason: () => void
-  requestSignupOtp: (name: string, email: string) => Promise<void>
+  requestSignupOtp: (name: string, email: string, course: 'cpa' | 'rmt') => Promise<void>
   verifySignupOtp: (email: string, code: string) => Promise<AuthUser>
   requestLoginOtp: (email: string) => Promise<void>
   verifyLoginOtp: (email: string, code: string) => Promise<AuthUser>
@@ -98,8 +101,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setLoggedOutReason(null)
   }
 
-  async function requestSignupOtp(name: string, email: string) {
-    await apiClient.post('/api/auth/signup/request-otp', { name, email })
+  async function requestSignupOtp(name: string, email: string, course: 'cpa' | 'rmt') {
+    await apiClient.post('/api/auth/signup/request-otp', { name, email, course })
   }
 
   async function verifySignupOtp(email: string, code: string) {
