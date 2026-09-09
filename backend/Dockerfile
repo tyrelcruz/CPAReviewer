@@ -6,7 +6,16 @@ FROM node:22-alpine
 WORKDIR /app
 
 COPY package.json package-lock.json* ./
-RUN npm install
+# `npm ci` (not `npm install`) plus explicit retry/timeout tuning and
+# --no-audit/--no-fund (fewer registry round-trips): on a slow connection,
+# plain `npm install` reliably hits npm's own "Exit handler never called!"
+# bug (a real npm CLI bug, not a project misconfiguration) when a fetch
+# times out mid-install.
+RUN npm config set fetch-retries 5 \
+  && npm config set fetch-retry-mintimeout 20000 \
+  && npm config set fetch-retry-maxtimeout 120000 \
+  && npm config set fetch-timeout 300000 \
+  && npm ci --no-audit --no-fund
 
 COPY . .
 

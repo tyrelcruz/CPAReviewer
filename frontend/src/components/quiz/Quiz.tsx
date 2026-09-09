@@ -571,8 +571,17 @@ export function Quiz({
                       </span>
                       <span className="font-reading flex-1">{choice.text}</span>
                       {isSelected && (
-                        <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-[#7A2323] text-white">
-                          <Check className="size-3.5" />
+                        <span
+                          className={cn(
+                            'flex size-6 shrink-0 items-center justify-center rounded-full text-white',
+                            isCorrect ? 'bg-[#3A5A40]' : 'bg-red-600',
+                          )}
+                        >
+                          {isCorrect ? (
+                            <Check className="size-3.5" />
+                          ) : (
+                            <XCircle className="size-3.5" />
+                          )}
                         </span>
                       )}
                     </motion.button>
