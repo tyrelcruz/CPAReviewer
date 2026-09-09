@@ -90,7 +90,7 @@ export function ReviewPlannerHero({ initials, name, roleLabel }: ReviewPlannerHe
               style={{ transform: 'rotate(-4deg)' }}
               aria-hidden="true"
             >
-              ⁓a
+              ⁓Jocko Willink
             </span>
           </motion.div>
         </motion.div>
