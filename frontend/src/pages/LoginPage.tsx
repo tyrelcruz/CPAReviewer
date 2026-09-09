@@ -4,7 +4,6 @@ import {
   BarChart3,
   FileText,
   FlaskConical,
-  KeyRound,
   Mail,
   ShieldCheck,
   Star,
@@ -16,6 +15,7 @@ import { type FormEvent, useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 import illustrationBg from '@/assets/images/illustration_bg.png'
+import { OtpInput } from '@/components/auth/OtpInput'
 import { Logo } from '@/components/landing/Logo'
 import { useAuth } from '@/context/AuthContext'
 import { fadeUpItem, listItem, listStagger, staggerContainer } from '@/lib/motion'
@@ -289,22 +289,7 @@ export function LoginPage() {
                   <label htmlFor="code" className="text-sm font-semibold text-[#7A2323]">
                     Verification code
                   </label>
-                  <div className="mt-1.5 flex items-center gap-2 rounded-xl border border-[#3A2A1A]/15 bg-white px-3.5 py-2.5">
-                    <KeyRound className="size-4 shrink-0 text-[#3A2A1A]/50" />
-                    <input
-                      id="code"
-                      type="text"
-                      inputMode="numeric"
-                      pattern="[0-9]{6}"
-                      maxLength={6}
-                      required
-                      autoComplete="one-time-code"
-                      value={code}
-                      onChange={(e) => setCode(e.target.value.replace(/\D/g, ''))}
-                      placeholder="123456"
-                      className="w-full bg-transparent text-center text-lg tracking-[0.5em] text-[#3A2A1A] outline-none placeholder:text-[#3A2A1A]/30"
-                    />
-                  </div>
+                  <OtpInput id="code" value={code} onChange={setCode} className="mt-2" />
                   <div className="mt-2 flex items-center justify-between text-xs">
                     <button
                       type="button"
