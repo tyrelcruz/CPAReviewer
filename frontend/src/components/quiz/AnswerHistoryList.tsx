@@ -1,4 +1,5 @@
-import { cn } from '@/lib/utils'
+import { isAnswerMatch } from '@/lib/answerMatch'
+import { cn, hasRealSourceCenter } from '@/lib/utils'
 import type { QuizQuestion } from '@/types/quiz'
 
 interface AnswerHistoryListProps {
@@ -10,11 +11,18 @@ export function AnswerHistoryList({ questions, answers }: AnswerHistoryListProps
   return (
     <div className="flex max-h-72 flex-col gap-2 overflow-y-auto pr-1">
       {questions.map((q, i) => {
+        const isIdentification = q.answerMode === 'identification'
         const selectedChoiceId = answers[q.id]
         const isAnswered = selectedChoiceId !== undefined
-        const isCorrect = selectedChoiceId === q.correctChoiceId
-        const yourAnswerText = q.choices.find((c) => c.id === selectedChoiceId)?.text
         const correctAnswerText = q.choices.find((c) => c.id === q.correctChoiceId)?.text
+        const isCorrect = isIdentification
+          ? isAnswered && isAnswerMatch(selectedChoiceId, correctAnswerText ?? '')
+          : selectedChoiceId === q.correctChoiceId
+        const yourAnswerText = isIdentification
+          ? selectedChoiceId
+          : q.choices.find((c) => c.id === selectedChoiceId)?.text
+
+        const visibleSources = q.sources?.filter((s) => hasRealSourceCenter(s.center)) ?? []
 
         return (
           <div
@@ -28,9 +36,9 @@ export function AnswerHistoryList({ questions, answers }: AnswerHistoryListProps
                   : 'border-destructive/50 bg-destructive/10',
             )}
           >
-            {(q.sources?.length ?? 0) > 0 && (
+            {visibleSources.length > 0 && (
               <div className="mb-1 flex flex-wrap gap-1.5">
-                {q.sources!.map((s) => (
+                {visibleSources.map((s) => (
                   <span
                     key={s.center}
                     className="rounded-full bg-[#3A5A40]/10 px-2 py-0.5 text-[9px] font-bold whitespace-nowrap text-[#3A5A40] uppercase"

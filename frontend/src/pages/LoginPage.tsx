@@ -13,7 +13,7 @@ import {
 import axios from 'axios'
 import { AnimatePresence, motion } from 'framer-motion'
 import { type FormEvent, useEffect, useState } from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import illustrationBg from '@/assets/images/illustration_bg.png'
 import { Logo } from '@/components/landing/Logo'
@@ -39,7 +39,6 @@ const RESEND_COOLDOWN_SECONDS = 60
 
 export function LoginPage() {
   const navigate = useNavigate()
-  const location = useLocation()
   const { requestLoginOtp, verifyLoginOtp, loggedOutReason, clearLoggedOutReason } = useAuth()
   const [step, setStep] = useState<'email' | 'code'>('email')
   const [email, setEmail] = useState('')
@@ -47,13 +46,6 @@ export function LoginPage() {
   const [error, setError] = useState<string | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [cooldown, setCooldown] = useState(0)
-
-  // Only present when a route guard (ProtectedRoute/AdminRoute) bounced the
-  // user here trying to reach a specific page — a direct visit to /login has
-  // no `from`. Role still wins over it: e.g. an admin who had a stale
-  // bookmark to /app/dashboard should land on /admin after logging in, not
-  // get sent back to the user page they merely happened to be bounced from.
-  const redirectFrom = (location.state as { from?: { pathname: string } } | null)?.from?.pathname
 
   // Surfaces once, right after being bounced here for a session that ended
   // server-side (e.g. logged out from another tab) — reuses the same alert
@@ -117,10 +109,10 @@ export function LoginPage() {
     setIsSubmitting(true)
     try {
       const user = await verifyLoginOtp(email, code)
-      const homeBase = user.role === 'admin' ? '/admin' : '/app/dashboard'
-      const isCompatibleRedirect =
-        redirectFrom && (user.role === 'admin') === redirectFrom.startsWith('/admin')
-      navigate(isCompatibleRedirect ? redirectFrom : homeBase, { replace: true })
+      // Always lands on the role's dashboard, never wherever a route guard
+      // happened to bounce the user from (e.g. a stale/expired exam URL) —
+      // an in-progress exam is still reachable from there via "Resume".
+      navigate(user.role === 'admin' ? '/admin' : '/app/dashboard', { replace: true })
     } catch (err) {
       setError(describeError(err, 'Something went wrong. Please try again.'))
     } finally {

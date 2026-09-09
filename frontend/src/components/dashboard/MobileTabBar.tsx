@@ -12,7 +12,7 @@ const TABS = NAV_ITEMS.map((item) => ({
   to: item.to,
 }))
 
-const MAX_VISIBLE = 3
+const MAX_VISIBLE = 4
 
 const enabledTabs = TABS.filter((tab) => tab.to !== '#')
 const disabledTabs = TABS.filter((tab) => tab.to === '#')

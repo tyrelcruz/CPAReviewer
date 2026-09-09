@@ -17,6 +17,7 @@ import { MockExamsPage } from '@/pages/MockExamsPage'
 import { NotFoundPage } from '@/pages/NotFoundPage'
 import { QuizApp } from '@/pages/QuizApp'
 import { QuizDetailsPage } from '@/pages/QuizDetailsPage'
+import { ReviewPlannerPage } from '@/pages/ReviewPlannerPage'
 import { SignUpPage } from '@/pages/SignUpPage'
 import { SubjectsPage } from '@/pages/SubjectsPage'
 
@@ -66,6 +67,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <MockExamsPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/app/review-planner"
+              element={
+                <ProtectedRoute>
+                  <ReviewPlannerPage />
                 </ProtectedRoute>
               }
             />

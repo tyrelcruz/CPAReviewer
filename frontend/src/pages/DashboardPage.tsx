@@ -1,4 +1,4 @@
-import { ClipboardCheck, FileText } from 'lucide-react'
+import { FileText } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useEffect, useMemo, useState } from 'react'
 
@@ -22,11 +22,12 @@ import {
   scoreDeltaVsPrevious,
   toPerformanceTrend,
   toRecentActivity,
-  toStudyPlan,
+  toStudyCalendar,
   toSubjectProgress,
   toSubjectStrengths,
 } from '@/lib/dashboardStats'
 import { fadeUpItem, staggerContainer } from '@/lib/motion'
+import { getReviewPlanEntries } from '@/lib/reviewPlanner'
 import { peekStudyStreak } from '@/lib/streak'
 import { quizSets } from '@/data/quiz-data'
 
@@ -72,7 +73,8 @@ export function DashboardPage() {
     Object.values(bankSubjectCounts).reduce((sum, n) => sum + n, 0)
 
   const recentActivity = toRecentActivity(attempts).map((item) => ({ ...item, icon: FileText }))
-  const studyPlan = toStudyPlan(aggregates).map((task) => ({ ...task, icon: ClipboardCheck }))
+  const studyCalendar = toStudyCalendar(attempts)
+  const planEntries = useMemo(() => getReviewPlanEntries(user?.id ?? ''), [user?.id])
 
   return (
     <div className="flex min-h-svh bg-[#FBF3EA] text-[#3A2A1A]">
@@ -111,7 +113,7 @@ export function DashboardPage() {
           </motion.div>
 
           <motion.div variants={fadeUpItem} className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-            <StudyPlanCard tasks={studyPlan} />
+            <StudyPlanCard entriesByDate={studyCalendar} planEntries={planEntries} />
             <PerformanceTrendCard data={toPerformanceTrend(attempts)} />
             <SubjectStrengthsCard subjects={toSubjectStrengths(aggregates)} />
           </motion.div>

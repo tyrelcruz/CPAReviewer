@@ -30,6 +30,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { generateExam, listRfbtTopics, listSubjectCounts } from '@/api/exams'
 import { Sidebar } from '@/components/dashboard/Sidebar'
 import { Switch } from '@/components/ui/switch'
+import { WizardHeader } from '@/components/quiz/WizardHeader'
 import mountainHeader from '@/assets/images/carabao_repia.png'
 import { useAuth } from '@/context/AuthContext'
 import { fadeUpItem, staggerContainer } from '@/lib/motion'
@@ -44,8 +45,33 @@ function defaultTopicCounts(topics: RfbtTopic[], total: number): Record<string, 
   return counts
 }
 
-const MIN_ITEM_COUNT = 10
-const MAX_ITEM_COUNT = 200
+interface QuestionTypeCounts {
+  mcq: number
+  identification: number
+}
+
+interface DifficultyCounts {
+  Easy: number
+  Moderate: number
+  Difficult: number
+}
+
+/** All-MCQ by default — matches this app's behavior before the mix feature existed. */
+function defaultQuestionTypeCounts(total: number): QuestionTypeCounts {
+  return { mcq: total, identification: 0 }
+}
+
+/** Rounds to a 30/40/30 split (this app's long-standing default difficulty
+ * ratio), then nudges the largest bucket to absorb any rounding remainder so
+ * the three counts always sum to exactly `total`. */
+function defaultDifficultyCounts(total: number): DifficultyCounts {
+  const easy = Math.round(total * 0.3)
+  const moderate = Math.round(total * 0.4)
+  const difficult = total - easy - moderate
+  return { Easy: easy, Moderate: moderate, Difficult: difficult }
+}
+
+const ITEM_COUNT_OPTIONS = [70, 80, 90, 100, 110]
 
 interface SubjectDef {
   code: string
@@ -76,17 +102,20 @@ const RMT_SUBJECT_DEFS: SubjectDef[] = [
   { code: 'IS', name: 'Immunology & Serology', icon: Microscope, subjectKey: 'IS' },
 ]
 
-const DIFFICULTY_OPTIONS = ['All Levels', 'Easy', 'Moderate', 'Difficult']
-
 export function ExamSetupPage() {
   const navigate = useNavigate()
   const location = useLocation()
   const { user } = useAuth()
   const requestedState = location.state as { subject?: string; mode?: ExamMode } | null
   const requestedSubject = requestedState?.subject
-  const [examName, setExamName] = useState('')
   const [examType, setExamType] = useState<'standard' | 'timed'>('standard')
-  const [timedMinutes, setTimedMinutes] = useState(90)
+  // Kept as a raw string (not a clamped number) so the field can actually be
+  // cleared while typing — clamping on every keystroke made it impossible to
+  // delete existing digits, since the input snapped straight back to the min.
+  // Clamping happens on blur instead; `timedMinutes` below is always a valid
+  // derived number regardless of what's mid-edit in the field.
+  const [timedMinutesInput, setTimedMinutesInput] = useState('90')
+  const timedMinutes = Math.max(10, Math.min(480, Number(timedMinutesInput) || 10))
 
   const activeSubjectDefs = user?.course === 'rmt' ? RMT_SUBJECT_DEFS : CPA_SUBJECT_DEFS
   const [subject, setSubject] = useState(
@@ -97,6 +126,10 @@ export function ExamSetupPage() {
   const [mode, setMode] = useState<ExamMode>(
     requestedState?.mode === 'subject_drill' ? 'subject_drill' : 'tos_simulator',
   )
+  // Arrived from ChooseStrategyPage with a valid subject already chosen —
+  // render as step 2 of that wizard (WizardHeader, no subject re-picker)
+  // instead of the standalone "Create New Exam" entry point.
+  const cameFromWizard = Boolean(requestedSubject) && requestedSubject === subject
   const [itemCount, setItemCount] = useState(70)
   const [isGenerating, setIsGenerating] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -105,6 +138,20 @@ export function ExamSetupPage() {
   const [topics, setTopics] = useState<RfbtTopic[]>([])
   const [customizeTopics, setCustomizeTopics] = useState(false)
   const [topicCounts, setTopicCounts] = useState<Record<string, number>>({})
+
+  // 'variant' is the only choice that exposes the customizable mix panels
+  // (question-type split + difficulty split) — picking Multiple Choice or
+  // Identification directly commits a simple 100%-one-type exam instead.
+  const [questionTypeSelection, setQuestionTypeSelection] = useState<
+    'mcq' | 'identification' | 'variant'
+  >('mcq')
+  const isVariant = questionTypeSelection === 'variant'
+  const [questionTypeCounts, setQuestionTypeCounts] = useState<QuestionTypeCounts>(() =>
+    defaultQuestionTypeCounts(70),
+  )
+  const [difficultyCounts, setDifficultyCounts] = useState<DifficultyCounts>(() =>
+    defaultDifficultyCounts(70),
+  )
 
   useEffect(() => {
     listSubjectCounts()
@@ -123,6 +170,39 @@ export function ExamSetupPage() {
   const topicTotal = Object.values(topicCounts).reduce((sum, n) => sum + n, 0)
   const effectiveItemCount = usingCustomTopics ? topicTotal : itemCount
   const activeSubjectDef = activeSubjectDefs.find((s) => s.subjectKey === subject)
+
+  // Both mixes reset whenever the effective total or the mcq/identification/
+  // variant choice changes. Multiple Choice / Identification commit a simple
+  // 100%-one-type split directly (no manual editing); Variant resets to the
+  // same proportional defaults as before and leaves them freely editable —
+  // mirrors how RFBT's own topic customization already works
+  // (defaultTopicCounts is recomputed fresh on toggle-on rather than trying
+  // to preserve ratios across changes).
+  useEffect(() => {
+    if (questionTypeSelection === 'mcq') {
+      setQuestionTypeCounts({ mcq: effectiveItemCount, identification: 0 })
+    } else if (questionTypeSelection === 'identification') {
+      setQuestionTypeCounts({ mcq: 0, identification: effectiveItemCount })
+    } else {
+      setQuestionTypeCounts(defaultQuestionTypeCounts(effectiveItemCount))
+    }
+    setDifficultyCounts(defaultDifficultyCounts(effectiveItemCount))
+  }, [effectiveItemCount, questionTypeSelection])
+
+  const questionTypeTotal = questionTypeCounts.mcq + questionTypeCounts.identification
+  const difficultyTotal = difficultyCounts.Easy + difficultyCounts.Moderate + difficultyCounts.Difficult
+
+  function updateQuestionTypeCount(key: keyof QuestionTypeCounts, rawValue: string) {
+    const raw = Number(rawValue)
+    const clamped = Number.isFinite(raw) ? Math.max(0, Math.min(effectiveItemCount, Math.round(raw))) : 0
+    setQuestionTypeCounts((prev) => ({ ...prev, [key]: clamped }))
+  }
+
+  function updateDifficultyCount(key: keyof DifficultyCounts, rawValue: string) {
+    const raw = Number(rawValue)
+    const clamped = Number.isFinite(raw) ? Math.max(0, Math.min(effectiveItemCount, Math.round(raw))) : 0
+    setDifficultyCounts((prev) => ({ ...prev, [key]: clamped }))
+  }
 
   function handleToggleCustomizeTopics() {
     if (!customizeTopics) {
@@ -147,6 +227,14 @@ export function ExamSetupPage() {
       setError('Set at least one topic count above 0 before generating.')
       return
     }
+    if (questionTypeTotal !== effectiveItemCount) {
+      setError(`Multiple Choice + Identification must add up to ${effectiveItemCount} (currently ${questionTypeTotal}).`)
+      return
+    }
+    if (difficultyTotal !== effectiveItemCount) {
+      setError(`Easy + Moderate + Difficult must add up to ${effectiveItemCount} (currently ${difficultyTotal}).`)
+      return
+    }
 
     setError(null)
     setIsGenerating(true)
@@ -156,6 +244,8 @@ export function ExamSetupPage() {
         mode,
         itemCount: usingCustomTopics ? undefined : itemCount,
         topicCounts: usingCustomTopics ? topicCounts : undefined,
+        questionTypeCounts,
+        difficultyCounts,
       })
       navigate(`/app/exam/${session.sessionId}`, {
         state: {
@@ -176,31 +266,59 @@ export function ExamSetupPage() {
       <div className="min-w-0 flex-1 pb-20 lg:pb-0">
         <main className="mx-auto max-w-[1400px] px-4 py-6 sm:px-8 sm:py-8">
           <motion.div variants={staggerContainer} initial="hidden" animate="show" className="flex flex-col gap-6">
-            <motion.div variants={fadeUpItem} className="relative overflow-hidden rounded-2xl">
-              <img
-                src={mountainHeader}
-                alt=""
-                aria-hidden="true"
-                className="pointer-events-none absolute right-0 bottom-0 hidden h-full w-80 object-contain object-right-bottom sm:block md:w-112 lg:w-136"
-              />
-              <div className="relative">
-                <button
-                  type="button"
-                  onClick={() => navigate('/app/dashboard')}
-                  className="flex items-center gap-1.5 text-sm font-semibold text-[#7A2323] hover:underline"
-                >
-                  <ArrowLeft className="size-4" />
-                  Back to dashboard
-                </button>
-                <h1 className="font-serif mt-3 text-3xl font-bold text-[#7A2323] sm:text-4xl lg:text-5xl">
-                  Create New Exam
+            {cameFromWizard ? (
+              <motion.div variants={fadeUpItem}>
+                <WizardHeader
+                  subjectCode={activeSubjectDef?.code ?? subject}
+                  subjectFullName={activeSubjectDef?.name ?? subject}
+                  activeStepIndex={1}
+                  onBack={() => navigate(`/app/choose-strategy/${subject}`)}
+                />
+              </motion.div>
+            ) : (
+              <motion.div variants={fadeUpItem} className="relative overflow-hidden rounded-2xl">
+                <img
+                  src={mountainHeader}
+                  alt=""
+                  aria-hidden="true"
+                  className="pointer-events-none absolute right-0 bottom-0 hidden h-full w-80 object-contain object-right-bottom sm:block md:w-112 lg:w-136"
+                />
+                <div className="relative">
+                  <button
+                    type="button"
+                    onClick={() => navigate('/app/dashboard')}
+                    className="flex items-center gap-1.5 text-sm font-semibold text-[#7A2323] hover:underline"
+                  >
+                    <ArrowLeft className="size-4" />
+                    Back to dashboard
+                  </button>
+                  <h1 className="font-serif mt-3 text-3xl font-bold text-[#7A2323] sm:text-4xl lg:text-5xl">
+                    Create New Exam
+                  </h1>
+                  <p className="font-reading mt-3 max-w-lg text-sm text-[#3A2A1A]/70 sm:text-base">
+                    Build your own practice exam using the knowledge bank. Customize the subjects,
+                    question count, and difficulty level to match your study goals.
+                  </p>
+                </div>
+              </motion.div>
+            )}
+
+            {cameFromWizard && (
+              <motion.div variants={fadeUpItem}>
+                <div className="mb-3 flex items-center gap-3 text-xs font-semibold tracking-[0.2em] text-[#3A2A1A]/50 uppercase">
+                  <span>Step 2 of 2</span>
+                  <span className="h-px flex-1 bg-[#3A2A1A]/15" />
+                </div>
+                <h1 className="font-display text-4xl leading-[1.05] uppercase sm:text-5xl">
+                  <span className="text-[#3A2A1A]">Set Quiz</span>{' '}
+                  <span className="text-[#E0AC48]">Details</span>
                 </h1>
-                <p className="font-reading mt-3 max-w-lg text-sm text-[#3A2A1A]/70 sm:text-base">
-                  Build your own practice exam using the knowledge bank. Customize the subjects,
-                  question count, and difficulty level to match your study goals.
+                <p className="font-reading mt-4 max-w-xl text-[#3A2A1A]/70">
+                  Customize your exam based on your preferred settings. You can adjust the name,
+                  question count, and difficulty level.
                 </p>
-              </div>
-            </motion.div>
+              </motion.div>
+            )}
 
             <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_20rem] lg:items-start">
               <div className="flex min-w-0 flex-col gap-6">
@@ -211,26 +329,8 @@ export function ExamSetupPage() {
                   <SectionHeading
                     icon={Bookmark}
                     title="Exam Details"
-                    subtitle="Give your exam a name and choose the type."
+                    subtitle="Choose the exam type."
                   />
-
-                  <div>
-                    <label htmlFor="examName" className="text-xs font-semibold text-[#3A2A1A]/60">
-                      Exam Name (optional)
-                    </label>
-                    <div className="mt-1.5 flex items-center gap-2 rounded-xl border border-[#3A2A1A]/15 bg-white px-3.5 py-2.5">
-                      <input
-                        id="examName"
-                        type="text"
-                        maxLength={50}
-                        value={examName}
-                        onChange={(e) => setExamName(e.target.value)}
-                        placeholder="e.g. FAR Practice Exam - Week 3"
-                        className="w-full bg-transparent text-sm text-[#3A2A1A] outline-none placeholder:text-[#3A2A1A]/40"
-                      />
-                      <span className="shrink-0 text-xs text-[#3A2A1A]/40">{examName.length}/50</span>
-                    </div>
-                  </div>
 
                   <div>
                     <p className="text-xs font-semibold text-[#3A2A1A]/60">Exam Type</p>
@@ -272,10 +372,9 @@ export function ExamSetupPage() {
                           type="number"
                           min={10}
                           max={480}
-                          value={timedMinutes}
-                          onChange={(e) =>
-                            setTimedMinutes(Math.max(10, Math.min(480, Number(e.target.value) || 0)))
-                          }
+                          value={timedMinutesInput}
+                          onChange={(e) => setTimedMinutesInput(e.target.value)}
+                          onBlur={() => setTimedMinutesInput(String(timedMinutes))}
                           className="w-20 rounded-lg border border-[#3A2A1A]/15 px-2.5 py-1.5 text-right text-sm font-semibold text-[#3A2A1A] outline-none focus:border-[#7A2323]/40"
                         />
                         <span className="text-xs text-[#3A2A1A]/60">minutes</span>
@@ -284,6 +383,7 @@ export function ExamSetupPage() {
                   </div>
                 </motion.div>
 
+                {!cameFromWizard && (
                 <motion.div
                   variants={fadeUpItem}
                   className="flex flex-col gap-4 rounded-2xl border border-[#3A2A1A]/10 bg-white p-5"
@@ -383,6 +483,7 @@ export function ExamSetupPage() {
                     </button>
                   </div>
                 </motion.div>
+                )}
 
                 <motion.div
                   variants={fadeUpItem}
@@ -399,26 +500,19 @@ export function ExamSetupPage() {
                       <label htmlFor="itemCount" className="text-xs font-semibold text-[#3A2A1A]/60">
                         Total Questions
                       </label>
-                      <input
+                      <select
                         id="itemCount"
-                        type="number"
-                        min={MIN_ITEM_COUNT}
-                        max={MAX_ITEM_COUNT}
                         disabled={usingCustomTopics}
                         value={itemCount}
-                        onChange={(e) =>
-                          setItemCount(
-                            Math.max(
-                              MIN_ITEM_COUNT,
-                              Math.min(MAX_ITEM_COUNT, Number(e.target.value) || MIN_ITEM_COUNT),
-                            ),
-                          )
-                        }
+                        onChange={(e) => setItemCount(Number(e.target.value))}
                         className="mt-1.5 w-full rounded-xl border border-[#3A2A1A]/15 bg-white px-3.5 py-2.5 text-sm font-semibold text-[#3A2A1A] outline-none focus:border-[#7A2323]/40 disabled:cursor-not-allowed"
-                      />
-                      <p className="mt-1 text-xs text-[#3A2A1A]/50">
-                        ({MIN_ITEM_COUNT} - {MAX_ITEM_COUNT})
-                      </p>
+                      >
+                        {ITEM_COUNT_OPTIONS.map((n) => (
+                          <option key={n} value={n}>
+                            {n}
+                          </option>
+                        ))}
+                      </select>
                       {usingCustomTopics && (
                         <p className="font-reading mt-1 text-xs text-[#3A2A1A]/60">
                           Using the per-topic counts below instead.
@@ -429,52 +523,120 @@ export function ExamSetupPage() {
                     <div>
                       <p className="text-xs font-semibold text-[#3A2A1A]/60">Question Types</p>
                       <div className="mt-1.5 grid grid-cols-3 gap-2">
-                        <div className="rounded-xl border border-[#7A2323] bg-[#7A2323]/5 px-2 py-2.5 text-center">
+                        <button
+                          type="button"
+                          onClick={() => setQuestionTypeSelection('mcq')}
+                          className={cn(
+                            'rounded-xl border px-2 py-2.5 text-center transition-colors',
+                            questionTypeSelection === 'mcq'
+                              ? 'border-[#7A2323] bg-[#7A2323]/5'
+                              : 'border-[#3A2A1A]/15 hover:bg-[#3A2A1A]/5',
+                          )}
+                        >
                           <p className="text-xs font-bold text-[#3A2A1A]">Multiple Choice</p>
-                          <p className="text-[10px] text-[#3A2A1A]/50">(100%)</p>
-                        </div>
-                        <div
-                          title="Coming soon"
-                          className="cursor-not-allowed rounded-xl border border-[#3A2A1A]/15 px-2 py-2.5 text-center opacity-50"
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => setQuestionTypeSelection('identification')}
+                          className={cn(
+                            'rounded-xl border px-2 py-2.5 text-center transition-colors',
+                            questionTypeSelection === 'identification'
+                              ? 'border-[#7A2323] bg-[#7A2323]/5'
+                              : 'border-[#3A2A1A]/15 hover:bg-[#3A2A1A]/5',
+                          )}
                         >
-                          <p className="text-xs font-bold text-[#3A2A1A]">True or False</p>
-                          <p className="text-[10px] text-[#3A2A1A]/50">(0%)</p>
-                        </div>
-                        <div
-                          title="Coming soon"
-                          className="cursor-not-allowed rounded-xl border border-[#3A2A1A]/15 px-2 py-2.5 text-center opacity-50"
+                          <p className="text-xs font-bold text-[#3A2A1A]">Identification</p>
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => setQuestionTypeSelection('variant')}
+                          title="Customize your own mix of question types and difficulty"
+                          className={cn(
+                            'rounded-xl border px-2 py-2.5 text-center transition-colors',
+                            questionTypeSelection === 'variant'
+                              ? 'border-[#7A2323] bg-[#7A2323]/5'
+                              : 'border-[#3A2A1A]/15 hover:bg-[#3A2A1A]/5',
+                          )}
                         >
-                          <p className="text-xs font-bold text-[#3A2A1A]">Problem Solving</p>
-                          <p className="text-[10px] text-[#3A2A1A]/50">(0%)</p>
-                        </div>
+                          <p className="text-xs font-bold text-[#3A2A1A]">Variant</p>
+                        </button>
                       </div>
                     </div>
                   </div>
 
-                  <div>
-                    <p className="text-xs font-semibold text-[#3A2A1A]/60">Difficulty Level</p>
-                    <div className="mt-1.5 grid grid-cols-2 gap-2 sm:grid-cols-4">
-                      {DIFFICULTY_OPTIONS.map((label) => {
-                        const isAllLevels = label === 'All Levels'
-                        return (
-                          <button
-                            key={label}
-                            type="button"
-                            disabled={!isAllLevels}
-                            title={isAllLevels ? undefined : 'Coming soon — exams currently blend all difficulty levels'}
+                  {isVariant && (
+                    <>
+                      <div>
+                        <div className="flex items-center justify-between gap-2">
+                          <p className="text-xs font-semibold text-[#3A2A1A]/60">Question Type Mix</p>
+                          <p
                             className={cn(
-                              'rounded-full border px-3 py-2 text-xs font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-40',
-                              isAllLevels
-                                ? 'border-transparent bg-[#7A2323] text-[#F3ECDC]'
-                                : 'border-[#3A2A1A]/15 text-[#3A2A1A]/80',
+                              'text-[10px] font-bold whitespace-nowrap',
+                              questionTypeTotal === effectiveItemCount ? 'text-[#3A5A40]' : 'text-[#7A2323]',
                             )}
                           >
-                            {label}
-                          </button>
-                        )
-                      })}
-                    </div>
-                  </div>
+                            {questionTypeTotal} / {effectiveItemCount}
+                          </p>
+                        </div>
+                        <div className="mt-1.5 grid gap-2 sm:grid-cols-2">
+                          <div className="flex items-center justify-between gap-2 rounded-xl border border-[#3A2A1A]/15 px-3 py-2">
+                            <span className="text-xs font-semibold text-[#3A2A1A]">Multiple Choice</span>
+                            <input
+                              type="number"
+                              min={0}
+                              max={effectiveItemCount}
+                              value={questionTypeCounts.mcq}
+                              onChange={(e) => updateQuestionTypeCount('mcq', e.target.value)}
+                              className="w-16 shrink-0 rounded-lg border border-[#3A2A1A]/15 px-2 py-1 text-right text-sm font-semibold text-[#3A2A1A] outline-none focus:border-[#7A2323]/40"
+                            />
+                          </div>
+                          <div className="flex items-center justify-between gap-2 rounded-xl border border-[#3A2A1A]/15 px-3 py-2">
+                            <span className="text-xs font-semibold text-[#3A2A1A]">Identification</span>
+                            <input
+                              type="number"
+                              min={0}
+                              max={effectiveItemCount}
+                              value={questionTypeCounts.identification}
+                              onChange={(e) => updateQuestionTypeCount('identification', e.target.value)}
+                              className="w-16 shrink-0 rounded-lg border border-[#3A2A1A]/15 px-2 py-1 text-right text-sm font-semibold text-[#3A2A1A] outline-none focus:border-[#7A2323]/40"
+                            />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div>
+                        <div className="flex items-center justify-between gap-2">
+                          <p className="text-xs font-semibold text-[#3A2A1A]/60">Difficulty Mix</p>
+                          <p
+                            className={cn(
+                              'text-[10px] font-bold whitespace-nowrap',
+                              difficultyTotal === effectiveItemCount ? 'text-[#3A5A40]' : 'text-[#7A2323]',
+                            )}
+                          >
+                            {difficultyTotal} / {effectiveItemCount}
+                          </p>
+                        </div>
+                        <div className="mt-1.5 grid grid-cols-3 gap-2">
+                          {(['Easy', 'Moderate', 'Difficult'] as const).map((level) => (
+                            <div
+                              key={level}
+                              className="flex flex-col items-center gap-1.5 rounded-xl border border-[#3A2A1A]/15 px-2 py-2.5"
+                            >
+                              <span className="text-xs font-semibold text-[#3A2A1A]">{level}</span>
+                              <input
+                                type="number"
+                                min={0}
+                                max={effectiveItemCount}
+                                value={difficultyCounts[level]}
+                                onChange={(e) => updateDifficultyCount(level, e.target.value)}
+                                className="w-full rounded-lg border border-[#3A2A1A]/15 px-2 py-1 text-center text-sm font-semibold text-[#3A2A1A] outline-none focus:border-[#7A2323]/40"
+                              />
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </>
+                  )}
 
                   {subject === 'RFBT' && mode === 'tos_simulator' && topics.length > 0 && (
                     <div className="flex flex-col gap-3 border-t border-[#3A2A1A]/10 pt-4">
@@ -586,12 +748,29 @@ export function ExamSetupPage() {
 
                   <SummaryRow
                     label="Exam Name"
-                    value={examName || `${activeSubjectDef?.code ?? subject} Practice Exam`}
+                    value={`${activeSubjectDef?.code ?? subject} Practice Exam`}
                   />
                   <SummaryRow label="Subject" value={activeSubjectDef?.code ?? subject} />
                   <SummaryRow label="Total Questions" value={String(effectiveItemCount)} />
-                  <SummaryRow label="Question Types" value="MCQ (100%)" />
-                  <SummaryRow label="Difficulty Level" value="All Levels" last />
+                  <SummaryRow
+                    label="Question Types"
+                    value={
+                      isVariant
+                        ? `MCQ ${questionTypeCounts.mcq} · Identification ${questionTypeCounts.identification}`
+                        : questionTypeSelection === 'identification'
+                          ? 'Identification (100%)'
+                          : 'MCQ (100%)'
+                    }
+                  />
+                  <SummaryRow
+                    label="Difficulty Level"
+                    value={
+                      isVariant
+                        ? `Easy ${difficultyCounts.Easy} · Moderate ${difficultyCounts.Moderate} · Difficult ${difficultyCounts.Difficult}`
+                        : 'All Levels'
+                    }
+                    last
+                  />
                 </div>
 
                 <div className="flex flex-col gap-3">

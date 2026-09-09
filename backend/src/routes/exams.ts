@@ -3,13 +3,14 @@ import type { RowDataPacket } from 'mysql2'
 import { randomUUID } from 'node:crypto'
 
 import { pool } from '../db/pool.js'
+import { isAnswerMatch } from '../lib/answerMatch.js'
 import { asyncHandler } from '../middleware/asyncHandler.js'
 import {
-  computeMaxSupportedItemCount,
   computeMaxSupportedItemCountForCategories,
-  selectExamQuestions,
   selectExamQuestionsByCategory,
   selectExamQuestionsByExactCounts,
+  selectExamQuestionsByExactDifficultyCounts,
+  type DifficultyWeights,
   type Difficulty,
 } from '../lib/examGenerator.js'
 
@@ -17,8 +18,60 @@ export const examsRouter = Router()
 
 type ExamMode = 'tos_simulator' | 'subject_drill'
 
-const DEFAULT_DIFFICULTY_WEIGHTS = { Easy: 0.3, Moderate: 0.4, Difficult: 0.3 }
 const MAX_ITEM_COUNT = 200
+const DIFFICULTIES: Difficulty[] = ['Easy', 'Moderate', 'Difficult']
+
+/** Converts a student's exact difficulty counts into weights (count/total) for
+ * the RFBT-topic-customization paths, which only support difficulty as a
+ * *soft* in-category preference (selectExamQuestionsByCategory/
+ * selectExamQuestionsByExactCounts), not a hard global count. */
+function countsToWeights(counts: Record<Difficulty, number>, total: number): DifficultyWeights {
+  if (total <= 0) return { Easy: 0, Moderate: 0, Difficult: 0 }
+  return {
+    Easy: (counts.Easy ?? 0) / total,
+    Moderate: (counts.Moderate ?? 0) / total,
+    Difficult: (counts.Difficult ?? 0) / total,
+  }
+}
+
+/** Validates a { Easy, Moderate, Difficult } or { mcq, identification }-style
+ * counts object: every value a non-negative integer, summing to exactly
+ * `total`. Returns an error string, or null if valid. */
+function validateCounts(
+  counts: unknown,
+  keys: string[],
+  total: number,
+  label: string,
+): string | null {
+  if (typeof counts !== 'object' || counts === null || Array.isArray(counts)) {
+    return `${label} must be an object`
+  }
+  const record = counts as Record<string, unknown>
+  let sum = 0
+  for (const key of Object.keys(record)) {
+    if (!keys.includes(key)) return `${label} has an unknown key "${key}"`
+  }
+  for (const key of keys) {
+    const value = record[key]
+    if (typeof value !== 'number' || !Number.isInteger(value) || value < 0) {
+      return `${label}.${key} must be a non-negative integer`
+    }
+    sum += value
+  }
+  if (sum !== total) {
+    return `${label} must sum to exactly ${total} (got ${sum})`
+  }
+  return null
+}
+
+function shuffleArray<T>(items: T[]): T[] {
+  const shuffled = [...items]
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+  }
+  return shuffled
+}
 
 /**
  * Official PRC table of specifications for RFBT ("RFBT MDE"): the exact
@@ -53,12 +106,16 @@ interface PoolRow extends RowDataPacket {
   category?: string
 }
 
+type QuestionAnswerMode = 'mcq' | 'identification'
+type SessionAnswerMode = QuestionAnswerMode | 'mixed'
+
 interface SessionRow extends RowDataPacket {
   id: string
   user_id: string
   subject: string
   mode: ExamMode
   center_filter: string | null
+  answer_mode: SessionAnswerMode
   item_count: number
   score: number | null
   started_at: string
@@ -77,6 +134,7 @@ interface QuestionMetaRow extends RowDataPacket {
   topic_category: string
   sub_topic: string
   position: number
+  answer_mode: QuestionAnswerMode
 }
 
 interface ChoiceRow extends RowDataPacket {
@@ -104,6 +162,7 @@ interface SessionQuestion {
   correctChoiceId: string
   rationale: string
   canonicalConcept: string
+  answerMode: QuestionAnswerMode
 }
 
 /**
@@ -116,7 +175,7 @@ async function fetchSessionQuestions(sessionId: string): Promise<SessionQuestion
   const [questionRows] = await pool.query<QuestionMetaRow[]>(
     `SELECT bq.id, bq.prompt, bq.correct_choice_id, bq.rationale, bq.canonical_concept,
             bq.difficulty, bq.cognitive_level, bq.tos_code, tc.topic_category, tc.sub_topic,
-            esq.position
+            esq.position, esq.answer_mode
      FROM exam_session_questions esq
      JOIN bank_questions bq ON bq.id = esq.question_id
      JOIN tos_categories tc ON tc.subject = bq.subject AND tc.tos_code = bq.tos_code
@@ -163,11 +222,12 @@ async function fetchSessionQuestions(sessionId: string): Promise<SessionQuestion
     correctChoiceId: q.correct_choice_id,
     rationale: q.rationale,
     canonicalConcept: q.canonical_concept,
+    answerMode: q.answer_mode,
   }))
 }
 
 examsRouter.post('/generate', asyncHandler(async (req, res) => {
-  const { subject, mode, itemCount, topicCounts } = req.body ?? {}
+  const { subject, mode, itemCount, topicCounts, questionTypeCounts, difficultyCounts } = req.body ?? {}
 
   if (typeof subject !== 'string' || !subject) {
     res.status(400).json({ error: 'subject is required' })
@@ -219,6 +279,29 @@ examsRouter.post('/generate', asyncHandler(async (req, res) => {
     requestedItemCount = itemCount
   }
 
+  const typeCountsError = validateCounts(
+    questionTypeCounts,
+    ['mcq', 'identification'],
+    requestedItemCount,
+    'questionTypeCounts',
+  )
+  if (typeCountsError) {
+    res.status(400).json({ error: typeCountsError })
+    return
+  }
+  const difficultyCountsError = validateCounts(
+    difficultyCounts,
+    DIFFICULTIES,
+    requestedItemCount,
+    'difficultyCounts',
+  )
+  if (difficultyCountsError) {
+    res.status(400).json({ error: difficultyCountsError })
+    return
+  }
+  const resolvedTypeCounts = questionTypeCounts as { mcq: number; identification: number }
+  const resolvedDifficultyCounts = difficultyCounts as Record<Difficulty, number>
+
   const [poolRows] = await pool.query<PoolRow[]>(
     `SELECT bq.id, bq.difficulty, tc.sub_topic
      FROM bank_questions bq
@@ -256,7 +339,12 @@ examsRouter.post('/generate', asyncHandler(async (req, res) => {
       category: RFBT_CATEGORY_BY_SUBTOPIC[row.sub_topic] ?? '',
     }))
     const counts = topicCounts as Record<string, number>
-    selected = selectExamQuestionsByExactCounts(categorized, counts, DEFAULT_DIFFICULTY_WEIGHTS, recentlySeenIds)
+    selected = selectExamQuestionsByExactCounts(
+      categorized,
+      counts,
+      countsToWeights(resolvedDifficultyCounts, requestedItemCount),
+      recentlySeenIds,
+    )
 
     if (selected.length < requestedItemCount) {
       const shortfalls = Object.entries(counts)
@@ -278,7 +366,7 @@ examsRouter.post('/generate', asyncHandler(async (req, res) => {
       categorized,
       requestedItemCount,
       RFBT_CATEGORY_WEIGHTS,
-      DEFAULT_DIFFICULTY_WEIGHTS,
+      countsToWeights(resolvedDifficultyCounts, requestedItemCount),
       recentlySeenIds,
     )
     const maxSupported = computeMaxSupportedItemCountForCategories(categorized, RFBT_CATEGORY_WEIGHTS)
@@ -287,30 +375,66 @@ examsRouter.post('/generate', asyncHandler(async (req, res) => {
         ? `Only ${selected.length} items could be generated at the required TOS ratio (requested ${requestedItemCount}) — the question pool doesn't yet have enough items in every RFBT TOS topic. Pool currently supports up to ${maxSupported} items at this ratio.`
         : null
   } else {
-    selected = selectExamQuestions(poolRows, requestedItemCount, DEFAULT_DIFFICULTY_WEIGHTS, recentlySeenIds)
-    const maxSupported = computeMaxSupportedItemCount(poolRows, DEFAULT_DIFFICULTY_WEIGHTS)
+    selected = selectExamQuestionsByExactDifficultyCounts(poolRows, resolvedDifficultyCounts, recentlySeenIds)
     notice =
       selected.length < requestedItemCount
-        ? `Only ${selected.length} items could be generated at the required TOS ratio (requested ${requestedItemCount}) — the question pool for this subject/mode doesn't yet have enough items in every difficulty band. Pool currently supports up to ${maxSupported} items at this ratio.`
+        ? `Only ${selected.length} of ${requestedItemCount} requested items could be generated — the question pool for this subject doesn't have enough items in every requested difficulty band.`
         : null
   }
 
+  // Type split (MCQ vs identification) is independent of difficulty/topic —
+  // applied as a final pass over whichever questions actually got selected,
+  // rather than correlating with difficulty tier in any way. Clamped to
+  // selected.length in case a shortfall (see notice above) means fewer
+  // questions came back than requested.
+  const shuffledForTypeAssignment = shuffleArray(selected)
+  const mcqCountForSelected = Math.min(resolvedTypeCounts.mcq, selected.length)
+  const answerModeById = new Map<string, QuestionAnswerMode>()
+  shuffledForTypeAssignment.forEach((question, index) => {
+    answerModeById.set(question.id, index < mcqCountForSelected ? 'mcq' : 'identification')
+  })
+  const sessionAnswerMode: SessionAnswerMode =
+    resolvedTypeCounts.mcq > 0 && resolvedTypeCounts.identification > 0
+      ? 'mixed'
+      : resolvedTypeCounts.identification > 0
+        ? 'identification'
+        : 'mcq'
+
   const sessionId = randomUUID()
   await pool.query(
-    `INSERT INTO exam_sessions (id, user_id, subject, mode, item_count)
-     VALUES (?, ?, ?, ?, ?)`,
-    [sessionId, req.user!.id, subject, mode, selected.length],
+    `INSERT INTO exam_sessions (id, user_id, subject, mode, answer_mode, item_count)
+     VALUES (?, ?, ?, ?, ?, ?)`,
+    [sessionId, req.user!.id, subject, mode, sessionAnswerMode, selected.length],
   )
 
-  for (const [index, question] of selected.entries()) {
+  if (selected.length > 0) {
+    // Batched into one round-trip instead of one INSERT per question — with
+    // 70-110 questions per exam, a sequential per-row loop here was the
+    // actual cause of multi-second exam generation (confirmed: ~110ms per
+    // question, scaling linearly with item count).
     await pool.query(
-      `INSERT INTO exam_session_questions (session_id, question_id, position) VALUES (?, ?, ?)`,
-      [sessionId, question.id, index],
+      `INSERT INTO exam_session_questions (session_id, question_id, position, answer_mode) VALUES ?`,
+      [
+        selected.map((question, index) => [
+          sessionId,
+          question.id,
+          index,
+          answerModeById.get(question.id) ?? 'mcq',
+        ]),
+      ],
     )
   }
 
   const questions = await fetchSessionQuestions(sessionId)
-  res.status(201).json({ sessionId, subject, mode, itemCount: selected.length, notice, questions })
+  res.status(201).json({
+    sessionId,
+    subject,
+    mode,
+    answerMode: sessionAnswerMode,
+    itemCount: selected.length,
+    notice,
+    questions,
+  })
 }))
 
 /**
@@ -405,6 +529,7 @@ examsRouter.get('/:id', asyncHandler(async (req, res) => {
     sessionId: session.id,
     subject: session.subject,
     mode: session.mode,
+    answerMode: session.answer_mode,
     itemCount: session.item_count,
     score: session.score,
     submitted: Boolean(session.submitted_at),
@@ -417,7 +542,7 @@ examsRouter.post('/:id/submit', asyncHandler(async (req, res) => {
   const { answers } = req.body ?? {}
 
   if (!Array.isArray(answers)) {
-    res.status(400).json({ error: 'answers must be an array of { questionId, choiceId }' })
+    res.status(400).json({ error: 'answers must be an array of { questionId, choiceId } or { questionId, answerText }' })
     return
   }
 
@@ -439,18 +564,38 @@ examsRouter.post('/:id/submit', asyncHandler(async (req, res) => {
   const correctById = new Map(questions.map((q) => [q.id, q]))
 
   let score = 0
+  // Collected in-memory and written as one batched INSERT below instead of
+  // one round-trip per answer — see the note on POST /generate's identical
+  // fix for why (was the actual cause of multi-second exam generation/submit,
+  // confirmed to scale linearly with item count against the cloud DB).
+  const answerRows: [string, string, string | null, string | null, boolean][] = []
   for (const answer of answers) {
     const question = correctById.get(answer?.questionId)
-    if (!question || typeof answer.choiceId !== 'string') continue
+    if (!question) continue
 
-    const isCorrect = answer.choiceId === question.correctChoiceId
-    if (isCorrect) score += 1
+    // Per-question, not per-session — one exam can mix MCQ and
+    // identification questions (see POST /generate's questionTypeCounts).
+    if (question.answerMode === 'identification') {
+      if (typeof answer.answerText !== 'string') continue
+      const correctText = question.choices.find((c) => c.id === question.correctChoiceId)?.text ?? ''
+      const isCorrect = isAnswerMatch(answer.answerText, correctText)
+      if (isCorrect) score += 1
+      answerRows.push([id, question.id, null, answer.answerText, isCorrect])
+    } else {
+      if (typeof answer.choiceId !== 'string') continue
+      const isCorrect = answer.choiceId === question.correctChoiceId
+      if (isCorrect) score += 1
+      answerRows.push([id, question.id, answer.choiceId, null, isCorrect])
+    }
+  }
 
+  if (answerRows.length > 0) {
     await pool.query(
-      `INSERT INTO exam_answers (session_id, question_id, choice_id, is_correct)
-       VALUES (?, ?, ?, ?)
-       ON DUPLICATE KEY UPDATE choice_id = VALUES(choice_id), is_correct = VALUES(is_correct)`,
-      [id, question.id, answer.choiceId, isCorrect],
+      `INSERT INTO exam_answers (session_id, question_id, choice_id, answer_text, is_correct)
+       VALUES ?
+       ON DUPLICATE KEY UPDATE
+         choice_id = VALUES(choice_id), answer_text = VALUES(answer_text), is_correct = VALUES(is_correct)`,
+      [answerRows],
     )
   }
 
@@ -459,30 +604,42 @@ examsRouter.post('/:id/submit', asyncHandler(async (req, res) => {
     [score, id],
   )
 
-  for (const question of questions) {
+  if (questions.length > 0) {
     await pool.query(
       `INSERT INTO user_question_history (user_id, question_id)
-       VALUES (?, ?)
+       VALUES ?
        ON DUPLICATE KEY UPDATE last_served_at = CURRENT_TIMESTAMP`,
-      [req.user!.id, question.id],
+      [questions.map((q) => [req.user!.id, q.id])],
     )
   }
 
-  const answeredById = new Map(answers.map((a: { questionId: string; choiceId: string }) => [a.questionId, a.choiceId]))
+  const answeredById = new Map(
+    answers.map((a: { questionId: string; choiceId?: string; answerText?: string }) => [a.questionId, a]),
+  )
   res.json({
     score,
     total: questions.length,
-    results: questions.map((q) => ({
-      questionId: q.id,
-      yourChoiceId: answeredById.get(q.id) ?? null,
-      correct: answeredById.get(q.id) === q.correctChoiceId,
-      correctChoiceId: q.correctChoiceId,
-      rationale: q.rationale,
-      canonicalConcept: q.canonicalConcept,
-      tosCode: q.tosCode,
-      topicCategory: q.topicCategory,
-      subTopic: q.subTopic,
-      sources: q.sources,
-    })),
+    results: questions.map((q) => {
+      const isIdentification = q.answerMode === 'identification'
+      const answer = answeredById.get(q.id)
+      const yourAnswer = (isIdentification ? answer?.answerText : answer?.choiceId) ?? null
+      const correct = isIdentification
+        ? typeof yourAnswer === 'string' &&
+          isAnswerMatch(yourAnswer, q.choices.find((c) => c.id === q.correctChoiceId)?.text ?? '')
+        : yourAnswer === q.correctChoiceId
+      return {
+        questionId: q.id,
+        yourChoiceId: isIdentification ? null : yourAnswer,
+        yourAnswerText: isIdentification ? yourAnswer : null,
+        correct,
+        correctChoiceId: q.correctChoiceId,
+        rationale: q.rationale,
+        canonicalConcept: q.canonicalConcept,
+        tosCode: q.tosCode,
+        topicCategory: q.topicCategory,
+        subTopic: q.subTopic,
+        sources: q.sources,
+      }
+    }),
   })
 }))

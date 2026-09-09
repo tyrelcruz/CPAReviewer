@@ -25,11 +25,12 @@ import { QuestionNavigator } from '@/components/quiz/QuestionNavigator'
 import { QuestionPromptText } from '@/components/quiz/QuestionPromptText'
 import { QuizResults } from '@/components/quiz/QuizResults'
 import { useAuth } from '@/context/AuthContext'
+import { isAnswerMatch } from '@/lib/answerMatch'
 import { clearExamProgress, getExamProgress, saveExamProgress } from '@/lib/examProgress'
 import { shuffleQuestionsKeepingChains } from '@/lib/quizShuffle'
 import { getStudyStreak } from '@/lib/streak'
 import { formatClock, SECONDS_PER_QUESTION } from '@/lib/time'
-import { cn } from '@/lib/utils'
+import { cn, hasRealSourceCenter } from '@/lib/utils'
 import type { QuizQuestion } from '@/types/quiz'
 
 // Minimum horizontal drag (px) that counts as a swipe rather than a scroll/tap.
@@ -41,6 +42,11 @@ const STUDY_TIPS = [
   'Watch for qualifier words like "except," "least," and "most likely" — they change the answer.',
   'Skim the explanation even when you get it right — it reinforces the underlying rule.',
 ]
+
+const ANSWER_MODE_LABELS: Record<'mcq' | 'identification', string> = {
+  mcq: 'Multiple Choice',
+  identification: 'Identification',
+}
 
 interface QuizProps {
   quizSetId: string
@@ -55,6 +61,22 @@ interface QuizProps {
    * localStorage. Navigating away persists progress under this key; returning to
    * the same key picks up right where the learner left off, timer included. */
   progressKey?: string
+}
+
+/** mcq: exact choice-id match (unchanged). identification: the typed text is
+ * graded leniently against the correct choice's own text, since there's no
+ * dedicated identification-authored content — see lib/answerMatch.ts. */
+function isCorrectAnswer(
+  question: QuizQuestion,
+  answer: string | undefined,
+  answerMode: 'mcq' | 'identification',
+): boolean {
+  if (answer === undefined) return false
+  if (answerMode === 'identification') {
+    const correctText = question.choices.find((c) => c.id === question.correctChoiceId)?.text ?? ''
+    return isAnswerMatch(answer, correctText)
+  }
+  return answer === question.correctChoiceId
 }
 
 export function Quiz({
@@ -92,6 +114,10 @@ export function Quiz({
   })
   const [currentIndex, setCurrentIndex] = useState(savedProgress?.currentIndex ?? 0)
   const [answers, setAnswers] = useState<Record<string, string>>(savedProgress?.answers ?? {})
+  // In-progress typed text for the current identification-mode question —
+  // separate from `answers` since it isn't committed (and graded) until
+  // the learner submits it, unlike an MCQ click which commits immediately.
+  const [draftAnswer, setDraftAnswer] = useState('')
   const [flaggedIndices, setFlaggedIndices] = useState<Set<number>>(
     () => new Set(savedProgress?.flaggedIndices ?? []),
   )
@@ -132,6 +158,12 @@ export function Quiz({
   const selectedChoiceId = answers[current?.id ?? '']
   const isAnswered = selectedChoiceId !== undefined
   const isLastQuestion = currentIndex === questions.length - 1
+  // Sync automatically: navigating to an already-answered question shows what
+  // was typed; navigating to a fresh one starts blank.
+  useEffect(() => {
+    setDraftAnswer(current?.id ? (answers[current.id] ?? '') : '')
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentIndex])
   const isFlagged = flaggedIndices.has(currentIndex)
   const explanationVisible = explanationOverrides[current?.id ?? ''] ?? isAnswered
 
@@ -146,7 +178,7 @@ export function Quiz({
   const correctIndices = useMemo(() => {
     const set = new Set<number>()
     questions.forEach((q, i) => {
-      if (answeredIndices.has(i) && answers[q.id] === q.correctChoiceId) set.add(i)
+      if (answeredIndices.has(i) && isCorrectAnswer(q, answers[q.id], q.answerMode ?? 'mcq')) set.add(i)
     })
     return set
   }, [answers, answeredIndices, questions])
@@ -162,6 +194,11 @@ export function Quiz({
     if (group.length <= 1) return null
     return { index: group.findIndex((q) => q.id === current.id) + 1, total: group.length }
   }, [questions, current])
+
+  const visibleSources = useMemo(
+    () => current?.sources?.filter((s) => hasRealSourceCenter(s.center)) ?? [],
+    [current],
+  )
 
   const answeredCount = answeredIndices.size
   const progressPct = (answeredCount / questions.length) * 100
@@ -195,6 +232,9 @@ export function Quiz({
     if (isComplete) return
     function onKeyDown(e: KeyboardEvent) {
       if (e.key !== 'Enter' && e.key !== 'ArrowRight') return
+      // The calculator popover's own Enter-to-equal shortcut takes over
+      // while it's open, so this shouldn't also advance the question.
+      if (calculatorOpen) return
       const target = e.target as HTMLElement | null
       if (target && ['INPUT', 'TEXTAREA', 'SELECT'].includes(target.tagName)) return
       if (target?.isContentEditable) return
@@ -205,11 +245,16 @@ export function Quiz({
     window.addEventListener('keydown', onKeyDown)
     return () => window.removeEventListener('keydown', onKeyDown)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isComplete, isAnswered, currentIndex, questions])
+  }, [isComplete, isAnswered, currentIndex, questions, calculatorOpen])
 
   function handleSelect(choiceId: string) {
     if (isAnswered) return
     setAnswers((prev) => ({ ...prev, [current.id]: choiceId }))
+  }
+
+  function handleTypeAnswer() {
+    if (isAnswered || !draftAnswer.trim()) return
+    setAnswers((prev) => ({ ...prev, [current.id]: draftAnswer.trim() }))
   }
 
   function handleNext() {
@@ -296,7 +341,8 @@ export function Quiz({
     )
   }
 
-  const isCorrect = selectedChoiceId === current.correctChoiceId
+  const currentAnswerMode = current.answerMode ?? 'mcq'
+  const isCorrect = isCorrectAnswer(current, selectedChoiceId, currentAnswerMode)
 
   // Some seeded questions carry only a placeholder rationale ("Answer not
   // provided in source material") — showing that verbatim reads as if we
@@ -306,8 +352,15 @@ export function Quiz({
     current.rationale && !/answer not provided in source material/i.test(current.rationale),
   )
   const correctChoiceIndex = current.choices.findIndex((c) => c.id === current.correctChoiceId)
+  const correctChoiceText = correctChoiceIndex >= 0 ? current.choices[correctChoiceIndex].text : null
+  // Identification mode never showed a lettered choice list, so referencing
+  // "correct answer: B" would be meaningless — name the answer text instead.
   const correctChoiceLetter =
-    correctChoiceIndex >= 0 ? String.fromCharCode(65 + correctChoiceIndex) : null
+    currentAnswerMode === 'identification'
+      ? correctChoiceText
+      : correctChoiceIndex >= 0
+        ? String.fromCharCode(65 + correctChoiceIndex)
+        : null
 
   return (
     <div className="flex flex-col gap-6">
@@ -354,14 +407,9 @@ export function Quiz({
             <Calculator className="size-4" />
             <span className="hidden sm:inline">Calculator</span>
           </button>
-          {calculatorOpen && (
-            <>
-              <div className="fixed inset-0 z-10" onClick={() => setCalculatorOpen(false)} />
-              <div className="fixed inset-x-4 bottom-4 z-20 sm:absolute sm:inset-x-auto sm:bottom-auto sm:top-full sm:right-0 sm:mt-2">
-                <CalculatorPopover />
-              </div>
-            </>
-          )}
+          <AnimatePresence>
+            {calculatorOpen && <CalculatorPopover onClose={() => setCalculatorOpen(false)} />}
+          </AnimatePresence>
         </div>
 
         <div className="relative">
@@ -408,7 +456,7 @@ export function Quiz({
         </button>
       </div>
 
-      <div className="grid gap-6 2xl:grid-cols-[minmax(0,1fr)_24rem_20rem]">
+      <div className="grid grid-cols-1 gap-6 2xl:grid-cols-[minmax(0,1fr)_24rem_20rem]">
         <AnimatePresence mode="wait">
           <motion.div
             key={current.id}
@@ -420,29 +468,30 @@ export function Quiz({
             onTouchEnd={handleTouchEnd}
             className="min-w-0 rounded-2xl border border-[#3A2A1A]/10 bg-white p-4 sm:p-6"
           >
-            {(current.sources?.length || current.section || variantInfo) && (
-              <div className="mb-3 flex flex-wrap items-center gap-2">
-                {current.sources?.map((s) => (
-                  <span
-                    key={s.center}
-                    className="rounded-full bg-[#3A5A40]/10 px-2.5 py-1 text-[10px] font-bold whitespace-nowrap text-[#3A5A40] uppercase"
-                  >
-                    {s.center}
-                  </span>
-                ))}
-                {current.section && (
-                  <span className="rounded-full bg-[#7A2323]/10 px-2.5 py-1 text-[10px] font-bold whitespace-nowrap text-[#7A2323] uppercase">
-                    {current.section}
-                  </span>
-                )}
-                {variantInfo && (
-                  <span className="rounded-full bg-[#E0AC48]/15 px-2.5 py-1 text-[10px] font-bold whitespace-nowrap text-[#B4791F] uppercase">
-                    Variant {variantInfo.index} of {variantInfo.total}
-                    {current.subTopic ? ` — ${current.subTopic}` : ''}
-                  </span>
-                )}
-              </div>
-            )}
+            <div className="mb-3 flex flex-wrap items-center gap-2">
+              <span className="rounded-full bg-[#3A2A1A]/10 px-2.5 py-1 text-[10px] font-bold whitespace-nowrap text-[#3A2A1A] uppercase">
+                {ANSWER_MODE_LABELS[currentAnswerMode]}
+              </span>
+              {visibleSources.map((s) => (
+                <span
+                  key={s.center}
+                  className="rounded-full bg-[#3A5A40]/10 px-2.5 py-1 text-[10px] font-bold whitespace-nowrap text-[#3A5A40] uppercase"
+                >
+                  {s.center}
+                </span>
+              ))}
+              {current.section && (
+                <span className="rounded-full bg-[#7A2323]/10 px-2.5 py-1 text-[10px] font-bold whitespace-nowrap text-[#7A2323] uppercase">
+                  {current.section}
+                </span>
+              )}
+              {variantInfo && (
+                <span className="rounded-full bg-[#E0AC48]/15 px-2.5 py-1 text-[10px] font-bold whitespace-nowrap text-[#B4791F] uppercase">
+                  Variant {variantInfo.index} of {variantInfo.total}
+                  {current.subTopic ? ` — ${current.subTopic}` : ''}
+                </span>
+              )}
+            </div>
 
             <QuestionPromptText
               text={current.prompt}
@@ -450,49 +499,86 @@ export function Quiz({
             />
 
             <div className="mt-5 flex flex-col gap-3">
-              {current.choices.map((choice, i) => {
-                const letter = String.fromCharCode(65 + i)
-                const isSelected = choice.id === selectedChoiceId
-
-                return (
-                  <motion.button
-                    key={choice.id}
-                    type="button"
-                    onClick={() => handleSelect(choice.id)}
+              {currentAnswerMode === 'identification' ? (
+                <>
+                  <input
+                    type="text"
+                    value={isAnswered ? (selectedChoiceId ?? '') : draftAnswer}
+                    onChange={(e) => setDraftAnswer(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key !== 'Enter' || isAnswered) return
+                      e.preventDefault()
+                      handleTypeAnswer()
+                      e.currentTarget.blur()
+                    }}
                     disabled={isAnswered}
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.2, delay: i * 0.05 }}
-                    whileHover={!isAnswered ? { scale: 1.01 } : undefined}
-                    whileTap={!isAnswered ? { scale: 0.99 } : undefined}
+                    placeholder="Type your answer…"
+                    autoComplete="off"
                     className={cn(
-                      'flex w-full items-center gap-3 rounded-xl border px-4 py-3.5 text-left text-sm transition-colors',
-                      isSelected
-                        ? 'border-[#E0AC48] bg-[#F7E7C4] text-[#3A2A1A]'
-                        : 'border-[#3A2A1A]/10 text-[#3A2A1A]/85',
-                      !isAnswered && !isSelected && 'cursor-pointer hover:bg-[#3A2A1A]/5',
-                      isAnswered && !isSelected && 'opacity-60',
+                      'w-full rounded-xl border px-4 py-3.5 text-sm outline-none transition-colors',
+                      isAnswered
+                        ? isCorrect
+                          ? 'border-[#3A5A40] bg-[#3A5A40]/5 text-[#3A2A1A]'
+                          : 'border-red-600/40 bg-red-600/5 text-[#3A2A1A]'
+                        : 'border-[#3A2A1A]/15 text-[#3A2A1A] focus:border-[#7A2323]/40',
                     )}
-                  >
-                    <span
+                  />
+                  {!isAnswered && (
+                    <button
+                      type="button"
+                      onClick={handleTypeAnswer}
+                      disabled={!draftAnswer.trim()}
+                      className="self-start rounded-full bg-[#7A2323] px-5 py-2.5 text-sm font-semibold text-[#F3ECDC] transition-colors hover:bg-[#7A2323]/90 disabled:cursor-not-allowed disabled:opacity-50"
+                    >
+                      Submit answer
+                    </button>
+                  )}
+                </>
+              ) : (
+                current.choices.map((choice, i) => {
+                  const letter = String.fromCharCode(65 + i)
+                  const isSelected = choice.id === selectedChoiceId
+
+                  return (
+                    <motion.button
+                      key={choice.id}
+                      type="button"
+                      onClick={() => handleSelect(choice.id)}
+                      disabled={isAnswered}
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.2, delay: i * 0.05 }}
+                      whileHover={!isAnswered ? { scale: 1.01 } : undefined}
+                      whileTap={!isAnswered ? { scale: 0.99 } : undefined}
                       className={cn(
-                        'flex size-7 shrink-0 items-center justify-center rounded-full text-xs font-bold',
+                        'flex w-full items-center gap-3 rounded-xl border px-4 py-3.5 text-left text-sm transition-colors',
                         isSelected
-                          ? 'bg-[#E0AC48] text-[#3A2A1A]'
-                          : 'border border-[#3A2A1A]/20 text-[#3A2A1A]/60',
+                          ? 'border-[#E0AC48] bg-[#F7E7C4] text-[#3A2A1A]'
+                          : 'border-[#3A2A1A]/10 text-[#3A2A1A]/85',
+                        !isAnswered && !isSelected && 'cursor-pointer hover:bg-[#3A2A1A]/5',
+                        isAnswered && !isSelected && 'opacity-60',
                       )}
                     >
-                      {letter}
-                    </span>
-                    <span className="font-reading flex-1">{choice.text}</span>
-                    {isSelected && (
-                      <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-[#7A2323] text-white">
-                        <Check className="size-3.5" />
+                      <span
+                        className={cn(
+                          'flex size-7 shrink-0 items-center justify-center rounded-full text-xs font-bold',
+                          isSelected
+                            ? 'bg-[#E0AC48] text-[#3A2A1A]'
+                            : 'border border-[#3A2A1A]/20 text-[#3A2A1A]/60',
+                        )}
+                      >
+                        {letter}
                       </span>
-                    )}
-                  </motion.button>
-                )
-              })}
+                      <span className="font-reading flex-1">{choice.text}</span>
+                      {isSelected && (
+                        <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-[#7A2323] text-white">
+                          <Check className="size-3.5" />
+                        </span>
+                      )}
+                    </motion.button>
+                  )
+                })
+              )}
             </div>
 
             <AnimatePresence>
@@ -604,7 +690,7 @@ export function Quiz({
           </motion.div>
         </AnimatePresence>
 
-        <div className="grid gap-6 sm:grid-cols-2 2xl:contents">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 2xl:contents">
           <DrawingNotesPanel
             questionNumber={currentIndex + 1}
             totalQuestions={questions.length}

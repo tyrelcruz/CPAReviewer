@@ -88,7 +88,10 @@ function SidebarLogoutButton({
       type="button"
       onClick={handleLogout}
       className={cn(
-        'flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-[#3A2A1A]/70 transition-colors hover:bg-[#7A2323]/10 hover:text-[#7A2323]',
+        // Unlike the <Link> nav rows, a <button> doesn't stretch to fill its
+        // container just from being a flex item — form controls shrink-to-fit
+        // by default — so this needs an explicit w-full to match their width.
+        'flex w-full items-center gap-3 rounded-lg border-l-[3px] border-transparent px-3 py-2.5 text-sm font-medium text-[#3A2A1A]/70 transition-colors hover:bg-[#3A2A1A]/5',
         collapsed && 'justify-center px-0',
       )}
       title={collapsed ? 'Log out' : undefined}

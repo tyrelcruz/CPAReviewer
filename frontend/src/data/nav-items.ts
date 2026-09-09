@@ -1,5 +1,6 @@
 import {
   Award,
+  CalendarDays,
   ClipboardList,
   FileText,
   Layers,
@@ -17,6 +18,7 @@ export interface NavItem {
 
 export const NAV_ITEMS: NavItem[] = [
   { label: 'Dashboard', icon: LayoutGrid, to: '/app/dashboard' },
+  { label: 'Review Planner', icon: CalendarDays, to: '/app/review-planner' },
   { label: 'Subjects', icon: BookOpen, to: '#' },
   { label: 'Mock Exams', icon: ClipboardList, to: '/app' },
   { label: 'Question Bank', icon: FileText, to: '#' },

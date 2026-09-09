@@ -19,6 +19,52 @@ services:
       timeout: 5s
       retries: 10
 
+  # The Express API itself, containerized so it can be stopped/started with
+  # `docker compose` instead of managing background `npm run dev` processes
+  # by hand (the EADDRINUSE-on-8001 headache that motivated this). Gated
+  # behind a profile so it never starts as a side effect of plain
+  # `npm run db:up` (docker compose up -d) — opt in with:
+  #   docker compose --profile app up -d backend
+  # Connects to the `mysql` service on this compose network (always local
+  # dev DB, not whatever backend/.env's DB_HOST currently points the
+  # host-run `npm run dev` at) — JWT/EmailJS/OTP-bypass vars still come from
+  # backend/.env via the usual ${VAR} substitution.
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cpa-reviewer-backend
+    restart: unless-stopped
+    profiles: ['app']
+    environment:
+      PORT: 8001
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_USER: cpa_reviewer
+      DB_PASSWORD: cpa_reviewer
+      DB_NAME: cpa_reviewer
+      # Explicitly blanked: the container bind-mounts this whole directory
+      # (including .env) for hot reload, and dotenv only fills in vars NOT
+      # already set here — without this, it'd inherit .env's host-only CA
+      # cert path (meant for the host-run `npm run dev` talking to Aiven)
+      # and crash trying to read a path that doesn't exist in the container.
+      DB_SSL_CA_PATH: ''
+      DB_SSL_CA: ''
+      JWT_SECRET: ${JWT_SECRET:-change-me-in-production}
+      EMAILJS_SERVICE_ID: ${EMAILJS_SERVICE_ID:-}
+      EMAILJS_TEMPLATE_ID: ${EMAILJS_TEMPLATE_ID:-}
+      EMAILJS_PUBLIC_KEY: ${EMAILJS_PUBLIC_KEY:-}
+      EMAILJS_PRIVATE_KEY: ${EMAILJS_PRIVATE_KEY:-}
+      OTP_BYPASS_EMAILS: ${OTP_BYPASS_EMAILS:-}
+    ports:
+      - '8001:8001'
+    volumes:
+      - .:/app
+      - /app/node_modules
+    depends_on:
+      mysql:
+        condition: service_healthy
+
   phpmyadmin:
     image: phpmyadmin:5
     container_name: cpa-reviewer-phpmyadmin
@@ -27,8 +73,15 @@ services:
       PMA_HOST: mysql
       PMA_USER: cpa_reviewer
       PMA_PASSWORD: cpa_reviewer
+      # Read by config.user.inc.php below to add Aiven Production as a
+      # second server choice — see .env.example for what to set.
+      AIVEN_DB_HOST: ${AIVEN_DB_HOST:-}
+      AIVEN_DB_PORT: ${AIVEN_DB_PORT:-}
     ports:
       - '8081:80'
+    volumes:
+      - ./config.user.inc.php:/etc/phpmyadmin/config.user.inc.php:ro
+      - ${AIVEN_DB_SSL_CA_PATH:-./config.user.inc.php}:/etc/phpmyadmin/aiven-ca.pem:ro
     depends_on:
       mysql:
         condition: service_healthy

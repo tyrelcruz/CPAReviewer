@@ -27,6 +27,7 @@ import { AnswerHistoryList } from '@/components/quiz/AnswerHistoryList'
 import { ExamHistoryChart, type ExamHistoryPoint } from '@/components/quiz/ExamHistoryChart'
 import { ProgressRing } from '@/components/quiz/ProgressRing'
 import { useAuth } from '@/context/AuthContext'
+import { isAnswerMatch } from '@/lib/answerMatch'
 import { getExamHistory, recordExamAttempt, type SectionScore } from '@/lib/examHistory'
 import { scoreBgClass } from '@/lib/score'
 import { peekStudyStreak } from '@/lib/streak'
@@ -57,6 +58,19 @@ interface QuizResultsProps {
    * instead of being recomputed from `questions`/`answers` (which are empty
    * in that case), and the per-question review list is hidden. */
   summaryOnly?: LegacyAttemptSummary
+}
+
+function isCorrectAnswer(
+  question: QuizQuestion,
+  answer: string | undefined,
+  answerMode: 'mcq' | 'identification',
+): boolean {
+  if (answer === undefined) return false
+  if (answerMode === 'identification') {
+    const correctText = question.choices.find((c) => c.id === question.correctChoiceId)?.text ?? ''
+    return isAnswerMatch(answer, correctText)
+  }
+  return answer === question.correctChoiceId
 }
 
 const PASSING_SCORE = 75
@@ -105,7 +119,7 @@ export function QuizResults({
   const total = summaryOnly ? summaryOnly.total : questions.length
   const score = summaryOnly
     ? summaryOnly.correct
-    : questions.filter((q) => answers[q.id] === q.correctChoiceId).length
+    : questions.filter((q) => isCorrectAnswer(q, answers[q.id], q.answerMode ?? 'mcq')).length
   // Legacy attempts only stored the final score, not which questions were
   // left blank — treat every question as answered rather than guessing.
   const answeredCount = summaryOnly
@@ -125,7 +139,7 @@ export function QuizResults({
           const key = q.section ?? q.topicCategory ?? GENERAL_SECTION
           const entry = map[key] ?? { section: key, correct: 0, total: 0 }
           entry.total += 1
-          if (answers[q.id] === q.correctChoiceId) entry.correct += 1
+          if (isCorrectAnswer(q, answers[q.id], q.answerMode ?? 'mcq')) entry.correct += 1
           map[key] = entry
           return map
         }, {}),

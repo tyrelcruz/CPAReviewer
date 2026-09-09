@@ -14,6 +14,10 @@ interface GenerateExamParams {
   itemCount?: number
   /** RFBT tos_simulator only — overrides the default TOS percentages with exact per-topic counts. */
   topicCounts?: Record<string, number>
+  /** Must sum to the effective item count (itemCount, or the topicCounts sum). */
+  questionTypeCounts: { mcq: number; identification: number }
+  /** Must sum to the effective item count. */
+  difficultyCounts: { Easy: number; Moderate: number; Difficult: number }
 }
 
 export async function generateExam(params: GenerateExamParams): Promise<GeneratedExamSession> {
@@ -55,7 +59,7 @@ export async function getExamSession(sessionId: string): Promise<GeneratedExamSe
 
 export async function submitExam(
   sessionId: string,
-  answers: { questionId: string; choiceId: string }[],
+  answers: { questionId: string; choiceId?: string; answerText?: string }[],
 ): Promise<SubmitExamResult> {
   const { data } = await apiClient.post<SubmitExamResult>(`/api/exams/${sessionId}/submit`, {
     answers,

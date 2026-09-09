@@ -3,11 +3,12 @@ import type {
   ActivityItem,
   PerformancePoint,
   StrengthLevel,
-  StudyPlanTask,
+  StudyCalendarEntry,
   SubjectProgress,
   SubjectStrength,
 } from '@/data/dashboard-data'
 import { getExamHistory } from '@/lib/examHistory'
+import { dateKey } from '@/lib/time'
 import type { QuizSet } from '@/types/quiz'
 
 const SUBJECT_LABELS: Record<string, string> = {
@@ -180,27 +181,18 @@ export function toPerformanceTrend(attempts: CombinedAttempt[], limit = 7): Perf
   }))
 }
 
-/** Recommends the weakest attempted subjects first, then any real subject
- * that hasn't been attempted yet — grounded in actual scores, not a
- * fabricated schedule. */
-export function toStudyPlan(
-  aggregates: SubjectAggregate[],
-  allSubjectCodes: string[] = ['AT', 'RFBT', 'TAX'],
-): Omit<StudyPlanTask, 'icon'>[] {
-  const attemptedCodes = new Set(aggregates.map((a) => a.code))
-  const attempted = [...aggregates].sort((a, b) => a.percent - b.percent)
-  const untouched = allSubjectCodes.filter((code) => !attemptedCodes.has(code))
-
-  const attemptedTasks = attempted.map((a) => ({
-    title: `Review ${a.label}`,
-    subtitle: `Average score: ${a.percent}% · ${a.attempts} attempt${a.attempts === 1 ? '' : 's'}`,
-    progress: a.percent,
-  }))
-  const untouchedTasks = untouched.map((code) => ({
-    title: `Start ${SUBJECT_LABELS[code] ?? code}`,
-    subtitle: 'Not started yet',
-    progress: 0,
-  }))
-
-  return [...attemptedTasks, ...untouchedTasks].slice(0, 3)
+/** Groups real attempt history by local calendar day so the dashboard can
+ * render an actual activity calendar, not a fabricated schedule. */
+export function toStudyCalendar(attempts: CombinedAttempt[]): Record<string, StudyCalendarEntry[]> {
+  const byDay: Record<string, StudyCalendarEntry[]> = {}
+  for (const attempt of attempts) {
+    const key = dateKey(attempt.date)
+    const entry: StudyCalendarEntry = {
+      subjectLabel: attempt.subjectLabel,
+      correct: attempt.correct,
+      total: attempt.total,
+    }
+    byDay[key] = [...(byDay[key] ?? []), entry]
+  }
+  return byDay
 }

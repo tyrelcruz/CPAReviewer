@@ -1,4 +1,8 @@
 export type ExamMode = 'tos_simulator' | 'subject_drill'
+export type AnswerMode = 'mcq' | 'identification'
+/** Session-level label only — descriptive, not authoritative. A session can
+ * mix both types; each BankQuestion carries its own `answerMode`. */
+export type SessionAnswerMode = AnswerMode | 'mixed'
 
 export interface BankQuestionSource {
   center: string
@@ -17,6 +21,7 @@ export interface BankQuestion {
   topicCategory: string
   subTopic: string
   sources: BankQuestionSource[]
+  answerMode: AnswerMode
 }
 
 export interface RfbtTopic {
@@ -29,6 +34,7 @@ export interface GeneratedExamSession {
   sessionId: string
   subject: string
   mode: ExamMode
+  answerMode: SessionAnswerMode
   itemCount: number
   score?: number | null
   submitted?: boolean

@@ -22,6 +22,7 @@ function toQuizQuestion(q: BankQuestion): QuizQuestion {
     subTopic: q.subTopic,
     bankDifficulty: q.difficulty,
     sources: q.sources,
+    answerMode: q.answerMode,
   }
 }
 
@@ -56,10 +57,14 @@ export function BankExamApp() {
 
   function handleComplete(answers: Record<string, string>) {
     if (!sessionId) return
-    const payload = Object.entries(answers).map(([questionId, choiceId]) => ({
-      questionId,
-      choiceId,
-    }))
+    // Per-question, not per-session — one exam can mix MCQ and
+    // identification questions (see ExamSetupPage's questionTypeCounts).
+    const answerModeById = new Map(session?.questions.map((q) => [q.id, q.answerMode]) ?? [])
+    const payload = Object.entries(answers).map(([questionId, value]) =>
+      answerModeById.get(questionId) === 'identification'
+        ? { questionId, answerText: value }
+        : { questionId, choiceId: value },
+    )
     submitExam(sessionId, payload).catch(() => {
       // Score is already computed client-side by QuizResults from the answer
       // key it already has — a failed submit only means server-side history

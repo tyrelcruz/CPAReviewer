@@ -1,8 +1,12 @@
 import { Bell, ChevronDown, ShieldUser } from 'lucide-react'
 
 import carabaoRepia from '@/assets/images/carabao_repia.png'
+import { useAuth } from '@/context/AuthContext'
 
 export function AdminHeader() {
+  const { user } = useAuth()
+  const displayName = user?.name ?? 'Admin'
+
   return (
     <div className="relative">
       <img
@@ -38,7 +42,7 @@ export function AdminHeader() {
               <ShieldUser className="size-4.5" />
             </span>
             <span className="text-left">
-              <span className="block text-sm font-semibold text-[#3A2A1A]">Admin</span>
+              <span className="block text-sm font-semibold text-[#3A2A1A]">{displayName}</span>
               <span className="block text-xs text-[#3A2A1A]/55">System Administrator</span>
             </span>
             <ChevronDown className="size-4 text-[#3A2A1A]/50" />

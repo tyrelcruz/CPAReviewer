@@ -1,0 +1,15 @@
+<?php
+// Copy this file to config.user.inc.php (gitignored) to add the Aiven
+// production database as a second server choice in the local phpMyAdmin
+// container. Set AIVEN_DB_HOST / AIVEN_DB_PORT / AIVEN_DB_SSL_CA_PATH in
+// backend/.env first (see .env.example) — this file reads them via getenv(),
+// nothing is hardcoded here.
+$cfg['Servers'][2]['verbose'] = 'Aiven Production';
+$cfg['Servers'][2]['host'] = getenv('AIVEN_DB_HOST');
+$cfg['Servers'][2]['port'] = getenv('AIVEN_DB_PORT');
+$cfg['Servers'][2]['auth_type'] = 'cookie';
+$cfg['Servers'][2]['ssl'] = true;
+$cfg['Servers'][2]['ssl_ca'] = '/etc/phpmyadmin/aiven-ca.pem';
+$cfg['Servers'][2]['ssl_verify'] = true;
+
+$cfg['ServerDefault'] = 0;

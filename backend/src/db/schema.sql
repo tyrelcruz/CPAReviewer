@@ -182,6 +182,11 @@ CREATE TABLE IF NOT EXISTS exam_sessions (
   -- dropping a column is a destructive migration not worth doing just for
   -- an unused field.
   center_filter VARCHAR(255) NULL,
+  -- Coarse, descriptive only — the real per-question answer mode lives on
+  -- exam_session_questions.answer_mode below (a session can mix both types).
+  -- 'mixed' when the requested split has at least one of each; otherwise
+  -- whichever single type was requested.
+  answer_mode ENUM('mcq', 'identification', 'mixed') NOT NULL DEFAULT 'mcq',
   item_count INT NOT NULL,
   score INT NULL,
   started_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -189,6 +194,8 @@ CREATE TABLE IF NOT EXISTS exam_sessions (
   FOREIGN KEY (exam_id) REFERENCES exams(id) ON DELETE SET NULL,
   FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
+ALTER TABLE exam_sessions ADD COLUMN answer_mode ENUM('mcq', 'identification', 'mixed') NOT NULL DEFAULT 'mcq';
+ALTER TABLE exam_sessions MODIFY COLUMN answer_mode ENUM('mcq', 'identification', 'mixed') NOT NULL DEFAULT 'mcq';
 
 CREATE INDEX idx_exam_sessions_user ON exam_sessions(user_id);
 
@@ -206,19 +213,30 @@ CREATE TABLE IF NOT EXISTS exam_session_questions (
   session_id VARCHAR(64) NOT NULL,
   question_id VARCHAR(64) NOT NULL,
   position INT NOT NULL,
+  -- Per-question, not per-session — a single exam can mix MCQ and
+  -- identification questions (see the requested questionTypeCounts split in
+  -- routes/exams.ts). This is the grading source of truth; exam_sessions'
+  -- own answer_mode column is just a coarse "mcq/identification/mixed" label.
+  answer_mode ENUM('mcq', 'identification') NOT NULL DEFAULT 'mcq',
   PRIMARY KEY (session_id, question_id),
   FOREIGN KEY (session_id) REFERENCES exam_sessions(id) ON DELETE CASCADE,
   FOREIGN KEY (question_id) REFERENCES bank_questions(id)
 );
+ALTER TABLE exam_session_questions ADD COLUMN answer_mode ENUM('mcq', 'identification') NOT NULL DEFAULT 'mcq';
 
 CREATE TABLE IF NOT EXISTS exam_answers (
   session_id VARCHAR(64) NOT NULL,
   question_id VARCHAR(64) NOT NULL,
-  choice_id VARCHAR(16) NOT NULL,
+  -- NULL for an identification-mode answer (answer_text is used instead).
+  choice_id VARCHAR(16) NULL,
+  -- NULL for an mcq-mode answer (choice_id is used instead).
+  answer_text TEXT NULL,
   is_correct BOOLEAN NOT NULL,
   PRIMARY KEY (session_id, question_id),
   FOREIGN KEY (session_id) REFERENCES exam_sessions(id) ON DELETE CASCADE
 );
+ALTER TABLE exam_answers MODIFY COLUMN choice_id VARCHAR(16) NULL;
+ALTER TABLE exam_answers ADD COLUMN answer_text TEXT NULL;
 
 CREATE TABLE IF NOT EXISTS user_question_history (
   user_id VARCHAR(64) NOT NULL,

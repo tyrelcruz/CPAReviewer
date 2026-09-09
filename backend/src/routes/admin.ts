@@ -32,12 +32,21 @@ interface SessionRow extends RowDataPacket {
 }
 
 adminRouter.get('/sessions', asyncHandler(async (_req, res) => {
+  // ended_at alone isn't enough to mean "still current": a superseded
+  // session's grace period (pending_logout_at) is only turned into a real
+  // ended_at lazily, the next time *that* device happens to make an
+  // authenticated request (see requireAuth) — a device that never does
+  // (closed tab, sleeping laptop) leaves ended_at NULL forever. Without this
+  // second check, that dead session keeps counting as a live concurrent
+  // device (the "×N devices" badge) indefinitely, even though the app only
+  // ever allows one truly-active device per account past the grace window.
   const [rows] = await pool.query<SessionRow[]>(
     `SELECT s.id AS session_id, u.id AS user_id, u.name, u.email, u.role,
             s.device_label, s.location_label, s.created_at, s.last_seen_at
      FROM user_sessions s
      JOIN users u ON u.id = s.user_id
      WHERE s.ended_at IS NULL
+       AND (s.pending_logout_at IS NULL OR s.pending_logout_at > CURRENT_TIMESTAMP)
      ORDER BY s.last_seen_at DESC`,
   )
 

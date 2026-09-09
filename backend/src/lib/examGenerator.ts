@@ -98,6 +98,43 @@ export function selectExamQuestions<T extends BankQuestionPoolItem>(
   return shuffle(selected)
 }
 
+/**
+ * Same per-bucket unseen-then-seen backfill as selectExamQuestions, but
+ * driven by exact per-difficulty counts instead of weight-derived ones — no
+ * ratio/rounding math needed since the caller already knows exactly how many
+ * of each difficulty they want (a student's own customized split, not a
+ * fixed TOS ratio). A bucket that can't fully supply its requested count
+ * simply comes back short rather than skewing the other buckets.
+ */
+export function selectExamQuestionsByExactDifficultyCounts<T extends BankQuestionPoolItem>(
+  pool: T[],
+  difficultyCounts: Record<Difficulty, number>,
+  recentlySeenIds: Set<string> = new Set(),
+): T[] {
+  const selected: T[] = []
+
+  for (const difficulty of DIFFICULTIES) {
+    const needed = difficultyCounts[difficulty] ?? 0
+    if (needed <= 0) continue
+
+    const bucket = pool.filter((q) => q.difficulty === difficulty)
+    const unseen = shuffle(bucket.filter((q) => !recentlySeenIds.has(q.id)))
+    const seen = shuffle(bucket.filter((q) => recentlySeenIds.has(q.id)))
+
+    const chosen = unseen.slice(0, needed)
+    if (chosen.length < needed) {
+      console.warn(
+        `examGenerator: only ${chosen.length}/${needed} unseen "${difficulty}" questions available — backfilling from recently-seen pool.`,
+      )
+      chosen.push(...seen.slice(0, needed - chosen.length))
+    }
+
+    selected.push(...chosen)
+  }
+
+  return shuffle(selected)
+}
+
 export interface CategorizedPoolItem extends BankQuestionPoolItem {
   category: string
 }

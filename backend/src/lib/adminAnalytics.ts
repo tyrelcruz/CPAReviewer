@@ -67,9 +67,14 @@ export function getExamsGeneratedStat(): Promise<StatWithDelta> {
 }
 
 export function countActiveSessions(): Promise<number> {
+  // Same "grace period already elapsed but not yet lazily finalized" fix as
+  // routes/admin.ts's /sessions handler — see the comment there. Without it,
+  // a superseded session that happened to be seen within the last 5 minutes
+  // (right before being replaced) still counts as active until it ages out.
   return scalarCount(
     `SELECT COUNT(*) AS c FROM user_sessions
-     WHERE ended_at IS NULL AND last_seen_at >= (NOW() - INTERVAL 5 MINUTE)`,
+     WHERE ended_at IS NULL AND last_seen_at >= (NOW() - INTERVAL 5 MINUTE)
+       AND (pending_logout_at IS NULL OR pending_logout_at > CURRENT_TIMESTAMP)`,
   )
 }
 

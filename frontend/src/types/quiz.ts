@@ -25,6 +25,9 @@ export interface QuizQuestion {
   subTopic?: string
   bankDifficulty?: 'Easy' | 'Moderate' | 'Difficult'
   sources?: { center: string }[]
+  /** Per-question — one exam can mix MCQ and identification questions.
+   * Missing (legacy static quiz sets) is treated as 'mcq'. */
+  answerMode?: 'mcq' | 'identification'
 }
 
 export interface QuizSet {

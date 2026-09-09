@@ -15,7 +15,7 @@ import {
 import axios from 'axios'
 import { AnimatePresence, motion } from 'framer-motion'
 import { type FormEvent, useEffect, useState } from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import illustrationBg from '@/assets/images/illustration_bg.png'
 import { Logo } from '@/components/landing/Logo'
@@ -41,7 +41,6 @@ const RESEND_COOLDOWN_SECONDS = 60
 
 export function SignUpPage() {
   const navigate = useNavigate()
-  const location = useLocation()
   const { requestSignupOtp, verifySignupOtp } = useAuth()
   const [step, setStep] = useState<'details' | 'code'>('details')
   const [name, setName] = useState('')
@@ -51,10 +50,6 @@ export function SignUpPage() {
   const [error, setError] = useState<string | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [cooldown, setCooldown] = useState(0)
-
-  const redirectTo =
-    (location.state as { from?: { pathname: string } } | null)?.from?.pathname ??
-    '/app/dashboard'
 
   useEffect(() => {
     if (cooldown <= 0) return
@@ -113,7 +108,9 @@ export function SignUpPage() {
     setIsSubmitting(true)
     try {
       await verifySignupOtp(email, code)
-      navigate(redirectTo, { replace: true })
+      // Always lands on the dashboard, never wherever a route guard happened
+      // to bounce the user from before signing up.
+      navigate('/app/dashboard', { replace: true })
     } catch (err) {
       setError(describeError(err, 'Something went wrong. Please try again.'))
     } finally {

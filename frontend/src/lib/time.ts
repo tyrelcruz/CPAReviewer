@@ -23,6 +23,30 @@ export function formatRelativeTime(iso: string): string {
   return `${diffDays}d ago`
 }
 
+/** Formats a Date as a local YYYY-MM-DD key (not UTC — avoids the day
+ * rolling back/forward for users west/east of UTC that `toISOString` would
+ * cause), for grouping records by calendar day. */
+export function dateKey(date: Date): string {
+  const year = date.getFullYear()
+  const month = (date.getMonth() + 1).toString().padStart(2, '0')
+  const day = date.getDate().toString().padStart(2, '0')
+  return `${year}-${month}-${day}`
+}
+
+/** Returns a new Date `days` days after (or before, if negative) `date`. */
+export function addDays(date: Date, days: number): Date {
+  const next = new Date(date)
+  next.setDate(next.getDate() + days)
+  return next
+}
+
+/** Returns a new Date `months` months after (or before, if negative) `date`. */
+export function addMonths(date: Date, months: number): Date {
+  const next = new Date(date)
+  next.setMonth(next.getMonth() + months)
+  return next
+}
+
 /** Formats a whole-second duration compactly, e.g. "45s", "18m", "1h 12m". */
 export function formatDuration(totalSeconds: number): string {
   const minutes = Math.round(totalSeconds / 60)

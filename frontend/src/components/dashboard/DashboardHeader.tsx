@@ -3,6 +3,8 @@ import { motion } from 'framer-motion'
 
 import mountainsHeader from '@/assets/images/mountains_header.png'
 import { Logo } from '@/components/landing/Logo'
+import { useAuth } from '@/context/AuthContext'
+import { getCourseLabel, getInitials } from '@/lib/userDisplay'
 
 interface DashboardHeaderProps {
   firstName: string
@@ -23,6 +25,11 @@ function GreetingWave() {
 }
 
 export function DashboardHeader({ firstName }: DashboardHeaderProps) {
+  const { user } = useAuth()
+  const displayName = user?.name ?? 'Reviewer'
+  const initials = getInitials(displayName)
+  const courseLabel = getCourseLabel(user?.course ?? 'cpa')
+
   return (
     <>
       {/* Mobile/tablet: logo + bell/profile row, then a separate greeting row with a
@@ -44,11 +51,11 @@ export function DashboardHeader({ firstName }: DashboardHeaderProps) {
               className="flex items-center gap-2 rounded-full bg-white py-1.5 pr-3 pl-1.5 shadow-sm"
             >
               <span className="flex size-9 items-center justify-center rounded-full bg-[#7A2323] text-sm font-semibold text-[#F3ECDC]">
-                JC
+                {initials}
               </span>
               <span className="text-left">
-                <span className="block text-sm font-semibold text-[#3A2A1A]">Juan Cruz</span>
-                <span className="block text-xs text-[#3A2A1A]/55">CPA Aspirant</span>
+                <span className="block text-sm font-semibold text-[#3A2A1A]">{displayName}</span>
+                <span className="block text-xs text-[#3A2A1A]/55">{courseLabel}</span>
               </span>
               <ChevronDown className="size-4 text-[#3A2A1A]/50" />
             </button>
@@ -107,11 +114,11 @@ export function DashboardHeader({ firstName }: DashboardHeaderProps) {
             className="flex items-center gap-3 rounded-full bg-white py-1.5 pr-3 pl-1.5 shadow-sm hover:bg-[#3A2A1A]/5"
           >
             <span className="flex size-9 items-center justify-center rounded-full bg-[#7A2323] text-sm font-semibold text-[#F3ECDC]">
-              JC
+              {initials}
             </span>
             <span className="text-left">
-              <span className="block text-sm font-semibold text-[#3A2A1A]">Juan Cruz</span>
-              <span className="block text-xs text-[#3A2A1A]/55">CPA Aspirant</span>
+              <span className="block text-sm font-semibold text-[#3A2A1A]">{displayName}</span>
+              <span className="block text-xs text-[#3A2A1A]/55">{courseLabel}</span>
             </span>
             <ChevronDown className="size-4 text-[#3A2A1A]/50" />
           </motion.button>
