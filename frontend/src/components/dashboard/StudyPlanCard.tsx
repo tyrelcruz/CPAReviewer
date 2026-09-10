@@ -2,6 +2,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 
+import { GrungeOverlay } from '@/components/ui/GrungeOverlay'
 import { REVIEW_PLAN_TYPE_STYLES } from '@/data/dashboard-data'
 import { dateKey } from '@/lib/time'
 import { cn } from '@/lib/utils'
@@ -118,7 +119,7 @@ export function StudyPlanCard({ entriesByDate, planEntries }: StudyPlanCardProps
               type="button"
               onClick={() => setSelectedKey(cell.key)}
               className={cn(
-                'relative flex aspect-square flex-col items-center justify-center rounded-lg text-xs font-medium transition-colors',
+                'relative flex aspect-square flex-col items-center justify-center overflow-hidden rounded-lg text-xs font-medium transition-colors',
                 isSelected
                   ? 'bg-[#7A2323] text-white'
                   : isToday
@@ -126,6 +127,7 @@ export function StudyPlanCard({ entriesByDate, planEntries }: StudyPlanCardProps
                     : 'text-[#3A2A1A]/80 hover:bg-[#FBF3EA]',
               )}
             >
+              {isSelected && <GrungeOverlay />}
               {cell.dayNum}
               {(hasActivity || hasPlan) && (
                 <span className="absolute bottom-1 flex items-center gap-0.5">

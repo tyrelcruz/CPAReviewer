@@ -1,6 +1,7 @@
 import { CalendarDays, ChevronLeft, ChevronRight, Plus } from 'lucide-react'
 import { useMemo } from 'react'
 
+import { GrungeOverlay } from '@/components/ui/GrungeOverlay'
 import { REVIEW_PLAN_TYPE_STYLES, REVIEW_PLAN_TYPES } from '@/data/dashboard-data'
 import { addDays, addMonths, dateKey } from '@/lib/time'
 import { cn } from '@/lib/utils'
@@ -162,12 +163,13 @@ export function ReviewCalendarCard({
               type="button"
               onClick={() => onViewModeChange(mode)}
               className={cn(
-                'rounded-full px-3.5 py-1.5 text-xs font-semibold capitalize transition-colors',
+                'relative overflow-hidden rounded-full px-3.5 py-1.5 text-xs font-semibold capitalize transition-colors',
                 viewMode === mode
                   ? 'bg-[#7A2323] text-white'
                   : 'text-[#3A2A1A]/60 hover:text-[#3A2A1A]',
               )}
             >
+              {viewMode === mode && <GrungeOverlay />}
               {mode}
             </button>
           ))}

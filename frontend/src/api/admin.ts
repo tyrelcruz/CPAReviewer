@@ -90,6 +90,13 @@ export interface AdminFlaggedQuestion {
   /** Null if the flagged question has since been deleted/re-ingested under a new id. */
   subject: string | null
   prompt: string | null
+  /** The bank's own correct-choice text — null along with subject/prompt if the question is gone. */
+  correctAnswer: string | null
+  /** What the learner thinks the correct answer is, if they said — resolved to
+   * that choice's own text when they picked one, or their free-typed answer. */
+  suggestedAnswer: string | null
+  /** True when suggestedAnswer came from outside the question's own listed choices. */
+  suggestedAnswerIsCustom: boolean
   reason: string
   flaggedByName: string
   flaggedByEmail: string

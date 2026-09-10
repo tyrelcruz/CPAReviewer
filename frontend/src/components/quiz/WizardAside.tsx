@@ -1,10 +1,10 @@
 import { ArrowRight, Layers, Target } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 
-import grungeWallTexture from '@/assets/images/grunge-wall-texture.jpg'
 import mountainLandscape from '@/assets/images/mountain_landscape.png'
 import kabisEmblem from '@/assets/logo/kabis_emblem.png'
 import { getComingSoonKeys, STRATEGY_CARDS } from '@/components/quiz/StrategyOptions'
+import { GrungeOverlay } from '@/components/ui/GrungeOverlay'
 import { useAuth } from '@/context/AuthContext'
 
 interface WizardAsideProps {
@@ -27,17 +27,7 @@ export function WizardAside({
 
   return (
     <aside className="relative flex flex-col gap-6 overflow-hidden rounded-3xl bg-[#530b08] p-6 text-[#F3ECDC] shadow-[inset_0_0_12px_3px_rgba(0,0,0,0.55),inset_0_0_80px_20px_rgba(0,0,0,0.4)] lg:sticky lg:top-8">
-      {/* Grunge wall texture (cracks, mottling) screened over the maroon for a worn, vintage feel. */}
-      <div
-        className="pointer-events-none absolute inset-0 mix-blend-screen"
-        aria-hidden="true"
-        style={{
-          backgroundImage: `url(${grungeWallTexture})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          opacity: 0.25,
-        }}
-      />
+      <GrungeOverlay />
 
       <img
         src={kabisEmblem}

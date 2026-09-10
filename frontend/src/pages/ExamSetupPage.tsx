@@ -30,6 +30,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 
 import { generateExam, listRfbtTopics, listSubjectCounts } from '@/api/exams'
 import { Sidebar } from '@/components/dashboard/Sidebar'
+import { GrungeOverlay } from '@/components/ui/GrungeOverlay'
 import { Switch } from '@/components/ui/switch'
 import { WizardHeader } from '@/components/quiz/WizardHeader'
 import mountainHeader from '@/assets/images/carabao_repia.png'
@@ -380,12 +381,13 @@ export function ExamSetupPage() {
                         type="button"
                         onClick={() => setExamType('standard')}
                         className={cn(
-                          'flex items-center justify-center gap-2 rounded-xl border px-4 py-2.5 text-sm font-semibold transition-colors',
+                          'relative flex items-center justify-center gap-2 overflow-hidden rounded-xl border px-4 py-2.5 text-sm font-semibold transition-colors',
                           examType === 'standard'
                             ? 'border-transparent bg-[#7A2323] text-[#F3ECDC]'
                             : 'border-[#3A2A1A]/15 text-[#3A2A1A]/80 hover:bg-[#3A2A1A]/5',
                         )}
                       >
+                        {examType === 'standard' && <GrungeOverlay />}
                         <FileText className="size-4" />
                         Standard Exam
                       </button>
@@ -393,12 +395,13 @@ export function ExamSetupPage() {
                         type="button"
                         onClick={() => setExamType('timed')}
                         className={cn(
-                          'flex items-center justify-center gap-2 rounded-xl border px-4 py-2.5 text-sm font-semibold transition-colors',
+                          'relative flex items-center justify-center gap-2 overflow-hidden rounded-xl border px-4 py-2.5 text-sm font-semibold transition-colors',
                           examType === 'timed'
                             ? 'border-transparent bg-[#7A2323] text-[#F3ECDC]'
                             : 'border-[#3A2A1A]/15 text-[#3A2A1A]/80 hover:bg-[#3A2A1A]/5',
                         )}
                       >
+                        {examType === 'timed' && <GrungeOverlay />}
                         <Timer className="size-4" />
                         Timed Exam
                       </button>
@@ -825,8 +828,9 @@ export function ExamSetupPage() {
                     type="button"
                     onClick={handleGenerate}
                     disabled={isGenerating}
-                    className="flex items-center justify-center gap-2 rounded-full bg-[#7A2323] px-6 py-3.5 text-sm font-semibold text-[#F3ECDC] transition-colors hover:bg-[#7A2323]/90 disabled:cursor-not-allowed disabled:opacity-60"
+                    className="relative flex items-center justify-center gap-2 overflow-hidden rounded-full bg-[#7A2323] px-6 py-3.5 text-sm font-semibold text-[#F3ECDC] transition-colors hover:bg-[#7A2323]/90 disabled:cursor-not-allowed disabled:opacity-60"
                   >
+                    <GrungeOverlay />
                     {isGenerating ? (
                       <Loader2 className="size-4 animate-spin" />
                     ) : (

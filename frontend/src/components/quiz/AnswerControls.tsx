@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { Check, XCircle } from 'lucide-react'
 
 import { promptReferencesChoices } from '@/lib/answerMatch'
+import { GrungeOverlay } from '@/components/ui/GrungeOverlay'
 import { cn } from '@/lib/utils'
 import type { QuizChoice } from '@/types/quiz'
 
@@ -77,8 +78,9 @@ export function AnswerControls({
             type="button"
             onClick={onSubmitTypedAnswer}
             disabled={!draftAnswer.trim()}
-            className="self-start rounded-full bg-[#7A2323] px-5 py-2.5 text-sm font-semibold text-[#F3ECDC] transition-colors hover:bg-[#7A2323]/90 disabled:cursor-not-allowed disabled:opacity-50"
+            className="relative self-start overflow-hidden rounded-full bg-[#7A2323] px-5 py-2.5 text-sm font-semibold text-[#F3ECDC] transition-colors hover:bg-[#7A2323]/90 disabled:cursor-not-allowed disabled:opacity-50"
           >
+            <GrungeOverlay />
             Submit answer
           </button>
         )}

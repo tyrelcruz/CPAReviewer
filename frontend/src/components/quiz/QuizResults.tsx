@@ -26,6 +26,7 @@ import { useLayoutEffect, useRef, useState } from 'react'
 import { AnswerHistoryList } from '@/components/quiz/AnswerHistoryList'
 import { ExamHistoryChart, type ExamHistoryPoint } from '@/components/quiz/ExamHistoryChart'
 import { ProgressRing } from '@/components/quiz/ProgressRing'
+import { GrungeOverlay } from '@/components/ui/GrungeOverlay'
 import { useAuth } from '@/context/AuthContext'
 import { isIdentificationAnswerCorrect } from '@/lib/answerMatch'
 import { getExamHistory, recordExamAttempt, type SectionScore } from '@/lib/examHistory'
@@ -265,8 +266,9 @@ export function QuizResults({
           <button
             type="button"
             onClick={onRetake}
-            className="flex items-center gap-1.5 rounded-full bg-[#7A2323] px-4 py-2.5 text-sm font-semibold text-[#F3ECDC] transition-colors hover:bg-[#7A2323]/90"
+            className="relative flex items-center gap-1.5 overflow-hidden rounded-full bg-[#7A2323] px-4 py-2.5 text-sm font-semibold text-[#F3ECDC] transition-colors hover:bg-[#7A2323]/90"
           >
+            <GrungeOverlay />
             <RotateCcw className="size-4" />
             Retake Exam
           </button>
@@ -680,8 +682,9 @@ export function QuizResults({
             <button
               type="button"
               onClick={onBack}
-              className="mt-4 flex w-full items-center justify-center gap-1.5 rounded-full bg-[#7A2323] px-4 py-2.5 text-xs font-semibold text-[#F3ECDC] transition-colors hover:bg-[#7A2323]/90"
+              className="relative mt-4 flex w-full items-center justify-center gap-1.5 overflow-hidden rounded-full bg-[#7A2323] px-4 py-2.5 text-xs font-semibold text-[#F3ECDC] transition-colors hover:bg-[#7A2323]/90"
             >
+              <GrungeOverlay />
               View Personalized Study Plan
               <ArrowRight className="size-3.5" />
             </button>

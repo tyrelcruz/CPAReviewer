@@ -1,6 +1,7 @@
 import {
   Calculator,
   Eraser,
+  Flag,
   Highlighter,
   Maximize2,
   Minus,
@@ -14,7 +15,9 @@ import {
 import { useEffect, useRef, useState } from 'react'
 
 import { AnswerControls } from '@/components/quiz/AnswerControls'
+import { FlagReasonPopover } from '@/components/quiz/FlagReasonPopover'
 import { QuestionPromptText } from '@/components/quiz/QuestionPromptText'
+import { GrungeOverlay } from '@/components/ui/GrungeOverlay'
 import { cn } from '@/lib/utils'
 
 type DrawTool = 'pen' | 'highlight' | 'eraser' | 'move'
@@ -56,6 +59,19 @@ interface DrawingNotesPanelProps {
   onDraftChange: (value: string) => void
   onSelectChoice: (choiceId: string) => void
   onSubmitTypedAnswer: () => void
+  /** Same rationale as onOpenCalculator — maximized mode covers the main
+   * quiz toolbar's own "Flag for review" button, so this panel needs its
+   * own way to reach it. */
+  isFlagged: boolean
+  flagPopoverOpen: boolean
+  onFlagButtonClick: () => void
+  onFlagPopoverCancel: () => void
+  onSubmitFlag: (input: { reason: string; suggestedChoiceId?: string; suggestedAnswerText?: string }) => Promise<void>
+  /** Lets Quiz.tsx suppress its own (now off-screen, behind this overlay)
+   * flag popover while maximized — both buttons share one `flagPopoverOpen`
+   * flag, so without this, opening the popover from here would also mount an
+   * invisible-but-still-focusable duplicate at the covered main toolbar. */
+  onMaximizedChange?: (isMaximized: boolean) => void
 }
 
 const COLORS = ['#3A2A1A', '#7A2323', '#1D4ED8', '#3A5A40', '#E0AC48']
@@ -108,12 +124,13 @@ function DrawingToolbar({
               aria-pressed={tool === t.key}
               title={t.label}
               className={cn(
-                'flex items-center gap-1.5 rounded-full px-2.5 py-1.5 text-xs font-semibold transition-colors',
+                'relative flex items-center gap-1.5 overflow-hidden rounded-full px-2.5 py-1.5 text-xs font-semibold transition-colors',
                 tool === t.key
                   ? 'bg-[#7A2323] text-white'
                   : 'text-[#3A2A1A]/60 hover:bg-[#3A2A1A]/5',
               )}
             >
+              {tool === t.key && <GrungeOverlay />}
               <t.icon className="size-3.5" />
               <span className="hidden sm:inline">{t.label}</span>
             </button>
@@ -191,6 +208,12 @@ export function DrawingNotesPanel({
   onDraftChange,
   onSelectChoice,
   onSubmitTypedAnswer,
+  isFlagged,
+  flagPopoverOpen,
+  onFlagButtonClick,
+  onFlagPopoverCancel,
+  onSubmitFlag,
+  onMaximizedChange,
 }: DrawingNotesPanelProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -205,6 +228,12 @@ export function DrawingNotesPanel({
   const [size, setSize] = useState(3)
   const [hasInk, setHasInk] = useState(false)
   const [isMaximized, setIsMaximized] = useState(false)
+
+  useEffect(() => {
+    onMaximizedChange?.(isMaximized)
+    // Only the transition itself needs reporting, not identity churn of the callback.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isMaximized])
 
   function drawGrid(ctx: CanvasRenderingContext2D, width: number, height: number) {
     const gap = GRID_GAP * dprRef.current
@@ -396,6 +425,33 @@ export function DrawingNotesPanel({
     </button>
   )
 
+  const flagButton = (
+    <div className="relative">
+      <button
+        type="button"
+        onClick={onFlagButtonClick}
+        aria-label={isFlagged ? 'Flagged for review' : 'Flag for review'}
+        title={isFlagged ? 'Flagged' : 'Flag for review'}
+        className={cn(
+          'flex size-7 items-center justify-center rounded-full transition-colors',
+          isFlagged
+            ? 'bg-[#E0AC48]/20 text-[#B4791F]'
+            : 'text-[#3A2A1A]/50 hover:bg-[#3A2A1A]/5 hover:text-[#3A2A1A]',
+        )}
+      >
+        <Flag className="size-3.5" />
+      </button>
+      {flagPopoverOpen && (
+        <>
+          <div className="fixed inset-0 z-10" onClick={onFlagPopoverCancel} />
+          <div className="fixed inset-x-4 bottom-4 z-20 sm:absolute sm:inset-x-auto sm:bottom-auto sm:top-full sm:right-0 sm:mt-2">
+            <FlagReasonPopover choices={choices} onSubmit={onSubmitFlag} onCancel={onFlagPopoverCancel} />
+          </div>
+        </>
+      )}
+    </div>
+  )
+
   const undoClearButtons = (
     <>
       <button
@@ -459,6 +515,7 @@ export function DrawingNotesPanel({
               </p>
               <div className="flex items-center gap-1">
                 {calculatorButton}
+                {flagButton}
                 {undoClearButtons}
                 <button
                   type="button"

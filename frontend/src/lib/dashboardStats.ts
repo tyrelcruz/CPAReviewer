@@ -11,7 +11,7 @@ import { getExamHistory } from '@/lib/examHistory'
 import { dateKey } from '@/lib/time'
 import type { QuizSet } from '@/types/quiz'
 
-const SUBJECT_LABELS: Record<string, string> = {
+export const SUBJECT_LABELS: Record<string, string> = {
   AT: 'Auditing Theory',
   RFBT: 'RFBT',
   TAX: 'Taxation',

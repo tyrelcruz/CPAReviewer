@@ -15,6 +15,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { Sidebar } from '@/components/dashboard/Sidebar'
 import { WizardAside } from '@/components/quiz/WizardAside'
 import { WizardHeader } from '@/components/quiz/WizardHeader'
+import { GrungeOverlay } from '@/components/ui/GrungeOverlay'
 import { Switch } from '@/components/ui/switch'
 import { quizSets } from '@/data/quiz-data'
 import { fadeUpItem, staggerContainer } from '@/lib/motion'
@@ -298,11 +299,12 @@ function ModeCard({ selected, onClick, title, description, badge, Icon }: ModeCa
     >
       <span
         className={cn(
-          'absolute top-3.5 right-3.5 flex size-4 shrink-0 items-center justify-center rounded-full border-2',
+          'absolute top-3.5 right-3.5 flex size-4 shrink-0 items-center justify-center overflow-hidden rounded-full border-2',
           selected ? 'border-[#7A2323] bg-[#7A2323]' : 'border-[#3A2A1A]/25',
         )}
       >
-        {selected && <span className="size-1.5 rounded-full bg-white" />}
+        {selected && <GrungeOverlay />}
+        {selected && <span className="relative size-1.5 rounded-full bg-white" />}
       </span>
       <div className="flex flex-wrap items-center gap-2 pr-6">
         <Icon className="size-4 shrink-0 text-[#7A2323]" />

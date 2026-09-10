@@ -269,10 +269,25 @@ CREATE TABLE IF NOT EXISTS question_flags (
   question_id VARCHAR(64) NOT NULL,
   user_id VARCHAR(64) NOT NULL,
   reason TEXT NOT NULL,
+  -- Which of the question's own lettered choices the learner believes is
+  -- correct, if any — NULL when they didn't pick one (or believe none of
+  -- them are right; see suggested_answer_text below).
+  suggested_choice_id VARCHAR(16) NULL,
+  -- A correct answer the learner believes isn't among the listed choices at
+  -- all. Mutually exclusive with suggested_choice_id in practice (the UI
+  -- only lets a learner pick one), but not DB-enforced since a flag with
+  -- neither (just a reason, no answer opinion) is also valid.
+  suggested_answer_text TEXT NULL,
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (question_id) REFERENCES bank_questions(id) ON DELETE CASCADE,
   FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
+
+-- No IF NOT EXISTS support for ADD COLUMN on stock MySQL (unlike MariaDB) —
+-- migrate.ts already tolerates ER_DUP_FIELDNAME, so a plain ADD COLUMN is
+-- how this repo's migrations add a column to a table that already exists.
+ALTER TABLE question_flags ADD COLUMN suggested_choice_id VARCHAR(16) NULL;
+ALTER TABLE question_flags ADD COLUMN suggested_answer_text TEXT NULL;
 
 CREATE INDEX idx_question_flags_question ON question_flags(question_id);
 CREATE INDEX idx_question_flags_created_at ON question_flags(created_at);

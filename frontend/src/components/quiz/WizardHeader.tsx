@@ -1,6 +1,7 @@
 import { ArrowLeft, Check } from 'lucide-react'
 
 import mountainsHeader from '@/assets/images/carabao_repia.png'
+import { GrungeOverlay } from '@/components/ui/GrungeOverlay'
 import { cn } from '@/lib/utils'
 
 const WIZARD_STEPS = ['Choose Strategy', 'Set Quiz Details']
@@ -46,7 +47,7 @@ export function WizardHeader({
               <li
                 key={step}
                 className={cn(
-                  'flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-semibold transition-colors',
+                  'relative flex items-center gap-2 overflow-hidden rounded-full px-3 py-1.5 text-xs font-semibold transition-colors',
                   isActive
                     ? 'bg-[#530b08] text-white'
                     : isDone
@@ -54,6 +55,7 @@ export function WizardHeader({
                       : 'bg-[#3A2A1A]/5 text-[#3A2A1A]/40',
                 )}
               >
+                {isActive && <GrungeOverlay />}
                 <span
                   className={cn(
                     'flex size-5 shrink-0 items-center justify-center rounded-full text-[10px] font-bold',

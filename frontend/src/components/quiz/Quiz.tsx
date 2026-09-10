@@ -26,6 +26,7 @@ import { ProgressRing } from '@/components/quiz/ProgressRing'
 import { QuestionNavigator } from '@/components/quiz/QuestionNavigator'
 import { QuestionPromptText } from '@/components/quiz/QuestionPromptText'
 import { QuizResults } from '@/components/quiz/QuizResults'
+import { GrungeOverlay } from '@/components/ui/GrungeOverlay'
 import { useAuth } from '@/context/AuthContext'
 import { isIdentificationAnswerCorrect } from '@/lib/answerMatch'
 import { clearExamProgress, getExamProgress, saveExamProgress } from '@/lib/examProgress'
@@ -140,6 +141,10 @@ export function Quiz({
   const [notesOpen, setNotesOpen] = useState(false)
   const [notes, setNotes] = useState('')
   const [flagPopoverOpen, setFlagPopoverOpen] = useState(false)
+  // Tracks DrawingNotesPanel's own maximize state so the main toolbar's flag
+  // button — hidden behind that overlay once maximized, but still mounted —
+  // doesn't also pop open its own (invisible, but focusable) popover copy.
+  const [notesMaximized, setNotesMaximized] = useState(false)
   const [streak] = useState(() => getStudyStreak(userId))
   const touchStartRef = useRef<{ x: number; y: number } | null>(null)
 
@@ -311,9 +316,13 @@ export function Quiz({
   // exam score does, so the "Flagged" indicator must only appear once the
   // report actually reached the backend. A rejection propagates to
   // FlagReasonPopover, which keeps itself open and shows an error instead.
-  async function handleSubmitFlag(reason: string) {
+  async function handleSubmitFlag(input: {
+    reason: string
+    suggestedChoiceId?: string
+    suggestedAnswerText?: string
+  }) {
     if (!current?.id) return
-    await submitQuestionFlag(current.id, reason)
+    await submitQuestionFlag({ questionId: current.id, ...input })
     setFlaggedIndices((prev) => new Set(prev).add(currentIndex))
     setFlagPopoverOpen(false)
   }
@@ -477,8 +486,9 @@ export function Quiz({
         <button
           type="button"
           onClick={handleFinishNow}
-          className="rounded-full bg-[#7A2323] px-4 py-2 text-xs font-semibold whitespace-nowrap text-[#F3ECDC] transition-colors hover:bg-[#7A2323]/90 sm:px-5 sm:py-2.5 sm:text-sm"
+          className="relative overflow-hidden rounded-full bg-[#7A2323] px-4 py-2 text-xs font-semibold whitespace-nowrap text-[#F3ECDC] transition-colors hover:bg-[#7A2323]/90 sm:px-5 sm:py-2.5 sm:text-sm"
         >
+          <GrungeOverlay />
           Finish test
         </button>
       </div>
@@ -623,11 +633,16 @@ export function Quiz({
                   <Flag className="size-3.5" />
                   {isFlagged ? 'Flagged' : 'Flag for review'}
                 </button>
-                {flagPopoverOpen && (
+                {flagPopoverOpen && !notesMaximized && (
                   <>
                     <div className="fixed inset-0 z-10" onClick={() => setFlagPopoverOpen(false)} />
-                    <div className="fixed inset-x-4 bottom-4 z-20 sm:absolute sm:inset-x-auto sm:bottom-auto sm:top-full sm:left-0 sm:mt-2">
+                    {/* Opens upward, not downward like the Calculator/Notes popovers above —
+                        this button sits at the bottom of the question card, so a
+                        downward-opening popover (tall once the answer-choice picker is
+                        showing) would run off the bottom of the viewport instead. */}
+                    <div className="fixed inset-x-4 bottom-4 z-20 sm:absolute sm:inset-x-auto sm:top-auto sm:bottom-full sm:left-0 sm:mb-2">
                       <FlagReasonPopover
+                        choices={current.choices}
                         onSubmit={handleSubmitFlag}
                         onCancel={() => setFlagPopoverOpen(false)}
                       />
@@ -648,8 +663,9 @@ export function Quiz({
                 type="button"
                 onClick={handleNext}
                 disabled={!isAnswered}
-                className="flex w-full items-center justify-center gap-1.5 rounded-full bg-[#7A2323] px-5 py-2.5 text-xs font-semibold whitespace-nowrap text-[#F3ECDC] transition-colors hover:bg-[#7A2323]/90 disabled:cursor-not-allowed disabled:opacity-40 sm:w-auto"
+                className="relative flex w-full items-center justify-center gap-1.5 overflow-hidden rounded-full bg-[#7A2323] px-5 py-2.5 text-xs font-semibold whitespace-nowrap text-[#F3ECDC] transition-colors hover:bg-[#7A2323]/90 disabled:cursor-not-allowed disabled:opacity-40 sm:w-auto"
               >
+                <GrungeOverlay />
                 {isLastQuestion ? 'See results' : 'Next question'}
                 <ArrowRight className="size-3.5" />
               </button>
@@ -677,6 +693,12 @@ export function Quiz({
             onDraftChange={setDraftAnswer}
             onSelectChoice={handleSelect}
             onSubmitTypedAnswer={handleTypeAnswer}
+            isFlagged={isFlagged}
+            flagPopoverOpen={flagPopoverOpen}
+            onFlagButtonClick={handleFlagButtonClick}
+            onFlagPopoverCancel={() => setFlagPopoverOpen(false)}
+            onSubmitFlag={handleSubmitFlag}
+            onMaximizedChange={setNotesMaximized}
           />
           <QuestionNavigator
             total={questions.length}

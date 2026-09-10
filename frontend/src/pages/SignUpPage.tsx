@@ -19,6 +19,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import illustrationBg from '@/assets/images/illustration_bg.png'
 import { OtpInput } from '@/components/auth/OtpInput'
 import { Logo } from '@/components/landing/Logo'
+import { GrungeOverlay } from '@/components/ui/GrungeOverlay'
 import { useAuth } from '@/context/AuthContext'
 import { fadeUpItem, listItem, listStagger, staggerContainer } from '@/lib/motion'
 
@@ -267,24 +268,26 @@ export function SignUpPage() {
                     <button
                       type="button"
                       onClick={() => setCourse('cpa')}
-                      className={`flex items-center justify-center gap-2 rounded-xl border px-4 py-2.5 text-sm font-semibold transition-colors ${
+                      className={`relative flex items-center justify-center gap-2 overflow-hidden rounded-xl border px-4 py-2.5 text-sm font-semibold transition-colors ${
                         course === 'cpa'
                           ? 'border-transparent bg-[#7A2323] text-[#F3ECDC]'
                           : 'border-[#3A2A1A]/15 text-[#3A2A1A]/80 hover:bg-[#3A2A1A]/5'
                       }`}
                     >
+                      {course === 'cpa' && <GrungeOverlay />}
                       <GraduationCap className="size-4" />
                       CPA (CPALE)
                     </button>
                     <button
                       type="button"
                       onClick={() => setCourse('rmt')}
-                      className={`flex items-center justify-center gap-2 rounded-xl border px-4 py-2.5 text-sm font-semibold transition-colors ${
+                      className={`relative flex items-center justify-center gap-2 overflow-hidden rounded-xl border px-4 py-2.5 text-sm font-semibold transition-colors ${
                         course === 'rmt'
                           ? 'border-transparent bg-[#7A2323] text-[#F3ECDC]'
                           : 'border-[#3A2A1A]/15 text-[#3A2A1A]/80 hover:bg-[#3A2A1A]/5'
                       }`}
                     >
+                      {course === 'rmt' && <GrungeOverlay />}
                       <Microscope className="size-4" />
                       RMT / MedTech
                     </button>

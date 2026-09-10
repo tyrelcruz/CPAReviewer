@@ -118,24 +118,29 @@ interface FlagRow extends RowDataPacket {
   id: string
   question_id: string
   reason: string
+  suggested_choice_text: string | null
+  suggested_answer_text: string | null
   created_at: Date
   flagged_by_name: string
   flagged_by_email: string
   subject: string | null
   prompt: string | null
+  correct_answer: string | null
 }
 
 adminRouter.get('/flags', asyncHandler(async (_req, res) => {
-  // LEFT JOIN, not JOIN — a flagged question can be deleted/re-ingested out
-  // from under its flag; the report should still show (with subject/prompt
-  // as null) rather than silently disappear.
+  // LEFT JOINs throughout — a flagged question (or its correct/suggested
+  // choice) can be deleted/re-ingested out from under its flag; the report
+  // should still show (with those fields null) rather than silently disappear.
   const [rows] = await pool.query<FlagRow[]>(
-    `SELECT qf.id, qf.question_id, qf.reason, qf.created_at,
+    `SELECT qf.id, qf.question_id, qf.reason, qf.suggested_answer_text, qf.created_at,
             u.name AS flagged_by_name, u.email AS flagged_by_email,
-            bq.subject, bq.prompt
+            bq.subject, bq.prompt, bc.text AS correct_answer, sc.text AS suggested_choice_text
      FROM question_flags qf
      JOIN users u ON u.id = qf.user_id
      LEFT JOIN bank_questions bq ON bq.id = qf.question_id
+     LEFT JOIN bank_choices bc ON bc.question_id = bq.id AND bc.choice_id = bq.correct_choice_id
+     LEFT JOIN bank_choices sc ON sc.question_id = qf.question_id AND sc.choice_id = qf.suggested_choice_id
      ORDER BY qf.created_at DESC`,
   )
 
@@ -145,6 +150,13 @@ adminRouter.get('/flags', asyncHandler(async (_req, res) => {
       questionId: row.question_id,
       subject: row.subject,
       prompt: row.prompt,
+      correctAnswer: row.correct_answer,
+      // A learner's suggested-choice pick resolves to that choice's own
+      // text; a free-typed suggestion (believed not among the choices) is
+      // used as-is. `suggestedAnswerIsCustom` lets the admin UI badge the
+      // latter distinctly from a plain lettered pick.
+      suggestedAnswer: row.suggested_choice_text ?? row.suggested_answer_text,
+      suggestedAnswerIsCustom: row.suggested_choice_text === null && row.suggested_answer_text !== null,
       reason: row.reason,
       flaggedByName: row.flagged_by_name,
       flaggedByEmail: row.flagged_by_email,
