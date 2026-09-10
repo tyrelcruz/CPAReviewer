@@ -113,3 +113,42 @@ adminRouter.get('/analytics', asyncHandler(async (_req, res) => {
     topLocations,
   })
 }))
+
+interface FlagRow extends RowDataPacket {
+  id: string
+  question_id: string
+  reason: string
+  created_at: Date
+  flagged_by_name: string
+  flagged_by_email: string
+  subject: string | null
+  prompt: string | null
+}
+
+adminRouter.get('/flags', asyncHandler(async (_req, res) => {
+  // LEFT JOIN, not JOIN — a flagged question can be deleted/re-ingested out
+  // from under its flag; the report should still show (with subject/prompt
+  // as null) rather than silently disappear.
+  const [rows] = await pool.query<FlagRow[]>(
+    `SELECT qf.id, qf.question_id, qf.reason, qf.created_at,
+            u.name AS flagged_by_name, u.email AS flagged_by_email,
+            bq.subject, bq.prompt
+     FROM question_flags qf
+     JOIN users u ON u.id = qf.user_id
+     LEFT JOIN bank_questions bq ON bq.id = qf.question_id
+     ORDER BY qf.created_at DESC`,
+  )
+
+  res.json({
+    flags: rows.map((row) => ({
+      id: row.id,
+      questionId: row.question_id,
+      subject: row.subject,
+      prompt: row.prompt,
+      reason: row.reason,
+      flaggedByName: row.flagged_by_name,
+      flaggedByEmail: row.flagged_by_email,
+      createdAt: row.created_at.toISOString(),
+    })),
+  })
+}))

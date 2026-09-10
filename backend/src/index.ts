@@ -7,6 +7,7 @@ import { adminRouter } from './routes/admin.js'
 import { authRouter } from './routes/auth.js'
 import { bankQuestionsRouter } from './routes/bankQuestions.js'
 import { examsRouter } from './routes/exams.js'
+import { flagsRouter } from './routes/flags.js'
 import { quizSetsRouter } from './routes/quizSets.js'
 
 const app = express()
@@ -23,6 +24,7 @@ app.use('/api/auth', authRouter)
 app.use('/api/quiz-sets', requireAuth, quizSetsRouter)
 app.use('/api/bank-questions', requireAuth, bankQuestionsRouter)
 app.use('/api/exams', requireAuth, examsRouter)
+app.use('/api/flags', requireAuth, flagsRouter)
 app.use('/api/admin', requireAuth, requireAdmin, adminRouter)
 
 app.use((err: unknown, _req: Request, res: Response, _next: NextFunction) => {

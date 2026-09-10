@@ -1,8 +1,9 @@
 import { Bell, ClipboardList, Plus, SquarePen, User } from 'lucide-react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+import { listMyExamSessions, type ExamSessionSummary } from '@/api/exams'
 import illustrationBg from '@/assets/images/illustration_bg.png'
 import { MobileTabBar } from '@/components/dashboard/MobileTabBar'
 import { Sidebar } from '@/components/dashboard/Sidebar'
@@ -18,7 +19,8 @@ import { StatsPanel } from '@/components/mock-exams/StatsPanel'
 import { useAuth } from '@/context/AuthContext'
 import { MOCK_EXAMS, type MockExam } from '@/data/mock-exams-data'
 import { quizSets } from '@/data/quiz-data'
-import { getAggregatedExamStats, getExamHistory } from '@/lib/examHistory'
+import { buildCombinedAttempts, overallAveragePercent } from '@/lib/dashboardStats'
+import { getExamHistory } from '@/lib/examHistory'
 import { fadeUpItem, staggerContainer } from '@/lib/motion'
 import { peekStudyStreak } from '@/lib/streak'
 import { SECONDS_PER_QUESTION } from '@/lib/time'
@@ -65,6 +67,21 @@ export function MockExamsPage() {
   const [difficultyFilter, setDifficultyFilter] = useState('All Levels')
   const [durationFilter, setDurationFilter] = useState('All Durations')
   const [sort, setSort] = useState<SortOption>('recent')
+  const [bankSessions, setBankSessions] = useState<ExamSessionSummary[]>([])
+
+  useEffect(() => {
+    let cancelled = false
+    listMyExamSessions()
+      .then((sessions) => {
+        if (!cancelled) setBankSessions(sessions)
+      })
+      .catch(() => {
+        // No real sessions yet is a valid state — stats just show zero/dash.
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [])
 
   const userCourse = user?.course ?? 'cpa'
   const allExams = useMemo(
@@ -107,10 +124,16 @@ export function MockExamsPage() {
     })
   }, [allExams, typeFilter, subjectFilter, difficultyFilter, durationFilter, sort])
 
-  const { examsTaken, averageScore, bestScore } = getAggregatedExamStats(
-    userId,
-    quizSets.map((s) => s.id),
+  const attempts = useMemo(
+    () => buildCombinedAttempts(userId, quizSets, bankSessions),
+    [userId, bankSessions],
   )
+  const examsTaken = attempts.length
+  const averageScore = overallAveragePercent(attempts)
+  const bestScore =
+    attempts.length === 0
+      ? null
+      : Math.max(...attempts.map((a) => (a.total > 0 ? Math.round((a.correct / a.total) * 100) : 0)))
   const studyStreak = peekStudyStreak(userId)
 
   return (

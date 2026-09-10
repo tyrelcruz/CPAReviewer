@@ -28,6 +28,9 @@ export interface QuizQuestion {
   /** Per-question — one exam can mix MCQ and identification questions.
    * Missing (legacy static quiz sets) is treated as 'mcq'. */
   answerMode?: 'mcq' | 'identification'
+  /** Curated alternate phrasings accepted for identification-mode grading
+   * (see types/bank.ts) — missing/empty for legacy static quiz sets. */
+  acceptableAnswers?: string[]
 }
 
 export interface QuizSet {

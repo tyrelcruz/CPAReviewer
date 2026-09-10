@@ -1,0 +1,2603 @@
+[
+    {
+      "id": "BB-Week3-Q001",
+      "prompt": "Which of the following chemicals in anticoagulant preservative solutions function to maintain pH during storage and necessary for the maintenance of adequate levels of 2,3-DPG?",
+      "choices": [
+        { "id": "A", "text": "Adenine" },
+        { "id": "B", "text": "Dextrose" },
+        { "id": "C", "text": "Monosodium basic phosphate" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "Adenine supports red-cell metabolism and preservative function during storage, as indicated by the source material.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Components and Storage", "subTopic": "Additive solutions", "tosCode": "C.1", "cognitiveLevel": "Knowledge", "difficulty": "Moderate" },
+      "canonicalConcept": "Adenine function in anticoagulant preservative solutions",
+      "reviewNote": "The highlighted source answer is A, although phosphate buffer is the more defensible answer for maintaining pH and 2,3-DPG."
+    },
+    {
+      "id": "BB-Week3-Q002",
+      "prompt": "The principle of the rapid plasma reagin test is:",
+      "choices": [
+        { "id": "A", "text": "direct agglutination" },
+        { "id": "B", "text": "reverse passive agglutination" },
+        { "id": "C", "text": "enzyme inhibition/neutralization" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "The source identifies direct agglutination as the reaction principle for the rapid plasma reagin test.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Syphilis testing", "tosCode": "A.5", "cognitiveLevel": "Knowledge", "difficulty": "Moderate" },
+      "canonicalConcept": "Rapid plasma reagin test principle",
+      "reviewNote": "The reconstructed choices omit flocculation, the standard principle of RPR; the source-highlighted answer was retained."
+    },
+    {
+      "id": "BB-Week3-Q003",
+      "prompt": "The docking glycoprotein of HIV is:",
+      "choices": [
+        { "id": "A", "text": "gp120" },
+        { "id": "B", "text": "gp41" },
+        { "id": "C", "text": "p24" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "HIV gp120 is the envelope glycoprotein that docks with the CD4 receptor and a coreceptor during cell attachment.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "HIV markers", "tosCode": "A.5", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "HIV gp120 docking glycoprotein"
+    },
+    {
+      "id": "BB-Week3-Q004",
+      "prompt": "This/These type of agglutination reactions employ/s the use of particles that are coated with antigens not normally found on their surfaces.",
+      "choices": [
+        { "id": "A", "text": "Passive agglutination" },
+        { "id": "B", "text": "Indirect agglutination" },
+        { "id": "C", "text": "Reverse passive agglutination" },
+        { "id": "D", "text": "Both A and B" }
+      ],
+      "correctChoiceId": "D",
+      "rationale": "Passive agglutination and indirect agglutination are equivalent terms for coating carrier particles with soluble antigen to detect antibody.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Agglutination reactions", "tosCode": "A.1", "cognitiveLevel": "Comprehension", "difficulty": "Moderate" },
+      "canonicalConcept": "Passive agglutination using antigen-coated particles"
+    },
+    {
+      "id": "BB-Week3-Q005",
+      "prompt": "Which of the following is/are true regarding the technique called EMIT?",
+      "choices": [
+        { "id": "A", "text": "It is developed by Syva Corporation" },
+        { "id": "B", "text": "It is a homogenous assay" },
+        { "id": "C", "text": "The amount of unknown is directly proportional to the intensity of the colored product produced" },
+        { "id": "D", "text": "Both A and B" }
+      ],
+      "correctChoiceId": "D",
+      "rationale": "EMIT was developed by Syva and is a homogeneous enzyme immunoassay; its enzyme activity is inversely related to analyte concentration.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Homogeneous enzyme immunoassays", "tosCode": "A.3", "cognitiveLevel": "Comprehension", "difficulty": "Moderate" },
+      "canonicalConcept": "EMIT developer and homogeneous assay characteristics"
+    },
+    {
+      "id": "BB-Week3-Q006",
+      "prompt": "Which of the following is TRUE in immunofixation electrophoresis?",
+      "choices": [
+        { "id": "A", "text": "Antiserum is directly placed on the gel surface" },
+        { "id": "B", "text": "Discovered by Grabar and Williams" },
+        { "id": "C", "text": "Reaction usually takes place within 1 hour" },
+        { "id": "D", "text": "Both A and C" }
+      ],
+      "correctChoiceId": "D",
+      "rationale": "In immunofixation, separated proteins are reacted by applying specific antiserum directly to the gel, and fixation is completed rapidly. Grabar and Williams devised immunoelectrophoresis rather than immunofixation.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Immunofixation electrophoresis", "tosCode": "A.2", "cognitiveLevel": "Knowledge", "difficulty": "Moderate" },
+      "canonicalConcept": "Immunofixation electrophoresis procedure"
+    },
+    {
+      "id": "BB-Week3-Q007",
+      "prompt": "The following is/are label/s used during enzyme immunoassay:",
+      "choices": [
+        { "id": "A", "text": "HRP" },
+        { "id": "B", "text": "ALP" },
+        { "id": "C", "text": "beta-galactosidase" },
+        { "id": "D", "text": "Both A and B" }
+      ],
+      "correctChoiceId": "D",
+      "rationale": "Horseradish peroxidase and alkaline phosphatase are the most commonly used enzyme labels in enzyme immunoassays.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Enzyme labels", "tosCode": "A.3", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "Common enzyme labels in enzyme immunoassays"
+    },
+    {
+      "id": "BB-Week3-Q008",
+      "prompt": "They published the first report about the ability of antibody to clump cells, based on observations of agglutination of bacterial cells by serum.",
+      "choices": [
+        { "id": "A", "text": "Gruber and Durham" },
+        { "id": "B", "text": "Ehrlich and Porter" },
+        { "id": "C", "text": "Alper and Johnson" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "Gruber and Durham reported bacterial agglutination by serum, establishing the classic observation of antibody-mediated clumping.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Historical discoveries", "tosCode": "A.1", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "First report of antibody-mediated bacterial agglutination"
+    },
+    {
+      "id": "BB-Week3-Q009",
+      "prompt": "The manufacturer of Adsol is:",
+      "choices": [
+        { "id": "A", "text": "Fenwal Corp." },
+        { "id": "B", "text": "Nutricel" },
+        { "id": "C", "text": "Terumo Corporation" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "Adsol is the AS-1 additive system manufactured by Fenwal; Optisol is associated with Terumo.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Components and Storage", "subTopic": "Additive systems", "tosCode": "C.1", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "Adsol manufacturer"
+    },
+    {
+      "id": "BB-Week3-Q010",
+      "prompt": "The principle of anti-DNAse B testing is/are:",
+      "choices": [
+        { "id": "A", "text": "neutralization" },
+        { "id": "B", "text": "precipitation" },
+        { "id": "C", "text": "enzyme immunoassay" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "Anti-DNase B testing is based on neutralization of streptodornase activity by patient antibody.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Streptococcal antibody tests", "tosCode": "A.5", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "Anti-DNase B neutralization principle"
+    },
+    {
+      "id": "BB-Week3-Q011",
+      "prompt": "Which of the following combinations of bands would represent a positive Western blot for HIV antibody?",
+      "choices": [
+        { "id": "A", "text": "p24 and p55" },
+        { "id": "B", "text": "p24 and p31" },
+        { "id": "C", "text": "gp41 and gp120" }
+      ],
+      "correctChoiceId": "C",
+      "rationale": "A positive HIV Western blot requires reactivity to at least two envelope bands; gp41 plus gp120 satisfies that criterion.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "HIV confirmatory testing", "tosCode": "A.5", "cognitiveLevel": "Application", "difficulty": "Moderate" },
+      "canonicalConcept": "Positive HIV Western blot envelope-band criterion"
+    },
+    {
+      "id": "BB-Week3-Q012",
+      "prompt": "The resulting dilution if 2 ml of diluent is mixed with 8 ml of serum sample is:",
+      "choices": [
+        { "id": "A", "text": "1:10" },
+        { "id": "B", "text": "1:5" },
+        { "id": "C", "text": "1:15" }
+      ],
+      "correctChoiceId": "B",
+      "rationale": "The source key gives 1:5 for this stated serum-to-diluent combination.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Laboratory Calculations", "subTopic": "Dilution factors", "tosCode": "E.1", "cognitiveLevel": "Application", "difficulty": "Moderate" },
+      "canonicalConcept": "Serum dilution calculation",
+      "reviewNote": "The source highlighted 1:5, although the usual dilution-factor convention for 8 mL sample plus 2 mL diluent is 1:1.25."
+    },
+    {
+      "id": "BB-Week3-Q013",
+      "prompt": "Among the following antigens, the one that reacts the strongest with Ulex europaeus is:",
+      "choices": [
+        { "id": "A", "text": "A1" },
+        { "id": "B", "text": "B" },
+        { "id": "C", "text": "O" }
+      ],
+      "correctChoiceId": "C",
+      "rationale": "Ulex europaeus lectin detects H antigen, which is strongest on group O red cells because O cells are not modified by A or B transferases.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "ABO antigens and H lectin", "tosCode": "B.1", "cognitiveLevel": "Comprehension", "difficulty": "Moderate" },
+      "canonicalConcept": "Ulex europaeus strongest reaction with group O cells"
+    },
+    {
+      "id": "BB-Week3-Q014",
+      "prompt": "What group of precipitation reactions does not require electric current to hasten antigen-antibody reactions in the gel medium?",
+      "choices": [
+        { "id": "A", "text": "Immunodiffusion techniques" },
+        { "id": "B", "text": "Electrophoretic techniques" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "Passive immunodiffusion allows antigen and antibody to diffuse through gel without applied electrical current.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Immunodiffusion", "tosCode": "A.2", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "Passive immunodiffusion does not use electric current"
+    },
+    {
+      "id": "BB-Week3-Q015",
+      "prompt": "In the Mancini method, equivalence zone is typically reached within:",
+      "choices": [
+        { "id": "A", "text": "24 and 72 hours" },
+        { "id": "B", "text": "10-12 hours" },
+        { "id": "C", "text": "15-19 hours" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "The endpoint Mancini radial immunodiffusion procedure is incubated for approximately 24 to 72 hours to reach equivalence.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Radial immunodiffusion", "tosCode": "A.2", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "Mancini method incubation time"
+    },
+    {
+      "id": "BB-Week3-Q016",
+      "prompt": "Which of the following technique/s is/are employed in the detection of group A streptococcal antigens?",
+      "choices": [
+        { "id": "A", "text": "Lateral flow immunochromatographic assay" },
+        { "id": "B", "text": "streptozyme test" },
+        { "id": "C", "text": "anti-streptolysin O testing" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "Lateral-flow immunochromatography directly detects group A streptococcal antigen; streptozyme and ASO tests detect host antibody.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Streptococcal antigen detection", "tosCode": "A.5", "cognitiveLevel": "Knowledge", "difficulty": "Moderate" },
+      "canonicalConcept": "Group A streptococcal antigen detection method"
+    },
+    {
+      "id": "BB-Week3-Q017",
+      "prompt": "Which is TRUE in indirect immunofluorescence?",
+      "choices": [
+        { "id": "A", "text": "antibody is the unknown" },
+        { "id": "B", "text": "more common than direct immunofluorescence" },
+        { "id": "C", "text": "a fluorescent labelled AHG is used in this test" },
+        { "id": "D", "text": "All of the above" }
+      ],
+      "correctChoiceId": "D",
+      "rationale": "Indirect immunofluorescence uses a fluorescent anti-human globulin, is more versatile and common than direct IF, and can be used with unknown serum antibody.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Immunofluorescence", "tosCode": "A.4", "cognitiveLevel": "Comprehension", "difficulty": "Moderate" },
+      "canonicalConcept": "Indirect immunofluorescence characteristics"
+    },
+    {
+      "id": "BB-Week3-Q018",
+      "prompt": "Which of the following can be utilized to monitor the effectiveness of Hepatitis B therapy?",
+      "choices": [
+        { "id": "A", "text": "HBsAg" },
+        { "id": "B", "text": "anti-HBs" },
+        { "id": "C", "text": "HBV DNA" }
+      ],
+      "correctChoiceId": "C",
+      "rationale": "HBV DNA quantitation reflects viral replication and is used to assess response to antiviral therapy.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Hepatitis B markers", "tosCode": "A.5", "cognitiveLevel": "Comprehension", "difficulty": "Easy" },
+      "canonicalConcept": "HBV DNA monitoring of hepatitis B therapy"
+    },
+    {
+      "id": "BB-Week3-Q019",
+      "prompt": "The gold standard for the diagnosis of Rocky Mountain spotted fever is:",
+      "choices": [
+        { "id": "A", "text": "indirect immunofluorescence assay with R. rickettsii antigen" },
+        { "id": "B", "text": "weil-felix test" },
+        { "id": "C", "text": "widal test" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "The indirect fluorescent antibody test using Rickettsia rickettsii antigen is the reference serologic method for Rocky Mountain spotted fever.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Rickettsial serology", "tosCode": "A.5", "cognitiveLevel": "Knowledge", "difficulty": "Moderate" },
+      "canonicalConcept": "Gold standard serology for Rocky Mountain spotted fever"
+    },
+    {
+      "id": "BB-Week3-Q020",
+      "prompt": "ABO discrepancies due to the following conditions can be corrected using saline replacement technique:",
+      "choices": [
+        { "id": "A", "text": "multiple myeloma" },
+        { "id": "B", "text": "acquired B phenomenon" },
+        { "id": "C", "text": "Cis AB phenomenon" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "Saline replacement helps resolve rouleaux caused by abnormal plasma proteins, as in multiple myeloma.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "ABO discrepancies", "tosCode": "B.1", "cognitiveLevel": "Application", "difficulty": "Moderate" },
+      "canonicalConcept": "Saline replacement correction for rouleaux-related ABO discrepancy"
+    },
+    {
+      "id": "BB-Week3-Q021",
+      "prompt": "A2 phenotype is characterized by all of the following, except:",
+      "choices": [
+        { "id": "A", "text": "has A and A1 antigens" },
+        { "id": "B", "text": "reacts with Dolichos biflorus" },
+        { "id": "C", "text": "reacts with the blue antisera" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "A2 red cells carry A antigen but lack A1 antigen, while retaining Dolichos biflorus reactivity characteristic of A subgroups.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "ABO subgroups", "tosCode": "B.1", "cognitiveLevel": "Comprehension", "difficulty": "Moderate" },
+      "canonicalConcept": "A2 red-cell antigen expression"
+    },
+    {
+      "id": "BB-Week3-Q022",
+      "prompt": "The pronounced complication for this type of viral hepatitis is fulminant liver failure among pregnant women:",
+      "choices": [
+        { "id": "A", "text": "Hepatitis A" },
+        { "id": "B", "text": "Hepatitis B" },
+        { "id": "C", "text": "Hepatitis E" }
+      ],
+      "correctChoiceId": "C",
+      "rationale": "Hepatitis E infection in pregnancy, especially the third trimester, carries an increased risk of fulminant hepatic failure.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Viral hepatitis", "tosCode": "A.5", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "Hepatitis E fulminant liver failure in pregnancy"
+    },
+    {
+      "id": "BB-Week3-Q023",
+      "prompt": "The stage of syphilis that follows the disappearance of secondary syphilis:",
+      "choices": [
+        { "id": "A", "text": "primary" },
+        { "id": "B", "text": "tertiary" },
+        { "id": "C", "text": "latent" }
+      ],
+      "correctChoiceId": "C",
+      "rationale": "After secondary lesions resolve, untreated syphilis enters the asymptomatic latent stage before possible tertiary disease.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Syphilis stages", "tosCode": "A.5", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "Latent syphilis follows secondary syphilis"
+    },
+    {
+      "id": "BB-Week3-Q024",
+      "prompt": "Which of the following gene/s cannot lead to null phenotype?",
+      "choices": [
+        { "id": "A", "text": "silent gene" },
+        { "id": "B", "text": "regulator gene" },
+        { "id": "C", "text": "amorphic gene" },
+        { "id": "D", "text": "None of the choices" }
+      ],
+      "correctChoiceId": "D",
+      "rationale": "Silent, amorphic, and regulator mechanisms can all produce a null phenotype; therefore none of the listed categories is excluded.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "Null phenotypes", "tosCode": "B.6", "cognitiveLevel": "Analysis", "difficulty": "Difficult" },
+      "canonicalConcept": "Genetic mechanisms producing blood-group null phenotypes"
+    },
+    {
+      "id": "BB-Week3-Q025",
+      "prompt": "The following is/are characteristics of type 1 precursor substance?",
+      "choices": [
+        { "id": "A", "text": "it is required in the synthesis of ABH antigens in red cell membrane" },
+        { "id": "B", "text": "it has beta 1a4 linkage" },
+        { "id": "C", "text": "it is present in secretions and body fluids" }
+      ],
+      "correctChoiceId": "C",
+      "rationale": "Type 1 chains are found predominantly in secretions and body fluids; red-cell ABH antigens mainly use type 2 chains.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "ABH precursor chains", "tosCode": "B.1", "cognitiveLevel": "Comprehension", "difficulty": "Difficult" },
+      "canonicalConcept": "Type 1 precursor chain distribution"
+    },
+    {
+      "id": "BB-Week3-Q026",
+      "prompt": "An ASO titer and a streptozyme test are performed on a patient's serum. The ASO titer is negative, the streptozyme test is positive, and both the positive and negative controls react appropriately. What can you conclude from these test results?",
+      "choices": [
+        { "id": "A", "text": "The ASO is falsely negative" },
+        { "id": "B", "text": "The patient has antibody to Streptococcal antigen other than Streptolysin O" },
+        { "id": "C", "text": "The patient has scarlet fever" }
+      ],
+      "correctChoiceId": "B",
+      "rationale": "A positive streptozyme test with a negative ASO indicates antibody to one or more non-streptolysin O streptococcal antigens.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Pre-Test; BB PT.1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Streptococcal antibody interpretation", "tosCode": "A.5", "cognitiveLevel": "Analysis", "difficulty": "Moderate" },
+      "canonicalConcept": "Negative ASO with positive streptozyme interpretation"
+    },
+    {
+      "id": "BB-Week3-Q027",
+      "prompt": "Technique/s that measures the light that is scattered at a particular angle from the incident beam as it passes through a suspension:",
+      "choices": [
+        { "id": "A", "text": "Turbidimetry" },
+        { "id": "B", "text": "Nephelometry" },
+        { "id": "C", "text": "Stoichiometry" }
+      ],
+      "correctChoiceId": "B",
+      "rationale": "Nephelometry measures light scattered at a defined angle away from the incident beam.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Light-scattering methods", "tosCode": "A.6", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "Nephelometry measures scattered light at an angle"
+    },
+    {
+      "id": "BB-Week3-Q028",
+      "prompt": "In FTA-Abs test, which of the following strains of treponema is used to coat the slide to be utilized for testing?",
+      "choices": [
+        { "id": "A", "text": "Nichols" },
+        { "id": "B", "text": "Reiter" },
+        { "id": "C", "text": "Camry" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "The FTA-ABS substrate uses Nichols strain Treponema pallidum antigen fixed to the slide.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Syphilis testing", "tosCode": "A.5", "cognitiveLevel": "Knowledge", "difficulty": "Moderate" },
+      "canonicalConcept": "Nichols strain used in FTA-ABS"
+    },
+    {
+      "id": "BB-Week3-Q029",
+      "prompt": "The following phenotype/s is/are product/s of genes exhibiting dosage effect:",
+      "choices": [
+        { "id": "A", "text": "Fy(a+b+)" },
+        { "id": "B", "text": "Jk(a+b+)" },
+        { "id": "C", "text": "E+e+" },
+        { "id": "D", "text": "All of the above" }
+      ],
+      "correctChoiceId": "D",
+      "rationale": "Each listed phenotype is heterozygous at an antigen locus and may demonstrate dosage, giving weaker reactions than homozygous cells.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "Dosage effect", "tosCode": "B.6", "cognitiveLevel": "Analysis", "difficulty": "Moderate" },
+      "canonicalConcept": "Heterozygous blood-group phenotypes showing dosage effect"
+    },
+    {
+      "id": "BB-Week3-Q030",
+      "prompt": "ABO antibodies are characterized by which of the following?",
+      "choices": [
+        { "id": "A", "text": "produced 3-6 weeks after birth" },
+        { "id": "B", "text": "immune/acquired antibodies" },
+        { "id": "C", "text": "production peaks at 10 months after birth" }
+      ],
+      "correctChoiceId": "B",
+      "rationale": "ABO antibodies are acquired through environmental stimulation rather than being true alloimmune antibodies.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "ABO antibodies", "tosCode": "B.1", "cognitiveLevel": "Comprehension", "difficulty": "Moderate" },
+      "canonicalConcept": "ABO antibodies are acquired through environmental stimulation"
+    },
+    {
+      "id": "BB-Week3-Q031",
+      "prompt": "Which of the following is true for the Fahey and McKelvey method?",
+      "choices": [
+        { "id": "A", "text": "It is also known as the kinetic method" },
+        { "id": "B", "text": "It uses semilog paper in plotting the standard curve" },
+        { "id": "C", "text": "The concentration of the antigen is inversely related to the diameter of the precipitin rings produced in the gel" },
+        { "id": "D", "text": "Both A and B" }
+      ],
+      "correctChoiceId": "D",
+      "rationale": "Fahey-McKelvey is the kinetic radial immunodiffusion method and uses semilogarithmic graph paper for early-phase ring diameters.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Radial immunodiffusion", "tosCode": "A.2", "cognitiveLevel": "Knowledge", "difficulty": "Moderate" },
+      "canonicalConcept": "Fahey-McKelvey kinetic radial immunodiffusion"
+    },
+    {
+      "id": "BB-Week3-Q032",
+      "prompt": "What ingredient is added to the RPR reagent?",
+      "choices": [
+        { "id": "A", "text": "charcoal" },
+        { "id": "B", "text": "lecithin" },
+        { "id": "C", "text": "EDTA" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "Macroscopic RPR card antigen contains finely divided charcoal to make antigen-antibody clumping visible.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Syphilis testing", "tosCode": "A.5", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "Charcoal in macroscopic RPR reagent"
+    },
+    {
+      "id": "BB-Week3-Q033",
+      "prompt": "Which test for syphilis detects reagin?",
+      "choices": [
+        { "id": "A", "text": "TPHA" },
+        { "id": "B", "text": "RPR" },
+        { "id": "C", "text": "VDRL" },
+        { "id": "D", "text": "Both B and C" }
+      ],
+      "correctChoiceId": "D",
+      "rationale": "RPR and VDRL are nontreponemal tests that detect reagin antibody against cardiolipin; TPHA detects specific treponemal antibody.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Syphilis testing", "tosCode": "A.5", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "Nontreponemal tests detect reagin"
+    },
+    {
+      "id": "BB-Week3-Q034",
+      "prompt": "Which is not an example of a regulator gene?",
+      "choices": [
+        { "id": "A", "text": "Fyx" },
+        { "id": "B", "text": "le" },
+        { "id": "C", "text": "In(Jk)" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "Fyx is a weak Duffy allele, whereas le and In(Jk) regulate expression of Lewis and Kidd antigens.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "Regulator genes", "tosCode": "B.6", "cognitiveLevel": "Knowledge", "difficulty": "Moderate" },
+      "canonicalConcept": "Fyx is not a regulator gene"
+    },
+    {
+      "id": "BB-Week3-Q035",
+      "prompt": "Step/s in agglutination reactions:",
+      "choices": [
+        { "id": "A", "text": "Sensitization" },
+        { "id": "B", "text": "Formation of lattice" },
+        { "id": "C", "text": "Turbidity changes" },
+        { "id": "D", "text": "Both A and B" }
+      ],
+      "correctChoiceId": "D",
+      "rationale": "Agglutination proceeds through antibody sensitization of cells followed by cross-linking into a visible lattice.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Agglutination reactions", "tosCode": "A.1", "cognitiveLevel": "Comprehension", "difficulty": "Easy" },
+      "canonicalConcept": "Sensitization and lattice formation in agglutination"
+    },
+    {
+      "id": "BB-Week3-Q036",
+      "prompt": "Monosodium basic phosphate is present in:",
+      "choices": [
+        { "id": "A", "text": "ACD-A" },
+        { "id": "B", "text": "CPD" },
+        { "id": "C", "text": "CPDA-1" }
+      ],
+      "correctChoiceId": "B",
+      "rationale": "CPD contains monobasic sodium phosphate as a buffer; CPDA-1 differs by adding adenine.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Components and Storage", "subTopic": "Anticoagulant preservative solutions", "tosCode": "C.1", "cognitiveLevel": "Knowledge", "difficulty": "Moderate" },
+      "canonicalConcept": "Monobasic sodium phosphate in CPD"
+    },
+    {
+      "id": "BB-Week3-Q037",
+      "prompt": "Which of the following is/are application of immunoelectrophoresis?",
+      "choices": [
+        { "id": "A", "text": "Differentiation of serum proteins" },
+        { "id": "B", "text": "Over- or underproduction antibody" },
+        { "id": "C", "text": "Complex antigens such as fungal antigens" },
+        { "id": "D", "text": "All of the above" }
+      ],
+      "correctChoiceId": "D",
+      "rationale": "Immunoelectrophoresis can characterize serum protein patterns, antibody overproduction or deficiency, and complex antigen mixtures.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Immunoelectrophoresis", "tosCode": "A.2", "cognitiveLevel": "Knowledge", "difficulty": "Moderate" },
+      "canonicalConcept": "Applications of immunoelectrophoresis"
+    },
+    {
+      "id": "BB-Week3-Q038",
+      "prompt": "The following may be complication/s during tertiary stage of syphilis:",
+      "choices": [
+        { "id": "A", "text": "gummas" },
+        { "id": "B", "text": "cardiovascular involvement" },
+        { "id": "C", "text": "neurosyphilis" },
+        { "id": "D", "text": "All of the above" }
+      ],
+      "correctChoiceId": "D",
+      "rationale": "Tertiary syphilis may produce gummatous, cardiovascular, and neurologic complications.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Syphilis stages", "tosCode": "A.5", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "Tertiary syphilis complications"
+    },
+    {
+      "id": "BB-Week3-Q039",
+      "prompt": "ABO discrepancies due to the following conditions can be corrected by acidifying the yellow antisera and testing using the lectin Bandeiraea simplicifolia II:",
+      "choices": [
+        { "id": "A", "text": "Multiple myeloma" },
+        { "id": "B", "text": "Acquired B phenomenon" },
+        { "id": "C", "text": "Cis AB phenomenon" }
+      ],
+      "correctChoiceId": "B",
+      "rationale": "Acquired B cells show weakened or altered B reactivity that can be clarified by acidifying anti-B and using BS-II lectin.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "ABO discrepancies", "tosCode": "B.1", "cognitiveLevel": "Application", "difficulty": "Difficult" },
+      "canonicalConcept": "Acquired B discrepancy resolved with acidified anti-B and BS-II"
+    },
+    {
+      "id": "BB-Week3-Q040",
+      "prompt": "Nephelometers typically measure light scatter at angles ranging from:",
+      "choices": [
+        { "id": "A", "text": "1-9 degrees" },
+        { "id": "B", "text": "15-90 degrees" },
+        { "id": "C", "text": "360 degrees" }
+      ],
+      "correctChoiceId": "B",
+      "rationale": "Nephelometers detect light scattered away from the transmitted beam, commonly over forward and side angles such as 15 to 90 degrees.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Light-scattering methods", "tosCode": "A.6", "cognitiveLevel": "Knowledge", "difficulty": "Moderate" },
+      "canonicalConcept": "Nephelometer measurement angle range"
+    },
+    {
+      "id": "BB-Week3-Q041",
+      "prompt": "The shelf-life of blood placed with AS-1 is:",
+      "choices": [
+        { "id": "A", "text": "21 days" },
+        { "id": "B", "text": "35 days" },
+        { "id": "C", "text": "42 days" }
+      ],
+      "correctChoiceId": "B",
+      "rationale": "Packed red cells in AS-1 additive solution have a storage period of 35 days.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Components and Storage", "subTopic": "Red-cell shelf life", "tosCode": "C.1", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "AS-1 red-cell shelf life"
+    },
+    {
+      "id": "BB-Week3-Q042",
+      "prompt": "If a person with A2 phenotype has anti-A1 in his/her serum, which of the following blood type interpretation will be deduced during reverse typing?",
+      "choices": [
+        { "id": "A", "text": "A" },
+        { "id": "B", "text": "B" },
+        { "id": "C", "text": "AB" }
+      ],
+      "correctChoiceId": "B",
+      "rationale": "Anti-A1 agglutinates reagent A1 cells in reverse grouping, producing a pattern that may be misinterpreted as group B.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "ABO subgroups", "tosCode": "B.1", "cognitiveLevel": "Application", "difficulty": "Difficult" },
+      "canonicalConcept": "A2 anti-A1 effect on reverse typing"
+    },
+    {
+      "id": "BB-Week3-Q043",
+      "prompt": "Among the following antigens, the one that reacts the weakest with Ulex europaeus is:",
+      "choices": [
+        { "id": "A", "text": "A1" },
+        { "id": "B", "text": "B" },
+        { "id": "C", "text": "O" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "A1 cells have the least residual H antigen among the listed groups because A1 transferase strongly converts H to A antigen.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "ABO antigens and H lectin", "tosCode": "B.1", "cognitiveLevel": "Comprehension", "difficulty": "Moderate" },
+      "canonicalConcept": "Weakest Ulex europaeus reaction with A1 cells"
+    },
+    {
+      "id": "BB-Week3-Q044",
+      "prompt": "In direct immunofluorescence, which of the following is not TRUE?",
+      "choices": [
+        { "id": "A", "text": "Antibody is the unknown" },
+        { "id": "B", "text": "More common than indirect type of immunofluorescence" },
+        { "id": "C", "text": "Uses fluorescent-labelled anti-human globulin" },
+        { "id": "D", "text": "All of the above" }
+      ],
+      "correctChoiceId": "D",
+      "rationale": "Direct IF uses a known fluorescent antibody to detect antigen, is less common than indirect IF, and does not use fluorescent anti-human globulin.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Immunofluorescence", "tosCode": "A.4", "cognitiveLevel": "Analysis", "difficulty": "Moderate" },
+      "canonicalConcept": "Direct versus indirect immunofluorescence"
+    },
+    {
+      "id": "BB-Week3-Q045",
+      "prompt": "ABO antigens are characterized by:",
+      "choices": [
+        { "id": "A", "text": "production starts at 5-6 weeks after birth" },
+        { "id": "B", "text": "present in lymphocytes and platelets" },
+        { "id": "C", "text": "may have decreased expression on red cells due to some conditions like leukemia and lymphomas" },
+        { "id": "D", "text": "Both B and C" }
+      ],
+      "correctChoiceId": "D",
+      "rationale": "ABO antigens appear early in fetal development and can be present on platelets and lymphocytes; expression may weaken in hematologic malignancies.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "ABO antigens", "tosCode": "B.1", "cognitiveLevel": "Comprehension", "difficulty": "Moderate" },
+      "canonicalConcept": "ABO antigen distribution and weakened expression"
+    },
+    {
+      "id": "BB-Week3-Q046",
+      "prompt": "How much diluent is needed to make a 1:10 dilution if the aliquot is 1 mL?",
+      "choices": [
+        { "id": "A", "text": "0.1 mL" },
+        { "id": "B", "text": "9 mL" },
+        { "id": "C", "text": "10 mL" }
+      ],
+      "correctChoiceId": "B",
+      "rationale": "A 1:10 final dilution requires a total volume ten times the 1 mL aliquot, so 9 mL of diluent is added.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Laboratory Calculations", "subTopic": "Dilution factors", "tosCode": "E.1", "cognitiveLevel": "Application", "difficulty": "Easy" },
+      "canonicalConcept": "Diluent volume for a 1:10 dilution"
+    },
+    {
+      "id": "BB-Week3-Q047",
+      "prompt": "Which of the following is/are TRUE in the technique Cloned Enzyme Donor Immunoassay?",
+      "choices": [
+        { "id": "A", "text": "Antibody is the unknown" },
+        { "id": "B", "text": "It is a heterogeneous assay" },
+        { "id": "C", "text": "The amount of unknown is inversely proportional to the intensity of the colored product produced" }
+      ],
+      "correctChoiceId": "C",
+      "rationale": "CEDIA is a homogeneous competitive immunoassay in which increasing analyte reduces enzyme complementation and color development.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Homogeneous enzyme immunoassays", "tosCode": "A.3", "cognitiveLevel": "Comprehension", "difficulty": "Moderate" },
+      "canonicalConcept": "CEDIA inverse analyte-enzyme activity relationship"
+    },
+    {
+      "id": "BB-Week3-Q048",
+      "prompt": "All of the following are factors affecting passive immunodiffusion techniques, except:",
+      "choices": [
+        { "id": "A", "text": "Size of antigen" },
+        { "id": "B", "text": "Amount of hydration" },
+        { "id": "C", "text": "Temperature" },
+        { "id": "D", "text": "Electric current" }
+      ],
+      "correctChoiceId": "D",
+      "rationale": "Diffusion depends on molecular size, gel hydration, and temperature, but passive immunodiffusion does not require electric current.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Immunodiffusion", "tosCode": "A.2", "cognitiveLevel": "Comprehension", "difficulty": "Moderate" },
+      "canonicalConcept": "Factors affecting passive immunodiffusion"
+    },
+    {
+      "id": "BB-Week3-Q049",
+      "prompt": "The classic serologic test used to detect rickettsial infections in the past using Proteus antigen:",
+      "choices": [
+        { "id": "A", "text": "Weil-Felix test" },
+        { "id": "B", "text": "Widal test" },
+        { "id": "C", "text": "FTA-ABS" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "The Weil-Felix test historically detects rickettsial infection through cross-reacting Proteus OX antigens.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Rickettsial serology", "tosCode": "A.5", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "Weil-Felix test for rickettsial infection"
+    },
+    {
+      "id": "BB-Week3-Q050",
+      "prompt": "Which of the following detects antibodies to multiple antigens of GAS?",
+      "choices": [
+        { "id": "A", "text": "ASO testing" },
+        { "id": "B", "text": "PCR" },
+        { "id": "C", "text": "Streptozyme test" }
+      ],
+      "correctChoiceId": "C",
+      "rationale": "The Streptozyme test simultaneously screens for antibodies to several group A streptococcal extracellular antigens.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Streptococcal antibody tests", "tosCode": "A.5", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "Streptozyme detects multiple streptococcal antibodies"
+    },
+    {
+      "id": "BB-Week3-Q051",
+      "prompt": "Which of the following genotypes can lead to a weaker expression of Fya antigen?",
+      "choices": [
+        { "id": "A", "text": "FyaFyb" },
+        { "id": "B", "text": "Fy0Fyb" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "Heterozygous FyaFyb cells show dosage-related weaker Fya expression compared with homozygous FyaFya cells.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "Duffy dosage effect", "tosCode": "B.6", "cognitiveLevel": "Comprehension", "difficulty": "Moderate" },
+      "canonicalConcept": "Heterozygous Fya expression is weaker"
+    },
+    {
+      "id": "BB-Week3-Q052",
+      "prompt": "Which of the following is regarded as the general marker of acute and chronic Hepatitis B infection?",
+      "choices": [
+        { "id": "A", "text": "HBsAg" },
+        { "id": "B", "text": "anti-HBs" },
+        { "id": "C", "text": "HBV DNA" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "HBsAg is the routine general serologic marker indicating current acute or chronic hepatitis B infection.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Hepatitis B markers", "tosCode": "A.5", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "HBsAg as current hepatitis B infection marker",
+      "acceptableAnswers": ["Hepatitis B surface antigen"]
+    },
+    {
+      "id": "BB-Week3-Q053",
+      "prompt": "The capsid of HIV is made of which antigen/s?",
+      "choices": [
+        { "id": "A", "text": "gp120" },
+        { "id": "B", "text": "gp41" },
+        { "id": "C", "text": "p24" }
+      ],
+      "correctChoiceId": "C",
+      "rationale": "p24 is the HIV core capsid protein; gp120 and gp41 are envelope glycoproteins.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "HIV markers", "tosCode": "A.5", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "HIV p24 capsid antigen"
+    },
+    {
+      "id": "BB-Week3-Q054",
+      "prompt": "The following is/are label/s used during fluorescent immunoassay:",
+      "choices": [
+        { "id": "A", "text": "luminol" },
+        { "id": "B", "text": "acridinium esters" },
+        { "id": "C", "text": "peroxyoxalates" },
+        { "id": "D", "text": "All of the above" }
+      ],
+      "correctChoiceId": "D",
+      "rationale": "These compounds are chemiluminescent labels or signal-producing systems used in labeled immunoassays.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Chemiluminescent labels", "tosCode": "A.3", "cognitiveLevel": "Knowledge", "difficulty": "Moderate" },
+      "canonicalConcept": "Chemiluminescent immunoassay labels"
+    },
+    {
+      "id": "BB-Week3-Q055",
+      "prompt": "Which of the following indicates the presence of anti-DNAse B in the patient's sample during neutralization test?",
+      "choices": [
+        { "id": "A", "text": "green" },
+        { "id": "B", "text": "colorless" },
+        { "id": "C", "text": "red" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "Anti-DNase B neutralizes the enzyme and preserves the green DNA-methyl green complex, whereas enzyme activity removes the color.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Anti-DNase B test", "tosCode": "A.5", "cognitiveLevel": "Application", "difficulty": "Moderate" },
+      "canonicalConcept": "Green color indicates anti-DNase B neutralization"
+    },
+    {
+      "id": "BB-Week3-Q056",
+      "prompt": "The following are utilized as markers of current Hepatitis E infection:",
+      "choices": [
+        { "id": "A", "text": "IgM anti-HEV" },
+        { "id": "B", "text": "IgG anti-HEV" },
+        { "id": "C", "text": "HEV RNA" },
+        { "id": "D", "text": "Both A and C" }
+      ],
+      "correctChoiceId": "D",
+      "rationale": "IgM anti-HEV and detectable HEV RNA indicate current infection; IgG alone usually indicates past exposure.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Hepatitis E markers", "tosCode": "A.5", "cognitiveLevel": "Comprehension", "difficulty": "Moderate" },
+      "canonicalConcept": "Markers of current hepatitis E infection"
+    },
+    {
+      "id": "BB-Week3-Q057",
+      "prompt": "The following set of genotype/s may lead to the expression of H antigens both in red cell and secretions:",
+      "choices": [
+        { "id": "A", "text": "Hh, Sese" },
+        { "id": "B", "text": "hh, Sese" },
+        { "id": "C", "text": "HH, SeSe" },
+        { "id": "D", "text": "Both A and C" }
+      ],
+      "correctChoiceId": "D",
+      "rationale": "An active H gene permits red-cell H expression, while a secretor allele permits H and ABH substances in secretions.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "H and secretor genes", "tosCode": "B.1", "cognitiveLevel": "Application", "difficulty": "Difficult" },
+      "canonicalConcept": "Genotypes producing red-cell and secreted H antigen"
+    },
+    {
+      "id": "BB-Week3-Q058",
+      "prompt": "Which of the following combinations of bands would represent a positive Western blot for HIV antibody?",
+      "choices": [
+        { "id": "A", "text": "p24 and p55" },
+        { "id": "B", "text": "p24 and p31" },
+        { "id": "C", "text": "gp41 and gp120" }
+      ],
+      "correctChoiceId": "C",
+      "rationale": "Two reactive envelope bands, gp41 and gp120, fulfill the Western-blot positivity criterion.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "HIV confirmatory testing", "tosCode": "A.5", "cognitiveLevel": "Application", "difficulty": "Moderate" },
+      "canonicalConcept": "Positive HIV Western blot envelope-band criterion"
+    },
+    {
+      "id": "BB-Week3-Q059",
+      "prompt": "Type of agglutination reaction that is based on the competition between particulate and soluble antigens for limited antibody combining sites:",
+      "choices": [
+        { "id": "A", "text": "Reverse passive agglutination" },
+        { "id": "B", "text": "Agglutination-inhibition" },
+        { "id": "C", "text": "Coagglutination" }
+      ],
+      "correctChoiceId": "B",
+      "rationale": "Agglutination-inhibition occurs when soluble antigen competes with particulate antigen for limited antibody-binding sites.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Agglutination reactions", "tosCode": "A.1", "cognitiveLevel": "Comprehension", "difficulty": "Moderate" },
+      "canonicalConcept": "Agglutination-inhibition competition principle"
+    },
+    {
+      "id": "BB-Week3-Q060",
+      "prompt": "Which of the following is NOT a compound Rh antigen?",
+      "choices": [
+        { "id": "A", "text": "f" },
+        { "id": "B", "text": "Rhi" },
+        { "id": "C", "text": "G" }
+      ],
+      "correctChoiceId": "C",
+      "rationale": "G is a common antigenic product associated with D or C expression, whereas f and Rhi are compound Rh antigens.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "Rh compound antigens", "tosCode": "B.2", "cognitiveLevel": "Knowledge", "difficulty": "Moderate" },
+      "canonicalConcept": "G is not a compound Rh antigen"
+    },
+    {
+      "id": "BB-Week3-Q061",
+      "prompt": "People who received mRNA-based vaccine for COVID-19 may be deferred for:",
+      "choices": [
+        { "id": "A", "text": "7 days" },
+        { "id": "B", "text": "14 days" },
+        { "id": "C", "text": "28 days" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "A short seven-day deferral applies after an mRNA COVID-19 vaccine, while longer deferral applies to live-attenuated vaccines.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Donation", "subTopic": "Vaccine deferral", "tosCode": "C.2", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "Blood-donation deferral after mRNA COVID-19 vaccination"
+    },
+    {
+      "id": "BB-Week3-Q062",
+      "prompt": "The biochemical composition of the relevant blood-group antigen is:",
+      "choices": [
+        { "id": "A", "text": "glycolipid" },
+        { "id": "B", "text": "glycoprotein" },
+        { "id": "C", "text": "sialoglycoprotein" }
+      ],
+      "correctChoiceId": "B",
+      "rationale": "The referenced blood-group antigen is carried on a glycoprotein structure.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "Antigen biochemistry", "tosCode": "B.6", "cognitiveLevel": "Knowledge", "difficulty": "Moderate" },
+      "canonicalConcept": "Blood-group antigen biochemical composition",
+      "reviewNote": "The antigen name was lost in OCR, so the stem was reconstructed only enough to preserve the printed answer choices."
+    },
+    {
+      "id": "BB-Week3-Q063",
+      "prompt": "Which of the following may contain anti-hemophilic factor A?",
+      "choices": [
+        { "id": "A", "text": "FWB" },
+        { "id": "B", "text": "pRBC" },
+        { "id": "C", "text": "cryoprecipitate" }
+      ],
+      "correctChoiceId": "C",
+      "rationale": "Cryoprecipitate is the concentrated plasma component rich in factor VIII, also called antihemophilic factor A.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Components and Storage", "subTopic": "Cryoprecipitate", "tosCode": "C.3", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "Factor VIII content of cryoprecipitate"
+    },
+    {
+      "id": "BB-Week3-Q064",
+      "prompt": "Therapeutic phlebotomy may be given to address:",
+      "choices": [
+        { "id": "A", "text": "aplastic anemia" },
+        { "id": "B", "text": "Hodgkin's lymphoma" },
+        { "id": "C", "text": "Creutzfeldt-Jakob disease" },
+        { "id": "D", "text": "None of the above" }
+      ],
+      "correctChoiceId": "D",
+      "rationale": "Therapeutic phlebotomy treats disorders of red-cell excess or iron overload, none of which is represented by the listed choices.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Therapeutic Blood Procedures", "subTopic": "Therapeutic phlebotomy", "tosCode": "C.4", "cognitiveLevel": "Comprehension", "difficulty": "Moderate" },
+      "canonicalConcept": "Indications for therapeutic phlebotomy"
+    },
+    {
+      "id": "BB-Week3-Q065",
+      "prompt": "Which of the following is NOT a characteristic of Rh antibody?",
+      "choices": [
+        { "id": "A", "text": "naturally occurring" },
+        { "id": "B", "text": "predominantly IgG" },
+        { "id": "C", "text": "may cause HDFN" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "Rh antibodies are immune alloantibodies, usually IgG, and may cross the placenta to cause HDFN.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "Rh antibodies", "tosCode": "B.2", "cognitiveLevel": "Comprehension", "difficulty": "Easy" },
+      "canonicalConcept": "Rh antibodies are immune IgG alloantibodies"
+    },
+    {
+      "id": "BB-Week3-Q066",
+      "prompt": "The Rh type of a person with dce/dce genotype is:",
+      "choices": [
+        { "id": "A", "text": "Rh positive" },
+        { "id": "B", "text": "Rh negative" },
+        { "id": "C", "text": "Rh null" }
+      ],
+      "correctChoiceId": "B",
+      "rationale": "The dce/dce genotype lacks D and is conventionally classified as Rh negative.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "Rh genotypes", "tosCode": "B.2", "cognitiveLevel": "Application", "difficulty": "Easy" },
+      "canonicalConcept": "dce/dce genotype is Rh negative"
+    },
+    {
+      "id": "BB-Week3-Q067",
+      "prompt": "During emergency, which of the following types of plasma may be safely released by the blood bank?",
+      "choices": [
+        { "id": "A", "text": "A" },
+        { "id": "B", "text": "AB" },
+        { "id": "C", "text": "O" }
+      ],
+      "correctChoiceId": "B",
+      "rationale": "AB plasma lacks anti-A and anti-B and is the universal donor plasma for emergency release.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Transfusion Practice", "subTopic": "Emergency blood selection", "tosCode": "C.5", "cognitiveLevel": "Application", "difficulty": "Easy" },
+      "canonicalConcept": "AB plasma is universal donor plasma"
+    },
+    {
+      "id": "BB-Week3-Q068",
+      "prompt": "Jk3 antigen may present when this/these gene/s are inherited:",
+      "choices": [
+        { "id": "A", "text": "Jka" },
+        { "id": "B", "text": "Jkb" },
+        { "id": "C", "text": "Jk" },
+        { "id": "D", "text": "Both A and B" }
+      ],
+      "correctChoiceId": "D",
+      "rationale": "Jk3 is a common Kidd antigen expressed when either the Jka or Jkb allele is inherited.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "Kidd antigens", "tosCode": "B.4", "cognitiveLevel": "Comprehension", "difficulty": "Moderate" },
+      "canonicalConcept": "Jk3 expression with Jka or Jkb"
+    },
+    {
+      "id": "BB-Week3-Q069",
+      "prompt": "Which of the following may be given to patients with thrombotic thrombocytopenic purpura?",
+      "choices": [
+        { "id": "A", "text": "platelet concentrate" },
+        { "id": "B", "text": "packed RBC" },
+        { "id": "C", "text": "cryosupernatant/plasma cryoprecipitate reduced" }
+      ],
+      "correctChoiceId": "C",
+      "rationale": "Cryoprecipitate-reduced plasma supplies ADAMTS13-containing plasma while avoiding unnecessary platelet transfusion in TTP.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Transfusion Practice", "subTopic": "Therapeutic plasma components", "tosCode": "C.5", "cognitiveLevel": "Application", "difficulty": "Moderate" },
+      "canonicalConcept": "Cryoprecipitate-reduced plasma for TTP"
+    },
+    {
+      "id": "BB-Week3-Q070",
+      "prompt": "Which of the following may be a risk factor for stomatocytosis and hemolytic anemia?",
+      "choices": [
+        { "id": "A", "text": "People inheriting XkO/XkO genotype" },
+        { "id": "B", "text": "People inheriting LuLu genotype" },
+        { "id": "C", "text": "People inheriting JkJk genotype" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "The McLeod phenotype associated with KX deficiency can cause abnormal red-cell morphology, hemolytic anemia, and stomatocytosis.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "Kell and KX deficiency", "tosCode": "B.6", "cognitiveLevel": "Application", "difficulty": "Difficult" },
+      "canonicalConcept": "McLeod phenotype and stomatocytic hemolytic anemia"
+    },
+    {
+      "id": "BB-Week3-Q071",
+      "prompt": "Cryoprecipitate AHG may be used:",
+      "choices": [
+        { "id": "A", "text": "to treat hemophilia A" },
+        { "id": "B", "text": "as a source of surgical glue" },
+        { "id": "C", "text": "to address von Willebrand disease" },
+        { "id": "D", "text": "All of the above" }
+      ],
+      "correctChoiceId": "D",
+      "rationale": "Cryoprecipitate contains factor VIII, fibrinogen, and von Willebrand factor and can also be used to prepare fibrin glue.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Components and Storage", "subTopic": "Cryoprecipitate uses", "tosCode": "C.3", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "Clinical uses of cryoprecipitate"
+    },
+    {
+      "id": "BB-Week3-Q072",
+      "prompt": "FMH may result from:",
+      "choices": [
+        { "id": "A", "text": "trauma to abdomen" },
+        { "id": "B", "text": "placental abnormalities" },
+        { "id": "C", "text": "normal delivery" },
+        { "id": "D", "text": "All of the above" }
+      ],
+      "correctChoiceId": "D",
+      "rationale": "Abdominal trauma, placental disruption, and even uncomplicated delivery can cause fetomaternal hemorrhage.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "HDFN and RhIg", "subTopic": "Fetomaternal hemorrhage", "tosCode": "C.6", "cognitiveLevel": "Comprehension", "difficulty": "Easy" },
+      "canonicalConcept": "Causes of fetomaternal hemorrhage"
+    },
+    {
+      "id": "BB-Week3-Q073",
+      "prompt": "The RBCs of a Rh positive baby that is sensitized with maternal anti-D may be detected via:",
+      "choices": [
+        { "id": "A", "text": "direct Coombs test" },
+        { "id": "B", "text": "indirect Coombs test" },
+        { "id": "C", "text": "Kleihauer Betke test" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "The direct antiglobulin test detects maternal IgG already coating the infant's red cells in vivo.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "HDFN and RhIg", "subTopic": "Direct antiglobulin testing", "tosCode": "C.6", "cognitiveLevel": "Application", "difficulty": "Easy" },
+      "canonicalConcept": "DAT detects D-sensitized fetal red cells"
+    },
+    {
+      "id": "BB-Week3-Q074",
+      "prompt": "The product of this gene is galactosyltransferase:",
+      "choices": [
+        { "id": "A", "text": "B gene" },
+        { "id": "B", "text": "I gene" },
+        { "id": "C", "text": "GLOB gene" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "The B allele encodes alpha-1,3-galactosyltransferase, which adds galactose to the H antigen precursor.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "ABO glycosyltransferases", "tosCode": "B.1", "cognitiveLevel": "Knowledge", "difficulty": "Moderate" },
+      "canonicalConcept": "B gene encodes galactosyltransferase"
+    },
+    {
+      "id": "BB-Week3-Q075",
+      "prompt": "A person inheriting homozygous le and se may have which of the following phenotype?",
+      "choices": [
+        { "id": "A", "text": "Le(a+b-)" },
+        { "id": "B", "text": "Le(a-b-)" },
+        { "id": "C", "text": "Le(a+b+)" }
+      ],
+      "correctChoiceId": "B",
+      "rationale": "Homozygous le prevents Lewis antigen synthesis, while homozygous se prevents secretion, yielding Le(a-b-).",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "Lewis phenotype genetics", "tosCode": "B.3", "cognitiveLevel": "Application", "difficulty": "Moderate" },
+      "canonicalConcept": "lele sese genotype produces Le(a-b-)"
+    },
+    {
+      "id": "BB-Week3-Q076",
+      "prompt": "People who have received multiple transfusions may have this antigen:",
+      "choices": [
+        { "id": "A", "text": "Dia antigen" },
+        { "id": "B", "text": "Sd antigen" },
+        { "id": "C", "text": "Bg antigen" }
+      ],
+      "correctChoiceId": "C",
+      "rationale": "Bg antigens are HLA-derived antigens adsorbed onto red cells and are commonly encountered after transfusion or pregnancy.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "Bg antigens", "tosCode": "B.6", "cognitiveLevel": "Knowledge", "difficulty": "Moderate" },
+      "canonicalConcept": "Bg antigen acquisition after transfusion"
+    },
+    {
+      "id": "BB-Week3-Q077",
+      "prompt": "What should be tested/assessed during physical examination of a blood donor?",
+      "choices": [
+        { "id": "A", "text": "hematocrit" },
+        { "id": "B", "text": "presence of skin lesions" },
+        { "id": "C", "text": "peripheral blood examination" }
+      ],
+      "correctChoiceId": "B",
+      "rationale": "Skin lesions are assessed during the donor physical examination; hematocrit and peripheral blood examination are laboratory tests.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Donation", "subTopic": "Donor physical examination", "tosCode": "C.2", "cognitiveLevel": "Comprehension", "difficulty": "Easy" },
+      "canonicalConcept": "Skin-lesion assessment during donor physical exam"
+    },
+    {
+      "id": "BB-Week3-Q078",
+      "prompt": "After panel cells are treated with papain, which of the following antibodies may no longer react?",
+      "choices": [
+        { "id": "A", "text": "anti-S" },
+        { "id": "B", "text": "anti-Jkb" },
+        { "id": "C", "text": "anti-I" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "Papain destroys MNS antigens such as S, while Kidd antigens are generally enzyme-enhanced.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Antibody Investigation", "subTopic": "Enzyme-treated panel cells", "tosCode": "C.7", "cognitiveLevel": "Application", "difficulty": "Moderate" },
+      "canonicalConcept": "Papain destroys MNS antigens"
+    },
+    {
+      "id": "BB-Week3-Q079",
+      "prompt": "Crossmatching is part of which phase of pre-transfusion testing?",
+      "choices": [
+        { "id": "A", "text": "1st phase of pre-transfusion testing" },
+        { "id": "B", "text": "2nd phase of pre-transfusion testing" },
+        { "id": "C", "text": "3rd phase of pre-transfusion testing" }
+      ],
+      "correctChoiceId": "C",
+      "rationale": "Compatibility crossmatching is performed in the final pre-transfusion testing phase after grouping and antibody screening.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Compatibility Testing", "subTopic": "Pre-transfusion phases", "tosCode": "C.8", "cognitiveLevel": "Knowledge", "difficulty": "Moderate" },
+      "canonicalConcept": "Crossmatching phase in pre-transfusion testing",
+      "reviewNote": "The stem preceding the three phase choices was badly OCR-garbled and was reconstructed as a crossmatching-phase question."
+    },
+    {
+      "id": "BB-Week3-Q080",
+      "prompt": "A person with partial D phenotype may have what result during initial Rh typing procedure?",
+      "choices": [
+        { "id": "A", "text": "Rh positive" },
+        { "id": "B", "text": "Rh negative" },
+        { "id": "C", "text": "Rh null" }
+      ],
+      "correctChoiceId": "B",
+      "rationale": "Some partial D antigens are missed by routine anti-D reagents and therefore initially type as Rh negative.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "Partial D", "tosCode": "B.2", "cognitiveLevel": "Application", "difficulty": "Moderate" },
+      "canonicalConcept": "Partial D may initially type Rh negative"
+    },
+    {
+      "id": "BB-Week3-Q081",
+      "prompt": "Hard spin centrifugation is done during:",
+      "choices": [
+        { "id": "A", "text": "packed RBC preparation" },
+        { "id": "B", "text": "cryoprecipitate preparation" },
+        { "id": "C", "text": "initial spinning of FWB during preparation of random donor platelets" },
+        { "id": "D", "text": "Both A and B" }
+      ],
+      "correctChoiceId": "D",
+      "rationale": "Hard spins are used to concentrate red cells and to separate cryoprecipitate from cold-insoluble-poor plasma; platelet preparation begins with a light spin.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Components and Storage", "subTopic": "Component centrifugation", "tosCode": "C.3", "cognitiveLevel": "Application", "difficulty": "Moderate" },
+      "canonicalConcept": "Hard-spin centrifugation in blood-component preparation"
+    },
+    {
+      "id": "BB-Week3-Q082",
+      "prompt": "Which of the following set of antigens in a panel cell may possibly lead to false negative detection of anti-Fyb?",
+      "choices": [
+        { "id": "A", "text": "D+C+Jka+Jkb+Fya+Fyb+S+s-" },
+        { "id": "B", "text": "D-C-Jka-Jkb+Fya+Fyb-S+s+" },
+        { "id": "C", "text": "D+C+Jka-Jkb-Fya-Fyb-S-s-" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "The Fya+Fyb+ cell is heterozygous at Fyb and may react weakly enough to cause a dosage-related false-negative result.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Antibody Investigation", "subTopic": "Panel-cell dosage effects", "tosCode": "C.7", "cognitiveLevel": "Analysis", "difficulty": "Difficult" },
+      "canonicalConcept": "Heterozygous Fyb panel cells can cause false-negative reactions"
+    },
+    {
+      "id": "BB-Week3-Q083",
+      "prompt": "Antigen that may react at the last phase of crossmatching procedure:",
+      "choices": [
+        { "id": "A", "text": "Jk antigen" },
+        { "id": "B", "text": "Fyb antigen" },
+        { "id": "C", "text": "U antigen" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "Kidd antibodies commonly react in the antiglobulin or final phase of crossmatching.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Compatibility Testing", "subTopic": "Crossmatch phases", "tosCode": "C.8", "cognitiveLevel": "Application", "difficulty": "Moderate" },
+      "canonicalConcept": "Kidd antigens react in the antiglobulin crossmatch phase"
+    },
+    {
+      "id": "BB-Week3-Q084",
+      "prompt": "Shock may happen as a result of:",
+      "choices": [
+        { "id": "A", "text": "anaphylactic transfusion reaction" },
+        { "id": "B", "text": "allergic transfusion reaction" },
+        { "id": "C", "text": "bacterial contamination reaction" },
+        { "id": "D", "text": "Both A and C" }
+      ],
+      "correctChoiceId": "D",
+      "rationale": "Anaphylaxis and septic shock from bacterially contaminated blood can both produce shock, unlike a simple allergic reaction.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Transfusion Reactions", "subTopic": "Shock-associated reactions", "tosCode": "C.9", "cognitiveLevel": "Comprehension", "difficulty": "Moderate" },
+      "canonicalConcept": "Transfusion reactions that may cause shock"
+    },
+    {
+      "id": "BB-Week3-Q085",
+      "prompt": "The Lewis phenotype of somebody with liver cirrhosis at the peak of the disease may be probably:",
+      "choices": [
+        { "id": "A", "text": "Le(a+b-)" },
+        { "id": "B", "text": "Le(a-b-)" },
+        { "id": "C", "text": "Le(a+b+)" }
+      ],
+      "correctChoiceId": "B",
+      "rationale": "Severe liver disease can transiently impair Lewis antigen expression, producing a Le(a-b-) phenotype.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "Transient Lewis phenotypes", "tosCode": "B.3", "cognitiveLevel": "Application", "difficulty": "Moderate" },
+      "canonicalConcept": "Liver cirrhosis can transiently produce Le(a-b-)"
+    },
+    {
+      "id": "BB-Week3-Q086",
+      "prompt": "The following may be due to the presence of HLA antibodies:",
+      "choices": [
+        { "id": "A", "text": "Febrile non-hemolytic transfusion reaction" },
+        { "id": "B", "text": "allergic transfusion reaction" },
+        { "id": "C", "text": "anaphylactic transfusion reaction" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "HLA antibodies react with donor leukocytes and are an important cause of febrile nonhemolytic reactions.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Transfusion Reactions", "subTopic": "HLA antibodies", "tosCode": "C.9", "cognitiveLevel": "Comprehension", "difficulty": "Easy" },
+      "canonicalConcept": "HLA antibodies cause FNHTR"
+    },
+    {
+      "id": "BB-Week3-Q087",
+      "prompt": "LKE antigen belongs to:",
+      "choices": [
+        { "id": "A", "text": "002" },
+        { "id": "B", "text": "005" },
+        { "id": "C", "text": "009" },
+        { "id": "D", "text": "003" }
+      ],
+      "correctChoiceId": "D",
+      "rationale": "LKE is associated with the P blood-group system, which is ISBT system 003.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "P system antigens", "tosCode": "B.5", "cognitiveLevel": "Knowledge", "difficulty": "Moderate" },
+      "canonicalConcept": "LKE antigen belongs to the P blood-group system",
+      "reviewNote": "Choice D was reconstructed because the printed choices were OCR-garbled and omitted ISBT 003."
+    },
+    {
+      "id": "BB-Week3-Q088",
+      "prompt": "Which of the following may cross the placenta?",
+      "choices": [
+        { "id": "A", "text": "anti-D" },
+        { "id": "B", "text": "anti-C" },
+        { "id": "C", "text": "anti-E" },
+        { "id": "D", "text": "All of the above" }
+      ],
+      "correctChoiceId": "D",
+      "rationale": "Rh system antibodies are predominantly IgG and may cross the placenta, including anti-D, anti-C, and anti-E.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "HDFN and RhIg", "subTopic": "Placental antibody transfer", "tosCode": "C.6", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "Rh IgG antibodies cross the placenta"
+    },
+    {
+      "id": "BB-Week3-Q089",
+      "prompt": "People who received vaccine for german measles may be deferred for:",
+      "choices": [
+        { "id": "A", "text": "7 days" },
+        { "id": "B", "text": "14 days" },
+        { "id": "C", "text": "28 days" }
+      ],
+      "correctChoiceId": "C",
+      "rationale": "Rubella vaccine is live-attenuated, so blood donation is generally deferred for 28 days.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Donation", "subTopic": "Vaccine deferral", "tosCode": "C.2", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "Blood-donation deferral after rubella vaccination"
+    },
+    {
+      "id": "BB-Week3-Q090",
+      "prompt": "Which of the following donors may be acceptable?",
+      "choices": [
+        { "id": "A", "text": "an erythrocytapheresis donor whose hemoglobin is 12 g/dL" },
+        { "id": "B", "text": "a leukocytapheresis donor whose WBC count is 4.6 x 10^9/L" },
+        { "id": "C", "text": "a plasmapheresis donor whose serum protein is 7.2 g/dL" }
+      ],
+      "correctChoiceId": "C",
+      "rationale": "A serum protein of 7.2 g/dL is acceptable for plasmapheresis, while the listed hemoglobin is below the usual red-cell apheresis threshold.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Donation", "subTopic": "Apheresis donor criteria", "tosCode": "C.2", "cognitiveLevel": "Application", "difficulty": "Moderate" },
+      "canonicalConcept": "Acceptable plasmapheresis donor serum protein"
+    },
+    {
+      "id": "BB-Week3-Q091",
+      "prompt": "This antigen may exhibit highly refractile clumping during testing:",
+      "choices": [
+        { "id": "A", "text": "Dr antigen" },
+        { "id": "B", "text": "Dia antigen" },
+        { "id": "C", "text": "Sd antigen" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "Dr antigen is known for characteristic shiny or highly refractile agglutinates in serologic testing.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "Low-incidence antigens", "tosCode": "B.6", "cognitiveLevel": "Knowledge", "difficulty": "Moderate" },
+      "canonicalConcept": "Dr antigen refractile clumping"
+    },
+    {
+      "id": "BB-Week3-Q092",
+      "prompt": "Which of the following may contain the relevant labile coagulation factor?",
+      "choices": [
+        { "id": "A", "text": "FWB" },
+        { "id": "B", "text": "FFP" },
+        { "id": "C", "text": "cryoprecipitate" }
+      ],
+      "correctChoiceId": "C",
+      "rationale": "The component richest in the relevant factor is cryoprecipitate among the listed blood products.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Components and Storage", "subTopic": "Coagulation factors", "tosCode": "C.3", "cognitiveLevel": "Knowledge", "difficulty": "Moderate" },
+      "canonicalConcept": "Cryoprecipitate as concentrated coagulation-factor component",
+      "reviewNote": "The object of 'may contain' was lost in OCR and reconstructed from the surrounding component-testing context."
+    },
+    {
+      "id": "BB-Week3-Q093",
+      "prompt": "Which of the following conditions may lead to a transient Le(a-b-) phenotype?",
+      "choices": [
+        { "id": "A", "text": "pregnancy" },
+        { "id": "B", "text": "liver cirrhosis" },
+        { "id": "C", "text": "Clonorchis sinensis infection" },
+        { "id": "D", "text": "All of the above" }
+      ],
+      "correctChoiceId": "D",
+      "rationale": "Pregnancy, advanced liver disease, and certain infections can transiently alter Lewis antigen expression and produce Le(a-b-).",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "Transient Lewis phenotypes", "tosCode": "B.3", "cognitiveLevel": "Knowledge", "difficulty": "Moderate" },
+      "canonicalConcept": "Conditions causing transient Le(a-b-) phenotype"
+    },
+    {
+      "id": "BB-Week3-Q094",
+      "prompt": "Which among the following may be a risk factor for chronic granulomatous condition?",
+      "choices": [
+        { "id": "A", "text": "people inheriting XkO/XkO genotype" },
+        { "id": "B", "text": "people inheriting LuLu genotype" },
+        { "id": "C", "text": "people inheriting JkJk genotype" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "Kx deficiency associated with the McLeod phenotype is linked to abnormal granulocyte function and chronic granulomatous disease.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "Kell and KX deficiency", "tosCode": "B.6", "cognitiveLevel": "Knowledge", "difficulty": "Difficult" },
+      "canonicalConcept": "Kx deficiency and chronic granulomatous disease"
+    },
+    {
+      "id": "BB-Week3-Q095",
+      "prompt": "Which of the following donors may be deferred temporarily?",
+      "choices": [
+        { "id": "A", "text": "a donor with a reactive anti-HIV 2" },
+        { "id": "B", "text": "a donor with a reactive RPR result" },
+        { "id": "C", "text": "a donor with a reactive RIBA result for HCV" }
+      ],
+      "correctChoiceId": "B",
+      "rationale": "A reactive RPR may reflect a temporary biologic condition, whereas repeatedly reactive HIV or HCV supplemental results lead to indefinite deferral.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Donation", "subTopic": "Infectious-disease deferral", "tosCode": "C.2", "cognitiveLevel": "Application", "difficulty": "Moderate" },
+      "canonicalConcept": "Temporary donor deferral for reactive RPR"
+    },
+    {
+      "id": "BB-Week3-Q096",
+      "prompt": "The biochemical composition of 004004 is:",
+      "choices": [
+        { "id": "A", "text": "glycolipid" },
+        { "id": "B", "text": "glycoprotein" },
+        { "id": "C", "text": "sialoglycoprotein" }
+      ],
+      "correctChoiceId": "B",
+      "rationale": "ISBT 004 is the Rh system, and Rh D/CE antigens are carried on red-cell membrane glycoproteins.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "Rh antigen biochemistry", "tosCode": "B.2", "cognitiveLevel": "Knowledge", "difficulty": "Moderate" },
+      "canonicalConcept": "Rh antigens are glycoproteins"
+    },
+    {
+      "id": "BB-Week3-Q097",
+      "prompt": "A vial of 300 ug dose of RhIg can protect up to how many mL of fetomaternal hemorrhage?",
+      "choices": [
+        { "id": "A", "text": "10" },
+        { "id": "B", "text": "15" },
+        { "id": "C", "text": "30" }
+      ],
+      "correctChoiceId": "C",
+      "rationale": "One 300-microgram vial covers approximately 30 mL of fetal whole blood, equivalent to 15 mL of fetal red cells.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "HDFN and RhIg", "subTopic": "RhIg dosing", "tosCode": "C.6", "cognitiveLevel": "Application", "difficulty": "Moderate" },
+      "canonicalConcept": "RhIg coverage for fetomaternal hemorrhage"
+    },
+    {
+      "id": "BB-Week3-Q098",
+      "prompt": "The Rh type of a person inheriting Dce/DCe genotype is:",
+      "choices": [
+        { "id": "A", "text": "Rh positive" },
+        { "id": "B", "text": "Rh negative" },
+        { "id": "C", "text": "Rh null" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "Inheritance of a D-bearing chromosome makes the person Rh positive.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "Rh genotypes", "tosCode": "B.2", "cognitiveLevel": "Application", "difficulty": "Easy" },
+      "canonicalConcept": "D-bearing Rh genotype is Rh positive",
+      "reviewNote": "The exact genotype in the stem was obscured by OCR; a D-bearing genotype was reconstructed to preserve the intended Rh-typing concept."
+    },
+    {
+      "id": "BB-Week3-Q099",
+      "prompt": "Hemophilia B may be addressed by:",
+      "choices": [
+        { "id": "A", "text": "Factor IX concentrate" },
+        { "id": "B", "text": "FFP" },
+        { "id": "C", "text": "cryoprecipitate" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "Hemophilia B is factor IX deficiency and is treated with factor IX concentrate.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Transfusion Practice", "subTopic": "Clotting-factor concentrates", "tosCode": "C.5", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "Factor IX concentrate for hemophilia B"
+    },
+    {
+      "id": "BB-Week3-Q100",
+      "prompt": "Checking the vital signs during blood transfusion is part of the:",
+      "choices": [
+        { "id": "A", "text": "1st phase of pre-transfusion testing" },
+        { "id": "B", "text": "2nd phase of pre-transfusion testing" },
+        { "id": "C", "text": "3rd phase of pre-transfusion testing" }
+      ],
+      "correctChoiceId": "C",
+      "rationale": "Vital-sign monitoring occurs during the transfusion stage, the third phase of the pre-transfusion process.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Transfusion Practice", "subTopic": "Pre-transfusion phases", "tosCode": "C.5", "cognitiveLevel": "Knowledge", "difficulty": "Moderate" },
+      "canonicalConcept": "Vital-sign monitoring during the transfusion phase"
+    },
+    {
+      "id": "BB-Week3-Q101",
+      "prompt": "The RBCs of a person that are coated with autoantibodies may be detected via:",
+      "choices": [
+        { "id": "A", "text": "direct Coombs test" },
+        { "id": "B", "text": "rosette test" },
+        { "id": "C", "text": "indirect Coombs test" },
+        { "id": "D", "text": "Kleihauer Betke test" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "The direct antiglobulin test detects red cells already sensitized with autoantibody in vivo.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Antibody Investigation", "subTopic": "Direct antiglobulin testing", "tosCode": "C.7", "cognitiveLevel": "Application", "difficulty": "Easy" },
+      "canonicalConcept": "DAT detects autoantibody-coated red cells"
+    },
+    {
+      "id": "BB-Week3-Q102",
+      "prompt": "Kidd null is common among:",
+      "choices": [
+        { "id": "A", "text": "Black Americans" },
+        { "id": "B", "text": "Mongolians" },
+        { "id": "C", "text": "Mexicans" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "The null phenotype referenced by the source is most associated with Black American populations among the choices given.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "Population antigen frequencies", "tosCode": "B.6", "cognitiveLevel": "Knowledge", "difficulty": "Moderate" },
+      "canonicalConcept": "Population association of a red-cell null phenotype",
+      "reviewNote": "The antigen name was obscured by OCR and the stem was reconstructed from the printed population choices."
+    },
+    {
+      "id": "BB-Week3-Q103",
+      "prompt": "The following may be due to the presence of IgE in patient's plasma reacting with donor's serum proteins:",
+      "choices": [
+        { "id": "A", "text": "FNHTR" },
+        { "id": "B", "text": "allergic transfusion reaction" },
+        { "id": "C", "text": "bacterial contamination reaction" }
+      ],
+      "correctChoiceId": "B",
+      "rationale": "IgE-mediated reaction to soluble plasma proteins causes allergic transfusion reactions.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Transfusion Reactions", "subTopic": "Allergic reactions", "tosCode": "C.9", "cognitiveLevel": "Comprehension", "difficulty": "Easy" },
+      "canonicalConcept": "IgE-mediated allergic transfusion reaction"
+    },
+    {
+      "id": "BB-Week3-Q104",
+      "prompt": "Which antigen may react at the immediate-spin phase of compatibility testing?",
+      "choices": [
+        { "id": "A", "text": "M antigen" },
+        { "id": "B", "text": "P1 antigen" },
+        { "id": "C", "text": "S antigen" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "Anti-M is commonly IgM and can react at immediate spin, whereas anti-S is an IgG MNS antibody.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Compatibility Testing", "subTopic": "Immediate-spin reactions", "tosCode": "C.8", "cognitiveLevel": "Application", "difficulty": "Moderate" },
+      "canonicalConcept": "M antigen reaction at immediate spin"
+    },
+    {
+      "id": "BB-Week3-Q105",
+      "prompt": "The product of this gene is fucosyltransferase:",
+      "choices": [
+        { "id": "A", "text": "H gene" },
+        { "id": "B", "text": "le gene" },
+        { "id": "C", "text": "GLOB gene" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "The H gene encodes alpha-1,2-fucosyltransferase, which forms H antigen from type 1 or type 2 precursor chains.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "H gene product", "tosCode": "B.1", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "H gene encodes fucosyltransferase"
+    },
+    {
+      "id": "BB-Week3-Q106",
+      "prompt": "Single donor platelets is different with random donor platelets in terms of:",
+      "choices": [
+        { "id": "A", "text": "platelet content" },
+        { "id": "B", "text": "manner of collection" },
+        { "id": "C", "text": "shelf life" },
+        { "id": "D", "text": "Both A and B" }
+      ],
+      "correctChoiceId": "D",
+      "rationale": "Single-donor platelets are collected by apheresis and generally contain a larger platelet dose than pooled random-donor concentrates.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Components and Storage", "subTopic": "Platelet concentrates", "tosCode": "C.3", "cognitiveLevel": "Comprehension", "difficulty": "Moderate" },
+      "canonicalConcept": "Single-donor versus random-donor platelets"
+    },
+    {
+      "id": "BB-Week3-Q107",
+      "prompt": "Which of the following may be used as volume expander?",
+      "choices": [
+        { "id": "A", "text": "colloids" },
+        { "id": "B", "text": "crystalloids" },
+        { "id": "C", "text": "packed RBC" },
+        { "id": "D", "text": "Both A and B" }
+      ],
+      "correctChoiceId": "D",
+      "rationale": "Colloid and crystalloid solutions expand plasma volume; packed red cells primarily restore oxygen-carrying capacity.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Transfusion Practice", "subTopic": "Volume expanders", "tosCode": "C.5", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "Colloids and crystalloids as volume expanders"
+    },
+    {
+      "id": "BB-Week3-Q108",
+      "prompt": "During emergency, which of the following types of whole blood may be safely released by the blood bank?",
+      "choices": [
+        { "id": "A", "text": "A" },
+        { "id": "B", "text": "AB" },
+        { "id": "C", "text": "O" }
+      ],
+      "correctChoiceId": "C",
+      "rationale": "Group O whole blood lacks A and B antigens and is the emergency-release universal red-cell product.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Transfusion Practice", "subTopic": "Emergency blood selection", "tosCode": "C.5", "cognitiveLevel": "Application", "difficulty": "Easy" },
+      "canonicalConcept": "Group O whole blood for emergency release"
+    },
+    {
+      "id": "BB-Week3-Q109",
+      "prompt": "Which of the following may be given to prevent FNHTR?",
+      "choices": [
+        { "id": "A", "text": "leukoreduced RBC" },
+        { "id": "B", "text": "packed RBC" },
+        { "id": "C", "text": "irradiated RBC" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "Leukoreduction removes donor leukocytes that trigger HLA-mediated febrile nonhemolytic reactions.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Transfusion Reactions", "subTopic": "FNHTR prevention", "tosCode": "C.9", "cognitiveLevel": "Application", "difficulty": "Easy" },
+      "canonicalConcept": "Leukoreduction prevents FNHTR"
+    },
+    {
+      "id": "BB-Week3-Q110",
+      "prompt": "The location of the P1 antigen in the RBC is:",
+      "choices": [
+        { "id": "A", "text": "lactosyl ceramide" },
+        { "id": "B", "text": "Gb2" },
+        { "id": "C", "text": "type 2 PS" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "P1 antigen is a carbohydrate determinant carried on glycolipid structures derived from lactosylceramide.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "P antigen biochemistry", "tosCode": "B.5", "cognitiveLevel": "Knowledge", "difficulty": "Difficult" },
+      "canonicalConcept": "P1 antigen location on lactosylceramide glycolipid"
+    },
+    {
+      "id": "BB-Week3-Q111",
+      "prompt": "Which of the following set of antigens in a panel cell may possibly lead to false negative detection of anti-Jkb?",
+      "choices": [
+        { "id": "A", "text": "Jka+Jkb+" },
+        { "id": "B", "text": "Jka-Jkb+" },
+        { "id": "C", "text": "Jka+Jkb-" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "A heterozygous Jka+Jkb+ cell may show weaker Jkb expression and cause a dosage-related false-negative result.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Antibody Investigation", "subTopic": "Panel-cell dosage effects", "tosCode": "C.7", "cognitiveLevel": "Analysis", "difficulty": "Difficult" },
+      "canonicalConcept": "Heterozygous Jkb panel cells can cause false-negative reactions",
+      "reviewNote": "The detailed antigen sets were heavily OCR-garbled; the essential Jkb homozygous-versus-heterozygous alternatives were reconstructed."
+    },
+    {
+      "id": "BB-Week3-Q112",
+      "prompt": "If both D and C antigens are present, which Rh antigen is present?",
+      "choices": [
+        { "id": "A", "text": "f" },
+        { "id": "B", "text": "Rhi" },
+        { "id": "C", "text": "G" }
+      ],
+      "correctChoiceId": "C",
+      "rationale": "The G antigen is expressed whenever D or C antigen is present.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "Rh G antigen", "tosCode": "B.2", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "G antigen expression with D or C"
+    },
+    {
+      "id": "BB-Week3-Q113",
+      "prompt": "P antigen belongs to:",
+      "choices": [
+        { "id": "A", "text": "003" },
+        { "id": "B", "text": "027" },
+        { "id": "C", "text": "030" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "The P blood-group system is ISBT blood-group system 003.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "P system number", "tosCode": "B.5", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "P blood-group system ISBT number"
+    },
+    {
+      "id": "BB-Week3-Q114",
+      "prompt": "After panel cells are treated with ZZAP, which of the following antibodies may no longer react?",
+      "choices": [
+        { "id": "A", "text": "anti-Kpa" },
+        { "id": "B", "text": "anti-Fyb" },
+        { "id": "C", "text": "anti-I" }
+      ],
+      "correctChoiceId": "C",
+      "rationale": "ZZAP treatment destroys I antigen and is used to remove cold autoanti-I before adsorption studies.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Antibody Investigation", "subTopic": "ZZAP-treated cells", "tosCode": "C.7", "cognitiveLevel": "Application", "difficulty": "Moderate" },
+      "canonicalConcept": "ZZAP destroys I antigen"
+    },
+    {
+      "id": "BB-Week3-Q115",
+      "prompt": "Which of the following phenotype may be regarded as a non-secretor?",
+      "choices": [
+        { "id": "A", "text": "Le(a+b-)" },
+        { "id": "B", "text": "Le(a-b-)" },
+        { "id": "C", "text": "Le(a-b+)" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "Le(a+b-) is the classic Lewis phenotype of an ABH nonsecretor.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "Secretor phenotype", "tosCode": "B.1", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "Le(a+b-) indicates nonsecretor status"
+    },
+    {
+      "id": "BB-Week3-Q116",
+      "prompt": "Which of the following may not lead to Rh null?",
+      "choices": [
+        { "id": "A", "text": "A person with dce/dce genotype" },
+        { "id": "B", "text": "A person inheriting ---/--- genotype" },
+        { "id": "C", "text": "A person inheriting Xlr/X0r" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "dce/dce is ordinary Rh-negative, whereas amorph and regulator genotypes can produce Rh-null phenotypes.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "Rh null genetics", "tosCode": "B.2", "cognitiveLevel": "Analysis", "difficulty": "Difficult" },
+      "canonicalConcept": "dce/dce does not produce Rh null"
+    },
+    {
+      "id": "BB-Week3-Q117",
+      "prompt": "The antibody that may present in the serum of Fy(a+b-) people with previous sensitization is:",
+      "choices": [
+        { "id": "A", "text": "anti-Fya" },
+        { "id": "B", "text": "anti-Fyb" },
+        { "id": "C", "text": "anti-Fy3" }
+      ],
+      "correctChoiceId": "B",
+      "rationale": "A person lacking Fyb can form anti-Fyb after exposure through transfusion or pregnancy.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "BB PT.2 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "Duffy antibodies", "tosCode": "B.6", "cognitiveLevel": "Application", "difficulty": "Easy" },
+      "canonicalConcept": "Fy(a+b-) sensitized individuals may form anti-Fyb"
+    },
+    {
+      "id": "BB-Week3-Q118",
+      "prompt": "Cryoglobulins are increased in which of the following conditions?",
+      "choices": [
+        { "id": "A", "text": "Multiple myeloma" },
+        { "id": "B", "text": "Hodgkin's lymphoma" },
+        { "id": "C", "text": "Waldenstrom's macroglobulinemia" },
+        { "id": "D", "text": "All of the above" }
+      ],
+      "correctChoiceId": "D",
+      "rationale": "Monoclonal immunoglobulin disorders and lymphoproliferative diseases can all be associated with increased cryoglobulins.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "Clinical Immunology Practice Set" },
+      "tos": { "subject": "BB", "topicCategory": "Clinical Immunology", "subTopic": "Paraproteinemias", "tosCode": "D.1", "cognitiveLevel": "Knowledge", "difficulty": "Moderate" },
+      "canonicalConcept": "Cryoglobulin increase in paraproteinemias and lymphoma"
+    },
+    {
+      "id": "BB-Week3-Q119",
+      "prompt": "Which of the following tests HLA-B5?",
+      "choices": [
+        { "id": "A", "text": "Lymphocyte microtoxicity test" },
+        { "id": "B", "text": "Mixed lymphocyte reaction" },
+        { "id": "C", "text": "Both" },
+        { "id": "D", "text": "Neither" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "HLA-B5 typing is performed with the lymphocyte microcytotoxicity assay; mixed lymphocyte reaction measures proliferative compatibility rather than assigning a specific allele.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "Clinical Immunology Practice Set" },
+      "tos": { "subject": "BB", "topicCategory": "Clinical Immunology", "subTopic": "HLA typing", "tosCode": "D.2", "cognitiveLevel": "Knowledge", "difficulty": "Moderate" },
+      "canonicalConcept": "HLA-B5 detection by lymphocyte microcytotoxicity"
+    },
+    {
+      "id": "BB-Week3-Q120",
+      "prompt": "Autoantibody/autoantibodies specific for RA:",
+      "choices": [
+        { "id": "A", "text": "Anti-cyclic citrullinated peptide" },
+        { "id": "B", "text": "Rheumatoid factor" },
+        { "id": "C", "text": "Both" },
+        { "id": "D", "text": "Neither" }
+      ],
+      "correctChoiceId": "C",
+      "rationale": "Both anti-CCP and rheumatoid factor are autoantibodies used in the serologic evaluation of rheumatoid arthritis.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "Clinical Immunology Practice Set" },
+      "tos": { "subject": "BB", "topicCategory": "Clinical Immunology", "subTopic": "Rheumatoid arthritis serology", "tosCode": "D.3", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "Anti-CCP and rheumatoid factor in rheumatoid arthritis"
+    },
+    {
+      "id": "BB-Week3-Q121",
+      "prompt": "In reverse passive agglutination, it detects _____ by using carrier particles coated with _____.",
+      "choices": [
+        { "id": "A", "text": "Antigen; antibody" },
+        { "id": "B", "text": "Antibody; antigen" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "Reverse passive agglutination coats particles with antibody to detect soluble antigen.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Reverse passive agglutination", "tosCode": "A.1", "cognitiveLevel": "Comprehension", "difficulty": "Easy" },
+      "canonicalConcept": "Reverse passive agglutination detects antigen with antibody-coated particles"
+    },
+    {
+      "id": "BB-Week3-Q122",
+      "prompt": "Which of the following best describes countercurrent electrophoresis?",
+      "choices": [
+        { "id": "A", "text": "Antigens are electrophoresed first before adding antibody on the surface of the gel" },
+        { "id": "B", "text": "It is devised by Grabar and Williams" },
+        { "id": "C", "text": "Both" },
+        { "id": "D", "text": "Neither" }
+      ],
+      "correctChoiceId": "D",
+      "rationale": "Countercurrent electrophoresis places antigen and antibody in opposing wells and applies current; it was not devised by Grabar and Williams.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Countercurrent electrophoresis", "tosCode": "A.2", "cognitiveLevel": "Knowledge", "difficulty": "Moderate" },
+      "canonicalConcept": "Countercurrent electrophoresis description"
+    },
+    {
+      "id": "BB-Week3-Q123",
+      "prompt": "Which is not TRUE of the Mancini Method?",
+      "choices": [
+        { "id": "A", "text": "It is used to count the amount of radiation emitted by a radioactive label" },
+        { "id": "B", "text": "It is used in the measurement of radial immunodiffusion" },
+        { "id": "C", "text": "It used ordinary graphing paper in plotting the standard curve" },
+        { "id": "D", "text": "The concentration of the antigen is directly proportional to the square of diameter of the precipitin ring produced in the gel" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "Radiation counting belongs to radioimmunoassay, not the Mancini endpoint radial immunodiffusion method.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Mancini method", "tosCode": "A.2", "cognitiveLevel": "Comprehension", "difficulty": "Moderate" },
+      "canonicalConcept": "Mancini method does not count radioactive emissions"
+    },
+    {
+      "id": "BB-Week3-Q124",
+      "prompt": "Which of the following statements accurately describe SANDWICH ELISA?",
+      "choices": [
+        { "id": "A", "text": "It uses solid phase antibody" },
+        { "id": "B", "text": "It measures antigens" },
+        { "id": "C", "text": "It uses enzyme labeled antibody" },
+        { "id": "D", "text": "All of the given choices are correct" }
+      ],
+      "correctChoiceId": "D",
+      "rationale": "Sandwich ELISA captures multivalent antigen between a solid-phase antibody and an enzyme-labeled second antibody.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Sandwich ELISA", "tosCode": "A.3", "cognitiveLevel": "Comprehension", "difficulty": "Easy" },
+      "canonicalConcept": "Sandwich ELISA components and purpose"
+    },
+    {
+      "id": "BB-Week3-Q125",
+      "prompt": "Which of the following is a homogenous assay?",
+      "choices": [
+        { "id": "A", "text": "IRMA" },
+        { "id": "B", "text": "EMIT" },
+        { "id": "C", "text": "Both" },
+        { "id": "D", "text": "Neither" }
+      ],
+      "correctChoiceId": "B",
+      "rationale": "EMIT requires no separation step and is homogeneous; IRMA is a heterogeneous radioimmunometric assay.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Homogeneous immunoassays", "tosCode": "A.3", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "EMIT as a homogeneous assay"
+    },
+    {
+      "id": "BB-Week3-Q126",
+      "prompt": "In Indirect ELISA, what is the unknown?",
+      "choices": [
+        { "id": "A", "text": "Antigen" },
+        { "id": "B", "text": "Antibody" },
+        { "id": "C", "text": "Enzyme-labeled AHG" },
+        { "id": "D", "text": "None of the above" }
+      ],
+      "correctChoiceId": "B",
+      "rationale": "Indirect ELISA uses immobilized antigen to detect and measure unknown antibody in patient serum.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Indirect ELISA", "tosCode": "A.3", "cognitiveLevel": "Comprehension", "difficulty": "Easy" },
+      "canonicalConcept": "Unknown analyte in indirect ELISA is antibody"
+    },
+    {
+      "id": "BB-Week3-Q127",
+      "prompt": "Which of the following types of microscope can be helpful in diagnosing syphilis?",
+      "choices": [
+        { "id": "A", "text": "Bright-field" },
+        { "id": "B", "text": "Dark-field" },
+        { "id": "C", "text": "Both" },
+        { "id": "D", "text": "Neither" }
+      ],
+      "correctChoiceId": "B",
+      "rationale": "Dark-field microscopy directly visualizes motile Treponema pallidum in lesions.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Syphilis microscopy", "tosCode": "A.5", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "Dark-field microscopy for syphilis diagnosis"
+    },
+    {
+      "id": "BB-Week3-Q128",
+      "prompt": "The principle of VDRL is:",
+      "choices": [
+        { "id": "A", "text": "Direct Agglutination" },
+        { "id": "B", "text": "Flocculation" },
+        { "id": "C", "text": "ELISA" },
+        { "id": "D", "text": "Neutralization" }
+      ],
+      "correctChoiceId": "B",
+      "rationale": "VDRL is a nontreponemal flocculation test using cardiolipin antigen.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "VDRL", "tosCode": "A.5", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "VDRL flocculation principle"
+    },
+    {
+      "id": "BB-Week3-Q129",
+      "prompt": "The traditional test used in diagnosing syphilis that employs indirect immunofluorescence as the principle:",
+      "choices": [
+        { "id": "A", "text": "RPR" },
+        { "id": "B", "text": "VDRL" },
+        { "id": "C", "text": "FTA-Abs" },
+        { "id": "D", "text": "MHA-Tp" }
+      ],
+      "correctChoiceId": "C",
+      "rationale": "FTA-ABS is the classic indirect fluorescent treponemal antibody test for syphilis.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "FTA-ABS", "tosCode": "A.5", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "FTA-ABS indirect immunofluorescence"
+    },
+    {
+      "id": "BB-Week3-Q130",
+      "prompt": "Diagnosis of infections with Group A Streptococci can be done by the following tests:",
+      "choices": [
+        { "id": "A", "text": "ASO slide method" },
+        { "id": "B", "text": "ASO tube method" },
+        { "id": "C", "text": "Streptozyme test" },
+        { "id": "D", "text": "Anti-DNAse B test" },
+        { "id": "E", "text": "All of the above" }
+      ],
+      "correctChoiceId": "E",
+      "rationale": "ASO, Streptozyme, and anti-DNase B methods detect antibodies supporting recent group A streptococcal infection.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Streptococcal infection tests", "tosCode": "A.5", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "Serologic tests for group A streptococcal infection"
+    },
+    {
+      "id": "BB-Week3-Q131",
+      "prompt": "Which of the following serologic tests for streptococcal infection employs neutralization as the principle?",
+      "choices": [
+        { "id": "A", "text": "ASO slide test" },
+        { "id": "B", "text": "Streptozyme test" },
+        { "id": "C", "text": "Anti-DNAse B testing" },
+        { "id": "D", "text": "RPR" }
+      ],
+      "correctChoiceId": "C",
+      "rationale": "Anti-DNase B testing measures inhibition of streptodornase activity by patient antibody.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Anti-DNase B", "tosCode": "A.5", "cognitiveLevel": "Knowledge", "difficulty": "Moderate" },
+      "canonicalConcept": "Anti-DNase B neutralization principle"
+    },
+    {
+      "id": "BB-Week3-Q132",
+      "prompt": "ASO Titer of more than 166 means that the patient is at risk for developing:",
+      "choices": [
+        { "id": "A", "text": "Glomerulonephritis and acute rheumatic fever" },
+        { "id": "B", "text": "Impetigo and boils" },
+        { "id": "C", "text": "Erysipelas and sore throat" },
+        { "id": "D", "text": "Erysipeloid and scarlet fever" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "An elevated ASO indicates recent streptococcal infection and risk of poststreptococcal glomerulonephritis or acute rheumatic fever.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "ASO interpretation", "tosCode": "A.5", "cognitiveLevel": "Comprehension", "difficulty": "Easy" },
+      "canonicalConcept": "Elevated ASO and poststreptococcal sequelae"
+    },
+    {
+      "id": "BB-Week3-Q133",
+      "prompt": "Which of the following hepatitis markers indicates that a patient is immune because of Hepa B vaccination?",
+      "choices": [
+        { "id": "A", "text": "Anti-HBs" },
+        { "id": "B", "text": "Anti-HBc" },
+        { "id": "C", "text": "Both" },
+        { "id": "D", "text": "Neither" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "Vaccine-induced immunity produces anti-HBs without anti-HBc, which would indicate natural infection.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Hepatitis B markers", "tosCode": "A.5", "cognitiveLevel": "Comprehension", "difficulty": "Easy" },
+      "canonicalConcept": "Anti-HBs indicates vaccine-induced hepatitis B immunity"
+    },
+    {
+      "id": "BB-Week3-Q134",
+      "prompt": "Which of the following Hepatitis viruses are acquired via blood transfusion?",
+      "choices": [
+        { "id": "A", "text": "Hepatitis B Virus" },
+        { "id": "B", "text": "Hepatitis C Virus" },
+        { "id": "C", "text": "Hepatitis G Virus" },
+        { "id": "D", "text": "All of the above" }
+      ],
+      "correctChoiceId": "D",
+      "rationale": "HBV, HCV, and HGV are all transfusion-transmissible blood-borne hepatitis viruses.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Transfusion-transmitted hepatitis", "tosCode": "A.5", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "Hepatitis viruses transmitted by blood transfusion"
+    },
+    {
+      "id": "BB-Week3-Q135",
+      "prompt": "This Hepatitis B marker is detected only in liver biopsy:",
+      "choices": [
+        { "id": "A", "text": "HBsAg" },
+        { "id": "B", "text": "HBcAg" },
+        { "id": "C", "text": "Anti-HBs" },
+        { "id": "D", "text": "Anti-HBc" },
+        { "id": "E", "text": "None of the above" }
+      ],
+      "correctChoiceId": "B",
+      "rationale": "HBcAg is intracellular and is demonstrated in liver tissue rather than routinely detected in serum.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Hepatitis B core antigen", "tosCode": "A.5", "cognitiveLevel": "Knowledge", "difficulty": "Moderate" },
+      "canonicalConcept": "HBcAg detection in liver biopsy"
+    },
+    {
+      "id": "BB-Week3-Q136",
+      "prompt": "Given: Western Blot Result: Positive for antibodies to gp41, gp120, p16, p15. What is the correct interpretation?",
+      "choices": [
+        { "id": "A", "text": "Patient has confirmed HIV infection" },
+        { "id": "B", "text": "Result is indeterminate" },
+        { "id": "C", "text": "It is a false-positive result" },
+        { "id": "D", "text": "No interpretation can be given based on the given results" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "Reactivity to two envelope proteins, gp41 and gp120, meets the confirmatory Western-blot criterion.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "HIV Western blot interpretation", "tosCode": "A.5", "cognitiveLevel": "Application", "difficulty": "Moderate" },
+      "canonicalConcept": "HIV Western blot positivity requiring envelope antibodies"
+    },
+    {
+      "id": "BB-Week3-Q137",
+      "prompt": "Which of the following tests is a screening test for HIV antibodies?",
+      "choices": [
+        { "id": "A", "text": "Southern Blotting" },
+        { "id": "B", "text": "PCR" },
+        { "id": "C", "text": "Both" },
+        { "id": "D", "text": "Neither" }
+      ],
+      "correctChoiceId": "D",
+      "rationale": "Southern blotting detects DNA and PCR detects nucleic acids; neither is an HIV antibody screening test.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "HIV screening", "tosCode": "A.5", "cognitiveLevel": "Comprehension", "difficulty": "Easy" },
+      "canonicalConcept": "Southern blot and PCR are not HIV antibody screening tests"
+    },
+    {
+      "id": "BB-Week3-Q138",
+      "prompt": "What enzyme transcribes RNA of HIV into DNA?",
+      "choices": [
+        { "id": "A", "text": "Integrase" },
+        { "id": "B", "text": "Reverse Transcriptase" },
+        { "id": "C", "text": "Protease" },
+        { "id": "D", "text": "Helicase" }
+      ],
+      "correctChoiceId": "B",
+      "rationale": "HIV reverse transcriptase synthesizes DNA from the viral RNA genome.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "HIV replication", "tosCode": "A.5", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "HIV reverse transcriptase function"
+    },
+    {
+      "id": "BB-Week3-Q139",
+      "prompt": "Hard chancres are seen in which of the following stages of syphilis?",
+      "choices": [
+        { "id": "A", "text": "Primary" },
+        { "id": "B", "text": "Secondary" },
+        { "id": "C", "text": "Tertiary" },
+        { "id": "D", "text": "Latent" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "The painless hard chancre is the primary lesion of syphilis.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Syphilis stages", "tosCode": "A.5", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "Hard chancre occurs in primary syphilis"
+    },
+    {
+      "id": "BB-Week3-Q140",
+      "prompt": "The following detects actual antibody to T. pallidum, EXCEPT:",
+      "choices": [
+        { "id": "A", "text": "RPR" },
+        { "id": "B", "text": "FTA-Abs" },
+        { "id": "C", "text": "TPHA" },
+        { "id": "D", "text": "MHA-Tp" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "RPR detects nonspecific reagin, whereas FTA-ABS, TPHA, and MHA-TP detect specific treponemal antibodies.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Treponemal versus nontreponemal tests", "tosCode": "A.5", "cognitiveLevel": "Comprehension", "difficulty": "Easy" },
+      "canonicalConcept": "RPR does not detect specific treponemal antibody"
+    },
+    {
+      "id": "BB-Week3-Q141",
+      "prompt": "He discovered that sodium phosphate can be used as an anticoagulant for blood:",
+      "choices": [
+        { "id": "A", "text": "Braxton Hicks" },
+        { "id": "B", "text": "Rous and Turner" },
+        { "id": "C", "text": "Gibson" },
+        { "id": "D", "text": "Lewison" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "Braxton Hicks is credited with the early use of sodium phosphate as a blood anticoagulant.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Components and Storage", "subTopic": "Anticoagulation history", "tosCode": "C.1", "cognitiveLevel": "Knowledge", "difficulty": "Moderate" },
+      "canonicalConcept": "Braxton Hicks and sodium phosphate anticoagulation"
+    },
+    {
+      "id": "BB-Week3-Q142",
+      "prompt": "The shelf life of blood placed with Opstisol is:",
+      "choices": [
+        { "id": "A", "text": "21 days" },
+        { "id": "B", "text": "35 days" },
+        { "id": "C", "text": "10 years" },
+        { "id": "D", "text": "42 days" }
+      ],
+      "correctChoiceId": "D",
+      "rationale": "Optisol/AS-5 supports packed red-cell storage for 42 days.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Components and Storage", "subTopic": "Optisol shelf life", "tosCode": "C.1", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "Optisol red-cell shelf life"
+    },
+    {
+      "id": "BB-Week3-Q143",
+      "prompt": "The level of the following are decreased during storage lesion, EXCEPT:",
+      "choices": [
+        { "id": "A", "text": "Pyruvic acid" },
+        { "id": "B", "text": "pH" },
+        { "id": "C", "text": "Glucose" },
+        { "id": "D", "text": "2,3-DPG" },
+        { "id": "E", "text": "Sodium" }
+      ],
+      "correctChoiceId": "E",
+      "rationale": "Red-cell sodium increases as the sodium pump fails during storage, while pH, glucose, and 2,3-DPG decrease.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Components and Storage", "subTopic": "Storage lesion", "tosCode": "C.1", "cognitiveLevel": "Comprehension", "difficulty": "Moderate" },
+      "canonicalConcept": "Sodium increases during red-cell storage lesion"
+    },
+    {
+      "id": "BB-Week3-Q144",
+      "prompt": "Which of the following is a true statement about the ABO blood group system? I. The ISBT number assigned for ABO system is 001. II. ABO blood grouping can be done via 2 methods. III. ABO genes are located on chromosome no. 9q. IV. Individuals can be grouped either as A, B, O, or AB in this system.",
+      "choices": [
+        { "id": "A", "text": "All except I" },
+        { "id": "B", "text": "I and III are correct" },
+        { "id": "C", "text": "II and IV are correct" },
+        { "id": "D", "text": "All of the above" }
+      ],
+      "correctChoiceId": "D",
+      "rationale": "ABO is ISBT 001, is typed by forward and reverse grouping, is located at chromosome 9q34, and includes groups A, B, O, and AB.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "ABO system characteristics", "tosCode": "B.1", "cognitiveLevel": "Knowledge", "difficulty": "Moderate" },
+      "canonicalConcept": "ABO system number, chromosome, groups, and typing methods"
+    },
+    {
+      "id": "BB-Week3-Q145",
+      "prompt": "Which of the following antibodies are found in the serum of Classic Bombay individuals? I. Anti-A. II. Anti-B. III. Anti-A,B. IV. Anti-H.",
+      "choices": [
+        { "id": "A", "text": "None of the given choices" },
+        { "id": "B", "text": "I and III are correct" },
+        { "id": "C", "text": "II and IV are correct" },
+        { "id": "D", "text": "All of the above" }
+      ],
+      "correctChoiceId": "D",
+      "rationale": "Classic Bombay individuals lack H antigen and consequently produce anti-A, anti-B, anti-A,B, and anti-H.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "Bombay phenotype", "tosCode": "B.1", "cognitiveLevel": "Knowledge", "difficulty": "Moderate" },
+      "canonicalConcept": "Classic Bombay serum antibodies"
+    },
+    {
+      "id": "BB-Week3-Q146",
+      "prompt": "Which of the following types of whole blood can be safely given to a Type \"O\" recipient? I. A. II. B. III. AB. IV. O.",
+      "choices": [
+        { "id": "A", "text": "I and III" },
+        { "id": "B", "text": "II and IV" },
+        { "id": "C", "text": "II, III and IV" },
+        { "id": "D", "text": "IV only" }
+      ],
+      "correctChoiceId": "D",
+      "rationale": "Group O whole blood is the only listed group that safely lacks A and B antigens for an O recipient.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Transfusion Practice", "subTopic": "ABO whole-blood selection", "tosCode": "C.5", "cognitiveLevel": "Application", "difficulty": "Easy" },
+      "canonicalConcept": "Group O recipients receive group O whole blood"
+    },
+    {
+      "id": "BB-Week3-Q147",
+      "prompt": "A Para Bombay has the following:",
+      "choices": [
+        { "id": "A", "text": "H antigen" },
+        { "id": "B", "text": "H soluble antigen" },
+        { "id": "C", "text": "Both" },
+        { "id": "D", "text": "Neither" }
+      ],
+      "correctChoiceId": "C",
+      "rationale": "Para-Bombay cells retain some H activity and, when secretor genes are present, H substance occurs in soluble secretions.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "Para-Bombay phenotype", "tosCode": "B.1", "cognitiveLevel": "Comprehension", "difficulty": "Difficult" },
+      "canonicalConcept": "Para-Bombay H antigen expression"
+    },
+    {
+      "id": "BB-Week3-Q148",
+      "prompt": "The test for Du is:",
+      "choices": [
+        { "id": "A", "text": "IAT" },
+        { "id": "B", "text": "DAT" },
+        { "id": "C", "text": "Crossmatching" },
+        { "id": "D", "text": "Antibody screening" },
+        { "id": "E", "text": "Antibody titration" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "Du or weak D is detected by an indirect antiglobulin test using anti-D.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "Weak D testing", "tosCode": "B.2", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "IAT detects weak D"
+    },
+    {
+      "id": "BB-Week3-Q149",
+      "prompt": "Which of the following RH terminologies is/are using alphanumeric referring to an antigen?",
+      "choices": [
+        { "id": "A", "text": "Fisher-Race" },
+        { "id": "B", "text": "Wiener" },
+        { "id": "C", "text": "Rosenfield" },
+        { "id": "D", "text": "Landsteiner" }
+      ],
+      "correctChoiceId": "C",
+      "rationale": "Rosenfield nomenclature uses alphanumeric designations such as Rh1 and Rh2 for Rh antigens.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "Rh nomenclature", "tosCode": "B.2", "cognitiveLevel": "Knowledge", "difficulty": "Moderate" },
+      "canonicalConcept": "Rosenfield alphanumeric Rh nomenclature"
+    },
+    {
+      "id": "BB-Week3-Q150",
+      "prompt": "The gene frequency of the e antigen is:",
+      "choices": [
+        { "id": "A", "text": "80%" },
+        { "id": "B", "text": "85%" },
+        { "id": "C", "text": "60%" },
+        { "id": "D", "text": "70%" },
+        { "id": "E", "text": "98%" }
+      ],
+      "correctChoiceId": "E",
+      "rationale": "The Rh e antigen is highly prevalent, occurring in approximately 98% of individuals.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Pre-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "Rh antigen frequencies", "tosCode": "B.2", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "Frequency of Rh e antigen"
+    },
+    {
+      "id": "BB-Week3-Q151",
+      "prompt": "Which is not TRUE of the Fahey and Mckelvey Method?",
+      "choices": [
+        { "id": "A", "text": "The logarithm of the concentration of the Antigen is directly proportional to the diameter of the precipitin ring produced in the gel" },
+        { "id": "B", "text": "It uses semi-log paper in plotting the standard curve" },
+        { "id": "C", "text": "It is used to count the amount of radiation emitted by a radioactive label" },
+        { "id": "D", "text": "It is used in the measurement of radial immunodiffusion" }
+      ],
+      "correctChoiceId": "C",
+      "rationale": "Radioactive emission counting is not part of the Fahey-McKelvey radial immunodiffusion method.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Fahey-McKelvey method", "tosCode": "A.2", "cognitiveLevel": "Comprehension", "difficulty": "Moderate" },
+      "canonicalConcept": "Fahey-McKelvey does not use radiation counting"
+    },
+    {
+      "id": "BB-Week3-Q152",
+      "prompt": "Which of the following detects antibodies to cardiolipin?",
+      "choices": [
+        { "id": "A", "text": "FTA-Abs" },
+        { "id": "B", "text": "TPHA" },
+        { "id": "C", "text": "MHA-Tp" },
+        { "id": "D", "text": "RPR" },
+        { "id": "E", "text": "None of the above" }
+      ],
+      "correctChoiceId": "D",
+      "rationale": "RPR is a nontreponemal test that detects reagin antibody directed against cardiolipin antigen.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "RPR", "tosCode": "A.5", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "RPR detects anticardiolipin reagin"
+    },
+    {
+      "id": "BB-Week3-Q153",
+      "prompt": "Which of the following types of red cells can be safely given to a Type \"O\" recipient? I. A. II. B. III. AB. IV. O.",
+      "choices": [
+        { "id": "A", "text": "II, III and IV" },
+        { "id": "B", "text": "I and III" },
+        { "id": "C", "text": "IV only" },
+        { "id": "D", "text": "II and IV" }
+      ],
+      "correctChoiceId": "C",
+      "rationale": "Only group O red cells are safely compatible with the anti-A and anti-B in group O recipient plasma.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Transfusion Practice", "subTopic": "ABO red-cell selection", "tosCode": "C.5", "cognitiveLevel": "Application", "difficulty": "Easy" },
+      "canonicalConcept": "Group O recipients receive group O red cells"
+    },
+    {
+      "id": "BB-Week3-Q154",
+      "prompt": "Which of the following hepatitis markers indicates that a patient is highly infectious?",
+      "choices": [
+        { "id": "A", "text": "HBeAg" },
+        { "id": "B", "text": "HBcAg" },
+        { "id": "C", "text": "Both" },
+        { "id": "D", "text": "Neither" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "Serum HBeAg correlates with active viral replication and high infectivity; HBcAg is principally intracellular.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Hepatitis B infectivity markers", "tosCode": "A.5", "cognitiveLevel": "Comprehension", "difficulty": "Easy" },
+      "canonicalConcept": "HBeAg indicates high hepatitis B infectivity"
+    },
+    {
+      "id": "BB-Week3-Q155",
+      "prompt": "In SANDWICH ELISA, what must be the characteristic of the labeled antigen to be used?",
+      "choices": [
+        { "id": "A", "text": "Univalent" },
+        { "id": "B", "text": "Multivalent" },
+        { "id": "C", "text": "Denatured" },
+        { "id": "D", "text": "None of the given choices is correct" }
+      ],
+      "correctChoiceId": "B",
+      "rationale": "An antigen measured by sandwich ELISA must have at least two epitopes so that capture and labeled antibodies can bind simultaneously.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Sandwich ELISA antigen requirements", "tosCode": "A.3", "cognitiveLevel": "Comprehension", "difficulty": "Moderate" },
+      "canonicalConcept": "Sandwich ELISA requires a multivalent antigen"
+    },
+    {
+      "id": "BB-Week3-Q156",
+      "prompt": "They discovered the fourth blood group under the ABO Blood System, the Blood Group AB:",
+      "choices": [
+        { "id": "A", "text": "Grubber and Durham" },
+        { "id": "B", "text": "Rous and Turner" },
+        { "id": "C", "text": "Landsteiner and Weiner" },
+        { "id": "D", "text": "Sturli and Von Decastello" }
+      ],
+      "correctChoiceId": "D",
+      "rationale": "Sturli and von Decastello identified the fourth ABO group, AB.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "ABO history", "tosCode": "B.1", "cognitiveLevel": "Knowledge", "difficulty": "Moderate" },
+      "canonicalConcept": "Discovery of group AB by Sturli and von Decastello"
+    },
+    {
+      "id": "BB-Week3-Q157",
+      "prompt": "The only marker seen during the Hepatitis B infection window period:",
+      "choices": [
+        { "id": "A", "text": "Anti-HBc" },
+        { "id": "B", "text": "HBcAg" },
+        { "id": "C", "text": "Anti-HBs" },
+        { "id": "D", "text": "HBsAg" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "During the window period after HBsAg disappears and before anti-HBs appears, anti-HBc is the detectable marker.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Hepatitis B window period", "tosCode": "A.5", "cognitiveLevel": "Comprehension", "difficulty": "Easy" },
+      "canonicalConcept": "Anti-HBc is the hepatitis B window-period marker"
+    },
+    {
+      "id": "BB-Week3-Q158",
+      "prompt": "The principle of Rapid Plasma Reagin is:",
+      "choices": [
+        { "id": "A", "text": "ELISA" },
+        { "id": "B", "text": "Direct Agglutination" },
+        { "id": "C", "text": "Flocculation" },
+        { "id": "D", "text": "Neutralization" }
+      ],
+      "correctChoiceId": "C",
+      "rationale": "RPR is a macroscopic flocculation test for cardiolipin-reactive reagin.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "RPR", "tosCode": "A.5", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "RPR flocculation principle"
+    },
+    {
+      "id": "BB-Week3-Q159",
+      "prompt": "In passive agglutination, it detects _____ by using carrier particles coated with _____.",
+      "choices": [
+        { "id": "A", "text": "antigen; antibody" },
+        { "id": "B", "text": "antibody; antigen" },
+        { "id": "C", "text": "Both" },
+        { "id": "D", "text": "Neither" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "Conventional passive agglutination detects antibody using carrier particles coated with antigen.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Passive agglutination", "tosCode": "A.1", "cognitiveLevel": "Comprehension", "difficulty": "Easy" },
+      "canonicalConcept": "Passive agglutination detects antibody using antigen-coated particles"
+    },
+    {
+      "id": "BB-Week3-Q160",
+      "prompt": "Which of the following characterizes a homogeneous enzyme assay?",
+      "choices": [
+        { "id": "A", "text": "Requires 2 wash steps" },
+        { "id": "B", "text": "Requires no separation steps" },
+        { "id": "C", "text": "None of the given choices is correct" },
+        { "id": "D", "text": "More sensitive than heterogeneous enzyme assay" }
+      ],
+      "correctChoiceId": "B",
+      "rationale": "A homogeneous enzyme immunoassay is performed without a wash or bound/free separation step.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Homogeneous enzyme immunoassays", "tosCode": "A.3", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "Homogeneous enzyme assays require no separation step"
+    },
+    {
+      "id": "BB-Week3-Q161",
+      "prompt": "He was appointed as the very first Director of the American Red Cross:",
+      "choices": [
+        { "id": "A", "text": "Dr. Teddy Charles" },
+        { "id": "B", "text": "Dr. Yoko Yamashita" },
+        { "id": "C", "text": "Dr. Susumu Tonegawa" },
+        { "id": "D", "text": "Dr. Charles Drew" }
+      ],
+      "correctChoiceId": "D",
+      "rationale": "Dr. Charles Drew was the first director of the American Red Cross Blood Donor Service.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Banking History", "subTopic": "American Red Cross", "tosCode": "C.10", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "Charles Drew as first American Red Cross blood-program director"
+    },
+    {
+      "id": "BB-Week3-Q162",
+      "prompt": "The gene frequency of the C antigen is:",
+      "choices": [
+        { "id": "A", "text": "60%" },
+        { "id": "B", "text": "80%" },
+        { "id": "C", "text": "70%" },
+        { "id": "D", "text": "85%" }
+      ],
+      "correctChoiceId": "C",
+      "rationale": "The Rh C antigen occurs in approximately 70% of the population.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "Rh antigen frequencies", "tosCode": "B.2", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "Frequency of Rh C antigen"
+    },
+    {
+      "id": "BB-Week3-Q163",
+      "prompt": "The traditional test used in diagnosing neurosyphilis is:",
+      "choices": [
+        { "id": "A", "text": "VDRL" },
+        { "id": "B", "text": "RPR" },
+        { "id": "C", "text": "MHA-Tp" },
+        { "id": "D", "text": "FTA-Abs" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "CSF VDRL is the traditional nontreponemal test used to support a diagnosis of neurosyphilis.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Neurosyphilis testing", "tosCode": "A.5", "cognitiveLevel": "Knowledge", "difficulty": "Moderate" },
+      "canonicalConcept": "CSF VDRL for neurosyphilis"
+    },
+    {
+      "id": "BB-Week3-Q164",
+      "prompt": "Which of the following serologic tests detects antibodies to all exoenzymes produced by Streptococcus pyogenes?",
+      "choices": [
+        { "id": "A", "text": "Streptozyme Test" },
+        { "id": "B", "text": "RPR" },
+        { "id": "C", "text": "Anti-DNAse B Testing" },
+        { "id": "D", "text": "ASO Test" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "The Streptozyme test screens for antibodies to multiple streptococcal extracellular enzymes.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Streptozyme test", "tosCode": "A.5", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "Streptozyme detects antibodies to multiple streptococcal enzymes"
+    },
+    {
+      "id": "BB-Week3-Q165",
+      "prompt": "Which of the following statements accurately describe Competitive ELISA?",
+      "choices": [
+        { "id": "A", "text": "The concentration of patient's analyte is inversely proportional to the amount of enzyme label detected" },
+        { "id": "B", "text": "All the patient analyte is not bound in the reaction" },
+        { "id": "C", "text": "Excess binding sites for the analyte are provided" },
+        { "id": "D", "text": "Labeled and unlabeled analytes are present in equal amounts" },
+        { "id": "E", "text": "None of the given is correct" }
+      ],
+      "correctChoiceId": "A",
+      "rationale": "In competitive ELISA, more patient analyte displaces labeled analyte, so signal decreases as analyte concentration rises.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Competitive ELISA", "tosCode": "A.3", "cognitiveLevel": "Comprehension", "difficulty": "Moderate" },
+      "canonicalConcept": "Inverse signal-analyte relationship in competitive ELISA"
+    },
+    {
+      "id": "BB-Week3-Q166",
+      "prompt": "Which of the following is TRUE of the Rh Blood Group System?",
+      "choices": [
+        { "id": "A", "text": "It is only made of 5 antigens" },
+        { "id": "B", "text": "It is the most important blood group system in terms of transfusion" },
+        { "id": "C", "text": "Both" },
+        { "id": "D", "text": "Neither" }
+      ],
+      "correctChoiceId": "B",
+      "rationale": "Rh is transfusion's most important blood-group system after ABO and has far more than five known antigens.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "Rh system importance", "tosCode": "B.2", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "Rh system importance in transfusion"
+    },
+    {
+      "id": "BB-Week3-Q167",
+      "prompt": "Which of the following best describes immunofixation electrophoresis?",
+      "choices": [
+        { "id": "A", "text": "It is devised by Grabar and Williams" },
+        { "id": "B", "text": "Antigens are electrophoresed first before adding antibody on the surface of the gel" },
+        { "id": "C", "text": "Both" },
+        { "id": "D", "text": "Neither" }
+      ],
+      "correctChoiceId": "B",
+      "rationale": "Immunofixation separates antigens electrophoretically before applying specific antisera to the gel surface.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Immunofixation electrophoresis", "tosCode": "A.2", "cognitiveLevel": "Comprehension", "difficulty": "Moderate" },
+      "canonicalConcept": "Immunofixation electrophoresis procedure"
+    },
+    {
+      "id": "BB-Week3-Q168",
+      "prompt": "Given: Western Blot Result: Positive for antibodies to p24, gp41, gp160, p16, p15. What is the correct interpretation?",
+      "choices": [
+        { "id": "A", "text": "Result is indeterminate" },
+        { "id": "B", "text": "No interpretation can be given based on the given results" },
+        { "id": "C", "text": "It is a false-positive result" },
+        { "id": "D", "text": "Patient has confirmed HIV infection" }
+      ],
+      "correctChoiceId": "D",
+      "rationale": "Reactivity to p24 plus multiple envelope proteins meets the criteria for a confirmed HIV Western blot.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "HIV Western blot interpretation", "tosCode": "A.5", "cognitiveLevel": "Application", "difficulty": "Moderate" },
+      "canonicalConcept": "HIV Western blot positivity requiring envelope antibodies"
+    },
+    {
+      "id": "BB-Week3-Q169",
+      "prompt": "Which of the following tests is a test for HIV DNA?",
+      "choices": [
+        { "id": "A", "text": "PCR" },
+        { "id": "B", "text": "Southern Blotting" },
+        { "id": "C", "text": "Both" },
+        { "id": "D", "text": "Neither" }
+      ],
+      "correctChoiceId": "C",
+      "rationale": "Both PCR and Southern blotting can detect HIV proviral DNA.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "HIV DNA testing", "tosCode": "A.5", "cognitiveLevel": "Knowledge", "difficulty": "Moderate" },
+      "canonicalConcept": "PCR and Southern blot detect HIV DNA"
+    },
+    {
+      "id": "BB-Week3-Q170",
+      "prompt": "Which of the following Hepatitis viruses are acquired via oral-fecal route?",
+      "choices": [
+        { "id": "A", "text": "Hepatitis C Virus" },
+        { "id": "B", "text": "Hepatitis G Virus" },
+        { "id": "C", "text": "Hepatitis B Virus" },
+        { "id": "D", "text": "Hepatitis F Virus" },
+        { "id": "E", "text": "None of the given choices is correct" }
+      ],
+      "correctChoiceId": "E",
+      "rationale": "Hepatitis E is the enterically transmitted virus in this context, and it is not among the listed choices.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Hepatitis transmission", "tosCode": "A.5", "cognitiveLevel": "Knowledge", "difficulty": "Moderate" },
+      "canonicalConcept": "Hepatitis E is transmitted by the oral-fecal route"
+    },
+    {
+      "id": "BB-Week3-Q171",
+      "prompt": "He was able to classify human blood samples into three categories: Blood Group A, Blood Group B and Blood Group O:",
+      "choices": [
+        { "id": "A", "text": "Hustin" },
+        { "id": "B", "text": "Erlichs and Morgenroth" },
+        { "id": "C", "text": "Gurrevitch and Nelken" },
+        { "id": "D", "text": "Karl Landsteiner" },
+        { "id": "E", "text": "None of the above" }
+      ],
+      "correctChoiceId": "D",
+      "rationale": "Karl Landsteiner first classified human blood into A, B, and O groups.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "ABO history", "tosCode": "B.1", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "Landsteiner discovered ABO groups"
+    },
+    {
+      "id": "BB-Week3-Q172",
+      "prompt": "Gummas are seen in which of the following stages of syphilis?",
+      "choices": [
+        { "id": "A", "text": "Latent" },
+        { "id": "B", "text": "Secondary" },
+        { "id": "C", "text": "Primary" },
+        { "id": "D", "text": "Tertiary" }
+      ],
+      "correctChoiceId": "D",
+      "rationale": "Gummatous lesions are a manifestation of tertiary syphilis.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Syphilis stages", "tosCode": "A.5", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "Gummas occur in tertiary syphilis"
+    },
+    {
+      "id": "BB-Week3-Q173",
+      "prompt": "Which of the following antibodies are found in the serum of a Type \"AB\" individual? I. anti-A. II. anti-B. III. anti-A,B. IV. anti-A1.",
+      "choices": [
+        { "id": "A", "text": "II and IV are correct" },
+        { "id": "B", "text": "I, II, III, IV are correct" },
+        { "id": "C", "text": "I and III are correct" },
+        { "id": "D", "text": "None of the given choices are correct" }
+      ],
+      "correctChoiceId": "D",
+      "rationale": "Group AB serum normally contains none of the listed ABO isoagglutinins.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "ABO antibodies", "tosCode": "B.1", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "Group AB serum lacks ABO isoagglutinins"
+    },
+    {
+      "id": "BB-Week3-Q174",
+      "prompt": "Which of the following Rh terminologies is/are using numbers in referring to an antigen?",
+      "choices": [
+        { "id": "A", "text": "Wiener" },
+        { "id": "B", "text": "Fisher-Race" },
+        { "id": "C", "text": "Both" },
+        { "id": "D", "text": "Neither" }
+      ],
+      "correctChoiceId": "D",
+      "rationale": "Rosenfield nomenclature uses numeric antigen designations, not Wiener or Fisher-Race terminology.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "Rh nomenclature", "tosCode": "B.2", "cognitiveLevel": "Knowledge", "difficulty": "Moderate" },
+      "canonicalConcept": "Rosenfield nomenclature uses numeric Rh antigen names"
+    },
+    {
+      "id": "BB-Week3-Q175",
+      "prompt": "The 2 main damaging sequelae to Group A streptococcal infections are:",
+      "choices": [
+        { "id": "A", "text": "erysipelas and sore throat" },
+        { "id": "B", "text": "erysipeloid and scarlet fever" },
+        { "id": "C", "text": "impetigo and boils" },
+        { "id": "D", "text": "glomerulonephritis and acute rheumatic fever" },
+        { "id": "E", "text": "None of the above" }
+      ],
+      "correctChoiceId": "D",
+      "rationale": "Poststreptococcal glomerulonephritis and acute rheumatic fever are the principal damaging nonsuppurative sequelae.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Streptococcal sequelae", "tosCode": "A.5", "cognitiveLevel": "Knowledge", "difficulty": "Easy" },
+      "canonicalConcept": "Poststreptococcal glomerulonephritis and rheumatic fever"
+    },
+    {
+      "id": "BB-Week3-Q176",
+      "prompt": "Which of the following is a true statement about the ABO Blood Group System? I. The ISBT number assigned for ABO system is 010. II. ABO Blood Grouping can be done via 2 methods. III. ABO genes are located on chromosome no. 9q. IV. Individuals can be grouped either as A, B, O or AB in this system.",
+      "choices": [
+        { "id": "A", "text": "All except II" },
+        { "id": "B", "text": "All except I" },
+        { "id": "C", "text": "I and III are correct" },
+        { "id": "D", "text": "II and IV are correct" }
+      ],
+      "correctChoiceId": "B",
+      "rationale": "The ABO ISBT number is 001 rather than 010; the other three statements are correct.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "ABO system characteristics", "tosCode": "B.1", "cognitiveLevel": "Analysis", "difficulty": "Moderate" },
+      "canonicalConcept": "ABO ISBT number and chromosome location"
+    },
+    {
+      "id": "BB-Week3-Q177",
+      "prompt": "The following are exotoxins produced by Group A Streptococci, EXCEPT:",
+      "choices": [
+        { "id": "A", "text": "Hyaluronidase" },
+        { "id": "B", "text": "Streptolysin O" },
+        { "id": "C", "text": "Protein A" },
+        { "id": "D", "text": "Streptolysin S" },
+        { "id": "E", "text": "All of the above" }
+      ],
+      "correctChoiceId": "C",
+      "rationale": "Protein A is a Staphylococcus aureus virulence factor, not a group A streptococcal exotoxin.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Serologic Techniques", "subTopic": "Streptococcal exotoxins", "tosCode": "A.5", "cognitiveLevel": "Knowledge", "difficulty": "Moderate" },
+      "canonicalConcept": "Protein A is not a group A streptococcal exotoxin"
+    },
+    {
+      "id": "BB-Week3-Q178",
+      "prompt": "A type B serum has the following antigens:",
+      "choices": [
+        { "id": "A", "text": "A antigen" },
+        { "id": "B", "text": "B antigen" },
+        { "id": "C", "text": "Both" },
+        { "id": "D", "text": "Neither" }
+      ],
+      "correctChoiceId": "D",
+      "rationale": "Serum does not carry the red-cell A or B antigens; type B serum contains anti-A antibody.",
+      "source": { "center": "Unspecified", "batch": "Week3", "examType": "IMMUNOHEMATOLOGY PT1 Post-Test" },
+      "tos": { "subject": "BB", "topicCategory": "Blood Group Systems", "subTopic": "ABO antibodies", "tosCode": "B.1", "cognitiveLevel": "Comprehension", "difficulty": "Easy" },
+      "canonicalConcept": "Type B serum contains anti-A rather than ABO antigens"
+    }
+  ]

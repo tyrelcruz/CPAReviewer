@@ -20,6 +20,8 @@ const SUBJECT_LABELS: Record<string, string> = {
   RFBT: 'Regulatory Framework for Business Transactions',
   TAX: 'Taxation',
   IS: 'Immunology & Serology',
+  BB: 'Blood Banking',
+  MTAP: 'MTAP Comprehensive Exam',
 }
 
 export function ChooseStrategyPage() {

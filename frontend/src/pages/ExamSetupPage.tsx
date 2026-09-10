@@ -8,6 +8,7 @@ import {
   Calculator,
   Check,
   ClipboardList,
+  Droplet,
   FileText,
   Gauge,
   Landmark,
@@ -100,6 +101,8 @@ const CPA_SUBJECT_DEFS: SubjectDef[] = [
 // content for get a subjectKey; same "Coming Soon" convention as CPA_SUBJECT_DEFS.
 const RMT_SUBJECT_DEFS: SubjectDef[] = [
   { code: 'IS', name: 'Immunology & Serology', icon: Microscope, subjectKey: 'IS' },
+  { code: 'BB', name: 'Blood Banking', icon: Droplet, subjectKey: 'BB' },
+  { code: 'MTAP', name: 'MTAP Comprehensive Exam', icon: ClipboardList, subjectKey: 'MTAP' },
 ]
 
 export function ExamSetupPage() {
@@ -152,6 +155,39 @@ export function ExamSetupPage() {
   const [difficultyCounts, setDifficultyCounts] = useState<DifficultyCounts>(() =>
     defaultDifficultyCounts(70),
   )
+  // Mirrors the raw-string trick used for `timedMinutesInput` above, but for
+  // the mix/topic number inputs: each field is keyed (e.g. "qt:mcq",
+  // "topic:Corporation Code") and holds whatever the user is mid-typing, so a
+  // field showing "0" can actually be cleared instead of snapping back to "0"
+  // on every keystroke. Cleared on blur so the display reverts to the
+  // clamped numeric value; also cleared whenever the underlying counts are
+  // reset programmatically (item count change, topic customize toggle, etc.)
+  // so stale drafts don't linger.
+  const [rawFieldInputs, setRawFieldInputs] = useState<Record<string, string>>({})
+
+  function fieldValue(key: string, numericValue: number): string {
+    return rawFieldInputs[key] ?? String(numericValue)
+  }
+
+  function clearRawField(key: string) {
+    setRawFieldInputs((prev) => {
+      if (!(key in prev)) return prev
+      const next = { ...prev }
+      delete next[key]
+      return next
+    })
+  }
+
+  /** Caps what actually gets echoed back into the field's raw draft at `max`
+   * (e.g. the current question count) — typing "999" into a field capped at
+   * 70 shows "70", not "999" until blur. Empty string stays empty so the
+   * field can still be cleared mid-edit. */
+  function capRawInput(rawValue: string, max: number): string {
+    if (rawValue === '') return rawValue
+    const raw = Number(rawValue)
+    if (!Number.isFinite(raw)) return rawValue
+    return raw > max ? String(max) : rawValue
+  }
 
   useEffect(() => {
     listSubjectCounts()
@@ -187,18 +223,21 @@ export function ExamSetupPage() {
       setQuestionTypeCounts(defaultQuestionTypeCounts(effectiveItemCount))
     }
     setDifficultyCounts(defaultDifficultyCounts(effectiveItemCount))
+    setRawFieldInputs({})
   }, [effectiveItemCount, questionTypeSelection])
 
   const questionTypeTotal = questionTypeCounts.mcq + questionTypeCounts.identification
   const difficultyTotal = difficultyCounts.Easy + difficultyCounts.Moderate + difficultyCounts.Difficult
 
   function updateQuestionTypeCount(key: keyof QuestionTypeCounts, rawValue: string) {
+    setRawFieldInputs((prev) => ({ ...prev, [`qt:${key}`]: capRawInput(rawValue, effectiveItemCount) }))
     const raw = Number(rawValue)
     const clamped = Number.isFinite(raw) ? Math.max(0, Math.min(effectiveItemCount, Math.round(raw))) : 0
     setQuestionTypeCounts((prev) => ({ ...prev, [key]: clamped }))
   }
 
   function updateDifficultyCount(key: keyof DifficultyCounts, rawValue: string) {
+    setRawFieldInputs((prev) => ({ ...prev, [`diff:${key}`]: capRawInput(rawValue, effectiveItemCount) }))
     const raw = Number(rawValue)
     const clamped = Number.isFinite(raw) ? Math.max(0, Math.min(effectiveItemCount, Math.round(raw))) : 0
     setDifficultyCounts((prev) => ({ ...prev, [key]: clamped }))
@@ -207,11 +246,13 @@ export function ExamSetupPage() {
   function handleToggleCustomizeTopics() {
     if (!customizeTopics) {
       setTopicCounts(defaultTopicCounts(topics, itemCount))
+      setRawFieldInputs({})
     }
     setCustomizeTopics((v) => !v)
   }
 
   function updateTopicCount(category: string, available: number, rawValue: string) {
+    setRawFieldInputs((prev) => ({ ...prev, [`topic:${category}`]: capRawInput(rawValue, available) }))
     const raw = Number(rawValue)
     const clamped = Number.isFinite(raw) ? Math.max(0, Math.min(available, Math.round(raw))) : 0
     setTopicCounts((prev) => ({ ...prev, [category]: clamped }))
@@ -286,11 +327,11 @@ export function ExamSetupPage() {
                 <div className="relative">
                   <button
                     type="button"
-                    onClick={() => navigate('/app/dashboard')}
+                    onClick={() => navigate('/app')}
                     className="flex items-center gap-1.5 text-sm font-semibold text-[#7A2323] hover:underline"
                   >
                     <ArrowLeft className="size-4" />
-                    Back to dashboard
+                    Back to Mock Exams
                   </button>
                   <h1 className="font-serif mt-3 text-3xl font-bold text-[#7A2323] sm:text-4xl lg:text-5xl">
                     Create New Exam
@@ -585,8 +626,9 @@ export function ExamSetupPage() {
                               type="number"
                               min={0}
                               max={effectiveItemCount}
-                              value={questionTypeCounts.mcq}
+                              value={fieldValue('qt:mcq', questionTypeCounts.mcq)}
                               onChange={(e) => updateQuestionTypeCount('mcq', e.target.value)}
+                              onBlur={() => clearRawField('qt:mcq')}
                               className="w-16 shrink-0 rounded-lg border border-[#3A2A1A]/15 px-2 py-1 text-right text-sm font-semibold text-[#3A2A1A] outline-none focus:border-[#7A2323]/40"
                             />
                           </div>
@@ -596,8 +638,9 @@ export function ExamSetupPage() {
                               type="number"
                               min={0}
                               max={effectiveItemCount}
-                              value={questionTypeCounts.identification}
+                              value={fieldValue('qt:identification', questionTypeCounts.identification)}
                               onChange={(e) => updateQuestionTypeCount('identification', e.target.value)}
+                              onBlur={() => clearRawField('qt:identification')}
                               className="w-16 shrink-0 rounded-lg border border-[#3A2A1A]/15 px-2 py-1 text-right text-sm font-semibold text-[#3A2A1A] outline-none focus:border-[#7A2323]/40"
                             />
                           </div>
@@ -627,8 +670,9 @@ export function ExamSetupPage() {
                                 type="number"
                                 min={0}
                                 max={effectiveItemCount}
-                                value={difficultyCounts[level]}
+                                value={fieldValue(`diff:${level}`, difficultyCounts[level])}
                                 onChange={(e) => updateDifficultyCount(level, e.target.value)}
+                                onBlur={() => clearRawField(`diff:${level}`)}
                                 className="w-full rounded-lg border border-[#3A2A1A]/15 px-2 py-1 text-center text-sm font-semibold text-[#3A2A1A] outline-none focus:border-[#7A2323]/40"
                               />
                             </div>
@@ -679,8 +723,9 @@ export function ExamSetupPage() {
                                 type="number"
                                 min={0}
                                 max={t.available}
-                                value={topicCounts[t.category] ?? 0}
+                                value={fieldValue(`topic:${t.category}`, topicCounts[t.category] ?? 0)}
                                 onChange={(e) => updateTopicCount(t.category, t.available, e.target.value)}
+                                onBlur={() => clearRawField(`topic:${t.category}`)}
                                 className="w-20 shrink-0 rounded-lg border border-[#3A2A1A]/15 px-2.5 py-1.5 text-right text-sm font-semibold text-[#3A2A1A] outline-none focus:border-[#7A2323]/40"
                               />
                             </div>

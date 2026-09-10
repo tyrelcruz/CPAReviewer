@@ -7,6 +7,7 @@ import { ProtectedRoute } from '@/components/auth/ProtectedRoute'
 import { LoadingScreen } from '@/components/LoadingScreen'
 import { AuthProvider } from '@/context/AuthContext'
 import { AdminDashboardPage } from '@/pages/AdminDashboardPage'
+import { AdminFlaggedQuestionsPage } from '@/pages/AdminFlaggedQuestionsPage'
 import { BankExamApp } from '@/pages/BankExamApp'
 import { ChooseStrategyPage } from '@/pages/ChooseStrategyPage'
 import { DashboardPage } from '@/pages/DashboardPage'
@@ -51,6 +52,14 @@ function App() {
               element={
                 <AdminRoute>
                   <AdminDashboardPage />
+                </AdminRoute>
+              }
+            />
+            <Route
+              path="/admin/flagged-questions"
+              element={
+                <AdminRoute>
+                  <AdminFlaggedQuestionsPage />
                 </AdminRoute>
               }
             />

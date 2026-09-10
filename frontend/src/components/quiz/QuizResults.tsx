@@ -27,7 +27,7 @@ import { AnswerHistoryList } from '@/components/quiz/AnswerHistoryList'
 import { ExamHistoryChart, type ExamHistoryPoint } from '@/components/quiz/ExamHistoryChart'
 import { ProgressRing } from '@/components/quiz/ProgressRing'
 import { useAuth } from '@/context/AuthContext'
-import { isAnswerMatch } from '@/lib/answerMatch'
+import { isIdentificationAnswerCorrect } from '@/lib/answerMatch'
 import { getExamHistory, recordExamAttempt, type SectionScore } from '@/lib/examHistory'
 import { scoreBgClass } from '@/lib/score'
 import { peekStudyStreak } from '@/lib/streak'
@@ -67,8 +67,13 @@ function isCorrectAnswer(
 ): boolean {
   if (answer === undefined) return false
   if (answerMode === 'identification') {
-    const correctText = question.choices.find((c) => c.id === question.correctChoiceId)?.text ?? ''
-    return isAnswerMatch(answer, correctText)
+    return isIdentificationAnswerCorrect(
+      answer,
+      question.choices,
+      question.correctChoiceId,
+      question.acceptableAnswers ?? [],
+      question.prompt,
+    )
   }
   return answer === question.correctChoiceId
 }

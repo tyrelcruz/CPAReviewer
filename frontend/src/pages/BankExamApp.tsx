@@ -23,6 +23,7 @@ function toQuizQuestion(q: BankQuestion): QuizQuestion {
     bankDifficulty: q.difficulty,
     sources: q.sources,
     answerMode: q.answerMode,
+    acceptableAnswers: q.acceptableAnswers,
   }
 }
 

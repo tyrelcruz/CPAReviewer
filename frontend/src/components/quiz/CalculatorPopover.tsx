@@ -179,7 +179,9 @@ export function CalculatorPopover({ onClose }: CalculatorPopoverProps) {
   }, [display, pending, resetOnNextDigit, onClose])
 
   return (
-    <div ref={constraintsRef} className="pointer-events-none fixed inset-0 z-40">
+    // z-[60] — above the maximized canvas-notes overlay (z-50, see
+    // DrawingNotesPanel), so opening the calculator from there still shows on top.
+    <div ref={constraintsRef} className="pointer-events-none fixed inset-0 z-[60]">
       <motion.div
         drag
         dragControls={dragControls}

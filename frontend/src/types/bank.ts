@@ -22,6 +22,9 @@ export interface BankQuestion {
   subTopic: string
   sources: BankQuestionSource[]
   answerMode: AnswerMode
+  /** Curated alternate phrasings accepted for identification-mode grading
+   * (e.g. "HBsAg" also accepting "Hepatitis B surface antigen"). */
+  acceptableAnswers: string[]
 }
 
 export interface RfbtTopic {

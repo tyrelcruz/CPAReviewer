@@ -15,12 +15,18 @@ const SUBJECT_LABELS: Record<string, string> = {
   AT: 'Auditing Theory',
   RFBT: 'RFBT',
   TAX: 'Taxation',
+  IS: 'Immunology & Serology',
+  BB: 'Blood Banking',
+  MTAP: 'MTAP Comprehensive Exam',
 }
 
 const SUBJECT_COLORS: Record<string, string> = {
   AT: '#E0AC48',
   RFBT: '#3A5A40',
   TAX: '#7A2323',
+  IS: '#3A5A40',
+  BB: '#7A2323',
+  MTAP: '#E0AC48',
 }
 
 export interface CombinedAttempt {

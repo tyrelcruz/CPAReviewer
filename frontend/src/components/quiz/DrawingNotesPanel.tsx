@@ -1,4 +1,5 @@
 import {
+  Calculator,
   Eraser,
   Highlighter,
   Maximize2,
@@ -12,6 +13,7 @@ import {
 } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 
+import { AnswerControls } from '@/components/quiz/AnswerControls'
 import { QuestionPromptText } from '@/components/quiz/QuestionPromptText'
 import { cn } from '@/lib/utils'
 
@@ -39,6 +41,21 @@ interface DrawingNotesPanelProps {
   totalQuestions: number
   questionPrompt: string
   choices: QuestionChoice[]
+  /** Lets the calculator be reached without leaving canvas notes — most useful
+   * while maximized, where the notes overlay otherwise covers the whole
+   * screen and the quiz toolbar's own Calculator button is unreachable. */
+  onOpenCalculator?: () => void
+  /** The maximized view restates the question, so it also needs to let the
+   * learner actually answer it (MCQ or identification) without closing out
+   * of canvas notes first — same answer state as the main quiz view. */
+  answerMode: 'mcq' | 'identification'
+  selectedChoiceId: string | undefined
+  isAnswered: boolean
+  isCorrect: boolean
+  draftAnswer: string
+  onDraftChange: (value: string) => void
+  onSelectChoice: (choiceId: string) => void
+  onSubmitTypedAnswer: () => void
 }
 
 const COLORS = ['#3A2A1A', '#7A2323', '#1D4ED8', '#3A5A40', '#E0AC48']
@@ -165,6 +182,15 @@ export function DrawingNotesPanel({
   totalQuestions,
   questionPrompt,
   choices,
+  onOpenCalculator,
+  answerMode,
+  selectedChoiceId,
+  isAnswered,
+  isCorrect,
+  draftAnswer,
+  onDraftChange,
+  onSelectChoice,
+  onSubmitTypedAnswer,
 }: DrawingNotesPanelProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -358,6 +384,18 @@ export function DrawingNotesPanel({
     />
   )
 
+  const calculatorButton = onOpenCalculator && (
+    <button
+      type="button"
+      onClick={onOpenCalculator}
+      aria-label="Open calculator"
+      title="Calculator"
+      className="flex size-7 items-center justify-center rounded-full text-[#3A2A1A]/50 transition-colors hover:bg-[#3A2A1A]/5 hover:text-[#3A2A1A]"
+    >
+      <Calculator className="size-3.5" />
+    </button>
+  )
+
   const undoClearButtons = (
     <>
       <button
@@ -387,7 +425,7 @@ export function DrawingNotesPanel({
     return (
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#3A2A1A]/50 p-3 sm:p-6">
         <div className="flex h-full w-full max-w-7xl flex-col gap-4 rounded-3xl bg-[#FBF3EA] p-4 shadow-2xl sm:p-6">
-          <div className="max-h-[24vh] shrink-0 overflow-y-auto rounded-2xl border border-[#3A2A1A]/10 bg-white p-4 sm:p-5">
+          <div className="max-h-[45vh] shrink-0 overflow-y-auto rounded-2xl border border-[#3A2A1A]/10 bg-white p-4 sm:p-5">
             <p className="text-xs font-semibold text-[#3A2A1A]/60">
               Question {questionNumber} of {totalQuestions}
             </p>
@@ -396,18 +434,19 @@ export function DrawingNotesPanel({
               className="font-reading mt-1 text-sm font-semibold text-[#3A2A1A] sm:text-base"
             />
             {choices.length > 0 && (
-              <div className="mt-3 grid gap-2 sm:grid-cols-2">
-                {choices.map((c, i) => (
-                  <div
-                    key={c.id}
-                    className="flex items-start gap-2 rounded-lg border border-[#3A2A1A]/10 px-3 py-2 text-xs text-[#3A2A1A]/80"
-                  >
-                    <span className="flex size-5 shrink-0 items-center justify-center rounded-full border border-[#3A2A1A]/20 text-[10px] font-bold">
-                      {String.fromCharCode(65 + i)}
-                    </span>
-                    <span className="font-reading">{c.text}</span>
-                  </div>
-                ))}
+              <div className="mt-3">
+                <AnswerControls
+                  prompt={questionPrompt}
+                  answerMode={answerMode}
+                  choices={choices}
+                  selectedChoiceId={selectedChoiceId}
+                  isAnswered={isAnswered}
+                  isCorrect={isCorrect}
+                  draftAnswer={draftAnswer}
+                  onDraftChange={onDraftChange}
+                  onSelectChoice={onSelectChoice}
+                  onSubmitTypedAnswer={onSubmitTypedAnswer}
+                />
               </div>
             )}
           </div>
@@ -419,6 +458,7 @@ export function DrawingNotesPanel({
                 Canvas Notes
               </p>
               <div className="flex items-center gap-1">
+                {calculatorButton}
                 {undoClearButtons}
                 <button
                   type="button"
@@ -462,6 +502,7 @@ export function DrawingNotesPanel({
           Canvas Notes
         </p>
         <div className="flex items-center gap-1">
+          {calculatorButton}
           {undoClearButtons}
           <button
             type="button"

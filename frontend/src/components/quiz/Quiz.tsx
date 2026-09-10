@@ -3,7 +3,6 @@ import {
   ArrowLeft,
   ArrowRight,
   Calculator,
-  Check,
   CheckCircle2,
   ChevronDown,
   Eye,
@@ -17,15 +16,18 @@ import {
 } from 'lucide-react'
 import { useEffect, useMemo, useRef, useState } from 'react'
 
+import { submitQuestionFlag } from '@/api/flags'
+import { AnswerControls } from '@/components/quiz/AnswerControls'
 import { CalculatorPopover } from '@/components/quiz/CalculatorPopover'
 import { DrawingNotesPanel } from '@/components/quiz/DrawingNotesPanel'
+import { FlagReasonPopover } from '@/components/quiz/FlagReasonPopover'
 import { NotesPopover } from '@/components/quiz/NotesPopover'
 import { ProgressRing } from '@/components/quiz/ProgressRing'
 import { QuestionNavigator } from '@/components/quiz/QuestionNavigator'
 import { QuestionPromptText } from '@/components/quiz/QuestionPromptText'
 import { QuizResults } from '@/components/quiz/QuizResults'
 import { useAuth } from '@/context/AuthContext'
-import { isAnswerMatch } from '@/lib/answerMatch'
+import { isIdentificationAnswerCorrect } from '@/lib/answerMatch'
 import { clearExamProgress, getExamProgress, saveExamProgress } from '@/lib/examProgress'
 import { shuffleQuestionsKeepingChains } from '@/lib/quizShuffle'
 import { getStudyStreak } from '@/lib/streak'
@@ -64,8 +66,9 @@ interface QuizProps {
 }
 
 /** mcq: exact choice-id match (unchanged). identification: the typed text is
- * graded leniently against the correct choice's own text, since there's no
- * dedicated identification-authored content — see lib/answerMatch.ts. */
+ * graded leniently against the correct choice's own text (or its reference
+ * letter, or a curated alt phrasing), since there's no dedicated
+ * identification-authored content — see lib/answerMatch.ts. */
 function isCorrectAnswer(
   question: QuizQuestion,
   answer: string | undefined,
@@ -73,8 +76,13 @@ function isCorrectAnswer(
 ): boolean {
   if (answer === undefined) return false
   if (answerMode === 'identification') {
-    const correctText = question.choices.find((c) => c.id === question.correctChoiceId)?.text ?? ''
-    return isAnswerMatch(answer, correctText)
+    return isIdentificationAnswerCorrect(
+      answer,
+      question.choices,
+      question.correctChoiceId,
+      question.acceptableAnswers ?? [],
+      question.prompt,
+    )
   }
   return answer === question.correctChoiceId
 }
@@ -131,6 +139,7 @@ export function Quiz({
   const [calculatorOpen, setCalculatorOpen] = useState(false)
   const [notesOpen, setNotesOpen] = useState(false)
   const [notes, setNotes] = useState('')
+  const [flagPopoverOpen, setFlagPopoverOpen] = useState(false)
   const [streak] = useState(() => getStudyStreak(userId))
   const touchStartRef = useRef<{ x: number; y: number } | null>(null)
 
@@ -162,6 +171,7 @@ export function Quiz({
   // was typed; navigating to a fresh one starts blank.
   useEffect(() => {
     setDraftAnswer(current?.id ? (answers[current.id] ?? '') : '')
+    setFlagPopoverOpen(false)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentIndex])
   const isFlagged = flaggedIndices.has(currentIndex)
@@ -282,13 +292,30 @@ export function Quiz({
     setRemainingSeconds(timeLimitSeconds ?? orderedQuestions.length * SECONDS_PER_QUESTION)
   }
 
-  function toggleFlag() {
-    setFlaggedIndices((prev) => {
-      const next = new Set(prev)
-      if (next.has(currentIndex)) next.delete(currentIndex)
-      else next.add(currentIndex)
-      return next
-    })
+  // Un-flagging needs no reason and happens immediately; flagging opens the
+  // reason popover first (see FlagReasonPopover) — a report without a reason
+  // isn't actionable for whoever reviews it in the admin flagged-questions list.
+  function handleFlagButtonClick() {
+    if (isFlagged) {
+      setFlaggedIndices((prev) => {
+        const next = new Set(prev)
+        next.delete(currentIndex)
+        return next
+      })
+      return
+    }
+    setFlagPopoverOpen(true)
+  }
+
+  // Awaited (not fire-and-forget) — a flag has no local fallback the way an
+  // exam score does, so the "Flagged" indicator must only appear once the
+  // report actually reached the backend. A rejection propagates to
+  // FlagReasonPopover, which keeps itself open and shows an error instead.
+  async function handleSubmitFlag(reason: string) {
+    if (!current?.id) return
+    await submitQuestionFlag(current.id, reason)
+    setFlaggedIndices((prev) => new Set(prev).add(currentIndex))
+    setFlagPopoverOpen(false)
   }
 
   function handleReviewFlagged() {
@@ -498,96 +525,19 @@ export function Quiz({
               className="font-reading text-lg leading-snug font-semibold text-[#3A2A1A]"
             />
 
-            <div className="mt-5 flex flex-col gap-3">
-              {currentAnswerMode === 'identification' ? (
-                <>
-                  <input
-                    type="text"
-                    value={isAnswered ? (selectedChoiceId ?? '') : draftAnswer}
-                    onChange={(e) => setDraftAnswer(e.target.value)}
-                    onKeyDown={(e) => {
-                      if (e.key !== 'Enter' || isAnswered) return
-                      e.preventDefault()
-                      handleTypeAnswer()
-                      e.currentTarget.blur()
-                    }}
-                    disabled={isAnswered}
-                    placeholder="Type your answer…"
-                    autoComplete="off"
-                    className={cn(
-                      'w-full rounded-xl border px-4 py-3.5 text-sm outline-none transition-colors',
-                      isAnswered
-                        ? isCorrect
-                          ? 'border-[#3A5A40] bg-[#3A5A40]/5 text-[#3A2A1A]'
-                          : 'border-red-600/40 bg-red-600/5 text-[#3A2A1A]'
-                        : 'border-[#3A2A1A]/15 text-[#3A2A1A] focus:border-[#7A2323]/40',
-                    )}
-                  />
-                  {!isAnswered && (
-                    <button
-                      type="button"
-                      onClick={handleTypeAnswer}
-                      disabled={!draftAnswer.trim()}
-                      className="self-start rounded-full bg-[#7A2323] px-5 py-2.5 text-sm font-semibold text-[#F3ECDC] transition-colors hover:bg-[#7A2323]/90 disabled:cursor-not-allowed disabled:opacity-50"
-                    >
-                      Submit answer
-                    </button>
-                  )}
-                </>
-              ) : (
-                current.choices.map((choice, i) => {
-                  const letter = String.fromCharCode(65 + i)
-                  const isSelected = choice.id === selectedChoiceId
-
-                  return (
-                    <motion.button
-                      key={choice.id}
-                      type="button"
-                      onClick={() => handleSelect(choice.id)}
-                      disabled={isAnswered}
-                      initial={{ opacity: 0, y: 8 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.2, delay: i * 0.05 }}
-                      whileHover={!isAnswered ? { scale: 1.01 } : undefined}
-                      whileTap={!isAnswered ? { scale: 0.99 } : undefined}
-                      className={cn(
-                        'flex w-full items-center gap-3 rounded-xl border px-4 py-3.5 text-left text-sm transition-colors',
-                        isSelected
-                          ? 'border-[#E0AC48] bg-[#F7E7C4] text-[#3A2A1A]'
-                          : 'border-[#3A2A1A]/10 text-[#3A2A1A]/85',
-                        !isAnswered && !isSelected && 'cursor-pointer hover:bg-[#3A2A1A]/5',
-                        isAnswered && !isSelected && 'opacity-60',
-                      )}
-                    >
-                      <span
-                        className={cn(
-                          'flex size-7 shrink-0 items-center justify-center rounded-full text-xs font-bold',
-                          isSelected
-                            ? 'bg-[#E0AC48] text-[#3A2A1A]'
-                            : 'border border-[#3A2A1A]/20 text-[#3A2A1A]/60',
-                        )}
-                      >
-                        {letter}
-                      </span>
-                      <span className="font-reading flex-1">{choice.text}</span>
-                      {isSelected && (
-                        <span
-                          className={cn(
-                            'flex size-6 shrink-0 items-center justify-center rounded-full text-white',
-                            isCorrect ? 'bg-[#3A5A40]' : 'bg-red-600',
-                          )}
-                        >
-                          {isCorrect ? (
-                            <Check className="size-3.5" />
-                          ) : (
-                            <XCircle className="size-3.5" />
-                          )}
-                        </span>
-                      )}
-                    </motion.button>
-                  )
-                })
-              )}
+            <div className="mt-5">
+              <AnswerControls
+                prompt={current.prompt}
+                answerMode={currentAnswerMode}
+                choices={current.choices}
+                selectedChoiceId={selectedChoiceId}
+                isAnswered={isAnswered}
+                isCorrect={isCorrect}
+                draftAnswer={draftAnswer}
+                onDraftChange={setDraftAnswer}
+                onSelectChoice={handleSelect}
+                onSubmitTypedAnswer={handleTypeAnswer}
+              />
             </div>
 
             <AnimatePresence>
@@ -659,19 +609,32 @@ export function Quiz({
             </AnimatePresence>
 
             <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-[#3A2A1A]/10 pt-5">
-              <button
-                type="button"
-                onClick={toggleFlag}
-                className={cn(
-                  'flex items-center gap-1.5 rounded-full border px-3 py-2 text-xs font-semibold whitespace-nowrap transition-colors sm:px-4',
-                  isFlagged
-                    ? 'border-[#E0AC48] bg-[#E0AC48]/15 text-[#B4791F]'
-                    : 'border-[#3A2A1A]/20 text-[#3A2A1A]/70 hover:bg-[#3A2A1A]/5',
+              <div className="relative">
+                <button
+                  type="button"
+                  onClick={handleFlagButtonClick}
+                  className={cn(
+                    'relative z-20 flex items-center gap-1.5 rounded-full border px-3 py-2 text-xs font-semibold whitespace-nowrap transition-colors sm:px-4',
+                    isFlagged
+                      ? 'border-[#E0AC48] bg-[#E0AC48]/15 text-[#B4791F]'
+                      : 'border-[#3A2A1A]/20 text-[#3A2A1A]/70 hover:bg-[#3A2A1A]/5',
+                  )}
+                >
+                  <Flag className="size-3.5" />
+                  {isFlagged ? 'Flagged' : 'Flag for review'}
+                </button>
+                {flagPopoverOpen && (
+                  <>
+                    <div className="fixed inset-0 z-10" onClick={() => setFlagPopoverOpen(false)} />
+                    <div className="fixed inset-x-4 bottom-4 z-20 sm:absolute sm:inset-x-auto sm:bottom-auto sm:top-full sm:left-0 sm:mt-2">
+                      <FlagReasonPopover
+                        onSubmit={handleSubmitFlag}
+                        onCancel={() => setFlagPopoverOpen(false)}
+                      />
+                    </div>
+                  </>
                 )}
-              >
-                <Flag className="size-3.5" />
-                {isFlagged ? 'Flagged' : 'Flag for review'}
-              </button>
+              </div>
               <button
                 type="button"
                 onClick={toggleExplanation}
@@ -705,6 +668,15 @@ export function Quiz({
             totalQuestions={questions.length}
             questionPrompt={current.prompt}
             choices={current.choices}
+            onOpenCalculator={toggleCalculator}
+            answerMode={currentAnswerMode}
+            selectedChoiceId={selectedChoiceId}
+            isAnswered={isAnswered}
+            isCorrect={isCorrect}
+            draftAnswer={draftAnswer}
+            onDraftChange={setDraftAnswer}
+            onSelectChoice={handleSelect}
+            onSubmitTypedAnswer={handleTypeAnswer}
           />
           <QuestionNavigator
             total={questions.length}

@@ -1,8 +1,9 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import { MoreHorizontal, X } from 'lucide-react'
+import { LogOut, MoreHorizontal, X } from 'lucide-react'
 import { useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 
+import { useAuth } from '@/context/AuthContext'
 import { NAV_ITEMS } from '@/data/nav-items'
 import { cn } from '@/lib/utils'
 
@@ -24,11 +25,19 @@ const overflowTabs = needsOverflow ? orderedTabs.slice(MAX_VISIBLE - 1) : []
 /** Fixed bottom nav shown in place of the Sidebar's drawer on small screens. */
 export function MobileTabBar() {
   const location = useLocation()
+  const navigate = useNavigate()
+  const { logout } = useAuth()
   const [showMore, setShowMore] = useState(false)
 
   const isOverflowActive = overflowTabs.some(
     (tab) => tab.to !== '#' && location.pathname === tab.to,
   )
+
+  function handleLogout() {
+    setShowMore(false)
+    logout()
+    navigate('/login')
+  }
 
   return (
     <>
@@ -149,6 +158,14 @@ export function MobileTabBar() {
                     </Link>
                   )
                 })}
+                <button
+                  type="button"
+                  onClick={handleLogout}
+                  className="flex flex-col items-center gap-1.5 rounded-xl py-3 text-center text-xs font-medium text-[#3A2A1A]/70 transition-colors hover:bg-[#3A2A1A]/5"
+                >
+                  <LogOut className="size-5" />
+                  Log out
+                </button>
               </div>
             </motion.div>
           </>

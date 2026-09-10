@@ -3,7 +3,11 @@ import type { RowDataPacket } from 'mysql2'
 import { randomUUID } from 'node:crypto'
 
 import { pool } from '../db/pool.js'
-import { isAnswerMatch } from '../lib/answerMatch.js'
+import {
+  isChoiceReferenceAnswer,
+  isIdentificationAnswerCorrect,
+  promptReferencesChoices,
+} from '../lib/answerMatch.js'
 import { asyncHandler } from '../middleware/asyncHandler.js'
 import {
   computeMaxSupportedItemCountForCategories,
@@ -99,10 +103,25 @@ const RFBT_CATEGORY_WEIGHTS: Record<string, number> = {
   Insurance: 0.05,
 }
 
+/**
+ * Synthetic subject codes that stand in for a full-length exam spanning every
+ * currently-ingested subject of a board exam, rather than one real
+ * `bank_questions.subject`/`tos_categories.subject` value — resolved to the
+ * underlying subject list wherever pool selection or history filtering would
+ * otherwise query by a single subject. "MTAP" mirrors the review-center name
+ * already used for this style of full-subject mock in the ingested RMT kb
+ * source material (see examType values in the kb JSON).
+ */
+const COMPREHENSIVE_SUBJECTS: Record<string, string[]> = {
+  MTAP: ['IS', 'BB'],
+}
+
 interface PoolRow extends RowDataPacket {
   id: string
   difficulty: Difficulty
   sub_topic: string
+  prompt: string
+  correct_choice_text: string
   category?: string
 }
 
@@ -135,6 +154,7 @@ interface QuestionMetaRow extends RowDataPacket {
   sub_topic: string
   position: number
   answer_mode: QuestionAnswerMode
+  acceptable_answers: string[] | null
 }
 
 interface ChoiceRow extends RowDataPacket {
@@ -163,6 +183,7 @@ interface SessionQuestion {
   rationale: string
   canonicalConcept: string
   answerMode: QuestionAnswerMode
+  acceptableAnswers: string[]
 }
 
 /**
@@ -175,7 +196,7 @@ async function fetchSessionQuestions(sessionId: string): Promise<SessionQuestion
   const [questionRows] = await pool.query<QuestionMetaRow[]>(
     `SELECT bq.id, bq.prompt, bq.correct_choice_id, bq.rationale, bq.canonical_concept,
             bq.difficulty, bq.cognitive_level, bq.tos_code, tc.topic_category, tc.sub_topic,
-            esq.position, esq.answer_mode
+            bq.acceptable_answers, esq.position, esq.answer_mode
      FROM exam_session_questions esq
      JOIN bank_questions bq ON bq.id = esq.question_id
      JOIN tos_categories tc ON tc.subject = bq.subject AND tc.tos_code = bq.tos_code
@@ -223,6 +244,7 @@ async function fetchSessionQuestions(sessionId: string): Promise<SessionQuestion
     rationale: q.rationale,
     canonicalConcept: q.canonical_concept,
     answerMode: q.answer_mode,
+    acceptableAnswers: q.acceptable_answers ?? [],
   }))
 }
 
@@ -302,12 +324,15 @@ examsRouter.post('/generate', asyncHandler(async (req, res) => {
   const resolvedTypeCounts = questionTypeCounts as { mcq: number; identification: number }
   const resolvedDifficultyCounts = difficultyCounts as Record<Difficulty, number>
 
+  const subjectFilter = COMPREHENSIVE_SUBJECTS[subject] ?? [subject]
+
   const [poolRows] = await pool.query<PoolRow[]>(
-    `SELECT bq.id, bq.difficulty, tc.sub_topic
+    `SELECT bq.id, bq.difficulty, bq.prompt, bc.text AS correct_choice_text, tc.sub_topic
      FROM bank_questions bq
      JOIN tos_categories tc ON tc.subject = bq.subject AND tc.tos_code = bq.tos_code
-     WHERE tc.subject = ?`,
-    [subject],
+     JOIN bank_choices bc ON bc.question_id = bq.id AND bc.choice_id = bq.correct_choice_id
+     WHERE tc.subject IN (?)`,
+    [subjectFilter],
   )
 
   if (poolRows.length === 0) {
@@ -320,8 +345,8 @@ examsRouter.post('/generate', asyncHandler(async (req, res) => {
      FROM user_question_history uqh
      JOIN bank_questions bq ON bq.id = uqh.question_id
      JOIN tos_categories tc ON tc.subject = bq.subject AND tc.tos_code = bq.tos_code
-     WHERE uqh.user_id = ? AND tc.subject = ?`,
-    [req.user!.id, subject],
+     WHERE uqh.user_id = ? AND tc.subject IN (?)`,
+    [req.user!.id, subjectFilter],
   )
   const recentlySeenIds = new Set(historyRows.map((r) => r.question_id as string))
 
@@ -383,20 +408,46 @@ examsRouter.post('/generate', asyncHandler(async (req, res) => {
   }
 
   // Type split (MCQ vs identification) is independent of difficulty/topic —
-  // applied as a final pass over whichever questions actually got selected,
-  // rather than correlating with difficulty tier in any way. Clamped to
-  // selected.length in case a shortfall (see notice above) means fewer
-  // questions came back than requested.
-  const shuffledForTypeAssignment = shuffleArray(selected)
-  const mcqCountForSelected = Math.min(resolvedTypeCounts.mcq, selected.length)
+  // applied as a final pass over whichever questions actually got selected.
+  // A question is only eligible to become identification when BOTH:
+  //  - its own prompt reads as free-recall, not choice-among-options
+  //    ("which of the following..."/"...the following conditions:" — see
+  //    promptReferencesChoices), and
+  //  - its correct answer is itself a standalone identifiable term, not a
+  //    meta-reference back to other lettered choices ("All of the above",
+  //    "Both A and B", "1, 3, and 4 are correct" — see
+  //    isChoiceReferenceAnswer), which is inherently untypeable without
+  //    having seen the option list regardless of how the stem is phrased.
+  // MCQ-eligible pool is every selected question; identification is drawn
+  // only from the eligible subset, clamped to however many of those exist.
+  const identificationEligible = selected.filter(
+    (q) => !promptReferencesChoices(q.prompt) && !isChoiceReferenceAnswer(q.correct_choice_text),
+  )
+  const identificationCountForSelected = Math.min(
+    resolvedTypeCounts.identification,
+    identificationEligible.length,
+  )
+  const identificationIds = new Set(
+    shuffleArray(identificationEligible)
+      .slice(0, identificationCountForSelected)
+      .map((q) => q.id),
+  )
   const answerModeById = new Map<string, QuestionAnswerMode>()
-  shuffledForTypeAssignment.forEach((question, index) => {
-    answerModeById.set(question.id, index < mcqCountForSelected ? 'mcq' : 'identification')
-  })
+  for (const question of selected) {
+    answerModeById.set(question.id, identificationIds.has(question.id) ? 'identification' : 'mcq')
+  }
+  const actualIdentificationCount = identificationIds.size
+  const actualMcqCount = selected.length - actualIdentificationCount
+
+  if (actualIdentificationCount < resolvedTypeCounts.identification) {
+    const shortfallNotice = `Only ${actualIdentificationCount} of ${resolvedTypeCounts.identification} requested identification items could be assigned — the rest of the selected questions are phrased as multiple-choice or have an answer that references other choices ("All of the above", "Both A and B", etc.) and stayed as choice-based questions instead.`
+    notice = notice ? `${notice} ${shortfallNotice}` : shortfallNotice
+  }
+
   const sessionAnswerMode: SessionAnswerMode =
-    resolvedTypeCounts.mcq > 0 && resolvedTypeCounts.identification > 0
+    actualMcqCount > 0 && actualIdentificationCount > 0
       ? 'mixed'
-      : resolvedTypeCounts.identification > 0
+      : actualIdentificationCount > 0
         ? 'identification'
         : 'mcq'
 
@@ -480,6 +531,9 @@ examsRouter.get('/subject-counts', asyncHandler(async (_req, res) => {
   const counts: Record<string, number> = {}
   for (const row of rows) {
     counts[row.subject as string] = Number(row.c)
+  }
+  for (const [comprehensiveSubject, subjects] of Object.entries(COMPREHENSIVE_SUBJECTS)) {
+    counts[comprehensiveSubject] = subjects.reduce((sum, s) => sum + (counts[s] ?? 0), 0)
   }
   res.json({ counts })
 }))
@@ -577,8 +631,13 @@ examsRouter.post('/:id/submit', asyncHandler(async (req, res) => {
     // identification questions (see POST /generate's questionTypeCounts).
     if (question.answerMode === 'identification') {
       if (typeof answer.answerText !== 'string') continue
-      const correctText = question.choices.find((c) => c.id === question.correctChoiceId)?.text ?? ''
-      const isCorrect = isAnswerMatch(answer.answerText, correctText)
+      const isCorrect = isIdentificationAnswerCorrect(
+        answer.answerText,
+        question.choices,
+        question.correctChoiceId,
+        question.acceptableAnswers,
+        question.prompt,
+      )
       if (isCorrect) score += 1
       answerRows.push([id, question.id, null, answer.answerText, isCorrect])
     } else {
@@ -625,7 +684,7 @@ examsRouter.post('/:id/submit', asyncHandler(async (req, res) => {
       const yourAnswer = (isIdentification ? answer?.answerText : answer?.choiceId) ?? null
       const correct = isIdentification
         ? typeof yourAnswer === 'string' &&
-          isAnswerMatch(yourAnswer, q.choices.find((c) => c.id === q.correctChoiceId)?.text ?? '')
+          isIdentificationAnswerCorrect(yourAnswer, q.choices, q.correctChoiceId, q.acceptableAnswers, q.prompt)
         : yourAnswer === q.correctChoiceId
       return {
         questionId: q.id,

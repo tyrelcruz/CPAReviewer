@@ -1,4 +1,4 @@
-import { isAnswerMatch } from '@/lib/answerMatch'
+import { isIdentificationAnswerCorrect } from '@/lib/answerMatch'
 import { cn, hasRealSourceCenter } from '@/lib/utils'
 import type { QuizQuestion } from '@/types/quiz'
 
@@ -16,7 +16,14 @@ export function AnswerHistoryList({ questions, answers }: AnswerHistoryListProps
         const isAnswered = selectedChoiceId !== undefined
         const correctAnswerText = q.choices.find((c) => c.id === q.correctChoiceId)?.text
         const isCorrect = isIdentification
-          ? isAnswered && isAnswerMatch(selectedChoiceId, correctAnswerText ?? '')
+          ? isAnswered &&
+            isIdentificationAnswerCorrect(
+              selectedChoiceId,
+              q.choices,
+              q.correctChoiceId,
+              q.acceptableAnswers ?? [],
+              q.prompt,
+            )
           : selectedChoiceId === q.correctChoiceId
         const yourAnswerText = isIdentification
           ? selectedChoiceId

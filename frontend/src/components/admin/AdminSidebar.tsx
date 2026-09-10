@@ -1,6 +1,7 @@
 import {
   BarChart3,
   FileText,
+  Flag,
   LayoutGrid,
   Layers,
   LogOut,
@@ -27,6 +28,7 @@ interface AdminNavItem {
 
 const ADMIN_NAV_ITEMS: AdminNavItem[] = [
   { label: 'Dashboard', icon: LayoutGrid, to: '/admin' },
+  { label: 'Flagged Questions', icon: Flag, to: '/admin/flagged-questions' },
   { label: 'Users', icon: Users, to: '#' },
   { label: 'Exams', icon: FileText, to: '#' },
   { label: 'Question Bank', icon: Layers, to: '#' },

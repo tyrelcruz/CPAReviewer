@@ -83,3 +83,24 @@ export async function getAdminAnalytics(): Promise<AdminAnalytics> {
   const { data } = await apiClient.get<AdminAnalytics>('/api/admin/analytics')
   return data
 }
+
+export interface AdminFlaggedQuestion {
+  id: string
+  questionId: string
+  /** Null if the flagged question has since been deleted/re-ingested under a new id. */
+  subject: string | null
+  prompt: string | null
+  reason: string
+  flaggedByName: string
+  flaggedByEmail: string
+  createdAt: string
+}
+
+export interface AdminFlaggedQuestionsResponse {
+  flags: AdminFlaggedQuestion[]
+}
+
+export async function listFlaggedQuestions(): Promise<AdminFlaggedQuestionsResponse> {
+  const { data } = await apiClient.get<AdminFlaggedQuestionsResponse>('/api/admin/flags')
+  return data
+}

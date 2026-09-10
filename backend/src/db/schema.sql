@@ -129,9 +129,22 @@ CREATE TABLE IF NOT EXISTS bank_questions (
   rationale TEXT NOT NULL,
   canonical_concept TEXT NOT NULL,
   canonical_concept_hash CHAR(64) NOT NULL,
+  -- Curated alternate phrasings accepted for identification-mode grading
+  -- (e.g. correct_choice_id text "HBsAg" also accepting "Hepatitis B
+  -- surface antigen") — explicit per-question aliases, not an algorithmic
+  -- acronym guess, since this bank is full of genuine minimal pairs
+  -- (antigen vs antibody, HBsAg vs anti-HBs) that a fuzzy match would
+  -- dangerously conflate. NULL/empty when a question has none.
+  acceptable_answers JSON NULL,
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (subject, tos_code) REFERENCES tos_categories(subject, tos_code)
 );
+
+-- No IF NOT EXISTS support for ADD COLUMN on stock MySQL (unlike MariaDB) —
+-- migrate.ts already tolerates ER_DUP_FIELDNAME, so a plain ADD COLUMN is
+-- how this repo's migrations add a column to a table that already exists;
+-- a fresh database just gets it from the CREATE TABLE above instead.
+ALTER TABLE bank_questions ADD COLUMN acceptable_answers JSON NULL;
 
 CREATE INDEX idx_bank_questions_subject_tos_code ON bank_questions(subject, tos_code);
 CREATE INDEX idx_bank_questions_difficulty ON bank_questions(difficulty);
@@ -246,3 +259,20 @@ CREATE TABLE IF NOT EXISTS user_question_history (
   FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
   FOREIGN KEY (question_id) REFERENCES bank_questions(id) ON DELETE CASCADE
 );
+
+-- A learner's "Flag for review" report on a bank question, with a required
+-- reason so admins reviewing the list (GET /api/admin/flags) know what to
+-- check for (wrong answer key, bad wording, duplicate, ...) without having
+-- to guess or re-derive it from the question alone.
+CREATE TABLE IF NOT EXISTS question_flags (
+  id VARCHAR(64) PRIMARY KEY,
+  question_id VARCHAR(64) NOT NULL,
+  user_id VARCHAR(64) NOT NULL,
+  reason TEXT NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (question_id) REFERENCES bank_questions(id) ON DELETE CASCADE,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE INDEX idx_question_flags_question ON question_flags(question_id);
+CREATE INDEX idx_question_flags_created_at ON question_flags(created_at);
