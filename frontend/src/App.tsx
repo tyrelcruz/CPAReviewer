@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import { AdminRoute } from '@/components/auth/AdminRoute'
@@ -24,6 +24,19 @@ import { SubjectsPage } from '@/pages/SubjectsPage'
 
 function App() {
   const [isBooting, setIsBooting] = useState(true)
+
+  // Deters casual right-click copying/saving site-wide. Purely cosmetic —
+  // it doesn't block DevTools, view-source, or anything a technical user
+  // couldn't route around instantly, so it must never be treated as an
+  // actual content-protection or security measure (see CLAUDE.md's
+  // client-side-is-not-a-security-boundary rule).
+  useEffect(() => {
+    function handleContextMenu(e: MouseEvent) {
+      e.preventDefault()
+    }
+    document.addEventListener('contextmenu', handleContextMenu)
+    return () => document.removeEventListener('contextmenu', handleContextMenu)
+  }, [])
 
   return (
     <>

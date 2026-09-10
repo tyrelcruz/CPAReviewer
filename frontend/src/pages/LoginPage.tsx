@@ -131,7 +131,7 @@ export function LoginPage() {
         <div className="flex items-center justify-center gap-2 bg-[#E0AC48]/20 px-4 py-1.5 text-center text-xs font-medium text-[#8a5a12] lg:col-span-2">
           <FlaskConical className="size-3.5 shrink-0" />
           <span>
-            Alpha build — expect bugs. Found one? Screenshot it and notify Vanessa.
+            Alpha build — expect bugs. Found one? Screenshot it and notify admin.
           </span>
         </div>
 

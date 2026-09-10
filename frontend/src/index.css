@@ -84,6 +84,16 @@
       'Segoe UI',
       Roboto,
       sans-serif;
+    /* Deters casual text-selection copying site-wide — cosmetic only, see
+       the matching contextmenu-block note in App.tsx. Inputs/textareas stay
+       selectable so typing, editing, and copy/paste still work there. */
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  input,
+  textarea {
+    user-select: text;
+    -webkit-user-select: text;
   }
 }
 
