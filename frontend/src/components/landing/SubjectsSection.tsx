@@ -1,14 +1,9 @@
 import {
   ArrowRight,
   BookOpen,
-  Calculator,
-  Coins,
-  FileText,
-  Scale,
-  ScrollText,
-  Star,
-  Target,
-  Users,
+  ClipboardList,
+  Droplet,
+  Microscope,
   type LucideIcon,
 } from 'lucide-react'
 import { motion } from 'framer-motion'
@@ -16,7 +11,7 @@ import { Link } from 'react-router-dom'
 
 import carabaoRepia from '@/assets/images/carabao_repia.png'
 import smallMountain from '@/assets/images/small_mountain.png'
-import studyCarabao from '@/assets/images/study_carabao.png'
+import subjectsSceneVideo from '@/assets/videos/subjects-scene-loop.mp4'
 import { fadeUpItem, staggerContainer } from '@/lib/motion'
 
 interface Subject {
@@ -27,62 +22,30 @@ interface Subject {
   color: string
 }
 
+// Same RMT subject lineup as ExamSetupPage's SUBJECT_DEFS / dashboardStats's
+// SUBJECT_LABELS — keep these three in sync if the ingested-content lineup
+// ever grows.
 const SUBJECTS: Subject[] = [
   {
-    key: 'far',
-    Icon: Calculator,
-    title: 'Financial Accounting & Reporting',
-    description: 'Understand financial data, prepare reports, and analyze business performance.',
+    key: 'IS',
+    Icon: Microscope,
+    title: 'Immunology & Serology',
+    description: 'Master antigen-antibody reactions, the complement system, and serologic testing techniques.',
     color: '#3A5A40',
   },
   {
-    key: 'aud',
-    Icon: Coins,
-    title: 'Auditing & Assurance',
-    description: 'Learn how to evaluate, verify, and ensure financial integrity.',
+    key: 'BB',
+    Icon: Droplet,
+    title: 'Blood Banking',
+    description: 'Learn blood typing, compatibility testing, and the principles of transfusion medicine.',
     color: '#7A2323',
   },
   {
-    key: 'reg',
-    Icon: ScrollText,
-    title: 'Regulation (RFBT)',
-    description: 'Navigate the rules and standards that keep businesses in check.',
-    color: '#B4791F',
-  },
-  {
-    key: 'law-tax',
-    Icon: Scale,
-    title: 'Business Law & Taxation',
-    description: 'Know your rights, obligations, and how taxes affect business decisions.',
-    color: '#34506B',
-  },
-  {
-    key: 'mas',
-    Icon: Users,
-    title: 'Management Advisory Services (MAS)',
-    description: 'Develop strategic solutions for real business problems.',
-    color: '#6B4C8A',
-  },
-  {
-    key: 'strategy',
-    Icon: Target,
-    title: 'Strategic Management',
-    description: 'Learn to think ahead, make better decisions, and lead effectively.',
-    color: '#2F7A6E',
-  },
-  {
-    key: 'rfbt-tax',
-    Icon: FileText,
-    title: 'RFBT (Business and Taxation)',
-    description: 'Apply tax laws and regulations in real-world scenarios.',
-    color: '#A0522D',
-  },
-  {
-    key: 'electives',
-    Icon: Star,
-    title: 'Elective Subjects',
-    description: 'Explore specialized topics to match your career goals and interests.',
-    color: '#6B6B6B',
+    key: 'MTAP',
+    Icon: ClipboardList,
+    title: 'MTAP Comprehensive Exam',
+    description: 'Cover medical technology laws, ethics, lab administration, and professional practice standards.',
+    color: '#E0AC48',
   },
 ]
 
@@ -223,15 +186,17 @@ export function SubjectsSection() {
             </motion.p>
           </div>
 
-          <img
-            src={studyCarabao}
-            alt=""
-            aria-hidden="true"
-            className="pointer-events-none absolute top-1/2 right-0 hidden w-64 -translate-y-1/2 object-contain opacity-90 mix-blend-multiply sm:block lg:right-[-2rem] lg:w-[26rem] xl:right-[-4rem] xl:w-[30rem]"
+          <video
+            src={subjectsSceneVideo}
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="pointer-events-none absolute top-1/2 right-0 hidden aspect-[1200/600] w-64 -translate-y-1/2 object-contain opacity-90 mix-blend-multiply sm:block lg:right-[-2rem] lg:w-[26rem] xl:right-[-4rem] xl:w-[30rem]"
           />
         </div>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {SUBJECTS.map((subject) => (
             <motion.div key={subject.key} variants={fadeUpItem}>
               <Link

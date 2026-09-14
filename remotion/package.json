@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "render": "remotion render src/index.ts WhyKabisHero out/why-kabis-hero.mp4 --codec=h264 --color-space=bt709 --image-format=png",
-    "render:hero": "remotion render src/index.ts HeroQuizLoop out/hero-quiz-loop.mp4 --codec=h264 --color-space=bt709 --image-format=png"
+    "render:hero": "remotion render src/index.ts HeroQuizLoop out/hero-quiz-loop.mp4 --codec=h264 --color-space=bt709 --image-format=png",
+    "render:subjects": "remotion render src/index.ts SubjectsSceneLoop out/subjects-scene-loop.mp4 --codec=h264 --color-space=bt709 --image-format=png"
   },
   "dependencies": {
     "@remotion/cli": "4.0.290",
