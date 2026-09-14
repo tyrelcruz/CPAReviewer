@@ -11,7 +11,3 @@ export function getInitials(name: string): string {
   return initials || '?'
 }
 
-/** Human-readable label for which board exam an account reviews for. */
-export function getCourseLabel(course: 'cpa' | 'rmt'): string {
-  return course === 'rmt' ? 'RMT Aspirant' : 'CPA Aspirant'
-}

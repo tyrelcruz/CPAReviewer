@@ -123,7 +123,7 @@ export function NotFoundPage() {
             Pass smarter. Not harder.
           </span>
           <span className="text-[#F3ECDC]/70">
-            © {new Date().getFullYear()} KABIS CPA Reviewer. All rights reserved.
+            © {new Date().getFullYear()} KABIS RMT Reviewer. All rights reserved.
           </span>
         </div>
       </footer>

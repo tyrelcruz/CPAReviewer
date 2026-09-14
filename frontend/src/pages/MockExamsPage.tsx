@@ -45,7 +45,6 @@ function buildRealExams(userId: string): MockExam[] {
       title: set.title,
       description: set.description,
       type: 'subject',
-      course: 'cpa',
       subject: set.code ?? 'General',
       difficulty: 'Mixed',
       durationMinutes: Math.round((set.questions.length * SECONDS_PER_QUESTION) / 60),
@@ -83,10 +82,9 @@ export function MockExamsPage() {
     }
   }, [])
 
-  const userCourse = user?.course ?? 'cpa'
   const allExams = useMemo(
-    () => [...buildRealExams(userId), ...MOCK_EXAMS].filter((e) => e.course === userCourse),
-    [userId, userCourse],
+    () => [...buildRealExams(userId), ...MOCK_EXAMS],
+    [userId],
   )
 
   const subjectOptions = useMemo(() => {

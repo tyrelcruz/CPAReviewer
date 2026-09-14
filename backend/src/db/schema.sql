@@ -291,3 +291,14 @@ ALTER TABLE question_flags ADD COLUMN suggested_answer_text TEXT NULL;
 
 CREATE INDEX idx_question_flags_question ON question_flags(question_id);
 CREATE INDEX idx_question_flags_created_at ON question_flags(created_at);
+
+-- The app is now RMT-only — there is no longer a per-account choice of which
+-- board exam to review for. Narrowing the enum (rather than dropping the
+-- column, which would break re-running this idempotent migration once the
+-- column was already gone) retires 'cpa' the same way the exams.mode rename
+-- above retired 'review_center_drill'. Existing 'cpa' rows are folded into
+-- 'rmt' first so the narrower enum never rejects a stored value.
+UPDATE users SET course = 'rmt' WHERE course = 'cpa';
+ALTER TABLE users MODIFY COLUMN course ENUM('rmt') NOT NULL DEFAULT 'rmt';
+UPDATE otp_codes SET pending_course = 'rmt' WHERE pending_course = 'cpa';
+ALTER TABLE otp_codes MODIFY COLUMN pending_course ENUM('rmt') NULL;

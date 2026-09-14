@@ -91,7 +91,7 @@ function AdminSidebarPromoCard() {
         higher dreams.
       </p>
       <p className="font-reading mt-2 text-center text-xs text-[#3A2A1A]/60">
-        Every account here is a future CPA in progress.
+        Every account here is a future RMT in progress.
       </p>
       <p className="mt-2 text-center text-sm text-[#3A5A40]/50" aria-hidden="true">
         〜

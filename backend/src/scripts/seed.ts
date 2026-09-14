@@ -19,12 +19,12 @@ const ADMIN_USER = {
  * instead of emailed. */
 async function seed() {
   await pool.query(
-    `INSERT INTO users (id, name, email, course)
-     VALUES (?, ?, ?, 'rmt')
-     ON DUPLICATE KEY UPDATE name = VALUES(name), course = VALUES(course)`,
+    `INSERT INTO users (id, name, email)
+     VALUES (?, ?, ?)
+     ON DUPLICATE KEY UPDATE name = VALUES(name)`,
     [randomUUID(), DEMO_USER.name, DEMO_USER.email],
   )
-  console.log(`Seeded demo user "${DEMO_USER.email}" (course: rmt).`)
+  console.log(`Seeded demo user "${DEMO_USER.email}".`)
 
   await pool.query(
     `INSERT INTO users (id, name, email, role)

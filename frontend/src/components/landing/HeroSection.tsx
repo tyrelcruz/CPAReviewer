@@ -14,22 +14,22 @@ import { Link } from 'react-router-dom'
 const STATS = [
   { icon: FileText, label: 'questions', value: '10,000+' },
   { icon: BookOpen, label: 'flashcards', value: '1,500+' },
-  { icon: GraduationCap, label: 'CPA subjects', value: '4' },
+  { icon: GraduationCap, label: 'RMT subjects', value: '3' },
   { icon: CheckCircle2, label: 'Built for exam day', value: null },
 ]
 
 const CHOICES = [
-  { letter: 'A', text: 'Notes payable due in 8 months', active: true },
-  { letter: 'B', text: 'Bonds payable due in 5 years', active: false },
-  { letter: 'C', text: 'Common stock', active: false },
-  { letter: 'D', text: 'Land', active: false },
+  { letter: 'A', text: 'IgM', active: true },
+  { letter: 'B', text: 'IgG', active: false },
+  { letter: 'C', text: 'IgA', active: false },
+  { letter: 'D', text: 'IgE', active: false },
 ]
 
 const SUBJECT_TABS = [
-  { key: 'FAR', icon: FileText, active: true },
-  { key: 'AUD', icon: Search, active: false },
-  { key: 'REG', icon: FileText, active: false },
-  { key: 'BAR', icon: BarChart3, active: false },
+  { key: 'IS', icon: FileText, active: true },
+  { key: 'BB', icon: Search, active: false },
+  { key: 'MTAP', icon: FileText, active: false },
+  { key: 'CC', icon: BarChart3, active: false },
 ]
 
 export function HeroSection() {
@@ -44,7 +44,7 @@ export function HeroSection() {
           </h1>
 
           <p className="font-reading mt-6 max-w-md text-lg text-[#3A2A1A]/80">
-            Master the CPA exam with high-yield reviewers, quizlet-style
+            Master the RMT board exam with high-yield reviewers, quizlet-style
             flashcards, and realistic practice questions.
           </p>
 
@@ -98,7 +98,7 @@ export function HeroSection() {
                   Multiple Choice
                 </span>
                 <span className="rounded-md bg-[#E0AC48] px-2 py-0.5 text-xs font-bold text-[#3A2A1A]">
-                  FAR
+                  IS
                 </span>
               </div>
               <div className="flex items-center gap-3 text-xs text-[#3A2A1A]/60">
@@ -108,8 +108,8 @@ export function HeroSection() {
             </div>
 
             <p className="font-reading mt-4 text-sm leading-relaxed font-medium text-[#3A2A1A]">
-              Which of the following items would most likely be classified as
-              a current liability?
+              Which immunoglobulin class is produced first during a primary
+              immune response?
             </p>
 
             <div className="mt-4 flex flex-col gap-2">
@@ -153,7 +153,7 @@ export function HeroSection() {
 
             <div className="mt-5 border-t border-[#3A2A1A]/10 pt-4">
               <p className="mb-2 text-xs font-semibold text-[#3A2A1A]">
-                CPA Subjects
+                RMT Subjects
               </p>
               <div className="flex gap-2">
                 {SUBJECT_TABS.map((tab) => (

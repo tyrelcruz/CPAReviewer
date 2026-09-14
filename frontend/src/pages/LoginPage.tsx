@@ -21,17 +21,17 @@ import { useAuth } from '@/context/AuthContext'
 import { fadeUpItem, listItem, listStagger, staggerContainer } from '@/lib/motion'
 
 const BOOKS = [
-  { label: 'FAR', width: '9rem', bg: '#E7D9B8', color: '#3A2A1A' },
-  { label: 'AUD', width: '8rem', bg: '#3A5A40', color: '#F3ECDC' },
-  { label: 'REG', width: '9.5rem', bg: '#E0AC48', color: '#3A2A1A' },
-  { label: 'BAR', width: '7.5rem', bg: '#5C1A1A', color: '#F3ECDC' },
+  { label: 'IS', width: '9rem', bg: '#E7D9B8', color: '#3A2A1A' },
+  { label: 'BB', width: '8rem', bg: '#3A5A40', color: '#F3ECDC' },
+  { label: 'MTAP', width: '9.5rem', bg: '#E0AC48', color: '#3A2A1A' },
+  { label: 'CC', width: '7.5rem', bg: '#5C1A1A', color: '#F3ECDC' },
 ]
 
 const FEATURES = [
   { icon: Target, label: 'High-yield practice' },
   { icon: FileText, label: 'Active recall flashcards' },
   { icon: BarChart3, label: 'Performance insights' },
-  { icon: Star, label: 'Built for CPA success' },
+  { icon: Star, label: 'Built for RMT success' },
 ]
 
 // Matches the backend's per-email resend cooldown (routes/auth.ts).
@@ -155,7 +155,7 @@ export function LoginPage() {
               <span className="text-[#3A5A40]">Not harder.</span>
             </h1>
             <p className="font-reading mt-4 max-w-sm text-[#3A2A1A]/80">
-              Your all-in-one CPA review partner. Study smarter, track your progress, and pass
+              Your all-in-one RMT review partner. Study smarter, track your progress, and pass
               with confidence.
             </p>
           </div>

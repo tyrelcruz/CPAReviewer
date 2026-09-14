@@ -9,7 +9,7 @@ interface LoadingScreenProps {
 const TAGLINE = [
   { text: 'Flash Quiz.', color: '#7A2323' },
   { text: 'Focused Review.', color: '#3A5A40' },
-  { text: 'CPA Ready.', color: '#E0AC48' },
+  { text: 'RMT Ready.', color: '#E0AC48' },
 ]
 
 export function LoadingScreen({ onDone }: LoadingScreenProps) {

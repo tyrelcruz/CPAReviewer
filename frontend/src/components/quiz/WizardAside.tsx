@@ -5,7 +5,6 @@ import mountainLandscape from '@/assets/images/mountain_landscape.png'
 import kabisEmblem from '@/assets/logo/kabis_emblem.png'
 import { getComingSoonKeys, STRATEGY_CARDS } from '@/components/quiz/StrategyOptions'
 import { GrungeOverlay } from '@/components/ui/GrungeOverlay'
-import { useAuth } from '@/context/AuthContext'
 
 interface WizardAsideProps {
   subjectCode: string
@@ -22,8 +21,7 @@ export function WizardAside({
   ctaIcon: CtaIcon = ArrowRight,
   onCta,
 }: WizardAsideProps) {
-  const { user } = useAuth()
-  const comingSoonCount = getComingSoonKeys(user?.course).length
+  const comingSoonCount = getComingSoonKeys().length
 
   return (
     <aside className="relative flex flex-col gap-6 overflow-hidden rounded-3xl bg-[#530b08] p-6 text-[#F3ECDC] shadow-[inset_0_0_12px_3px_rgba(0,0,0,0.55),inset_0_0_80px_20px_rgba(0,0,0,0.4)] lg:sticky lg:top-8">

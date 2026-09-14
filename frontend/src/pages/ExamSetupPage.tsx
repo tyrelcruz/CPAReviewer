@@ -2,23 +2,18 @@ import { motion } from 'framer-motion'
 import {
   ArrowLeft,
   ArrowRight,
-  BarChart3,
   BookOpen,
   Bookmark,
-  Calculator,
   Check,
   ClipboardList,
   Droplet,
   FileText,
-  Gauge,
   Landmark,
   Layers,
-  Leaf,
   Lightbulb,
   ListChecks,
   Loader2,
   Microscope,
-  Scale,
   ScrollText,
   Settings2,
   Shuffle,
@@ -34,7 +29,6 @@ import { GrungeOverlay } from '@/components/ui/GrungeOverlay'
 import { Switch } from '@/components/ui/switch'
 import { WizardHeader } from '@/components/quiz/WizardHeader'
 import mountainHeader from '@/assets/images/carabao_repia.png'
-import { useAuth } from '@/context/AuthContext'
 import { fadeUpItem, staggerContainer } from '@/lib/motion'
 import { cn } from '@/lib/utils'
 import type { ExamMode, RfbtTopic } from '@/types/bank'
@@ -83,24 +77,10 @@ interface SubjectDef {
   subjectKey?: string
 }
 
-// Mirrors the full CPALE-style subject lineup so the picker reads the same
-// as the reference design — only FAR/TCP... err, only the subjects we've
-// actually ingested content for (RFBT, TAX) are selectable; the rest are
-// honestly marked "Coming Soon" rather than faking a question count.
-const CPA_SUBJECT_DEFS: SubjectDef[] = [
-  { code: 'FAR', name: 'Financial Accounting & Reporting', icon: BookOpen },
-  { code: 'AUD', name: 'Auditing & Attestation', icon: Scale },
-  { code: 'REG', name: 'Regulation', icon: Gauge },
-  { code: 'TCP', name: 'Taxation', icon: Calculator, subjectKey: 'TAX' },
-  { code: 'MAS', name: 'Management Advisory Services', icon: BarChart3 },
-  { code: 'AFAR', name: 'Agricultural & Fisheries', icon: Leaf },
-  { code: 'RFBT', name: 'Regulatory Framework for Business Transactions', icon: Landmark, subjectKey: 'RFBT' },
-]
-
-// RMT (Registered Medical Technologist) board-exam subject lineup — a
-// separate track from CPALE. Only the subjects we've actually ingested
-// content for get a subjectKey; same "Coming Soon" convention as CPA_SUBJECT_DEFS.
-const RMT_SUBJECT_DEFS: SubjectDef[] = [
+// RMT (Registered Medical Technologist) board-exam subject lineup. Only the
+// subjects we've actually ingested content for get a subjectKey; the rest
+// are honestly marked "Coming Soon" rather than faking a question count.
+const SUBJECT_DEFS: SubjectDef[] = [
   { code: 'IS', name: 'Immunology & Serology', icon: Microscope, subjectKey: 'IS' },
   { code: 'BB', name: 'Blood Banking', icon: Droplet, subjectKey: 'BB' },
   { code: 'MTAP', name: 'MTAP Comprehensive Exam', icon: ClipboardList, subjectKey: 'MTAP' },
@@ -109,7 +89,6 @@ const RMT_SUBJECT_DEFS: SubjectDef[] = [
 export function ExamSetupPage() {
   const navigate = useNavigate()
   const location = useLocation()
-  const { user } = useAuth()
   const requestedState = location.state as { subject?: string; mode?: ExamMode } | null
   const requestedSubject = requestedState?.subject
   const [examType, setExamType] = useState<'standard' | 'timed'>('standard')
@@ -121,11 +100,11 @@ export function ExamSetupPage() {
   const [timedMinutesInput, setTimedMinutesInput] = useState('90')
   const timedMinutes = Math.max(10, Math.min(480, Number(timedMinutesInput) || 10))
 
-  const activeSubjectDefs = user?.course === 'rmt' ? RMT_SUBJECT_DEFS : CPA_SUBJECT_DEFS
+  const activeSubjectDefs = SUBJECT_DEFS
   const [subject, setSubject] = useState(
     requestedSubject && activeSubjectDefs.some((d) => d.subjectKey === requestedSubject)
       ? requestedSubject
-      : (activeSubjectDefs.find((d) => d.subjectKey)?.subjectKey ?? 'RFBT'),
+      : (activeSubjectDefs.find((d) => d.subjectKey)?.subjectKey ?? 'IS'),
   )
   const [mode, setMode] = useState<ExamMode>(
     requestedState?.mode === 'subject_drill' ? 'subject_drill' : 'tos_simulator',

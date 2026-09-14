@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import mountainsHeader from '@/assets/images/mountains_header.png'
 import { Logo } from '@/components/landing/Logo'
 import { useAuth } from '@/context/AuthContext'
-import { getCourseLabel, getInitials } from '@/lib/userDisplay'
+import { getInitials } from '@/lib/userDisplay'
 
 interface DashboardHeaderProps {
   firstName: string
@@ -28,7 +28,7 @@ export function DashboardHeader({ firstName }: DashboardHeaderProps) {
   const { user } = useAuth()
   const displayName = user?.name ?? 'Reviewer'
   const initials = getInitials(displayName)
-  const courseLabel = getCourseLabel(user?.course ?? 'cpa')
+  const courseLabel = 'RMT Aspirant'
 
   return (
     <>
@@ -78,7 +78,7 @@ export function DashboardHeader({ firstName }: DashboardHeaderProps) {
                 Good morning, {firstName}! <GreetingWave />
               </h1>
               <p className="font-reading mt-1 text-sm text-[#3A2A1A]/60">
-                Every question you answer today brings you closer to becoming a CPA.
+                Every question you answer today brings you closer to becoming an RMT.
               </p>
             </div>
           </div>
@@ -91,7 +91,7 @@ export function DashboardHeader({ firstName }: DashboardHeaderProps) {
             Good morning, {firstName}! <GreetingWave />
           </h1>
           <p className="font-reading mt-1 text-sm text-[#3A2A1A]/60">
-            Every question you answer today brings you closer to becoming a CPA.
+            Every question you answer today brings you closer to becoming an RMT.
           </p>
         </div>
 

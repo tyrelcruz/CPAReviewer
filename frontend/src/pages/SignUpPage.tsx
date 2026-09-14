@@ -3,9 +3,7 @@ import {
   ArrowRight,
   BarChart3,
   FileText,
-  GraduationCap,
   Mail,
-  Microscope,
   ShieldCheck,
   Star,
   Target,
@@ -19,22 +17,20 @@ import { Link, useNavigate } from 'react-router-dom'
 import illustrationBg from '@/assets/images/illustration_bg.png'
 import { OtpInput } from '@/components/auth/OtpInput'
 import { Logo } from '@/components/landing/Logo'
-import { GrungeOverlay } from '@/components/ui/GrungeOverlay'
 import { useAuth } from '@/context/AuthContext'
 import { fadeUpItem, listItem, listStagger, staggerContainer } from '@/lib/motion'
 
 const BOOKS = [
-  { label: 'FAR', width: '9rem', bg: '#E7D9B8', color: '#3A2A1A' },
-  { label: 'AUD', width: '8rem', bg: '#3A5A40', color: '#F3ECDC' },
-  { label: 'REG', width: '9.5rem', bg: '#E0AC48', color: '#3A2A1A' },
-  { label: 'BAR', width: '7.5rem', bg: '#5C1A1A', color: '#F3ECDC' },
+  { label: 'IS', width: '9rem', bg: '#E7D9B8', color: '#3A2A1A' },
+  { label: 'BB', width: '8rem', bg: '#3A5A40', color: '#F3ECDC' },
+  { label: 'MTAP', width: '9.5rem', bg: '#E0AC48', color: '#3A2A1A' },
 ]
 
 const FEATURES = [
   { icon: Target, label: 'High-yield practice' },
   { icon: FileText, label: 'Active recall flashcards' },
   { icon: BarChart3, label: 'Performance insights' },
-  { icon: Star, label: 'Built for CPA success' },
+  { icon: Star, label: 'Built for board exam success' },
 ]
 
 // Matches the backend's per-email resend cooldown (routes/auth.ts).
@@ -46,7 +42,6 @@ export function SignUpPage() {
   const [step, setStep] = useState<'details' | 'code'>('details')
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
-  const [course, setCourse] = useState<'cpa' | 'rmt' | null>(null)
   const [code, setCode] = useState('')
   const [error, setError] = useState<string | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -75,14 +70,10 @@ export function SignUpPage() {
 
   async function handleSendCode(e: FormEvent) {
     e.preventDefault()
-    if (!course) {
-      setError('Please select which exam you’re reviewing for.')
-      return
-    }
     setError(null)
     setIsSubmitting(true)
     try {
-      await requestSignupOtp(name, email, course)
+      await requestSignupOtp(name, email)
       setStep('code')
       setCooldown(RESEND_COOLDOWN_SECONDS)
     } catch (err) {
@@ -93,10 +84,10 @@ export function SignUpPage() {
   }
 
   async function handleResendCode() {
-    if (cooldown > 0 || !course) return
+    if (cooldown > 0) return
     setError(null)
     try {
-      await requestSignupOtp(name, email, course)
+      await requestSignupOtp(name, email)
       setCooldown(RESEND_COOLDOWN_SECONDS)
     } catch (err) {
       setError(describeError(err, 'Could not resend the code. Please try again.'))
@@ -147,8 +138,8 @@ export function SignUpPage() {
               <span className="text-[#3A5A40]">Not harder.</span>
             </h1>
             <p className="font-reading mt-4 max-w-sm text-[#3A2A1A]/80">
-              Your all-in-one CPA review partner. Study smarter, track your progress, and pass
-              with confidence.
+              Your all-in-one RMT board exam review partner. Study smarter, track your progress,
+              and pass with confidence.
             </p>
           </div>
 
@@ -260,40 +251,6 @@ export function SignUpPage() {
                   </div>
                 </motion.div>
 
-                <motion.div variants={fadeUpItem}>
-                  <p className="text-sm font-semibold text-[#7A2323]">
-                    Which are you reviewing for?
-                  </p>
-                  <div className="mt-1.5 grid grid-cols-2 gap-2">
-                    <button
-                      type="button"
-                      onClick={() => setCourse('cpa')}
-                      className={`relative flex items-center justify-center gap-2 overflow-hidden rounded-xl border px-4 py-2.5 text-sm font-semibold transition-colors ${
-                        course === 'cpa'
-                          ? 'border-transparent bg-[#7A2323] text-[#F3ECDC]'
-                          : 'border-[#3A2A1A]/15 text-[#3A2A1A]/80 hover:bg-[#3A2A1A]/5'
-                      }`}
-                    >
-                      {course === 'cpa' && <GrungeOverlay />}
-                      <GraduationCap className="size-4" />
-                      CPA (CPALE)
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setCourse('rmt')}
-                      className={`relative flex items-center justify-center gap-2 overflow-hidden rounded-xl border px-4 py-2.5 text-sm font-semibold transition-colors ${
-                        course === 'rmt'
-                          ? 'border-transparent bg-[#7A2323] text-[#F3ECDC]'
-                          : 'border-[#3A2A1A]/15 text-[#3A2A1A]/80 hover:bg-[#3A2A1A]/5'
-                      }`}
-                    >
-                      {course === 'rmt' && <GrungeOverlay />}
-                      <Microscope className="size-4" />
-                      RMT / MedTech
-                    </button>
-                  </div>
-                </motion.div>
-
                 <AnimatePresence>
                   {error && (
                     <motion.p
@@ -314,7 +271,7 @@ export function SignUpPage() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   type="submit"
-                  disabled={isSubmitting || !course}
+                  disabled={isSubmitting}
                   className="flex items-center justify-center gap-2 rounded-full bg-[#7A2323] py-3 text-sm font-bold text-[#E0AC48] transition-colors hover:bg-[#7A2323]/90 disabled:opacity-60"
                 >
                   {isSubmitting ? 'Sending code…' : 'Send Code'}

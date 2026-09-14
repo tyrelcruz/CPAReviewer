@@ -11,7 +11,7 @@ import { UpcomingPanel } from '@/components/dashboard/UpcomingPanel'
 import { useAuth } from '@/context/AuthContext'
 import { usePlanner } from '@/context/PlannerContext'
 import { dateKey } from '@/lib/time'
-import { getCourseLabel, getInitials } from '@/lib/userDisplay'
+import { getInitials } from '@/lib/userDisplay'
 import type { ReviewPlanEntryType } from '@/lib/reviewPlanner'
 
 export function ReviewPlannerPage() {
@@ -25,7 +25,7 @@ export function ReviewPlannerPage() {
   const [modalDefaultType, setModalDefaultType] = useState<ReviewPlanEntryType>('Review')
 
   const initials = getInitials(user?.name ?? '?')
-  const roleLabel = getCourseLabel(user?.course ?? 'cpa')
+  const roleLabel = 'RMT Aspirant'
 
   function openAddModal(type: ReviewPlanEntryType) {
     setModalDefaultType(type)

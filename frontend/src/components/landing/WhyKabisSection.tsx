@@ -17,21 +17,21 @@ const FEATURES = [
   { icon: BookOpen, label: 'Complete modules and reviewers' },
   { icon: Target, label: 'Smart practice and flashcards' },
   { icon: BarChart3, label: 'Track progress in real time' },
-  { icon: ShieldCheck, label: 'Built for CPA success' },
+  { icon: ShieldCheck, label: 'Built for RMT success' },
 ]
 
 const CHOICES = [
-  { letter: 'A', text: 'Notes payable due in 8 months', active: true },
-  { letter: 'B', text: 'Bonds payable due in 5 years', active: false },
-  { letter: 'C', text: 'Common stock', active: false },
-  { letter: 'D', text: 'Land', active: false },
+  { letter: 'A', text: 'IgM', active: true },
+  { letter: 'B', text: 'IgG', active: false },
+  { letter: 'C', text: 'IgA', active: false },
+  { letter: 'D', text: 'IgE', active: false },
 ]
 
 const DECKS = [
-  { name: 'FAR - Conceptual', count: 142, active: false },
-  { name: 'Audit Procedures', count: 118, active: false },
-  { name: 'REG - Individual Tax', count: 156, active: true },
-  { name: 'Business Law', count: 97, active: false },
+  { name: 'IS - Serology', count: 142, active: false },
+  { name: 'Blood Banking', count: 118, active: false },
+  { name: 'MTAP - Comprehensive', count: 156, active: true },
+  { name: 'Clinical Chemistry', count: 97, active: false },
 ]
 
 // Measured from the PNG: the frame's transparent screen hole as a % of the
@@ -103,7 +103,7 @@ function PhoneScreen() {
 
       <div className="mt-2.5 border-t border-[#3A2A1A]/10 pt-2">
         <p className="text-[7px] font-semibold text-[#3A2A1A]/50 uppercase">Next Up</p>
-        <p className="mt-0.5 text-[9px] font-medium">FAR – Cash and Cash Equivalents</p>
+        <p className="mt-0.5 text-[9px] font-medium">IS – Antigen-Antibody Reactions</p>
       </div>
 
       <button
@@ -123,7 +123,7 @@ function QuizFloatCard() {
         <div className="flex items-center gap-1.5">
           <span className="text-[10px] font-semibold text-[#3A2A1A]">Multiple Choice</span>
           <span className="rounded-md bg-[#E0AC48] px-1.5 py-0.5 text-[8px] font-bold text-[#3A2A1A]">
-            FAR
+            IS
           </span>
         </div>
         <Bookmark className="size-3 shrink-0 text-[#3A2A1A]/50" />
@@ -131,7 +131,7 @@ function QuizFloatCard() {
       <p className="mt-1 text-[8px] text-[#3A2A1A]/55">Question 12 of 33</p>
 
       <p className="font-reading mt-2 text-[10px] leading-snug font-medium text-[#3A2A1A]">
-        Which of the following items would most likely be classified as a current liability?
+        Which immunoglobulin class is produced first during a primary immune response?
       </p>
 
       <div className="mt-2 flex flex-col gap-1">
@@ -202,7 +202,7 @@ function FlashcardFloatCard() {
           </span>
         </div>
         <p className="font-reading mt-3 text-[9px] leading-snug font-medium text-[#3A2A1A]">
-          Under the accrual basis of accounting, when is revenue recognized?
+          What is the principle behind the ELISA test?
         </p>
         <div className="mt-3 border-t border-[#3A2A1A]/10 pt-2 text-center">
           <span className="text-[7px] font-medium text-[#B8721F] underline underline-offset-2">
@@ -246,10 +246,9 @@ export function WhyKabisSection() {
           </h2>
 
           <p className="font-reading mt-5 max-w-md text-[#F3ECDC]/70">
-            KABIS was born out of love and support for my partner, Vanessa, inspired by her
-            tireless dedication towards her goal of becoming a CPA. Designed to guide her toward
-            real results, KABIS purpose is to provide assistance to Vanessa — and every dedicated aspiring CPA — study smarter,
-            build consistency, and gain complete confidence leading up to exam day.
+            KABIS brings your reviewers, flashcards, and practice exams together in one place —
+            built to help every aspiring RMT study smarter, build consistency, and gain complete
+            confidence leading up to exam day.
           </p>
 
           <div className="mt-10 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-4">

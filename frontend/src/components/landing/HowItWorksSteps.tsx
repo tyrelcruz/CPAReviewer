@@ -14,23 +14,23 @@ import { Fragment } from 'react'
 import { motion } from 'framer-motion'
 
 const SUBJECTS = [
-  { icon: BookOpen, name: 'Financial Accounting', code: 'and Reporting', tag: 'FAR' },
-  { icon: Target, name: 'Auditing Theory', code: 'and Practice', tag: 'AUD' },
-  { icon: FileText, name: 'Regulation', code: '', tag: 'REG' },
-  { icon: Scale, name: 'Business Law', code: 'and Taxation', tag: 'BAR' },
+  { icon: BookOpen, name: 'Immunology', code: 'and Serology', tag: 'IS' },
+  { icon: Target, name: 'Blood Banking', code: '', tag: 'BB' },
+  { icon: FileText, name: 'MTAP', code: 'Comprehensive Exam', tag: 'MTAP' },
+  { icon: Scale, name: 'Clinical Chemistry', code: '', tag: 'CC' },
 ]
 
 const FAR_TOPICS = [
-  '3.1 Cash and Cash Equivalents',
-  '3.2 Receivables',
-  '3.3 Inventories',
-  '3.4 Prepaid Expenses',
+  '3.1 Antigen-Antibody Reactions',
+  '3.2 Complement System',
+  '3.3 Hypersensitivity Reactions',
+  '3.4 Serologic Techniques',
 ]
 
 const WEAK_AREAS = [
-  { label: 'Consolidations', percent: 42 },
-  { label: 'Partnership', percent: 55 },
-  { label: 'Taxation', percent: 61 },
+  { label: 'Antigen-Antibody Reactions', percent: 42 },
+  { label: 'Blood Typing', percent: 55 },
+  { label: 'Microbiology', percent: 61 },
 ]
 
 function SubjectsMockup() {
@@ -65,8 +65,8 @@ function SubjectsMockup() {
 function FarReviewerMockup() {
   return (
     <div className="rounded-xl border border-[#3A2A1A]/10 bg-white p-3 shadow-md">
-      <p className="text-[9px] font-semibold text-[#3A2A1A]">FAR Reviewer</p>
-      <p className="mt-0.5 text-[7px] text-[#3A2A1A]/55">Chapter 2: Current Assets</p>
+      <p className="text-[9px] font-semibold text-[#3A2A1A]">IS Reviewer</p>
+      <p className="mt-0.5 text-[7px] text-[#3A2A1A]/55">Chapter 2: Antigen-Antibody Reactions</p>
       <div className="mt-2 flex flex-col gap-1">
         {FAR_TOPICS.map((topic) => (
           <div
@@ -94,7 +94,7 @@ function FlashcardsMockup() {
       <p className="mb-2 text-[9px] font-semibold text-[#3A2A1A]">Flashcards</p>
       <div className="rounded-lg border border-[#3A2A1A]/10 bg-[#FBF3EA] p-2.5 text-center">
         <p className="font-reading text-[8px] leading-snug font-medium text-[#3A2A1A]">
-          What is the objective of financial reporting?
+          What is the purpose of a cross-match in blood transfusion?
         </p>
         <p className="mt-1.5 text-[7px] font-medium text-[#B8721F] underline underline-offset-2">
           Tap to reveal
@@ -187,7 +187,7 @@ interface Step {
 const STEPS: Step[] = [
   {
     title: 'Choose a Subject',
-    description: 'Access complete reviewers and materials for all 4 CPA subjects.',
+    description: 'Access complete reviewers and materials for all 3 RMT subjects.',
     icon: BookOpen,
     tint: '#3A5A40',
     Mockup: SubjectsMockup,
@@ -208,7 +208,7 @@ const STEPS: Step[] = [
   },
   {
     title: 'Test Yourself',
-    description: 'Take mock exams that simulate the actual CPA board exam.',
+    description: 'Take mock exams that simulate the actual RMT board exam.',
     icon: ClipboardList,
     tint: '#3A5A40',
     Mockup: MockExamsMockup,
