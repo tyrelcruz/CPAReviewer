@@ -9,21 +9,16 @@ import { ReviewPlannerHero } from '@/components/dashboard/ReviewPlannerHero'
 import { Sidebar } from '@/components/dashboard/Sidebar'
 import { UpcomingPanel } from '@/components/dashboard/UpcomingPanel'
 import { useAuth } from '@/context/AuthContext'
+import { usePlanner } from '@/context/PlannerContext'
 import { dateKey } from '@/lib/time'
 import { getCourseLabel, getInitials } from '@/lib/userDisplay'
-import {
-  addReviewPlanEntry,
-  getReviewPlanEntries,
-  toggleReviewPlanEntryDone,
-  type ReviewPlanEntryType,
-} from '@/lib/reviewPlanner'
+import type { ReviewPlanEntryType } from '@/lib/reviewPlanner'
 
 export function ReviewPlannerPage() {
   const { user } = useAuth()
-  const userId = user?.id ?? ''
   const todayKey = useMemo(() => dateKey(new Date()), [])
 
-  const [entries, setEntries] = useState(() => getReviewPlanEntries(userId))
+  const { entries, addEntry, toggleDone } = usePlanner()
   const [viewMode, setViewMode] = useState<CalendarViewMode>('month')
   const [selectedDate, setSelectedDate] = useState(todayKey)
   const [modalOpen, setModalOpen] = useState(false)
@@ -38,13 +33,9 @@ export function ReviewPlannerPage() {
   }
 
   function handleAddEntry(entry: { title: string; type: ReviewPlanEntryType; date: string; time?: string }) {
-    setEntries(addReviewPlanEntry(userId, entry))
+    addEntry(entry)
     setSelectedDate(entry.date)
     setModalOpen(false)
-  }
-
-  function handleToggleDone(id: string) {
-    setEntries(toggleReviewPlanEntryDone(userId, id))
   }
 
   function drillIntoDay(key: string) {
@@ -68,7 +59,7 @@ export function ReviewPlannerPage() {
               selectedDate={selectedDate}
               onSelectedDateChange={setSelectedDate}
               onDrillIntoDay={drillIntoDay}
-              onToggleDone={handleToggleDone}
+              onToggleDone={toggleDone}
               onAddClick={() => openAddModal('Review')}
             />
 

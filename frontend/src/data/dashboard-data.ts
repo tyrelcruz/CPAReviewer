@@ -10,6 +10,7 @@ export interface SubjectProgress {
 }
 
 export interface ActivityItem {
+  id: string
   icon: LucideIcon
   title: string
   description: string

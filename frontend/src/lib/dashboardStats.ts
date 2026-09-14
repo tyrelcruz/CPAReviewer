@@ -30,6 +30,10 @@ const SUBJECT_COLORS: Record<string, string> = {
 }
 
 export interface CombinedAttempt {
+  /** Stable per-attempt identity — distinct from `title`, which is a derived
+   * display label that collides across repeat attempts of the same quiz
+   * set/subject+mode (e.g. two "RFBT TOS Simulator" sessions). */
+  id: string
   subjectCode: string
   subjectLabel: string
   title: string
@@ -49,6 +53,7 @@ export function buildCombinedAttempts(
   const legacy: CombinedAttempt[] = quizSets.flatMap((set) => {
     const code = set.code ?? set.title
     return getExamHistory(userId, set.id).map((attempt) => ({
+      id: `legacy:${set.id}:${attempt.date}`,
       subjectCode: code,
       subjectLabel: SUBJECT_LABELS[code] ?? code,
       title: `Completed ${set.title}`,
@@ -59,6 +64,7 @@ export function buildCombinedAttempts(
   })
 
   const bank: CombinedAttempt[] = bankSessions.map((session) => ({
+    id: `bank:${session.sessionId}`,
     subjectCode: session.subject,
     subjectLabel: SUBJECT_LABELS[session.subject] ?? session.subject,
     title: `Completed ${session.subject} ${
@@ -165,6 +171,7 @@ export function toRecentActivity(
   return attempts.slice(0, limit).map((attempt) => {
     const percent = attempt.total > 0 ? Math.round((attempt.correct / attempt.total) * 100) : 0
     return {
+      id: attempt.id,
       title: attempt.title,
       description: `Score: ${percent}% · ${attempt.correct} / ${attempt.total}`,
       date: attempt.date.toLocaleDateString(undefined, {

@@ -29,7 +29,7 @@ export function RecentActivityCard({ items }: RecentActivityCardProps) {
         className="mt-4 flex flex-col gap-4"
       >
         {items.map((item) => (
-          <motion.li key={item.title} variants={listItem} className="flex items-start gap-3">
+          <motion.li key={item.id} variants={listItem} className="flex items-start gap-3">
             <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-[#E0AC48]/20 text-[#B4791F]">
               <item.icon className="size-4" />
             </span>

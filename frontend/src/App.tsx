@@ -6,6 +6,7 @@ import { AdminRoute } from '@/components/auth/AdminRoute'
 import { ProtectedRoute } from '@/components/auth/ProtectedRoute'
 import { LoadingScreen } from '@/components/LoadingScreen'
 import { AuthProvider } from '@/context/AuthContext'
+import { PlannerProvider } from '@/context/PlannerContext'
 import { AdminDashboardPage } from '@/pages/AdminDashboardPage'
 import { AdminFlaggedQuestionsPage } from '@/pages/AdminFlaggedQuestionsPage'
 import { BankExamApp } from '@/pages/BankExamApp'
@@ -55,93 +56,95 @@ function App() {
 
       <BrowserRouter>
         <AuthProvider>
-          <Routes>
-            <Route path="/" element={<LandingPage />} />
-            <Route path="/subjects" element={<SubjectsPage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/signup" element={<SignUpPage />} />
-            <Route
-              path="/admin"
-              element={
-                <AdminRoute>
-                  <AdminDashboardPage />
-                </AdminRoute>
-              }
-            />
-            <Route
-              path="/admin/flagged-questions"
-              element={
-                <AdminRoute>
-                  <AdminFlaggedQuestionsPage />
-                </AdminRoute>
-              }
-            />
-            <Route
-              path="/app/dashboard"
-              element={
-                <ProtectedRoute>
-                  <DashboardPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/app"
-              element={
-                <ProtectedRoute>
-                  <MockExamsPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/app/review-planner"
-              element={
-                <ProtectedRoute>
-                  <ReviewPlannerPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/app/practice/:quizSetId?"
-              element={
-                <ProtectedRoute>
-                  <QuizApp />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/app/choose-strategy/:subject"
-              element={
-                <ProtectedRoute>
-                  <ChooseStrategyPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/app/choose-strategy/:quizSetId/details"
-              element={
-                <ProtectedRoute>
-                  <QuizDetailsPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/app/exam-setup"
-              element={
-                <ProtectedRoute>
-                  <ExamSetupPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/app/exam/:sessionId"
-              element={
-                <ProtectedRoute>
-                  <BankExamApp />
-                </ProtectedRoute>
-              }
-            />
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
+          <PlannerProvider>
+            <Routes>
+              <Route path="/" element={<LandingPage />} />
+              <Route path="/subjects" element={<SubjectsPage />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/signup" element={<SignUpPage />} />
+              <Route
+                path="/admin"
+                element={
+                  <AdminRoute>
+                    <AdminDashboardPage />
+                  </AdminRoute>
+                }
+              />
+              <Route
+                path="/admin/flagged-questions"
+                element={
+                  <AdminRoute>
+                    <AdminFlaggedQuestionsPage />
+                  </AdminRoute>
+                }
+              />
+              <Route
+                path="/app/dashboard"
+                element={
+                  <ProtectedRoute>
+                    <DashboardPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/app"
+                element={
+                  <ProtectedRoute>
+                    <MockExamsPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/app/review-planner"
+                element={
+                  <ProtectedRoute>
+                    <ReviewPlannerPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/app/practice/:quizSetId?"
+                element={
+                  <ProtectedRoute>
+                    <QuizApp />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/app/choose-strategy/:subject"
+                element={
+                  <ProtectedRoute>
+                    <ChooseStrategyPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/app/choose-strategy/:quizSetId/details"
+                element={
+                  <ProtectedRoute>
+                    <QuizDetailsPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/app/exam-setup"
+                element={
+                  <ProtectedRoute>
+                    <ExamSetupPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/app/exam/:sessionId"
+                element={
+                  <ProtectedRoute>
+                    <BankExamApp />
+                  </ProtectedRoute>
+                }
+              />
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+          </PlannerProvider>
         </AuthProvider>
       </BrowserRouter>
     </>

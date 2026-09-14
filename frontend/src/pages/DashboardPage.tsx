@@ -15,6 +15,7 @@ import { StudyPlanCard } from '@/components/dashboard/StudyPlanCard'
 import { StudyProgressCard } from '@/components/dashboard/StudyProgressCard'
 import { SubjectStrengthsCard } from '@/components/dashboard/SubjectStrengthsCard'
 import { useAuth } from '@/context/AuthContext'
+import { usePlanner } from '@/context/PlannerContext'
 import {
   aggregateBySubject,
   buildCombinedAttempts,
@@ -27,12 +28,12 @@ import {
   toSubjectStrengths,
 } from '@/lib/dashboardStats'
 import { fadeUpItem, staggerContainer } from '@/lib/motion'
-import { getReviewPlanEntries } from '@/lib/reviewPlanner'
 import { peekStudyStreak } from '@/lib/streak'
 import { quizSets } from '@/data/quiz-data'
 
 export function DashboardPage() {
   const { user } = useAuth()
+  const { entries: planEntries } = usePlanner()
   const firstName = user?.name?.split(' ')[0] ?? 'Juan'
 
   const [bankSessions, setBankSessions] = useState<ExamSessionSummary[]>([])
@@ -74,7 +75,6 @@ export function DashboardPage() {
 
   const recentActivity = toRecentActivity(attempts).map((item) => ({ ...item, icon: FileText }))
   const studyCalendar = toStudyCalendar(attempts)
-  const planEntries = useMemo(() => getReviewPlanEntries(user?.id ?? ''), [user?.id])
 
   return (
     <div className="flex min-h-svh bg-[#FBF3EA] text-[#3A2A1A]">

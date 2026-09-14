@@ -14,7 +14,7 @@ import {
   Timer,
   XCircle,
 } from 'lucide-react'
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useReducer, useRef, useState } from 'react'
 
 import { submitQuestionFlag } from '@/api/flags'
 import { AnswerControls } from '@/components/quiz/AnswerControls'
@@ -88,6 +88,158 @@ function isCorrectAnswer(
   return answer === question.correctChoiceId
 }
 
+// Everything that changes together when the learner moves between questions
+// (draft answer, the flag popover) or finishes/retakes the attempt lives in
+// one reducer — that keeps those transitions atomic instead of relying on a
+// currentIndex-watching useEffect to resync the rest afterward.
+interface QuizState {
+  questions: QuizQuestion[]
+  currentIndex: number
+  answers: Record<string, string>
+  draftAnswer: string
+  flaggedIndices: Set<number>
+  explanationOverrides: Record<string, boolean>
+  isComplete: boolean
+  startTime: number
+  elapsedMs: number
+  remainingSeconds: number
+  flagPopoverOpen: boolean
+}
+
+type QuizAction =
+  | { type: 'select_choice'; choiceId: string }
+  | { type: 'set_draft'; value: string }
+  | { type: 'submit_draft' }
+  | { type: 'go_to'; index: number }
+  | { type: 'next' }
+  | { type: 'finish_now' }
+  | { type: 'retake'; questions: QuizQuestion[]; remainingSeconds: number }
+  | { type: 'toggle_flag_current' }
+  | { type: 'flag_current' }
+  | { type: 'close_flag_popover' }
+  | { type: 'toggle_explanation' }
+  | { type: 'tick' }
+
+function draftForIndex(questions: QuizQuestion[], answers: Record<string, string>, index: number): string {
+  const question = questions[index]
+  return question ? (answers[question.id] ?? '') : ''
+}
+
+function quizReducer(state: QuizState, action: QuizAction): QuizState {
+  switch (action.type) {
+    case 'select_choice': {
+      const current = state.questions[state.currentIndex]
+      if (!current || state.answers[current.id] !== undefined) return state
+      return { ...state, answers: { ...state.answers, [current.id]: action.choiceId } }
+    }
+    case 'set_draft':
+      return { ...state, draftAnswer: action.value }
+    case 'submit_draft': {
+      const current = state.questions[state.currentIndex]
+      const trimmed = state.draftAnswer.trim()
+      if (!current || state.answers[current.id] !== undefined || !trimmed) return state
+      return { ...state, answers: { ...state.answers, [current.id]: trimmed } }
+    }
+    case 'go_to':
+      return {
+        ...state,
+        currentIndex: action.index,
+        draftAnswer: draftForIndex(state.questions, state.answers, action.index),
+        flagPopoverOpen: false,
+      }
+    case 'next': {
+      if (state.currentIndex === state.questions.length - 1) {
+        return { ...state, isComplete: true, elapsedMs: Date.now() - state.startTime }
+      }
+      const nextIndex = state.currentIndex + 1
+      return {
+        ...state,
+        currentIndex: nextIndex,
+        draftAnswer: draftForIndex(state.questions, state.answers, nextIndex),
+        flagPopoverOpen: false,
+      }
+    }
+    case 'finish_now':
+      return { ...state, isComplete: true, elapsedMs: Date.now() - state.startTime }
+    case 'retake':
+      return {
+        ...state,
+        questions: action.questions,
+        answers: {},
+        flaggedIndices: new Set(),
+        explanationOverrides: {},
+        currentIndex: 0,
+        draftAnswer: '',
+        isComplete: false,
+        startTime: Date.now(),
+        elapsedMs: 0,
+        remainingSeconds: action.remainingSeconds,
+        flagPopoverOpen: false,
+      }
+    case 'toggle_flag_current': {
+      if (state.flaggedIndices.has(state.currentIndex)) {
+        const next = new Set(state.flaggedIndices)
+        next.delete(state.currentIndex)
+        return { ...state, flaggedIndices: next }
+      }
+      return { ...state, flagPopoverOpen: true }
+    }
+    case 'flag_current':
+      return {
+        ...state,
+        flaggedIndices: new Set(state.flaggedIndices).add(state.currentIndex),
+        flagPopoverOpen: false,
+      }
+    case 'close_flag_popover':
+      return { ...state, flagPopoverOpen: false }
+    case 'toggle_explanation': {
+      const current = state.questions[state.currentIndex]
+      if (!current) return state
+      const isAnswered = state.answers[current.id] !== undefined
+      const visible = state.explanationOverrides[current.id] ?? isAnswered
+      return { ...state, explanationOverrides: { ...state.explanationOverrides, [current.id]: !visible } }
+    }
+    case 'tick': {
+      if (state.remainingSeconds <= 1) {
+        return { ...state, remainingSeconds: 0, isComplete: true, elapsedMs: Date.now() - state.startTime }
+      }
+      return { ...state, remainingSeconds: state.remainingSeconds - 1 }
+    }
+    default:
+      return state
+  }
+}
+
+function initQuizState(
+  orderedQuestions: QuizQuestion[],
+  savedProgress: ReturnType<typeof getExamProgress>,
+  timeLimitSeconds: number | undefined,
+): QuizState {
+  let questions = shuffleQuestionsKeepingChains(orderedQuestions)
+  if (savedProgress) {
+    const byId = new Map(orderedQuestions.map((q) => [q.id, q]))
+    const restored = savedProgress.questionOrder
+      .map((id) => byId.get(id))
+      .filter((q): q is QuizQuestion => q !== undefined)
+    if (restored.length === orderedQuestions.length) questions = restored
+  }
+  const currentIndex = savedProgress?.currentIndex ?? 0
+  const answers = savedProgress?.answers ?? {}
+  return {
+    questions,
+    currentIndex,
+    answers,
+    draftAnswer: draftForIndex(questions, answers, currentIndex),
+    flaggedIndices: new Set(savedProgress?.flaggedIndices ?? []),
+    explanationOverrides: {},
+    isComplete: false,
+    startTime: Date.now(),
+    elapsedMs: 0,
+    remainingSeconds: savedProgress?.remainingSeconds ?? timeLimitSeconds ?? questions.length * SECONDS_PER_QUESTION,
+    flagPopoverOpen: false,
+  }
+}
+
 export function Quiz({
   quizSetId,
   questions: orderedQuestions,
@@ -99,48 +251,39 @@ export function Quiz({
 }: QuizProps) {
   const { user } = useAuth()
   const userId = user?.id ?? ''
-  const savedProgress = useMemo(
-    () => (progressKey ? getExamProgress(userId, progressKey) : null),
-    // Only ever read once, on mount, for this attempt.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [],
-  )
 
   // Shuffled once per attempt (and reshuffled on retake) so the answer to
   // "question 5" isn't something a repeat test-taker can just memorize.
   // Scenario chains (shared scenarioId) are kept intact and in order. A
   // resumed attempt reuses its saved order instead of reshuffling, so saved
-  // indices/flags still point at the right questions.
-  const [questions, setQuestions] = useState(() => {
-    if (savedProgress) {
-      const byId = new Map(orderedQuestions.map((q) => [q.id, q]))
-      const restored = savedProgress.questionOrder
-        .map((id) => byId.get(id))
-        .filter((q): q is QuizQuestion => q !== undefined)
-      if (restored.length === orderedQuestions.length) return restored
-    }
-    return shuffleQuestionsKeepingChains(orderedQuestions)
-  })
-  const [currentIndex, setCurrentIndex] = useState(savedProgress?.currentIndex ?? 0)
-  const [answers, setAnswers] = useState<Record<string, string>>(savedProgress?.answers ?? {})
-  // In-progress typed text for the current identification-mode question —
-  // separate from `answers` since it isn't committed (and graded) until
-  // the learner submits it, unlike an MCQ click which commits immediately.
-  const [draftAnswer, setDraftAnswer] = useState('')
-  const [flaggedIndices, setFlaggedIndices] = useState<Set<number>>(
-    () => new Set(savedProgress?.flaggedIndices ?? []),
+  // indices/flags still point at the right questions. The init callback only
+  // ever runs once, on mount, for this attempt.
+  const [state, dispatch] = useReducer(quizReducer, undefined, () =>
+    initQuizState(
+      orderedQuestions,
+      progressKey ? getExamProgress(userId, progressKey) : null,
+      timeLimitSeconds,
+    ),
   )
-  const [explanationOverrides, setExplanationOverrides] = useState<Record<string, boolean>>({})
-  const [isComplete, setIsComplete] = useState(false)
-  const [startTime, setStartTime] = useState(() => Date.now())
-  const [elapsedMs, setElapsedMs] = useState(0)
-  const [remainingSeconds, setRemainingSeconds] = useState(
-    () => savedProgress?.remainingSeconds ?? timeLimitSeconds ?? questions.length * SECONDS_PER_QUESTION,
-  )
+  const {
+    questions,
+    currentIndex,
+    answers,
+    draftAnswer,
+    flaggedIndices,
+    explanationOverrides,
+    isComplete,
+    elapsedMs,
+    remainingSeconds,
+    flagPopoverOpen,
+  } = state
+  function setDraftAnswer(value: string) {
+    dispatch({ type: 'set_draft', value })
+  }
+
   const [calculatorOpen, setCalculatorOpen] = useState(false)
   const [notesOpen, setNotesOpen] = useState(false)
   const [notes, setNotes] = useState('')
-  const [flagPopoverOpen, setFlagPopoverOpen] = useState(false)
   // Tracks DrawingNotesPanel's own maximize state so the main toolbar's flag
   // button — hidden behind that overlay once maximized, but still mounted —
   // doesn't also pop open its own (invisible, but focusable) popover copy.
@@ -172,13 +315,6 @@ export function Quiz({
   const selectedChoiceId = answers[current?.id ?? '']
   const isAnswered = selectedChoiceId !== undefined
   const isLastQuestion = currentIndex === questions.length - 1
-  // Sync automatically: navigating to an already-answered question shows what
-  // was typed; navigating to a fresh one starts blank.
-  useEffect(() => {
-    setDraftAnswer(current?.id ? (answers[current.id] ?? '') : '')
-    setFlagPopoverOpen(false)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentIndex])
   const isFlagged = flaggedIndices.has(currentIndex)
   const explanationVisible = explanationOverrides[current?.id ?? ''] ?? isAnswered
 
@@ -222,19 +358,9 @@ export function Quiz({
 
   useEffect(() => {
     if (isComplete) return
-    const interval = setInterval(() => {
-      setRemainingSeconds((s) => {
-        if (s <= 1) {
-          clearInterval(interval)
-          setElapsedMs(Date.now() - startTime)
-          setIsComplete(true)
-          return 0
-        }
-        return s - 1
-      })
-    }, 1000)
+    const interval = setInterval(() => dispatch({ type: 'tick' }), 1000)
     return () => clearInterval(interval)
-  }, [isComplete, startTime])
+  }, [isComplete])
 
   useEffect(() => {
     if (isComplete) onComplete?.(answers)
@@ -264,52 +390,35 @@ export function Quiz({
 
   function handleSelect(choiceId: string) {
     if (isAnswered) return
-    setAnswers((prev) => ({ ...prev, [current.id]: choiceId }))
+    dispatch({ type: 'select_choice', choiceId })
   }
 
   function handleTypeAnswer() {
     if (isAnswered || !draftAnswer.trim()) return
-    setAnswers((prev) => ({ ...prev, [current.id]: draftAnswer.trim() }))
+    dispatch({ type: 'submit_draft' })
   }
 
   function handleNext() {
-    if (isLastQuestion) {
-      setElapsedMs(Date.now() - startTime)
-      setIsComplete(true)
-    } else {
-      setCurrentIndex((i) => i + 1)
-    }
+    dispatch({ type: 'next' })
   }
 
   function handleFinishNow() {
-    setElapsedMs(Date.now() - startTime)
-    setIsComplete(true)
+    dispatch({ type: 'finish_now' })
   }
 
   function handleRetake() {
-    setQuestions(shuffleQuestionsKeepingChains(orderedQuestions))
-    setAnswers({})
-    setFlaggedIndices(new Set())
-    setExplanationOverrides({})
-    setCurrentIndex(0)
-    setIsComplete(false)
-    setStartTime(Date.now())
-    setRemainingSeconds(timeLimitSeconds ?? orderedQuestions.length * SECONDS_PER_QUESTION)
+    dispatch({
+      type: 'retake',
+      questions: shuffleQuestionsKeepingChains(orderedQuestions),
+      remainingSeconds: timeLimitSeconds ?? orderedQuestions.length * SECONDS_PER_QUESTION,
+    })
   }
 
   // Un-flagging needs no reason and happens immediately; flagging opens the
   // reason popover first (see FlagReasonPopover) — a report without a reason
   // isn't actionable for whoever reviews it in the admin flagged-questions list.
   function handleFlagButtonClick() {
-    if (isFlagged) {
-      setFlaggedIndices((prev) => {
-        const next = new Set(prev)
-        next.delete(currentIndex)
-        return next
-      })
-      return
-    }
-    setFlagPopoverOpen(true)
+    dispatch({ type: 'toggle_flag_current' })
   }
 
   // Awaited (not fire-and-forget) — a flag has no local fallback the way an
@@ -323,17 +432,16 @@ export function Quiz({
   }) {
     if (!current?.id) return
     await submitQuestionFlag({ questionId: current.id, ...input })
-    setFlaggedIndices((prev) => new Set(prev).add(currentIndex))
-    setFlagPopoverOpen(false)
+    dispatch({ type: 'flag_current' })
   }
 
   function handleReviewFlagged() {
     const first = [...flaggedIndices].sort((a, b) => a - b)[0]
-    if (first !== undefined) setCurrentIndex(first)
+    if (first !== undefined) dispatch({ type: 'go_to', index: first })
   }
 
   function toggleExplanation() {
-    setExplanationOverrides((prev) => ({ ...prev, [current.id]: !explanationVisible }))
+    dispatch({ type: 'toggle_explanation' })
   }
 
   // Mobile gesture: swipe left on the question card advances once answered,
@@ -635,7 +743,7 @@ export function Quiz({
                 </button>
                 {flagPopoverOpen && !notesMaximized && (
                   <>
-                    <div className="fixed inset-0 z-10" onClick={() => setFlagPopoverOpen(false)} />
+                    <div className="fixed inset-0 z-10" onClick={() => dispatch({ type: 'close_flag_popover' })} />
                     {/* Opens upward, not downward like the Calculator/Notes popovers above —
                         this button sits at the bottom of the question card, so a
                         downward-opening popover (tall once the answer-choice picker is
@@ -644,7 +752,7 @@ export function Quiz({
                       <FlagReasonPopover
                         choices={current.choices}
                         onSubmit={handleSubmitFlag}
-                        onCancel={() => setFlagPopoverOpen(false)}
+                        onCancel={() => dispatch({ type: 'close_flag_popover' })}
                       />
                     </div>
                   </>
@@ -696,7 +804,7 @@ export function Quiz({
             isFlagged={isFlagged}
             flagPopoverOpen={flagPopoverOpen}
             onFlagButtonClick={handleFlagButtonClick}
-            onFlagPopoverCancel={() => setFlagPopoverOpen(false)}
+            onFlagPopoverCancel={() => dispatch({ type: 'close_flag_popover' })}
             onSubmitFlag={handleSubmitFlag}
             onMaximizedChange={setNotesMaximized}
           />
@@ -706,7 +814,7 @@ export function Quiz({
             answeredIndices={answeredIndices}
             correctIndices={correctIndices}
             flaggedIndices={flaggedIndices}
-            onJump={setCurrentIndex}
+            onJump={(index) => dispatch({ type: 'go_to', index })}
             onReviewFlagged={handleReviewFlagged}
           />
         </div>
