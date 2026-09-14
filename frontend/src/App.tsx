@@ -2,10 +2,14 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
+import kabisWordmark from '@/assets/logo/kabis_wordmark.png'
+import heroQuizLoopVideo from '@/assets/videos/hero-quiz-loop.mp4'
+import whyKabisHeroVideo from '@/assets/videos/why-kabis-hero.mp4'
 import { AdminRoute } from '@/components/auth/AdminRoute'
 import { ProtectedRoute } from '@/components/auth/ProtectedRoute'
 import { LoadingScreen } from '@/components/LoadingScreen'
 import { AuthProvider } from '@/context/AuthContext'
+import { preloadAssets } from '@/lib/preloadAssets'
 import { PlannerProvider } from '@/context/PlannerContext'
 import { AdminDashboardPage } from '@/pages/AdminDashboardPage'
 import { AdminFlaggedQuestionsPage } from '@/pages/AdminFlaggedQuestionsPage'
@@ -23,8 +27,39 @@ import { ReviewPlannerPage } from '@/pages/ReviewPlannerPage'
 import { SignUpPage } from '@/pages/SignUpPage'
 import { SubjectsPage } from '@/pages/SubjectsPage'
 
+// Landing-page assets worth blocking the splash for — the ones visible
+// without scrolling (or one scroll away) that would otherwise pop in or
+// stall mid-load right after the splash fades.
+const CRITICAL_ASSETS = {
+  images: [kabisWordmark],
+  videos: [heroQuizLoopVideo, whyKabisHeroVideo],
+}
+
+// Never let a slow/broken asset trap the user on the splash screen forever.
+const PRELOAD_SAFETY_TIMEOUT_MS = 6000
+const MIN_SPLASH_DURATION_MS = 1600
+
 function App() {
   const [isBooting, setIsBooting] = useState(true)
+  const [assetsReady, setAssetsReady] = useState(false)
+
+  useEffect(() => {
+    let cancelled = false
+
+    const minDelay = new Promise<void>((resolve) => setTimeout(resolve, MIN_SPLASH_DURATION_MS))
+    const assets = preloadAssets(CRITICAL_ASSETS)
+    const safetyTimeout = new Promise<void>((resolve) =>
+      setTimeout(resolve, PRELOAD_SAFETY_TIMEOUT_MS),
+    )
+
+    Promise.race([Promise.all([minDelay, assets]), safetyTimeout]).then(() => {
+      if (!cancelled) setAssetsReady(true)
+    })
+
+    return () => {
+      cancelled = true
+    }
+  }, [])
 
   // Deters casual right-click copying/saving site-wide. Purely cosmetic —
   // it doesn't block DevTools, view-source, or anything a technical user
@@ -49,7 +84,7 @@ function App() {
             transition={{ duration: 0.4, ease: 'easeOut' }}
             className="fixed inset-0 z-50"
           >
-            <LoadingScreen onDone={() => setIsBooting(false)} />
+            <LoadingScreen ready={assetsReady} onDone={() => setIsBooting(false)} />
           </motion.div>
         )}
       </AnimatePresence>

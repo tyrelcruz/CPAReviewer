@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import kabisWordmark from '@/assets/logo/kabis_wordmark.png'
 
 interface LoadingScreenProps {
+  ready: boolean
   onDone?: () => void
 }
 
@@ -12,7 +13,7 @@ const TAGLINE = [
   { text: 'RMT Ready.', color: '#E0AC48' },
 ]
 
-export function LoadingScreen({ onDone }: LoadingScreenProps) {
+export function LoadingScreen({ ready, onDone }: LoadingScreenProps) {
   return (
     <div className="flex min-h-svh flex-col items-center justify-center bg-[#F3ECDC] px-6">
       <motion.img
@@ -46,9 +47,15 @@ export function LoadingScreen({ onDone }: LoadingScreenProps) {
         <div className="h-1.5 w-full overflow-hidden rounded-full bg-[#3A2A1A]/15">
           <motion.div
             initial={{ width: '0%' }}
-            animate={{ width: '100%' }}
-            transition={{ duration: 1.6, delay: 0.35, ease: 'easeInOut' }}
-            onAnimationComplete={onDone}
+            animate={{ width: ready ? '100%' : '85%' }}
+            transition={
+              ready
+                ? { duration: 0.3, ease: 'easeOut' }
+                : { duration: 1.6, delay: 0.35, ease: 'easeInOut' }
+            }
+            onAnimationComplete={() => {
+              if (ready) onDone?.()
+            }}
             className="h-full rounded-full bg-[#7A2323]"
           />
         </div>
