@@ -1,0 +1,21 @@
+{
+  "name": "kabis-remotion",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "render": "remotion render src/index.ts WhyKabisHero out/why-kabis-hero.mp4 --codec=h264 --color-space=bt709 --image-format=png",
+    "render:hero": "remotion render src/index.ts HeroQuizLoop out/hero-quiz-loop.mp4 --codec=h264 --color-space=bt709 --image-format=png"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.290",
+    "lucide-react": "^0.469.0",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "remotion": "4.0.290"
+  },
+  "devDependencies": {
+    "@types/react": "19.0.0",
+    "typescript": "^5.7.2"
+  }
+}
