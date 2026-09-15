@@ -10,9 +10,8 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 // No default files: the KB used to ship verbatim competitor exam content
 // (REO/CPAR/ReSA/RedeFine "Final Preboard Examination" questions), which was
-// purged for copyright reasons. Only originally-authored question sets
-// (source.center set to something like "Original", not a competitor name)
-// belong here going forward — pass their path(s) as CLI args to this script.
+// purged for copyright reasons — pass new question set path(s) as CLI args
+// to this script instead.
 const DEFAULT_FILES: string[] = []
 
 async function ingest() {

@@ -1,5 +1,5 @@
 import { isIdentificationAnswerCorrect } from '@/lib/answerMatch'
-import { cn, hasRealSourceCenter } from '@/lib/utils'
+import { cn } from '@/lib/utils'
 import type { QuizQuestion } from '@/types/quiz'
 
 interface AnswerHistoryListProps {
@@ -29,8 +29,6 @@ export function AnswerHistoryList({ questions, answers }: AnswerHistoryListProps
           ? selectedChoiceId
           : q.choices.find((c) => c.id === selectedChoiceId)?.text
 
-        const visibleSources = q.sources?.filter((s) => hasRealSourceCenter(s.center)) ?? []
-
         return (
           <div
             key={q.id}
@@ -43,18 +41,6 @@ export function AnswerHistoryList({ questions, answers }: AnswerHistoryListProps
                   : 'border-destructive/50 bg-destructive/10',
             )}
           >
-            {visibleSources.length > 0 && (
-              <div className="mb-1 flex flex-wrap gap-1.5">
-                {visibleSources.map((s) => (
-                  <span
-                    key={s.center}
-                    className="rounded-full bg-[#3A5A40]/10 px-2 py-0.5 text-[9px] font-bold whitespace-nowrap text-[#3A5A40] uppercase"
-                  >
-                    {s.center}
-                  </span>
-                ))}
-              </div>
-            )}
             <p className="font-reading line-clamp-2 font-medium whitespace-pre-line">
               {i + 1}. {q.prompt}
             </p>

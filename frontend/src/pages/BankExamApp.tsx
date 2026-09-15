@@ -21,7 +21,6 @@ function toQuizQuestion(q: BankQuestion): QuizQuestion {
     topicCategory: q.topicCategory,
     subTopic: q.subTopic,
     bankDifficulty: q.difficulty,
-    sources: q.sources,
     answerMode: q.answerMode,
     acceptableAnswers: q.acceptableAnswers,
   }

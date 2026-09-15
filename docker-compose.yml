@@ -1,3 +1,8 @@
+# One command for the whole stack:
+#   docker compose up -d --build
+# brings up mysql, backend, phpMyAdmin, and frontend together.
+#
+name: cpareviewer
 services:
   mysql:
     image: mysql:8.4
@@ -12,30 +17,26 @@ services:
       - '3307:3306'
     volumes:
       - mysql-data:/var/lib/mysql
-      - ./src/db/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql
+      - ./backend/src/db/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql
     healthcheck:
       test: ['CMD', 'mysqladmin', 'ping', '-h', 'localhost', '-uroot', '-proot']
       interval: 5s
       timeout: 5s
       retries: 10
 
-  # The Express API itself, containerized so it can be stopped/started with
+  # The Express API, containerized so it can be stopped/started with
   # `docker compose` instead of managing background `npm run dev` processes
-  # by hand (the EADDRINUSE-on-8001 headache that motivated this). Gated
-  # behind a profile so it never starts as a side effect of plain
-  # `npm run db:up` (docker compose up -d) — opt in with:
-  #   docker compose --profile app up -d backend
+  # by hand (the EADDRINUSE-on-8001 headache that motivated this).
   # Connects to the `mysql` service on this compose network (always local
   # dev DB, not whatever backend/.env's DB_HOST currently points the
   # host-run `npm run dev` at) — JWT/EmailJS/OTP-bypass vars still come from
   # backend/.env via the usual ${VAR} substitution.
   backend:
     build:
-      context: .
+      context: ./backend
       dockerfile: Dockerfile
     container_name: cpa-reviewer-backend
     restart: unless-stopped
-    profiles: ['app']
     environment:
       PORT: 8001
       DB_HOST: mysql
@@ -59,11 +60,30 @@ services:
     ports:
       - '8001:8001'
     volumes:
-      - .:/app
+      - ./backend:/app
       - /app/node_modules
     depends_on:
       mysql:
         condition: service_healthy
+
+  # The Vite dev server, containerized for the same reason as `backend`.
+  # Runs client-side in the browser, so it still talks to the backend via
+  # `VITE_API_BASE_URL` from frontend/.env (defaults to
+  # http://localhost:8001) — the published host port above, not the
+  # in-network `backend` service name.
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: cpa-reviewer-frontend
+    restart: unless-stopped
+    ports:
+      - '5173:5173'
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
 
   phpmyadmin:
     image: phpmyadmin:5
@@ -74,14 +94,14 @@ services:
       PMA_USER: cpa_reviewer
       PMA_PASSWORD: cpa_reviewer
       # Read by config.user.inc.php below to add Aiven Production as a
-      # second server choice — see .env.example for what to set.
+      # second server choice — see backend/.env.example for what to set.
       AIVEN_DB_HOST: ${AIVEN_DB_HOST:-}
       AIVEN_DB_PORT: ${AIVEN_DB_PORT:-}
     ports:
       - '8081:80'
     volumes:
-      - ./config.user.inc.php:/etc/phpmyadmin/config.user.inc.php:ro
-      - ${AIVEN_DB_SSL_CA_PATH:-./config.user.inc.php}:/etc/phpmyadmin/aiven-ca.pem:ro
+      - ./backend/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php:ro
+      - ${AIVEN_DB_SSL_CA_PATH:-./backend/config.user.inc.php}:/etc/phpmyadmin/aiven-ca.pem:ro
     depends_on:
       mysql:
         condition: service_healthy

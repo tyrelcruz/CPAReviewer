@@ -33,7 +33,7 @@ import { clearExamProgress, getExamProgress, saveExamProgress } from '@/lib/exam
 import { shuffleQuestionsKeepingChains } from '@/lib/quizShuffle'
 import { getStudyStreak } from '@/lib/streak'
 import { formatClock, SECONDS_PER_QUESTION } from '@/lib/time'
-import { cn, hasRealSourceCenter } from '@/lib/utils'
+import { cn } from '@/lib/utils'
 import type { QuizQuestion } from '@/types/quiz'
 
 // Minimum horizontal drag (px) that counts as a swipe rather than a scroll/tap.
@@ -346,11 +346,6 @@ export function Quiz({
     return { index: group.findIndex((q) => q.id === current.id) + 1, total: group.length }
   }, [questions, current])
 
-  const visibleSources = useMemo(
-    () => current?.sources?.filter((s) => hasRealSourceCenter(s.center)) ?? [],
-    [current],
-  )
-
   const answeredCount = answeredIndices.size
   const progressPct = (answeredCount / questions.length) * 100
   const accuracyPct = answeredCount === 0 ? 0 : Math.round((correctCount / answeredCount) * 100)
@@ -617,14 +612,6 @@ export function Quiz({
               <span className="rounded-full bg-[#3A2A1A]/10 px-2.5 py-1 text-[10px] font-bold whitespace-nowrap text-[#3A2A1A] uppercase">
                 {ANSWER_MODE_LABELS[currentAnswerMode]}
               </span>
-              {visibleSources.map((s) => (
-                <span
-                  key={s.center}
-                  className="rounded-full bg-[#3A5A40]/10 px-2.5 py-1 text-[10px] font-bold whitespace-nowrap text-[#3A5A40] uppercase"
-                >
-                  {s.center}
-                </span>
-              ))}
               {current.section && (
                 <span className="rounded-full bg-[#7A2323]/10 px-2.5 py-1 text-[10px] font-bold whitespace-nowrap text-[#7A2323] uppercase">
                   {current.section}

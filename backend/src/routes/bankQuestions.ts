@@ -18,17 +18,10 @@ interface BankQuestionRow extends RowDataPacket {
   subject: string
 }
 
-interface SourceRow extends RowDataPacket {
-  question_id: string
-  center: string
-  batch: string
-  exam_type: string
-}
-
 const PAGE_SIZE = 50
 
 bankQuestionsRouter.get('/', asyncHandler(async (req, res) => {
-  const { subject, tosCode, difficulty, cognitiveLevel, center, page } = req.query
+  const { subject, tosCode, difficulty, cognitiveLevel, page } = req.query
 
   const conditions: string[] = []
   const params: unknown[] = []
@@ -49,11 +42,6 @@ bankQuestionsRouter.get('/', asyncHandler(async (req, res) => {
     conditions.push('bq.cognitive_level = ?')
     params.push(cognitiveLevel)
   }
-  if (typeof center === 'string') {
-    conditions.push('EXISTS (SELECT 1 FROM bank_sources bs WHERE bs.question_id = bq.id AND bs.center = ?)')
-    params.push(center)
-  }
-
   const whereClause = conditions.length > 0 ? `WHERE ${conditions.join(' AND ')}` : ''
   const pageNum = Math.max(1, Number(page) || 1)
   const offset = (pageNum - 1) * PAGE_SIZE
@@ -69,20 +57,6 @@ bankQuestionsRouter.get('/', asyncHandler(async (req, res) => {
     [...params, PAGE_SIZE, offset],
   )
 
-  const ids = rows.map((r) => r.id)
-  const sourcesByQuestion = new Map<string, { center: string; batch: string; examType: string }[]>()
-  if (ids.length > 0) {
-    const [sourceRows] = await pool.query<SourceRow[]>(
-      `SELECT question_id, center, batch, exam_type FROM bank_sources WHERE question_id IN (?)`,
-      [ids],
-    )
-    for (const s of sourceRows) {
-      const list = sourcesByQuestion.get(s.question_id) ?? []
-      list.push({ center: s.center, batch: s.batch, examType: s.exam_type })
-      sourcesByQuestion.set(s.question_id, list)
-    }
-  }
-
   res.json({
     page: pageNum,
     questions: rows.map((r) => ({
@@ -94,7 +68,6 @@ bankQuestionsRouter.get('/', asyncHandler(async (req, res) => {
       topicCategory: r.topic_category,
       subTopic: r.sub_topic,
       subject: r.subject,
-      sources: sourcesByQuestion.get(r.id) ?? [],
     })),
   })
 }))

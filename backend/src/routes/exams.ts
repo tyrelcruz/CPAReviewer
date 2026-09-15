@@ -133,7 +133,6 @@ interface SessionRow extends RowDataPacket {
   user_id: string
   subject: string
   mode: ExamMode
-  center_filter: string | null
   answer_mode: SessionAnswerMode
   item_count: number
   score: number | null
@@ -164,11 +163,6 @@ interface ChoiceRow extends RowDataPacket {
   position: number
 }
 
-interface SourceRow extends RowDataPacket {
-  question_id: string
-  center: string
-}
-
 interface SessionQuestion {
   id: string
   prompt: string
@@ -178,7 +172,6 @@ interface SessionQuestion {
   tosCode: string
   topicCategory: string
   subTopic: string
-  sources: { center: string }[]
   correctChoiceId: string
   rationale: string
   canonicalConcept: string
@@ -212,22 +205,11 @@ async function fetchSessionQuestions(sessionId: string): Promise<SessionQuestion
     `SELECT question_id, choice_id, text, position FROM bank_choices WHERE question_id IN (?) ORDER BY position ASC`,
     [ids],
   )
-  const [sourceRows] = await pool.query<SourceRow[]>(
-    `SELECT question_id, center FROM bank_sources WHERE question_id IN (?)`,
-    [ids],
-  )
-
   const choicesByQuestion = new Map<string, { id: string; text: string }[]>()
   for (const c of choiceRows) {
     const list = choicesByQuestion.get(c.question_id) ?? []
     list.push({ id: c.choice_id, text: c.text })
     choicesByQuestion.set(c.question_id, list)
-  }
-  const sourcesByQuestion = new Map<string, { center: string }[]>()
-  for (const s of sourceRows) {
-    const list = sourcesByQuestion.get(s.question_id) ?? []
-    list.push({ center: s.center })
-    sourcesByQuestion.set(s.question_id, list)
   }
 
   return questionRows.map((q) => ({
@@ -239,7 +221,6 @@ async function fetchSessionQuestions(sessionId: string): Promise<SessionQuestion
     tosCode: q.tos_code,
     topicCategory: q.topic_category,
     subTopic: q.sub_topic,
-    sources: sourcesByQuestion.get(q.id) ?? [],
     correctChoiceId: q.correct_choice_id,
     rationale: q.rationale,
     canonicalConcept: q.canonical_concept,
@@ -697,7 +678,6 @@ examsRouter.post('/:id/submit', asyncHandler(async (req, res) => {
         tosCode: q.tosCode,
         topicCategory: q.topicCategory,
         subTopic: q.subTopic,
-        sources: q.sources,
       }
     }),
   })

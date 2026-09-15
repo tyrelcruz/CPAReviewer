@@ -4,10 +4,6 @@ export type AnswerMode = 'mcq' | 'identification'
  * mix both types; each BankQuestion carries its own `answerMode`. */
 export type SessionAnswerMode = AnswerMode | 'mixed'
 
-export interface BankQuestionSource {
-  center: string
-}
-
 export interface BankQuestion {
   id: string
   prompt: string
@@ -20,7 +16,6 @@ export interface BankQuestion {
   tosCode: string
   topicCategory: string
   subTopic: string
-  sources: BankQuestionSource[]
   answerMode: AnswerMode
   /** Curated alternate phrasings accepted for identification-mode grading
    * (e.g. "HBsAg" also accepting "Hepatitis B surface antigen"). */

@@ -14,10 +14,3 @@ export function shuffleArray<T>(items: T[]): T[] {
   }
   return result
 }
-
-/** Some ingested question sources have a placeholder "Unspecified" center
- * (content whose origin wasn't tagged) — that shouldn't render as a real
- * source badge. */
-export function hasRealSourceCenter(center: string): boolean {
-  return Boolean(center) && center.trim().toLowerCase() !== 'unspecified'
-}

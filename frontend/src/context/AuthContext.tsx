@@ -20,6 +20,10 @@ export interface AuthUser {
   name: string
   email: string
   role: 'user' | 'admin'
+  /** Which board exam this account reviews for — fixed at signup (or set
+   * directly on the account), drives which subjects/mock exams the app
+   * shows. */
+  course: 'cpa' | 'rmt'
 }
 
 interface AuthContextValue {

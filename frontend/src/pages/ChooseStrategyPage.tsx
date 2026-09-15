@@ -10,12 +10,15 @@ import { getComingSoonKeys, STRATEGY_CARDS, STRATEGY_MODE_TEMPLATE } from '@/com
 import { VariantsDisplayCard } from '@/components/quiz/VariantsDisplayCard'
 import { WizardAside } from '@/components/quiz/WizardAside'
 import { WizardHeader } from '@/components/quiz/WizardHeader'
+import { useAuth } from '@/context/AuthContext'
 import { fadeUpItem, staggerContainer } from '@/lib/motion'
 import { cn } from '@/lib/utils'
 
 // Full display name per subject code, ingested-content subjects only — the
 // same lineup ExamSetupPage's SUBJECT_DEFS selects from.
 const SUBJECT_LABELS: Record<string, string> = {
+  RFBT: 'Regulatory Framework for Business Transactions',
+  TAX: 'Taxation',
   IS: 'Immunology & Serology',
   BB: 'Blood Banking',
   MTAP: 'MTAP Comprehensive Exam',
@@ -24,12 +27,13 @@ const SUBJECT_LABELS: Record<string, string> = {
 export function ChooseStrategyPage() {
   const { subject } = useParams()
   const navigate = useNavigate()
+  const { user } = useAuth()
   const [selectedKey, setSelectedKey] = useState<(typeof STRATEGY_CARDS)[number]['key']>(
     STRATEGY_CARDS[0].key,
   )
   const [showComingSoonNotice, setShowComingSoonNotice] = useState(false)
 
-  const comingSoonKeys = getComingSoonKeys()
+  const comingSoonKeys = getComingSoonKeys(user?.course)
   const isComingSoon = (key: (typeof STRATEGY_CARDS)[number]['key']) =>
     comingSoonKeys.includes(key)
 

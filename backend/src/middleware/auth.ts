@@ -5,6 +5,7 @@ import type { RowDataPacket } from 'mysql2'
 import { pool } from '../db/pool.js'
 
 export type Role = 'user' | 'admin'
+export type Course = 'cpa' | 'rmt'
 
 export interface AuthUser {
   id: string
@@ -16,6 +17,9 @@ export interface AuthUser {
    * routes/auth.ts's openSession). */
   sid: string
   role: Role
+  /** Which board exam this account reviews for — drives which subjects/mock
+   * exams the frontend shows. */
+  course: Course
 }
 
 /** Heartbeat throttle: last_seen_at only gets written this often per session,
@@ -42,6 +46,7 @@ interface SessionRow extends RowDataPacket {
   pending_logout_at: Date | null
   last_seen_at: Date
   role: Role
+  course: Course
 }
 
 export async function requireAuth(req: Request, res: Response, next: NextFunction) {
@@ -64,7 +69,7 @@ export async function requireAuth(req: Request, res: Response, next: NextFunctio
   try {
     const [rows] = await pool.query<SessionRow[]>(
       `SELECT s.ended_at AS ended_at, s.pending_logout_at AS pending_logout_at,
-              s.last_seen_at AS last_seen_at, u.role AS role
+              s.last_seen_at AS last_seen_at, u.role AS role, u.course AS course
        FROM user_sessions s
        JOIN users u ON u.id = s.user_id
        WHERE s.id = ? AND s.user_id = ?`,
@@ -100,10 +105,11 @@ export async function requireAuth(req: Request, res: Response, next: NextFunctio
       return
     }
 
-    // Read role fresh from the DB rather than trusting the token's claim, so
-    // a promotion/demotion takes effect on this user's very next request
-    // instead of waiting for their token to be re-signed.
-    req.user = { ...payload, role: row.role }
+    // Read role/course fresh from the DB rather than trusting the token's
+    // claim, so a promotion/demotion (or a manually-fixed course) takes
+    // effect on this user's very next request instead of waiting for their
+    // token to be re-signed.
+    req.user = { ...payload, role: row.role, course: row.course }
     next()
 
     // Fire-and-forget activity heartbeat, throttled so an actively-browsing

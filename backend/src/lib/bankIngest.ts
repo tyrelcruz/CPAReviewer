@@ -1,5 +1,5 @@
 import type { RowDataPacket } from 'mysql2'
-import { createHash, randomUUID } from 'node:crypto'
+import { createHash } from 'node:crypto'
 
 import { pool } from '../db/pool.js'
 
@@ -14,11 +14,6 @@ export interface RawBankQuestion {
   choices: RawBankChoice[]
   correctChoiceId: string
   rationale: string
-  source: {
-    center: string
-    batch: string
-    examType: string
-  }
   tos: {
     subject: string
     topicCategory: string
@@ -106,18 +101,6 @@ function validate(record: unknown): record is RawBankQuestion {
   if (!r.choices.some((c) => c.id === r.correctChoiceId)) return false
   if (typeof r.rationale !== 'string' || !r.rationale) return false
 
-  if (typeof r.source !== 'object' || r.source === null) return false
-  if (
-    typeof r.source.center !== 'string' ||
-    !r.source.center ||
-    typeof r.source.batch !== 'string' ||
-    !r.source.batch ||
-    typeof r.source.examType !== 'string' ||
-    !r.source.examType
-  ) {
-    return false
-  }
-
   if (typeof r.tos !== 'object' || r.tos === null) return false
   if (
     typeof r.tos.subject !== 'string' ||
@@ -150,11 +133,11 @@ function validate(record: unknown): record is RawBankQuestion {
 }
 
 /**
- * Ingests raw KB question records into the question bank, deduplicating
- * across review centers by an exact match on the normalized canonicalConcept
- * (verified viable for this dataset — ~46% of RFBT questions match verbatim
- * across ReSA/REO). Fully idempotent: re-ingesting the same records is a
- * no-op past the first run.
+ * Ingests raw KB question records into the question bank, deduplicating by
+ * an exact match on the normalized canonicalConcept (verified viable for
+ * this dataset — ~46% of RFBT questions matched verbatim across sources
+ * before dedup). Fully idempotent: re-ingesting the same records is a no-op
+ * past the first run.
  *
  * Batched into a handful of round-trips total (two bulk preload SELECTs, then
  * up to four bulk INSERTs) instead of ~7 sequential per-record round-trips —
@@ -240,7 +223,6 @@ export async function ingestBankQuestions(records: unknown[]): Promise<IngestRes
 
   const newQuestionRows: unknown[][] = []
   const newChoiceRows: unknown[][] = []
-  const sourceRows: unknown[][] = []
   const rationaleBackfills: { id: string; rationale: string }[] = []
   const acceptableAnswerUpdates: { id: string; acceptableAnswers: string[] }[] = []
 
@@ -264,14 +246,6 @@ export async function ingestBankQuestions(records: unknown[]): Promise<IngestRes
       if (record.acceptableAnswers && record.acceptableAnswers.length > 0) {
         acceptableAnswerUpdates.push({ id: existing.id, acceptableAnswers: record.acceptableAnswers })
       }
-      sourceRows.push([
-        randomUUID(),
-        existing.id,
-        record.source.center,
-        record.source.batch,
-        record.source.examType,
-        record.id,
-      ])
       result.merged += 1
       continue
     }
@@ -298,19 +272,11 @@ export async function ingestBankQuestions(records: unknown[]): Promise<IngestRes
     record.choices.forEach((choice, index) => {
       newChoiceRows.push([record.id, choice.id, choice.text, index])
     })
-    sourceRows.push([
-      randomUUID(),
-      record.id,
-      record.source.center,
-      record.source.batch,
-      record.source.examType,
-      record.id,
-    ])
     result.inserted += 1
   }
 
   // tos_categories must land before bank_questions (FK on subject+tos_code),
-  // which must land before bank_choices/bank_sources (FK on question id).
+  // which must land before bank_choices (FK on question id).
   if (newTosRows.length > 0) {
     await bulkInsert(
       `INSERT INTO tos_categories (tos_code, subject, topic_category, sub_topic) VALUES ?`,
@@ -336,16 +302,6 @@ export async function ingestBankQuestions(records: unknown[]): Promise<IngestRes
        VALUES ?
        ON DUPLICATE KEY UPDATE text = VALUES(text), position = VALUES(position)`,
       newChoiceRows,
-    )
-  }
-  if (sourceRows.length > 0) {
-    await bulkInsert(
-      `INSERT INTO bank_sources (id, question_id, center, batch, exam_type, original_question_id)
-       VALUES ?
-       ON DUPLICATE KEY UPDATE
-         batch = VALUES(batch),
-         exam_type = VALUES(exam_type)`,
-      sourceRows,
     )
   }
   // Rare (only when backfilling a placeholder rationale, or setting curated

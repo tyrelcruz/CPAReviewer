@@ -72,7 +72,6 @@ interface ListBankQuestionsParams {
   tosCode?: string
   difficulty?: string
   cognitiveLevel?: string
-  center?: string
   page?: number
 }
 

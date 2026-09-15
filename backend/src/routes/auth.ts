@@ -48,6 +48,7 @@ interface UserRow extends RowDataPacket {
   name: string
   email: string
   role: 'user' | 'admin'
+  course: 'cpa' | 'rmt'
 }
 
 interface OtpRow extends RowDataPacket {
@@ -206,8 +207,10 @@ authRouter.post('/signup/verify-otp', asyncHandler(async (req, res) => {
   await pool.query('INSERT INTO users (id, name, email) VALUES (?, ?, ?)', [id, name, email])
 
   const sid = await openSession(id, req)
-  const token = signToken({ id, email, sid, role: 'user' })
-  res.status(201).json({ token, user: { id, name, email, role: 'user' } })
+  // Signup doesn't collect a course choice — new accounts always land on the
+  // schema's default ('rmt'), matching the row just inserted above.
+  const token = signToken({ id, email, sid, role: 'user', course: 'rmt' })
+  res.status(201).json({ token, user: { id, name, email, role: 'user', course: 'rmt' } })
 }))
 
 authRouter.post('/login/request-otp', asyncHandler(async (req, res) => {
@@ -254,7 +257,7 @@ authRouter.post('/login/verify-otp', asyncHandler(async (req, res) => {
   }
 
   const [rows] = await pool.query<UserRow[]>(
-    'SELECT id, name, email, role FROM users WHERE email = ?',
+    'SELECT id, name, email, role, course FROM users WHERE email = ?',
     [email],
   )
   const user = rows[0]
@@ -268,16 +271,16 @@ authRouter.post('/login/verify-otp', asyncHandler(async (req, res) => {
   // its next request, then requireAuth rejects it once the period elapses.
   const sid = await openSession(user.id, req)
 
-  const token = signToken({ id: user.id, email: user.email, sid, role: user.role })
+  const token = signToken({ id: user.id, email: user.email, sid, role: user.role, course: user.course })
   res.json({
     token,
-    user: { id: user.id, name: user.name, email: user.email, role: user.role },
+    user: { id: user.id, name: user.name, email: user.email, role: user.role, course: user.course },
   })
 }))
 
 authRouter.get('/me', requireAuth, asyncHandler(async (req, res) => {
   const [rows] = await pool.query<UserRow[]>(
-    'SELECT id, name, email, role FROM users WHERE id = ?',
+    'SELECT id, name, email, role, course FROM users WHERE id = ?',
     [req.user!.id],
   )
   const user = rows[0]
@@ -295,10 +298,11 @@ authRouter.get('/me', requireAuth, asyncHandler(async (req, res) => {
     email: user.email,
     sid: req.user!.sid,
     role: user.role,
+    course: user.course,
   })
   res.json({
     token,
-    user: { id: user.id, name: user.name, email: user.email, role: user.role },
+    user: { id: user.id, name: user.name, email: user.email, role: user.role, course: user.course },
   })
 }))
 
@@ -308,6 +312,7 @@ authRouter.post('/refresh', requireAuth, asyncHandler(async (req, res) => {
     email: req.user!.email,
     sid: req.user!.sid,
     role: req.user!.role,
+    course: req.user!.course,
   })
   res.json({ token })
 }))

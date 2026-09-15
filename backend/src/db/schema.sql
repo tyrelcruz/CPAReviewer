@@ -302,3 +302,15 @@ UPDATE users SET course = 'rmt' WHERE course = 'cpa';
 ALTER TABLE users MODIFY COLUMN course ENUM('rmt') NOT NULL DEFAULT 'rmt';
 UPDATE otp_codes SET pending_course = 'rmt' WHERE pending_course = 'cpa';
 ALTER TABLE otp_codes MODIFY COLUMN pending_course ENUM('rmt') NULL;
+
+-- Reinstated: 'cpa' is a valid course again (see the narrowing above for why
+-- it was retired) so an admin/DB edit can put an account back on the CPA
+-- track — signup still doesn't collect a course choice, so this only
+-- matters for accounts changed directly in the database.
+ALTER TABLE users MODIFY COLUMN course ENUM('cpa', 'rmt') NOT NULL DEFAULT 'rmt';
+
+-- Review-center tagging removed entirely (see git history around
+-- bank_sources for why it existed) — the underlying question content stays,
+-- only the "which center this came from" attribution is gone.
+ALTER TABLE exam_sessions DROP COLUMN center_filter;
+DROP TABLE IF EXISTS bank_sources;

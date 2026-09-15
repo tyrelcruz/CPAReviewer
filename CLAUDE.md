@@ -7,15 +7,18 @@ one-off pattern.
 
 ## 1. Project shape
 
-Monorepo, two independently-run packages, no shared build tooling between them:
+Monorepo, two independently-run packages, no shared build tooling between them,
+plus one root-level `docker-compose.yml` that can run the whole stack:
 
 ```
 CPAReviewer/
+├── docker-compose.yml   unified stack: mysql, backend, frontend, phpMyAdmin
 ├── frontend/   React 19 + Vite + TypeScript + Tailwind v4 + React Router
 └── backend/    Express + TypeScript + MySQL (mysql2) + JWT auth
 ```
 
-Commands (run from inside each package, not the repo root):
+Commands (run from inside each package, not the repo root, except the
+`docker:*` ones which target the root `docker-compose.yml`):
 
 | Package  | Command          | Does |
 |----------|------------------|------|
@@ -24,12 +27,21 @@ Commands (run from inside each package, not the repo root):
 | frontend | `npm run lint`   | `oxlint` (not eslint) |
 | backend  | `npm run dev`    | `tsx watch src/index.ts`, port from `.env` (`PORT`, default 8001) |
 | backend  | `npm run build`  | `tsc -b` |
-| backend  | `npm run db:up`  | `docker compose up -d` — MySQL on host port 3307 + phpMyAdmin on 8081 |
+| backend  | `npm run db:up`  | `docker compose up -d mysql phpmyadmin` — just the DB + admin UI, for running `backend`/`frontend` natively on the host |
 | backend  | `npm run db:seed`| Seeds a demo user (`demo@cpareviewer.test` / `password123`) + sample quiz data |
+| root     | `npm run docker:up` | `docker compose up -d --build` — the **one command** that builds and starts the whole stack: MySQL (3307), backend (8001), frontend (5173), phpMyAdmin (8081) |
+| root     | `npm run docker:down` | Stops and removes all four containers |
+| root     | `npm run docker:logs` | Tails logs from every container |
 
 Both dev servers must be running (plus the DB container) to exercise anything
 behind `ProtectedRoute` — the frontend calls the backend at
-`VITE_API_BASE_URL` (defaults to `http://localhost:8001`).
+`VITE_API_BASE_URL` (defaults to `http://localhost:8001`). Either run
+`frontend`/`backend` natively with `npm run dev` (plus `backend`'s
+`npm run db:up` for just the DB), or skip all of that and run
+`npm run docker:up` from the repo root to get everything in containers with
+one command — both `backend` and `frontend` bind-mount their package
+directory into the container for hot reload, so editing source on the host
+still triggers `tsx watch` / Vite HMR inside the container.
 
 ## 2. Frontend architecture (`frontend/src/`)
 
