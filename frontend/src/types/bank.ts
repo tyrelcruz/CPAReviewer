@@ -22,9 +22,15 @@ export interface BankQuestion {
   acceptableAnswers: string[]
 }
 
-export interface RfbtTopic {
+/** One row of a subject's official PRC table of specifications, as the
+ * backend's TOS blueprint publishes it. */
+export interface TosTopic {
   category: string
   weightPct: number
+  /** Published theory/problem item split — null for tables expressed as bare
+   * percentages (RFBT) rather than item counts (TAX). */
+  theory: number | null
+  problem: number | null
   available: number
 }
 

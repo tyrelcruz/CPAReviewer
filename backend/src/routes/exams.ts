@@ -17,6 +17,7 @@ import {
   type DifficultyWeights,
   type Difficulty,
 } from '../lib/examGenerator.js'
+import { getTosBlueprint, tosCategoryWeights } from '../lib/tosBlueprints.js'
 
 export const examsRouter = Router()
 
@@ -26,7 +27,7 @@ const MAX_ITEM_COUNT = 200
 const DIFFICULTIES: Difficulty[] = ['Easy', 'Moderate', 'Difficult']
 
 /** Converts a student's exact difficulty counts into weights (count/total) for
- * the RFBT-topic-customization paths, which only support difficulty as a
+ * the TOS-topic-customization paths, which only support difficulty as a
  * *soft* in-category preference (selectExamQuestionsByCategory/
  * selectExamQuestionsByExactCounts), not a hard global count. */
 function countsToWeights(counts: Record<Difficulty, number>, total: number): DifficultyWeights {
@@ -78,32 +79,6 @@ function shuffleArray<T>(items: T[]): T[] {
 }
 
 /**
- * Official PRC table of specifications for RFBT ("RFBT MDE"): the exact
- * per-topic item allocation the TOS simulator must follow, keyed by the
- * `sub_topic` values our ingested question bank actually uses. Topics not
- * listed here (Obligations, Contracts, Sales, AMLA, etc.) sit outside this
- * table and are excluded from tos_simulator-mode selection for RFBT.
- */
-const RFBT_CATEGORY_BY_SUBTOPIC: Record<string, string> = {
-  Corporations: 'Revised Corp Code',
-  Partnerships: 'Partnership',
-  Cooperatives: 'Cooperatives',
-  'Financial Rehabilitation and Insolvency Act': 'FRIA Act',
-  'Labor Law': 'Labor and SSS Law',
-  'Social Security Law': 'Labor and SSS Law',
-  Insurance: 'Insurance',
-}
-
-const RFBT_CATEGORY_WEIGHTS: Record<string, number> = {
-  'Revised Corp Code': 0.57,
-  Partnership: 0.12,
-  Cooperatives: 0.1,
-  'FRIA Act': 0.1,
-  'Labor and SSS Law': 0.06,
-  Insurance: 0.05,
-}
-
-/**
  * Synthetic subject codes that stand in for a full-length exam spanning every
  * currently-ingested subject of a board exam, rather than one real
  * `bank_questions.subject`/`tos_categories.subject` value — resolved to the
@@ -119,6 +94,7 @@ const COMPREHENSIVE_SUBJECTS: Record<string, string[]> = {
 interface PoolRow extends RowDataPacket {
   id: string
   difficulty: Difficulty
+  topic_category: string
   sub_topic: string
   prompt: string
   correct_choice_text: string
@@ -241,10 +217,17 @@ examsRouter.post('/generate', asyncHandler(async (req, res) => {
     return
   }
 
-  // Lets a student override the official RFBT TOS percentages with their own
+  // The subject's official PRC table of specifications, when it has one —
+  // it governs tos_simulator mode only. subject_drill intentionally skips the
+  // blueprint weighting in favor of a plain difficulty-balanced draw across
+  // the whole subject, and a subject with no table yet always falls back to
+  // that same plain draw.
+  const blueprint = mode === 'tos_simulator' ? getTosBlueprint(subject) : undefined
+
+  // Lets a student override the blueprint's default percentages with their own
   // exact per-topic item counts (e.g. "give me 20 Corp Code, 5 Partnership…")
-  // instead of the fixed 57/12/10/10/6/5 split.
-  const useCustomTopicCounts = subject === 'RFBT' && mode === 'tos_simulator' && topicCounts !== undefined
+  // instead of the published split.
+  const useCustomTopicCounts = blueprint !== undefined && topicCounts !== undefined
 
   let requestedItemCount: number
   if (useCustomTopicCounts) {
@@ -252,9 +235,10 @@ examsRouter.post('/generate', asyncHandler(async (req, res) => {
       res.status(400).json({ error: 'topicCounts must be an object of category -> count' })
       return
     }
+    const blueprintCategories = new Set(blueprint.rows.map((row) => row.category))
     for (const [category, count] of Object.entries(topicCounts as Record<string, unknown>)) {
-      if (!(category in RFBT_CATEGORY_WEIGHTS)) {
-        res.status(400).json({ error: `Unknown RFBT topic "${category}"` })
+      if (!blueprintCategories.has(category)) {
+        res.status(400).json({ error: `Unknown ${subject} topic "${category}"` })
         return
       }
       if (typeof count !== 'number' || !Number.isInteger(count) || count < 0) {
@@ -308,7 +292,8 @@ examsRouter.post('/generate', asyncHandler(async (req, res) => {
   const subjectFilter = COMPREHENSIVE_SUBJECTS[subject] ?? [subject]
 
   const [poolRows] = await pool.query<PoolRow[]>(
-    `SELECT bq.id, bq.difficulty, bq.prompt, bc.text AS correct_choice_text, tc.sub_topic
+    `SELECT bq.id, bq.difficulty, bq.prompt, bc.text AS correct_choice_text,
+            tc.topic_category, tc.sub_topic
      FROM bank_questions bq
      JOIN tos_categories tc ON tc.subject = bq.subject AND tc.tos_code = bq.tos_code
      JOIN bank_choices bc ON bc.question_id = bq.id AND bc.choice_id = bq.correct_choice_id
@@ -331,18 +316,13 @@ examsRouter.post('/generate', asyncHandler(async (req, res) => {
   )
   const recentlySeenIds = new Set(historyRows.map((r) => r.question_id as string))
 
-  // The official RFBT TOS category table only governs tos_simulator mode —
-  // subject_drill intentionally skips the PRC blueprint weighting in favor
-  // of a plain difficulty-balanced draw across the whole subject.
-  const useCategoryTable = subject === 'RFBT' && mode === 'tos_simulator'
-
   let selected: PoolRow[]
   let notice: string | null = null
 
   if (useCustomTopicCounts) {
     const categorized = poolRows.map((row) => ({
       ...row,
-      category: RFBT_CATEGORY_BY_SUBTOPIC[row.sub_topic] ?? '',
+      category: blueprint.resolveCategory(row.topic_category, row.sub_topic),
     }))
     const counts = topicCounts as Record<string, number>
     selected = selectExamQuestionsByExactCounts(
@@ -363,22 +343,23 @@ examsRouter.post('/generate', asyncHandler(async (req, res) => {
         .map((s) => `${s.category} (${s.actual}/${s.needed})`)
       notice = `Only ${selected.length} of ${requestedItemCount} requested items could be generated — some topics don't have enough questions: ${shortfalls.join(', ')}.`
     }
-  } else if (useCategoryTable) {
+  } else if (blueprint) {
     const categorized = poolRows.map((row) => ({
       ...row,
-      category: RFBT_CATEGORY_BY_SUBTOPIC[row.sub_topic] ?? '',
+      category: blueprint.resolveCategory(row.topic_category, row.sub_topic),
     }))
+    const categoryWeights = tosCategoryWeights(blueprint)
     selected = selectExamQuestionsByCategory(
       categorized,
       requestedItemCount,
-      RFBT_CATEGORY_WEIGHTS,
+      categoryWeights,
       countsToWeights(resolvedDifficultyCounts, requestedItemCount),
       recentlySeenIds,
     )
-    const maxSupported = computeMaxSupportedItemCountForCategories(categorized, RFBT_CATEGORY_WEIGHTS)
+    const maxSupported = computeMaxSupportedItemCountForCategories(categorized, categoryWeights)
     notice =
       selected.length < requestedItemCount
-        ? `Only ${selected.length} items could be generated at the required TOS ratio (requested ${requestedItemCount}) — the question pool doesn't yet have enough items in every RFBT TOS topic. Pool currently supports up to ${maxSupported} items at this ratio.`
+        ? `Only ${selected.length} items could be generated at the required TOS ratio (requested ${requestedItemCount}) — the question pool doesn't yet have enough items in every ${subject} TOS topic. Pool currently supports up to ${maxSupported} items at this ratio.`
         : null
   } else {
     selected = selectExamQuestionsByExactDifficultyCounts(poolRows, resolvedDifficultyCounts, recentlySeenIds)
@@ -470,31 +451,45 @@ examsRouter.post('/generate', asyncHandler(async (req, res) => {
 }))
 
 /**
- * Exposes the RFBT TOS category table (weight + how many questions are
- * actually available per category) so the client can default and clamp a
- * "customize per-topic counts" UI without hardcoding the pool sizes.
+ * Exposes a subject's TOS table (each topic's weight, its published
+ * theory/problem split where the table has one, and how many questions are
+ * actually available in it) so the client can default and clamp a "customize
+ * per-topic counts" UI without hardcoding either the ratios or the pool
+ * sizes. A subject with no PRC table yet answers with an empty list rather
+ * than a 404 — the client treats that as "this subject has no topic
+ * customization" and the exam falls back to a plain difficulty-balanced draw.
  * Registered before `/:id` — it must not be swallowed by that wildcard.
  */
-examsRouter.get('/rfbt-topics', asyncHandler(async (_req, res) => {
+examsRouter.get('/tos-topics', asyncHandler(async (req, res) => {
+  const subject = typeof req.query.subject === 'string' ? req.query.subject : ''
+  const blueprint = getTosBlueprint(subject)
+  if (!blueprint) {
+    res.json({ topics: [] })
+    return
+  }
+
   const [rows] = await pool.query<RowDataPacket[]>(
-    `SELECT tc.sub_topic, COUNT(*) as c
+    `SELECT tc.topic_category, tc.sub_topic, COUNT(*) as c
      FROM bank_questions bq
      JOIN tos_categories tc ON tc.subject = bq.subject AND tc.tos_code = bq.tos_code
-     WHERE tc.subject = 'RFBT'
-     GROUP BY tc.sub_topic`,
+     WHERE tc.subject = ?
+     GROUP BY tc.topic_category, tc.sub_topic`,
+    [subject],
   )
 
   const availableByCategory: Record<string, number> = {}
   for (const row of rows) {
-    const category = RFBT_CATEGORY_BY_SUBTOPIC[row.sub_topic as string]
+    const category = blueprint.resolveCategory(row.topic_category as string, row.sub_topic as string)
     if (!category) continue
     availableByCategory[category] = (availableByCategory[category] ?? 0) + Number(row.c)
   }
 
-  const topics = Object.entries(RFBT_CATEGORY_WEIGHTS).map(([category, weightPct]) => ({
-    category,
-    weightPct,
-    available: availableByCategory[category] ?? 0,
+  const topics = blueprint.rows.map((row) => ({
+    category: row.category,
+    weightPct: row.weightPct,
+    theory: row.theory,
+    problem: row.problem,
+    available: availableByCategory[row.category] ?? 0,
   }))
 
   res.json({ topics })

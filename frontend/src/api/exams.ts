@@ -3,16 +3,17 @@ import type {
   BankQuestion,
   ExamMode,
   GeneratedExamSession,
-  RfbtTopic,
   SubmitExamResult,
+  TosTopic,
 } from '@/types/bank'
 
 interface GenerateExamParams {
   subject: string
   mode: ExamMode
-  /** Required unless topicCounts is provided (RFBT tos_simulator only). */
+  /** Required unless topicCounts is provided. */
   itemCount?: number
-  /** RFBT tos_simulator only — overrides the default TOS percentages with exact per-topic counts. */
+  /** tos_simulator mode on a subject with a TOS blueprint (RFBT, TAX) only —
+   * overrides the blueprint's default percentages with exact per-topic counts. */
   topicCounts?: Record<string, number>
   /** Must sum to the effective item count (itemCount, or the topicCounts sum). */
   questionTypeCounts: { mcq: number; identification: number }
@@ -25,8 +26,11 @@ export async function generateExam(params: GenerateExamParams): Promise<Generate
   return data
 }
 
-export async function listRfbtTopics(): Promise<RfbtTopic[]> {
-  const { data } = await apiClient.get<{ topics: RfbtTopic[] }>('/api/exams/rfbt-topics')
+/** Empty for a subject with no PRC table yet — no topic customization there. */
+export async function listTosTopics(subject: string): Promise<TosTopic[]> {
+  const { data } = await apiClient.get<{ topics: TosTopic[] }>('/api/exams/tos-topics', {
+    params: { subject },
+  })
   return data.topics
 }
 

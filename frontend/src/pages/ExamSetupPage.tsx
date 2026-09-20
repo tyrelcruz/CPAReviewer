@@ -28,7 +28,7 @@ import {
 import { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 
-import { generateExam, listRfbtTopics, listSubjectCounts } from '@/api/exams'
+import { generateExam, listSubjectCounts, listTosTopics } from '@/api/exams'
 import { Sidebar } from '@/components/dashboard/Sidebar'
 import { GrungeOverlay } from '@/components/ui/GrungeOverlay'
 import { Switch } from '@/components/ui/switch'
@@ -37,9 +37,9 @@ import mountainHeader from '@/assets/images/carabao_repia.png'
 import { useAuth } from '@/context/AuthContext'
 import { fadeUpItem, staggerContainer } from '@/lib/motion'
 import { cn } from '@/lib/utils'
-import type { ExamMode, RfbtTopic } from '@/types/bank'
+import type { ExamMode, TosTopic } from '@/types/bank'
 
-function defaultTopicCounts(topics: RfbtTopic[], total: number): Record<string, number> {
+function defaultTopicCounts(topics: TosTopic[], total: number): Record<string, number> {
   const counts: Record<string, number> = {}
   for (const t of topics) {
     counts[t.category] = Math.min(t.available, Math.round(total * t.weightPct))
@@ -139,7 +139,7 @@ export function ExamSetupPage() {
   const [error, setError] = useState<string | null>(null)
 
   const [subjectCounts, setSubjectCounts] = useState<Record<string, number>>({})
-  const [topics, setTopics] = useState<RfbtTopic[]>([])
+  const [topics, setTopics] = useState<TosTopic[]>([])
   const [customizeTopics, setCustomizeTopics] = useState(false)
   const [topicCounts, setTopicCounts] = useState<Record<string, number>>({})
 
@@ -196,14 +196,24 @@ export function ExamSetupPage() {
       .catch(() => {})
   }, [])
 
+  // Refetched per subject rather than once: each subject has its own PRC
+  // table, or none at all, which comes back as an empty list.
   useEffect(() => {
-    if (subject !== 'RFBT') return
-    listRfbtTopics()
-      .then(setTopics)
-      .catch(() => {})
+    let cancelled = false
+    listTosTopics(subject)
+      .then((next) => {
+        if (!cancelled) setTopics(next)
+      })
+      .catch(() => {
+        if (!cancelled) setTopics([])
+      })
+    return () => {
+      cancelled = true
+    }
   }, [subject])
 
-  const usingCustomTopics = customizeTopics && subject === 'RFBT' && mode === 'tos_simulator'
+  const hasTosTopics = topics.length > 0 && mode === 'tos_simulator'
+  const usingCustomTopics = customizeTopics && hasTosTopics
   const topicTotal = Object.values(topicCounts).reduce((sum, n) => sum + n, 0)
   const effectiveItemCount = usingCustomTopics ? topicTotal : itemCount
   const activeSubjectDef = activeSubjectDefs.find((s) => s.subjectKey === subject)
@@ -212,7 +222,7 @@ export function ExamSetupPage() {
   // variant choice changes. Multiple Choice / Identification commit a simple
   // 100%-one-type split directly (no manual editing); Variant resets to the
   // same proportional defaults as before and leaves them freely editable —
-  // mirrors how RFBT's own topic customization already works
+  // mirrors how the TOS topic customization already works
   // (defaultTopicCounts is recomputed fresh on toggle-on rather than trying
   // to preserve ratios across changes).
   useEffect(() => {
@@ -260,8 +270,13 @@ export function ExamSetupPage() {
   }
 
   function handleSelectSubject(def: SubjectDef) {
-    if (!def.subjectKey) return
+    if (!def.subjectKey || def.subjectKey === subject) return
     setSubject(def.subjectKey)
+    // Topic names are per-subject, so a customization carried over from the
+    // previous subject would be rejected by the backend as unknown topics.
+    setCustomizeTopics(false)
+    setTopicCounts({})
+    setRawFieldInputs({})
   }
 
   async function handleGenerate() {
@@ -685,12 +700,12 @@ export function ExamSetupPage() {
                     </>
                   )}
 
-                  {subject === 'RFBT' && mode === 'tos_simulator' && topics.length > 0 && (
+                  {hasTosTopics && (
                     <div className="flex flex-col gap-3 border-t border-[#3A2A1A]/10 pt-4">
                       <div className="flex items-center justify-between gap-3">
-                        <div>
+                        <div className="min-w-0">
                           <p className="text-xs font-semibold text-[#3A2A1A]/60">
-                            Customize RFBT Topics
+                            Customize {activeSubjectDef?.code ?? subject} Topics
                           </p>
                           <p className="font-reading mt-0.5 text-xs text-[#3A2A1A]/60">
                             Override the default PRC topic split with your own count per topic.
@@ -715,11 +730,13 @@ export function ExamSetupPage() {
                           {topics.map((t) => (
                             <div key={t.category} className="flex items-center gap-3">
                               <div className="min-w-0 flex-1">
-                                <p className="truncate text-sm font-semibold text-[#3A2A1A]">
-                                  {t.category}
-                                </p>
+                                <p className="text-sm font-semibold text-[#3A2A1A]">{t.category}</p>
                                 <p className="text-xs text-[#3A2A1A]/50">
-                                  {Math.round(t.weightPct * 100)}% default · {t.available} available
+                                  {Math.round(t.weightPct * 100)}% default
+                                  {t.theory !== null && t.problem !== null && (
+                                    <> · {t.theory} theory / {t.problem} problem</>
+                                  )}{' '}
+                                  · {t.available} available
                                 </p>
                               </div>
                               <input

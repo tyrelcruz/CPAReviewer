@@ -93,7 +93,7 @@ export interface StrategyCard {
  * blocks "Continue" with a notice instead of generating an exam. AI Variation
  * Mode has no real backend behavior yet for anyone (see
  * STRATEGY_MODE_TEMPLATE below); RMT additionally has no TOS blueprint table
- * yet (see RFBT_CATEGORY_WEIGHTS in the backend, RFBT-only today), so TOS
+ * yet (see getTosBlueprint in the backend — RFBT and TAX only today), so TOS
  * Simulator Mode isn't a real distinct mode for that course either.
  */
 export function getComingSoonKeys(course: 'cpa' | 'rmt' | undefined): StrategyCard['key'][] {
