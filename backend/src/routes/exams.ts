@@ -10,6 +10,7 @@ import {
 } from '../lib/answerMatch.js'
 import { asyncHandler } from '../middleware/asyncHandler.js'
 import {
+  collapseVariantGroups,
   computeMaxSupportedItemCountForCategories,
   selectExamQuestionsByCategory,
   selectExamQuestionsByExactCounts,
@@ -99,6 +100,10 @@ interface PoolRow extends RowDataPacket {
   prompt: string
   correct_choice_text: string
   category?: string
+  variant_group_id: string | null
+  /** camelCase mirror of variant_group_id — collapseVariantGroups is a pure
+   * helper in lib/ and reads the domain shape, not the DB column name. */
+  variantGroupId?: string | null
 }
 
 type QuestionAnswerMode = 'mcq' | 'identification'
@@ -293,7 +298,7 @@ examsRouter.post('/generate', asyncHandler(async (req, res) => {
 
   const [poolRows] = await pool.query<PoolRow[]>(
     `SELECT bq.id, bq.difficulty, bq.prompt, bc.text AS correct_choice_text,
-            tc.topic_category, tc.sub_topic
+            tc.topic_category, tc.sub_topic, bq.variant_group_id
      FROM bank_questions bq
      JOIN tos_categories tc ON tc.subject = bq.subject AND tc.tos_code = bq.tos_code
      JOIN bank_choices bc ON bc.question_id = bq.id AND bc.choice_id = bq.correct_choice_id
@@ -305,6 +310,16 @@ examsRouter.post('/generate', asyncHandler(async (req, res) => {
     res.status(404).json({ error: 'No questions available for the requested subject/mode' })
     return
   }
+
+  // Collapse before any counting happens: a variant group stands for one
+  // concept, so it must contribute exactly one candidate to the pool the
+  // difficulty/category allocators size themselves against. Doing this here
+  // rather than after selection also means each regeneration reshuffles which
+  // variant represents its concept, so retaking an exam re-tests the concept
+  // instead of replaying a memorized answer.
+  const pooledQuestions = collapseVariantGroups(
+    poolRows.map((row) => ({ ...row, variantGroupId: row.variant_group_id })),
+  )
 
   const [historyRows] = await pool.query<RowDataPacket[]>(
     `SELECT uqh.question_id
@@ -320,7 +335,7 @@ examsRouter.post('/generate', asyncHandler(async (req, res) => {
   let notice: string | null = null
 
   if (useCustomTopicCounts) {
-    const categorized = poolRows.map((row) => ({
+    const categorized = pooledQuestions.map((row) => ({
       ...row,
       category: blueprint.resolveCategory(row.topic_category, row.sub_topic),
     }))
@@ -344,7 +359,7 @@ examsRouter.post('/generate', asyncHandler(async (req, res) => {
       notice = `Only ${selected.length} of ${requestedItemCount} requested items could be generated — some topics don't have enough questions: ${shortfalls.join(', ')}.`
     }
   } else if (blueprint) {
-    const categorized = poolRows.map((row) => ({
+    const categorized = pooledQuestions.map((row) => ({
       ...row,
       category: blueprint.resolveCategory(row.topic_category, row.sub_topic),
     }))
@@ -362,7 +377,7 @@ examsRouter.post('/generate', asyncHandler(async (req, res) => {
         ? `Only ${selected.length} items could be generated at the required TOS ratio (requested ${requestedItemCount}) — the question pool doesn't yet have enough items in every ${subject} TOS topic. Pool currently supports up to ${maxSupported} items at this ratio.`
         : null
   } else {
-    selected = selectExamQuestionsByExactDifficultyCounts(poolRows, resolvedDifficultyCounts, recentlySeenIds)
+    selected = selectExamQuestionsByExactDifficultyCounts(pooledQuestions, resolvedDifficultyCounts, recentlySeenIds)
     notice =
       selected.length < requestedItemCount
         ? `Only ${selected.length} of ${requestedItemCount} requested items could be generated — the question pool for this subject doesn't have enough items in every requested difficulty band.`

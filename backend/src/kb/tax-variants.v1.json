@@ -1,0 +1,909 @@
+{
+  "meta": {
+    "subject": "TAX",
+    "batch": "v1",
+    "note": "Concept-preserving variants of existing TAX seeds. Each shares its seed canonicalConcept on purpose and is grouped with it via variantOf so the generator serves only one per exam."
+  },
+  "questions": [
+    {
+      "id": "TAX-RESAB48-Q011-v1",
+      "prompt": "Mr. Del Rosario died single on 10 March 2025. Among his properties was a commercial lot he had inherited from his mother on 5 August 2023, one (1) year and seven (7) months before his death. The lot had a fair market value of P1,200,000 when he inherited it and P1,500,000 at the time of his death. It carried an unpaid mortgage of P300,000 when inherited, of which Mr. Del Rosario paid P200,000 before he died. His other properties had a total fair market value of P2,500,000 at the time of death. Total losses, indebtedness and taxes, and transfers for public use amounted to P400,000. How much is the vanishing deduction?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "P720,000"
+        },
+        {
+          "id": "b",
+          "text": "P900,000"
+        },
+        {
+          "id": "c",
+          "text": "P800,000"
+        },
+        {
+          "id": "d",
+          "text": "P936,000"
+        }
+      ],
+      "correctChoiceId": "a",
+      "rationale": "The value to take is the LOWER of the value at the time of inheritance (P1,200,000) and the value at the time of death (P1,500,000), so P1,200,000. Less the P200,000 mortgage paid by the decedent gives an initial basis of P1,000,000. The gross estate is P1,500,000 (the lot at its date-of-death value) plus P2,500,000 of other property, or P4,000,000. The proportionate deduction is P1,000,000/P4,000,000 x P400,000 = P100,000, leaving a final basis of P900,000. The property was acquired more than one (1) year but not more than two (2) years before death, so the rate is 80%: P900,000 x 80% = P720,000.",
+      "tos": {
+        "subject": "TAX",
+        "topicCategory": "Transfer Taxes",
+        "subTopic": "Vanishing deduction",
+        "tosCode": "A.6~2",
+        "cognitiveLevel": "Applying",
+        "difficulty": "Difficult"
+      },
+      "canonicalConcept": "Computation of vanishing deduction on property previously taxed",
+      "variantOf": "TAX-RESAB48-Q011",
+      "variantKind": "numeric",
+      "understandingSkill": "Selects the lower of the date-of-inheritance and date-of-death values, then reduces the initial basis by the mortgage paid and by the proportionate share of ordinary deductions before applying the holding-period rate."
+    },
+    {
+      "id": "taxation-redefine-may2026-066-v1",
+      "prompt": "Mr. Villanueva, a resident citizen, died in 2025 leaving a taxable net estate of P12,000,000 in the Philippines and P3,000,000 in Japan. Estate tax actually paid in Japan amounted to P100,000. How much is the estate tax payable in the Philippines?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "P180,000"
+        },
+        {
+          "id": "b",
+          "text": "P800,000"
+        },
+        {
+          "id": "c",
+          "text": "P720,000"
+        },
+        {
+          "id": "d",
+          "text": "P900,000"
+        }
+      ],
+      "correctChoiceId": "b",
+      "rationale": "The total taxable net estate is P15,000,000, so the Philippine estate tax is P15,000,000 x 6% = P900,000. The foreign tax credit limit is P900,000 x (P3,000,000/P15,000,000) = P180,000. The credit allowed is the LOWER of the tax actually paid abroad (P100,000) and that limit (P180,000), so P100,000 is credited. Estate tax payable is P900,000 - P100,000 = P800,000.",
+      "tos": {
+        "subject": "TAX",
+        "topicCategory": "Estate and Donor's Tax",
+        "subTopic": "Foreign Estate Tax Credit Limitation",
+        "tosCode": "C.12",
+        "cognitiveLevel": "Analyzing",
+        "difficulty": "Moderate"
+      },
+      "canonicalConcept": "The foreign estate tax credit is limited to the Philippine estate tax attributable to the foreign property's proportionate share.",
+      "variantOf": "taxation-redefine-may2026-066",
+      "variantKind": "threshold",
+      "understandingSkill": "Recognizes the foreign estate tax credit is the LOWER of tax actually paid abroad and the proportional limit — here the actual payment controls, reversing which of the two figures governs."
+    },
+    {
+      "id": "TAX-B51-Q060-v1",
+      "prompt": "Ms. Domingo sold shares of stock of a domestic corporation directly to a buyer, not through the local stock exchange, on 12 April 2025 for P400,000. The shares had cost her P550,000. How much is the capital gains tax due?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "P60,000"
+        },
+        {
+          "id": "b",
+          "text": "P82,500"
+        },
+        {
+          "id": "c",
+          "text": "P0"
+        },
+        {
+          "id": "d",
+          "text": "P22,500"
+        }
+      ],
+      "correctChoiceId": "c",
+      "rationale": "The 15% capital gains tax under Section 24(C) is imposed on the NET CAPITAL GAIN from the sale of unlisted domestic shares. Here the P400,000 selling price is below the P550,000 cost, so the sale produced a P150,000 capital loss and there is no net capital gain to tax. The capital gains tax due is therefore nil; the loss is likewise not deductible against the seller's ordinary income.",
+      "tos": {
+        "subject": "TAX",
+        "topicCategory": "Income Taxation - Individuals",
+        "subTopic": "Capital gains tax on unlisted shares",
+        "tosCode": "INC.60",
+        "cognitiveLevel": "Understanding",
+        "difficulty": "Moderate"
+      },
+      "canonicalConcept": "15% capital gains tax on the net gain from sale of unlisted shares",
+      "variantOf": "TAX-B51-Q060",
+      "variantKind": "threshold",
+      "understandingSkill": "Recognizes the 15% capital gains tax reaches a net GAIN only, so a sale at a loss produces no tax at all rather than a tax computed on the loss or on the gross selling price."
+    },
+    {
+      "id": "tax-resa-b51-may2026-030-v1",
+      "prompt": "Mr. Sarmiento, a rank-and-file employee, received the following during the calendar year 2026 in addition to his basic salary: 13th month pay P40,000; midyear bonus P25,000; rice subsidy P30,000; medical cash allowance to dependents P4,000; laundry allowance P2,400; and uniform and clothing allowance P8,000. How much is the taxable 13th month pay and other benefits?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "P19,400"
+        },
+        {
+          "id": "b",
+          "text": "P9,000"
+        },
+        {
+          "id": "c",
+          "text": "P74,000"
+        },
+        {
+          "id": "d",
+          "text": "P0"
+        }
+      ],
+      "correctChoiceId": "d",
+      "rationale": "Each de minimis benefit is exempt only up to its own ceiling, and the excess is added to the 13th month pay and other benefits basket. Rice subsidy is exempt up to P2,000/month (P24,000/year), so P6,000 is excess; medical cash allowance to dependents is exempt up to P1,500/semester (P3,000/year), so P1,000 is excess; laundry allowance is exempt up to P300/month (P3,600/year), so the P2,400 received is fully exempt; uniform allowance is exempt up to P6,000/year, so P2,000 is excess. The basket is therefore P40,000 + P25,000 + P6,000 + P1,000 + P0 + P2,000 = P74,000. Since P74,000 does not exceed the P90,000 exemption, the taxable amount is zero.",
+      "tos": {
+        "subject": "TAX",
+        "topicCategory": "Income Taxation",
+        "subTopic": "Compensation Income - Fringe Benefits and De Minimis",
+        "tosCode": "C.1.2~2",
+        "cognitiveLevel": "Analyzing",
+        "difficulty": "Difficult"
+      },
+      "canonicalConcept": "Taxable 13th month pay and other benefits computation with de minimis",
+      "variantOf": "tax-resa-b51-may2026-030",
+      "variantKind": "threshold",
+      "understandingSkill": "Adds only the EXCESS over each individual de minimis ceiling into the P90,000 basket, then recognizes the resulting total still falls below the threshold so nothing is taxable."
+    },
+    {
+      "id": "TAX-RESAB48-Q064-v1",
+      "prompt": "Mr. Bautista is employed full time and also practices his profession on the side. For taxable year 2025 he earned compensation income of P600,000, net of mandatory contributions, and gross receipts from his practice of P1,200,000. He signified his intention to be taxed at the 8% income tax rate in his first quarter return. How much is his total income tax due for the year?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "P158,500"
+        },
+        {
+          "id": "b",
+          "text": "P138,500"
+        },
+        {
+          "id": "c",
+          "text": "P96,000"
+        },
+        {
+          "id": "d",
+          "text": "P144,000"
+        }
+      ],
+      "correctChoiceId": "a",
+      "rationale": "Mr. Bautista is a mixed-income earner. The P250,000 reduction against gross receipts is available only to a PURELY self-employed individual or professional, because for a mixed-income earner that amount is already absorbed in the zero-tax first bracket applied to compensation. His business tax is therefore P1,200,000 x 8% = P96,000 on gross receipts with no reduction. His compensation income of P600,000 remains subject to the graduated rates: P22,500 + 20% of the excess over P400,000, or P22,500 + P40,000 = P62,500. Total income tax due is P96,000 + P62,500 = P158,500.",
+      "tos": {
+        "subject": "TAX",
+        "topicCategory": "Income Taxation - Individuals",
+        "subTopic": "Eight percent income tax option",
+        "tosCode": "G.7",
+        "cognitiveLevel": "Applying",
+        "difficulty": "Difficult"
+      },
+      "canonicalConcept": "Computation of income tax under the eight percent gross receipts option",
+      "variantOf": "TAX-RESAB48-Q064",
+      "variantKind": "transfer",
+      "understandingSkill": "Applies the 8% rate to gross receipts WITHOUT the P250,000 reduction because the taxpayer is a mixed-income earner, while still taxing the compensation component under the graduated table."
+    },
+    {
+      "id": "taxation-redefine-may2026-054-v1",
+      "prompt": "Sunrise Trading Corporation, a domestic corporation, had gross sales of P14,000,000, cost of sales of P6,000,000 and allowable deductions of P3,600,000 for the calendar year 2025. Its total assets as of 31 December 2025 amounted to P95,000,000, excluding the P20,000,000 land on which its office is situated. How much is the income tax due?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "P2,000,000"
+        },
+        {
+          "id": "b",
+          "text": "P880,000"
+        },
+        {
+          "id": "c",
+          "text": "P1,100,000"
+        },
+        {
+          "id": "d",
+          "text": "P1,600,000"
+        }
+      ],
+      "correctChoiceId": "b",
+      "rationale": "Taxable income is P14,000,000 - P6,000,000 - P3,600,000 = P4,400,000. A domestic corporation qualifies for the preferential 20% rate when its taxable income does not exceed P5,000,000 AND its total assets do not exceed P100,000,000, excluding the land on which its office and plant are situated. Both conditions are met here (P4,400,000 and P95,000,000 respectively), so the rate is 20%: P4,400,000 x 20% = P880,000.",
+      "tos": {
+        "subject": "TAX",
+        "topicCategory": "Income Taxation",
+        "subTopic": "Corporate Income Tax",
+        "tosCode": "B.10",
+        "cognitiveLevel": "Applying",
+        "difficulty": "Moderate"
+      },
+      "canonicalConcept": "Corporate income tax is computed by deducting cost of sales and allowable deductions from gross sales and applying the applicable corporate rate.",
+      "variantOf": "taxation-redefine-may2026-054",
+      "variantKind": "threshold",
+      "understandingSkill": "Tests both prongs of the 20% MSME corporate rate — taxable income not over P5,000,000 AND total assets not over P100,000,000 excluding the land the office stands on — before choosing between the 20% and 25% rates."
+    },
+    {
+      "id": "tax-resa-b51-may2026-031-v1",
+      "prompt": "Ms. Ocampo sold a painting she had held as a capital asset since 2019 (cost P80,000) for a total selling price of P200,000 on the following terms: down payment on 1 June 2025, P60,000; installment due 1 June 2026, P70,000; and installment due 1 June 2027, P70,000. How much capital gain will she report in her 2025 income tax return?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "P36,000"
+        },
+        {
+          "id": "b",
+          "text": "P120,000"
+        },
+        {
+          "id": "c",
+          "text": "P60,000"
+        },
+        {
+          "id": "d",
+          "text": "P18,000"
+        }
+      ],
+      "correctChoiceId": "c",
+      "rationale": "Installment reporting of a capital gain is available only where the initial payments do not exceed 25% of the selling price. Here the initial payments are P60,000, or 30% of the P200,000 selling price, so the sale is on a deferred-payment basis and the ENTIRE gain is reported in the year of sale. The gain is P200,000 - P80,000 = P120,000. Because the taxpayer is an individual who held the capital asset for more than twelve (12) months, only 50% of the gain is taken into account: P120,000 x 50% = P60,000 reportable in 2025.",
+      "tos": {
+        "subject": "TAX",
+        "topicCategory": "Income Taxation",
+        "subTopic": "Capital Gains - Installment Method",
+        "tosCode": "C.8~1",
+        "cognitiveLevel": "Analyzing",
+        "difficulty": "Difficult"
+      },
+      "canonicalConcept": "Installment sale of capital asset with holding period rule",
+      "variantOf": "tax-resa-b51-may2026-031",
+      "variantKind": "threshold",
+      "understandingSkill": "Tests the initial payments against the 25% ceiling FIRST — above it the sale reports in full in the year of sale — and only then applies the 50% holding-period rule."
+    },
+    {
+      "id": "taxation-redefine-may2026-058-v1",
+      "prompt": "Goods were imported for sale with the following particulars: value determined by the Bureau of Customs for purposes of computing tariff and customs duties, US$12,000 (assume an exchange rate of $1 : P56); customs duties P48,000; excise tax P60,000; other BOC charges paid prior to the release of the goods from customs custody P20,000; facilitation expense P8,000; and trucking cost from customs to the importer's warehouse P15,000. How much is the VAT on importation?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "P88,800"
+        },
+        {
+          "id": "b",
+          "text": "P96,960"
+        },
+        {
+          "id": "c",
+          "text": "P98,760"
+        },
+        {
+          "id": "d",
+          "text": "P96,000"
+        }
+      ],
+      "correctChoiceId": "d",
+      "rationale": "The dutiable value is US$12,000 x P56 = P672,000. The VAT base on importation adds customs duties of P48,000, excise tax of P60,000, and other BOC charges incurred prior to release from customs custody of P20,000, for a base of P800,000. Facilitation expense is not a legitimate charge and the trucking cost is incurred after release from customs custody, so neither enters the base. VAT is P800,000 x 12% = P96,000.",
+      "tos": {
+        "subject": "TAX",
+        "topicCategory": "Value-Added Tax",
+        "subTopic": "VAT on Importation—Tax Base",
+        "tosCode": "D.9~1",
+        "cognitiveLevel": "Applying",
+        "difficulty": "Moderate"
+      },
+      "canonicalConcept": "VAT on importation is based on customs value plus customs duties, excise tax, and qualifying pre-release charges.",
+      "variantOf": "taxation-redefine-may2026-058",
+      "variantKind": "numeric",
+      "understandingSkill": "Includes excise tax and pre-release BOC charges in the VAT base on importation while excluding facilitation expense and post-release inland freight."
+    },
+    {
+      "id": "tax-cpar99-015-v1",
+      "prompt": "A senior citizen dined with three (3) non-senior friends. The restaurant's published price for the shared meal was P560, inclusive of VAT. How much should the group pay in total?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "P520"
+        },
+        {
+          "id": "b",
+          "text": "P448"
+        },
+        {
+          "id": "c",
+          "text": "P500"
+        },
+        {
+          "id": "d",
+          "text": "P400"
+        }
+      ],
+      "correctChoiceId": "a",
+      "rationale": "The senior citizen's privilege covers only the food attributable to the senior's own consumption, computed as the total bill divided by the number of diners. The per-head share is P560/4 = P140. For the senior, VAT is first removed (P140/1.12 = P125) and the 20% discount is then applied (P125 x 80% = P100). The three non-senior companions pay their shares in full at P140 each, or P420. Total payable is P100 + P420 = P520.",
+      "tos": {
+        "subject": "TAX",
+        "topicCategory": "Business Taxes",
+        "subTopic": "Special Laws",
+        "tosCode": "E.17",
+        "cognitiveLevel": "Applying",
+        "difficulty": "Moderate"
+      },
+      "canonicalConcept": "Senior citizen discount and VAT exemption computation under RA 9994",
+      "variantOf": "tax-cpar99-015",
+      "variantKind": "transfer",
+      "understandingSkill": "Applies the senior citizen's VAT exemption and 20% discount only to that senior's proportionate share of a shared bill, leaving the companions' shares taxed and undiscounted."
+    },
+    {
+      "id": "TAX-RESAB48-Q054-v1",
+      "prompt": "Northbound Transit Co., a common carrier by land, reported the following receipts for the month, taxes not included: transport of passengers P1,500,000; transport of cargo P600,000; rental of its buses to a corporation for a company outing P300,000; and sale of scrap spare parts P100,000. How much is the common carrier's tax?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "P75,000"
+        },
+        {
+          "id": "b",
+          "text": "P54,000"
+        },
+        {
+          "id": "c",
+          "text": "P45,000"
+        },
+        {
+          "id": "d",
+          "text": "P63,000"
+        }
+      ],
+      "correctChoiceId": "b",
+      "rationale": "The 3% common carrier's tax under Section 117 reaches the gross receipts of land carriers from the transport of PASSENGERS, and bus rentals are part of that passenger-transport activity. Transport of cargo by land is subject to VAT rather than the common carrier's tax, and the sale of scrap spare parts is an ordinary sale of goods subject to VAT. The base is therefore P1,500,000 + P300,000 = P1,800,000, and the tax is P1,800,000 x 3% = P54,000.",
+      "tos": {
+        "subject": "TAX",
+        "topicCategory": "Percentage Taxes",
+        "subTopic": "Common carrier's tax",
+        "tosCode": "E.7",
+        "cognitiveLevel": "Analyzing",
+        "difficulty": "Difficult"
+      },
+      "canonicalConcept": "Common carrier's tax applies to land transport of passengers but not of cargo",
+      "variantOf": "TAX-RESAB48-Q054",
+      "variantKind": "numeric",
+      "understandingSkill": "Separates receipts subject to the 3% common carrier's tax (land transport of passengers, including bus rentals) from those subject to VAT (cargo transport and non-transport sales)."
+    },
+    {
+      "id": "taxation-redefine-may2026-011-v1",
+      "prompt": "An agricultural land located in a municipality of the province of Laguna measures 5,000 square meters. Its fair market value per the tax declaration is P600 per square meter and the applicable assessment level for agricultural land is 40%. How much is the basic real property tax?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "P30,000"
+        },
+        {
+          "id": "b",
+          "text": "P60,000"
+        },
+        {
+          "id": "c",
+          "text": "P12,000"
+        },
+        {
+          "id": "d",
+          "text": "P24,000"
+        }
+      ],
+      "correctChoiceId": "c",
+      "rationale": "The fair market value is 5,000 sq m x P600 = P3,000,000. The assessed value is P3,000,000 x 40% = P1,200,000. The basic real property tax rate is limited to 1% for a province, as against the 2% ceiling available to a city or to a municipality within Metro Manila. The basic RPT is therefore P1,200,000 x 1% = P12,000.",
+      "tos": {
+        "subject": "TAX",
+        "topicCategory": "Local Taxation",
+        "subTopic": "Real Property Tax",
+        "tosCode": "F.1~1",
+        "cognitiveLevel": "Applying",
+        "difficulty": "Moderate"
+      },
+      "canonicalConcept": "Real property tax is computed by applying the assessment level to taxable value and the applicable RPT rate to the assessed value.",
+      "variantOf": "taxation-redefine-may2026-011",
+      "variantKind": "transfer",
+      "understandingSkill": "Applies the 1% provincial basic RPT ceiling rather than the 2% city/Metro Manila rate, and applies that rate to assessed value rather than to fair market value."
+    },
+    {
+      "id": "TAX-RESAB48-Q154-v1",
+      "prompt": "A holder of a franchise to operate a radio and television broadcasting network had gross receipts of P11,000,000 in the preceding taxable year. In the first quarter of the current year it derived gross receipts of P2,500,000 from the business covered by the franchise. How much business tax is due on those receipts?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "P75,000"
+        },
+        {
+          "id": "b",
+          "text": "P50,000"
+        },
+        {
+          "id": "c",
+          "text": "P0"
+        },
+        {
+          "id": "d",
+          "text": "P300,000"
+        }
+      ],
+      "correctChoiceId": "d",
+      "rationale": "The 3% franchise tax under Section 119 applies to a radio and/or television broadcasting company only while its annual gross receipts for the PRECEDING taxable year do not exceed P10,000,000. Because the preceding year's receipts of P11,000,000 exceeded that threshold, the grantee falls outside Section 119 and its receipts are instead subject to the 12% value-added tax: P2,500,000 x 12% = P300,000.",
+      "tos": {
+        "subject": "TAX",
+        "topicCategory": "Percentage Taxes",
+        "subTopic": "Franchise tax",
+        "tosCode": "E.3~2",
+        "cognitiveLevel": "Applying",
+        "difficulty": "Moderate"
+      },
+      "canonicalConcept": "Three percent franchise tax on radio and television broadcasting companies below the receipts threshold",
+      "variantOf": "TAX-RESAB48-Q154",
+      "variantKind": "threshold",
+      "understandingSkill": "Tests the P10,000,000 preceding-year receipts threshold that moves a broadcasting franchisee out of the 3% franchise tax and into the 12% VAT."
+    },
+    {
+      "id": "tax-cpar99-067-v1",
+      "prompt": "Mr. Lazaro, a resident citizen, made the following donations during the calendar year 2025: on 10 January, P1,500,000 cash to his son; and on 20 June, P800,000 cash to a close friend. How much is the donor's tax payable on the 20 June donation?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "P48,000"
+        },
+        {
+          "id": "b",
+          "text": "P123,000"
+        },
+        {
+          "id": "c",
+          "text": "P33,000"
+        },
+        {
+          "id": "d",
+          "text": "P75,000"
+        }
+      ],
+      "correctChoiceId": "a",
+      "rationale": "Donor's tax is computed on a cumulative basis for all gifts made within the same calendar year, against one P250,000 annual exemption. Cumulative net gifts through 20 June are P1,500,000 + P800,000 = P2,300,000, less the P250,000 exemption = P2,050,000, so the cumulative tax due is P2,050,000 x 6% = P123,000. The tax already paid on the January donation was (P1,500,000 - P250,000) x 6% = P75,000. The donor's tax payable on the 20 June donation is therefore P123,000 - P75,000 = P48,000.",
+      "tos": {
+        "subject": "TAX",
+        "topicCategory": "Transfer Taxes",
+        "subTopic": "Donor's Tax",
+        "tosCode": "D.12",
+        "cognitiveLevel": "Applying",
+        "difficulty": "Moderate"
+      },
+      "canonicalConcept": "Donor's tax computation on mixed donations including political campaign contributions",
+      "variantOf": "tax-cpar99-067",
+      "variantKind": "numeric",
+      "understandingSkill": "Cumulates all gifts made within the same calendar year against a single P250,000 annual exemption, then credits the donor's tax already paid on the earlier gift."
+    },
+    {
+      "id": "TAX-B51-Q009-v1",
+      "prompt": "The estate of Mr. Paredes includes the following receivables: a claim of P500,000 against Mr. Reyes, a judicially declared insolvent from whom 30% is still collectible; a claim of P150,000 against Ms. Uy, an insolvent from whom nothing is collectible; and a claim of P250,000 against Mr. Tan, who is solvent but simply refuses to pay. How much may be deducted from the gross estate as claims against insolvent persons?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "P150,000"
+        },
+        {
+          "id": "b",
+          "text": "P500,000"
+        },
+        {
+          "id": "c",
+          "text": "P650,000"
+        },
+        {
+          "id": "d",
+          "text": "P750,000"
+        }
+      ],
+      "correctChoiceId": "b",
+      "rationale": "The deduction covers only the portion of a claim that is actually uncollectible from a debtor whose insolvency is established. From Mr. Reyes, 30% remains collectible, so only the uncollectible 70% of P500,000, or P350,000, qualifies. The entire P150,000 claim against Ms. Uy qualifies because nothing is collectible. The claim against Mr. Tan does not qualify at all: he is solvent, and mere refusal to pay is not insolvency. The total deduction is P350,000 + P150,000 = P500,000.",
+      "tos": {
+        "subject": "TAX",
+        "topicCategory": "Estate and Donor's Tax",
+        "subTopic": "Deduction for claims against insolvent persons",
+        "tosCode": "EST.9",
+        "cognitiveLevel": "Analyzing",
+        "difficulty": "Moderate"
+      },
+      "canonicalConcept": "Deductible claims against insolvent persons: uncollectible portion only",
+      "variantOf": "TAX-B51-Q009",
+      "variantKind": "numeric",
+      "understandingSkill": "Limits the deduction to the portion actually uncollectible from a debtor whose insolvency is established, and excludes entirely a claim against a merely uncooperative but solvent debtor."
+    },
+    {
+      "id": "TAX-B51-Q015-v1",
+      "prompt": "Mr. Cabrera died on 4 September 2025. His family home consisted of a conjugal house valued at P16,000,000 standing on land he owned exclusively valued at P6,000,000. How much may be claimed as the family home deduction?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "P22,000,000"
+        },
+        {
+          "id": "b",
+          "text": "P11,000,000"
+        },
+        {
+          "id": "c",
+          "text": "P10,000,000"
+        },
+        {
+          "id": "d",
+          "text": "P14,000,000"
+        }
+      ],
+      "correctChoiceId": "c",
+      "rationale": "The family home deduction is the decedent's own interest in the family home, capped at P10,000,000. Mr. Cabrera's interest is one-half of the conjugal house (P16,000,000 x 50% = P8,000,000) plus the land he owned exclusively (P6,000,000), or P14,000,000. Because that interest exceeds the statutory ceiling, the deduction is limited to P10,000,000.",
+      "tos": {
+        "subject": "TAX",
+        "topicCategory": "Estate and Donor's Tax",
+        "subTopic": "Family home deduction",
+        "tosCode": "EST.15",
+        "cognitiveLevel": "Applying",
+        "difficulty": "Moderate"
+      },
+      "canonicalConcept": "Family home deduction limited to decedent's own interest, capped at P10,000,000",
+      "variantOf": "TAX-B51-Q015",
+      "variantKind": "threshold",
+      "understandingSkill": "Computes the decedent's own interest in the family home first, then applies the P10,000,000 statutory cap — the reverse of a case where the interest falls below the cap and the actual interest controls."
+    },
+    {
+      "id": "tax-resa-b51-may2026-026-v1",
+      "prompt": "Mr. Ilagan operates a fitness gym in Pasig City. For taxable year 2025 his gross receipts were P2,400,000, cost of services P900,000 and operating expenses P600,000. He is not VAT-registered and signified his intention to avail of the 8% income tax option in his first quarter return. How much is his income tax due?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "P192,000"
+        },
+        {
+          "id": "b",
+          "text": "P127,500"
+        },
+        {
+          "id": "c",
+          "text": "P0"
+        },
+        {
+          "id": "d",
+          "text": "P172,000"
+        }
+      ],
+      "correctChoiceId": "d",
+      "rationale": "A fitness gym is not among the amusement places enumerated in Section 125 (cockpits, cabarets, night and day clubs, boxing exhibitions, professional basketball, jai-alai and racetracks). Being below the VAT threshold, Mr. Ilagan is subject only to the general 3% percentage tax under Section 116, so he validly qualifies for the 8% option. As a PURELY self-employed individual he is entitled to the P250,000 reduction: (P2,400,000 - P250,000) x 8% = P172,000.",
+      "tos": {
+        "subject": "TAX",
+        "topicCategory": "Income Taxation",
+        "subTopic": "Individual Income Tax - Rates and Computation",
+        "tosCode": "C.1.2",
+        "cognitiveLevel": "Analyzing",
+        "difficulty": "Difficult"
+      },
+      "canonicalConcept": "8% income tax option eligibility for amusement taxpayers",
+      "variantOf": "tax-resa-b51-may2026-026",
+      "variantKind": "transfer",
+      "understandingSkill": "Distinguishes a business subject only to the general Section 116 percentage tax, where the 8% option IS available, from one subject to the Section 125 amusement tax, where it is not."
+    },
+    {
+      "id": "taxation-redefine-may2026-029-v1",
+      "prompt": "Mr. and Mrs. Aquino donated a conjugal parcel of land worth P6,000,000 to their daughter on 14 February 2025. The land carried an unpaid mortgage of P1,000,000, which the daughter assumed in full. Neither spouse made any other donation during the year. How much is the donor's tax due of Mrs. Aquino?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "P135,000"
+        },
+        {
+          "id": "b",
+          "text": "P285,000"
+        },
+        {
+          "id": "c",
+          "text": "P165,000"
+        },
+        {
+          "id": "d",
+          "text": "P150,000"
+        }
+      ],
+      "correctChoiceId": "a",
+      "rationale": "Husband and wife are separate taxpayers for donor's tax purposes, so a donation of conjugal property is treated as one-half donated by each. Mrs. Aquino's gross gift is P6,000,000 x 50% = P3,000,000, reduced by her half of the mortgage assumed by the donee (P1,000,000 x 50% = P500,000), for a net gift of P2,500,000. Less her own P250,000 annual exemption, the taxable net gift is P2,250,000, and the donor's tax due is P2,250,000 x 6% = P135,000.",
+      "tos": {
+        "subject": "TAX",
+        "topicCategory": "Estate and Donor's Tax",
+        "subTopic": "Donor's Tax Computation",
+        "tosCode": "C.6~1",
+        "cognitiveLevel": "Applying",
+        "difficulty": "Moderate"
+      },
+      "canonicalConcept": "Donor's tax for spouses is separately computed, with the taxable gift reduced by the statutory exemption and prior donor's tax payments.",
+      "variantOf": "taxation-redefine-may2026-029",
+      "variantKind": "numeric",
+      "understandingSkill": "Treats each spouse as a separate donor with their own P250,000 annual exemption, and splits both the conjugal gift and the mortgage assumed by the donee between them."
+    },
+    {
+      "id": "tax-resa-b51-may2026-055-v1",
+      "prompt": "Meridian Corp.'s annual income tax return for the calendar year 2024 fell due on 15 April 2025, but the company actually filed it only on 30 June 2025. No fraud was alleged. Until when may the BIR validly assess deficiency income tax?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "15 April 2030"
+        },
+        {
+          "id": "b",
+          "text": "30 June 2028"
+        },
+        {
+          "id": "c",
+          "text": "15 April 2028"
+        },
+        {
+          "id": "d",
+          "text": "30 June 2035"
+        }
+      ],
+      "correctChoiceId": "b",
+      "rationale": "Under Section 203, internal revenue taxes must be assessed within three (3) years counted from the last day prescribed by law for filing the return, or from the day the return was actually filed if it was filed LATE. Meridian filed on 30 June 2025, after the 15 April 2025 due date, so the period runs from the actual filing date and expires on 30 June 2028. The 10-year period under Section 222 does not apply because no false or fraudulent return was alleged.",
+      "tos": {
+        "subject": "TAX",
+        "topicCategory": "Tax Remedies",
+        "subTopic": "Remedies of the Government - Assessment Period",
+        "tosCode": "B.1.1",
+        "cognitiveLevel": "Analyzing",
+        "difficulty": "Moderate"
+      },
+      "canonicalConcept": "Assessment prescription: 3 years from due date or filing date, whichever is later",
+      "variantOf": "tax-resa-b51-may2026-055",
+      "variantKind": "threshold",
+      "understandingSkill": "Counts the 3-year assessment period from the LATER of the statutory due date and the actual filing date — here the actual filing date, reversing a case where the return was filed early."
+    },
+    {
+      "id": "TAX-B51-Q036-v1",
+      "prompt": "For the month, Metro Savings Bank earned interest income of P400,000 from loans with a remaining maturity of three (3) years and P150,000 from loans with a remaining maturity of seven (7) years. How much is the gross receipts tax due for the month?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "P5,500"
+        },
+        {
+          "id": "b",
+          "text": "P11,500"
+        },
+        {
+          "id": "c",
+          "text": "P21,500"
+        },
+        {
+          "id": "d",
+          "text": "P27,500"
+        }
+      ],
+      "correctChoiceId": "c",
+      "rationale": "Banks are subject to gross receipts tax on interest income at 5% where the instrument has a remaining maturity of five (5) years or less, and at 1% where the remaining maturity is more than five (5) years. The tax is therefore (P400,000 x 5%) + (P150,000 x 1%) = P20,000 + P1,500 = P21,500.",
+      "tos": {
+        "subject": "TAX",
+        "topicCategory": "Percentage Tax",
+        "subTopic": "GRT rates by instrument maturity",
+        "tosCode": "PCT.3",
+        "cognitiveLevel": "Applying",
+        "difficulty": "Moderate"
+      },
+      "canonicalConcept": "Bank GRT rate varies by remaining maturity of the interest-earning instrument",
+      "variantOf": "TAX-B51-Q036",
+      "variantKind": "numeric",
+      "understandingSkill": "Applies the 5% gross receipts tax to instruments maturing in five years or less and the 1% rate to longer maturities, rather than a single blended rate across all interest income."
+    },
+    {
+      "id": "tax-cpar99-033-v1",
+      "prompt": "Which of the following is a CONSTITUTIONAL, rather than an inherent, limitation on the power of taxation?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "The power to tax is limited to the territorial jurisdiction of the taxing State."
+        },
+        {
+          "id": "b",
+          "text": "Taxes must be levied for a public purpose."
+        },
+        {
+          "id": "c",
+          "text": "International comity."
+        },
+        {
+          "id": "d",
+          "text": "Non-impairment of the obligation of contracts."
+        }
+      ],
+      "correctChoiceId": "d",
+      "rationale": "The non-impairment of the obligation of contracts is an express guarantee of the Bill of Rights (Article III, Section 10) and is therefore a constitutional limitation on the taxing power. Territoriality, the public purpose requirement, and international comity all proceed from the very nature of the power to tax itself and exist independently of any constitutional text, making them inherent limitations.",
+      "tos": {
+        "subject": "TAX",
+        "topicCategory": "Principles of Taxation",
+        "subTopic": "Limitations on Power of Taxation",
+        "tosCode": "A.3",
+        "cognitiveLevel": "Understanding",
+        "difficulty": "Easy"
+      },
+      "canonicalConcept": "Inherent limitations vs constitutional limitations on the power of taxation",
+      "variantOf": "tax-cpar99-033",
+      "variantKind": "negated",
+      "understandingSkill": "Requires sorting a limitation into the constitutional category in the positive direction, rather than spotting the single odd one out of a list of inherent limitations."
+    },
+    {
+      "id": "TAX-B51-Q001-v1",
+      "prompt": "Ms. Herrera died on 10 March 2025 and her estate is being settled extrajudicially. Under the National Internal Revenue Code, as amended, on or before what date must the estate tax return be filed?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "10 March 2026"
+        },
+        {
+          "id": "b",
+          "text": "10 September 2025"
+        },
+        {
+          "id": "c",
+          "text": "15 April 2026"
+        },
+        {
+          "id": "d",
+          "text": "10 March 2027"
+        }
+      ],
+      "correctChoiceId": "a",
+      "rationale": "Although the estate tax accrues at the moment of death, the return itself is due within one (1) year from the decedent's death under Section 90(B) as amended by the TRAIN Law. Counting one year from 10 March 2025 gives 10 March 2026. The six-month period was the pre-TRAIN rule, and 15 April is the deadline for annual income tax returns, not estate tax returns.",
+      "tos": {
+        "subject": "TAX",
+        "topicCategory": "Estate and Donor's Tax",
+        "subTopic": "Accrual of estate tax",
+        "tosCode": "EST.1",
+        "cognitiveLevel": "Applying",
+        "difficulty": "Easy"
+      },
+      "canonicalConcept": "Estate tax liability accrues at the moment of death",
+      "variantOf": "TAX-B51-Q001",
+      "variantKind": "inverted",
+      "understandingSkill": "Converts the accrual-at-death rule into the filing deadline it drives — one year from death — instead of restating when the liability arises."
+    },
+    {
+      "id": "tax-resa-b51-may2026-012-v1",
+      "prompt": "Mr. Okonkwo, a resident alien, died in 2025. His family home, which is his exclusive property, is located in Makati City and is valued at P7,000,000. How much may his estate claim as a family home deduction?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "P0"
+        },
+        {
+          "id": "b",
+          "text": "P7,000,000"
+        },
+        {
+          "id": "c",
+          "text": "P10,000,000"
+        },
+        {
+          "id": "d",
+          "text": "P3,500,000"
+        }
+      ],
+      "correctChoiceId": "b",
+      "rationale": "The family home deduction is available to a decedent who is a citizen OR a resident of the Philippines, so a resident alien qualifies; citizenship is not the test. The requirement is that the family home be the decedent's actual residence and be situated in the Philippines, which is satisfied here. Because the property is exclusively his, his interest is the full P7,000,000, which is below the P10,000,000 ceiling, so the entire P7,000,000 is deductible.",
+      "tos": {
+        "subject": "TAX",
+        "topicCategory": "Transfer Taxes",
+        "subTopic": "Estate Tax - Deductions",
+        "tosCode": "D.1.4",
+        "cognitiveLevel": "Understanding",
+        "difficulty": "Moderate"
+      },
+      "canonicalConcept": "Family home deduction requirement: must be in the Philippines",
+      "variantOf": "tax-resa-b51-may2026-012",
+      "variantKind": "transfer",
+      "understandingSkill": "Recognizes the family home deduction turns on the home being in the Philippines and the decedent being a resident, not on citizenship — the mirror of a case where a citizen's home abroad is disallowed."
+    },
+    {
+      "id": "TAX-B51-Q046-v1",
+      "prompt": "A VAT-registered lessor of residential condominium units reported the following gross rentals for the first quarter of the current year: 40 units at P14,800 per month per unit, P1,776,000; and 8 units at P16,000 per month per unit, P384,000; total P2,160,000. On how much of the gross rentals shall VAT be imposed?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "P1,776,000"
+        },
+        {
+          "id": "b",
+          "text": "P0"
+        },
+        {
+          "id": "c",
+          "text": "P384,000"
+        },
+        {
+          "id": "d",
+          "text": "P2,160,000"
+        }
+      ],
+      "correctChoiceId": "c",
+      "rationale": "The lease of residential units is VAT-exempt where the monthly rental PER UNIT does not exceed P15,000, and the test is applied unit by unit rather than to aggregate rentals. The 40 units rented at P14,800 per month fall below the threshold and are exempt. The 8 units rented at P16,000 per month exceed it, so only their P384,000 in gross rentals is subject to VAT.",
+      "tos": {
+        "subject": "TAX",
+        "topicCategory": "Value-Added Tax",
+        "subTopic": "VAT exemption threshold for residential unit leases",
+        "tosCode": "VAT.13",
+        "cognitiveLevel": "Applying",
+        "difficulty": "Moderate"
+      },
+      "canonicalConcept": "Only rentals above the per-unit monthly threshold are VATable",
+      "variantOf": "TAX-B51-Q046",
+      "variantKind": "threshold",
+      "understandingSkill": "Applies the per-unit monthly rental threshold unit by unit rather than to aggregate rentals, and identifies which side of the threshold is the taxable one."
+    },
+    {
+      "id": "TAX-B51-Q042-v1",
+      "prompt": "Casa Verde Inc., a real estate dealer, sold a commercial lot on 5 March 2025. The consideration in the deed of sale was P8,000,000 while the value per the Schedule of Market Values was P7,500,000. Payments were scheduled as follows: 5 March 2025, P1,600,000; 5 March 2026, P3,200,000; and 5 March 2027, P3,200,000. How much output VAT must be recognized on the 5 March 2026 collection?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "P360,000"
+        },
+        {
+          "id": "b",
+          "text": "P960,000"
+        },
+        {
+          "id": "c",
+          "text": "P192,000"
+        },
+        {
+          "id": "d",
+          "text": "P384,000"
+        }
+      ],
+      "correctChoiceId": "d",
+      "rationale": "Initial payments in the year of sale are P1,600,000, or 20% of the P8,000,000 selling price. Because this does not exceed 25%, the sale qualifies as a sale on the installment plan and output VAT is recognized in proportion to each collection. The VAT base is the HIGHER of the consideration (P8,000,000) and the Schedule of Market Values (P7,500,000), so total output VAT is P8,000,000 x 12% = P960,000. The 5 March 2026 collection of P3,200,000 represents P3,200,000/P8,000,000, or 40%, of the selling price, so the output VAT to recognize is P960,000 x 40% = P384,000.",
+      "tos": {
+        "subject": "TAX",
+        "topicCategory": "Value-Added Tax",
+        "subTopic": "VAT on installment sale of real property",
+        "tosCode": "VAT.12",
+        "cognitiveLevel": "Applying",
+        "difficulty": "Difficult"
+      },
+      "canonicalConcept": "Output VAT recognized proportionately per installment on real property sale",
+      "variantOf": "TAX-B51-Q042",
+      "variantKind": "numeric",
+      "understandingSkill": "Uses the higher of consideration and Schedule of Market Values as the VAT base, then recognizes output VAT in proportion to the installment actually collected in the period."
+    },
+    {
+      "id": "TAX-B51-Q052-v1",
+      "prompt": "For taxable year 2025 Mr. Novak, a non-resident alien NOT engaged in trade or business in the Philippines, received the following from Philippine sources: gross business income P300,000, against which related expenses of P200,000 were incurred; a cash prize of P6,000 won in a local contest; and dividends of P25,000 from a domestic corporation. How much Philippine income tax should be withheld from him?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "P82,750"
+        },
+        {
+          "id": "b",
+          "text": "P26,500"
+        },
+        {
+          "id": "c",
+          "text": "P76,500"
+        },
+        {
+          "id": "d",
+          "text": "P25,000"
+        }
+      ],
+      "correctChoiceId": "a",
+      "rationale": "A non-resident alien not engaged in trade or business in the Philippines is subject under Section 25(B) to a final withholding tax of 25% on the ENTIRE gross income received from Philippine sources. No deductions are allowed and the items that would be separately subjected to final tax in the hands of a resident (such as dividends from a domestic corporation) are simply absorbed into that single 25% base. Gross Philippine income is P300,000 + P6,000 + P25,000 = P331,000, and the tax to be withheld is P331,000 x 25% = P82,750.",
+      "tos": {
+        "subject": "TAX",
+        "topicCategory": "Income Taxation - Individuals",
+        "subTopic": "Taxable income of a non-resident alien engaged in trade or business",
+        "tosCode": "INC.52",
+        "cognitiveLevel": "Analyzing",
+        "difficulty": "Difficult"
+      },
+      "canonicalConcept": "NRA-ETB taxable income limited to Philippine-sourced, non-finally-taxed items",
+      "variantOf": "TAX-B51-Q052",
+      "variantKind": "transfer",
+      "understandingSkill": "Recognizes an NRA-NETB is taxed at 25% on GROSS Philippine income with no deductions and no separate final-tax carve-outs, unlike an NRA-ETB who deducts expenses and excludes finally-taxed items."
+    }
+  ]
+}

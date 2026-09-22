@@ -22,6 +22,45 @@ function shuffle<T>(items: T[]): T[] {
   return shuffled
 }
 
+/**
+ * Reduces each variant group in the pool to a single randomly-chosen member,
+ * leaving ungrouped questions untouched.
+ *
+ * Every variant of a seed tests the same concept by construction, so serving
+ * two of them in one exam wastes an item and tips the answer to the second.
+ * Collapsing up front — rather than filtering collisions out after selection —
+ * means the difficulty/category math downstream is picking from a pool that
+ * already holds at most one question per concept, so it can neither create a
+ * collision nor come up short from having one removed after the fact.
+ *
+ * Re-randomizing per call is what makes the variants earn their keep: a
+ * student who retakes an exam meets a different variant of the same concept,
+ * so a remembered answer letter is worthless and the concept has to be
+ * re-derived. This composes with the recentlySeenIds preference downstream,
+ * which then steers toward the variants they specifically haven't hit yet.
+ */
+export function collapseVariantGroups<T extends { id: string; variantGroupId?: string | null }>(
+  pool: T[],
+): T[] {
+  const byGroup = new Map<string, T[]>()
+  const ungrouped: T[] = []
+
+  for (const item of pool) {
+    if (!item.variantGroupId) {
+      ungrouped.push(item)
+      continue
+    }
+    const members = byGroup.get(item.variantGroupId)
+    if (members) members.push(item)
+    else byGroup.set(item.variantGroupId, [item])
+  }
+
+  const representatives = [...byGroup.values()].map(
+    (members) => members[Math.floor(Math.random() * members.length)],
+  )
+  return [...ungrouped, ...representatives]
+}
+
 /** Largest-remainder rounding so per-difficulty counts sum exactly to itemCount. */
 function allocateCounts(itemCount: number, weights: DifficultyWeights): Record<Difficulty, number> {
   const raw = DIFFICULTIES.map((d) => ({ difficulty: d, exact: itemCount * weights[d] }))

@@ -1,0 +1,909 @@
+{
+  "meta": {
+    "subject": "RFBT",
+    "batch": "v1",
+    "note": "Concept-preserving variants of existing RFBT seeds."
+  },
+  "questions": [
+    {
+      "id": "rfbt-b51-26-v1",
+      "prompt": "Under the Revised Corporation Code, a corporation vested with public interest has a board of nine (9) directors. How many independent directors is it required to have?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "2"
+        },
+        {
+          "id": "b",
+          "text": "1"
+        },
+        {
+          "id": "c",
+          "text": "1.8"
+        },
+        {
+          "id": "d",
+          "text": "3"
+        }
+      ],
+      "correctChoiceId": "a",
+      "rationale": "Corporations vested with public interest must have independent directors constituting at least twenty percent (20%) of the board. Twenty percent of nine directors is 1.8. Because a fraction of a director is impossible and the requirement is a minimum ('at least 20%'), the figure is rounded UP to the next whole number, giving two (2) independent directors. Rounding down to one would leave the board below the statutory minimum percentage.",
+      "tos": {
+        "subject": "RFBT",
+        "topicCategory": "Law on Business Organization",
+        "subTopic": "Corporations",
+        "tosCode": "G.1.1.5",
+        "cognitiveLevel": "Applying",
+        "difficulty": "Difficult"
+      },
+      "canonicalConcept": "Corporations vested with public interest must have independent directors comprising at least 20% of the board (rounded up), but never fewer than two.",
+      "variantOf": "rfbt-b51-26",
+      "variantKind": "numeric",
+      "understandingSkill": "Computes 20% of a board size that does not divide evenly and rounds UP to the next whole director, rather than truncating the fraction."
+    },
+    {
+      "id": "rfbt-b51-34-v1",
+      "prompt": "A corporation has fifteen (15) directors. Only nine (9) of them attended the meeting called to elect corporate officers. How many affirmative votes are required to validly elect a corporate officer?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "15"
+        },
+        {
+          "id": "b",
+          "text": "8"
+        },
+        {
+          "id": "c",
+          "text": "5"
+        },
+        {
+          "id": "d",
+          "text": "9"
+        }
+      ],
+      "correctChoiceId": "b",
+      "rationale": "Under Section 24 of the Revised Corporation Code, corporate officers are elected by a majority of ALL the members of the board, not merely a majority of those present. A majority of the fifteen-member board is eight (8) votes. Five votes would only be a majority of the nine directors actually present, which is insufficient, so the election would fail even though the meeting itself had a quorum.",
+      "tos": {
+        "subject": "RFBT",
+        "topicCategory": "Law on Business Organization",
+        "subTopic": "Corporations",
+        "tosCode": "G.1.1.5",
+        "cognitiveLevel": "Applying",
+        "difficulty": "Moderate"
+      },
+      "canonicalConcept": "Corporate officers are elected by the vote of a majority of the entire board of directors, not merely a majority of those present at the meeting.",
+      "variantOf": "rfbt-b51-34",
+      "variantKind": "numeric",
+      "understandingSkill": "Applies 'majority of ALL the members of the board' to the full authorized board size, ignoring the smaller number of directors actually present at the meeting."
+    },
+    {
+      "id": "rfbt-crcace-b99-58-v1",
+      "prompt": "B bought a residential lot for P2,000,000 on installment: a P400,000 down payment on 2 January 2026, then P200,000 every 2nd of January thereafter until fully paid. B paid on schedule but defaulted on the installment due 2 January 2034. Under the Maceda Law, what are B's grace period and cash surrender value?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "180 days and P1,080,000"
+        },
+        {
+          "id": "b",
+          "text": "240 days and P1,170,000"
+        },
+        {
+          "id": "c",
+          "text": "210 days and P1,080,000"
+        },
+        {
+          "id": "d",
+          "text": "210 days and P900,000"
+        }
+      ],
+      "correctChoiceId": "c",
+      "rationale": "B paid seven annual installments (2 January 2027 through 2 January 2033) of P200,000 each, or P1,400,000, plus the P400,000 down payment, for total payments of P1,800,000. Having paid at least two years of installments, B is entitled to a grace period of one month for every year of installments paid: seven months, or 210 days. The cash surrender value is 50% of total payments, plus an additional 5% for every year in excess of five years of installments paid. Seven years is two years beyond five, so the rate is 50% + 10% = 60%. Sixty percent of P1,800,000 is P1,080,000.",
+      "tos": {
+        "subject": "RFBT",
+        "topicCategory": "Law on Business Transactions",
+        "subTopic": "Sales",
+        "tosCode": "A.3",
+        "cognitiveLevel": "Applying",
+        "difficulty": "Difficult"
+      },
+      "canonicalConcept": "Under the Maceda Law, the grace period (one month per year of installments actually paid) and the cash surrender value (50% of total payments, plus 5% per year beyond five years) are computed based on the number of completed annual installment payments, exclusive of the initial downpayment.",
+      "variantOf": "rfbt-crcace-b99-58",
+      "variantKind": "numeric",
+      "understandingSkill": "Counts the years of installments actually paid, converts them to the one-month-per-year grace period, and adds 5% to the 50% cash surrender value for EACH year beyond five."
+    },
+    {
+      "id": "rfbt-crcace-b99-57-v1",
+      "prompt": "B bought a residential lot for P1,200,000, paying a P200,000 down payment and P25,000 monthly thereafter. B paid exactly twenty-four (24) monthly installments and then defaulted. Under the Maceda Law, what are B's grace period and cash surrender value?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "60 days and nil"
+        },
+        {
+          "id": "b",
+          "text": "30 days and P400,000"
+        },
+        {
+          "id": "c",
+          "text": "120 days and P400,000"
+        },
+        {
+          "id": "d",
+          "text": "60 days and P400,000"
+        }
+      ],
+      "correctChoiceId": "d",
+      "rationale": "B paid twenty-four monthly installments of P25,000, or P600,000, plus the P200,000 down payment, for total payments of P800,000 covering exactly two years of installments. Having paid AT LEAST two years, B falls under the rule granting one month of grace for every year of installments paid, which is two months or 60 days, and a cash surrender value of 50% of total payments, or P400,000. The identical 60-day figure available to a buyer who has paid LESS than two years is a coincidence of arithmetic; what changes on crossing the two-year line is the entitlement to a cash surrender value, which a sub-two-year buyer does not get at all.",
+      "tos": {
+        "subject": "RFBT",
+        "topicCategory": "Law on Business Transactions",
+        "subTopic": "Sales",
+        "tosCode": "A.3",
+        "cognitiveLevel": "Analyzing",
+        "difficulty": "Difficult"
+      },
+      "canonicalConcept": "Under the Maceda Law, a buyer who has paid less than two years of installments on a real estate installment sale is entitled only to a 60-day grace period to cure the default, without additional interest, but has no right to any cash surrender value.",
+      "variantOf": "rfbt-crcace-b99-57",
+      "variantKind": "threshold",
+      "understandingSkill": "Places the buyer exactly ON the two-year line, where the cash surrender value switches from nothing to 50% even though the grace period happens to stay at 60 days."
+    },
+    {
+      "id": "rfbt-crcace-b99-33-v1",
+      "prompt": "Meridian Corporation, a public utility, is owned 70% by Holdco Inc. and 25% directly by Filipino citizens, with the remaining 5% held by foreigners. Holdco Inc. is itself only 50% Filipino-owned. Applying the Grandfather Rule, does Meridian Corporation meet the minimum Filipino ownership requirement?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Yes, its Filipino equity is exactly 60%"
+        },
+        {
+          "id": "b",
+          "text": "No, its Filipino equity is only 35%"
+        },
+        {
+          "id": "c",
+          "text": "No, its Filipino equity is only 55%"
+        },
+        {
+          "id": "d",
+          "text": "Yes, its Filipino equity is 95% under the control test"
+        }
+      ],
+      "correctChoiceId": "a",
+      "rationale": "Because Holdco is only 50% Filipino-owned, its own Filipino character is in doubt and the Grandfather Rule applies, requiring the Filipino equity to be traced through to the second tier. Holdco's 70% stake in Meridian carries Filipino equity of 70% x 50% = 35%. Adding the 25% held directly by Filipino citizens gives total Filipino equity of 60%, which exactly meets the 60% minimum required of a public utility. The control test would have attributed the whole 70% Holdco stake as Filipino, but that test is unavailable precisely because Holdco falls below 60% Filipino ownership.",
+      "tos": {
+        "subject": "RFBT",
+        "topicCategory": "Law on Business Organization",
+        "subTopic": "Corporations",
+        "tosCode": "G.1.1.5",
+        "cognitiveLevel": "Analyzing",
+        "difficulty": "Difficult"
+      },
+      "canonicalConcept": "Under the Grandfather Rule, when a shareholder-corporation's own Filipino equity is in doubt (below 60%), that share must itself be broken down to trace the ultimate Filipino equity actually attributable to the investee public utility corporation.",
+      "variantOf": "rfbt-crcace-b99-33",
+      "variantKind": "numeric",
+      "understandingSkill": "Traces Filipino equity through the second tier when the investing corporation is itself less than 60% Filipino, and recognizes that landing exactly on 60% satisfies the requirement."
+    },
+    {
+      "id": "rfbt-b51-22-v1",
+      "prompt": "W, X, Y and Z formed a partnership intended to be a limited partnership, with Y and Z as limited partners. The Certificate of Limited Partnership was never filed with the SEC. After several years the partnership had total assets of P20,000,000 and owed third-party creditors P32,000,000. How much is each partner's liability for the deficiency?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "No partner is personally liable to the creditors"
+        },
+        {
+          "id": "b",
+          "text": "P3,000,000 each for all four partners"
+        },
+        {
+          "id": "c",
+          "text": "P6,000,000 each for W and X only"
+        },
+        {
+          "id": "d",
+          "text": "P4,000,000 each for W, X and Y only"
+        }
+      ],
+      "correctChoiceId": "b",
+      "rationale": "Failure to file the Certificate of Limited Partnership with the SEC means no limited partnership was ever validly constituted, so the firm is treated as a GENERAL partnership and every partner, including those intended to be limited partners, becomes a general partner. The deficiency is P32,000,000 in debts less P20,000,000 in assets, or P12,000,000, which the general partners bear pro rata with their separate property. Divided equally among all four partners, each is liable for P3,000,000.",
+      "tos": {
+        "subject": "RFBT",
+        "topicCategory": "Law on Business Organization",
+        "subTopic": "Partnerships",
+        "tosCode": "G.1",
+        "cognitiveLevel": "Applying",
+        "difficulty": "Difficult"
+      },
+      "canonicalConcept": "Failure to record the certificate of limited partnership with the SEC results in a de facto general partnership where all partners, including the intended limited partner, are treated as general partners liable to creditors.",
+      "variantOf": "rfbt-b51-22",
+      "variantKind": "numeric",
+      "understandingSkill": "Recognizes that a limited partnership never validly formed is treated as a general partnership, so the supposed limited partner shares the deficiency equally with the rest."
+    },
+    {
+      "id": "RFBT-RESAB48-Q019-v1",
+      "prompt": "An employee worked on a special (non-working) day that also fell on his scheduled rest day. What premium pay rate is he entitled to?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "169%"
+        },
+        {
+          "id": "b",
+          "text": "260%"
+        },
+        {
+          "id": "c",
+          "text": "150%"
+        },
+        {
+          "id": "d",
+          "text": "130%"
+        }
+      ],
+      "correctChoiceId": "c",
+      "rationale": "Work on a special (non-working) day is compensated at an additional 30% of the daily rate, or 130%. Where that special day also falls on the employee's scheduled rest day, the premium rises to an additional 50%, or 150% of the daily rate. The 260% figure applies to a REGULAR holiday falling on a rest day (200% plus 30% of that 200%), a materially higher stack that must not be carried over to special days.",
+      "tos": {
+        "subject": "RFBT",
+        "topicCategory": "Labor Law and Social Legislation",
+        "subTopic": "Holiday and rest day premium pay",
+        "tosCode": "C.1~1",
+        "cognitiveLevel": "Applying",
+        "difficulty": "Moderate"
+      },
+      "canonicalConcept": "Premium pay rate for work on a regular holiday falling on the employee's rest day",
+      "variantOf": "RFBT-RESAB48-Q019",
+      "variantKind": "transfer",
+      "understandingSkill": "Applies the special-day premium stack rather than the regular-holiday stack, since a special non-working day falling on a rest day compounds differently."
+    },
+    {
+      "id": "RFBT-RESAB48-Q022-v1",
+      "prompt": "A female employee who qualifies as a solo parent under the Solo Parents' Welfare Act gave birth to a live child. How many days of maternity leave with full pay is she entitled to?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "105 days"
+        },
+        {
+          "id": "b",
+          "text": "135 days"
+        },
+        {
+          "id": "c",
+          "text": "60 days"
+        },
+        {
+          "id": "d",
+          "text": "120 days"
+        }
+      ],
+      "correctChoiceId": "d",
+      "rationale": "Under the Expanded Maternity Leave Law, live childbirth entitles a covered female worker to 105 days of maternity leave with full pay. A worker who additionally qualifies as a solo parent is granted a further 15 days with full pay, for a total of 120 days. The 60-day period applies only to miscarriage or emergency termination of pregnancy, and the optional 30-day extension beyond the 105 days is without pay.",
+      "tos": {
+        "subject": "RFBT",
+        "topicCategory": "Labor Law and Social Legislation",
+        "subTopic": "Maternity leave benefits",
+        "tosCode": "C.3~1",
+        "cognitiveLevel": "Applying",
+        "difficulty": "Moderate"
+      },
+      "canonicalConcept": "Maternity leave of 60 days for miscarriage or emergency termination of pregnancy",
+      "variantOf": "RFBT-RESAB48-Q022",
+      "variantKind": "transfer",
+      "understandingSkill": "Adds the solo-parent increment to the full live-childbirth entitlement, instead of applying the shorter miscarriage period."
+    },
+    {
+      "id": "RFBT-RESAB48-Q046-v1",
+      "prompt": "A corporation has a nine (9)-member board. Six directors resigned, leaving three. An emergency action is required and the vacancies must be temporarily filled from among the corporation's officers. How many votes are needed?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "3"
+        },
+        {
+          "id": "b",
+          "text": "2"
+        },
+        {
+          "id": "c",
+          "text": "5"
+        },
+        {
+          "id": "d",
+          "text": "9"
+        }
+      ],
+      "correctChoiceId": "a",
+      "rationale": "A quorum for a nine-member board is a majority, or five directors. With only three directors remaining, the board cannot constitute a quorum, which is precisely the situation that permits an emergency board. The vacancy may then be temporarily filled from among the officers of the corporation by the UNANIMOUS vote of the remaining directors. Since three directors remain, three votes are required; a simple majority of those three would not suffice.",
+      "tos": {
+        "subject": "RFBT",
+        "topicCategory": "Corporation Law",
+        "subTopic": "Emergency board",
+        "tosCode": "E.2~5",
+        "cognitiveLevel": "Analyzing",
+        "difficulty": "Difficult"
+      },
+      "canonicalConcept": "Emergency board vacancies are filled by unanimous vote of the remaining directors",
+      "variantOf": "RFBT-RESAB48-Q046",
+      "variantKind": "numeric",
+      "understandingSkill": "Confirms the remaining directors fall short of a quorum before invoking the emergency board, then counts the unanimous vote of only those who remain."
+    },
+    {
+      "id": "RFBT-RESAB48-Q200-v1",
+      "prompt": "A corporation has a seven (7)-member board. One director died and another resigned, leaving five directors in office. Who is authorized to fill the two vacancies?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "The Securities and Exchange Commission"
+        },
+        {
+          "id": "b",
+          "text": "The remaining directors"
+        },
+        {
+          "id": "c",
+          "text": "The stockholders"
+        },
+        {
+          "id": "d",
+          "text": "Both the stockholders and the remaining directors"
+        }
+      ],
+      "correctChoiceId": "b",
+      "rationale": "Vacancies arising from causes OTHER than removal, expiration of term, or an increase in the number of directors may be filled by the vote of at least a majority of the remaining directors, provided they still constitute a quorum. Death and resignation both fall within that category. A quorum for a seven-member board is four, and five directors remain, so the board itself may fill both vacancies. A stockholders' vote would be required only if a vacancy had arisen from removal or expiration of term.",
+      "tos": {
+        "subject": "RFBT",
+        "topicCategory": "Corporation Law",
+        "subTopic": "Filling of vacancies in the board",
+        "tosCode": "E.2~4",
+        "cognitiveLevel": "Analyzing",
+        "difficulty": "Moderate"
+      },
+      "canonicalConcept": "Vacancies arising from removal of directors must be filled by the stockholders",
+      "variantOf": "RFBT-RESAB48-Q200",
+      "variantKind": "transfer",
+      "understandingSkill": "Classifies the CAUSE of each vacancy, recognizing that death and resignation fall outside the removal/expiration category that would force a stockholders' vote."
+    },
+    {
+      "id": "rfbt-b51-51-v1",
+      "prompt": "Mr. Reyes is a director of both Alpha Corporation and Beta Corporation, which entered into a contract with each other. He owns exactly 20% of the outstanding capital stock of Alpha and 15% of Beta. Assuming the contract is fair and reasonable and was properly disclosed, what is its status?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Voidable at the option of Beta Corporation"
+        },
+        {
+          "id": "b",
+          "text": "Void, because interlocking directorships are prohibited"
+        },
+        {
+          "id": "c",
+          "text": "Valid, because his interest in both corporations is merely nominal"
+        },
+        {
+          "id": "d",
+          "text": "Voidable at the option of Alpha Corporation"
+        }
+      ],
+      "correctChoiceId": "c",
+      "rationale": "In contracts between corporations with interlocking directors, a stockholding EXCEEDING twenty percent (20%) of the outstanding capital stock is considered substantial; a holding of twenty percent or less is merely nominal. Mr. Reyes holds exactly 20% in Alpha and 15% in Beta, so his interest in both is nominal and neither corporation is exposed to the stricter self-dealing treatment. The contract is therefore valid, the fairness and disclosure requirements having been satisfied. Had his interest in either corporation exceeded 20%, the contract would have been voidable at that corporation's option.",
+      "tos": {
+        "subject": "RFBT",
+        "topicCategory": "Law on Business Organization",
+        "subTopic": "Corporations",
+        "tosCode": "G.1.1.5",
+        "cognitiveLevel": "Analyzing",
+        "difficulty": "Difficult"
+      },
+      "canonicalConcept": "Where an interlocking director's interest exceeds 20% (deemed 'substantial') in either contracting corporation, the contract is treated as a self-dealing director's contract and is voidable at the option of the corporation absent proper ratification.",
+      "variantOf": "rfbt-b51-51",
+      "variantKind": "threshold",
+      "understandingSkill": "Tests a holding sitting EXACTLY on the 20% line, where the interest stays nominal and the contract escapes the voidable treatment."
+    },
+    {
+      "id": "rfbt-b51-43-v1",
+      "prompt": "Mr. Tan already owns 12% of the outstanding shares of a listed company. What is the minimum ADDITIONAL stake he must acquire in a single transaction to trigger the Mandatory Tender Offer Rule?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "35%"
+        },
+        {
+          "id": "b",
+          "text": "39%"
+        },
+        {
+          "id": "c",
+          "text": "20%"
+        },
+        {
+          "id": "d",
+          "text": "23%"
+        }
+      ],
+      "correctChoiceId": "d",
+      "rationale": "The Mandatory Tender Offer Rule is triggered when a person intends to acquire 35% or more of the equity of a public company in one or more transactions within a twelve-month period. The threshold is measured against the RESULTING stake, not the size of the single purchase. Mr. Tan already holds 12%, so he reaches 35% by acquiring a further 23%. Acquiring a full 35% more would trigger the rule but is not the minimum, and 39% is what he would need to cross the separate 'more than 50%' trigger.",
+      "tos": {
+        "subject": "RFBT",
+        "topicCategory": "Law on Business Organization",
+        "subTopic": "Corporations",
+        "tosCode": "G.1.1.5",
+        "cognitiveLevel": "Applying",
+        "difficulty": "Difficult"
+      },
+      "canonicalConcept": "The Mandatory Tender Offer Rule is triggered when an acquisition brings the acquirer's total ownership to more than 50% of the outstanding shares of a public company (or 35% or more outright).",
+      "variantOf": "rfbt-b51-43",
+      "variantKind": "numeric",
+      "understandingSkill": "Solves for the minimum additional stake that brings the acquirer up to the 35% tender-offer threshold, rather than reading 35% as the size of the purchase itself."
+    },
+    {
+      "id": "rfbt-b51-6-v1",
+      "prompt": "D bound himself to deliver to C, AT C'S OPTION, one of the following specific objects: a cow worth P50,000, a horse worth P80,000, or a carabao worth P70,000. All three were lost successively, in the order mentioned, through D's fault. How much may C recover?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "P80,000"
+        },
+        {
+          "id": "b",
+          "text": "P70,000"
+        },
+        {
+          "id": "c",
+          "text": "P50,000"
+        },
+        {
+          "id": "d",
+          "text": "P200,000"
+        }
+      ],
+      "correctChoiceId": "a",
+      "rationale": "Where the right of choice has been expressly granted to the CREDITOR and all the things are lost through the debtor's fault, the creditor's choice falls upon the price of ANY ONE of them, with indemnity for damages. C will naturally elect the highest value, the horse at P80,000. The rule that the debtor pays the value of the LAST thing that became impossible applies only where the right of choice belonged to the DEBTOR, which would have produced P70,000 here.",
+      "tos": {
+        "subject": "RFBT",
+        "topicCategory": "Law on Business Transactions",
+        "subTopic": "Obligations",
+        "tosCode": "A.1",
+        "cognitiveLevel": "Analyzing",
+        "difficulty": "Difficult"
+      },
+      "canonicalConcept": "In alternative obligations with the debtor holding the right of choice, if all objects are lost through the debtor's fault, the price of the last object lost is what is payable as damages.",
+      "variantOf": "rfbt-b51-6",
+      "variantKind": "transfer",
+      "understandingSkill": "Recognizes that moving the right of choice to the CREDITOR changes the measure of recovery from the value of the last thing lost to the value of ANY one of them at the creditor's election."
+    },
+    {
+      "id": "rfbt-crcace-b99-16-v1",
+      "prompt": "A limited partnership has P40,000 of remaining assets. P, Q and R are general partners and S is a limited partner who has fully paid his contribution. The partnership owes an outside creditor, Z, the sum of P100,000. There is no profit and loss sharing agreement. Which of the following is correct?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "S is liable to Z for P15,000 out of his separate property"
+        },
+        {
+          "id": "b",
+          "text": "Z collects P40,000 from the partnership and P20,000 each from P, Q and R"
+        },
+        {
+          "id": "c",
+          "text": "Z collects P40,000 from the partnership and P15,000 each from P, Q, R and S"
+        },
+        {
+          "id": "d",
+          "text": "Z collects the full P100,000 from the partnership"
+        }
+      ],
+      "correctChoiceId": "b",
+      "rationale": "Outside creditors are paid ahead of the partners' own claims, so the P40,000 of remaining assets goes first to Z, leaving a deficiency of P60,000. A limited partner who has fully paid his contribution is not personally liable to partnership creditors beyond that contribution, so S is excluded. The deficiency is borne pro rata by the three GENERAL partners out of their separate property: P60,000 divided by three is P20,000 each. Dividing by four to include S would wrongly impose general-partner liability on a limited partner.",
+      "tos": {
+        "subject": "RFBT",
+        "topicCategory": "Law on Business Organization",
+        "subTopic": "Partnerships",
+        "tosCode": "G.1",
+        "cognitiveLevel": "Applying",
+        "difficulty": "Difficult"
+      },
+      "canonicalConcept": "In partnership liquidation, outside creditors are paid first from partnership assets, and any deficiency is chargeable pro rata (in equal shares) against the separate property of the general partners only, since a limited partner is not personally liable to outside creditors beyond his capital contribution.",
+      "variantOf": "rfbt-crcace-b99-16",
+      "variantKind": "numeric",
+      "understandingSkill": "Applies the liquidation priority to pay the outside creditor first, then spreads the deficiency across the GENERAL partners only, excluding the limited partner."
+    },
+    {
+      "id": "RFBT-RESAB48-Q062-v1",
+      "prompt": "A cooperative is in its eighth (8th) year of operation. What is the minimum portion of its net surplus that must be allocated to the reserve fund?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "30%"
+        },
+        {
+          "id": "b",
+          "text": "5%"
+        },
+        {
+          "id": "c",
+          "text": "10%"
+        },
+        {
+          "id": "d",
+          "text": "50%"
+        }
+      ],
+      "correctChoiceId": "c",
+      "rationale": "The Philippine Cooperative Code requires that at least ten percent (10%) of the net surplus be allocated to the reserve fund. The heavier requirement that the allocation be not less than fifty percent (50%) of net surplus applies only during the FIRST FIVE YEARS of operation after registration, to build the cooperative's capital base early. A cooperative in its eighth year is past that period and reverts to the ordinary 10% minimum.",
+      "tos": {
+        "subject": "RFBT",
+        "topicCategory": "Cooperatives",
+        "subTopic": "Allocation of net surplus",
+        "tosCode": "F.2",
+        "cognitiveLevel": "Understanding",
+        "difficulty": "Moderate"
+      },
+      "canonicalConcept": "Reserve fund allocation of at least fifty percent of net surplus in a cooperative's first five years",
+      "variantOf": "RFBT-RESAB48-Q062",
+      "variantKind": "threshold",
+      "understandingSkill": "Recognizes the 50% reserve-fund floor is a temporary first-five-years rule that reverts to the ordinary 10% minimum afterwards."
+    },
+    {
+      "id": "RFBT-RESAB48-Q094-v1",
+      "prompt": "A creditor failed to make the disclosures required by the Truth in Lending Act on a credit transaction bearing a finance charge of P1,500. How much is the creditor's civil liability to the borrower?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "P3,000"
+        },
+        {
+          "id": "b",
+          "text": "P1,500"
+        },
+        {
+          "id": "c",
+          "text": "P100"
+        },
+        {
+          "id": "d",
+          "text": "P2,000"
+        }
+      ],
+      "correctChoiceId": "d",
+      "rationale": "A creditor who violates the disclosure requirements is liable in the amount of P100 or twice the finance charge, whichever is GREATER, but in no case exceeding P2,000 on any single credit transaction. Twice the P1,500 finance charge is P3,000, which is greater than P100 and would ordinarily govern, but it exceeds the statutory ceiling. The liability is therefore capped at P2,000.",
+      "tos": {
+        "subject": "RFBT",
+        "topicCategory": "Consumer Protection and Related Laws",
+        "subTopic": "Truth in Lending Act penalties",
+        "tosCode": "O.1~1",
+        "cognitiveLevel": "Applying",
+        "difficulty": "Moderate"
+      },
+      "canonicalConcept": "Civil liability for violation of the Truth in Lending Act disclosure requirements",
+      "variantOf": "RFBT-RESAB48-Q094",
+      "variantKind": "threshold",
+      "understandingSkill": "Runs the 'higher of' comparison and then applies the statutory ceiling, which overrides the larger of the two computed figures."
+    },
+    {
+      "id": "RFBT-RESAB48-Q083-v1",
+      "prompt": "Under the Anti-Money Laundering Act, as amended, a single casino cash transaction is a covered transaction when it involves an amount in excess of:",
+      "choices": [
+        {
+          "id": "a",
+          "text": "P5,000,000"
+        },
+        {
+          "id": "b",
+          "text": "P500,000"
+        },
+        {
+          "id": "c",
+          "text": "P1,000,000"
+        },
+        {
+          "id": "d",
+          "text": "P7,500,000"
+        }
+      ],
+      "correctChoiceId": "a",
+      "rationale": "Casinos, including internet-based and ship-based casinos, were brought within the coverage of the AMLA by RA 10927, with a covered transaction threshold of a single casino cash transaction exceeding five million pesos (P5,000,000). The P7,500,000 threshold applies to real estate developers and brokers, the P1,000,000 threshold to dealers in precious metals and stones, and P500,000 is the general threshold for covered persons such as banks.",
+      "tos": {
+        "subject": "RFBT",
+        "topicCategory": "Anti-Money Laundering",
+        "subTopic": "Covered persons and thresholds",
+        "tosCode": "M.1",
+        "cognitiveLevel": "Remembering",
+        "difficulty": "Moderate"
+      },
+      "canonicalConcept": "Covered transaction threshold for real estate brokers and developers under the AMLA",
+      "variantOf": "RFBT-RESAB48-Q083",
+      "variantKind": "transfer",
+      "understandingSkill": "Selects the covered-transaction threshold specific to casinos rather than the different figures applying to real estate brokers or jewelry dealers."
+    },
+    {
+      "id": "rfbt-crcace-b99-67-v1",
+      "prompt": "A sold B a motorcycle on installment, secured by a chattel mortgage on the unit. B defaulted on two installments. Instead of foreclosing the chattel mortgage, A sued to EXACT FULFILLMENT of the obligation. The motorcycle was levied upon and sold on execution, and the proceeds fell short of the balance. May A recover the deficiency?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "No, unless the buyer consents to pay the deficiency"
+        },
+        {
+          "id": "b",
+          "text": "Yes, because the bar on recovering a deficiency applies only where the vendor forecloses the chattel mortgage"
+        },
+        {
+          "id": "c",
+          "text": "No, because the Recto Law bars recovery of a deficiency in every case"
+        },
+        {
+          "id": "d",
+          "text": "Yes, but only if the contract expressly stipulated the right to recover a deficiency"
+        }
+      ],
+      "correctChoiceId": "b",
+      "rationale": "The Recto Law gives the vendor of personal property on installment three alternative remedies: exact fulfillment, cancel the sale, or foreclose the chattel mortgage. The statutory bar against any further action to recover an unpaid balance attaches ONLY to the third remedy, foreclosure of the chattel mortgage, and that bar cannot be waived by stipulation. Because A elected to exact fulfillment rather than foreclose, the levy and execution sale were ordinary enforcement of a money judgment, and A may recover the deficiency.",
+      "tos": {
+        "subject": "RFBT",
+        "topicCategory": "Law on Business Transactions",
+        "subTopic": "Sales",
+        "tosCode": "A.3",
+        "cognitiveLevel": "Analyzing",
+        "difficulty": "Difficult"
+      },
+      "canonicalConcept": "Under the Recto Law, a vendor who forecloses the chattel mortgage on personal property sold in installments after the buyer's default may not recover any deficiency, and any stipulation purporting to allow such recovery is void.",
+      "variantOf": "rfbt-crcace-b99-67",
+      "variantKind": "transfer",
+      "understandingSkill": "Identifies WHICH of the three Recto Law remedies carries the deficiency bar, recognizing that exacting fulfillment does not."
+    },
+    {
+      "id": "RFBT-RESAB48-Q058-v1",
+      "prompt": "A stock corporation's unrestricted retained earnings exceed 100% of its paid-in capital stock. Which of the following would NOT justify its continued retention of those surplus profits?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "A loan covenant requiring the creditor's consent before any dividend is declared, which consent has not been secured"
+        },
+        {
+          "id": "b",
+          "text": "A special circumstance obtaining in the corporation which calls for a special reserve for probable contingencies"
+        },
+        {
+          "id": "c",
+          "text": "The corporation simply prefers to accumulate cash reserves, with no particular project identified"
+        },
+        {
+          "id": "d",
+          "text": "A definite corporate expansion project or program approved by the board of directors"
+        }
+      ],
+      "correctChoiceId": "c",
+      "rationale": "Stock corporations are prohibited from retaining surplus profits in excess of one hundred percent of their paid-in capital stock, subject to specific statutory exceptions: a definite corporate expansion project or program approved by the board, a loan covenant or other agreement requiring a consent to dividends that has not been secured, and special circumstances calling for a reserve for probable contingencies. A generalized preference to accumulate cash, unattached to any identified project or obligation, is not among these exceptions, so it would not justify retention and the board could be compelled to declare dividends.",
+      "tos": {
+        "subject": "RFBT",
+        "topicCategory": "Corporation Law",
+        "subTopic": "Dividend declaration and retention of surplus profits",
+        "tosCode": "E.3~4",
+        "cognitiveLevel": "Understanding",
+        "difficulty": "Moderate"
+      },
+      "canonicalConcept": "Prohibition on retaining surplus profits exceeding one hundred percent of paid-in capital",
+      "variantOf": "RFBT-RESAB48-Q058",
+      "variantKind": "negated",
+      "understandingSkill": "Identifies which justification does NOT excuse retaining surplus profits beyond the 100% ceiling, instead of restating the ceiling itself."
+    },
+    {
+      "id": "RFBT-RESAB48-Q033-v1",
+      "prompt": "Unless the bylaws provide for a longer period, the stock and transfer book of a corporation shall be closed at least how many days before a SPECIAL meeting?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "20 days"
+        },
+        {
+          "id": "b",
+          "text": "30 days"
+        },
+        {
+          "id": "c",
+          "text": "2 days"
+        },
+        {
+          "id": "d",
+          "text": "7 days"
+        }
+      ],
+      "correctChoiceId": "d",
+      "rationale": "Unless the bylaws provide for a longer period, the stock and transfer book or membership book shall be closed at least twenty (20) days before a REGULAR meeting and at least seven (7) days before a SPECIAL meeting. The shorter seven-day period reflects the shorter notice ordinarily given for special meetings.",
+      "tos": {
+        "subject": "RFBT",
+        "topicCategory": "Corporation Law",
+        "subTopic": "Closing of stock and transfer book",
+        "tosCode": "E.4",
+        "cognitiveLevel": "Remembering",
+        "difficulty": "Easy"
+      },
+      "canonicalConcept": "Period for closing the stock and transfer book before regular and special meetings",
+      "variantOf": "RFBT-RESAB48-Q033",
+      "variantKind": "transfer",
+      "understandingSkill": "Selects the closing period tied to a SPECIAL meeting rather than the longer period applicable to a regular meeting."
+    },
+    {
+      "id": "RFBT-RESAB48-Q037-v1",
+      "prompt": "Under the Revised Corporation Code, and unless a different period is provided in the bylaws, written notice of a SPECIAL meeting of stockholders must be sent at least:",
+      "choices": [
+        {
+          "id": "a",
+          "text": "1 week prior to the meeting"
+        },
+        {
+          "id": "b",
+          "text": "21 days prior to the meeting"
+        },
+        {
+          "id": "c",
+          "text": "2 days prior to the meeting"
+        },
+        {
+          "id": "d",
+          "text": "30 days prior to the meeting"
+        }
+      ],
+      "correctChoiceId": "a",
+      "rationale": "Written notice of REGULAR stockholders' meetings must be sent at least twenty-one (21) days prior, while notice of SPECIAL stockholders' meetings need only be sent at least one (1) week prior, in each case unless the bylaws provide a different period. The two-day period is the notice requirement for regular meetings of the BOARD OF DIRECTORS, a separate rule that must not be carried over to stockholders' meetings.",
+      "tos": {
+        "subject": "RFBT",
+        "topicCategory": "Corporation Law",
+        "subTopic": "Board meeting notice requirements",
+        "tosCode": "E.4~2",
+        "cognitiveLevel": "Remembering",
+        "difficulty": "Moderate"
+      },
+      "canonicalConcept": "Two-day notice requirement for regular board of directors meetings",
+      "variantOf": "RFBT-RESAB48-Q037",
+      "variantKind": "transfer",
+      "understandingSkill": "Selects the notice period for a special STOCKHOLDERS' meeting, distinguishing it from both the regular-meeting period and the much shorter board-meeting period."
+    },
+    {
+      "id": "rfbt-crcace-b99-42-v1",
+      "prompt": "A corporation has 1,000,000 outstanding shares. At a special meeting duly called for the purpose, holders of 600,000 shares voted to remove a director. Is the removal valid?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "No, removal of a director requires the unanimous vote of the stockholders"
+        },
+        {
+          "id": "b",
+          "text": "No, removal requires at least 666,667 shares"
+        },
+        {
+          "id": "c",
+          "text": "Yes, a majority of the outstanding capital stock is sufficient"
+        },
+        {
+          "id": "d",
+          "text": "Yes, because 600,000 shares is more than half of the outstanding shares"
+        }
+      ],
+      "correctChoiceId": "b",
+      "rationale": "A director may be removed, with or without cause, only by the vote of stockholders representing at least two-thirds (2/3) of the OUTSTANDING capital stock. Two-thirds of 1,000,000 shares is 666,666.67, so at least 666,667 shares must be voted in favor. The 600,000 shares cast, while a clear majority, fall short of the two-thirds requirement, so the removal is invalid.",
+      "tos": {
+        "subject": "RFBT",
+        "topicCategory": "Law on Business Organization",
+        "subTopic": "Corporations",
+        "tosCode": "G.1.1.5",
+        "cognitiveLevel": "Applying",
+        "difficulty": "Difficult"
+      },
+      "canonicalConcept": "Removal of a director requires the vote of stockholders representing at least two-thirds of the corporation's outstanding capital stock, not merely two-thirds of those present at the meeting.",
+      "variantOf": "rfbt-crcace-b99-42",
+      "variantKind": "numeric",
+      "understandingSkill": "Converts the 2/3-of-outstanding-capital-stock removal requirement into an actual share count and compares it against the votes actually cast."
+    },
+    {
+      "id": "rfbt-reo-may26-30-v1",
+      "prompt": "A corporation reports total assets of P550,000 and total liabilities of P900,000. May it submit financial statements under the alternative certification instead of an independent CPA audit?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "No, because both total assets and total liabilities must be below P600,000"
+        },
+        {
+          "id": "b",
+          "text": "Yes, but only upon prior written approval from the Securities and Exchange Commission"
+        },
+        {
+          "id": "c",
+          "text": "Yes, because its total assets are below P600,000, and the test is met if either assets or liabilities fall below the threshold"
+        },
+        {
+          "id": "d",
+          "text": "No, because its total liabilities exceed P600,000"
+        }
+      ],
+      "correctChoiceId": "c",
+      "rationale": "The alternative certification is available where total assets OR total liabilities are less than P600,000. The test is disjunctive, so satisfying either limb suffices. This corporation's total assets of P550,000 fall below the threshold, and the fact that its total liabilities of P900,000 exceed it does not disqualify it. The financial statements may accordingly be certified under oath by the president and treasurer rather than audited by an independent CPA.",
+      "tos": {
+        "subject": "RFBT",
+        "topicCategory": "Law on Business Organization",
+        "subTopic": "Corporations",
+        "tosCode": "G.1.1.5",
+        "cognitiveLevel": "Analyzing",
+        "difficulty": "Difficult"
+      },
+      "canonicalConcept": "Small corporations with total assets or total liabilities below the P600,000 threshold may use an alternative certification of financial statements instead of a full independent audit.",
+      "variantOf": "rfbt-reo-may26-30",
+      "variantKind": "threshold",
+      "understandingSkill": "Reads the threshold as a disjunctive test satisfied by EITHER assets or liabilities falling below P600,000, rather than requiring both."
+    },
+    {
+      "id": "rfbt-crcace-b99-72-v1",
+      "prompt": "A obtained a P300,000 loan from B. C bound himself SOLIDARILY with A for the payment of the loan. A defaulted at maturity. May B compel C to pay without first exhausting A's property?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "No, because C may still invoke the benefit of excussion"
+        },
+        {
+          "id": "b",
+          "text": "No, because B must first foreclose any security given by A"
+        },
+        {
+          "id": "c",
+          "text": "Yes, but only after obtaining a judgment against A"
+        },
+        {
+          "id": "d",
+          "text": "Yes, because a surety is solidarily liable and cannot invoke the benefit of excussion"
+        }
+      ],
+      "correctChoiceId": "d",
+      "rationale": "One who binds himself SOLIDARILY with the principal debtor is a surety, not a mere guarantor. Suretyship is a direct and primary undertaking, so the creditor may proceed against the surety immediately upon default without first exhausting the debtor's property and without a prior judgment against the debtor. The benefit of excussion, which requires the creditor to exhaust the debtor's assets first, belongs only to an ordinary guarantor whose liability is subsidiary.",
+      "tos": {
+        "subject": "RFBT",
+        "topicCategory": "Law on Business Transactions",
+        "subTopic": "Credit Transactions",
+        "tosCode": "A.4",
+        "cognitiveLevel": "Analyzing",
+        "difficulty": "Moderate"
+      },
+      "canonicalConcept": "An ordinary guarantor may invoke the benefit of excussion, requiring the creditor to first exhaust all legal remedies against the principal debtor before proceeding against the guarantor.",
+      "variantOf": "rfbt-crcace-b99-72",
+      "variantKind": "transfer",
+      "understandingSkill": "Distinguishes suretyship, which is solidary and forecloses the benefit of excussion, from ordinary guaranty, which is subsidiary and preserves it."
+    },
+    {
+      "id": "rfbt-b51-100-v1",
+      "prompt": "A check dated 1 March 2025 was presented for payment on 15 July 2025 and was dishonored for insufficiency of funds. Does the prima facie presumption of knowledge of insufficiency of funds arise against the drawer?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "No, because the check was presented more than 90 days after its date"
+        },
+        {
+          "id": "b",
+          "text": "Yes, the presumption arises from the mere fact of dishonor"
+        },
+        {
+          "id": "c",
+          "text": "No, because the presumption requires presentment within 30 days"
+        },
+        {
+          "id": "d",
+          "text": "Yes, provided the drawer was given notice of dishonor"
+        }
+      ],
+      "correctChoiceId": "a",
+      "rationale": "Under Batas Pambansa Blg. 22, the dishonor of a check gives rise to a prima facie presumption of knowledge of insufficiency of funds only where the check was presented within NINETY (90) DAYS from the date appearing on it. From 1 March 2025 to 15 July 2025 is 136 days, well beyond that window, so the presumption does not arise. The prosecution may still prove actual knowledge by other evidence, but it loses the benefit of the statutory presumption.",
+      "tos": {
+        "subject": "RFBT",
+        "topicCategory": "Law on Business Transactions",
+        "subTopic": "Bouncing Checks (BP 22)",
+        "tosCode": "B",
+        "cognitiveLevel": "Analyzing",
+        "difficulty": "Difficult"
+      },
+      "canonicalConcept": "Under BP 22, a drawer notified of a dishonored check has five banking days from receipt of notice to make the check good or arrange payment before the presumption of knowledge of insufficient funds attaches.",
+      "variantOf": "rfbt-b51-100",
+      "variantKind": "threshold",
+      "understandingSkill": "Counts the days from the date of the check to presentment and tests them against the 90-day window that the prima facie presumption depends on."
+    }
+  ]
+}
