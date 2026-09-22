@@ -27,6 +27,18 @@ export interface RawBankQuestion {
    * see the acceptable_answers column comment in schema.sql for why this is
    * an explicit per-question list rather than an algorithmic acronym guess. */
   acceptableAnswers?: string[]
+  /** Set only on variant records: the id of the seed question this one
+   * re-tests. Its presence is what makes the record skip concept-hash dedup,
+   * since a variant shares its seed's canonicalConcept on purpose. */
+  variantOf?: string
+  /** Defaults to variantOf when omitted — a variant of a seed belongs to that
+   * seed's group. Set explicitly only to graft a variant onto a group whose
+   * id differs from its immediate parent (a variant of a variant). */
+  variantGroupId?: string
+  /** numeric | threshold | inverted | negated | transfer — see schema.sql. */
+  variantKind?: string
+  /** What reasoning step the item probes, in plain language. */
+  understandingSkill?: string
 }
 
 export interface IngestResult {
@@ -50,6 +62,7 @@ interface TosCategoryRow extends RowDataPacket {
 }
 
 const VALID_DIFFICULTIES = new Set(['Easy', 'Moderate', 'Difficult'])
+const VALID_VARIANT_KINDS = new Set(['numeric', 'threshold', 'inverted', 'negated', 'transfer'])
 const PLACEHOLDER_RATIONALE_PATTERN = /not provided/i
 
 // Cloud DB round-trips (Aiven etc.) run 50-150ms+ each — a single INSERT of
@@ -128,6 +141,15 @@ function validate(record: unknown): record is RawBankQuestion {
   ) {
     return false
   }
+
+  for (const field of ['variantOf', 'variantGroupId', 'variantKind', 'understandingSkill'] as const) {
+    const value = r[field]
+    if (value !== undefined && (typeof value !== 'string' || !value.trim())) return false
+  }
+  // variantKind/understandingSkill describe a derivation, so they're only
+  // meaningful on a record that declares what it was derived from.
+  if ((r.variantKind || r.understandingSkill || r.variantGroupId) && !r.variantOf) return false
+  if (r.variantOf && !VALID_VARIANT_KINDS.has(r.variantKind ?? '')) return false
 
   return true
 }
@@ -225,6 +247,11 @@ export async function ingestBankQuestions(records: unknown[]): Promise<IngestRes
   const newChoiceRows: unknown[][] = []
   const rationaleBackfills: { id: string; rationale: string }[] = []
   const acceptableAnswerUpdates: { id: string; acceptableAnswers: string[] }[] = []
+  // Seed questions referenced by an incoming variant. The seed predates the
+  // variant system, so it carries no variant_group_id of its own until one of
+  // its variants arrives — it has to join the group it now heads, or the
+  // generator would treat seed and variants as unrelated and could serve both.
+  const seedGroupBackfills = new Map<string, string>()
 
   for (const record of valid) {
     const tosCode = resolveTosCode(
@@ -236,7 +263,13 @@ export async function ingestBankQuestions(records: unknown[]): Promise<IngestRes
 
     const conceptHash = hashConcept(record.canonicalConcept)
     const key = `${record.tos.subject}|${conceptHash}`
-    const existing = existingByHash.get(key)
+    // A variant shares its seed's concept deliberately, so the concept-hash
+    // dedup below — whose whole job is to collapse accidental cross-center
+    // duplicates — would otherwise swallow every variant we ingest. Skipping
+    // the lookup (rather than the whole block) keeps variants deduped against
+    // each other by primary key via ON DUPLICATE KEY UPDATE, so re-ingesting
+    // the same variant file stays idempotent.
+    const existing = record.variantOf ? undefined : existingByHash.get(key)
 
     if (existing) {
       if (isPlaceholderRationale(existing.rationale) && !isPlaceholderRationale(record.rationale)) {
@@ -252,7 +285,14 @@ export async function ingestBankQuestions(records: unknown[]): Promise<IngestRes
 
     // Register immediately so a later record in this same batch sharing the
     // same concept merges into this one instead of inserting a duplicate.
-    existingByHash.set(key, { id: record.id, rationale: record.rationale })
+    // Variants are excluded: registering one would make the *next* variant of
+    // the same seed dedup against it.
+    if (!record.variantOf) {
+      existingByHash.set(key, { id: record.id, rationale: record.rationale })
+    }
+
+    const variantGroupId = record.variantOf ? (record.variantGroupId ?? record.variantOf) : null
+    if (variantGroupId) seedGroupBackfills.set(variantGroupId, variantGroupId)
 
     newQuestionRows.push([
       record.id,
@@ -268,6 +308,10 @@ export async function ingestBankQuestions(records: unknown[]): Promise<IngestRes
       record.acceptableAnswers && record.acceptableAnswers.length > 0
         ? JSON.stringify(record.acceptableAnswers)
         : null,
+      variantGroupId,
+      record.variantOf ?? null,
+      record.variantKind ?? null,
+      record.understandingSkill ?? null,
     ])
     record.choices.forEach((choice, index) => {
       newChoiceRows.push([record.id, choice.id, choice.text, index])
@@ -286,13 +330,17 @@ export async function ingestBankQuestions(records: unknown[]): Promise<IngestRes
   if (newQuestionRows.length > 0) {
     await bulkInsert(
       `INSERT INTO bank_questions
-         (id, subject, tos_code, cognitive_level, difficulty, prompt, correct_choice_id, rationale, canonical_concept, canonical_concept_hash, acceptable_answers)
+         (id, subject, tos_code, cognitive_level, difficulty, prompt, correct_choice_id, rationale, canonical_concept, canonical_concept_hash, acceptable_answers, variant_group_id, variant_of, variant_kind, understanding_skill)
        VALUES ?
        ON DUPLICATE KEY UPDATE
          prompt = VALUES(prompt),
          correct_choice_id = VALUES(correct_choice_id),
          rationale = VALUES(rationale),
-         acceptable_answers = VALUES(acceptable_answers)`,
+         acceptable_answers = VALUES(acceptable_answers),
+         variant_group_id = VALUES(variant_group_id),
+         variant_of = VALUES(variant_of),
+         variant_kind = VALUES(variant_kind),
+         understanding_skill = VALUES(understanding_skill)`,
       newQuestionRows,
     )
   }
@@ -318,6 +366,15 @@ export async function ingestBankQuestions(records: unknown[]): Promise<IngestRes
       JSON.stringify(update.acceptableAnswers),
       update.id,
     ])
+  }
+  // Only touches seeds that haven't already joined their group, so this is a
+  // no-op on re-ingest rather than a rewrite of every seed each run.
+  const seedIds = [...seedGroupBackfills.keys()]
+  if (seedIds.length > 0) {
+    await pool.query(
+      'UPDATE bank_questions SET variant_group_id = id WHERE id IN (?) AND variant_group_id IS NULL',
+      [seedIds],
+    )
   }
 
   return result

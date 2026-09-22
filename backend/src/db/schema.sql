@@ -146,6 +146,40 @@ CREATE TABLE IF NOT EXISTS bank_questions (
 -- a fresh database just gets it from the CREATE TABLE above instead.
 ALTER TABLE bank_questions ADD COLUMN acceptable_answers JSON NULL;
 
+-- Variant system. A variant deliberately re-tests the SAME underlying concept
+-- as an existing "seed" question with the surface changed (different figures,
+-- inverted ask, negated stem, transferred fact pattern), so a student who only
+-- memorized the seed's answer letter can't coast. Because a variant shares its
+-- seed's canonical_concept by design, ingestBank must bypass the
+-- canonical_concept_hash dedup for it — see ingestBankQuestions. That dedup
+-- exists to drop genuine cross-center duplicates; a variant is the opposite,
+-- an intentional duplicate concept with a different surface.
+--
+-- variant_group_id is the seed question's own id, carried by the seed and all
+-- of its variants alike, so "all questions testing this concept" is one
+-- indexed lookup. NULL means the question has no variants (the overwhelming
+-- majority today) and is its own group of one.
+ALTER TABLE bank_questions ADD COLUMN variant_group_id VARCHAR(64) NULL;
+-- The specific question this one was derived from. Documents lineage; the
+-- generator only ever reads variant_group_id. Deliberately NOT a foreign key:
+-- a seed and its variants are routinely ingested in the same bulk INSERT, and
+-- a self-referencing FK would impose an ordering constraint on that batch for
+-- no benefit the application actually relies on.
+ALTER TABLE bank_questions ADD COLUMN variant_of VARCHAR(64) NULL;
+-- How the surface was transformed. One of: numeric (same rule, new figures),
+-- threshold (figures moved across a statutory ceiling/floor so the rule's
+-- branch flips), inverted (solve for a different unknown), negated
+-- ("which is" <-> "which is NOT"), transfer (same rule, different taxpayer
+-- class or property regime).
+ALTER TABLE bank_questions ADD COLUMN variant_kind VARCHAR(32) NULL;
+-- Plain-language statement of what the item actually probes, e.g. "Applies the
+-- lower-of rule when the date-of-death value exceeds the date-of-inheritance
+-- value". This is the "tests understanding, not recall" tag: it names the
+-- reasoning step a student must perform rather than the topic they must recall.
+ALTER TABLE bank_questions ADD COLUMN understanding_skill VARCHAR(255) NULL;
+
+CREATE INDEX idx_bank_questions_variant_group ON bank_questions(variant_group_id);
+
 CREATE INDEX idx_bank_questions_subject_tos_code ON bank_questions(subject, tos_code);
 CREATE INDEX idx_bank_questions_difficulty ON bank_questions(difficulty);
 CREATE INDEX idx_bank_questions_cognitive_level ON bank_questions(cognitive_level);
