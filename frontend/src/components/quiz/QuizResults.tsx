@@ -12,6 +12,7 @@ import {
   Eye,
   FileText,
   Flame,
+  Lock,
   RotateCcw,
   Scale,
   Search,
@@ -22,6 +23,7 @@ import {
   type LucideIcon,
 } from 'lucide-react'
 import { useLayoutEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 import { AnswerHistoryList } from '@/components/quiz/AnswerHistoryList'
 import { ExamHistoryChart, type ExamHistoryPoint } from '@/components/quiz/ExamHistoryChart'
@@ -59,6 +61,9 @@ interface QuizResultsProps {
    * instead of being recomputed from `questions`/`answers` (which are empty
    * in that case), and the per-question review list is hidden. */
   summaryOnly?: LegacyAttemptSummary
+  /** Logged-out trial exam — nothing is written to exam history (there's no
+   * user to key it to) and the actions convert instead of continuing. */
+  trialMode?: boolean
 }
 
 function isCorrectAnswer(
@@ -117,6 +122,7 @@ export function QuizResults({
   onBack,
   readOnly = false,
   summaryOnly,
+  trialMode = false,
 }: QuizResultsProps) {
   const { user } = useAuth()
   const userId = user?.id ?? ''
@@ -158,7 +164,7 @@ export function QuizResults({
   const hasRecordedAttempt = useRef(false)
 
   useLayoutEffect(() => {
-    if (readOnly || summaryOnly || hasRecordedAttempt.current) return
+    if (readOnly || summaryOnly || trialMode || hasRecordedAttempt.current) return
     hasRecordedAttempt.current = true
     setHistory(
       recordExamAttempt(userId, quizSetId, {
@@ -246,7 +252,7 @@ export function QuizResults({
             className="flex items-center gap-1.5 text-sm font-semibold text-[#7A2323] hover:underline"
           >
             <ArrowLeft className="size-4" />
-            Back to tests
+            {trialMode ? 'Back to free exams' : 'Back to tests'}
           </button>
           <h1 className="font-display mt-2 text-2xl text-[#7A2323] sm:text-3xl">Exam Results &amp; Analytics</h1>
           <p className="mt-1 text-sm text-[#3A2A1A]/70">{code} — Practice Exam</p>
@@ -263,17 +269,58 @@ export function QuizResults({
               Review Exam
             </button>
           )}
-          <button
-            type="button"
-            onClick={onRetake}
-            className="relative flex items-center gap-1.5 overflow-hidden rounded-full bg-[#7A2323] px-4 py-2.5 text-sm font-semibold text-[#F3ECDC] transition-colors hover:bg-[#7A2323]/90"
-          >
-            <GrungeOverlay />
-            <RotateCcw className="size-4" />
-            Retake Exam
-          </button>
+          {trialMode ? (
+            <Link
+              to="/signup"
+              className="relative flex items-center gap-1.5 overflow-hidden rounded-full bg-[#7A2323] px-4 py-2.5 text-sm font-semibold text-[#F3ECDC] transition-colors hover:bg-[#7A2323]/90"
+            >
+              <GrungeOverlay />
+              Create a free account
+              <ArrowRight className="size-4" />
+            </Link>
+          ) : (
+            <button
+              type="button"
+              onClick={onRetake}
+              className="relative flex items-center gap-1.5 overflow-hidden rounded-full bg-[#7A2323] px-4 py-2.5 text-sm font-semibold text-[#F3ECDC] transition-colors hover:bg-[#7A2323]/90"
+            >
+              <GrungeOverlay />
+              <RotateCcw className="size-4" />
+              Retake Exam
+            </button>
+          )}
         </div>
       </div>
+
+      {trialMode && (
+        <div className="flex flex-col gap-4 rounded-2xl border border-[#E0AC48]/50 bg-[#E0AC48]/10 p-5 sm:flex-row sm:items-center sm:justify-between">
+          <div className="min-w-0">
+            <p className="flex items-center gap-2 font-serif text-lg font-bold text-[#7A2323]">
+              <Lock className="size-4 shrink-0 text-[#B4791F]" />
+              That was your free preview
+            </p>
+            <p className="font-reading mt-1 text-sm text-[#3A2A1A]/75">
+              A free account unlocks every explanation, full-length exams, saved progress and a
+              personalized study plan.
+            </p>
+          </div>
+          <div className="flex shrink-0 flex-col items-start gap-2 sm:items-end lg:flex-row lg:items-center lg:gap-4">
+            <Link
+              to="/signup"
+              className="relative flex items-center justify-center gap-1.5 overflow-hidden rounded-full bg-[#7A2323] px-5 py-2.5 text-sm font-semibold whitespace-nowrap text-[#F3ECDC] transition-colors hover:bg-[#7A2323]/90"
+            >
+              <GrungeOverlay />
+              Create a free account
+            </Link>
+            <Link
+              to="/login"
+              className="text-sm font-semibold whitespace-nowrap text-[#3A2A1A] hover:text-[#7A2323] hover:underline"
+            >
+              I already have one
+            </Link>
+          </div>
+        </div>
+      )}
 
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_20rem]">
         <div className="flex min-w-0 flex-col gap-6">
@@ -679,15 +726,26 @@ export function QuizResults({
               })}
             </div>
 
-            <button
-              type="button"
-              onClick={onBack}
-              className="relative mt-4 flex w-full items-center justify-center gap-1.5 overflow-hidden rounded-full bg-[#7A2323] px-4 py-2.5 text-xs font-semibold text-[#F3ECDC] transition-colors hover:bg-[#7A2323]/90"
-            >
-              <GrungeOverlay />
-              View Personalized Study Plan
-              <ArrowRight className="size-3.5" />
-            </button>
+            {trialMode ? (
+              <Link
+                to="/signup"
+                className="relative mt-4 flex w-full items-center justify-center gap-1.5 overflow-hidden rounded-full bg-[#7A2323] px-4 py-2.5 text-xs font-semibold text-[#F3ECDC] transition-colors hover:bg-[#7A2323]/90"
+              >
+                <GrungeOverlay />
+                Unlock My Personalized Study Plan
+                <ArrowRight className="size-3.5" />
+              </Link>
+            ) : (
+              <button
+                type="button"
+                onClick={onBack}
+                className="relative mt-4 flex w-full items-center justify-center gap-1.5 overflow-hidden rounded-full bg-[#7A2323] px-4 py-2.5 text-xs font-semibold text-[#F3ECDC] transition-colors hover:bg-[#7A2323]/90"
+              >
+                <GrungeOverlay />
+                View Personalized Study Plan
+                <ArrowRight className="size-3.5" />
+              </button>
+            )}
           </div>
         </div>
       </div>

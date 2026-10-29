@@ -26,6 +26,8 @@ import { QuizDetailsPage } from '@/pages/QuizDetailsPage'
 import { ReviewPlannerPage } from '@/pages/ReviewPlannerPage'
 import { SignUpPage } from '@/pages/SignUpPage'
 import { SubjectsPage } from '@/pages/SubjectsPage'
+import { TrialExamPage } from '@/pages/TrialExamPage'
+import { TrialStartPage } from '@/pages/TrialStartPage'
 
 // Landing-page assets worth blocking the splash for — the ones visible
 // without scrolling (or one scroll away) that would otherwise pop in or
@@ -95,6 +97,8 @@ function App() {
             <Routes>
               <Route path="/" element={<LandingPage />} />
               <Route path="/subjects" element={<SubjectsPage />} />
+              <Route path="/try" element={<TrialStartPage />} />
+              <Route path="/try/exam/:subject" element={<TrialExamPage />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/signup" element={<SignUpPage />} />
               <Route

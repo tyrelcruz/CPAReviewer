@@ -9,12 +9,14 @@ import {
   Flag,
   Flame,
   Lightbulb,
+  Lock,
   StickyNote,
   Target,
   Timer,
   XCircle,
 } from 'lucide-react'
 import { useEffect, useMemo, useReducer, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 import { submitQuestionFlag } from '@/api/flags'
 import { AnswerControls } from '@/components/quiz/AnswerControls'
@@ -64,6 +66,10 @@ interface QuizProps {
    * localStorage. Navigating away persists progress under this key; returning to
    * the same key picks up right where the learner left off, timer included. */
   progressKey?: string
+  /** Logged-out trial exam: no flagging (that endpoint is auth-only), locked
+   * explanations offer signup instead, and results convert rather than
+   * recording history. */
+  trialMode?: boolean
 }
 
 /** mcq: exact choice-id match (unchanged). identification: the typed text is
@@ -248,6 +254,7 @@ export function Quiz({
   onComplete,
   timeLimitSeconds,
   progressKey,
+  trialMode = false,
 }: QuizProps) {
   const { user } = useAuth()
   const userId = user?.id ?? ''
@@ -476,6 +483,7 @@ export function Quiz({
         elapsedMs={elapsedMs}
         onRetake={handleRetake}
         onBack={onBack}
+        trialMode={trialMode}
       />
     )
   }
@@ -490,6 +498,9 @@ export function Quiz({
   const hasRealRationale = Boolean(
     current.rationale && !/answer not provided in source material/i.test(current.rationale),
   )
+  // The trial withholds most rationales server-side, so an empty one here
+  // means "sign up to read this", not "we never wrote one".
+  const explanationLocked = Boolean(trialMode && current.explanationLocked)
   const correctChoiceIndex = current.choices.findIndex((c) => c.id === current.correctChoiceId)
   const correctChoiceText = correctChoiceIndex >= 0 ? current.choices[correctChoiceIndex].text : null
   // Identification mode never showed a lettered choice list, so referencing
@@ -694,13 +705,33 @@ export function Quiz({
                         {isCorrect ? 'Correct' : 'Incorrect'}
                         {correctChoiceLetter && !isCorrect && ` — correct answer: ${correctChoiceLetter}`}
                       </p>
-                      <p className="font-reading mt-1">
-                        {hasRealRationale
-                          ? current.rationale
-                          : correctChoiceLetter
-                            ? `The correct choice is ${correctChoiceLetter}. A written explanation isn't available for this question yet.`
-                            : "A written explanation isn't available for this question yet."}
-                      </p>
+                      {explanationLocked ? (
+                        <div className="mt-2 rounded-xl border border-[#E0AC48]/50 bg-[#E0AC48]/10 p-3">
+                          <p className="flex items-center gap-2 text-sm font-semibold text-[#3A2A1A]">
+                            <Lock className="size-4 text-[#B4791F]" />
+                            Explanation locked
+                          </p>
+                          <p className="font-reading mt-1 text-xs text-[#3A2A1A]/70">
+                            Your free preview unlocks two explanations. A free account unlocks the
+                            written rationale on every question.
+                          </p>
+                          <Link
+                            to="/signup"
+                            className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-[#7A2323] px-4 py-2 text-xs font-semibold text-[#F3ECDC] transition-colors hover:bg-[#7A2323]/90"
+                          >
+                            Create a free account
+                            <ArrowRight className="size-3.5" />
+                          </Link>
+                        </div>
+                      ) : (
+                        <p className="font-reading mt-1">
+                          {hasRealRationale
+                            ? current.rationale
+                            : correctChoiceLetter
+                              ? `The correct choice is ${correctChoiceLetter}. A written explanation isn't available for this question yet.`
+                              : "A written explanation isn't available for this question yet."}
+                        </p>
+                      )}
                       {current.reference && (
                         <p className="mt-2 text-xs text-[#3A2A1A]/60">
                           <span className="font-semibold text-[#3A2A1A]">Reference:</span>{' '}
@@ -714,37 +745,41 @@ export function Quiz({
             </AnimatePresence>
 
             <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-[#3A2A1A]/10 pt-5">
-              <div className="relative">
-                <button
-                  type="button"
-                  onClick={handleFlagButtonClick}
-                  className={cn(
-                    'relative z-20 flex items-center gap-1.5 rounded-full border px-3 py-2 text-xs font-semibold whitespace-nowrap transition-colors sm:px-4',
-                    isFlagged
-                      ? 'border-[#E0AC48] bg-[#E0AC48]/15 text-[#B4791F]'
-                      : 'border-[#3A2A1A]/20 text-[#3A2A1A]/70 hover:bg-[#3A2A1A]/5',
+              {trialMode ? (
+                <div />
+              ) : (
+                <div className="relative">
+                  <button
+                    type="button"
+                    onClick={handleFlagButtonClick}
+                    className={cn(
+                      'relative z-20 flex items-center gap-1.5 rounded-full border px-3 py-2 text-xs font-semibold whitespace-nowrap transition-colors sm:px-4',
+                      isFlagged
+                        ? 'border-[#E0AC48] bg-[#E0AC48]/15 text-[#B4791F]'
+                        : 'border-[#3A2A1A]/20 text-[#3A2A1A]/70 hover:bg-[#3A2A1A]/5',
+                    )}
+                  >
+                    <Flag className="size-3.5" />
+                    {isFlagged ? 'Flagged' : 'Flag for review'}
+                  </button>
+                  {flagPopoverOpen && !notesMaximized && (
+                    <>
+                      <div className="fixed inset-0 z-10" onClick={() => dispatch({ type: 'close_flag_popover' })} />
+                      {/* Opens upward, not downward like the Calculator/Notes popovers above —
+                          this button sits at the bottom of the question card, so a
+                          downward-opening popover (tall once the answer-choice picker is
+                          showing) would run off the bottom of the viewport instead. */}
+                      <div className="fixed inset-x-4 bottom-4 z-20 sm:absolute sm:inset-x-auto sm:top-auto sm:bottom-full sm:left-0 sm:mb-2">
+                        <FlagReasonPopover
+                          choices={current.choices}
+                          onSubmit={handleSubmitFlag}
+                          onCancel={() => dispatch({ type: 'close_flag_popover' })}
+                        />
+                      </div>
+                    </>
                   )}
-                >
-                  <Flag className="size-3.5" />
-                  {isFlagged ? 'Flagged' : 'Flag for review'}
-                </button>
-                {flagPopoverOpen && !notesMaximized && (
-                  <>
-                    <div className="fixed inset-0 z-10" onClick={() => dispatch({ type: 'close_flag_popover' })} />
-                    {/* Opens upward, not downward like the Calculator/Notes popovers above —
-                        this button sits at the bottom of the question card, so a
-                        downward-opening popover (tall once the answer-choice picker is
-                        showing) would run off the bottom of the viewport instead. */}
-                    <div className="fixed inset-x-4 bottom-4 z-20 sm:absolute sm:inset-x-auto sm:top-auto sm:bottom-full sm:left-0 sm:mb-2">
-                      <FlagReasonPopover
-                        choices={current.choices}
-                        onSubmit={handleSubmitFlag}
-                        onCancel={() => dispatch({ type: 'close_flag_popover' })}
-                      />
-                    </div>
-                  </>
-                )}
-              </div>
+                </div>
+              )}
               <button
                 type="button"
                 onClick={toggleExplanation}

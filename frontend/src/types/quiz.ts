@@ -30,6 +30,10 @@ export interface QuizQuestion {
   /** Curated alternate phrasings accepted for identification-mode grading
    * (see types/bank.ts) — missing/empty for legacy static quiz sets. */
   acceptableAnswers?: string[]
+  /** Set by the logged-out trial exam only: the backend withheld this
+   * question's `rationale` (it arrives empty) and the UI should offer signup
+   * in its place rather than claim no explanation exists. */
+  explanationLocked?: boolean
 }
 
 export interface QuizSet {
