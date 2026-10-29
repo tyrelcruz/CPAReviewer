@@ -18,6 +18,7 @@ import {
   type DifficultyWeights,
   type Difficulty,
 } from '../lib/examGenerator.js'
+import { COMPREHENSIVE_SUBJECTS, resolveSubjectFilter } from '../lib/subjects.js'
 import { getTosBlueprint, tosCategoryWeights } from '../lib/tosBlueprints.js'
 
 export const examsRouter = Router()
@@ -77,19 +78,6 @@ function shuffleArray<T>(items: T[]): T[] {
     ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
   }
   return shuffled
-}
-
-/**
- * Synthetic subject codes that stand in for a full-length exam spanning every
- * currently-ingested subject of a board exam, rather than one real
- * `bank_questions.subject`/`tos_categories.subject` value — resolved to the
- * underlying subject list wherever pool selection or history filtering would
- * otherwise query by a single subject. "MTAP" mirrors the review-center name
- * already used for this style of full-subject mock in the ingested RMT kb
- * source material (see examType values in the kb JSON).
- */
-const COMPREHENSIVE_SUBJECTS: Record<string, string[]> = {
-  MTAP: ['IS', 'BB'],
 }
 
 interface PoolRow extends RowDataPacket {
@@ -294,7 +282,7 @@ examsRouter.post('/generate', asyncHandler(async (req, res) => {
   const resolvedTypeCounts = questionTypeCounts as { mcq: number; identification: number }
   const resolvedDifficultyCounts = difficultyCounts as Record<Difficulty, number>
 
-  const subjectFilter = COMPREHENSIVE_SUBJECTS[subject] ?? [subject]
+  const subjectFilter = resolveSubjectFilter(subject)
 
   const [poolRows] = await pool.query<PoolRow[]>(
     `SELECT bq.id, bq.difficulty, bq.prompt, bc.text AS correct_choice_text,

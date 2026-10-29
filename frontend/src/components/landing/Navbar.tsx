@@ -8,6 +8,7 @@ import { Logo } from '@/components/landing/Logo'
 // anything else (currently just '#') is an unbuilt placeholder anchor.
 const NAV_LINKS = [
   { label: 'Subjects', to: '/subjects' },
+  { label: 'Try Free', to: '/try' },
   { label: 'Mock Exams', to: '#' },
   { label: 'Pricing', to: '#' },
   { label: 'Resources', to: '#' },

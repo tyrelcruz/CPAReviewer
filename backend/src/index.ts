@@ -9,6 +9,7 @@ import { bankQuestionsRouter } from './routes/bankQuestions.js'
 import { examsRouter } from './routes/exams.js'
 import { flagsRouter } from './routes/flags.js'
 import { quizSetsRouter } from './routes/quizSets.js'
+import { trialRouter } from './routes/trial.js'
 
 const app = express()
 const port = Number(process.env.PORT ?? 8001)
@@ -21,6 +22,10 @@ app.get('/health', (_req, res) => {
 })
 
 app.use('/api/auth', authRouter)
+// Deliberately public: the logged-out trial exam. It returns at most 10
+// questions, withholds most rationales, and rate-limits itself — see
+// routes/trial.ts. Nothing else below this line is unauthenticated.
+app.use('/api/trial', trialRouter)
 app.use('/api/quiz-sets', requireAuth, quizSetsRouter)
 app.use('/api/bank-questions', requireAuth, bankQuestionsRouter)
 app.use('/api/exams', requireAuth, examsRouter)
